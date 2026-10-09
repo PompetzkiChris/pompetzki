@@ -1,0 +1,14 @@
+# Local credentials and private machine configuration
+.env
+.env.*
+!.env.example
+.git-credentials
+.ssh/
+.copilot/
+.codex/
+.claude/
+# Local dependency and editor caches
+node_modules/
+.vscode/.ropeproject/
+.DS_Store
+Thumbs.db
