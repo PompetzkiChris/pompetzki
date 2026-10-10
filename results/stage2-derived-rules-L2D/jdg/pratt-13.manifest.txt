@@ -1,0 +1,48 @@
+certs/out2/pratt-13.jdg  from certs/in/pratt-13.sexp (Pratt certificate), 31 entries
+  note: p = 13
+  E1: 2*2 = 4
+  E2: 4*3 = 12
+  E3: 1+12 = 13
+  E4: 2+11 = 13
+  E5: 11 /= 0
+  E6: 4+9 = 13
+  E7: 9 /= 0
+  E8: 4*2 = 8
+  E9: 8+5 = 13
+  E10: 5 /= 0
+  E11: 8*8 = 64
+  E12: 4*13 = 52
+  E13: 52+12 = 64
+  E14: 12+1 = 13
+  E15: 1 /= 0
+  E16: 12*12 = 144
+  E17: 11*13 = 143
+  E18: 143+1 = 144
+  E19: 12 /= 0
+  E20: 1+11 = 12
+  E21: 4*4 = 16
+  E22: 1*13 = 13
+  E23: 13+3 = 16
+  E24: 3+10 = 13
+  E25: 10 /= 0
+  E26: 1+2 = 3
+  E27: 2 /= 0
+  E28: 2+1 = 3
+  E29: 1*3 = 3
+  E30: 3+1 = 4
+  E31: 1+1 = 2
+  theorems 238 (prelude 53, generated 185), steps 9666 (prelude 1326), bytes 4116583, build 1570 ms
+  largest tautology test 113 calls
+  sha256 46d2ff9ee8e790f89417bf5e09135737d8d86b8c51400fdc70bac56ff6366a89
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 238 9666 915)
+  mutant cert-use-swap: copy of the checker (REJECT 237 step 1: taut: not a tautology)
+  mutant neg-final: copy of the checker (REJECT 237 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 237 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 0 step 0: taut: not a tautology)
+  mutant use-shift: copy of the checker (REJECT 0 step 4: taut: not a tautology)
+  mutant leib-swap: copy of the checker (REJECT 59 step 21: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 51 step 28: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 0 step 21: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 237 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 23 step 7: taut: not a tautology)

@@ -1,0 +1,69 @@
+start Fri Oct  9 18:28:56 EDT 2026
+compiled L2RLogic.v in 2 s
+compiled L2RArith.v in 1 s
+compiled L2RFin.v in 6 s
+compiled L2RSent.v in 3 s
+compiled L2RCases.v in 2 s
+File "C:/ClaudeOutput/pompetzki/lanes/L2R/L2RAgree.v", line 61, characters 2-342:
+Warning: Unused introduction patterns: H1 H2
+[unused-intro-pattern,tactics,default]
+File "C:/ClaudeOutput/pompetzki/lanes/L2R/L2RAgree.v", line 61, characters 2-342:
+Warning: Unused introduction patterns: H1 H2
+[unused-intro-pattern,tactics,default]
+File "C:/ClaudeOutput/pompetzki/lanes/L2R/L2RAgree.v", line 61, characters 2-342:
+Warning: Unused introduction patterns: H1 H2
+[unused-intro-pattern,tactics,default]
+File "C:/ClaudeOutput/pompetzki/lanes/L2R/L2RAgree.v", line 61, characters 2-342:
+Warning: Unused introduction patterns: H1 H2
+[unused-intro-pattern,tactics,default]
+File "C:/ClaudeOutput/pompetzki/lanes/L2R/L2RAgree.v", line 61, characters 2-342:
+Warning: Unused introduction patterns: H1 H2
+[unused-intro-pattern,tactics,default]
+File "C:/ClaudeOutput/pompetzki/lanes/L2R/L2RAgree.v", line 61, characters 2-342:
+Warning: Unused introduction patterns: H1 H2
+[unused-intro-pattern,tactics,default]
+compiled L2RAgree.v in 1 s
+compiled L2RSigma1.v in 1 s
+compiled L2RAgreeMut.v in 1 s
+bounded_complete
+     : forall A : fm,
+       bounded A ->
+       wf 0 A ->
+       (sat nil A -> Prov.prov Ax.Gam (tr A Prov.sid)) /\
+       (~ sat nil A -> Prov.prov Ax.Gam (Syn.Neg (tr A Prov.sid)))
+Closed under the global context
+sigma1_complete
+     : forall A : fm,
+       pos A -> wf 0 A -> sat nil A -> Prov.prov Ax.Gam (tr A Prov.sid)
+Closed under the global context
+sigma1_bounded_statements
+     : forall c : String.string * fm * bool * Syn.form,
+       List.In c bounded_cases ->
+       let (p, f) := c in
+       let (p0, _) := p in let (_, _) := p0 in Prov.prov Ax.Gam f
+Closed under the global context
+sigma1_all_statements
+     : forall c : String.string * fm * bool * Syn.form,
+       List.In c L2RCases.cases ->
+       let (p, f) := c in
+       let (p0, _) := p in let (_, _) := p0 in Prov.prov Ax.Gam f
+Closed under the global context
+
+CONTEXT SUMMARY
+===============
+
+* Theory: Set is predicative
+  
+* Theory: Rewrite rules are not allowed
+  
+* Axioms: <none>
+  
+* Constants/Inductives relying on type-in-type: <none>
+  
+* Constants/Inductives relying on unsafe (co)fixpoints: <none>
+  
+* Inductives whose positivity is assumed: <none>
+  
+coqchk L2R.L2RSigma1 in 575 s
+end Fri Oct  9 18:39:11 EDT 2026
+exit 0

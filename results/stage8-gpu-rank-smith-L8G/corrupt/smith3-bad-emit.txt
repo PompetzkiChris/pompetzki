@@ -1,0 +1,5 @@
+exit 1
+smith: U A V /= D
+  context...:
+   C:\ClaudeOutput\pompetzki\lanes\L2D\certs-v3.rkt:137:0: emit-cert
+   body of (submod "C:\ClaudeOutput\pompetzki\lanes\L2D\certs-v3.rkt" main)

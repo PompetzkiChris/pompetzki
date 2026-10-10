@@ -1,0 +1,48 @@
+#lang racket/base
+(require racket/file racket/path racket/port racket/string racket/system)
+
+(define lane (path->complete-path (or (current-load-relative-directory) (current-directory))))
+(define rocq "C:/ClaudeOutput/formalization-toolchain-20260924/tools/Rocq-Platform-2026.07.0-9.1/bin")
+(define general "C:/ClaudeOutput/pompetzki/forcing-src/general")
+(define judge-link "C:/ClaudeOutput/pompetzki/forcing-src/codex-judge-link-20261009")
+(define date-exe "C:/Program Files/Git/usr/bin/date.exe")
+(define (date-output format)
+  (string-trim (with-output-to-string (lambda () (unless (system* date-exe format) (error 'date "failed"))))))
+(define argv (vector->list (current-command-line-arguments)))
+(unless (= (length argv) 3) (error 'usage "compile|check module receipt-number"))
+(define mode (car argv))
+(define module-name (cadr argv))
+(define receipt-number (caddr argv))
+(unless (and (member mode '("compile" "check"))
+             (regexp-match? #px"^[A-Za-z][A-Za-z0-9_]*$" module-name)
+             (regexp-match? #px"^[0-9]+$" receipt-number))
+  (error 'usage "invalid arguments"))
+(define base (format "~a.~a~a" module-name mode receipt-number))
+(define log-file (build-path lane (string-append base ".txt")))
+(define receipt-file (build-path lane (string-append base ".receipt.txt")))
+(when (or (file-exists? log-file) (file-exists? receipt-file)) (error 'new-files-only "receipt exists"))
+(when (and (equal? mode "compile") (file-exists? (build-path lane (string-append module-name ".vo"))))
+  (error 'new-files-only "compiled module exists; use a new module name"))
+(define executable (build-path rocq (if (equal? mode "compile") "coqc.exe" "coqchk.exe")))
+(define mappings (list "-Q" general "Cohen" "-Q" judge-link "JudgeLink" "-Q" (path->string lane) "CX3"))
+(define arguments
+  (append (if (equal? mode "check") '("-silent" "-o") '()) mappings
+          (list (if (equal? mode "compile") (string-append module-name ".v") (string-append "CX3." module-name)))))
+(define started (date-output "+%Y-%m-%dT%H:%M:%S%z"))
+(define epoch-start (string->number (date-output "+%s")))
+(printf "Starting ~a ~a; output ~a\n" mode module-name log-file)
+(flush-output)
+(define code
+  (call-with-output-file log-file #:exists 'error
+    (lambda (out)
+      (parameterize ([current-directory lane] [current-output-port out] [current-error-port out])
+        (apply system*/exit-code executable arguments)))))
+(define ended (date-output "+%Y-%m-%dT%H:%M:%S%z"))
+(define epoch-end (string->number (date-output "+%s")))
+(call-with-output-file receipt-file #:exists 'error
+  (lambda (out)
+    (fprintf out "command: ~s\narguments: ~s\ncwd: ~a\nstart-date: ~a\nend-date: ~a\nelapsed-whole-seconds: ~a\nexit-code: ~a\n"
+             (path->string executable) arguments lane started ended (- epoch-end epoch-start) code)))
+(printf "Finished ~a ~a; exit ~a; elapsed ~a whole seconds from date\n" mode module-name code (- epoch-end epoch-start))
+(displayln (file->string log-file))
+(exit code)

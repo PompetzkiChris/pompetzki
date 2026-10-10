@@ -1,0 +1,21 @@
+C:\ClaudeOutput\pompetzki\lanes\AG5\tseitin-c3.jdg  from C:\ClaudeOutput\pompetzki\lanes\AG5\cnf\tseitin-c3.cnf and C:\ClaudeOutput\pompetzki\lanes\AG5\lrat\tseitin-c3.lrat
+  CNF: 3 variables, 6 clauses; LRAT: 4 addition steps, 10 hints (one T step each)
+  theorems 12 (prelude 5, generated 7), steps 229 (prelude 101; main theorem 102), bytes 79025, build 15 ms
+  largest tautology test 61 calls; deepest formula in a step 50 levels; statement 48 levels
+  sha256 93bc93f8b1b84eb19c4d57b6ca36551b0a1387e9a3ebd2c4ab02ec815466d5ca
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 12 229 689)
+  mutant input-goal-neg: copy of the checker (REJECT 11 step 2: taut: not a tautology)
+  mutant rup-goal-neg: copy of the checker (REJECT 11 step 14: taut: not a tautology)
+  mutant conflict-drop: copy of the checker (REJECT 11 step 23: taut: not a tautology)
+  mutant cnf-flip: copy of the checker (REJECT 11 final: last line is not the statement)
+  mutant neg-final: copy of the checker (REJECT 11 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 11 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 0 step 0: taut: not a tautology)
+  mutant mp-swap: copy of the checker (REJECT 10 step 8: mp: premise mismatch)
+  mutant use-shift: copy of the checker (REJECT 1 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 5 step 1: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 1 step 1: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 5 step 5: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 11 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 4 step 7: taut: not a tautology)

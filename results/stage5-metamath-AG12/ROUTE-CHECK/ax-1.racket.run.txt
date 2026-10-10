@@ -1,0 +1,8 @@
+cwd: C:\ClaudeOutput\pompetzki\judge
+command: & 'C:\Program Files\Racket\racket.exe' 'racket\judge.rkt' 'C:\ClaudeOutput\pompetzki\lanes\AG12-setmm-registry\ROUTE-CHECK\ax-1.jdg'
+started: 2026-10-09T19:12:33.1087183-04:00
+finished: 2026-10-09T19:12:35.7264802-04:00
+exit-code: 0
+verdict: ACCEPT
+stdout: C:\ClaudeOutput\pompetzki\lanes\AG12-setmm-registry\ROUTE-CHECK\ax-1.racket.stdout.txt
+stderr: C:\ClaudeOutput\pompetzki\lanes\AG12-setmm-registry\ROUTE-CHECK\ax-1.racket.stderr.txt

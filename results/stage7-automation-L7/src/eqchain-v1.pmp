@@ -1,0 +1,194 @@
+; eqchain-v1.pmp -- lane L7, item 1 written in pmp: the emitter of equality chains, run by pompetzki.exe.
+; Run: pompetzki.exe eqchain-v1.pmp OUT.jdg
+; Writes a JDG1 file: the registry = the first 677 entries of judge\replay-all.jdg (its lines 3 .. 679, byte for byte),
+; then NMAX theorems, theorem n (n = 1 .. NMAX):
+;   statement  (x0 = x1 & x1 = x2 & ... & x(n-1) = xn) -> x0 = xn        (free variables 0 .. n, sig 0 .. n)
+;   steps      Y  x0 = x0
+;              T  [0]  H -> x0 = x0
+;              for i = 1 .. n:
+;                Z  Leibniz with a = (q 1 0):  x(i-1) = xi -> (x0 = x(i-1) -> x0 = xi)
+;                T  [line 2i-1, line 2i]  H -> x0 = xi
+; Every tautology step has the atoms of H and two more; the judges' Shannon test assigns H's atoms first.
+; Not trusted: both judges check the file.
+
+trace off
+text OUTP arg
+text RP "C:/ClaudeOutput/pompetzki/judge/replay-all.jdg"
+read RA RP
+set capacity const 67108864
+set buffer alloc capacity
+set used const 0
+set NMAX const 40
+set src const 0
+set left const 0
+text LINE "JDG1\nR 677\n"
+gosub COPY
+
+; the registry: after the second newline of replay-all.jdg up to and including its 679th newline
+set p const RA
+set nl const 0
+label SCAN1
+set c peek p 1
+set p add p 1
+set t sub c 10
+when nonzero t goto SCAN1
+set nl add nl 1
+set t sub nl 2
+when nonzero t goto SCAN1
+set rs const p
+label SCAN2
+set c peek p 1
+set p add p 1
+set t sub c 10
+when nonzero t goto SCAN2
+set nl add nl 1
+set t sub nl 679
+when nonzero t goto SCAN2
+set src const rs
+set left sub p rs
+gosub COPYRAW
+
+arena mark
+text NUM int NMAX
+text LINE join "T " NUM "\n"
+gosub COPY
+arena release
+
+set n const 1
+label THM
+; the statement: i H q 0 n
+arena mark
+text LINE "i "
+gosub COPY
+arena release
+gosub EMITH
+arena mark
+text NUM int n
+text LINE join "q 0 " NUM " "
+gosub COPY
+arena release
+; sig: n+1 numbers 0 .. n
+set np1 add n 1
+arena mark
+text NUM int np1
+text LINE join NUM " "
+gosub COPY
+arena release
+set j const 0
+label SIG
+arena mark
+text NUM int j
+text LINE join NUM " "
+gosub COPY
+arena release
+set j add j 1
+set t sub j np1
+when nonzero t goto SIG
+; the steps: 2n+2
+set ns mul n 2
+set ns add ns 2
+arena mark
+text NUM int ns
+text LINE join NUM " Y q 0 0 T 1 0 i "
+gosub COPY
+arena release
+gosub EMITH
+arena mark
+text LINE "q 0 0 "
+gosub COPY
+arena release
+set i const 1
+label LINK
+set im1 sub i 1
+set l1 mul i 2
+set l1 sub l1 1
+set l2 mul i 2
+arena mark
+text A int im1
+text B int i
+text C int l1
+text D int l2
+text LINE join "Z q 1 0 i q " A " " B " i q 0 " A " q 0 " B " T 2 " C " " D " i "
+gosub COPY
+arena release
+gosub EMITH
+arena mark
+text B int i
+text LINE join "q 0 " B " "
+gosub COPY
+arena release
+set i add i 1
+set t sub i np1
+when nonzero t goto LINK
+; hypotheses: none
+arena mark
+text LINE "0\n"
+gosub COPY
+arena release
+set n add n 1
+set t sub n NMAX
+set t sub t 1
+when negative t goto THM
+
+write OUTP buffer used
+say "eqchain-v1: theorems, bytes"
+show NMAX
+show used
+goto FINISH
+
+; ---- H = k^(n-1) q 0 1 q 1 2 ... q n-1 n   (the conjunction nested to the left)
+label EMITH
+set j const 1
+label EH1
+set t sub j n
+when zero t goto EH2
+arena mark
+text LINE "k "
+gosub COPY
+arena release
+set j add j 1
+goto EH1
+label EH2
+set j const 0
+label EH3
+set t sub j n
+when zero t goto EH4
+set j1 add j 1
+arena mark
+text A int j
+text B int j1
+text LINE join "q " A " " B " "
+gosub COPY
+arena release
+set j add j 1
+goto EH3
+label EH4
+return
+
+; ---- COPY: the bytes of LINE to the buffer; COPYRAW: left bytes from src
+label COPY
+set src const LINE
+set left const LINE_len
+label COPYRAW
+set end add used left
+set over sub capacity end
+when negative over goto OVERFLOW
+set dst add buffer used
+label CB
+when zero left goto CE
+set c peek src 1
+poke dst 1 c
+set src add src 1
+set dst add dst 1
+set left sub left 1
+goto CB
+label CE
+set used sub dst buffer
+return
+label OVERFLOW
+say "eqchain-v1: the buffer is full"
+set bad const 1
+check zero bad
+goto FINISH
+
+label FINISH

@@ -1,0 +1,1 @@
+coqchk -R /c/ClaudeOutput/pompetzki/forcing-src/general Cohen -R /c/ClaudeOutput/pompetzki/lanes/LCH/rocq LCH -R /c/ClaudeOutput/pompetzki/lanes/L2R L2R L2R.L2RGoedel L2R.L2RGoedelD0R4b

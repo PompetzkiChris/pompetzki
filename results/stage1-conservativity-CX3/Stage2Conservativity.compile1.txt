@@ -1,0 +1,8 @@
+File ".\Stage2Conservativity.v", line 23, characters 13-24:
+Error: In environment
+p : nat
+k : nat
+B : form
+Unable to unify "tlook (buildT Pr ?M1316 ?M1314) p = Some (k, B)" with
+ "tlook stage2_table p = Some (k, B)".
+

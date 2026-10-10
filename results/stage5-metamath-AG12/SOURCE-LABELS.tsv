@@ -1,0 +1,168 @@
+assertion_index	label	uses_in_cohort	statement	essential_hypotheses	variables	disjoint_pairs
+4	ax-mp	5703	|- ps	min: |- ph; maj: |- ( ph -> ps )	ph:wff ps:wff	
+5	ax-1	5590	|- ( ph -> ( ps -> ph ) )		ph:wff ps:wff	
+6	ax-2	5569	|- ( ( ph -> ( ps -> ch ) ) -> ( ( ph -> ps ) -> ( ph -> ch ) ) )		ph:wff ps:wff ch:wff	
+7	ax-3	5362	|- ( ( -. ph -> -. ps ) -> ( ps -> ph ) )		ph:wff ps:wff	
+209	df-bi	5177	|- -. ( ( ( ph <-> ps ) -> -. ( ( ph -> ps ) -> -. ( ps -> ph ) ) ) -> -. ( -. ( ( ph -> ps ) -> -. ( ps -> ph ) ) -> ( ph <-> ps ) ) )		ph:wff ps:wff	
+401	df-an	3977	|- ( ( ph /\ ps ) <-> -. ( ph -> -. ps ) )		ph:wff ps:wff	
+861	df-or	1293	|- ( ( ph \/ ps ) <-> ( -. ph -> ps ) )		ph:wff ps:wff	
+1078	df-ifp	137	|- ( if- ( ph , ps , ch ) <-> ( ( ph /\ ps ) \/ ( -. ph /\ ch ) ) )		ph:wff ps:wff ch:wff	
+1103	df-3or	84	|- ( ( ph \/ ps \/ ch ) <-> ( ( ph \/ ps ) \/ ch ) )		ph:wff ps:wff ch:wff	
+1104	df-3an	716	|- ( ( ph /\ ps /\ ch ) <-> ( ( ph /\ ps ) /\ ch ) )		ph:wff ps:wff ch:wff	
+1521	df-nan	75	|- ( ( ph -/\ ps ) <-> -. ( ph /\ ps ) )		ph:wff ps:wff	
+1541	df-xor	103	|- ( ( ph \/_ ps ) <-> -. ( ph <-> ps ) )		ph:wff ps:wff	
+1558	df-nor	11	|- ( ( ph -\/ ps ) <-> -. ( ph \/ ps ) )		ph:wff ps:wff	
+1572	df-tru	585	|- ( T. <-> ( A. x x = x -> A. x x = x ) )		x:setvar	
+1582	df-fal	137	|- ( F. <-> -. T. )			
+1623	df-had	28	|- ( hadd ( ph , ps , ch ) <-> ( ( ph \/_ ps ) \/_ ch ) )		ph:wff ps:wff ch:wff	
+1639	df-cad	18	|- ( cadd ( ph , ps , ch ) <-> ( ( ph /\ ps ) \/ ( ch /\ ( ph \/_ ps ) ) ) )		ph:wff ps:wff ch:wff	
+1812	df-ex	2456	|- ( E. x ph <-> -. A. x -. ph )		ph:wff x:setvar	
+1816	df-nf	1007	|- ( F/ x ph <-> ( E. x ph -> A. x ph ) )		ph:wff x:setvar	
+1827	ax-gen	2675	|- A. x ph	ax-gen.1: |- ph	ph:wff x:setvar	
+1841	ax-4	2641	|- ( A. x ( ph -> ps ) -> ( A. x ph -> A. x ps ) )		ph:wff ps:wff x:setvar	
+1942	ax-5	2209	|- ( ph -> A. x ph )		ph:wff x:setvar	ph x
+1999	ax-6	2001	|- -. A. x -. x = y		x:setvar y:setvar	
+2040	ax-7	1929	|- ( x = y -> ( x = z -> y = z ) )		x:setvar y:setvar z:setvar	
+2099	df-sb	360	|- ( [ t / x ] ph <-> A. y ( y = t -> A. x ( x = y -> ph ) ) )	sbjust.1: |- ( A. y ( y = t -> A. x ( x = y -> ph ) ) <-> A. z ( z = t -> A. x ( x = z -> ph ) ) )	ph:wff x:setvar y:setvar z:setvar t:setvar	ph y; ph z; t y; t z; x y; x z; y z
+2146	ax-8	497	|- ( x = y -> ( x e. z -> y e. z ) )		x:setvar y:setvar z:setvar	
+2154	ax-9	632	|- ( x = y -> ( z e. x -> z e. y ) )		x:setvar y:setvar z:setvar	
+2177	ax-10	759	|- ( -. A. x ph -> A. x -. A. x ph )		ph:wff x:setvar	
+2193	ax-11	588	|- ( A. x A. y ph -> A. y A. x ph )		ph:wff x:setvar y:setvar	
+2212	ax-12	1070	|- ( x = y -> ( A. y ph -> A. x ( x = y -> ph ) ) )		ph:wff x:setvar y:setvar	
+2400	ax-13	380	|- ( -. x = y -> ( y = z -> A. x y = z ) )		x:setvar y:setvar z:setvar	
+2563	df-mo	305	|- ( E* x ph <-> E. y A. x ( ph -> x = y ) )	mojust.1: |- ( E. y A. x ( ph -> x = y ) <-> E. z A. x ( ph -> x = z ) )	ph:wff x:setvar y:setvar z:setvar	ph y; ph z; x y; x z; y z
+2593	df-eu	188	|- ( E! x ph <-> ( E. x ph /\ E* x ph ) )		ph:wff x:setvar	
+2731	ax-ext	564	|- ( A. z ( z e. x <-> z e. y ) -> x = y )		x:setvar y:setvar z:setvar	x y; x z; y z
+2751	df-cleq	550	|- ( A = B <-> A. x ( x e. A <-> x e. B ) )	df-cleq.1: |- ( y = z <-> A. u ( u e. y <-> u e. z ) ); df-cleq.2: |- ( t = t <-> A. v ( v e. t <-> v e. t ) )	x:setvar y:setvar z:setvar v:setvar u:setvar t:setvar A:class B:class	A t; A u; A v; A x; A y; A z; B t; B u; B v; B x; B y; B z; t u; t v; t x; t y; t z; u v; u x; u y; u z; v x; v y; v z; x y; x z; y z
+2834	df-clel	424	|- ( A e. B <-> E. x ( x = A /\ x e. B ) )	df-clel.1: |- ( y e. z <-> E. u ( u = y /\ u e. z ) ); df-clel.2: |- ( t e. t <-> E. v ( v = t /\ v e. t ) )	x:setvar y:setvar z:setvar v:setvar u:setvar t:setvar A:class B:class	A t; A u; A v; A x; A y; A z; B t; B u; B v; B x; B y; B z; t u; t v; t x; t y; t z; u v; u x; u y; u z; v x; v y; v z; x y; x z; y z
+2908	df-nfc	185	|- ( F/_ x A <-> A. y F/ x y e. A )		x:setvar y:setvar A:class	A y; x y
+2955	df-ne	143	|- ( A =/= B <-> -. A = B )		A:class B:class	
+3061	df-nel	15	|- ( A e/ B <-> -. A e. B )		A:class B:class	
+3076	df-ral	388	|- ( A. x e. A ph <-> A. x ( x e. A -> ph ) )		ph:wff x:setvar A:class	
+3086	df-rex	292	|- ( E. x e. A ph <-> E. x ( x e. A /\ ph ) )		ph:wff x:setvar A:class	
+3364	df-rmo	108	|- ( E* x e. A ph <-> E* x ( x e. A /\ ph ) )		ph:wff x:setvar A:class	
+3365	df-reu	80	|- ( E! x e. A ph <-> E! x ( x e. A /\ ph ) )		ph:wff x:setvar A:class	
+3720	df-cdeq	12	|- ( CondEq ( x = y -> ph ) <-> ( x = y -> ph ) )		ph:wff x:setvar y:setvar	
+3914	df-ss	209	|- ( A C_ B <-> A. x ( x e. A -> x e. B ) )		x:setvar A:class B:class	A x; B x
+3917	df-pss	31	|- ( A C. B <-> ( A C_ B /\ A =/= B ) )		A:class B:class	
+5069	df-disj	22	|- ( Disj_ x e. A B <-> A. y E* x e. A y e. B )		x:setvar y:setvar A:class B:class	A y; B y; x y
+5102	df-br	19	|- ( A R B <-> <. A , B >. e. R )		A:class B:class R:class	
+5211	df-tr	1	|- ( Tr A <-> U. A C_ A )		A:class	
+5230	ax-rep	25	|- ( A. w E. y A. z ( A. y ph -> z = y ) -> E. y A. z ( z e. y <-> E. w ( w e. x /\ A. y ph ) ) )		ph:wff x:setvar y:setvar z:setvar w:setvar	w x; w y; w z; x y; x z; y z
+5247	ax-sep	49	|- E. y A. x ( x e. y <-> ( x e. z /\ ph ) )		ph:wff x:setvar y:setvar z:setvar	ph y; ph z; x y; x z; y z
+5258	ax-nul	21	|- E. x A. y -. y e. x		x:setvar y:setvar	x y
+5325	ax-pow	24	|- E. y A. z ( A. w ( w e. z -> w e. x ) -> z e. y )		x:setvar y:setvar z:setvar w:setvar	w x; w y; w z; x y; x z; y z
+5389	ax-pr	10	|- E. z A. w ( ( w = x \/ w = y ) -> w e. z )		x:setvar y:setvar z:setvar w:setvar	w x; w y; w z; x z; y z
+5554	df-po	15	|- ( R Po A <-> A. x e. A A. y e. A A. z e. A ( -. x R x /\ ( ( x R y /\ y R z ) -> x R z ) ) )		x:setvar y:setvar z:setvar A:class R:class	A x; A y; A z; R x; R y; R z; x y; x z; y z
+5555	df-so	12	|- ( R Or A <-> ( R Po A /\ A. x e. A A. y e. A ( x R y \/ x = y \/ y R x ) ) )		x:setvar y:setvar A:class R:class	A x; A y; R x; R y; x y
+5599	df-fr	9	|- ( R Fr A <-> A. x ( ( x C_ A /\ x =/= (/) ) -> E. y e. x A. z e. x -. z R y ) )		x:setvar y:setvar z:setvar A:class R:class	A x; A y; A z; R x; R y; R z; x y; x z; y z
+5601	df-we	8	|- ( R We A <-> ( R Fr A /\ R Or A ) )		A:class R:class	
+5653	df-rel	5	|- ( Rel A <-> A C_ ( _V X. _V ) )		A:class	
+5657	df-rn	1	|- ran A = dom `' A		A:class	
+6353	df-ord	5	|- ( Ord A <-> ( Tr A /\ _E We A ) )		A:class	
+6355	df-lim	2	|- ( Lim A <-> ( Ord A /\ A =/= (/) /\ A = U. A ) )		A:class	
+6528	df-fun	7	|- ( Fun A <-> ( Rel A /\ ( A o. `' A ) C_ _I ) )		A:class	
+6529	df-fn	54	|- ( A Fn B <-> ( Fun A /\ dom A = B ) )		A:class B:class	
+6530	df-f	69	|- ( F : A --> B <-> ( F Fn A /\ ran F C_ B ) )		A:class B:class F:class	
+6531	df-f1	32	|- ( F : A -1-1-> B <-> ( F : A --> B /\ Fun `' F ) )		A:class B:class F:class	
+6532	df-fo	25	|- ( F : A -onto-> B <-> ( F Fn A /\ ran F = B ) )		A:class B:class F:class	
+6533	df-f1o	22	|- ( F : A -1-1-onto-> B <-> ( F : A -1-1-> B /\ F : A -onto-> B ) )		A:class B:class F:class	
+6535	df-isom	5	|- ( H Isom R , S ( A , B ) <-> ( H : A -1-1-onto-> B /\ A. x e. A A. y e. A ( x R y <-> ( H ` x ) S ( H ` y ) ) ) )		x:setvar y:setvar A:class B:class R:class S:class H:class	A x; A y; B x; B y; H x; H y; R x; R y; S x; S y; x y
+7733	ax-un	2	|- E. y A. z ( E. w ( z e. w /\ w e. x ) -> z e. y )		x:setvar y:setvar z:setvar w:setvar	w x; w y; w z; x y; x z; y z
+8331	df-smo	1	|- ( Smo A <-> ( A : dom A --> On /\ Ord dom A /\ A. x e. dom A A. y e. dom A ( x e. y -> ( A ` x ) e. ( A ` y ) ) ) )		x:setvar y:setvar A:class	A x; A y; x y
+8694	df-er	3	|- ( R Er A <-> ( Rel R /\ dom R = A /\ ( `' R u. ( R o. R ) ) C_ R ) )		A:class R:class	
+9563	ax-reg	34	|- ( E. y y e. x -> E. y ( y e. x /\ A. z ( z e. y -> -. z e. x ) ) )		x:setvar y:setvar z:setvar	x y; x z; y z
+9616	ax-inf	5	|- E. y ( x e. y /\ A. z ( z e. y -> E. w ( z e. w /\ w e. y ) ) )		x:setvar y:setvar z:setvar w:setvar	w x; w y; w z; x y; x z; y z
+9619	ax-inf2	2	|- E. x ( E. y ( y e. x /\ A. z -. z e. y ) /\ A. y ( y e. x -> E. z ( z e. x /\ A. w ( w e. z <-> ( w e. y \/ w = y ) ) ) ) )		x:setvar y:setvar z:setvar w:setvar	w x; w y; w z; x y; x z; y z
+10507	ax-ac	3	|- E. y A. z A. w ( ( z e. w /\ w e. x ) -> E. v A. u ( E. t ( ( u e. w /\ w e. t ) /\ ( u e. t /\ t e. y ) ) <-> u = v ) )		x:setvar y:setvar z:setvar w:setvar v:setvar u:setvar t:setvar	t u; t v; t w; t x; t y; t z; u v; u w; u x; u y; u z; v w; v x; v y; v z; w x; w y; w z; x y; x z; y z
+11226	ax-cnex	1	|- CC e. _V			
+11227	ax-resscn	5	|- RR C_ CC			
+11228	ax-1cn	17	|- 1 e. CC			
+11229	ax-icn	4	|- _i e. CC			
+11230	ax-addcl	16	|- ( ( A e. CC /\ B e. CC ) -> ( A + B ) e. CC )		A:class B:class	
+11231	ax-addrcl	8	|- ( ( A e. RR /\ B e. RR ) -> ( A + B ) e. RR )		A:class B:class	
+11232	ax-mulcl	6	|- ( ( A e. CC /\ B e. CC ) -> ( A x. B ) e. CC )		A:class B:class	
+11233	ax-mulrcl	3	|- ( ( A e. RR /\ B e. RR ) -> ( A x. B ) e. RR )		A:class B:class	
+11234	ax-mulcom	4	|- ( ( A e. CC /\ B e. CC ) -> ( A x. B ) = ( B x. A ) )		A:class B:class	
+11235	ax-addass	3	|- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> ( ( A + B ) + C ) = ( A + ( B + C ) ) )		A:class B:class C:class	
+11236	ax-mulass	3	|- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> ( ( A x. B ) x. C ) = ( A x. ( B x. C ) ) )		A:class B:class C:class	
+11237	ax-distr	3	|- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> ( A x. ( B + C ) ) = ( ( A x. B ) + ( A x. C ) ) )		A:class B:class C:class	
+11238	ax-i2m1	2	|- ( ( _i x. _i ) + 1 ) = 0			
+11239	ax-1ne0	1	|- 1 =/= 0			
+11241	ax-rnegex	5	|- ( A e. RR -> E. x e. RR ( A + x ) = 0 )		x:setvar A:class	A x
+11243	ax-cnre	5	|- ( A e. CC -> E. x e. RR E. y e. RR A = ( x + ( _i x. y ) ) )		x:setvar y:setvar A:class	A x; A y; x y
+12373	df-2	12	|- 2 = ( 1 + 1 )			
+12374	df-3	8	|- 3 = ( 2 + 1 )			
+12375	df-4	7	|- 4 = ( 3 + 1 )			
+12376	df-5	6	|- 5 = ( 4 + 1 )			
+12377	df-6	5	|- 6 = ( 5 + 1 )			
+12378	df-7	4	|- 7 = ( 6 + 1 )			
+12379	df-8	3	|- 8 = ( 7 + 1 )			
+12380	df-9	2	|- 9 = ( 8 + 1 )			
+31535	ax-hvcom	3	|- ( ( A e. ~H /\ B e. ~H ) -> ( A +h B ) = ( B +h A ) )		A:class B:class	
+31536	ax-hvass	1	|- ( ( A e. ~H /\ B e. ~H /\ C e. ~H ) -> ( ( A +h B ) +h C ) = ( A +h ( B +h C ) ) )		A:class B:class C:class	
+31537	ax-hv0cl	2	|- 0h e. ~H			
+31538	ax-hvaddid	2	|- ( A e. ~H -> ( A +h 0h ) = A )		A:class	
+31541	ax-hvmulass	1	|- ( ( A e. CC /\ B e. CC /\ C e. ~H ) -> ( ( A x. B ) .h C ) = ( A .h ( B .h C ) ) )		A:class B:class C:class	
+31542	ax-hvdistr1	1	|- ( ( A e. CC /\ B e. ~H /\ C e. ~H ) -> ( A .h ( B +h C ) ) = ( ( A .h B ) +h ( A .h C ) ) )		A:class B:class C:class	
+31616	ax-his1	1	|- ( ( A e. ~H /\ B e. ~H ) -> ( A .ih B ) = ( * ` ( B .ih A ) ) )		A:class B:class	
+33007	df-2reu	4	|- ( E! x e. A , y e. B ph <-> ( E! x e. A E. y e. B ph /\ E! y e. B E. x e. A ph ) )		ph:wff x:setvar y:setvar A:class B:class	
+35251	df-bnj17	44	|- ( ( ph /\ ps /\ ch /\ th ) <-> ( ( ph /\ ps /\ ch ) /\ th ) )		ph:wff ps:wff ch:wff th:wff	
+35255	df-bnj13	1	|- ( R _Se A <-> A. x e. A _pred ( x , A , R ) e. _V )		x:setvar A:class R:class	A x; R x
+35257	df-bnj15	2	|- ( R _FrSe A <-> ( R Fr A /\ R _Se A ) )		A:class R:class	
+35261	df-bnj19	1	|- ( _TrFo ( B , A , R ) <-> A. x e. B _pred ( x , A , R ) C_ B )		x:setvar A:class B:class R:class	A x; B x; R x
+35718	ax-regs	2	|- ( E. x ph -> E. y ( A. x ( x = y -> ph ) /\ A. z ( z e. y -> -. A. x ( x = z -> ph ) ) ) )		ph:wff x:setvar y:setvar z:setvar	ph y; ph z; x y; x z; y z
+36537	df-txp	1	|- ( A (x) B ) = ( ( `' ( 1st |` ( _V X. _V ) ) o. A ) i^i ( `' ( 2nd |` ( _V X. _V ) ) o. B ) )		A:class B:class	
+36538	df-pprod	1	|- pprod ( A , B ) = ( ( A o. ( 1st |` ( _V X. _V ) ) ) (x) ( B o. ( 2nd |` ( _V X. _V ) ) ) )		A:class B:class	
+37107	df-3nand	3	|- ( ( ph -/\ ps -/\ ch ) <-> ( ph -> ( ps -> -. ch ) ) )		ph:wff ps:wff ch:wff	
+37181	ax-tco	7	|- E. y ( x e. y /\ A. z ( z e. y -> A. w ( w e. z -> w e. y ) ) )		x:setvar y:setvar z:setvar w:setvar	w x; w y; w z; x y; x z; y z
+37389	ax-prv1	5	|- Prv ph	ax-prv1.1: |- ph	ph:wff	
+37390	ax-prv2	5	|- ( Prv ( ph -> ps ) -> ( Prv ph -> Prv ps ) )		ph:wff ps:wff	
+37391	ax-prv3	3	|- ( Prv ph -> Prv Prv ph )		ph:wff	
+37550	df-bj-nnf	61	|- ( F// x ph <-> ( ( E. x ph -> ph ) /\ ( ph -> A. x ph ) ) )		ph:wff x:setvar	
+38261	ax-luk1	33	|- ( ( ph -> ps ) -> ( ( ps -> ch ) -> ( ph -> ch ) ) )		ph:wff ps:wff ch:wff	
+38262	ax-luk2	30	|- ( ( -. ph -> ph ) -> ph )		ph:wff	
+38263	ax-luk3	30	|- ( ph -> ( -. ph -> ps ) )		ph:wff ps:wff	
+38335	ax-wl-13v	1	|- ( -. A. x x = y -> ( y = z -> A. x y = z ) )		x:setvar y:setvar z:setvar	x z; y z
+39297	df-qmap	2	|- QMap R = ( x e. dom R |-> [ x ] R )		x:setvar R:class	R x
+39306	df-adjliftmap	1	|- ( R AdjLiftMap A ) = QMap ( ( R u. `' _E ) |` A )		A:class R:class	
+39310	df-blockliftmap	1	|- ( R BlockLiftMap A ) = QMap ( R |X. ( `' _E |` A ) )		A:class R:class	
+39520	df-eqvrel	3	|- ( EqvRel R <-> ( RefRel R /\ SymRel R /\ TrRel R ) )		R:class	
+39560	df-redundp	2	|- ( redund ( ph , ps , ch ) <-> ( ( ph -> ps ) /\ ( ( ph /\ ch ) <-> ( ps /\ ch ) ) ) )		ph:wff ps:wff ch:wff	
+39574	df-dmqs	3	|- ( R DomainQs A <-> ( dom R /. R ) = A )		A:class R:class	
+39600	df-erALTV	1	|- ( R ErALTV A <-> ( EqvRel R /\ R DomainQs A ) )		A:class R:class	
+39641	df-disjALTV	1	|- ( Disj R <-> ( CnvRefRel ,~ `' R /\ Rel R ) )		R:class	
+39720	df-part	2	|- ( R Part A <-> ( Disj R /\ R DomainQs A ) )		A:class R:class	
+39859	ax-c5	42	|- ( A. x ph -> ph )		ph:wff x:setvar	
+39860	ax-c4	36	|- ( A. x ( A. x ph -> ps ) -> ( A. x ph -> A. x ps ) )		ph:wff ps:wff x:setvar	
+39861	ax-c7	43	|- ( -. A. x -. A. x ph -> ph )		ph:wff x:setvar	
+39862	ax-c10	28	|- ( A. x ( x = y -> A. x ph ) -> ph )		ph:wff x:setvar y:setvar	
+39863	ax-c11	22	|- ( A. x x = y -> ( A. x ph -> A. y ph ) )		ph:wff x:setvar y:setvar	
+39864	ax-c11n	1	|- ( A. x x = y -> A. y y = x )		x:setvar y:setvar	
+39865	ax-c15	1	|- ( -. A. x x = y -> ( x = y -> ( ph -> A. x ( x = y -> ph ) ) ) )		ph:wff x:setvar y:setvar	
+39866	ax-c9	30	|- ( -. A. z z = x -> ( -. A. z z = y -> ( x = y -> A. z x = y ) ) )		x:setvar y:setvar z:setvar	
+39867	ax-c14	3	|- ( -. A. z z = x -> ( -. A. z z = y -> ( x e. y -> A. z x e. y ) ) )		x:setvar y:setvar z:setvar	
+39868	ax-c16	8	|- ( A. x x = y -> ( ph -> A. x ph ) )		ph:wff x:setvar y:setvar	x y
+44733	ax-frege1	78	|- ( ph -> ( ps -> ph ) )		ph:wff ps:wff	
+44734	ax-frege2	74	|- ( ( ph -> ( ps -> ch ) ) -> ( ( ph -> ps ) -> ( ph -> ch ) ) )		ph:wff ps:wff ch:wff	
+44752	ax-frege8	62	|- ( ( ph -> ( ps -> ch ) ) -> ( ps -> ( ph -> ch ) ) )		ph:wff ps:wff ch:wff	
+44773	ax-frege28	29	|- ( ( ph -> ps ) -> ( -. ps -> -. ph ) )		ph:wff ps:wff	
+44777	ax-frege31	18	|- ( -. -. ph -> ph )		ph:wff	
+44788	ax-frege41	10	|- ( ph -> -. -. ph )		ph:wff	
+44800	ax-frege52a	10	|- ( ( ph <-> ps ) -> ( if- ( ph , th , ch ) -> if- ( ps , th , ch ) ) )		ph:wff ps:wff ch:wff th:wff	
+44805	ax-frege54a	5	|- ( ph <-> ph )		ph:wff	
+44818	ax-frege58a	11	|- ( ( ps /\ ch ) -> if- ( ph , ps , ch ) )		ph:wff ps:wff ch:wff	
+44831	ax-frege52c	1	|- ( A = B -> ( [. A / x ]. ph -> [. B / x ]. ph ) )		ph:wff x:setvar A:class B:class	
+44835	ax-frege54c	1	|- A = A		A:class	
+44844	ax-frege58b	12	|- ( A. x ph -> [ y / x ] ph )		ph:wff x:setvar y:setvar	
+45496	df-vd1	98	|- ( (. ph ->. ps ). <-> ( ph -> ps ) )		ph:wff ps:wff	
+45504	df-vd2	74	|- ( (. ph ,. ps ->. ch ). <-> ( ( ph /\ ps ) -> ch ) )		ph:wff ps:wff ch:wff	
+45507	df-vhc2	12	|- ( (. ph ,. ps ). <-> ( ph /\ ps ) )		ph:wff ps:wff	
+45515	df-vhc3	6	|- ( (. ph ,. ps ,. ch ). <-> ( ph /\ ps /\ ch ) )		ph:wff ps:wff ch:wff	
+45516	df-vd3	37	|- ( (. ph ,. ps ,. ch ->. th ). <-> ( ( ph /\ ps /\ ch ) -> th ) )		ph:wff ps:wff ch:wff th:wff	
+45869	df-relp	5	|- ( H RelPres R , S ( A , B ) <-> ( H : A --> B /\ A. x e. A A. y e. A ( x R y -> ( H ` x ) S ( H ` y ) ) ) )		x:setvar y:setvar A:class B:class R:class S:class H:class	A x; A y; B x; B y; H x; H y; R x; R y; S x; S y; x y
+48449	df-ich	22	|- ( [ x <> y ] ph <-> A. x A. y ( [ x / a ] [ y / x ] [ a / y ] ph <-> ph ) )		ph:wff x:setvar y:setvar a:setvar	a ph; a x; a y
+50805	df-als	14	|- ( AE x ( ph -> ps ) <-> ( A. x ( ph -> ps ) /\ E. x ph ) )		ph:wff ps:wff x:setvar	
+50806	df-rals	12	|- ( AE x e. A ( ph -> ps ) <-> ( A. x e. A ( ph -> ps ) /\ E. x e. A ph ) )		ph:wff ps:wff x:setvar A:class	
+50838	df-alseu	10	|- ( AE! x ( ph -> ps ) <-> ( A. x ( ph -> ps ) /\ E! x ph ) )		ph:wff ps:wff x:setvar	
+50839	df-ralseu	7	|- ( AE! x e. A ( ph -> ps ) <-> ( A. x e. A ( ph -> ps ) /\ E! x e. A ph ) )		ph:wff ps:wff x:setvar A:class	

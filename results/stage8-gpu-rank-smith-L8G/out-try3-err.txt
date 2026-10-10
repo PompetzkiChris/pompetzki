@@ -1,0 +1,6 @@
+device cc 12 0
+snf known246 3 3
+snf known246 ok signU 1 signV 1 bitsU 3 bitsV 3
+snf smith4x6 4 6
+snf matmul ovf smith4x6
+rc 1303

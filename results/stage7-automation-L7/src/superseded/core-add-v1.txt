@@ -1,0 +1,111 @@
+
+;; ======================================================================== L7 additions (2026-10-09)
+;; replay theorem names, read from the comments "(* NAME *) Thm" of RpB0.v .. RpB10.v, in order
+(define REPLAY-SRC "C:/ClaudeOutput/pompetzki/forcing-src/general")
+(define replay-name-vec #f)
+(define (replay-names)
+  (unless replay-name-vec
+    (set! replay-name-vec
+          (list->vector
+           (apply append (for/list ([b (in-range 11)])
+                           (regexp-match* #px"\\(\\* ([^ ]+) \\*\\) Thm" (file->string (format "~a/RpB~a.v" REPLAY-SRC b))
+                                          #:match-select cadr))))))
+  replay-name-vec)
+(define (replay-index name)
+  (or (for/first ([n (replay-names)] [i (in-naturals)] #:when (equal? n name)) i)
+      (error 'replay-index "no replay theorem ~a" name)))
+;; a hypothesis-free replay theorem, copied into the batch with its dependencies; its key is the string name
+(define (rp name)
+  (cond [(hash-ref names name #f) => values]
+        [else (define r (import-replay! (replay-index name))) (hash-set! names name r) r]))
+(define (rp-line name args) (S (U (rp name) '()) args))
+
+;; ---- natural-deduction macros on lines (item 3)
+;; line l: h -> f, k not free in h            ==> h -> forall f'      (f' = f with k bound)
+(define (fa-i k l)
+  (match (line l) [(list 'I h f) (H k l (Imp h (All (ren (absk k) f))))]
+    [f (G l k)]))
+;; line l: p -> g, k not free in g            ==> (exists p') -> g
+(define (ex-e k l)
+  (match (line l) [(list 'I p g) (L l k (Imp (Xf (ren (absk k) p)) g))]))
+;; line l: forall f  ==> f[t];   line l: h -> forall f  ==> h -> f[t]
+(define (fa-e l t)
+  (match (line l)
+    [(list 'A f) (S l (list t))]
+    [(list 'I h (list 'A f))
+     (define v (V t (Imp (All f) (ren (scons t sid) f))))
+     (T (list l v) (Imp h (ren (scons t sid) f)))]))
+;; f[t] -> exists f, for an existential core formula ex = Xf f
+(define (ex-i t ex)
+  (match ex [(list 'N (list 'A (list 'N f))) (E t (Imp (ren (scons t sid) f) ex))]))
+;; the vacuous box: B(f) = forall f^ (f shifted up). Y gives f -> B(f), V gives B(f) -> f. To the Shannon test B(f) is one atom.
+(define (box f) (All (ren add1 f)))
+(define (box-in f) (Y (Imp f (box f))))
+(define (box-out f) (V 0 (Imp (box f) f)))
+
+;; Hilbert steps without the tautology test (Y = axiom shapes K, S; M)
+(define (ax-k a b) (Y (Imp a (Imp b a))))
+(define (ax-s a b c) (Y (Imp (Imp a (Imp b c)) (Imp (Imp a b) (Imp a c)))))
+;; from lines l1: a -> b and l2: b -> c, the line a -> c, by K, S and three M (no Shannon expansion)
+(define (hsyl l1 l2)
+  (match* ((line l1) (line l2))
+    [((list 'I a b) (list 'I b2 c))
+     (unless (equal? b b2) (error 'hsyl "middle formulas differ"))
+     (define k (ax-k (Imp b c) a))
+     (define m1 (M l2 k))
+     (define s (ax-s a b c))
+     (define m2 (M m1 s))
+     (M l1 m2)]))
+
+;; ---- a lemma: frame variables 0..n-1 free in its statement; the thunk returns the final line
+(define (lemma! key n thunk)
+  (begin-thm! key n)
+  (define l (thunk))
+  (end-thm! (line l) (ids n)))
+;; use a lemma (theorem key) with its free variables 0..k-1 renamed to the frame variables args
+(define (use key args) (U key args))
+
+;; ---- emitting one file with index, manifest lines and mutants
+;; build: a thunk that adds the theorems; twin: a false core statement for the twin-final mutant, or #f
+(define (emit-file! dir base what build twin)
+  (reset-batch!)
+  (make-directory* (build-path dir "mut"))
+  (define t0 (current-milliseconds))
+  (build)
+  (define ms (- (current-milliseconds) t0))
+  (define ths0 (reverse out-thms))
+  (define keys (map car ths0))
+  (define pflags (map caddr ths0))
+  (define text (batch-text))
+  (define st (hash-copy stats))
+  (define file (build-path dir (string-append base ".jdg")))
+  (write-new file text)
+  (define-values (rg ths) (read-jdg-text text))
+  (define notes '())
+  (define (note! . xs) (set! notes (cons (apply format xs) notes)) (printf "~a\n" (car notes)) (flush-output))
+  (note! "~a.jdg  ~a" base what)
+  (note! "  theorems ~a (prelude ~a, generated ~a), steps ~a (prelude ~a), bytes ~a, build ~a ms, largest tautology test ~a calls, all tautology tests ~a calls"
+         (length ths) (hash-ref st 'prelude 0) (hash-ref st 'theorems 0)
+         (+ (hash-ref st 'steps 0) (hash-ref st 'prelude-steps 0)) (hash-ref st 'prelude-steps 0)
+         (file-size file) ms (hash-ref st 'taut-max 0) (hash-ref st 'taut-calls 0))
+  (note! "  sha256 ~a" (sha256-hex file))
+  (note! "  registry: ~a" (check-registry-text text))
+  (note! "  copy of the checker: ~a" (check-batch rg ths))
+  (write-new (build-path dir (string-append base ".index.txt"))
+             (string-join (for/list ([k keys] [t ths] [i (in-naturals)])
+                            (format "~a ~s ~a" i k (if (and (pair? k) (eq? (car k) 'replay)) "" (show (tof (car t))))))
+                          "\n"))
+  (for ([m (mutants text (or twin (Neg (tof (car (last ths))))) pflags)])
+    (match-define (list tag mtext) m)
+    (define mf (build-path dir "mut" (string-append base "-" tag ".jdg")))
+    (write-new mf mtext)
+    (define-values (mrg mths) (read-jdg-text mtext))
+    (note! "  mutant ~a: copy of the checker ~a" tag (check-batch mrg mths)))
+  (reverse notes))
+
+;; ---- the replay's statements, readable
+(define (dump-replay from to)
+  (load-base!)
+  (for ([i (in-range from to)])
+    (match-define (list st sig steps hyps) (vector-ref replay-thms i))
+    (printf "~a ~a hyps ~a steps ~a: ~a\n" i (vector-ref (replay-names) i) hyps (length steps) (show (tof st)))))

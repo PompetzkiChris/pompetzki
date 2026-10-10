@@ -1,0 +1,30 @@
+L7-2-tautologies.jdg  large tautologies split so that every tautology step stays under 2000 taut_bf calls
+  theorems 17 (prelude 0, generated 17), steps 79 (prelude 0), bytes 125938, build 327 ms, largest tautology test 2053 calls, all tautology tests 17046 calls
+  sha256 f42eaffa7ce095682201264962656c76e6e0226f1bbf359316cf247c03317ee7
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 17 79 694)
+  mutant neg-final (last theorem): copy of the checker (REJECT 16 final: last line is not the statement)
+  mutant twin-final (last theorem): copy of the checker (REJECT 16 final: last line is not the statement)
+  mutant taut-goal (theorem 0 step 1): copy of the checker (REJECT 0 step 1: taut: not a tautology)
+  mutant mp-swap (theorem 1 step 7): copy of the checker (REJECT 1 step 7: mp: premise mismatch)
+  mutant ax-flip (theorem 0 step 0): copy of the checker (REJECT 0 step 0: ax: not an axiom shape)
+  mutant drop-step (last theorem): copy of the checker (REJECT 16 final: last line is not the statement)
+  mutant registry-suc (registry entry of Suc2): NOT WRITTEN, the copy of the checker accepts it (no step depends on the change)
+formulas:
+  clauses-em 8: atoms 17, size 60; one tautology step: 1531 calls; split: 2 steps, largest step 1531 calls
+  clauses-em 12: atoms 25, size 88; one tautology step: 24571 calls; split: 8 steps, largest step 7 calls
+  clauses-em 16: atoms 33, size 116; one tautology step: 393211 calls; split: 8 steps, largest step 7 calls
+  clauses-em 20: atoms 41, size 144; one tautology step: more than 1000000 calls; split: 8 steps, largest step 7 calls
+  clauses-em 24: atoms 49, size 172; one tautology step: more than 1000000 calls; split: 8 steps, largest step 7 calls
+  clauses-em 28: atoms 57, size 200; one tautology step: more than 1000000 calls; split: 8 steps, largest step 7 calls
+  conj-perm 4: atoms 8, size 51; one tautology step: 61 calls; split: 2 steps, largest step 61 calls
+  conj-perm 6: atoms 12, size 79; one tautology step: 253 calls; split: 2 steps, largest step 253 calls
+  conj-perm 8: atoms 16, size 107; one tautology step: 1021 calls; split: 2 steps, largest step 1021 calls
+  conj-perm 10: atoms 20, size 135; one tautology step: 4093 calls; split: 17 steps, largest step 2053 calls
+  php 2: atoms 6, size 73; one tautology step: 21 calls; split: 2 steps, largest step 21 calls
+  php 3: atoms 12, size 200; one tautology step: 97 calls; split: 2 steps, largest step 97 calls
+  php 4: atoms 20, size 423; one tautology step: 521 calls; split: 2 steps, largest step 521 calls
+  3cnf-unsat 12 72: atoms 12, size 825; one tautology step: 227 calls; split: 2 steps, largest step 227 calls
+  3cnf-unsat 16 96: atoms 16, size 1106; one tautology step: 387 calls; split: 2 steps, largest step 387 calls
+  3cnf-unsat 20 120: atoms 20, size 1382; one tautology step: 375 calls; split: 2 steps, largest step 375 calls
+  rev-chain 40: atoms 40, size 159; one tautology step: 81 calls; split: 2 steps, largest step 81 calls

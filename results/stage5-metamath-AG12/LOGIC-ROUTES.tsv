@@ -1,0 +1,86 @@
+label	strict_registry_match	operator_signature	expansion_or_missing_statement	kernel_route	source_statement	source_mandatory_variables	source_disjoint_pairs	essential_hypotheses
+ax-mp	no counterpart	ph:wff ps:wff	|- ps	SMp; rule with2 essential hypotheses	|- ps	ph:wff ps:wff		min: |- ph; maj: |- ( ph -> ps )
+ax-1	no counterpart	ph:wff ps:wff	|- ( ph -> ( ps -> ph ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ph -> ( ps -> ph ) )	ph:wff ps:wff		
+ax-2	no counterpart	ph:wff ps:wff ch:wff	|- ( ( ph -> ( ps -> ch ) ) -> ( ( ph -> ps ) -> ( ph -> ch ) ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ( ph -> ( ps -> ch ) ) -> ( ( ph -> ps ) -> ( ph -> ch ) ) )	ph:wff ps:wff ch:wff		
+ax-3	no counterpart	ph:wff ps:wff	|- ( ( -. ph -> -. ps ) -> ( ps -> ph ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ( -. ph -> -. ps ) -> ( ps -> ph ) )	ph:wff ps:wff		
+df-bi	no counterpart	2wff	Q(ph,ps) := K(I(ph,ps),I(ps,ph))	Qf expansion; source assertion follows by propositional tautology	|- -. ( ( ( ph <-> ps ) -> -. ( ( ph -> ps ) -> -. ( ps -> ph ) ) ) -> -. ( -. ( ( ph -> ps ) -> -. ( ps -> ph ) ) -> ( ph <-> ps ) ) )	ph:wff ps:wff		
+df-an	no counterpart	2wff	K(ph,ps) := N(I(ph,N(ps)))	Kf expansion	|- ( ( ph /\ ps ) <-> -. ( ph -> -. ps ) )	ph:wff ps:wff		
+df-or	no counterpart	2wff	D(ph,ps) := I(N(ph),ps)	Df expansion	|- ( ( ph \/ ps ) <-> ( -. ph -> ps ) )	ph:wff ps:wff		
+df-ifp	no counterpart	3wff	if-(ph,ps,ch) := D(K(ph,ps),K(N(ph),ch))	syntactic expansion	|- ( if- ( ph , ps , ch ) <-> ( ( ph /\ ps ) \/ ( -. ph /\ ch ) ) )	ph:wff ps:wff ch:wff		
+df-3or	no counterpart	3wff	or3(ph,ps,ch) := D(D(ph,ps),ch)	syntactic expansion	|- ( ( ph \/ ps \/ ch ) <-> ( ( ph \/ ps ) \/ ch ) )	ph:wff ps:wff ch:wff		
+df-3an	no counterpart	3wff	and3(ph,ps,ch) := K(K(ph,ps),ch)	syntactic expansion	|- ( ( ph /\ ps /\ ch ) <-> ( ( ph /\ ps ) /\ ch ) )	ph:wff ps:wff ch:wff		
+df-nan	no counterpart	2wff	nand(ph,ps) := N(K(ph,ps))	syntactic expansion	|- ( ( ph -/\ ps ) <-> -. ( ph /\ ps ) )	ph:wff ps:wff		
+df-xor	no counterpart	2wff	xor(ph,ps) := N(Q(ph,ps))	syntactic expansion	|- ( ( ph \/_ ps ) <-> -. ( ph <-> ps ) )	ph:wff ps:wff		
+df-nor	no counterpart	2wff	nor(ph,ps) := N(D(ph,ps))	syntactic expansion	|- ( ( ph -\/ ps ) <-> -. ( ph \/ ps ) )	ph:wff ps:wff		
+df-tru	no counterpart	0	T. := I(A[x](Eq(x,x)),A[x](Eq(x,x)))	closed formula abbreviation; x is bound	|- ( T. <-> ( A. x x = x -> A. x x = x ) )	x:setvar		
+df-fal	no counterpart	0	F. := N(T.)	closed formula abbreviation	|- ( F. <-> -. T. )			
+df-had	no counterpart	3wff	hadd(ph,ps,ch) := N(Q(N(Q(ph,ps)),ch))	xor expansion	|- ( hadd ( ph , ps , ch ) <-> ( ( ph \/_ ps ) \/_ ch ) )	ph:wff ps:wff ch:wff		
+df-cad	no counterpart	3wff	cadd(ph,ps,ch) := D(K(ph,ps),K(ch,N(Q(ph,ps))))	and/or/xor expansion	|- ( cadd ( ph , ps , ch ) <-> ( ( ph /\ ps ) \/ ( ch /\ ( ph \/_ ps ) ) ) )	ph:wff ps:wff ch:wff		
+df-ex	no counterpart	1wff+1set_binder	X[x](ph) := N(A[x](N(ph)))	Xf expansion	|- ( E. x ph <-> -. A. x -. ph )	ph:wff x:setvar		
+df-nf	no counterpart	1wff+1set_binder	NF[x](ph) := I(X[x](ph),A[x](ph))	syntactic expansion	|- ( F/ x ph <-> ( E. x ph -> A. x ph ) )	ph:wff x:setvar		
+ax-gen	no counterpart	ph:wff x:setvar	|- A. x ph	SGen; generalization rule with1 essential hypothesis	|- A. x ph	ph:wff x:setvar		ax-gen.1: |- ph
+ax-4	no counterpart	ph:wff ps:wff x:setvar	|- ( A. x ( ph -> ps ) -> ( A. x ph -> A. x ps ) )	SAx; quantifier distribution	|- ( A. x ( ph -> ps ) -> ( A. x ph -> A. x ps ) )	ph:wff ps:wff x:setvar		
+ax-5	no counterpart	ph:wff x:setvar	|- ( ph -> A. x ph )	SAx; vacuous quantification; source $d(ph,x) retained	|- ( ph -> A. x ph )	ph:wff x:setvar	ph x	
+ax-6	no counterpart	x:setvar y:setvar	|- -. A. x -. x = y	reflexivity and existential introduction; source derived theorem ax6	|- -. A. x -. x = y	x:setvar y:setvar		
+ax-7	no counterpart	x:setvar y:setvar z:setvar	|- ( x = y -> ( x = z -> y = z ) )	SLeib on equality plus symmetry; source derived theorem ax7	|- ( x = y -> ( x = z -> y = z ) )	x:setvar y:setvar z:setvar		
+df-sb	no counterpart	1wff+1set_binder+1set_term	SB[t/x](ph) := A[y](I(Eq(y,t),A[x](I(Eq(x,y),ph))))	capture-avoiding substitution; y fresh; source justification hypothesis retained	|- ( [ t / x ] ph <-> A. y ( y = t -> A. x ( x = y -> ph ) ) )	ph:wff x:setvar y:setvar z:setvar t:setvar	ph y; ph z; t y; t z; x y; x z; y z	sbjust.1: |- ( A. y ( y = t -> A. x ( x = y -> ph ) ) <-> A. z ( z = t -> A. x ( x = z -> ph ) ) )
+ax-8	no counterpart	x:setvar y:setvar z:setvar	|- ( x = y -> ( x e. z -> y e. z ) )	SLeib on Mem(x,z); source derived theorem ax8	|- ( x = y -> ( x e. z -> y e. z ) )	x:setvar y:setvar z:setvar		
+ax-9	no counterpart	x:setvar y:setvar z:setvar	|- ( x = y -> ( z e. x -> z e. y ) )	SLeib on Mem(z,x); source derived theorem ax9	|- ( x = y -> ( z e. x -> z e. y ) )	x:setvar y:setvar z:setvar		
+ax-10	no counterpart	ph:wff x:setvar	|- ( -. A. x ph -> A. x -. A. x ph )	vacuous quantification after binding x; first-order derivation required	|- ( -. A. x ph -> A. x -. A. x ph )	ph:wff x:setvar		
+ax-11	no counterpart	ph:wff x:setvar y:setvar	|- ( A. x A. y ph -> A. y A. x ph )	quantifier commutation via instantiation/generalization; first-order derivation required	|- ( A. x A. y ph -> A. y A. x ph )	ph:wff x:setvar y:setvar		
+ax-12	no counterpart	ph:wff x:setvar y:setvar	|- ( x = y -> ( A. y ph -> A. x ( x = y -> ph ) ) )	Leibniz and quantifier instantiation; source derived theorem ax12	|- ( x = y -> ( A. y ph -> A. x ( x = y -> ph ) ) )	ph:wff x:setvar y:setvar		
+ax-13	no counterpart	x:setvar y:setvar z:setvar	|- ( -. x = y -> ( y = z -> A. x y = z ) )	equality case split and vacuity; source derived theorem ax13	|- ( -. x = y -> ( y = z -> A. x y = z ) )	x:setvar y:setvar z:setvar		
+df-mo	no counterpart	1wff+1set_binder	MO[x](ph) := X[y](A[x](I(ph,Eq(x,y))))	syntactic expansion; y fresh; source justification hypothesis retained	|- ( E* x ph <-> E. y A. x ( ph -> x = y ) )	ph:wff x:setvar y:setvar z:setvar	ph y; ph z; x y; x z; y z	mojust.1: |- ( E. y A. x ( ph -> x = y ) <-> E. z A. x ( ph -> x = z ) )
+df-eu	no counterpart	1wff+1set_binder	EU[x](ph) := K(X[x](ph),MO[x](ph))	syntactic expansion	|- ( E! x ph <-> ( E. x ph /\ E* x ph ) )	ph:wff x:setvar		
+df-nfc	no counterpart	1class+1set_binder	NFC[x](A) := A[y](NF[x](Mem(y,A)))	class membership expansion; y fresh	|- ( F/_ x A <-> A. y F/ x y e. A )	x:setvar y:setvar A:class	A y; x y	
+df-ne	no counterpart	2class	NE(A,B) := N(ClassEq(A,B))	class equality expansion; set operands reduce to Eq	|- ( A =/= B <-> -. A = B )	A:class B:class		
+df-nel	no counterpart	2class	NEL(A,B) := N(ClassMem(A,B))	class membership expansion; set operands reduce to Mem	|- ( A e/ B <-> -. A e. B )	A:class B:class		
+df-ral	no counterpart	1wff+1set_binder+1class	RAL[x,A](ph) := A[x](I(Mem(x,A),ph))	bounded universal expansion	|- ( A. x e. A ph <-> A. x ( x e. A -> ph ) )	ph:wff x:setvar A:class		
+df-rex	no counterpart	1wff+1set_binder+1class	REX[x,A](ph) := X[x](K(Mem(x,A),ph))	bounded existential expansion	|- ( E. x e. A ph <-> E. x ( x e. A /\ ph ) )	ph:wff x:setvar A:class		
+df-rmo	no counterpart	1wff+1set_binder+1class	RMO[x,A](ph) := MO[x](K(Mem(x,A),ph))	bounded uniqueness expansion	|- ( E* x e. A ph <-> E* x ( x e. A /\ ph ) )	ph:wff x:setvar A:class		
+df-reu	no counterpart	1wff+1set_binder+1class	REU[x,A](ph) := EU[x](K(Mem(x,A),ph))	bounded existence and uniqueness expansion	|- ( E! x e. A ph <-> E! x ( x e. A /\ ph ) )	ph:wff x:setvar A:class		
+df-cdeq	no counterpart	1wff+2set	CondEq(x=y -> ph) := I(Eq(x,y),ph)	syntactic expansion	|- ( CondEq ( x = y -> ph ) <-> ( x = y -> ph ) )	ph:wff x:setvar y:setvar		
+df-2reu	no counterpart	1wff+2set_binder+2class	2REU[x,A,y,B](ph) := K(REU[x,A](REX[y,B](ph)),REU[y,B](REX[x,A](ph)))	two restricted uniqueness operators	|- ( E! x e. A , y e. B ph <-> ( E! x e. A E. y e. B ph /\ E! y e. B E. x e. A ph ) )	ph:wff x:setvar y:setvar A:class B:class		
+df-bnj17	no counterpart	4wff	and4(ph,ps,ch,th) := K(K(K(ph,ps),ch),th)	syntactic expansion	|- ( ( ph /\ ps /\ ch /\ th ) <-> ( ( ph /\ ps /\ ch ) /\ th ) )	ph:wff ps:wff ch:wff th:wff		
+df-3nand	no counterpart	3wff	nand3(ph,ps,ch) := I(ph,I(ps,N(ch)))	syntactic expansion	|- ( ( ph -/\ ps -/\ ch ) <-> ( ph -> ( ps -> -. ch ) ) )	ph:wff ps:wff ch:wff		
+ax-prv1	no counterpart	ph:wff	|- Prv ph	missing provability necessitation rule; no fixed first-order definition supplies the rule	|- Prv ph	ph:wff		ax-prv1.1: |- ph
+ax-prv2	no counterpart	ph:wff ps:wff	|- ( Prv ( ph -> ps ) -> ( Prv ph -> Prv ps ) )	missing provability distribution schema; no fixed first-order definition supplies it	|- ( Prv ( ph -> ps ) -> ( Prv ph -> Prv ps ) )	ph:wff ps:wff		
+ax-prv3	no counterpart	ph:wff	|- ( Prv ph -> Prv Prv ph )	missing provability positive-introspection schema; no fixed first-order definition supplies it	|- ( Prv ph -> Prv Prv ph )	ph:wff		
+df-bj-nnf	no counterpart	1wff+1set_binder	NNF[x](ph) := K(I(X[x](ph),ph),I(ph,A[x](ph)))	syntactic expansion	|- ( F// x ph <-> ( ( E. x ph -> ph ) /\ ( ph -> A. x ph ) ) )	ph:wff x:setvar		
+ax-luk1	no counterpart	ph:wff ps:wff ch:wff	|- ( ( ph -> ps ) -> ( ( ps -> ch ) -> ( ph -> ch ) ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ( ph -> ps ) -> ( ( ps -> ch ) -> ( ph -> ch ) ) )	ph:wff ps:wff ch:wff		
+ax-luk2	no counterpart	ph:wff	|- ( ( -. ph -> ph ) -> ph )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ( -. ph -> ph ) -> ph )	ph:wff		
+ax-luk3	no counterpart	ph:wff ps:wff	|- ( ph -> ( -. ph -> ps ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ph -> ( -. ph -> ps ) )	ph:wff ps:wff		
+ax-wl-13v	no counterpart	x:setvar y:setvar z:setvar	|- ( -. A. x x = y -> ( y = z -> A. x y = z ) )	equality and vacuity with source disjoint pairs; first-order derivation required	|- ( -. A. x x = y -> ( y = z -> A. x y = z ) )	x:setvar y:setvar z:setvar	x z; y z	
+df-redundp	no counterpart	3wff	redund(ph,ps,ch) := K(I(ph,ps),Q(K(ph,ch),K(ps,ch)))	syntactic expansion	|- ( redund ( ph , ps , ch ) <-> ( ( ph -> ps ) /\ ( ( ph /\ ch ) <-> ( ps /\ ch ) ) ) )	ph:wff ps:wff ch:wff		
+ax-c5	no counterpart	ph:wff x:setvar	|- ( A. x ph -> ph )	SInst at the same variable; source derived theorem sp	|- ( A. x ph -> ph )	ph:wff x:setvar		
+ax-c4	no counterpart	ph:wff ps:wff x:setvar	|- ( A. x ( A. x ph -> ps ) -> ( A. x ph -> A. x ps ) )	quantifier distribution and idempotence; source derived theorem axc4	|- ( A. x ( A. x ph -> ps ) -> ( A. x ph -> A. x ps ) )	ph:wff ps:wff x:setvar		
+ax-c7	no counterpart	ph:wff x:setvar	|- ( -. A. x -. A. x ph -> ph )	quantifier vacuity and specialization; source derived theorem axc7	|- ( -. A. x -. A. x ph -> ph )	ph:wff x:setvar		
+ax-c10	no counterpart	ph:wff x:setvar y:setvar	|- ( A. x ( x = y -> A. x ph ) -> ph )	specialization at y, equality reflexivity, specialization; source derived theorem axc10	|- ( A. x ( x = y -> A. x ph ) -> ph )	ph:wff x:setvar y:setvar		
+ax-c11	no counterpart	ph:wff x:setvar y:setvar	|- ( A. x x = y -> ( A. x ph -> A. y ph ) )	quantifier specialization and equality substitution; source derived theorem axc11	|- ( A. x x = y -> ( A. x ph -> A. y ph ) )	ph:wff x:setvar y:setvar		
+ax-c11n	no counterpart	x:setvar y:setvar	|- ( A. x x = y -> A. y y = x )	equality symmetry and quantification; source derived theorem axc11n	|- ( A. x x = y -> A. y y = x )	x:setvar y:setvar		
+ax-c15	no counterpart	ph:wff x:setvar y:setvar	|- ( -. A. x x = y -> ( x = y -> ( ph -> A. x ( x = y -> ph ) ) ) )	equality substitution under quantification; source derived theorem axc15	|- ( -. A. x x = y -> ( x = y -> ( ph -> A. x ( x = y -> ph ) ) ) )	ph:wff x:setvar y:setvar		
+ax-c9	no counterpart	x:setvar y:setvar z:setvar	|- ( -. A. z z = x -> ( -. A. z z = y -> ( x = y -> A. z x = y ) ) )	equality case split and vacuity; source derived theorem axc9	|- ( -. A. z z = x -> ( -. A. z z = y -> ( x = y -> A. z x = y ) ) )	x:setvar y:setvar z:setvar		
+ax-c14	no counterpart	x:setvar y:setvar z:setvar	|- ( -. A. z z = x -> ( -. A. z z = y -> ( x e. y -> A. z x e. y ) ) )	membership substitution and vacuity; source derived theorem axc14	|- ( -. A. z z = x -> ( -. A. z z = y -> ( x e. y -> A. z x e. y ) ) )	x:setvar y:setvar z:setvar		
+ax-c16	no counterpart	ph:wff x:setvar y:setvar	|- ( A. x x = y -> ( ph -> A. x ph ) )	equality case split and vacuity; source derived theorem axc16; source $d(x,y) retained	|- ( A. x x = y -> ( ph -> A. x ph ) )	ph:wff x:setvar y:setvar	x y	
+ax-frege1	no counterpart	ph:wff ps:wff	|- ( ph -> ( ps -> ph ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ph -> ( ps -> ph ) )	ph:wff ps:wff		
+ax-frege2	no counterpart	ph:wff ps:wff ch:wff	|- ( ( ph -> ( ps -> ch ) ) -> ( ( ph -> ps ) -> ( ph -> ch ) ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ( ph -> ( ps -> ch ) ) -> ( ( ph -> ps ) -> ( ph -> ch ) ) )	ph:wff ps:wff ch:wff		
+ax-frege8	no counterpart	ph:wff ps:wff ch:wff	|- ( ( ph -> ( ps -> ch ) ) -> ( ps -> ( ph -> ch ) ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ( ph -> ( ps -> ch ) ) -> ( ps -> ( ph -> ch ) ) )	ph:wff ps:wff ch:wff		
+ax-frege28	no counterpart	ph:wff ps:wff	|- ( ( ph -> ps ) -> ( -. ps -> -. ph ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ( ph -> ps ) -> ( -. ps -> -. ph ) )	ph:wff ps:wff		
+ax-frege31	no counterpart	ph:wff	|- ( -. -. ph -> ph )	STaut after logical abbreviation expansion; exact truth table verified	|- ( -. -. ph -> ph )	ph:wff		
+ax-frege41	no counterpart	ph:wff	|- ( ph -> -. -. ph )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ph -> -. -. ph )	ph:wff		
+ax-frege52a	no counterpart	ph:wff ps:wff ch:wff th:wff	|- ( ( ph <-> ps ) -> ( if- ( ph , th , ch ) -> if- ( ps , th , ch ) ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ( ph <-> ps ) -> ( if- ( ph , th , ch ) -> if- ( ps , th , ch ) ) )	ph:wff ps:wff ch:wff th:wff		
+ax-frege54a	no counterpart	ph:wff	|- ( ph <-> ph )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ph <-> ph )	ph:wff		
+ax-frege58a	no counterpart	ph:wff ps:wff ch:wff	|- ( ( ps /\ ch ) -> if- ( ph , ps , ch ) )	STaut after logical abbreviation expansion; exact truth table verified	|- ( ( ps /\ ch ) -> if- ( ph , ps , ch ) )	ph:wff ps:wff ch:wff		
+ax-frege52c	no counterpart	ph:wff x:setvar A:class B:class	|- ( A = B -> ( [. A / x ]. ph -> [. B / x ]. ph ) )	Leibniz after class-substitution lowering; class operands require an explicit interpretation	|- ( A = B -> ( [. A / x ]. ph -> [. B / x ]. ph ) )	ph:wff x:setvar A:class B:class		
+ax-frege54c	no counterpart	A:class	|- A = A	class-equality reflexivity after lowering; SAx reflexivity when A is a set variable	|- A = A	A:class		
+ax-frege58b	no counterpart	ph:wff x:setvar y:setvar	|- ( A. x ph -> [ y / x ] ph )	SInst after capture-avoiding substitution expansion	|- ( A. x ph -> [ y / x ] ph )	ph:wff x:setvar y:setvar		
+df-vd1	no counterpart	2wff	VD1(ph,ps) := I(ph,ps)	alternate connective notation expansion	|- ( (. ph ->. ps ). <-> ( ph -> ps ) )	ph:wff ps:wff		
+df-vd2	no counterpart	3wff	VD2(ph,ps,ch) := I(K(ph,ps),ch)	alternate connective notation expansion	|- ( (. ph ,. ps ->. ch ). <-> ( ( ph /\ ps ) -> ch ) )	ph:wff ps:wff ch:wff		
+df-vhc2	no counterpart	2wff	VHC2(ph,ps) := K(ph,ps)	alternate connective notation expansion	|- ( (. ph ,. ps ). <-> ( ph /\ ps ) )	ph:wff ps:wff		
+df-vhc3	no counterpart	3wff	VHC3(ph,ps,ch) := K(K(ph,ps),ch)	alternate connective notation expansion	|- ( (. ph ,. ps ,. ch ). <-> ( ph /\ ps /\ ch ) )	ph:wff ps:wff ch:wff		
+df-vd3	no counterpart	4wff	VD3(ph,ps,ch,th) := I(K(K(ph,ps),ch),th)	alternate connective notation expansion	|- ( (. ph ,. ps ,. ch ->. th ). <-> ( ( ph /\ ps /\ ch ) -> th ) )	ph:wff ps:wff ch:wff th:wff		
+df-ich	no counterpart	1wff+2set_binder	ICH[x,y](ph) := A[x](A[y](Q(SB[x/a](SB[y/x](SB[a/y](ph))),ph)))	interchange expansion; a fresh	|- ( [ x <> y ] ph <-> A. x A. y ( [ x / a ] [ y / x ] [ a / y ] ph <-> ph ) )	ph:wff x:setvar y:setvar a:setvar	a ph; a x; a y	
+df-als	no counterpart	2wff+1set_binder	ALS[x](ph,ps) := K(A[x](I(ph,ps)),X[x](ph))	all and some expansion	|- ( AE x ( ph -> ps ) <-> ( A. x ( ph -> ps ) /\ E. x ph ) )	ph:wff ps:wff x:setvar		
+df-rals	no counterpart	2wff+1set_binder+1class	RALS[x,A](ph,ps) := K(RAL[x,A](I(ph,ps)),REX[x,A](ph))	restricted all and some expansion	|- ( AE x e. A ( ph -> ps ) <-> ( A. x e. A ( ph -> ps ) /\ E. x e. A ph ) )	ph:wff ps:wff x:setvar A:class		
+df-alseu	no counterpart	2wff+1set_binder	ALSEU[x](ph,ps) := K(A[x](I(ph,ps)),EU[x](ph))	all and unique existence expansion	|- ( AE! x ( ph -> ps ) <-> ( A. x ( ph -> ps ) /\ E! x ph ) )	ph:wff ps:wff x:setvar		
+df-ralseu	no counterpart	2wff+1set_binder+1class	RALSEU[x,A](ph,ps) := K(RAL[x,A](I(ph,ps)),REU[x,A](ph))	restricted all and unique existence expansion	|- ( AE! x e. A ( ph -> ps ) <-> ( A. x e. A ( ph -> ps ) /\ E! x e. A ph ) )	ph:wff ps:wff x:setvar A:class		

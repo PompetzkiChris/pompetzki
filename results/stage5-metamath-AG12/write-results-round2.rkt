@@ -1,0 +1,95 @@
+#lang racket/base
+(require "round2-core.rkt" racket/file racket/list racket/path racket/string)
+(define args (current-command-line-arguments))
+(unless (positive? (vector-length args)) (error 'report "pass mode"))
+(define mode (vector-ref args 0))
+(define (all-files)
+  (sort (for/list ([p (in-directory)] #:when (file-exists? p))
+          (path->string (find-relative-path lane (path->complete-path p)))) string<?))
+(define digest-head '("path" "bytes" "sha256" "mtime_epoch_seconds"))
+(cond
+  [(string=? mode "sources")
+   (define sources
+     '("C:/ClaudeOutput/pompetzki/lanes/RULES-ROUND2-2026-10-09.md"
+       "C:/ClaudeOutput/pompetzki/lanes/FINDINGS-pmp-interpreter-bounds-20261009.md"
+       "C:/ClaudeOutput/formalization-toolchain-20260924/libraries/metamath-set-mm-28167ed89a49/set.mm"
+       "C:/ClaudeOutput/pompetzki/lanes/L5/mm2jdg7.rkt"
+       "C:/ClaudeOutput/pompetzki/forcing-src/general/Replay2.v"
+       "C:/ClaudeOutput/pompetzki/judge/judge-v3.pmp"
+       "C:/ClaudeOutput/pompetzki/judge/racket/judge.rkt"
+       "C:/ClaudeOutput/pompetzki/judge/rocq2jdg.rkt"
+       "C:/ClaudeOutput/pompetzki/pompetzki.exe"
+       "C:/Program Files/Racket/racket.exe"))
+   (new-table "SOURCE-SHA256-2.tsv" digest-head (map sha-record sources))
+   (displayln (format "Captured ~a read-only external sources." (length sources)))]
+  [(string=? mode "manifest")
+   (define paths (filter (lambda (p) (not (equal? p "SHA256-2.tsv"))) (all-files)))
+   (new-table "SHA256-2.tsv" digest-head (map sha-record paths))
+   (displayln (format "Manifest records=~a" (length paths)))
+   (displayln (format "SHA256-2.tsv SHA256=~a" (caddr (sha-record "SHA256-2.tsv"))))]
+  [(string=? mode "report")
+   (unless (= (vector-length args) 2) (error 'report "pass Get-Date ISO timestamp"))
+   (define stamp (vector-ref args 1))
+   (define metrics (table "ROUND2-METRICS.tsv"))
+   (define blockers (table "BLOCKERS.tsv"))
+   (define optimal (table "OPTIMAL-ADDITIONS-2.tsv"))
+   (define routes (table "ROUTES-2.tsv"))
+   (define samples (table "ROUTE-CHECK/MANIFEST.tsv"))
+   (define audit (table "INDEPENDENT-VERIFICATION-2.tsv"))
+   (define audit-checks
+     (for/sum ([r audit] #:unless (equal? (hash-ref r "check") "all_discrepancies"))
+       (string->number (hash-ref r "actual"))))
+   (unless (= audit-checks 135946) (error 'report "independent count"))
+   (for ([f '("VERIFY-2.tsv" "SOURCE-SHA256-2.tsv" "OPTIMAL-ADDITIONS-2.tsv")])
+     (unless (file-exists? f) (error 'report "required receipt: ~a" f)))
+   (call-with-output-file "STATUS-2.txt" #:exists 'error
+     (lambda (out)
+       (fprintf out "~a COMPLETE. ORDER-2.md executed with new files in C:\\ClaudeOutput\\pompetzki\\lanes\\AG12-setmm-registry\\. COVERAGE-2.tsv contains all 5757 cohort rows: 4798 covered (4794 provable assertions and 4 syntax assertions), 959 uncovered, and 4776 newly covered compared with the earlier 22. ROUTES-2.tsv counts 82 routed logic labels plus 8 numbered matches; ax-prv1/2/3 remain missing. BLOCKERS.tsv ranks 77 labels with exact extension formulas. The unique optimal additions for budgets 1, 2, 3 are df-cleq; df-clel+df-cleq; df-clel+df-cleq+df-ss, unlocking 173, 473, 586 further rows, respectively. ROUTE-CHECK contains 10 axiom-instance JDG1 files and all 20 judge-run receipts; both judges ACCEPT all 10 with exit 0, covering 12 steps. Independent verification passed 135946 exact checks with 0 discrepancies; 59 original artifacts have identical bytes and modification times. The two conditional class routes are retained explicitly; excluding them gives 4796 covered. RESULTS-2.md and SHA256-2.tsv provide evidence and checksum snapshots.\n" stamp)))
+   (define records (map sha-record (all-files)))
+   (define (md s) (string-replace (format "~a" s) "|" "\\|"))
+   (define (mdrow out cells)
+     (fprintf out "| ~a |\n" (string-join (map md cells) " | ")))
+   (call-with-output-file "RESULTS-2.md" #:exists 'error
+     (lambda (out)
+       (fprintf out "# AG12 order 2: coverage including judge logic steps\n\nCompleted: ~a, obtained from Get-Date.\n\n" stamp)
+       (display "ORDER-2.md is complete. The execution host is THEBIGMAGILLA, Alienware Area-51 AAT2265. The filesystem check returned C:, G:, and Temp; the lane path is an ordinary local directory with no link target. All writes created new files under `C:\\ClaudeOutput\\pompetzki\\lanes\\AG12-setmm-registry\\`. The named round-2 rules and the earlier RESULTS.md, LOGIC-ROUTES.tsv, and COVERAGE.tsv were read. Programs are Racket; result decisions use exact integers, exact rational arithmetic, or syntactic equality.\n\n" out)
+       (display "COVERAGE-2.tsv applies the ordered dependency criterion to all 5,757 rows: every required ax-/df- label must be a numbered match or an order-counted logic route. ROUTES-2.tsv records all 85 earlier logic rows and names their JDG1 step kinds, kernel constructors, derivation basis, and binding/interpretation conditions. There are 82 counted routes, comprising 41 axioms/rules and 41 logical definitions. The three uncounted routes are ax-prv1, ax-prv2, and ax-prv3: the earlier routing table explicitly marks their provability rules/schemas as missing.\n\n" out)
+       (display "| Metric | Exact count |\n|---|---:|\n" out)
+       (for ([r metrics]) (mdrow out (list (hash-ref r "metric") (hash-ref r "count"))))
+       (mdrow out (list "independent_exact_checks" audit-checks))
+       (mdrow out '("independent_discrepancies" 0))
+       (mdrow out '("original_artifacts_bytes_and_mtimes_unchanged" 59))
+       (mdrow out '("sample_JDG1_files" 10))
+       (mdrow out '("judge_runs" 20))
+       (mdrow out '("sample_theorems" 10))
+       (mdrow out '("sample_steps" 12))
+       (mdrow out '("sample_registry_entries_per_file" 0))
+       (mdrow out '("sample_declared_hypotheses_per_file" 0))
+       (display "\nThe eight numbered matches retain the earlier mapping: ax-ext -> 0 Ext, ax-pr -> 1 Pair, ax-un -> 2 Union, ax-pow -> 3 Power, ax-inf2 and ax-inf -> 4 Inf, ax-reg -> 5 Found, and ax-ac -> 6 Choice. The coverage output preserves source theorem order, assertion indices, full dependency lists, and statements. It adds the routed labels with their step kinds, remaining missing labels and counts, and the two-class-route sensitivity columns. All first 1,000 source theorem rows are covered under the new criterion.\n\n" out)
+       (display "The order-counted class routes ax-frege52c and ax-frege54c retain their stated lowering conditions. ax-frege52c needs an explicit interpretation of arbitrary class substitution; ax-frege54c needs class equality lowering, with direct Y reflexivity for set operands. Excluding these two conditional routes changes coverage by 2 rows, from 4,798 to 4,796. The main 4,798 count follows the instruction to count every earlier judge-routed logic entry. Logical definitions use their recorded capture-avoiding source expansions; class operations and their missing source definitions remain in the dependency lists. Coverage is a dependency-availability calculation. The judge verdicts below validate the ten generated instances.\n\n" out)
+       (display "BLOCKERS.tsv contains all 77 missing labels, ordered by blocked-theorem count descending and label ascending on ties. It includes the exact source extension formula, typed signature and arity, source hypotheses and disjoint pairs, new-symbol defining formula, and registration boundary. Blocked counts overlap because a row may need several labels. The single-addition gain column counts rows whose entire missing set is that label.\n\n| Rank | Label | Theorems blocked | Unlocked by this label alone |\n|---:|---|---:|---:|\n" out)
+       (for ([r (take blockers 10)])
+         (mdrow out (map (lambda (key) (hash-ref r key)) '("rank" "label" "theorems_blocked" "theorems_unlocked_by_label_alone"))))
+       (display "\nExact enumeration gives the unique maximizing additions at each tested budget. Every subset of 1, 2, or 3 of the 77 missing labels was considered; gains count a theorem once when its complete missing set is included.\n\n| Addition budget | Unique maximizing labels | Further rows unlocked | Total covered | Remaining uncovered | Subsets examined |\n|---:|---|---:|---:|---:|---:|\n" out)
+       (for ([r optimal])
+         (mdrow out (map (lambda (key) (hash-ref r key)) '("addition_budget" "optimal_addition_labels" "newly_unlocked_theorems" "total_covered" "remaining_uncovered" "candidates_enumerated"))))
+       (display "\nFor L5, the first three additions by both frequency rank and these exact budget calculations are df-cleq, df-clel, and df-ss. Their source formulas are retained below.\n\n| Label | Exact source extension formula |\n|---|---|\n" out)
+       (for ([r (take blockers 3)]) (mdrow out (list (hash-ref r "label") (hash-ref r "extension_formula"))))
+       (display "\nThe gains assume these exact source-signature additions are supplied. Definitions retain class operands, free formula parameters, binders, hypotheses, and distinct-variable conditions. Asserted axioms require a derivation or asserted schema; naming the assertion body supplies an abbreviation. MISSING-SETS-2.tsv lists all 164 distinct missing sets, exact membership labels, and gains after supplying each set. UNLOCK-PREFIX-2.tsv records cumulative gains from the frequency-ranked additions. Supplying all 77 missing labels covers all 5,757 rows under this criterion; every one of those 77 labels occurs in at least one required missing set.\n\n" out)
+       (display "ROUTE-CHECK contains 10 small JDG1 files proving ax-1 through ax-10 instances. Both prescribed judges were run from `C:\\ClaudeOutput\\pompetzki\\judge\\`. Each run has separate stdout/stderr and a receipt with the command, working directory, Get-Date start/finish, exit code, and verdict.\n\n| Label | Step route | Steps | pmp exit/verdict | Racket exit/verdict |\n|---|---|---:|---|---|\n" out)
+       (for ([r samples])
+         (mdrow out (list (hash-ref r "label") (hash-ref r "route") (hash-ref r "steps")
+                          (string-append (hash-ref r "pmp_exit") " / " (hash-ref r "pmp_verdict"))
+                          (string-append (hash-ref r "racket_exit") " / " (hash-ref r "racket_verdict")))))
+       (display "\nThe quantifier-distribution instance depends on its bound variable. The vacuity instance retains its source disjoint condition. The existential instance uses reflexivity, existential introduction, and modus ponens with witness y. The three Leibniz instances retain three free variables and cover equality and both membership positions. ax-10 starts with a body depending on x and uses vacuity after x is bound. The sample consists of axioms with no essential hypotheses; M occurs in the ax-6 derivation. The sample does not exercise G or every remaining derivation route.\n\n" out)
+       (display "All per-label step kinds are listed here; ROUTES-2.tsv retains the full source and translation metadata. T = STaut, M = SMp, G = SGen, Y = SAx, V = SInst, Z = SLeib, H = SAlli, E = SExi, L = SExel, S = SSpec, U = SUse. SAx recognizes its shape from the formula.\n\n| Source label | Counted | JDG1 step kinds | SAx shapes |\n|---|---:|---|---|\n" out)
+       (for ([r routes])
+         (mdrow out (map (lambda (key) (hash-ref r key)) '("label" "covered_by_order" "judge_step_kinds" "judge_ax_shapes"))))
+       (display "\nINDEPENDENT-VERIFICATION-2.tsv records 135,946 exact checks with zero discrepancies: all coverage rows and original source metadata, all route flags, all blocker ranks/counts/formulas and extension fields, all missing-set memberships and rational gain ratios, and all ranked addition prefixes. VERIFY-2.tsv checks the unchanged bytes and mtimes of 59 original artifacts and all 20 judge-run outputs. Launcher-owned codex-run.log and codex-run-2.log are captured as changing logs in the checksum snapshots.\n\n" out)
+       (display "The table below hashes every file present immediately before RESULTS-2.md was created. SHA256-2.tsv is the final recursive snapshot and supplies actual hashes for RESULTS-2.md, STATUS-2.txt, and the delivery verification receipt. SHA256-2.tsv excludes itself; its detached digest is supplied with the handover. SOURCE-SHA256-2.tsv hashes the external read-only decision and judge sources. ORIGINALS-SHA256-2.tsv records the 59 original artifact identities used by the preservation check.\n\n| Local relative path | Bytes captured | SHA256 |\n|---|---:|---|\n" out)
+       (for ([r records]) (mdrow out (list (car r) (cadr r) (caddr r))))
+       (mdrow out '("RESULTS-2.md" "Recorded in SHA256-2.tsv" "Actual digest in SHA256-2.tsv"))
+       (mdrow out '("VERIFY-DELIVERY-2.tsv" "Recorded in SHA256-2.tsv" "Actual digest in SHA256-2.tsv"))
+       (mdrow out '("SHA256-2.tsv" "Detached snapshot" "Detached digest in final handover"))))
+   (displayln (format "Wrote RESULTS-2.md and STATUS-2.txt; report checksum rows=~a" (length records)))]
+  [else (error 'report "unknown mode: ~a" mode)])

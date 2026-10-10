@@ -1,0 +1,48 @@
+C:/ClaudeOutput/pompetzki/lanes/L8G\release\jdg\smith3.jdg  from C:/ClaudeOutput/pompetzki/lanes/L8G\release\sexps\smith3.sexp (Smith certificate), 29 entries
+  note: W = A V = ((1 0 0) (1 -5 -8) (-1 1 0))
+  note: U^-1 = ((1 0 0) (1 -5 -1) (-1 1 0))
+  note: V^-1 = ((2 1 2) (-2 0 1) (1 0 0))
+  E1: +1*1 = 1
+  E2: -1*2 +2*1 = 0
+  E3: +2*1 -1*6 +2*2 = 0
+  E4: +1*1 = 1
+  E5: -1*2 -3*1 = -5
+  E6: +4*1 -1*6 -3*2 = -8
+  E7: -1*1 = -1
+  E8: +1*2 -1*1 = 1
+  E9: -4*1 +1*6 -1*2 = 0
+  E10: +1*1 = 1
+  E11: +1*1 -1*1 = 0
+  E12: +1*1 = 1
+  E13: -4*1 -1*1 +5*1 = 0
+  E14: +1*5 -5*1 = 0
+  E15: +1*8 = 8
+  E16: +1*1 = 1
+  E17: +1*1 -1*1 = 0
+  E18: +1*1 = 1
+  E19: -4*1 -1*1 +5*1 = 0
+  E20: +1*5 -5*1 = 0
+  E21: +1*1 = 1
+  E22: +1*1 = 1
+  E23: +1*2 +2*2 -6*1 = 0
+  E24: +1*1 = 1
+  E25: +1*2 -2*1 = 0
+  E26: -1*2 +2*1 = 0
+  E27: +1*1 = 1
+  E28: +1*1 = 1
+  E29: +1*8 = 8
+  theorems 156 (prelude 52, generated 104), steps 6125 (prelude 1274), bytes 1918218, build 642 ms
+  largest tautology test 113 calls
+  sha256 d779a8756612bb52451200ff45619b27965e8d5b80fd0c94abdea34da2fec4a4
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 156 6125 833)
+  mutant cert-use-swap: copy of the checker (REJECT 155 step 1: taut: not a tautology)
+  mutant neg-final: copy of the checker (REJECT 155 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 155 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 3 step 1: taut: not a tautology)
+  mutant use-shift: copy of the checker (REJECT 3 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 59 step 21: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 3 step 3: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 3 step 6: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 155 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 2 step 23: taut: not a tautology)

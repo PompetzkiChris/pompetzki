@@ -1,0 +1,12 @@
+#lang racket/base
+(require racket/file racket/string)
+(define lane "C:/ClaudeOutput/pompetzki/lanes/CX3")
+(define s (file->string (string-append lane "/integrate-current-round2-2.rkt")))
+(define old "[c-ok \"COMPILED_KERNEL_PENDING\"] [else \"TARGET_PENDING\"])))))")
+(define new "[c-ok \"COMPILED_KERNEL_PENDING\"] [else \"TARGET_PENDING\"]))))")
+(unless (string-contains? s old) (error 'correction "expected original parse failure"))
+(define corrected (string-replace (string-replace s old new)
+                                  "integrate-current-round2-2.rkt" "integrate-current-round2-3.rkt"))
+(call-with-output-file (string-append lane "/integrate-current-round2-3.rkt")
+  #:exists 'error (lambda (o) (display corrected o)))
+(displayln "Created the next integration writer; earlier writers remain beside it.")

@@ -1,0 +1,4 @@
+label	registry_index	check	passed
+ax-ext	0	alpha+universal-closure	1
+ax-pow	3	alpha+universal-closure	1
+ax-inf2	4	alpha+conjunction-commutation	1

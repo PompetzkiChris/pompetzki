@@ -1,0 +1,96 @@
+#lang racket/base
+;; mutants-v1.rkt -- lane L7: mutated copies that are faults. sigma1's mutants change the first step of each kind; when that
+;; step's line is not needed by a later tautology step, the copy is still a correct derivation and is accepted (seen on the
+;; equality file: use-shift). Here each kind of mutation moves on to the next candidate step until the copy of the checker
+;; rejects the file (at most 200 candidates); the position used is recorded. emit-file2! = emit-file! with these mutants.
+(require "l7core-v1.rkt" racket/list racket/match racket/string racket/file)
+(provide mutants2 emit-file2!)
+
+(define (mutants2 text twin-core prelude-flags)
+  (define-values (rg ths) (read-jdg-text text))
+  (define tv (list->vector ths))
+  (define pv (list->vector prelude-flags))
+  (define nth (vector-length tv))
+  (define (with-thm i t) (structure-text rg (for/list ([x tv] [j (in-naturals)]) (if (= j i) t x))))
+  (define (positions pred)
+    (for*/list ([i (in-range nth)] #:unless (vector-ref pv i)
+                [sv (in-value (list->vector (caddr (vector-ref tv i))))] [k (in-range (vector-length sv))]
+                #:when (pred (vector-ref sv k)))
+      (list i k)))
+  (define (replace-step i k f)
+    (match-define (list st sig steps hyps) (vector-ref tv i))
+    (with-thm i (list st sig (for/list ([s steps] [j (in-naturals)]) (if (= j k) (f s) s)) hyps)))
+  (define (verdict-of mtext) (let-values ([(r t) (read-jdg-text mtext)]) (check-batch r t)))
+  (define (rejecting tag pred f)
+    (for/or ([pos (positions pred)] [n (in-range 200)])
+      (define m (replace-step (car pos) (cadr pos) f))
+      (define v (verdict-of m))
+      (and (eq? (car v) 'REJECT) (list tag m (format "theorem ~a step ~a" (car pos) (cadr pos)) v))))
+  (define last-i (sub1 nth))
+  (match-define (list lst lsig lsteps lhyps) (vector-ref tv last-i))
+  (define suc-entry (hash-ref def-entry 18))
+  (define (fixed tag m where) (list tag m where (verdict-of m)))
+  (filter
+   values
+   (list
+    (fixed "neg-final" (with-thm last-i (list (list 'n lst) lsig lsteps lhyps)) "last theorem")
+    (fixed "twin-final" (with-thm last-i (list (compress twin-core) lsig lsteps lhyps)) "last theorem")
+    (rejecting "taut-goal" (lambda (s) (eq? (car s) 'T)) (lambda (s) (list 'T (cadr s) (list 'n (caddr s)))))
+    (rejecting "mp-swap" (lambda (s) (and (eq? (car s) 'M) (not (= (cadr s) (caddr s))))) (lambda (s) (list 'M (caddr s) (cadr s))))
+    (rejecting "use-shift" (lambda (s) (eq? (car s) 'U)) (lambda (s) (list 'U (add1 (cadr s)) (caddr s))))
+    (rejecting "leib-swap" (lambda (s) (match s [(list 'Z _ (list 'i (list 'q a b) _)) (not (= a b))] [_ #f]))
+               (lambda (s) (match s [(list 'Z a (list 'i (list 'q x y) r)) (list 'Z a (list 'i (list 'q y x) r))])))
+    (rejecting "exi-witness" (lambda (s) (eq? (car s) 'E)) (lambda (s) (list 'E (add1 (cadr s)) (caddr s))))
+    (rejecting "exel-var" (lambda (s) (eq? (car s) 'L)) (lambda (s) (list 'L (cadr s) (add1 (caddr s)) (cadddr s))))
+    (rejecting "alli-var" (lambda (s) (eq? (car s) 'H)) (lambda (s) (list 'H (add1 (cadr s)) (caddr s) (cadddr s))))
+    (rejecting "gen-var" (lambda (s) (eq? (car s) 'G)) (lambda (s) (list 'G (cadr s) (add1 (caddr s)))))
+    (rejecting "ax-flip" (lambda (s) (and (eq? (car s) 'Y) (not (eq? (car (cadr s)) 'q)))) (lambda (s) (list 'Y (list 'n (cadr s)))))
+    (fixed "drop-step" (with-thm last-i (list lst lsig (drop-right lsteps 1) lhyps)) "last theorem")
+    (fixed "registry-suc"
+           (structure-text (for/list ([e rg] [i (in-naturals)])
+                             (if (= i suc-entry)
+                                 (list (let loop ([d (car e)])
+                                         (match d
+                                           [(list 'a x) (list 'a (loop x))]
+                                           [(list 'b x y) (list 'b (loop x) (loop y))]
+                                           [(list 'd (list 'e 0 1) (list 'q 0 1)) (list 'd (list 'e 0 1) (list 'q 0 2))]
+                                           [_ d]))
+                                       (cadr e))
+                                 e))
+                           ths)
+           "registry entry of Suc2"))))
+
+;; emit-file! (l7core-v1) with mutants2; returns the manifest lines
+(define (emit-file2! dir base what build twin)
+  (reset-batch!)
+  (make-directory* (build-path dir "mut"))
+  (define t0 (current-milliseconds))
+  (build)
+  (define ms (- (current-milliseconds) t0))
+  (define ths0 (reverse out-thms))
+  (define keys (map car ths0))
+  (define pflags (map caddr ths0))
+  (define text (batch-text))
+  (define st (hash-copy stats))
+  (define file (build-path dir (string-append base ".jdg")))
+  (write-new file text)
+  (define-values (rg ths) (read-jdg-text text))
+  (define notes '())
+  (define (note! . xs) (set! notes (cons (apply format xs) notes)) (printf "~a\n" (car notes)) (flush-output))
+  (note! "~a.jdg  ~a" base what)
+  (note! "  theorems ~a (prelude ~a, generated ~a), steps ~a (prelude ~a), bytes ~a, build ~a ms, largest tautology test ~a calls, all tautology tests ~a calls"
+         (length ths) (hash-ref st 'prelude 0) (hash-ref st 'theorems 0)
+         (+ (hash-ref st 'steps 0) (hash-ref st 'prelude-steps 0)) (hash-ref st 'prelude-steps 0)
+         (file-size file) ms (hash-ref st 'taut-max 0) (hash-ref st 'taut-calls 0))
+  (note! "  sha256 ~a" (sha256-hex file))
+  (note! "  registry: ~a" (check-registry-text text))
+  (note! "  copy of the checker: ~a" (check-batch rg ths))
+  (write-new (build-path dir (string-append base ".index.txt"))
+             (string-join (for/list ([k keys] [t ths] [i (in-naturals)])
+                            (format "~a ~s ~a" i k (if (and (pair? k) (eq? (car k) 'replay)) "" (show (tof (car t))))))
+                          "\n"))
+  (for ([m (mutants2 text (or twin (Neg (tof (car (last ths))))) pflags)])
+    (match-define (list tag mtext where v) m)
+    (write-new (build-path dir "mut" (string-append base "-" tag ".jdg")) mtext)
+    (note! "  mutant ~a (~a): copy of the checker ~a" tag where v))
+  (reverse notes))

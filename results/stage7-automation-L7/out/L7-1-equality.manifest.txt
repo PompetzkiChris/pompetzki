@@ -1,0 +1,22 @@
+L7-1-equality.jdg  equality chains (Leibniz steps) and congruence closure over Suc, Sng, Upr, Opr, Emp, App/Fnc
+  theorems 98 (prelude 22, generated 76), steps 7057 (prelude 285), bytes 514790, build 1542 ms, largest tautology test 115 calls, all tautology tests 37093 calls
+  sha256 289f44b94ef64cf8ef66dabdd73ea4d2009d6b75b8e11d27db5b345d01930fb3
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 98 7057 775)
+  mutant neg-final (last theorem): copy of the checker (REJECT 97 final: last line is not the statement)
+  mutant twin-final (last theorem): copy of the checker (REJECT 97 final: last line is not the statement)
+  mutant taut-goal (theorem 0 step 1): copy of the checker (REJECT 0 step 1: taut: not a tautology)
+  mutant use-shift (theorem 12 step 9): copy of the checker (REJECT 12 step 15: taut: not a tautology)
+  mutant leib-swap (theorem 0 step 2): copy of the checker (REJECT 0 step 2: leib: shape)
+  mutant drop-step (last theorem): copy of the checker (REJECT 97 final: last line is not the statement)
+  mutant registry-suc (registry entry of Suc2): copy of the checker (REJECT 11 step 7: taut: not a tautology)
+chains:
+  chain 1: 4 steps; the whole chain as one tautology step: tautology, 5 taut_bf calls
+  chain 2: 6 steps; the whole chain as one tautology step: tautology, 11 taut_bf calls
+  chain 3: 8 steps; the whole chain as one tautology step: tautology, 13 taut_bf calls
+  chain 5: 12 steps; the whole chain as one tautology step: tautology, 21 taut_bf calls
+  chain 8: 18 steps; the whole chain as one tautology step: tautology, 33 taut_bf calls
+  chain 13: 28 steps; the whole chain as one tautology step: tautology, 55 taut_bf calls
+  chain 21: 44 steps; the whole chain as one tautology step: tautology, 87 taut_bf calls
+  chain 34: 70 steps; the whole chain as one tautology step: tautology, 137 taut_bf calls
+  chain 55: 112 steps; the whole chain as one tautology step: tautology, 221 taut_bf calls

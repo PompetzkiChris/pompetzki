@@ -1,0 +1,13 @@
+check	count	result
+map_source_extension_labels	167	PASS
+missing_formulas_and_arities	159	PASS
+numbered_registry_identities	8	PASS
+coverage_rows_and_order	5757	PASS
+covered	22	PASS
+covered_with_empty_dependencies	22	PASS
+covered_logical	18	PASS
+covered_syntax	4	PASS
+registry_entries	677	PASS
+set_extension_prototypes	11	PASS
+boolean_assignments	84	PASS
+boolean_false_assignments	0	PASS

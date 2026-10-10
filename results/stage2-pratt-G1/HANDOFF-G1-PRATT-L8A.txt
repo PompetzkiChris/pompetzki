@@ -1,0 +1,6 @@
+Role G1-pratt. Verification clock 2026-10-09 20:45:17.466 -04:00. Deadline 21:22:36.
+L8A file C:/ClaudeOutput/pompetzki/lanes/L8A/pratt_certificates.txt has 40 top-level PRATT-CERT-1 receipts. The same file contains 918 PRATT-CERT-1 nodes because each nested subcertificate is also a PRATT-CERT-1 node. Depth returns to 0 at the end of the file. Bytes 105093. sha256 fb9b71fb6f5636640faf2fdb246e2370790b6e5a0a30009b7766586090e11ca2.
+HANDOFF-G1-PRATT.txt reports the node count 918. The receipt count to reuse is 40. Those 40 receipts are not rows of INDEX.tsv. INDEX.tsv has 78511 rows, from corpus/2.sexp through corpus/618970019642690137449562111.sexp.
+Forged certificates in neg-mutations.tsv, 1000 rows, checker accepted 0: witness maps to witness-residue, 334 rows; factor maps to product, 333 rows; drop maps to product, 333 rows.
+Composite 4033 is neg/comp/4033.sexp, tags spsp2, smallest factor 37, phi 3888, witness 2, checker reason witness-residue.
+Consumer emit command remains the one in HANDOFF-G1-PRATT.txt. Completed dual accepts for pratt-7.jdg, pratt-13.jdg and pratt-23.jdg were not run again. corpus/7.sexp, corpus/13.sexp and corpus/23.sexp match the L2D input files by SHA-256.

@@ -1,0 +1,24 @@
+L8G certificate example. No GPU, no second 8192 run.
+
+The DLL call that produced the matrices is the recorded run of example.pmp. Its process certificate is C:\ClaudeOutput\pompetzki\lanes\L8G\example-process-2.txt and its summary is C:\ClaudeOutput\pompetzki\lanes\L8G\out2\summary.txt. l8g_workload returned 0. This example starts from those text dumps.
+
+From any directory:
+
+"C:\Program Files\Racket\racket.exe" C:\ClaudeOutput\pompetzki\lanes\L8G\release\example.rkt emit
+"C:\Program Files\Racket\racket.exe" C:\ClaudeOutput\pompetzki\lanes\L8G\release\example.rkt judge
+"C:\Program Files\Racket\racket.exe" C:\ClaudeOutput\pompetzki\lanes\L8G\release\example.rkt hashes
+
+emit reads out2\pmp_A.txt, pmp_K.txt, pmp_minor.txt, pmp_gpu_rank.txt, pmpT_A.txt, pmpT_gpu_rank.txt, pmp_smith_S.txt, pmp_smith_U.txt, pmp_smith_V.txt, pmp_smith_D.txt. It checks the rank and Smith conditions in exact integers, writes release\sexps\rn6x8.sexp, tri5.sexp, and smith3.sexp, and calls
+
+"C:\Program Files\Racket\racket.exe" C:\ClaudeOutput\pompetzki\lanes\L2D\certs-v3.rkt emit CERT.sexp OUT.jdg
+
+for each. The JDG1 files and the ten mutants of each land under release\jdg\. A Smith matrix with A_00 changed from 2 to 3, and a rank kernel row with each entry increased by 1, are written under release\corrupt\ and must be refused by certs-v3.rkt with no JDG1 file.
+
+judge runs, from C:\ClaudeOutput\pompetzki\judge\,
+
+C:\ClaudeOutput\pompetzki\pompetzki.exe judge-v3.pmp FILE
+"C:\Program Files\Racket\racket.exe" racket\judge.rkt FILE
+
+on every .jdg under release\jdg\, two files at a time. The rows are release\judge-run.txt.
+
+These three commands have already been run in this tree. emit and judge use write-new, so a second run stops when it finds the existing output file. The bytes to hash are the ones HASHES.txt names.

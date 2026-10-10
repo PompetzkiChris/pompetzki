@@ -1,0 +1,75 @@
+#lang racket/base
+;; Independently parse the two sides extracted from every source definition.
+(require racket/file racket/list racket/string
+         (file "C:/ClaudeOutput/pompetzki/lanes/L5/mm3.rkt"))
+(define source-path "C:/ClaudeOutput/formalization-toolchain-20260924/libraries/metamath-set-mm-28167ed89a49/set.mm")
+(define db (read-db source-path))
+(define-values (header rows)
+  (call-with-input-file "EXTENSION-FORMULAS-v2.tsv"
+    (lambda (in)
+      (define h (string-split (read-line in) "\t" #:trim? #f))
+      (values h
+        (for/list ([line (in-lines in)] #:unless (string=? line ""))
+          (define row (string-split line "\t" #:trim? #f))
+          (unless (= (length h) (length row)) (error 'tsv "column count")) row)))))
+(define index (for/hash ([h header] [i (in-naturals)]) (values h i)))
+(define (ref row k) (list-ref row (hash-ref index k)))
+(define (words s) (string-split s))
+(define (parse-roundtrip ty text)
+  (define ts (words text))
+  (define ast (parse db ty (list->vector ts)))
+  (unless (equal? ts (tree->toks db ast)) (error 'parse "roundtrip ~a" text))
+  ast)
+(define def-count 0)
+(define source-count 0)
+(define named-count 0)
+(define records
+  (for/list ([row rows])
+    (define label (ref row "label"))
+    (define a (lookup db label))
+    (define source (ref row "exact_source_extension_formula"))
+    (define exact (string-append (assr-type a) " " (string-join (vector->list (assr-toks a)) " ")))
+    (unless (equal? source exact) (error 'source "statement ~a" label))
+    (set! source-count (add1 source-count))
+    (unless (positive? (string-length (ref row "new_defining_formula"))) (error 'named "empty ~a" label))
+    (set! named-count (add1 named-count))
+    (cond
+      [(string-prefix? label "df-")
+       (define ty (ref row "operator_result"))
+       (define lhs (ref row "source_defined_expression"))
+       (define rhs (ref row "exact_defining_rhs"))
+       (define lhs-tree (parse-roundtrip ty lhs))
+       (define rhs-tree (parse-roundtrip ty rhs))
+       (unless (equal? label "df-bi")
+         (define wanted
+           (if (equal? ty "wff")
+               (append '("(") (words lhs) '("<->") (words rhs) '(")"))
+               (append (words lhs) '("=") (words rhs))))
+         (unless (equal? wanted (vector->list (assr-toks a)))
+           (error 'split "source equation reconstruction ~a" label)))
+       (define sig (words (ref row "new_symbol_signature")))
+       (when (equal? ty "class")
+         (unless (equal? (car sig) "mm_output_element:setvar") (error 'member "argument ~a" label))
+         (unless (string-contains? (ref row "new_defining_formula") (string-append "mm_output_element e. " rhs))
+           (error 'member "formula ~a" label)))
+       (set! def-count (add1 def-count))
+       (list label "1" "1" (if (equal? label "df-bi") "expanded-biconditional" "1") ty)]
+      [else (list label "1" "not-definition" "not-definition" "assertion")])))
+;; df-bi is written in the source with the primitive implication/negation
+;; spelling. Check the equivalence to its new operator equation on all four
+;; Boolean valuations, using exact booleans and integer counts.
+(define (imp p q) (or (not p) q))
+(define bi-count 0)
+(for* ([ph '(#f #t)] [ps '(#f #t)] [b '(#f #t)])
+  (define rhs (not (imp (imp ph ps) (not (imp ps ph)))))
+  (define primitive (not (imp (imp b (not rhs)) (not (imp rhs b)))))
+  (unless (equal? primitive (equal? b rhs)) (error 'bi "expansion"))
+  (set! bi-count (add1 bi-count)))
+(unless (and (= 167 source-count) (= 167 named-count) (= 87 def-count) (= 8 bi-count))
+  (error 'count "verification counts"))
+(call-with-output-file "EXTENSION-VERIFY.tsv" #:exists 'error
+  (lambda (out)
+    (displayln "label\tsource_formula_equal\tsides_typed_and_roundtrip\touter_equation_reconstructed\trhs_type" out)
+    (for ([r records]) (displayln (string-join r "\t") out))))
+(printf "source_formulas=~a explicit_new_formulas=~a typed_rhs_roundtrips=~a df_bi_boolean_cases=~a\n"
+        source-count named-count def-count bi-count)

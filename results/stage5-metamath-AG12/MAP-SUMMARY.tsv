@@ -1,0 +1,13 @@
+metric	count
+map_labels	167
+axioms	80
+definitions	87
+numbered_counterparts	8
+identical	2
+equivalent	6
+no_counterpart	159
+coverage_rows	5757
+registry_only_covered	22
+registry_only_uncovered	5735
+first1000_registry_only_covered	2
+source_registry_checks	3

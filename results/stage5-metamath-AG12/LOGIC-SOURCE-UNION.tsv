@@ -1,0 +1,168 @@
+label	class_free_uses	statement	wff_variables	set_variables	class_variables
+ax-1	5590	|- ( ph -> ( ps -> ph ) )	ph ps		
+ax-10	759	|- ( -. A. x ph -> A. x -. A. x ph )	ph	x	
+ax-11	588	|- ( A. x A. y ph -> A. y A. x ph )	ph	x y	
+ax-12	1070	|- ( x = y -> ( A. y ph -> A. x ( x = y -> ph ) ) )	ph	x y	
+ax-13	380	|- ( -. x = y -> ( y = z -> A. x y = z ) )		x y z	
+ax-1cn	17	|- 1 e. CC			
+ax-1ne0	1	|- 1 =/= 0			
+ax-2	5569	|- ( ( ph -> ( ps -> ch ) ) -> ( ( ph -> ps ) -> ( ph -> ch ) ) )	ph ps ch		
+ax-3	5362	|- ( ( -. ph -> -. ps ) -> ( ps -> ph ) )	ph ps		
+ax-4	2641	|- ( A. x ( ph -> ps ) -> ( A. x ph -> A. x ps ) )	ph ps	x	
+ax-5	2209	|- ( ph -> A. x ph )	ph	x	
+ax-6	2001	|- -. A. x -. x = y		x y	
+ax-7	1929	|- ( x = y -> ( x = z -> y = z ) )		x y z	
+ax-8	497	|- ( x = y -> ( x e. z -> y e. z ) )		x y z	
+ax-9	632	|- ( x = y -> ( z e. x -> z e. y ) )		x y z	
+ax-ac	3	|- E. y A. z A. w ( ( z e. w /\ w e. x ) -> E. v A. u ( E. t ( ( u e. w /\ w e. t ) /\ ( u e. t /\ t e. y ) ) <-> u = v ) )		y z w x v u t	
+ax-addass	3	|- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> ( ( A + B ) + C ) = ( A + ( B + C ) ) )			A B C
+ax-addcl	16	|- ( ( A e. CC /\ B e. CC ) -> ( A + B ) e. CC )			A B
+ax-addrcl	8	|- ( ( A e. RR /\ B e. RR ) -> ( A + B ) e. RR )			A B
+ax-c10	28	|- ( A. x ( x = y -> A. x ph ) -> ph )	ph	x y	
+ax-c11	22	|- ( A. x x = y -> ( A. x ph -> A. y ph ) )	ph	x y	
+ax-c11n	1	|- ( A. x x = y -> A. y y = x )		x y	
+ax-c14	3	|- ( -. A. z z = x -> ( -. A. z z = y -> ( x e. y -> A. z x e. y ) ) )		z x y	
+ax-c15	1	|- ( -. A. x x = y -> ( x = y -> ( ph -> A. x ( x = y -> ph ) ) ) )	ph	x y	
+ax-c16	8	|- ( A. x x = y -> ( ph -> A. x ph ) )	ph	x y	
+ax-c4	36	|- ( A. x ( A. x ph -> ps ) -> ( A. x ph -> A. x ps ) )	ph ps	x	
+ax-c5	42	|- ( A. x ph -> ph )	ph	x	
+ax-c7	43	|- ( -. A. x -. A. x ph -> ph )	ph	x	
+ax-c9	30	|- ( -. A. z z = x -> ( -. A. z z = y -> ( x = y -> A. z x = y ) ) )		z x y	
+ax-cnex	1	|- CC e. _V			
+ax-cnre	5	|- ( A e. CC -> E. x e. RR E. y e. RR A = ( x + ( _i x. y ) ) )		x y	A
+ax-distr	3	|- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> ( A x. ( B + C ) ) = ( ( A x. B ) + ( A x. C ) ) )			A B C
+ax-ext	564	|- ( A. z ( z e. x <-> z e. y ) -> x = y )		z x y	
+ax-frege1	78	|- ( ph -> ( ps -> ph ) )	ph ps		
+ax-frege2	74	|- ( ( ph -> ( ps -> ch ) ) -> ( ( ph -> ps ) -> ( ph -> ch ) ) )	ph ps ch		
+ax-frege28	29	|- ( ( ph -> ps ) -> ( -. ps -> -. ph ) )	ph ps		
+ax-frege31	18	|- ( -. -. ph -> ph )	ph		
+ax-frege41	10	|- ( ph -> -. -. ph )	ph		
+ax-frege52a	10	|- ( ( ph <-> ps ) -> ( if- ( ph , th , ch ) -> if- ( ps , th , ch ) ) )	ph ps th ch		
+ax-frege52c	1	|- ( A = B -> ( [. A / x ]. ph -> [. B / x ]. ph ) )	ph	x	A B
+ax-frege54a	5	|- ( ph <-> ph )	ph		
+ax-frege54c	1	|- A = A			A
+ax-frege58a	11	|- ( ( ps /\ ch ) -> if- ( ph , ps , ch ) )	ps ch ph		
+ax-frege58b	12	|- ( A. x ph -> [ y / x ] ph )	ph	x y	
+ax-frege8	62	|- ( ( ph -> ( ps -> ch ) ) -> ( ps -> ( ph -> ch ) ) )	ph ps ch		
+ax-gen	2675	|- A. x ph	ph	x	
+ax-his1	1	|- ( ( A e. ~H /\ B e. ~H ) -> ( A .ih B ) = ( * ` ( B .ih A ) ) )			A B
+ax-hv0cl	2	|- 0h e. ~H			
+ax-hvaddid	2	|- ( A e. ~H -> ( A +h 0h ) = A )			A
+ax-hvass	1	|- ( ( A e. ~H /\ B e. ~H /\ C e. ~H ) -> ( ( A +h B ) +h C ) = ( A +h ( B +h C ) ) )			A B C
+ax-hvcom	3	|- ( ( A e. ~H /\ B e. ~H ) -> ( A +h B ) = ( B +h A ) )			A B
+ax-hvdistr1	1	|- ( ( A e. CC /\ B e. ~H /\ C e. ~H ) -> ( A .h ( B +h C ) ) = ( ( A .h B ) +h ( A .h C ) ) )			A B C
+ax-hvmulass	1	|- ( ( A e. CC /\ B e. CC /\ C e. ~H ) -> ( ( A x. B ) .h C ) = ( A .h ( B .h C ) ) )			A B C
+ax-i2m1	2	|- ( ( _i x. _i ) + 1 ) = 0			
+ax-icn	4	|- _i e. CC			
+ax-inf	5	|- E. y ( x e. y /\ A. z ( z e. y -> E. w ( z e. w /\ w e. y ) ) )		y x z w	
+ax-inf2	2	|- E. x ( E. y ( y e. x /\ A. z -. z e. y ) /\ A. y ( y e. x -> E. z ( z e. x /\ A. w ( w e. z <-> ( w e. y \/ w = y ) ) ) ) )		x y z w	
+ax-luk1	33	|- ( ( ph -> ps ) -> ( ( ps -> ch ) -> ( ph -> ch ) ) )	ph ps ch		
+ax-luk2	30	|- ( ( -. ph -> ph ) -> ph )	ph		
+ax-luk3	30	|- ( ph -> ( -. ph -> ps ) )	ph ps		
+ax-mp	5703	|- ps	ps		
+ax-mulass	3	|- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> ( ( A x. B ) x. C ) = ( A x. ( B x. C ) ) )			A B C
+ax-mulcl	6	|- ( ( A e. CC /\ B e. CC ) -> ( A x. B ) e. CC )			A B
+ax-mulcom	4	|- ( ( A e. CC /\ B e. CC ) -> ( A x. B ) = ( B x. A ) )			A B
+ax-mulrcl	3	|- ( ( A e. RR /\ B e. RR ) -> ( A x. B ) e. RR )			A B
+ax-nul	21	|- E. x A. y -. y e. x		x y	
+ax-pow	24	|- E. y A. z ( A. w ( w e. z -> w e. x ) -> z e. y )		y z w x	
+ax-pr	10	|- E. z A. w ( ( w = x \/ w = y ) -> w e. z )		z w x y	
+ax-prv1	5	|- Prv ph	ph		
+ax-prv2	5	|- ( Prv ( ph -> ps ) -> ( Prv ph -> Prv ps ) )	ph ps		
+ax-prv3	3	|- ( Prv ph -> Prv Prv ph )	ph		
+ax-reg	34	|- ( E. y y e. x -> E. y ( y e. x /\ A. z ( z e. y -> -. z e. x ) ) )		y x z	
+ax-regs	2	|- ( E. x ph -> E. y ( A. x ( x = y -> ph ) /\ A. z ( z e. y -> -. A. x ( x = z -> ph ) ) ) )	ph	x y z	
+ax-rep	25	|- ( A. w E. y A. z ( A. y ph -> z = y ) -> E. y A. z ( z e. y <-> E. w ( w e. x /\ A. y ph ) ) )	ph	w y z x	
+ax-resscn	5	|- RR C_ CC			
+ax-rnegex	5	|- ( A e. RR -> E. x e. RR ( A + x ) = 0 )		x	A
+ax-sep	49	|- E. y A. x ( x e. y <-> ( x e. z /\ ph ) )	ph	y x z	
+ax-tco	7	|- E. y ( x e. y /\ A. z ( z e. y -> A. w ( w e. z -> w e. y ) ) )		y x z w	
+ax-un	2	|- E. y A. z ( E. w ( z e. w /\ w e. x ) -> z e. y )		y z w x	
+ax-wl-13v	1	|- ( -. A. x x = y -> ( y = z -> A. x y = z ) )		x y z	
+df-2	12	|- 2 = ( 1 + 1 )			
+df-2reu	4	|- ( E! x e. A , y e. B ph <-> ( E! x e. A E. y e. B ph /\ E! y e. B E. x e. A ph ) )	ph	x y	A B
+df-3	8	|- 3 = ( 2 + 1 )			
+df-3an	716	|- ( ( ph /\ ps /\ ch ) <-> ( ( ph /\ ps ) /\ ch ) )	ph ps ch		
+df-3nand	3	|- ( ( ph -/\ ps -/\ ch ) <-> ( ph -> ( ps -> -. ch ) ) )	ph ps ch		
+df-3or	84	|- ( ( ph \/ ps \/ ch ) <-> ( ( ph \/ ps ) \/ ch ) )	ph ps ch		
+df-4	7	|- 4 = ( 3 + 1 )			
+df-5	6	|- 5 = ( 4 + 1 )			
+df-6	5	|- 6 = ( 5 + 1 )			
+df-7	4	|- 7 = ( 6 + 1 )			
+df-8	3	|- 8 = ( 7 + 1 )			
+df-9	2	|- 9 = ( 8 + 1 )			
+df-adjliftmap	1	|- ( R AdjLiftMap A ) = QMap ( ( R u. `' _E ) |` A )			R A
+df-als	14	|- ( AE x ( ph -> ps ) <-> ( A. x ( ph -> ps ) /\ E. x ph ) )	ph ps	x	
+df-alseu	10	|- ( AE! x ( ph -> ps ) <-> ( A. x ( ph -> ps ) /\ E! x ph ) )	ph ps	x	
+df-an	3977	|- ( ( ph /\ ps ) <-> -. ( ph -> -. ps ) )	ph ps		
+df-bi	5177	|- -. ( ( ( ph <-> ps ) -> -. ( ( ph -> ps ) -> -. ( ps -> ph ) ) ) -> -. ( -. ( ( ph -> ps ) -> -. ( ps -> ph ) ) -> ( ph <-> ps ) ) )	ph ps		
+df-bj-nnf	61	|- ( F// x ph <-> ( ( E. x ph -> ph ) /\ ( ph -> A. x ph ) ) )	ph	x	
+df-blockliftmap	1	|- ( R BlockLiftMap A ) = QMap ( R |X. ( `' _E |` A ) )			R A
+df-bnj13	1	|- ( R _Se A <-> A. x e. A _pred ( x , A , R ) e. _V )		x	R A
+df-bnj15	2	|- ( R _FrSe A <-> ( R Fr A /\ R _Se A ) )			R A
+df-bnj17	44	|- ( ( ph /\ ps /\ ch /\ th ) <-> ( ( ph /\ ps /\ ch ) /\ th ) )	ph ps ch th		
+df-bnj19	1	|- ( _TrFo ( B , A , R ) <-> A. x e. B _pred ( x , A , R ) C_ B )		x	B A R
+df-br	19	|- ( A R B <-> <. A , B >. e. R )			A R B
+df-cad	18	|- ( cadd ( ph , ps , ch ) <-> ( ( ph /\ ps ) \/ ( ch /\ ( ph \/_ ps ) ) ) )	ph ps ch		
+df-cdeq	12	|- ( CondEq ( x = y -> ph ) <-> ( x = y -> ph ) )	ph	x y	
+df-clel	424	|- ( A e. B <-> E. x ( x = A /\ x e. B ) )		x	A B
+df-cleq	550	|- ( A = B <-> A. x ( x e. A <-> x e. B ) )		x	A B
+df-disj	22	|- ( Disj_ x e. A B <-> A. y E* x e. A y e. B )		x y	A B
+df-disjALTV	1	|- ( Disj R <-> ( CnvRefRel ,~ `' R /\ Rel R ) )			R
+df-dmqs	3	|- ( R DomainQs A <-> ( dom R /. R ) = A )			R A
+df-eqvrel	3	|- ( EqvRel R <-> ( RefRel R /\ SymRel R /\ TrRel R ) )			R
+df-er	3	|- ( R Er A <-> ( Rel R /\ dom R = A /\ ( `' R u. ( R o. R ) ) C_ R ) )			R A
+df-erALTV	1	|- ( R ErALTV A <-> ( EqvRel R /\ R DomainQs A ) )			R A
+df-eu	188	|- ( E! x ph <-> ( E. x ph /\ E* x ph ) )	ph	x	
+df-ex	2456	|- ( E. x ph <-> -. A. x -. ph )	ph	x	
+df-f	69	|- ( F : A --> B <-> ( F Fn A /\ ran F C_ B ) )			F A B
+df-f1	32	|- ( F : A -1-1-> B <-> ( F : A --> B /\ Fun `' F ) )			F A B
+df-f1o	22	|- ( F : A -1-1-onto-> B <-> ( F : A -1-1-> B /\ F : A -onto-> B ) )			F A B
+df-fal	137	|- ( F. <-> -. T. )			
+df-fn	54	|- ( A Fn B <-> ( Fun A /\ dom A = B ) )			A B
+df-fo	25	|- ( F : A -onto-> B <-> ( F Fn A /\ ran F = B ) )			F A B
+df-fr	9	|- ( R Fr A <-> A. x ( ( x C_ A /\ x =/= (/) ) -> E. y e. x A. z e. x -. z R y ) )		x y z	R A
+df-fun	7	|- ( Fun A <-> ( Rel A /\ ( A o. `' A ) C_ _I ) )			A
+df-had	28	|- ( hadd ( ph , ps , ch ) <-> ( ( ph \/_ ps ) \/_ ch ) )	ph ps ch		
+df-ich	22	|- ( [ x <> y ] ph <-> A. x A. y ( [ x / a ] [ y / x ] [ a / y ] ph <-> ph ) )	ph	x y a	
+df-ifp	137	|- ( if- ( ph , ps , ch ) <-> ( ( ph /\ ps ) \/ ( -. ph /\ ch ) ) )	ph ps ch		
+df-isom	5	|- ( H Isom R , S ( A , B ) <-> ( H : A -1-1-onto-> B /\ A. x e. A A. y e. A ( x R y <-> ( H ` x ) S ( H ` y ) ) ) )		x y	H R S A B
+df-lim	2	|- ( Lim A <-> ( Ord A /\ A =/= (/) /\ A = U. A ) )			A
+df-mo	305	|- ( E* x ph <-> E. y A. x ( ph -> x = y ) )	ph	x y	
+df-nan	75	|- ( ( ph -/\ ps ) <-> -. ( ph /\ ps ) )	ph ps		
+df-ne	143	|- ( A =/= B <-> -. A = B )			A B
+df-nel	15	|- ( A e/ B <-> -. A e. B )			A B
+df-nf	1007	|- ( F/ x ph <-> ( E. x ph -> A. x ph ) )	ph	x	
+df-nfc	185	|- ( F/_ x A <-> A. y F/ x y e. A )		x y	A
+df-nor	11	|- ( ( ph -\/ ps ) <-> -. ( ph \/ ps ) )	ph ps		
+df-or	1293	|- ( ( ph \/ ps ) <-> ( -. ph -> ps ) )	ph ps		
+df-ord	5	|- ( Ord A <-> ( Tr A /\ _E We A ) )			A
+df-part	2	|- ( R Part A <-> ( Disj R /\ R DomainQs A ) )			R A
+df-po	15	|- ( R Po A <-> A. x e. A A. y e. A A. z e. A ( -. x R x /\ ( ( x R y /\ y R z ) -> x R z ) ) )		x y z	R A
+df-pprod	1	|- pprod ( A , B ) = ( ( A o. ( 1st |` ( _V X. _V ) ) ) (x) ( B o. ( 2nd |` ( _V X. _V ) ) ) )			A B
+df-pss	31	|- ( A C. B <-> ( A C_ B /\ A =/= B ) )			A B
+df-qmap	2	|- QMap R = ( x e. dom R |-> [ x ] R )		x	R
+df-ral	388	|- ( A. x e. A ph <-> A. x ( x e. A -> ph ) )	ph	x	A
+df-rals	12	|- ( AE x e. A ( ph -> ps ) <-> ( A. x e. A ( ph -> ps ) /\ E. x e. A ph ) )	ph ps	x	A
+df-ralseu	7	|- ( AE! x e. A ( ph -> ps ) <-> ( A. x e. A ( ph -> ps ) /\ E! x e. A ph ) )	ph ps	x	A
+df-redundp	2	|- ( redund ( ph , ps , ch ) <-> ( ( ph -> ps ) /\ ( ( ph /\ ch ) <-> ( ps /\ ch ) ) ) )	ph ps ch		
+df-rel	5	|- ( Rel A <-> A C_ ( _V X. _V ) )			A
+df-relp	5	|- ( H RelPres R , S ( A , B ) <-> ( H : A --> B /\ A. x e. A A. y e. A ( x R y -> ( H ` x ) S ( H ` y ) ) ) )		x y	H R S A B
+df-reu	80	|- ( E! x e. A ph <-> E! x ( x e. A /\ ph ) )	ph	x	A
+df-rex	292	|- ( E. x e. A ph <-> E. x ( x e. A /\ ph ) )	ph	x	A
+df-rmo	108	|- ( E* x e. A ph <-> E* x ( x e. A /\ ph ) )	ph	x	A
+df-rn	1	|- ran A = dom `' A			A
+df-sb	360	|- ( [ t / x ] ph <-> A. y ( y = t -> A. x ( x = y -> ph ) ) )	ph	t x y	
+df-smo	1	|- ( Smo A <-> ( A : dom A --> On /\ Ord dom A /\ A. x e. dom A A. y e. dom A ( x e. y -> ( A ` x ) e. ( A ` y ) ) ) )		x y	A
+df-so	12	|- ( R Or A <-> ( R Po A /\ A. x e. A A. y e. A ( x R y \/ x = y \/ y R x ) ) )		x y	R A
+df-ss	209	|- ( A C_ B <-> A. x ( x e. A -> x e. B ) )		x	A B
+df-tr	1	|- ( Tr A <-> U. A C_ A )			A
+df-tru	585	|- ( T. <-> ( A. x x = x -> A. x x = x ) )		x	
+df-txp	1	|- ( A (x) B ) = ( ( `' ( 1st |` ( _V X. _V ) ) o. A ) i^i ( `' ( 2nd |` ( _V X. _V ) ) o. B ) )			A B
+df-vd1	98	|- ( (. ph ->. ps ). <-> ( ph -> ps ) )	ph ps		
+df-vd2	74	|- ( (. ph ,. ps ->. ch ). <-> ( ( ph /\ ps ) -> ch ) )	ph ps ch		
+df-vd3	37	|- ( (. ph ,. ps ,. ch ->. th ). <-> ( ( ph /\ ps /\ ch ) -> th ) )	ph ps ch th		
+df-vhc2	12	|- ( (. ph ,. ps ). <-> ( ph /\ ps ) )	ph ps		
+df-vhc3	6	|- ( (. ph ,. ps ,. ch ). <-> ( ph /\ ps /\ ch ) )	ph ps ch		
+df-we	8	|- ( R We A <-> ( R Fr A /\ R Or A ) )			R A
+df-xor	103	|- ( ( ph \/_ ps ) <-> -. ( ph <-> ps ) )	ph ps		

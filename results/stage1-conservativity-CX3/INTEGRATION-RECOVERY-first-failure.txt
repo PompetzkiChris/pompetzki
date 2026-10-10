@@ -1,0 +1,3 @@
+Command: racket write-integration-recovery-1.rkt
+Exit: 1
+Observed error: write-integration-recovery-1.rkt:55:25: read-syntax: illegal alphabetic escape in the exit-code regexp. No integration output was created by this failed parse. The source is retained; write-integration-recovery-2.rkt uses the Racket carriage-return string escape in the regexp.

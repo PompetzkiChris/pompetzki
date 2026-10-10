@@ -1,0 +1,73 @@
+==== run 2026-10-09 18:55:40  checks.pmp ====
+2: load matrix A C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_A.txt
+3: load matrix K C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_K.txt
+4: load matrix Minor C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_minor.txt
+5: load matrix GR C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_gpu_rank.txt
+6: let AK compose A K
+7: claim zero AK "A K is the zero matrix"
+claim by rule zero: A K is the zero matrix
+8: established
+established by rule zero A K is the zero matrix  -- checks passed inside it: 0, lines 7-8
+9: let md det Minor
+10: claim nonzero md "leading minor determinant is nonzero"
+claim by rule nonzero: leading minor determinant is nonzero
+11: established
+established by rule nonzero leading minor determinant is nonzero  -- checks passed inside it: 0, lines 10-11
+12: let r rank A
+13: let nul nullity A
+14: let c cols A
+15: let rn add r nul
+16: claim equal rn c "rank plus nullity equals the number of columns"
+claim by rule equal: rank plus nullity equals the number of columns
+17: established
+established by rule equal rank plus nullity equals the number of columns  -- checks passed inside it: 0, lines 16-17
+18: claim equal r GR "exact rank equals the GPU rank"
+claim by rule equal: exact rank equals the GPU rank
+19: established
+established by rule equal exact rank equals the GPU rank  -- checks passed inside it: 0, lines 18-19
+20: load matrix Tm C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmpT_A.txt
+21: let dt det Tm
+22: let one identity 1
+23: claim equal dt one "unit triangular determinant is 1"
+claim by rule equal: unit triangular determinant is 1
+24: established
+established by rule equal unit triangular determinant is 1  -- checks passed inside it: 0, lines 23-24
+25: load matrix S C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_smith_S.txt
+26: load matrix U C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_smith_U.txt
+27: load matrix V C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_smith_V.txt
+28: load matrix D C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_smith_D.txt
+29: let SV compose S V
+30: let USV compose U SV
+31: let Diff sub USV D
+32: claim zero Diff "U S V equals the Smith form"
+claim by rule zero: U S V equals the Smith form
+33: established
+established by rule zero U S V equals the Smith form  -- checks passed inside it: 0, lines 32-33
+34: let du det U
+35: let du2 compose du du
+36: claim equal du2 one "determinant of U is plus or minus one"
+claim by rule equal: determinant of U is plus or minus one
+37: established
+established by rule equal determinant of U is plus or minus one  -- checks passed inside it: 0, lines 36-37
+38: let dv det V
+39: let dv2 compose dv dv
+40: claim equal dv2 one "determinant of V is plus or minus one"
+claim by rule equal: determinant of V is plus or minus one
+41: established
+established by rule equal determinant of V is plus or minus one  -- checks passed inside it: 0, lines 40-41
+42: say "l8g checks passed"
+certificate: program checks.pmp  sha256 d56f97bef0ab41652f025b3ae46bfe699842cb539d411d588bbfa570c72f61aa
+certificate: interpreter C:\ClaudeOutput\pompetzki\pompetzki.exe  sha256 ccf835920e566b8a45468654798fb9577a261cfec171a707e0438696515a3bec
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_A.txt  sha256 a05bcb4a3d9bd4ea0f959f41390096e75e4137e8759db157ba205ee29e0aac4d
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_K.txt  sha256 ead25bf61aeeca0cee2db8b6e406ce9ba14fe6e6f75431e72aab58b8a3a4f881
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_minor.txt  sha256 fee5ad0d6167969e9f8289327ab0370eaa7151b78a0fb890f6032d326004c52a
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_gpu_rank.txt  sha256 7c468f5e59f2871b946e051445493bbcace531d597edbbcc9935e7d02d025114
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmpT_A.txt  sha256 7c9e4a493963a2caf19f5bb13c9ceec1325b8650f8a4ad42eb806f19ed88558f
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_smith_S.txt  sha256 416c19bd50a52f3d158f5556935ec8f314ddd4d1eea75996a10a067a516c2a07
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_smith_U.txt  sha256 8ff4ffbebbf70fca56c636c732e6be229ef356bd27cc8d741e2d442603c08444
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_smith_V.txt  sha256 1cc2c58a51ad6c6562823dabe80c9f61a9a63f708f45e9524f34ec62feae0683
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_smith_D.txt  sha256 e36c590f31213bdc5ceff704cb32c92a10a3113f52b659496aa3d7bb9bdb3008
+certificate: claims established by rule 8 of 8; annotations closed 0 of 0
+certificate: statements executed 42, checks passed 0, records written 0
+certificate: rational operations 1084, largest integer at most 2 x 64 bits
+end: every obligation discharged

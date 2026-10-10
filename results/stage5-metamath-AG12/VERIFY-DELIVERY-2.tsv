@@ -1,0 +1,8 @@
+check	count	result
+original_bytes_and_mtimes_unchanged	59	PASS
+coverage_rows	5757	PASS
+blocker_rows	77	PASS
+two_judge_ACCEPT_files	10	PASS
+two_judge_runs	20	PASS
+sample_steps	12	PASS
+new_files_word_rule	100	PASS

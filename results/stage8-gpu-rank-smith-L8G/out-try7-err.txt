@@ -1,0 +1,15 @@
+device cc 12 0
+snf known246 3 3
+snf known246 ok signU 1 signV 1 bitsU 3 bitsV 3
+snf smith4x6 4 6
+snf smith4x6 ok signU 1 signV 1 bitsU 10 bitsV 5
+snf smith6x8 6 8
+snf smith6x8 ok signU -1 signV -1 bitsU 12 bitsV 7
+snf smith8x8 8 8
+snf smith8x8 ok signU 1 signV -1 bitsU 24 bitsV 13
+case rn6x8 m 6 n 8 r 4
+pivot disagree col 0 prime 1 rankp 0 rank0 1 pc 0 row 0 hpiv0 0 hpiv 0
+prime 1 col 0 nonzeros 5 first 0
+first normal 4611686018427388072 raw 676
+ge rn6x8 rc 38
+rc 1038

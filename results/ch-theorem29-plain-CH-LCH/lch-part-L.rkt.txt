@@ -1,0 +1,54 @@
+;; ======================================================================== lane LCH round 2: the constructible universe
+;; O0. The class L as one formula over the ZB_BASE symbols (all of them unfold by Pure.pi to the pure language):
+;;   Gödel's operations (Jech, Set Theory, 13.7; triples (u,v,w) = ((u,v),w)):
+;;     G1 {a,b}   G2 a x b   G3 {t in a : t = (u,v), u in v}   G4 a - b   G5 a n b   G6 U a   G7 dom a
+;;     G8 {(u,v) : (v,u) in a}   G9 {(u,v,w) : (u,w,v) in a}   G10 {(u,v,w) : (v,w,u) in a}
+;;   Clo(C): C is closed under G1..G10.
+;;   D(A) = {X subset of A : X in every C with Clo(C), A subset of C, A in C} = cl(A u {A}) n P(A)   (Jech 13.8: = def(A))
+;;   Lev(s): s is a function, total on an ordinal d, every argument of s is in d, and
+;;           s(b) = D(U_b) with U_b = the union of s(g) for g in b
+;;   L(x):   some Lev(s) has x in one of its values.         VL: forall x L(x).
+;; With M_b = s(b) one has M_b = L_(b+1) of the usual hierarchy, so the union is L.
+(define (fs b) (fresh-sym b))
+(define (BM s b z)                       ; z in U_b
+  (let ([g (fs 'g)] [w (fs 'w)]) `(ex ,g (and (in ,g ,b) (ex ,w (and (pr App ,s ,g ,w) (in ,z ,w)))))))
+(define (trip t u v w) (let ([p (fs 'p)]) `(ex ,p (and (pr Opr ,p ,u ,v) (pr Opr ,t ,p ,w)))))
+(define (Gop i z a b)
+  (define t (fs 't)) (define u (fs 'u)) (define v (fs 'v)) (define w (fs 'w)) (define q (fs 'q)) (define y (fs 'y))
+  (case i
+    [(1) `(pr Upr ,z ,a ,b)]
+    [(2) `(all ,t (iff (in ,t ,z) (ex ,u (ex ,v (and (in ,u ,a) (in ,v ,b) (pr Opr ,t ,u ,v))))))]
+    [(3) `(all ,t (iff (in ,t ,z) (and (in ,t ,a) (ex ,u (ex ,v (and (pr Opr ,t ,u ,v) (in ,u ,v)))))))]
+    [(4) `(all ,t (iff (in ,t ,z) (and (in ,t ,a) (not (in ,t ,b)))))]
+    [(5) `(all ,t (iff (in ,t ,z) (and (in ,t ,a) (in ,t ,b))))]
+    [(6) `(all ,t (iff (in ,t ,z) (ex ,y (and (in ,y ,a) (in ,t ,y)))))]
+    [(7) `(all ,t (iff (in ,t ,z) (ex ,v (ex ,q (and (in ,q ,a) (pr Opr ,q ,t ,v))))))]
+    [(8) `(all ,t (iff (in ,t ,z) (ex ,u (ex ,v (and (pr Opr ,t ,u ,v) (ex ,q (and (in ,q ,a) (pr Opr ,q ,v ,u))))))))]
+    [(9) `(all ,t (iff (in ,t ,z) (ex ,u (ex ,v (ex ,w (and ,(trip t u v w) (ex ,q (and (in ,q ,a) ,(trip q u w v)))))))))]
+    [(10) `(all ,t (iff (in ,t ,z) (ex ,u (ex ,v (ex ,w (and ,(trip t u v w) (ex ,q (and (in ,q ,a) ,(trip q v w u)))))))))]))
+(define (bal xs)                          ; balanced conjunction, to keep the formula shallow
+  (cond [(null? (cdr xs)) (car xs)]
+        [else (let-values ([(l r) (split-at xs (quotient (length xs) 2))]) `(and ,(bal l) ,(bal r)))]))
+(define (Clo C)
+  (define a (fs 'a)) (define b (fs 'b))
+  `(all ,a (all ,b (imp (in ,a ,C) (imp (in ,b ,C)
+     ,(bal (for/list ([i (in-range 1 11)]) (let ([z (fs 'z)]) `(ex ,z (and (in ,z ,C) ,(Gop i z a b)))))))))))
+(define (Step s b v)
+  (define X (fs 'X)) (define z (fs 'z)) (define C (fs 'C)) (define u (fs 'u)) (define z2 (fs 'z)) (define z3 (fs 'z))
+  `(all ,X (iff (in ,X ,v)
+                (and (all ,z (imp (in ,z ,X) ,(BM s b z)))
+                     (all ,C (imp ,(Clo C) (imp (all ,z2 (imp ,(BM s b z2) (in ,z2 ,C)))
+                                                (imp (ex ,u (and (in ,u ,C) (all ,z3 (iff (in ,z3 ,u) ,(BM s b z3)))))
+                                                     (in ,X ,C)))))))))
+(define (Lev s)
+  (define d (fs 'd)) (define b (fs 'b)) (define v (fs 'v))
+  `(and (pr Fnc ,s) (ex ,d (and (pr Ord ,d) (pr Tot ,s ,d)
+                                (all ,b (all ,v (imp (pr App ,s ,b ,v) (and (in ,b ,d) ,(Step s b v)))))))))
+(define (Ldsl x)
+  (define s (fs 's)) (define b (fs 'b)) (define v (fs 'v))
+  `(ex ,s (and ,(Lev s) (ex ,b (ex ,v (and (pr App ,s ,b ,v) (in ,x ,v)))))))
+;; the class formula, variable 0 free, and V = L
+(define (LF) (c (Ldsl 0)))
+(define (VLF) (c (let ([x (fs 'x)]) `(all ,x ,(Ldsl x)))))
+(define (fdepth f)
+  (match f [(list (or 'E 'Q 'P) _ _) 1] [(list (or 'N 'A) a) (add1 (fdepth a))] [(list 'I a b) (add1 (max (fdepth a) (fdepth b)))]))

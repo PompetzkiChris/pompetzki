@@ -1,0 +1,11 @@
+metric	count
+assertions	50912
+cohort	5757
+decoded_class_free_all	5757
+decoded_class_free_cohort	5757
+cohort_dependency_mismatches	0
+unused_compressed_table_assertions	0
+relevant_labels	167
+relevant_axioms	80
+relevant_definitions	87
+additional_decoded_class_free	0

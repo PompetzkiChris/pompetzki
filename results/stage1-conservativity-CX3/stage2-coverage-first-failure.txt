@@ -1,0 +1,5 @@
+Initial coverage invocation failed before any receipt write.
+Command: racket stage2-coverage.rkt stage2-coverage-receipt.txt
+Error: stage2-coverage.rkt:123:30: file-name-from-path: unbound identifier
+Correction: stage2-coverage2.rkt imports racket/path. Initial source remains.
+Recorded from date.exe: 2026-10-09T18:05:14-04:00

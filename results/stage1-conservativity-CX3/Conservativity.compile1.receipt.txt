@@ -1,0 +1,7 @@
+command: "C:/ClaudeOutput/formalization-toolchain-20260924/tools/Rocq-Platform-2026.07.0-9.1/bin\\coqc.exe"
+arguments: ("-Q" "C:/ClaudeOutput/pompetzki/forcing-src/general" "Cohen" "-Q" "C:/ClaudeOutput/pompetzki/forcing-src/codex-judge-link-20261009" "JudgeLink" "-Q" "C:\\ClaudeOutput\\pompetzki\\lanes\\CX3\\" "CX3" "Conservativity.v")
+cwd: C:\ClaudeOutput\pompetzki\lanes\CX3\
+start-date: 2026-10-09T18:01:51-0400
+end-date: 2026-10-09T18:01:52-0400
+elapsed-whole-seconds: 1
+exit-code: 1

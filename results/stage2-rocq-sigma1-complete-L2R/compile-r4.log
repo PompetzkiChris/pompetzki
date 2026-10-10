@@ -1,0 +1,15 @@
+Fri Oct  9 20:25:24 EDT 2026
+coqc -R /c/ClaudeOutput/pompetzki/forcing-src/general Cohen -R /c/ClaudeOutput/pompetzki/lanes/LCH/rocq LCH -R /c/ClaudeOutput/pompetzki/lanes/L2R L2R L2RGoedelD0r4.v
+File "C:/ClaudeOutput/pompetzki/lanes/L2R/L2RGoedelD0r4.v", line 7, characters 0-57:
+Error:
+Error when parsing .vo (from file C:\ClaudeOutput\pompetzki\lanes\L2R\L2RDef.vo) for library L2R.L2RDef: C:\ClaudeOutput\pompetzki\lanes\L2R\L2RDef.vo: premature end of file. Try to rebuild it.
+
+exit 1
+Fri Oct  9 20:25:34 EDT 2026
+coqc -R /c/ClaudeOutput/pompetzki/forcing-src/general Cohen -R /c/ClaudeOutput/pompetzki/lanes/LCH/rocq LCH -R /c/ClaudeOutput/pompetzki/lanes/L2R L2R PrintAx4r4.v
+File "C:/ClaudeOutput/pompetzki/lanes/L2R/PrintAx4r4.v", line 1, characters 57-70:
+Error: Unable to locate library
+L2RGoedelD0r4 with prefix L2R (while searching for a .vos file).
+
+exit 1
+Fri Oct  9 20:25:37 EDT 2026

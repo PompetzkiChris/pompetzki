@@ -1,0 +1,4 @@
+C:/ClaudeOutput/pompetzki/lanes/L7/out-r4/L7-5-farkas-cyc.jdg | pmp ACCEPT exit 0 581428 ms | racket ACCEPT exit 0 2843 ms | pmp: ACCEPT registry entries at the start, theorems accepted, steps checked, registry entries at the end: 677 293 6620 970 | racket: ACCEPT registry 677 theorems 293 steps 6620 final-registry 970
+C:/ClaudeOutput/pompetzki/lanes/L7/out-r4/mut/L7-5-farkas-cyc-taut-goal.jdg | pmp REJECT exit 1 1358 ms | racket REJECT exit 1 619 ms | pmp: REJECT taut: not a tautology theorem and step (counted from 0): 14 9 line 340: check zero failed: not the zero vector | racket: REJECT theorem 14 step 9 (step T)
+C:/ClaudeOutput/pompetzki/lanes/L7/out-r4/mut/L7-5-farkas-cyc-mp-swap.jdg | pmp REJECT exit 1 1846 ms | racket REJECT exit 1 435 ms | pmp: REJECT mp: the second line is not an implication theorem and step (counted from 0): 20 42 line 340: check zero failed: not the zero vector | racket: REJECT theorem 20 step 42 (step M)
+exit 0

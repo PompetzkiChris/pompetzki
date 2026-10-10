@@ -1,0 +1,6 @@
+L2R round 2 status, 2026-10-09 20:33:43 EDT (from date)
+O8 LSEP Mf: REDUCED to STR, SSUB, SIN, SCOV, GREFL, DSEP0 (lsep_from_grefl_dsep0). Not discharged.
+O9 LCOLL Mf: REDUCED to STR, SSUB, SIN, SCOV, GREFL (lcoll_from_grefl). Not discharged.
+goedel_final_red_d0 (L2RGoedelD0R4b.v): kernel-checked, coqchk-r4b.log Axioms: <none>, exit 0, 20:30:56-20:33:36.
+OPEN: GREFL, DSEP0, STR, SSUB, SIN, SCOV (all need O0, the definition of Mf and Lev).
+L2RDef.vo is cut by the 19:30 outage (641 of 26610 bytes non-NUL); kept in place; L2RDefR4 replaces it.

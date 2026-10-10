@@ -1,0 +1,1 @@
+ACCEPT registry 0 theorems 1 steps 3 final-registry 1

@@ -1,0 +1,117 @@
+lsep_from_levels
+     : forall M : Syn.form,
+       Ax.closedk 1 M = true ->
+       forall Lev : Syn.form,
+       Ax.closedk 1 Lev = true ->
+       Prov.prov Elim.ZFpure (STR Lev) ->
+       (forall (g : Syn.form) (n : nat),
+        Syn.syms g = nil ->
+        Ax.closedk (S (S n)) g = true -> REFLsep M Lev g n) ->
+       (forall (g : Syn.form) (n : nat),
+        Syn.syms g = nil -> Ax.closedk (S (S n)) g = true -> DEFsep M Lev g n) ->
+       LSEP M
+Closed under the global context
+lcoll_from_levels
+     : forall M : Syn.form,
+       Ax.closedk 1 M = true ->
+       forall Lev : Syn.form,
+       Ax.closedk 1 Lev = true ->
+       Prov.prov Elim.ZFpure (STR Lev) ->
+       Prov.prov Elim.ZFpure (SSUB M Lev) ->
+       Prov.prov Elim.ZFpure (SIN M Lev) ->
+       (forall (g : Syn.form) (n : nat),
+        Syn.syms g = nil ->
+        Ax.closedk (S (S (S n))) g = true -> REFLcoll M Lev g n) ->
+       LCOLL M
+Closed under the global context
+REFLsep =
+fun (M Lev g : Syn.form) (n : nat) =>
+Prov.prov Elim.ZFpure
+  (Rel2.chain (Rel2.G M (S n))
+     (Syn.Xf
+        (Syn.Kf (Syn.Kf Lev (Syn.Mem 1 0))
+           (Syn.All
+              (Syn.Imp (Syn.Mem 0 1)
+                 (Syn.Qf (Rel2.rel M (Syn.ren sigS g))
+                    (relU 1 (Syn.ren sigS g))))))))
+     : Syn.form -> Syn.form -> Syn.form -> nat -> Prop
+
+Arguments REFLsep M Lev g n%_nat_scope
+DEFsep =
+fun (M Lev g : Syn.form) (n : nat) =>
+Prov.prov Elim.ZFpure
+  (Rel2.chain (Rel2.G M (S n))
+     (Syn.All
+        (Syn.Imp Lev
+           (Syn.Imp (Syn.Mem 1 0)
+              (Syn.Xf
+                 (Syn.Kf M
+                    (Syn.All
+                       (Syn.Qf (Syn.Mem 0 1)
+                          (Syn.Kf (Syn.Mem 0 3) (relU 2 (Syn.ren sigD g)))))))))))
+     : Syn.form -> Syn.form -> Syn.form -> nat -> Prop
+
+Arguments DEFsep M Lev g n%_nat_scope
+REFLcoll =
+fun (M Lev g : Syn.form) (n : nat) =>
+Prov.prov Elim.ZFpure
+  (Rel2.chain (Rel2.G M (S n))
+     (Syn.Xf
+        (Syn.Kf
+           (Syn.Kf (Syn.Kf Lev (Syn.Mem 1 0))
+              (Syn.All
+                 (Syn.Imp (Syn.Mem 0 1)
+                    (Syn.All
+                       (Syn.Imp (Syn.Mem 0 2)
+                          (Syn.Qf (Rel2.rel M (Syn.ren sig2 g))
+                             (relU 2 (Syn.ren sig2 g))))))))
+           (Syn.All
+              (Syn.Imp (Syn.Mem 0 1)
+                 (Syn.Qf (Rel2.rel M (Syn.Xf (Syn.ren sig2 g)))
+                    (relU 1 (Syn.Xf (Syn.ren sig2 g)))))))))
+     : Syn.form -> Syn.form -> Syn.form -> nat -> Prop
+
+Arguments REFLcoll M Lev g n%_nat_scope
+STR =
+fun Lev : Syn.form =>
+Syn.All
+  (Syn.Imp Lev
+     (Syn.All
+        (Syn.Imp (Syn.Mem 0 1)
+           (Syn.All (Syn.Imp (Syn.Mem 0 1) (Syn.Mem 0 2))))))
+     : Syn.form -> Syn.form
+
+Arguments STR Lev
+SSUB =
+fun M Lev : Syn.form =>
+Syn.All (Syn.Imp Lev (Syn.All (Syn.Imp (Syn.Mem 0 1) M)))
+     : Syn.form -> Syn.form -> Syn.form
+
+Arguments SSUB M Lev
+SIN =
+fun M Lev : Syn.form => Syn.All (Syn.Imp Lev M)
+     : Syn.form -> Syn.form -> Syn.form
+
+Arguments SIN M Lev
+LSEP =
+fun M : Syn.form =>
+forall g : Syn.form,
+Syn.syms g = nil ->
+forall n : nat,
+1 <= n ->
+Ax.closedk n (Checks.SepF g) = true ->
+Prov.prov Elim.ZFpure (Rel2.chain (Rel2.G M n) (Rel2.rel M (Checks.SepF g)))
+     : Syn.form -> Prop
+
+Arguments LSEP M
+LCOLL =
+fun M : Syn.form =>
+forall g : Syn.form,
+Syn.syms g = nil ->
+forall n : nat,
+1 <= n ->
+Ax.closedk n (Checks.CollF g) = true ->
+Prov.prov Elim.ZFpure (Rel2.chain (Rel2.G M n) (Rel2.rel M (Checks.CollF g)))
+     : Syn.form -> Prop
+
+Arguments LCOLL M

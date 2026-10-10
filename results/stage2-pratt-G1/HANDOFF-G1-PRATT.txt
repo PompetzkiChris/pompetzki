@@ -1,0 +1,13 @@
+Role G1-pratt. Clock end 2026-10-09 20:44:07 -04:00. Deadline 21:22:36.
+Corpus directory C:/ClaudeOutput/pompetzki/lanes/G1-pratt/corpus. INDEX.tsv rows 78511. Columns p, path, sha256. No header. CORPUS.tsv adds bytes, depth, gen_ms, check_ms.
+Certificate bytes sum 18983091. Checker accepted 78511 corpus certificates and rejected 0.
+Consumer command, absolute paths: "C:/Program Files/Racket/racket.exe" "C:/ClaudeOutput/pompetzki/lanes/L2D/certs-v3.rkt" emit CERT.sexp OUT.jdg
+Judges, working directory C:/ClaudeOutput/pompetzki/judge: C:/ClaudeOutput/pompetzki/pompetzki.exe judge-v3.pmp FILE and "C:/Program Files/Racket/racket.exe" racket/judge.rkt FILE.
+Completed dual accepts, not rerun: C:/ClaudeOutput/pompetzki/lanes/L2D/certs/judge-run-1-G2.txt records pmp ACCEPT and racket ACCEPT for certs/out2/pratt-7.jdg and certs/out2/pratt-13.jdg. C:/ClaudeOutput/pompetzki/lanes/L2D/certs/judge-run-1-G3.txt records pmp ACCEPT and racket ACCEPT for certs/out2/pratt-23.jdg.
+Generated corpus/7.sexp, corpus/13.sexp and corpus/23.sexp match those L2D input sexps, including the final line feed. Matched samples 3.
+Prime 2 certificate is (pratt 2 1 ()). The L2D emitter applies car to the factor list, so the empty list is outside that emitter. This corpus still contains corpus/2.sexp and the independent checker accepts it.
+Composite 4033 = 37*109. phi = 3888. mr-core false. mr-prime? false. Checker reason witness-residue. File neg/comp/4033.sexp.
+Carmichael numbers below 10^6: 43. Mutations 1000, checker accepted 0. Reason counts are in neg-mutations.tsv.
+2^64 = 18446744073709551616. Deterministic Miller-Rabin applies only below that bound. 2^89-1 = 618970019642690137449562111 is the corpus prime at or above the bound.
+L8A file C:/ClaudeOutput/pompetzki/lanes/L8A/pratt_certificates.txt bytes 105093 sha256 fb9b71fb6f5636640faf2fdb246e2370790b6e5a0a30009b7766586090e11ca2 PRATT-CERT-1 count 918. Those receipts are not INDEX rows of this corpus.
+L7 contains no Pratt emitter and no Pratt jdg. Root owns the 5090 campaign. R13_recovery owns 3090, Leanport and the controller. Book_recovery owns GUI. COO owns final publication. Root owns consolidated Claude manager contact. This file is the G1-pratt handoff. Protected main Claude is not contacted.

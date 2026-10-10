@@ -1,0 +1,4 @@
+addition_budget	optimal_addition_labels	newly_unlocked_theorems	total_covered	remaining_uncovered	candidates_enumerated	optimal_sets_count	method
+1	df-cleq	173	4971	786	77	1	Exhaustive exact-integer bitmask enumeration; gain sums all nonempty missing-set submasks
+2	df-clel df-cleq	473	5271	486	2926	1	Exhaustive exact-integer bitmask enumeration; gain sums all nonempty missing-set submasks
+3	df-clel df-cleq df-ss	586	5384	373	73150	1	Exhaustive exact-integer bitmask enumeration; gain sums all nonempty missing-set submasks

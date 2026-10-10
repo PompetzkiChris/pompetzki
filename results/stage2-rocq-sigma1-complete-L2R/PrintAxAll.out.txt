@@ -1,0 +1,23 @@
+bounded_complete
+     : forall A : fm,
+       bounded A ->
+       wf 0 A ->
+       (sat nil A -> Prov.prov Ax.Gam (tr A Prov.sid)) /\
+       (~ sat nil A -> Prov.prov Ax.Gam (Syn.Neg (tr A Prov.sid)))
+Closed under the global context
+sigma1_complete
+     : forall A : fm,
+       pos A -> wf 0 A -> sat nil A -> Prov.prov Ax.Gam (tr A Prov.sid)
+Closed under the global context
+sigma1_bounded_statements
+     : forall c : String.string * fm * bool * Syn.form,
+       List.In c bounded_cases ->
+       let (p, f) := c in
+       let (p0, _) := p in let (_, _) := p0 in Prov.prov Ax.Gam f
+Closed under the global context
+sigma1_all_statements
+     : forall c : String.string * fm * bool * Syn.form,
+       List.In c L2RCases.cases ->
+       let (p, f) := c in
+       let (p0, _) := p in let (_, _) := p0 in Prov.prov Ax.Gam f
+Closed under the global context

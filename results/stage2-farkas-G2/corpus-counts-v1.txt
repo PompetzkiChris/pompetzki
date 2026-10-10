@@ -1,0 +1,17 @@
+dense 132
+cyclic 13
+pigeon 4
+transport 8
+control 19
+l2d 4
+mutant-sign 334
+mutant-perturb 333
+mutant-drop 333
+cert 161
+control 19
+reject 1000
+rows 1180
+dense-coeff-min -41
+dense-coeff-max 45
+num-bits-max 28
+den-bits-max 3

@@ -1,0 +1,11 @@
+label	file	steps	route	instance	source_essential_hypotheses	free_variables	pmp_exit	pmp_verdict	racket_exit	racket_verdict
+ax-1	ax-1.jdg	1	T/STaut	ph=(x e. y); ps=(x=y)	none in source axiom	x,y	0	ACCEPT	0	ACCEPT
+ax-2	ax-2.jdg	1	T/STaut	ph=(x e. y); ps=(x=y); ch=(y e. x)	none in source axiom	x,y	0	ACCEPT	0	ACCEPT
+ax-3	ax-3.jdg	1	T/STaut	ph=(x e. y); ps=(x=y)	none in source axiom	x,y	0	ACCEPT	0	ACCEPT
+ax-4	ax-4.jdg	1	Y/SAx distribution	ph=(x e. y); ps=(x=z); x bound; y,z free	none in source axiom	y,z	0	ACCEPT	0	ACCEPT
+ax-5	ax-5.jdg	1	Y/SAx vacuity	ph=(y e. z); x absent from ph; source disjoint condition retained	none in source axiom	y,z	0	ACCEPT	0	ACCEPT
+ax-6	ax-6.jdg	3	Y/SAx reflexivity; E/SExi; M/SMp	-. A. x -. x=y; y free; witness y	none in source axiom	y	0	ACCEPT	0	ACCEPT
+ax-7	ax-7.jdg	1	Z/SLeib equality	x=y -> (x=z -> y=z); template q 0 3	none in source axiom	x,y,z	0	ACCEPT	0	ACCEPT
+ax-8	ax-8.jdg	1	Z/SLeib left membership	x=y -> (x e. z -> y e. z); template e 0 3	none in source axiom	x,y,z	0	ACCEPT	0	ACCEPT
+ax-9	ax-9.jdg	1	Z/SLeib right membership	x=y -> (z e. x -> z e. y); template e 3 0	none in source axiom	x,y,z	0	ACCEPT	0	ACCEPT
+ax-10	ax-10.jdg	1	Y/SAx vacuity after binding	ph=(x e. y); -. A. x ph -> A. x -. A. x ph; y free	none in source axiom	y	0	ACCEPT	0	ACCEPT

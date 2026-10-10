@@ -1,0 +1,15 @@
+L7-4-omega-laws.jdg  the laws of Add and Mul for all x, y, z in omega, by induction (L:IndLem)
+  theorems 102 (prelude 46, generated 56), steps 2360 (prelude 817), bytes 1223241, build 1659 ms, largest tautology test 335 calls, all tautology tests 10552 calls
+  sha256 fdcaa25b28d9be7d97b7ab34998a35f519e736de2892de3ccf5e8d484f60bc14
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 102 2360 779)
+  mutant neg-final: copy of the checker (REJECT 101 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 101 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 14 step 9: taut: not a tautology)
+  mutant mp-swap: copy of the checker (REJECT 20 step 42: mp: premise mismatch)
+  mutant use-shift: copy of the checker (REJECT 14 step 1: spec: not enough A)
+  mutant leib-swap: copy of the checker (REJECT 14 step 4: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 20 step 37: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 14 step 10: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 101 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 26 step 13: taut: not a tautology)

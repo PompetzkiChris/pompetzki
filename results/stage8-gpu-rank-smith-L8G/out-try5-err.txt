@@ -1,0 +1,31 @@
+device cc 12 0
+snf known246 3 3
+snf known246 ok signU 1 signV 1 bitsU 3 bitsV 3
+snf smith4x6 4 6
+snf smith4x6 ok signU 1 signV 1 bitsU 10 bitsV 5
+snf smith6x8 6 8
+snf smith6x8 ok signU -1 signV -1 bitsU 12 bitsV 7
+snf smith8x8 8 8
+snf smith8x8 ok signU 1 signV -1 bitsU 24 bitsV 13
+case rn6x8 m 6 n 8 r 4
+case rn6x8 ok ge_ms 26 gemm_gpu 0 gemm_cpu 0
+case tri5 m 5 n 5 r 5
+case tri5 ok ge_ms 39 gemm_gpu 0 gemm_cpu 0
+case tri5b m 5 n 5 r 5
+case tri5b ok ge_ms 28 gemm_gpu 0 gemm_cpu 0
+case rn9x6 m 9 n 6 r 3
+case rn9x6 ok ge_ms 23 gemm_gpu 0 gemm_cpu 0
+case inj8x5 m 8 n 5 r 5
+case inj8x5 ok ge_ms 31 gemm_gpu 0 gemm_cpu 0
+crt det ok bits 97
+case bench64 m 64 n 64 r 60
+case bench64 ok ge_ms 374 gemm_gpu 3 gemm_cpu 16
+case bench128 m 128 n 128 r 124
+case bench128 ok ge_ms 681 gemm_gpu 1 gemm_cpu 1
+case bench256 m 256 n 256 r 252
+case bench256 ok ge_ms 1592 gemm_gpu 1 gemm_cpu 6
+case bench512 m 512 n 512 r 508
+case bench512 ok ge_ms 2935 gemm_gpu 6 gemm_cpu 33
+case bench1024 m 1024 n 1024 r 1020
+ge bench1024 rc 38
+rc 1038

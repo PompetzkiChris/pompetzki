@@ -1,0 +1,16 @@
+L7-2-direct-control.jdg  control: the same tautologies as single tautology steps
+  theorems 5 (prelude 0, generated 5), steps 5 (prelude 0), bytes 55792, build 80 ms, largest tautology test 393211 calls, all tautology tests 420587 calls
+  sha256 b4c034a5acd79b4940805149fa247fd29f41a95ca6cef38bbbcbc5f18895bb9c
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 5 5 682)
+  mutant neg-final (last theorem): copy of the checker (REJECT 4 final: last line is not the statement)
+  mutant twin-final (last theorem): copy of the checker (REJECT 4 final: last line is not the statement)
+  mutant taut-goal (theorem 0 step 0): copy of the checker (REJECT 0 step 0: taut: not a tautology)
+  mutant drop-step (last theorem): copy of the checker (REJECT 4 no lines)
+  mutant registry-suc (registry entry of Suc2): NOT WRITTEN, the copy of the checker accepts it (no step depends on the change)
+formulas:
+  clauses-em 8: one tautology step, 1531 calls
+  clauses-em 12: one tautology step, 24571 calls
+  clauses-em 16: one tautology step, 393211 calls
+  conj-perm 6: one tautology step, 253 calls
+  conj-perm 8: one tautology step, 1021 calls

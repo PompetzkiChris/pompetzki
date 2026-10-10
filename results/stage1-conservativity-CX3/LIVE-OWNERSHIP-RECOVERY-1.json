@@ -1,0 +1,25 @@
+{
+  "source": "codex_app.wait_threads timeoutMs=0",
+  "workers": [
+    {
+      "threadId": "01a12227-bb71-7db2-a7f2-518a76ceba25",
+      "hostId": "local",
+      "status": {
+        "type": "active",
+        "activeFlags": []
+      },
+      "turnStatus": "inProgress",
+      "latestAssistant": "The native compiler now handles all 215 source keyword names, and its runtime modules are being frozen for the final build checks. The abbreviation proofs have reached their final proof terms; kernel checking is taking longer than tactic execution. I’m reducing that proof expansion while continuing the remaining source constructions."
+    },
+    {
+      "threadId": "01a122ad-bc25-7f33-9dd5-c3da7da04c1f",
+      "hostId": "local",
+      "status": {
+        "type": "active",
+        "activeFlags": []
+      },
+      "turnStatus": "inProgress",
+      "latestAssistant": "The corrected checker reached execution, then failed with Stack overflow; its receipt records exit 129. I’m checking the WSL stack limit before another kernel run. The stack-template compile also exposed unreduced record projections, and a fresh proof version is being prepared from that exact error."
+    }
+  ]
+}

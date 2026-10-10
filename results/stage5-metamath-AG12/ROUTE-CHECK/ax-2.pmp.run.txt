@@ -1,0 +1,8 @@
+cwd: C:\ClaudeOutput\pompetzki\judge
+command: & 'C:\ClaudeOutput\pompetzki\pompetzki.exe' 'judge-v3.pmp' 'C:\ClaudeOutput\pompetzki\lanes\AG12-setmm-registry\ROUTE-CHECK\ax-2.jdg'
+started: 2026-10-09T19:12:36.5767367-04:00
+finished: 2026-10-09T19:12:37.3897359-04:00
+exit-code: 0
+verdict: ACCEPT
+stdout: C:\ClaudeOutput\pompetzki\lanes\AG12-setmm-registry\ROUTE-CHECK\ax-2.pmp.stdout.txt
+stderr: C:\ClaudeOutput\pompetzki\lanes\AG12-setmm-registry\ROUTE-CHECK\ax-2.pmp.stderr.txt

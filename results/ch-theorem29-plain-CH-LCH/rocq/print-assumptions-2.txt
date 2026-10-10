@@ -1,0 +1,24 @@
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+goedel_final_red
+     : forall Mf : form,
+       closedk 1 Mf = true ->
+       syms Mf = nil ->
+       forall VL : form,
+       closedk 0 VL = true ->
+       LEX Mf ->
+       (forall i : nat, i < 6 -> prov ZFpure (psub (tauM Mf) sid (HT i))) ->
+       prov ZFpure (rel Mf (Checks.axf 6)) ->
+       LSEP Mf ->
+       LCOLL Mf ->
+       prov ZFpure (rel Mf VL) ->
+       prov (ZFE VL) (pi ch) ->
+       prov GamCH Checks.Bot -> prov ZFpure Checks.Bot
+Closed under the global context

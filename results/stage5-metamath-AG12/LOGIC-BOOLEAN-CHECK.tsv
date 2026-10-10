@@ -1,0 +1,16 @@
+label	variable_count	assignments_checked	false_assignments	result
+ax-1	2	4	0	TAUTOLOGY
+ax-2	3	8	0	TAUTOLOGY
+ax-3	2	4	0	TAUTOLOGY
+ax-luk1	3	8	0	TAUTOLOGY
+ax-luk2	1	2	0	TAUTOLOGY
+ax-luk3	2	4	0	TAUTOLOGY
+ax-frege1	2	4	0	TAUTOLOGY
+ax-frege2	3	8	0	TAUTOLOGY
+ax-frege8	3	8	0	TAUTOLOGY
+ax-frege28	2	4	0	TAUTOLOGY
+ax-frege31	1	2	0	TAUTOLOGY
+ax-frege41	1	2	0	TAUTOLOGY
+ax-frege52a	4	16	0	TAUTOLOGY
+ax-frege54a	1	2	0	TAUTOLOGY
+ax-frege58a	3	8	0	TAUTOLOGY

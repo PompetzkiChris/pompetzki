@@ -1,0 +1,2295 @@
+; judge-v3.pmp - third cut (2026-10-09, same day; judge.pmp and judge-v2.pmp are unchanged). Change: judge-v2.pmp
+; kept the line set ATL const ar at the top of TAUTCHK, which would have pointed the atom table at the last allocation;
+; the line is removed. The rest is judge-v2.pmp.
+;
+; judge-v2.pmp - second cut of judge.pmp (2026-10-09, same day; judge.pmp is unchanged). Changes: the registry copy
+; looped to its body (goto REGCOPY1) instead of its test, copied without end and crashed the interpreter; it now
+; returns to REGCOPY. The atom table of the tautology check is allocated once at the start instead of 512 KB per
+; taut step. The rest is judge.pmp.
+;
+; judge.pmp - the posting checker of the Book: check_batch of forcing-src/general/Replay2.v, in PmpCore forms only
+; (set const/add/sub/mul, set peek, poke, set alloc, text literal, when zero/nonzero/negative, goto, gosub, return,
+; label, trace) plus read, text arg, say, show, print and check zero, so that its meaning is the operational semantics
+; of PmpCore.v / PmpFull.v. Written 2026-10-09 (first cut).
+;
+; Run: pompetzki.exe judge.pmp FILE.jdg
+; Exit 0 and ACCEPT, or REJECT (a step or a theorem fails) / LIMIT (a resource bound) with a nonzero exit.
+;
+; What it decides, function for function as in Replay2.v:
+;   the registry: a list of (formula, hypothesis numbers); theorems are checked in order and each accepted theorem is
+;   appended (check_batch);
+;   check_thm: the steps run in order (run / sstep), the last line equals the statement renamed by sig, sig has no
+;   repeated number, the statement is closed in length(sig) variables, the hypotheses the steps used are among the
+;   theorem's, and there is at least one line;
+;   sstep: use spec gen mp taut exi exel alli inst leib ax, with tof (the abbreviations K D Q X expanded), ren under
+;   binders (scons, absk, sigf, S, skip1, ins2, unskip), form_eqb, free, closedk, specn, prems, axshape (k s c dist vac
+;   refl, Separation and Collection in the shapes isSepN / isCollN), tautchk2 (atoms, then Shannon expansion with the
+;   simplifications mkN / mkI).
+; Replay3.v proves check_batch sound for prov (Gam with the hypotheses); this program is meant to compute it.
+;
+; Input format JDG1 (rocq2jdg.rkt writes it from Rocq data; the converter is not trusted):
+;   JDG1  R n ENTRY^n  T m THEOREM^m
+;   ENTRY   = FORM LIST           THEOREM = FORM LIST(sig) n STEP^n LIST(hyps)          LIST = count then numbers
+;   FORM    = e x y | q x y | p P LIST | n F | i F G | a F | k F G | d F G | b F G | x F
+;   STEP    = U r LIST | S l LIST | G l k | M i j | T LIST FORM | E t FORM | L l k FORM | H k l FORM | V t FORM
+;             | Z FORM FORM | Y FORM
+;
+; Data: a formula is a node of four words [tag, a, b, c]: 1 Mem x y, 2 Eqv x y, 3 Pr p args n, 4 Neg a, 5 Imp a b,
+; 6 All a. A Boolean term of the tautology check is a node 11 BT, 12 BF, 13 BV n, 14 BN a, 15 BI a c.
+; Memory: one persistent block (registry statements and hypotheses) and one scratch block reset for every theorem,
+; both handed out by ALLOC; a data stack (DSB .. DSE) keeps the locals of the recursive routines across gosub.
+; Temporaries t and q are never relied on across a gosub.
+
+trace off
+text cfile arg
+read J0 cfile
+set pos const J0
+set lim add J0 J0_len
+
+set PSIZE const 201326592
+set SSIZE const 402653184
+set DSIZE const 16777216
+set PB alloc PSIZE
+set PE add PB PSIZE
+set SB alloc SSIZE
+set SE add SB SSIZE
+set DSB alloc DSIZE
+set DSE add DSB DSIZE
+set DSL sub DSE 4096
+set DSP const DSB
+set curp const PB
+set cure const PE
+set ppp const PB
+set spp const SB
+set atc const 65536
+set an mul atc 8
+gosub ALLOC
+set ATL const ar
+set ti const 0
+set si const 0
+set totsteps const 0
+text WHY "none"
+
+; ---- header
+gosub SKIPWS
+set t sub lim pos
+set t sub t 4
+when negative t goto BADHDR
+set c peek pos 1
+set t sub c 74
+when nonzero t goto BADHDR
+set q add pos 1
+set c peek q 1
+set t sub c 68
+when nonzero t goto BADHDR
+set q add pos 2
+set c peek q 1
+set t sub c 71
+when nonzero t goto BADHDR
+set q add pos 3
+set c peek q 1
+set t sub c 49
+when nonzero t goto BADHDR
+set pos add pos 4
+gosub ENDTOK
+goto HDROK
+label BADHDR
+text WHY "the input does not begin with JDG1"
+goto FAIL
+label HDROK
+
+; ---- the registry: R n, then n entries (persistent)
+gosub RDTAG
+set t sub tg 82
+when zero t goto REGR
+text WHY "R expected"
+goto FAIL
+label REGR
+gosub RDNUM
+set nreg const num
+set an mul nreg 24
+gosub ALLOC
+set REGT const ar
+set ri const 0
+label REGLOOP
+set t sub ri nreg
+when negative t goto REGONE
+goto REGDONE
+label REGONE
+gosub PARSEF
+set rgf const pf
+gosub RDLIST
+set q mul ri 24
+set q add REGT q
+poke q 8 rgf
+set q add q 8
+poke q 8 la
+set q add q 8
+poke q 8 ln
+set ri add ri 1
+goto REGLOOP
+label REGDONE
+
+; ---- the theorems: T m; the registry array gets room for all of them
+gosub RDTAG
+set t sub tg 84
+when zero t goto THMT
+text WHY "T expected"
+goto FAIL
+label THMT
+gosub RDNUM
+set nthm const num
+set regcap add nreg nthm
+set an mul regcap 24
+gosub ALLOC
+set REG const ar
+set ri const 0
+label REGCOPY
+set t sub ri nreg
+when negative t goto REGCOPY1
+goto REGCOPY2
+label REGCOPY1
+set q mul ri 24
+set rgs add REGT q
+set rgd add REG q
+set rgv peek rgs 8
+poke rgd 8 rgv
+set rgs add rgs 8
+set rgd add rgd 8
+set rgv peek rgs 8
+poke rgd 8 rgv
+set rgs add rgs 8
+set rgd add rgd 8
+set rgv peek rgs 8
+poke rgd 8 rgv
+set ri add ri 1
+goto REGCOPY
+label REGCOPY2
+set reglen const nreg
+
+; ---- every theorem
+set ti const 0
+label THMLOOP
+set t sub ti nthm
+when negative t goto THMONE
+goto ALLDONE
+label THMONE
+set si const 0
+; the statement, persistent (it becomes a registry entry)
+gosub PARSEF
+set thst const pf
+; the rest in scratch, reset
+gosub TOSCR0
+gosub RDLIST
+set sigla const la
+set sigln const ln
+gosub RDNUM
+set nsteps const num
+set an mul nsteps 8
+set t sub an 8
+when negative t goto THMNL
+goto THMNL1
+label THMNL
+set an const 8
+label THMNL1
+gosub ALLOC
+set LINES const ar
+set nl const 0
+set HSL const 0
+label STEPLOOP
+set t sub si nsteps
+when negative t goto STEPONE
+goto STEPSDONE
+label STEPONE
+gosub STEP
+set q mul nl 8
+set q add LINES q
+poke q 8 line
+set nl add nl 1
+set si add si 1
+set totsteps add totsteps 1
+goto STEPLOOP
+label STEPSDONE
+; the hypotheses of the theorem, persistent
+gosub TOPERS
+gosub RDLIST
+set thla const la
+set thln const ln
+gosub TOSCR1
+; check_thm
+when zero nl goto THMNOLINES
+set q sub nl 1
+set q mul q 8
+set q add LINES q
+set lastl peek q 8
+set mk const 3
+set mla const sigla
+set mln const sigln
+set rf const thst
+set rd const 0
+gosub REN
+set ea const lastl
+set eb const rr
+gosub EQB
+when zero er goto THMLAST
+; nodupb sig
+set di const 0
+label DUPI
+set t sub di sigln
+when negative t goto DUPI1
+goto DUPOK
+label DUPI1
+set q mul di 8
+set q add sigla q
+set dv peek q 8
+set dj add di 1
+label DUPJ
+set t sub dj sigln
+when negative t goto DUPJ1
+set di add di 1
+goto DUPI
+label DUPJ1
+set q mul dj 8
+set q add sigla q
+set dw peek q 8
+set t sub dv dw
+when zero t goto THMDUP
+set dj add dj 1
+goto DUPJ
+label DUPOK
+; closedk (length sig) statement
+set ck const sigln
+set cf const thst
+gosub CLOSEDK
+when zero cr goto THMOPEN
+; subsetb hs hyps
+set hc const HSL
+label SUBL
+when zero hc goto SUBOK
+set hv peek hc 8
+set hk const 0
+label SUBK
+set t sub hk thln
+when negative t goto SUBK1
+goto THMHYP
+label SUBK1
+set q mul hk 8
+set q add thla q
+set hw peek q 8
+set t sub hv hw
+when zero t goto SUBNEXT
+set hk add hk 1
+goto SUBK
+label SUBNEXT
+set q add hc 8
+set hc peek q 8
+goto SUBL
+label SUBOK
+; accepted: the registry grows by (statement, hypotheses)
+set q mul reglen 24
+set q add REG q
+poke q 8 thst
+set q add q 8
+poke q 8 thla
+set q add q 8
+poke q 8 thln
+set reglen add reglen 1
+gosub TOPERS
+set ti add ti 1
+goto THMLOOP
+
+label THMNOLINES
+text WHY "the theorem has no lines"
+goto FAIL
+label THMLAST
+text WHY "the last line is not the statement renamed by sig"
+goto FAIL
+label THMDUP
+text WHY "sig repeats a variable"
+goto FAIL
+label THMOPEN
+text WHY "the statement is not closed in length(sig) variables"
+goto FAIL
+label THMHYP
+text WHY "a hypothesis used by the steps is not among the theorem's"
+goto FAIL
+
+label ALLDONE
+gosub SKIPWS
+set t sub pos lim
+when negative t goto TRAIL
+say "ACCEPT"
+say "registry entries at the start, theorems accepted, steps checked, registry entries at the end:"
+show nreg
+show nthm
+show totsteps
+show reglen
+goto END
+label TRAIL
+text WHY "text after the last theorem"
+goto FAIL
+
+; ================================================================ failure
+label FAIL
+say "REJECT"
+print WHY
+say "theorem and step (counted from 0):"
+show ti
+show si
+set bad const 1
+check zero bad
+goto END
+label LIMITMEM
+say "LIMIT"
+say "a memory block is full"
+show ti
+show si
+set bad const 1
+check zero bad
+goto END
+label LIMITSTK
+say "LIMIT"
+say "the data stack is full"
+show ti
+show si
+set bad const 1
+check zero bad
+goto END
+
+; ================================================================ memory
+; ALLOC: an bytes from the current block -> ar
+label ALLOC
+set ar const curp
+set curp add curp an
+set t sub cure curp
+when negative t goto LIMITMEM
+return
+; TOSCR0: allocate from the scratch block, emptied; TOSCR1: from the scratch block where it stood; TOPERS: persistent
+label TOSCR0
+set ppp const curp
+set curp const SB
+set cure const SE
+return
+label TOSCR1
+set ppp const curp
+set curp const spp
+set cure const SE
+return
+label TOPERS
+set spp const curp
+set curp const ppp
+set cure const PE
+return
+; MK: the node [mt, ma, mb, mc] -> mr
+label MK
+set an const 32
+gosub ALLOC
+set mr const ar
+poke mr 8 mt
+set q add mr 8
+poke q 8 ma
+set q add mr 16
+poke q 8 mb
+set q add mr 24
+poke q 8 mc
+return
+; CH: cn -> its tag cg and its first two fields c1 c2
+label CH
+set cg peek cn 8
+set q add cn 8
+set c1 peek q 8
+set q add cn 16
+set c2 peek q 8
+return
+
+; ================================================================ reading
+label SKIPWS
+set t sub pos lim
+when negative t goto SKIPWS2
+return
+label SKIPWS2
+set c peek pos 1
+set t sub c 32
+when zero t goto SKIPWS3
+set t sub c 10
+when zero t goto SKIPWS3
+set t sub c 13
+when zero t goto SKIPWS3
+set t sub c 9
+when zero t goto SKIPWS3
+return
+label SKIPWS3
+set pos add pos 1
+goto SKIPWS
+
+; ENDTOK: the token ends here (the end of the input or white space)
+label ENDTOK
+set t sub pos lim
+when negative t goto ENDTOK1
+return
+label ENDTOK1
+set c peek pos 1
+set t sub c 32
+when zero t goto ENDTOK2
+set t sub c 10
+when zero t goto ENDTOK2
+set t sub c 13
+when zero t goto ENDTOK2
+set t sub c 9
+when zero t goto ENDTOK2
+text WHY "a token does not end in white space"
+goto FAIL
+label ENDTOK2
+return
+
+; RDNUM: a decimal number of at most 12 digits -> num
+label RDNUM
+gosub SKIPWS
+set num const 0
+set nd const 0
+label RDNUM1
+set t sub pos lim
+when negative t goto RDNUM2
+goto RDNUM9
+label RDNUM2
+set c peek pos 1
+set d sub c 48
+when negative d goto RDNUM9
+set t sub d 10
+when negative t goto RDNUM3
+goto RDNUM9
+label RDNUM3
+set t sub nd 12
+when negative t goto RDNUM4
+text WHY "a number has more than 12 digits"
+goto FAIL
+label RDNUM4
+set num mul num 10
+set num add num d
+set nd add nd 1
+set pos add pos 1
+goto RDNUM1
+label RDNUM9
+when zero nd goto RDNUMBAD
+gosub ENDTOK
+return
+label RDNUMBAD
+text WHY "a number was expected"
+goto FAIL
+
+; RDTAG: one character -> tg
+label RDTAG
+gosub SKIPWS
+set t sub pos lim
+when negative t goto RDTAG1
+text WHY "the input ends where a tag was expected"
+goto FAIL
+label RDTAG1
+set tg peek pos 1
+set pos add pos 1
+gosub ENDTOK
+return
+
+; RDLIST: a count, then that many numbers, into the current block -> la (address of words), ln
+label RDLIST
+gosub RDNUM
+set ln const num
+set an mul ln 8
+gosub ALLOC
+set la const ar
+set li const 0
+label RDLIST1
+set t sub li ln
+when negative t goto RDLIST2
+return
+label RDLIST2
+gosub RDNUM
+set q mul li 8
+set q add la q
+poke q 8 num
+set li add li 1
+goto RDLIST1
+
+; ================================================================ formulas
+; PARSEF: the formula at pos, its abbreviations expanded (tof) -> pf
+label PARSEF
+set t sub DSP DSL
+when negative t goto PARSEF0
+goto LIMITSTK
+label PARSEF0
+gosub RDTAG
+set t sub tg 101
+when zero t goto PF_E
+set t sub tg 113
+when zero t goto PF_Q
+set t sub tg 112
+when zero t goto PF_P
+set t sub tg 110
+when zero t goto PF_N
+set t sub tg 97
+when zero t goto PF_A
+set t sub tg 120
+when zero t goto PF_X
+set t sub tg 105
+when zero t goto PF_2
+set t sub tg 107
+when zero t goto PF_2
+set t sub tg 100
+when zero t goto PF_2
+set t sub tg 98
+when zero t goto PF_2
+text WHY "unknown formula tag"
+goto FAIL
+label PF_E
+gosub RDNUM
+set pfx const num
+gosub RDNUM
+set mt const 1
+set ma const pfx
+set mb const num
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_Q
+gosub RDNUM
+set pfx const num
+gosub RDNUM
+set mt const 2
+set ma const pfx
+set mb const num
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_P
+gosub RDNUM
+set pfx const num
+gosub RDLIST
+set mt const 3
+set ma const pfx
+set mb const la
+set mc const ln
+gosub MK
+set pf const mr
+return
+label PF_N
+gosub PARSEF
+set mt const 4
+set ma const pf
+set mb const 0
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_A
+gosub PARSEF
+set mt const 6
+set ma const pf
+set mb const 0
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_X
+gosub PARSEF
+set xfa const pf
+gosub XF
+set pf const xfr
+return
+label PF_2
+poke DSP 8 tg
+set DSP add DSP 8
+gosub PARSEF
+poke DSP 8 pf
+set DSP add DSP 8
+gosub PARSEF
+set pfb const pf
+set DSP sub DSP 8
+set pfa peek DSP 8
+set DSP sub DSP 8
+set pft peek DSP 8
+set t sub pft 105
+when zero t goto PF_I
+set t sub pft 107
+when zero t goto PF_K
+set t sub pft 100
+when zero t goto PF_D
+; b: Qf
+set qfa const pfa
+set qfb const pfb
+gosub QF
+set pf const qfr
+return
+label PF_I
+set mt const 5
+set ma const pfa
+set mb const pfb
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_K
+set kfa const pfa
+set kfb const pfb
+gosub KF
+set pf const kfr
+return
+label PF_D
+set mt const 4
+set ma const pfa
+set mb const 0
+set mc const 0
+gosub MK
+set mt const 5
+set ma const mr
+set mb const pfb
+set mc const 0
+gosub MK
+set pf const mr
+return
+
+; the abbreviations as constructors: KF kfa kfb -> kfr = Neg (Imp a (Neg b)); XF xfa -> xfr = Neg (All (Neg a));
+; QF qfa qfb -> qfr = Kf (Imp a b) (Imp b a); IMP ima imb -> imr; NEG nga -> ngr; ALL ala -> alr
+label KF
+set mt const 4
+set ma const kfb
+set mb const 0
+set mc const 0
+gosub MK
+set mt const 5
+set ma const kfa
+set mb const mr
+gosub MK
+set mt const 4
+set ma const mr
+set mb const 0
+gosub MK
+set kfr const mr
+return
+label XF
+set mt const 4
+set ma const xfa
+set mb const 0
+set mc const 0
+gosub MK
+set mt const 6
+set ma const mr
+gosub MK
+set mt const 4
+set ma const mr
+gosub MK
+set xfr const mr
+return
+label QF
+set mt const 5
+set ma const qfa
+set mb const qfb
+set mc const 0
+gosub MK
+set qfi const mr
+set mt const 5
+set ma const qfb
+set mb const qfa
+gosub MK
+set kfa const qfi
+set kfb const mr
+gosub KF
+set qfr const kfr
+return
+label IMP
+set mt const 5
+set ma const ima
+set mb const imb
+set mc const 0
+gosub MK
+set imr const mr
+return
+label NEG
+set mt const 4
+set ma const nga
+set mb const 0
+set mc const 0
+gosub MK
+set ngr const mr
+return
+label ALL
+set mt const 6
+set ma const ala
+set mb const 0
+set mc const 0
+gosub MK
+set alr const mr
+return
+label MEM
+set mt const 1
+set ma const mmx
+set mb const mmy
+set mc const 0
+gosub MK
+set mmr const mr
+return
+
+; EQB: ea eb -> er (1 when the formulas are equal: form_eqb); a node equals itself
+label EQB
+set t sub DSP DSL
+when negative t goto EQB0
+goto LIMITSTK
+label EQB0
+set t sub ea eb
+when zero t goto EQB_T
+set eqt peek ea 8
+set equ peek eb 8
+set t sub eqt equ
+when nonzero t goto EQB_F
+set t sub eqt 3
+when negative t goto EQB_XY
+when zero t goto EQB_P
+set t sub eqt 5
+when zero t goto EQB_I
+; Neg or All: the child
+set q add ea 8
+set ea peek q 8
+set q add eb 8
+set eb peek q 8
+goto EQB
+label EQB_XY
+set q add ea 8
+set eqx peek q 8
+set q add eb 8
+set eqy peek q 8
+set t sub eqx eqy
+when nonzero t goto EQB_F
+set q add ea 16
+set eqx peek q 8
+set q add eb 16
+set eqy peek q 8
+set t sub eqx eqy
+when nonzero t goto EQB_F
+goto EQB_T
+label EQB_P
+set q add ea 8
+set eqx peek q 8
+set q add eb 8
+set eqy peek q 8
+set t sub eqx eqy
+when nonzero t goto EQB_F
+set q add ea 24
+set eqn peek q 8
+set q add eb 24
+set eqy peek q 8
+set t sub eqn eqy
+when nonzero t goto EQB_F
+set q add ea 16
+set eqa peek q 8
+set q add eb 16
+set eqb peek q 8
+set eqi const 0
+label EQB_P1
+set t sub eqi eqn
+when negative t goto EQB_P2
+goto EQB_T
+label EQB_P2
+set q mul eqi 8
+set q add eqa q
+set eqx peek q 8
+set q mul eqi 8
+set q add eqb q
+set eqy peek q 8
+set t sub eqx eqy
+when nonzero t goto EQB_F
+set eqi add eqi 1
+goto EQB_P1
+label EQB_I
+poke DSP 8 ea
+set DSP add DSP 8
+poke DSP 8 eb
+set DSP add DSP 8
+set q add ea 8
+set ea peek q 8
+set q add eb 8
+set eb peek q 8
+gosub EQB
+set DSP sub DSP 8
+set eb peek DSP 8
+set DSP sub DSP 8
+set ea peek DSP 8
+when zero er goto EQB_F
+set q add ea 16
+set ea peek q 8
+set q add eb 16
+set eb peek q 8
+goto EQB
+label EQB_T
+set er const 1
+return
+label EQB_F
+set er const 0
+return
+
+; VMAP: the variable vn under rd binders through the map (mk; mp; mla mln) -> vo
+;   ren (up^rd s): vn < rd stays; otherwise rd + s(vn - rd), where s is
+;   1 scons mp sid   2 absk mp   3 sigf (mla, mln)   4 S   5 skip1   6 ins2   7 unskip
+label VMAP
+set t sub vn rd
+when negative t goto VMAP_B
+set vm const t
+set t sub mk 1
+when zero t goto VM_SC
+set t sub mk 2
+when zero t goto VM_AB
+set t sub mk 3
+when zero t goto VM_SG
+set t sub mk 4
+when zero t goto VM_S
+set t sub mk 5
+when zero t goto VM_K1
+set t sub mk 6
+when zero t goto VM_I2
+; 7 unskip: 0 -> 0, 1 -> 0, m+2 -> m+1
+set t sub vm 2
+when negative t goto VM_ZERO
+set vs sub vm 1
+goto VMAP_F
+label VM_SC
+when zero vm goto VM_SC0
+set vs sub vm 1
+goto VMAP_F
+label VM_SC0
+set vs const mp
+goto VMAP_F
+label VM_AB
+set t sub vm mp
+when zero t goto VM_ZERO
+set vs add vm 1
+goto VMAP_F
+label VM_SG
+set t sub vm mln
+when negative t goto VM_SG1
+goto VM_ZERO
+label VM_SG1
+set q mul vm 8
+set q add mla q
+set vs peek q 8
+goto VMAP_F
+label VM_S
+set vs add vm 1
+goto VMAP_F
+label VM_K1
+when zero vm goto VM_ZERO
+set vs add vm 1
+goto VMAP_F
+label VM_I2
+set t sub vm 2
+when negative t goto VM_I2A
+set vs add vm 1
+goto VMAP_F
+label VM_I2A
+set vs const vm
+goto VMAP_F
+label VM_ZERO
+set vs const 0
+label VMAP_F
+set vo add rd vs
+return
+label VMAP_B
+set vo const vn
+return
+
+; REN: rf under rd binders, through the map of VMAP -> rr (a new formula; rd is the same afterwards)
+label REN
+set t sub DSP DSL
+when negative t goto REN0
+goto LIMITSTK
+label REN0
+set rnt peek rf 8
+set t sub rnt 3
+when negative t goto REN_XY
+when zero t goto REN_P
+set t sub rnt 5
+when zero t goto REN_I
+set t sub rnt 4
+when zero t goto REN_N
+; All
+set q add rf 8
+set rf peek q 8
+set rd add rd 1
+gosub REN
+set rd sub rd 1
+set mt const 6
+set ma const rr
+set mb const 0
+set mc const 0
+gosub MK
+set rr const mr
+return
+label REN_N
+set q add rf 8
+set rf peek q 8
+gosub REN
+set mt const 4
+set ma const rr
+set mb const 0
+set mc const 0
+gosub MK
+set rr const mr
+return
+label REN_XY
+set q add rf 8
+set vn peek q 8
+gosub VMAP
+set rnx const vo
+set q add rf 16
+set vn peek q 8
+gosub VMAP
+set mt const rnt
+set ma const rnx
+set mb const vo
+set mc const 0
+gosub MK
+set rr const mr
+return
+label REN_P
+set q add rf 8
+set rnp peek q 8
+set q add rf 16
+set rna peek q 8
+set q add rf 24
+set rnn peek q 8
+set an mul rnn 8
+gosub ALLOC
+set rnb const ar
+set rni const 0
+label REN_P1
+set t sub rni rnn
+when negative t goto REN_P2
+set mt const 3
+set ma const rnp
+set mb const rnb
+set mc const rnn
+gosub MK
+set rr const mr
+return
+label REN_P2
+set q mul rni 8
+set q add rna q
+set vn peek q 8
+gosub VMAP
+set q mul rni 8
+set q add rnb q
+poke q 8 vo
+set rni add rni 1
+goto REN_P1
+label REN_I
+poke DSP 8 rf
+set DSP add DSP 8
+set q add rf 8
+set rf peek q 8
+gosub REN
+set DSP sub DSP 8
+set rf peek DSP 8
+poke DSP 8 rr
+set DSP add DSP 8
+set q add rf 16
+set rf peek q 8
+gosub REN
+set DSP sub DSP 8
+set rna2 peek DSP 8
+set mt const 5
+set ma const rna2
+set mb const rr
+set mc const 0
+gosub MK
+set rr const mr
+return
+
+; RENW: rf through the map at depth 0 -> rr (the caller sets mk mp / mla mln)
+label RENW
+set rd const 0
+gosub REN
+return
+
+; FREE: fn ff -> fr (1 when the variable fn is free in ff); fn and ff are spent
+label FREE
+set t sub DSP DSL
+when negative t goto FREE0
+goto LIMITSTK
+label FREE0
+set frt peek ff 8
+set t sub frt 3
+when negative t goto FREE_XY
+when zero t goto FREE_P
+set t sub frt 5
+when zero t goto FREE_I
+set t sub frt 4
+when zero t goto FREE_N
+; All
+set fn add fn 1
+set q add ff 8
+set ff peek q 8
+goto FREE
+label FREE_N
+set q add ff 8
+set ff peek q 8
+goto FREE
+label FREE_XY
+set q add ff 8
+set frx peek q 8
+set t sub frx fn
+when zero t goto FREE_T
+set q add ff 16
+set frx peek q 8
+set t sub frx fn
+when zero t goto FREE_T
+goto FREE_F
+label FREE_P
+set q add ff 16
+set fra peek q 8
+set q add ff 24
+set frn peek q 8
+set fri const 0
+label FREE_P1
+set t sub fri frn
+when negative t goto FREE_P2
+goto FREE_F
+label FREE_P2
+set q mul fri 8
+set q add fra q
+set frx peek q 8
+set t sub frx fn
+when zero t goto FREE_T
+set fri add fri 1
+goto FREE_P1
+label FREE_I
+poke DSP 8 ff
+set DSP add DSP 8
+poke DSP 8 fn
+set DSP add DSP 8
+set q add ff 8
+set ff peek q 8
+gosub FREE
+set DSP sub DSP 8
+set fn peek DSP 8
+set DSP sub DSP 8
+set ff peek DSP 8
+when nonzero fr goto FREE_T
+set q add ff 16
+set ff peek q 8
+goto FREE
+label FREE_T
+set fr const 1
+return
+label FREE_F
+set fr const 0
+return
+
+; CLOSEDK: ck cf -> cr (1 when every variable of cf is below ck, counted from the binders: closedk); ck, cf spent
+label CLOSEDK
+set t sub DSP DSL
+when negative t goto CLK0
+goto LIMITSTK
+label CLK0
+set clt peek cf 8
+set t sub clt 3
+when negative t goto CLK_XY
+when zero t goto CLK_P
+set t sub clt 5
+when zero t goto CLK_I
+set t sub clt 4
+when zero t goto CLK_N
+set ck add ck 1
+set q add cf 8
+set cf peek q 8
+goto CLOSEDK
+label CLK_N
+set q add cf 8
+set cf peek q 8
+goto CLOSEDK
+label CLK_XY
+set q add cf 8
+set clx peek q 8
+set t sub clx ck
+when negative t goto CLK_XY1
+goto CLK_F
+label CLK_XY1
+set q add cf 16
+set clx peek q 8
+set t sub clx ck
+when negative t goto CLK_T
+goto CLK_F
+label CLK_P
+set q add cf 16
+set cla peek q 8
+set q add cf 24
+set cln peek q 8
+set cli const 0
+label CLK_P1
+set t sub cli cln
+when negative t goto CLK_P2
+goto CLK_T
+label CLK_P2
+set q mul cli 8
+set q add cla q
+set clx peek q 8
+set t sub clx ck
+when negative t goto CLK_P3
+goto CLK_F
+label CLK_P3
+set cli add cli 1
+goto CLK_P1
+label CLK_I
+poke DSP 8 cf
+set DSP add DSP 8
+poke DSP 8 ck
+set DSP add DSP 8
+set q add cf 8
+set cf peek q 8
+gosub CLOSEDK
+set DSP sub DSP 8
+set ck peek DSP 8
+set DSP sub DSP 8
+set cf peek DSP 8
+when zero cr goto CLK_F
+set q add cf 16
+set cf peek q 8
+goto CLOSEDK
+label CLK_T
+set cr const 1
+return
+label CLK_F
+set cr const 0
+return
+
+; ================================================================ the tautology check (tautchk2 of ReplayT.v)
+; ADDAT: af -> the atoms of af appended to ATL (count atn, room atc), equal ones once (addat)
+label ADDAT
+set t sub DSP DSL
+when negative t goto ADDAT0
+goto LIMITSTK
+label ADDAT0
+set adt peek af 8
+set t sub adt 4
+when zero t goto ADDAT_N
+set t sub adt 5
+when zero t goto ADDAT_I
+set adi const 0
+label ADDAT1
+set t sub adi atn
+when negative t goto ADDAT2
+set t sub atn atc
+when negative t goto ADDAT3
+goto LIMITMEM
+label ADDAT3
+set q mul atn 8
+set q add ATL q
+poke q 8 af
+set atn add atn 1
+return
+label ADDAT2
+set q mul adi 8
+set q add ATL q
+set ea peek q 8
+set eb const af
+gosub EQB
+when nonzero er goto ADDAT9
+set adi add adi 1
+goto ADDAT1
+label ADDAT9
+return
+label ADDAT_N
+set q add af 8
+set af peek q 8
+goto ADDAT
+label ADDAT_I
+poke DSP 8 af
+set DSP add DSP 8
+set q add af 8
+set af peek q 8
+gosub ADDAT
+set DSP sub DSP 8
+set af peek DSP 8
+set q add af 16
+set af peek q 8
+goto ADDAT
+
+; MKN: bnx -> bnr (mkN); MKI: bia bic -> bir (mkI)
+label MKN
+set bnt peek bnx 8
+set t sub bnt 11
+when zero t goto MKN_F
+set t sub bnt 12
+when zero t goto MKN_T
+set t sub bnt 14
+when zero t goto MKN_X
+set mt const 14
+set ma const bnx
+set mb const 0
+set mc const 0
+gosub MK
+set bnr const mr
+return
+label MKN_F
+set mt const 12
+set ma const 0
+set mb const 0
+set mc const 0
+gosub MK
+set bnr const mr
+return
+label MKN_T
+set mt const 11
+set ma const 0
+set mb const 0
+set mc const 0
+gosub MK
+set bnr const mr
+return
+label MKN_X
+set q add bnx 8
+set bnr peek q 8
+return
+label MKI
+set bat peek bia 8
+set bct peek bic 8
+set t sub bat 12
+when zero t goto MKI_T
+set t sub bct 11
+when zero t goto MKI_T
+set t sub bat 11
+when zero t goto MKI_C
+set t sub bct 12
+when zero t goto MKI_NA
+set mt const 15
+set ma const bia
+set mb const bic
+set mc const 0
+gosub MK
+set bir const mr
+return
+label MKI_T
+set mt const 11
+set ma const 0
+set mb const 0
+set mc const 0
+gosub MK
+set bir const mr
+return
+label MKI_C
+set bir const bic
+return
+label MKI_NA
+set bnx const bia
+gosub MKN
+set bir const bnr
+return
+
+; TOBF: tf -> tb (tobf (topf ATL tf)): Neg and Imp become mkN and mkI, any other formula the variable of its first
+; equal atom (findf)
+label TOBF
+set t sub DSP DSL
+when negative t goto TOBF0
+goto LIMITSTK
+label TOBF0
+set tbt peek tf 8
+set t sub tbt 4
+when zero t goto TOBF_N
+set t sub tbt 5
+when zero t goto TOBF_I
+set tbi const 0
+label TOBF1
+set t sub tbi atn
+when negative t goto TOBF2
+; not found: findf gives the length of the list
+goto TOBF3
+label TOBF2
+set q mul tbi 8
+set q add ATL q
+set ea peek q 8
+set eb const tf
+gosub EQB
+when nonzero er goto TOBF3
+set tbi add tbi 1
+goto TOBF1
+label TOBF3
+set mt const 13
+set ma const tbi
+set mb const 0
+set mc const 0
+gosub MK
+set tb const mr
+return
+label TOBF_N
+set q add tf 8
+set tf peek q 8
+gosub TOBF
+set bnx const tb
+gosub MKN
+set tb const bnr
+return
+label TOBF_I
+poke DSP 8 tf
+set DSP add DSP 8
+set q add tf 8
+set tf peek q 8
+gosub TOBF
+set DSP sub DSP 8
+set tf peek DSP 8
+poke DSP 8 tb
+set DSP add DSP 8
+set q add tf 16
+set tf peek q 8
+gosub TOBF
+set DSP sub DSP 8
+set bia peek DSP 8
+set bic const tb
+gosub MKI
+set tb const bir
+return
+
+; SUBST: sv sc sb -> sr (the variable sv replaced by the constant sc, simplified: subst)
+label SUBST
+set t sub DSP DSL
+when negative t goto SUBST0
+goto LIMITSTK
+label SUBST0
+set sbt peek sb 8
+set t sub sbt 13
+when zero t goto SUBST_V
+set t sub sbt 14
+when zero t goto SUBST_N
+set t sub sbt 15
+when zero t goto SUBST_I
+set sr const sb
+return
+label SUBST_V
+set q add sb 8
+set sbn peek q 8
+set t sub sbn sv
+when zero t goto SUBST_V1
+set sr const sb
+return
+label SUBST_V1
+set mt const 12
+when zero sc goto SUBST_V2
+set mt const 11
+label SUBST_V2
+set ma const 0
+set mb const 0
+set mc const 0
+gosub MK
+set sr const mr
+return
+label SUBST_N
+set q add sb 8
+set sb peek q 8
+gosub SUBST
+set bnx const sr
+gosub MKN
+set sr const bnr
+return
+label SUBST_I
+poke DSP 8 sb
+set DSP add DSP 8
+set q add sb 8
+set sb peek q 8
+gosub SUBST
+set DSP sub DSP 8
+set sb peek DSP 8
+poke DSP 8 sr
+set DSP add DSP 8
+set q add sb 16
+set sb peek q 8
+gosub SUBST
+set DSP sub DSP 8
+set bia peek DSP 8
+set bic const sr
+gosub MKI
+set sr const bir
+return
+
+; SOMEVAR: vb -> vf (1 when a variable occurs), vv (the first in the order of somevar)
+label SOMEVAR
+set t sub DSP DSL
+when negative t goto SOMEV0
+goto LIMITSTK
+label SOMEV0
+set svt peek vb 8
+set t sub svt 13
+when zero t goto SOMEV_V
+set t sub svt 14
+when zero t goto SOMEV_N
+set t sub svt 15
+when zero t goto SOMEV_I
+set vf const 0
+return
+label SOMEV_V
+set q add vb 8
+set vv peek q 8
+set vf const 1
+return
+label SOMEV_N
+set q add vb 8
+set vb peek q 8
+goto SOMEVAR
+label SOMEV_I
+poke DSP 8 vb
+set DSP add DSP 8
+set q add vb 8
+set vb peek q 8
+gosub SOMEVAR
+set DSP sub DSP 8
+set vb peek DSP 8
+when nonzero vf goto SOMEV_R
+set q add vb 16
+set vb peek q 8
+goto SOMEVAR
+label SOMEV_R
+return
+
+; TAUT: tk tkb -> tr (taut_bf tk tkb); tk and tkb are spent
+label TAUT
+set t sub DSP DSL
+when negative t goto TAUT0
+goto LIMITSTK
+label TAUT0
+set tat peek tkb 8
+set t sub tat 11
+when zero t goto TAUT_T
+set t sub tat 12
+when zero t goto TAUT_F
+when zero tk goto TAUT_F
+set vb const tkb
+gosub SOMEVAR
+when zero vf goto TAUT_F
+poke DSP 8 tk
+set DSP add DSP 8
+poke DSP 8 tkb
+set DSP add DSP 8
+poke DSP 8 vv
+set DSP add DSP 8
+set sv const vv
+set sc const 1
+set sb const tkb
+gosub SUBST
+set tk sub tk 1
+set tkb const sr
+gosub TAUT
+set DSP sub DSP 8
+set vv peek DSP 8
+set DSP sub DSP 8
+set tkb peek DSP 8
+set DSP sub DSP 8
+set tk peek DSP 8
+when zero tr goto TAUT_F
+set sv const vv
+set sc const 0
+set sb const tkb
+gosub SUBST
+set tk sub tk 1
+set tkb const sr
+goto TAUT
+label TAUT_T
+set tr const 1
+return
+label TAUT_F
+set tr const 0
+return
+
+; TAUTCHK: tcf -> tcr (tautchk2)
+label TAUTCHK
+set atn const 0
+set af const tcf
+gosub ADDAT
+set tf const tcf
+gosub TOBF
+set tk const atn
+set tkb const tb
+gosub TAUT
+set tcr const tr
+return
+
+; ================================================================ the axiom shapes (axshape of Replay2.v)
+; AXSHAPE: axg -> axok
+label AXSHAPE
+; k: Imp a (Imp b a')
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_S
+set axa const c1
+set cn const c2
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_S
+set ea const axa
+set eb const c2
+gosub EQB
+when nonzero er goto AX_YES
+; s: Imp (Imp a (Imp b c)) (Imp (Imp a' b') (Imp a'' c'))
+label AX_S
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axl const c1
+set axr const c2
+set cn const axl
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axa const c1
+set cn const c2
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axb const c1
+set axc const c2
+set cn const axr
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axr1 const c1
+set axr2 const c2
+set cn const axr1
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axa1 const c1
+set axb1 const c2
+set cn const axr2
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axa2 const c1
+set axc1 const c2
+set ea const axa
+set eb const axa1
+gosub EQB
+when zero er goto AX_C
+set ea const axa
+set eb const axa2
+gosub EQB
+when zero er goto AX_C
+set ea const axb
+set eb const axb1
+gosub EQB
+when zero er goto AX_C
+set ea const axc
+set eb const axc1
+gosub EQB
+when nonzero er goto AX_YES
+; c: Imp (Imp (Neg a) (Neg b)) (Imp b' a')
+label AX_C
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_D
+set axl const c1
+set axr const c2
+set cn const axl
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_D
+set axna const c1
+set axnb const c2
+set cn const axna
+gosub CH
+set t sub cg 4
+when nonzero t goto AX_D
+set axa const c1
+set cn const axnb
+gosub CH
+set t sub cg 4
+when nonzero t goto AX_D
+set axb const c1
+set cn const axr
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_D
+set axb1 const c1
+set axa1 const c2
+set ea const axa
+set eb const axa1
+gosub EQB
+when zero er goto AX_D
+set ea const axb
+set eb const axb1
+gosub EQB
+when nonzero er goto AX_YES
+; dist: Imp (All (Imp a b)) (Imp (All a') (All b'))
+label AX_D
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_V
+set axl const c1
+set axr const c2
+set cn const axl
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_V
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_V
+set axa const c1
+set axb const c2
+set cn const axr
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_V
+set axr1 const c1
+set axr2 const c2
+set cn const axr1
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_V
+set axa1 const c1
+set cn const axr2
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_V
+set axb1 const c1
+set ea const axa
+set eb const axa1
+gosub EQB
+when zero er goto AX_V
+set ea const axb
+set eb const axb1
+gosub EQB
+when nonzero er goto AX_YES
+; vac: Imp a (All b) with b = ren S a
+label AX_V
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_R
+set axa const c1
+set cn const c2
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_R
+set axb const c1
+set mk const 4
+set rf const axa
+gosub RENW
+set ea const axb
+set eb const rr
+gosub EQB
+when nonzero er goto AX_YES
+; refl: Eqv x x
+label AX_R
+set cn const axg
+gosub CH
+set t sub cg 2
+when nonzero t goto AX_SEP
+set t sub c1 c2
+when zero t goto AX_YES
+; Separation, under any number of All
+label AX_SEP
+set sepg const axg
+label AX_SEP1
+gosub ISSEP
+when nonzero isr goto AX_YES
+set cn const sepg
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_COL
+set sepg const c1
+goto AX_SEP1
+; Collection, under any number of All
+label AX_COL
+set sepg const axg
+label AX_COL1
+gosub ISCOLL
+when nonzero isr goto AX_YES
+set cn const sepg
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_NO
+set sepg const c1
+goto AX_COL1
+label AX_YES
+set axok const 1
+return
+label AX_NO
+set axok const 0
+return
+
+; ISSEP: sepg -> isr (isSep): the shape All (Neg (All (Neg (All (Neg (Imp (Imp _ (Neg (Imp _ (Neg F)))) _))))))
+; with 1 not free in F and sepg = SepF (ren unskip F)
+label ISSEP
+set isr const 0
+set cn const sepg
+gosub CH
+set t sub cg 6
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISSEP_R
+set cn const c2
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISSEP_R
+set cn const c2
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set sepF const c1
+set fn const 1
+set ff const sepF
+gosub FREE
+when nonzero fr goto ISSEP_R
+; SepF (ren unskip F) = All (Xf (All (Qf (Mem 0 1) (Kf (Mem 0 2) (ren skip1 (ren unskip F))))))
+set mk const 7
+set rf const sepF
+gosub RENW
+set mk const 5
+set rf const rr
+gosub RENW
+set sepG const rr
+set mmx const 0
+set mmy const 2
+gosub MEM
+set kfa const mmr
+set kfb const sepG
+gosub KF
+set sepK const kfr
+set mmx const 0
+set mmy const 1
+gosub MEM
+set qfa const mmr
+set qfb const sepK
+gosub QF
+set ala const qfr
+gosub ALL
+set xfa const alr
+gosub XF
+set ala const xfr
+gosub ALL
+set ea const sepg
+set eb const alr
+gosub EQB
+set isr const er
+label ISSEP_R
+return
+
+; ISCOLL: sepg -> isr (isColl): the shape All (Imp (All (Imp _ (Neg (All (Neg F))))) _) with sepg = CollF F
+label ISCOLL
+set isr const 0
+set cn const sepg
+gosub CH
+set t sub cg 6
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISCOLL_R
+set cn const c2
+gosub CH
+set t sub cg 4
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ISCOLL_R
+set colF const c1
+; CollF g = All (Imp (All (Imp (Mem 0 1) (Xf g))) (Xf (All (Imp (Mem 0 2) (Xf (Kf (Mem 0 2) (ren ins2 g)))))))
+set mk const 6
+set rf const colF
+gosub RENW
+set colG const rr
+set mmx const 0
+set mmy const 2
+gosub MEM
+set colM2 const mmr
+set kfa const colM2
+set kfb const colG
+gosub KF
+set xfa const kfr
+gosub XF
+set ima const colM2
+set imb const xfr
+gosub IMP
+set ala const imr
+gosub ALL
+set xfa const alr
+gosub XF
+set colR const xfr
+set xfa const colF
+gosub XF
+set colXg const xfr
+set mmx const 0
+set mmy const 1
+gosub MEM
+set ima const mmr
+set imb const colXg
+gosub IMP
+set ala const imr
+gosub ALL
+set ima const alr
+set imb const colR
+gosub IMP
+set ala const imr
+gosub ALL
+set ea const sepg
+set eb const alr
+gosub EQB
+set isr const er
+label ISCOLL_R
+return
+
+; ================================================================ one step (sstep of Replay2.v) -> line
+; LINE: the line number lnum must be below nl -> lf
+label LINE
+set t sub lnum nl
+when negative t goto LINE1
+text WHY "a step names a line that is not yet there"
+goto FAIL
+label LINE1
+set q mul lnum 8
+set q add LINES q
+set lf peek q 8
+return
+label STEP
+gosub RDTAG
+set t sub tg 85
+when zero t goto ST_USE
+set t sub tg 83
+when zero t goto ST_SPEC
+set t sub tg 71
+when zero t goto ST_GEN
+set t sub tg 77
+when zero t goto ST_MP
+set t sub tg 84
+when zero t goto ST_TAUT
+set t sub tg 69
+when zero t goto ST_EXI
+set t sub tg 76
+when zero t goto ST_EXEL
+set t sub tg 72
+when zero t goto ST_ALLI
+set t sub tg 86
+when zero t goto ST_INST
+set t sub tg 90
+when zero t goto ST_LEIB
+set t sub tg 89
+when zero t goto ST_AX
+text WHY "unknown step tag"
+goto FAIL
+
+; use r sig: registry entry r renamed by sigf sig; its hypotheses join hs
+label ST_USE
+gosub RDNUM
+set ur const num
+gosub RDLIST
+set t sub ur reglen
+when negative t goto ST_USE1
+text WHY "use: no such registry entry"
+goto FAIL
+label ST_USE1
+set q mul ur 24
+set q add REG q
+set urf peek q 8
+set q add q 8
+set urha peek q 8
+set q add q 8
+set urhn peek q 8
+set mk const 3
+set mla const la
+set mln const ln
+set rf const urf
+gosub RENW
+set line const rr
+set uhi const 0
+label ST_USE2
+set t sub uhi urhn
+when negative t goto ST_USE3
+return
+label ST_USE3
+set an const 16
+gosub ALLOC
+set q mul uhi 8
+set q add urha q
+set uhv peek q 8
+poke ar 8 uhv
+set q add ar 8
+poke q 8 HSL
+set HSL const ar
+set uhi add uhi 1
+goto ST_USE2
+
+; spec l ts: line l with its leading All instantiated by ts (specn)
+label ST_SPEC
+gosub RDNUM
+set lnum const num
+gosub RDLIST
+gosub LINE
+set spF const lf
+set spi const 0
+label ST_SPEC1
+set t sub spi ln
+when negative t goto ST_SPEC2
+set line const spF
+return
+label ST_SPEC2
+set cn const spF
+gosub CH
+set t sub cg 6
+when zero t goto ST_SPEC3
+text WHY "spec: the line has no leading All to instantiate"
+goto FAIL
+label ST_SPEC3
+set q mul spi 8
+set q add la q
+set mp peek q 8
+set mk const 1
+set rf const c1
+gosub RENW
+set spF const rr
+set spi add spi 1
+goto ST_SPEC1
+
+; gen l k: All (ren (absk k) line l)
+label ST_GEN
+gosub RDNUM
+set lnum const num
+gosub RDNUM
+set gk const num
+gosub LINE
+set mk const 2
+set mp const gk
+set rf const lf
+gosub RENW
+set ala const rr
+gosub ALL
+set line const alr
+return
+
+; mp i j: line i is a, line j is Imp a' b with a = a' -> b
+label ST_MP
+gosub RDNUM
+set mpi const num
+gosub RDNUM
+set mpj const num
+set lnum const mpi
+gosub LINE
+set mpa const lf
+set lnum const mpj
+gosub LINE
+set cn const lf
+gosub CH
+set t sub cg 5
+when zero t goto ST_MP1
+text WHY "mp: the second line is not an implication"
+goto FAIL
+label ST_MP1
+set mpb const c2
+set ea const mpa
+set eb const c1
+gosub EQB
+when nonzero er goto ST_MP2
+text WHY "mp: the antecedent differs from the first line"
+goto FAIL
+label ST_MP2
+set line const mpb
+return
+
+; taut ls g: the implication from the lines ls to g is a tautology
+label ST_TAUT
+gosub RDLIST
+set tla const la
+set tln const ln
+gosub PARSEF
+set tG const pf
+set tacc const tG
+set tii const tln
+label ST_TAUT1
+when zero tii goto ST_TAUT2
+set tii sub tii 1
+set q mul tii 8
+set q add tla q
+set lnum peek q 8
+gosub LINE
+set ima const lf
+set imb const tacc
+gosub IMP
+set tacc const imr
+goto ST_TAUT1
+label ST_TAUT2
+set tcf const tacc
+gosub TAUTCHK
+when nonzero tcr goto ST_TAUT3
+text WHY "taut: not a tautology"
+goto FAIL
+label ST_TAUT3
+set line const tG
+return
+
+; exi t g: g = Imp F (Neg (All (Neg f))) with F = ren (scons t sid) f
+label ST_EXI
+gosub RDNUM
+set ext const num
+gosub PARSEF
+set exG const pf
+set cn const exG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_EXI_BAD
+set exF const c1
+set cn const c2
+gosub CH
+set t sub cg 4
+when nonzero t goto ST_EXI_BAD
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ST_EXI_BAD
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ST_EXI_BAD
+set mk const 1
+set mp const ext
+set rf const c1
+gosub RENW
+set ea const exF
+set eb const rr
+gosub EQB
+when zero er goto ST_EXI_BAD
+set line const exG
+return
+label ST_EXI_BAD
+text WHY "exi: the formula is not an existential introduction"
+goto FAIL
+
+; exel l k g: g = Imp (Neg (All (Neg P'))) G2, line l = Imp P G3, G2 = G3, P' = ren (absk k) P, k not free in G2
+label ST_EXEL
+gosub RDNUM
+set lnum const num
+gosub RDNUM
+set elk const num
+gosub PARSEF
+set elG const pf
+gosub LINE
+set cn const elG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_EXEL_BAD
+set elG2 const c2
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ST_EXEL_BAD
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ST_EXEL_BAD
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ST_EXEL_BAD
+set elP1 const c1
+set cn const lf
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_EXEL_BAD
+set elP const c1
+set elG3 const c2
+set ea const elG2
+set eb const elG3
+gosub EQB
+when zero er goto ST_EXEL_BAD
+set mk const 2
+set mp const elk
+set rf const elP
+gosub RENW
+set ea const elP1
+set eb const rr
+gosub EQB
+when zero er goto ST_EXEL_BAD
+set fn const elk
+set ff const elG2
+gosub FREE
+when nonzero fr goto ST_EXEL_BAD
+set line const elG
+return
+label ST_EXEL_BAD
+text WHY "exel: the side conditions of existential elimination fail"
+goto FAIL
+
+; alli k l g: g = Imp H (All f'), line l = Imp H2 f, H = H2, f' = ren (absk k) f, k not free in H
+label ST_ALLI
+gosub RDNUM
+set alk const num
+gosub RDNUM
+set lnum const num
+gosub PARSEF
+set alG const pf
+gosub LINE
+set cn const alG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_ALLI_BAD
+set alH const c1
+set cn const c2
+gosub CH
+set t sub cg 6
+when nonzero t goto ST_ALLI_BAD
+set alf1 const c1
+set cn const lf
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_ALLI_BAD
+set alH2 const c1
+set alf const c2
+set ea const alH
+set eb const alH2
+gosub EQB
+when zero er goto ST_ALLI_BAD
+set mk const 2
+set mp const alk
+set rf const alf
+gosub RENW
+set ea const alf1
+set eb const rr
+gosub EQB
+when zero er goto ST_ALLI_BAD
+set fn const alk
+set ff const alH
+gosub FREE
+when nonzero fr goto ST_ALLI_BAD
+set line const alG
+return
+label ST_ALLI_BAD
+text WHY "alli: the side conditions of universal introduction fail"
+goto FAIL
+
+; inst t g: g = Imp (All f) G2 with G2 = ren (scons t sid) f
+label ST_INST
+gosub RDNUM
+set int const num
+gosub PARSEF
+set inG const pf
+set cn const inG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_INST_BAD
+set inG2 const c2
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ST_INST_BAD
+set mk const 1
+set mp const int
+set rf const c1
+gosub RENW
+set ea const inG2
+set eb const rr
+gosub EQB
+when zero er goto ST_INST_BAD
+set line const inG
+return
+label ST_INST_BAD
+text WHY "inst: the formula is not an instance"
+goto FAIL
+
+; leib a g: g = Imp (Eqv s t) (Imp X Y) with X = ren (scons s sid) a and Y = ren (scons t sid) a
+label ST_LEIB
+gosub PARSEF
+set lbA const pf
+gosub PARSEF
+set lbG const pf
+set cn const lbG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_LEIB_BAD
+set lbR const c2
+set cn const c1
+gosub CH
+set t sub cg 2
+when nonzero t goto ST_LEIB_BAD
+set lbs const c1
+set lbt const c2
+set cn const lbR
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_LEIB_BAD
+set lbX const c1
+set lbY const c2
+set mk const 1
+set mp const lbs
+set rf const lbA
+gosub RENW
+set ea const lbX
+set eb const rr
+gosub EQB
+when zero er goto ST_LEIB_BAD
+set mk const 1
+set mp const lbt
+set rf const lbA
+gosub RENW
+set ea const lbY
+set eb const rr
+gosub EQB
+when zero er goto ST_LEIB_BAD
+set line const lbG
+return
+label ST_LEIB_BAD
+text WHY "leib: the formula is not Leibniz's law for the given formula"
+goto FAIL
+
+; ax g: one of the axiom shapes
+label ST_AX
+gosub PARSEF
+set axg const pf
+gosub AXSHAPE
+when nonzero axok goto ST_AX1
+text WHY "ax: not an axiom shape"
+goto FAIL
+label ST_AX1
+set line const axg
+return
+
+label END

@@ -1,0 +1,31 @@
+CX3 Stage 2 coverage receipt
+Started from date.exe: 2026-10-09T18:05:14-04:00
+No judges were rerun. Historical verdicts below are from existing judge-run-1.txt.
+Definition source check: symtab 686; rows 670; unique definitions 670; all body dependencies precede their definitions; parameter arities match name suffixes.
+Symtab names without definitions: ("VzUsc3" "VzUsa2" "VzUsb2" "VzUsg5" "VzUsd3" "VzUsd2" "VzUsc4" "VzUsf4" "Usa0" "Usb0" "Usd0" "Usc1" "Usd1" "Usc2" "Usf2" "Usg3")
+01-numerals.jdg: registry 677; theorems 73; steps 1679; prelude 7; generated 66; prelude-steps 129; all hypotheses []; symbol/arity pairs ((6 2) (7 3) (17 1) (18 2) (20 1)); sha256 9827a443b2b6924def86fac57f868155959ac4fda62ec5287b66042484472251
+  Registry comparison: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+02-membership.jdg: registry 677; theorems 226; steps 4168; prelude 13; generated 213; prelude-steps 188; all hypotheses []; symbol/arity pairs ((6 2) (7 3) (17 1) (18 2)); sha256 ac0bf1a85fc41687956d6d268add773d1519ce25655ad9eebc3983dbac819c01
+  Registry comparison: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+03-distinct.jdg: registry 677; theorems 248; steps 4076; prelude 10; generated 238; prelude-steps 146; all hypotheses []; symbol/arity pairs ((6 2) (7 3) (17 1) (18 2)); sha256 49e3f6a8654d20a685d26bfe846cfe073c0df77ed0ed3ffb4da86507269bf7ee
+  Registry comparison: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+04-bounded.jdg: registry 677; theorems 90; steps 1596; prelude 13; generated 77; prelude-steps 188; all hypotheses []; symbol/arity pairs ((6 2) (7 3) (17 1) (18 2)); sha256 b490267b073be72e2ff7ad86b82e35cb8357196f83339f81a3d5a7cad2a455c2
+  Registry comparison: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+05-arithmetic.jdg: registry 677; theorems 432; steps 20508; prelude 24; generated 408; prelude-steps 366; all hypotheses []; symbol/arity pairs ((6 2) (7 3) (8 3) (9 3) (10 1) (17 1) (18 2)); sha256 0b9013abf74c48674a0b1e7dbc01e1ff6cb90366667ce2713c5f20fa5e4b95a1
+  Registry comparison: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+06-sentences.jdg: registry 677; theorems 364; steps 13904; prelude 25; generated 339; prelude-steps 390; all hypotheses []; symbol/arity pairs ((6 2) (7 3) (8 3) (9 3) (10 1) (17 1) (18 2)); sha256 565ea0687e8255c7f123a47d8650e1cdb4a400e27f25d1975f4deb144dd92dfb
+  Registry comparison: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+07-sigma1.jdg: registry 677; theorems 223; steps 7138; prelude 27; generated 196; prelude-steps 502; all hypotheses []; symbol/arity pairs ((6 2) (7 3) (8 3) (9 3) (10 1) (17 1) (18 2) (20 1) (72 1)); sha256 abdbad7e74852ff1b66391dc0cde76e319aded12f1f6a8bd69c8e565c5471173
+  Registry comparison: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+Totals: 1656 theorems; 53069 steps; 119 copied prelude theorems; 1537 generated theorems; 1909 copied prelude steps.
+Combined statement symbol/arity pairs: ((6 2) (7 3) (8 3) (9 3) (10 1) (17 1) (18 2) (20 1) (72 1))
+Historical receipts: 7 both-judge ACCEPT rows and 70 both-judge REJECT mutant rows.
+Correction beside existing RESULTS.md: its 154 prelude / 1502 generated split differs from the current indices and manifest: 119 prelude / 1537 generated. The 1656 theorem / 53069 step totals agree.
+This receipt checks syntax, registry identity, arities, hypotheses, counts, and existing hashes; it does not run Replay2.check_batch in Rocq or establish the native judge simulation theorem.
+Source sha256 7d3ff29ca288d952ba7526940c3728aaa1bc202323311cb29b3409a4b4ff3337 C:/ClaudeOutput/pompetzki\sigma1/sigma1.rkt
+Source sha256 5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2 C:/ClaudeOutput/pompetzki\forcing-src/general/Data.v
+Source sha256 9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f C:/ClaudeOutput/pompetzki\forcing-src/general/RpInit.v
+Source sha256 8ecb1f8f8cc29131551d782b35fe1f6dadb7bd86432326516a7d7a3de9d121bd C:/ClaudeOutput/pompetzki\sigma1/out\manifest.txt
+Source sha256 3d3f3e2f2acb17db8a235d513375fbcc7324288967b6418ccc34ad2b1874a15f C:/ClaudeOutput/pompetzki\sigma1/judge-run-1.txt
+Source sha256 7237463a62a608ee3f7b46934e2ad9279d667ff6ba3b58834454827d1fe4aae6 C:/ClaudeOutput/pompetzki\sigma1/RESULTS.md
+Finished from date.exe: 2026-10-09T18:05:19-04:00

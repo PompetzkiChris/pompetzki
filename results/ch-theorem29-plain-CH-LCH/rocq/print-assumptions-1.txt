@@ -1,0 +1,25 @@
+rel_con
+     : forall M : form,
+       closedk 1 M = true ->
+       forall A B : form -> Prop,
+       (forall (f : form) (s : nat -> nat), A f -> A (ren s f)) ->
+       (forall f : form,
+        A f ->
+        forall n : nat,
+        1 <= n -> closedk n f = true -> prov B (chain (G M n) (rel M f))) ->
+       prov B (Xf M) -> prov A Checks.Bot -> prov B Checks.Bot
+Closed under the global context
+goedel_relative_consistency
+     : forall M : form,
+       closedk 1 M = true ->
+       LEX M ->
+       LAX M ->
+       LSEP M ->
+       LCOLL M -> LCH M -> prov GamCH Checks.Bot -> prov ZFpure Checks.Bot
+Closed under the global context
+con_zfc_con_notch_plain
+     : prov (GamE (Neg ch)) Checks.Bot -> prov ZFpure Checks.Bot
+Closed under the global context
+notch_plain_equiv
+     : prov (GamE (Neg ch)) Checks.Bot <-> prov Gam0 Checks.Bot
+Closed under the global context

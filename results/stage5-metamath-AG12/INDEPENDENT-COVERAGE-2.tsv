@@ -1,0 +1,259 @@
+section	key	value	details
+metric	cohort	5757	
+metric	logic_routes	82	
+metric	numbered_matches	8	
+metric	covered	4798	
+metric	uncovered	959	
+metric	distinct_missing_labels	77	
+metric	distinct_missing_dependency_sets	164	
+metric	covered_provable	4794	
+metric	covered_syntax	4	
+metric	covered_first1000	1000	
+metric	strict_class_route_sensitivity_covered	4796	excludes ax-frege52c and ax-frege54c from routed labels
+blocker	df-cleq	550	rank=1; formula=|- ( A = B <-> A. x ( x e. A <-> x e. B ) )
+blocker	df-clel	424	rank=2; formula=|- ( A e. B <-> E. x ( x = A /\ x e. B ) )
+blocker	df-ss	209	rank=3; formula=|- ( A C_ B <-> A. x ( x e. A -> x e. B ) )
+blocker	df-f	69	rank=4; formula=|- ( F : A --> B <-> ( F Fn A /\ ran F C_ B ) )
+blocker	df-fn	54	rank=5; formula=|- ( A Fn B <-> ( Fun A /\ dom A = B ) )
+blocker	ax-sep	49	rank=6; formula=|- E. y A. x ( x e. y <-> ( x e. z /\ ph ) )
+blocker	df-f1	32	rank=7; formula=|- ( F : A -1-1-> B <-> ( F : A --> B /\ Fun `' F ) )
+blocker	df-pss	31	rank=8; formula=|- ( A C. B <-> ( A C_ B /\ A =/= B ) )
+blocker	ax-rep	25	rank=9; formula=|- ( A. w E. y A. z ( A. y ph -> z = y ) -> E. y A. z ( z e. y <-> E. w ( w e. x /\ A. y ph ) ) )
+blocker	df-fo	25	rank=10; formula=|- ( F : A -onto-> B <-> ( F Fn A /\ ran F = B ) )
+blocker	df-disj	22	rank=11; formula=|- ( Disj_ x e. A B <-> A. y E* x e. A y e. B )
+blocker	df-f1o	22	rank=12; formula=|- ( F : A -1-1-onto-> B <-> ( F : A -1-1-> B /\ F : A -onto-> B ) )
+blocker	ax-nul	21	rank=13; formula=|- E. x A. y -. y e. x
+blocker	df-br	19	rank=14; formula=|- ( A R B <-> <. A , B >. e. R )
+blocker	ax-1cn	17	rank=15; formula=|- 1 e. CC
+blocker	ax-addcl	16	rank=16; formula=|- ( ( A e. CC /\ B e. CC ) -> ( A + B ) e. CC )
+blocker	df-po	15	rank=17; formula=|- ( R Po A <-> A. x e. A A. y e. A A. z e. A ( -. x R x /\ ( ( x R y /\ y R z ) -> x R z ) ) )
+blocker	df-2	12	rank=18; formula=|- 2 = ( 1 + 1 )
+blocker	df-so	12	rank=19; formula=|- ( R Or A <-> ( R Po A /\ A. x e. A A. y e. A ( x R y \/ x = y \/ y R x ) ) )
+blocker	df-fr	9	rank=20; formula=|- ( R Fr A <-> A. x ( ( x C_ A /\ x =/= (/) ) -> E. y e. x A. z e. x -. z R y ) )
+blocker	ax-addrcl	8	rank=21; formula=|- ( ( A e. RR /\ B e. RR ) -> ( A + B ) e. RR )
+blocker	df-3	8	rank=22; formula=|- 3 = ( 2 + 1 )
+blocker	df-we	8	rank=23; formula=|- ( R We A <-> ( R Fr A /\ R Or A ) )
+blocker	ax-tco	7	rank=24; formula=|- E. y ( x e. y /\ A. z ( z e. y -> A. w ( w e. z -> w e. y ) ) )
+blocker	df-4	7	rank=25; formula=|- 4 = ( 3 + 1 )
+blocker	df-fun	7	rank=26; formula=|- ( Fun A <-> ( Rel A /\ ( A o. `' A ) C_ _I ) )
+blocker	ax-mulcl	6	rank=27; formula=|- ( ( A e. CC /\ B e. CC ) -> ( A x. B ) e. CC )
+blocker	df-5	6	rank=28; formula=|- 5 = ( 4 + 1 )
+blocker	ax-cnre	5	rank=29; formula=|- ( A e. CC -> E. x e. RR E. y e. RR A = ( x + ( _i x. y ) ) )
+blocker	ax-prv1	5	rank=30; formula=|- Prv ph
+blocker	ax-prv2	5	rank=31; formula=|- ( Prv ( ph -> ps ) -> ( Prv ph -> Prv ps ) )
+blocker	ax-resscn	5	rank=32; formula=|- RR C_ CC
+blocker	ax-rnegex	5	rank=33; formula=|- ( A e. RR -> E. x e. RR ( A + x ) = 0 )
+blocker	df-6	5	rank=34; formula=|- 6 = ( 5 + 1 )
+blocker	df-isom	5	rank=35; formula=|- ( H Isom R , S ( A , B ) <-> ( H : A -1-1-onto-> B /\ A. x e. A A. y e. A ( x R y <-> ( H ` x ) S ( H ` y ) ) ) )
+blocker	df-ord	5	rank=36; formula=|- ( Ord A <-> ( Tr A /\ _E We A ) )
+blocker	df-rel	5	rank=37; formula=|- ( Rel A <-> A C_ ( _V X. _V ) )
+blocker	df-relp	5	rank=38; formula=|- ( H RelPres R , S ( A , B ) <-> ( H : A --> B /\ A. x e. A A. y e. A ( x R y -> ( H ` x ) S ( H ` y ) ) ) )
+blocker	ax-icn	4	rank=39; formula=|- _i e. CC
+blocker	ax-mulcom	4	rank=40; formula=|- ( ( A e. CC /\ B e. CC ) -> ( A x. B ) = ( B x. A ) )
+blocker	df-7	4	rank=41; formula=|- 7 = ( 6 + 1 )
+blocker	ax-addass	3	rank=42; formula=|- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> ( ( A + B ) + C ) = ( A + ( B + C ) ) )
+blocker	ax-distr	3	rank=43; formula=|- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> ( A x. ( B + C ) ) = ( ( A x. B ) + ( A x. C ) ) )
+blocker	ax-hvcom	3	rank=44; formula=|- ( ( A e. ~H /\ B e. ~H ) -> ( A +h B ) = ( B +h A ) )
+blocker	ax-mulass	3	rank=45; formula=|- ( ( A e. CC /\ B e. CC /\ C e. CC ) -> ( ( A x. B ) x. C ) = ( A x. ( B x. C ) ) )
+blocker	ax-mulrcl	3	rank=46; formula=|- ( ( A e. RR /\ B e. RR ) -> ( A x. B ) e. RR )
+blocker	ax-prv3	3	rank=47; formula=|- ( Prv ph -> Prv Prv ph )
+blocker	df-8	3	rank=48; formula=|- 8 = ( 7 + 1 )
+blocker	df-dmqs	3	rank=49; formula=|- ( R DomainQs A <-> ( dom R /. R ) = A )
+blocker	df-eqvrel	3	rank=50; formula=|- ( EqvRel R <-> ( RefRel R /\ SymRel R /\ TrRel R ) )
+blocker	df-er	3	rank=51; formula=|- ( R Er A <-> ( Rel R /\ dom R = A /\ ( `' R u. ( R o. R ) ) C_ R ) )
+blocker	ax-hv0cl	2	rank=52; formula=|- 0h e. ~H
+blocker	ax-hvaddid	2	rank=53; formula=|- ( A e. ~H -> ( A +h 0h ) = A )
+blocker	ax-i2m1	2	rank=54; formula=|- ( ( _i x. _i ) + 1 ) = 0
+blocker	ax-regs	2	rank=55; formula=|- ( E. x ph -> E. y ( A. x ( x = y -> ph ) /\ A. z ( z e. y -> -. A. x ( x = z -> ph ) ) ) )
+blocker	df-9	2	rank=56; formula=|- 9 = ( 8 + 1 )
+blocker	df-bnj15	2	rank=57; formula=|- ( R _FrSe A <-> ( R Fr A /\ R _Se A ) )
+blocker	df-lim	2	rank=58; formula=|- ( Lim A <-> ( Ord A /\ A =/= (/) /\ A = U. A ) )
+blocker	df-part	2	rank=59; formula=|- ( R Part A <-> ( Disj R /\ R DomainQs A ) )
+blocker	df-qmap	2	rank=60; formula=|- QMap R = ( x e. dom R |-> [ x ] R )
+blocker	ax-1ne0	1	rank=61; formula=|- 1 =/= 0
+blocker	ax-cnex	1	rank=62; formula=|- CC e. _V
+blocker	ax-his1	1	rank=63; formula=|- ( ( A e. ~H /\ B e. ~H ) -> ( A .ih B ) = ( * ` ( B .ih A ) ) )
+blocker	ax-hvass	1	rank=64; formula=|- ( ( A e. ~H /\ B e. ~H /\ C e. ~H ) -> ( ( A +h B ) +h C ) = ( A +h ( B +h C ) ) )
+blocker	ax-hvdistr1	1	rank=65; formula=|- ( ( A e. CC /\ B e. ~H /\ C e. ~H ) -> ( A .h ( B +h C ) ) = ( ( A .h B ) +h ( A .h C ) ) )
+blocker	ax-hvmulass	1	rank=66; formula=|- ( ( A e. CC /\ B e. CC /\ C e. ~H ) -> ( ( A x. B ) .h C ) = ( A .h ( B .h C ) ) )
+blocker	df-adjliftmap	1	rank=67; formula=|- ( R AdjLiftMap A ) = QMap ( ( R u. `' _E ) |` A )
+blocker	df-blockliftmap	1	rank=68; formula=|- ( R BlockLiftMap A ) = QMap ( R |X. ( `' _E |` A ) )
+blocker	df-bnj13	1	rank=69; formula=|- ( R _Se A <-> A. x e. A _pred ( x , A , R ) e. _V )
+blocker	df-bnj19	1	rank=70; formula=|- ( _TrFo ( B , A , R ) <-> A. x e. B _pred ( x , A , R ) C_ B )
+blocker	df-disjALTV	1	rank=71; formula=|- ( Disj R <-> ( CnvRefRel ,~ `' R /\ Rel R ) )
+blocker	df-erALTV	1	rank=72; formula=|- ( R ErALTV A <-> ( EqvRel R /\ R DomainQs A ) )
+blocker	df-pprod	1	rank=73; formula=|- pprod ( A , B ) = ( ( A o. ( 1st |` ( _V X. _V ) ) ) (x) ( B o. ( 2nd |` ( _V X. _V ) ) ) )
+blocker	df-rn	1	rank=74; formula=|- ran A = dom `' A
+blocker	df-smo	1	rank=75; formula=|- ( Smo A <-> ( A : dom A --> On /\ Ord dom A /\ A. x e. dom A A. y e. dom A ( x e. y -> ( A ` x ) e. ( A ` y ) ) ) )
+blocker	df-tr	1	rank=76; formula=|- ( Tr A <-> U. A C_ A )
+blocker	df-txp	1	rank=77; formula=|- ( A (x) B ) = ( ( `' ( 1st |` ( _V X. _V ) ) o. A ) i^i ( `' ( 2nd |` ( _V X. _V ) ) o. B ) )
+missing_set	1	173	df-cleq
+missing_set	2	153	df-cleq df-clel
+missing_set	3	147	df-clel
+missing_set	4	51	df-cleq df-ss
+missing_set	5	31	df-clel df-ss
+missing_set	6	29	df-ss
+missing_set	7	24	ax-sep
+missing_set	8	21	df-cleq df-ss df-pss
+missing_set	9	16	ax-rep
+missing_set	10	13	ax-nul
+missing_set	11	13	df-cleq df-clel ax-sep
+missing_set	12	9	df-cleq df-ss df-f df-f1 df-fo df-f1o
+missing_set	13	8	df-cleq df-clel df-disj
+missing_set	14	8	df-cleq df-clel df-ss df-disj
+missing_set	15	7	df-cleq df-ss df-fn df-f
+missing_set	16	7	df-fn
+missing_set	17	6	ax-tco
+missing_set	18	6	df-cleq df-fn
+missing_set	19	6	df-fn df-f
+missing_set	20	6	df-pss
+missing_set	21	6	df-ss df-f
+missing_set	22	4	df-cleq df-clel ax-rep
+missing_set	23	4	df-cleq df-clel df-br
+missing_set	24	4	df-cleq df-fn df-f
+missing_set	25	4	df-f
+missing_set	26	3	ax-addass
+missing_set	27	3	ax-addcl
+missing_set	28	3	ax-addrcl
+missing_set	29	3	ax-distr
+missing_set	30	3	ax-mulass
+missing_set	31	3	ax-mulcl
+missing_set	32	3	ax-mulcom
+missing_set	33	3	ax-mulrcl
+missing_set	34	3	ax-prv1 ax-prv2 ax-prv3
+missing_set	35	3	df-clel df-ss ax-resscn
+missing_set	36	3	df-clel df-ss df-br
+missing_set	37	3	df-clel df-ss df-disj
+missing_set	38	3	df-cleq df-clel ax-rep ax-sep
+missing_set	39	3	df-cleq df-clel df-pss
+missing_set	40	3	df-cleq df-ss df-f
+missing_set	41	3	df-cleq df-ss df-f df-fo
+missing_set	42	3	df-cleq df-ss df-rel
+missing_set	43	3	df-eqvrel
+missing_set	44	3	df-fn df-f df-f1
+missing_set	45	3	df-fn df-f df-f1 df-f1o
+missing_set	46	2	ax-prv1 ax-prv2
+missing_set	47	2	df-clel ax-sep ax-nul
+missing_set	48	2	df-cleq ax-hvcom ax-hv0cl ax-hvaddid
+missing_set	49	2	df-cleq df-2
+missing_set	50	2	df-cleq df-clel ax-1cn ax-addcl df-2
+missing_set	51	2	df-cleq df-clel ax-1cn ax-addrcl ax-rnegex ax-cnre
+missing_set	52	2	df-cleq df-clel ax-1cn ax-icn ax-addcl ax-mulcl ax-i2m1
+missing_set	53	2	df-cleq df-clel ax-sep ax-nul
+missing_set	54	2	df-cleq df-clel df-br df-isom
+missing_set	55	2	df-cleq df-clel df-br df-relp
+missing_set	56	2	df-cleq df-clel df-ss
+missing_set	57	2	df-cleq df-fn df-f df-f1 df-fo df-f1o
+missing_set	58	2	df-cleq df-fn df-fo
+missing_set	59	2	df-cleq df-fo
+missing_set	60	2	df-cleq df-ss df-fn df-f df-fo
+missing_set	61	2	df-disj
+missing_set	62	2	df-er
+missing_set	63	2	df-f df-f1
+missing_set	64	2	df-fun df-fn df-f
+missing_set	65	2	df-fun df-fn df-f df-f1
+missing_set	66	2	df-lim
+missing_set	67	2	df-ord
+missing_set	68	2	df-so
+missing_set	69	2	df-we
+missing_set	70	1	ax-1cn
+missing_set	71	1	ax-1cn ax-addcl
+missing_set	72	1	ax-cnex
+missing_set	73	1	ax-cnre
+missing_set	74	1	ax-his1
+missing_set	75	1	ax-hvass
+missing_set	76	1	ax-hvcom
+missing_set	77	1	ax-hvdistr1
+missing_set	78	1	ax-hvmulass
+missing_set	79	1	ax-regs
+missing_set	80	1	ax-rep ax-sep ax-nul
+missing_set	81	1	ax-sep ax-nul
+missing_set	82	1	ax-sep ax-nul ax-tco
+missing_set	83	1	df-bnj13 df-bnj15
+missing_set	84	1	df-bnj15
+missing_set	85	1	df-clel ax-regs
+missing_set	86	1	df-clel ax-rep
+missing_set	87	1	df-clel ax-sep
+missing_set	88	1	df-clel df-disj
+missing_set	89	1	df-clel df-ss df-rel
+missing_set	90	1	df-cleq ax-1ne0
+missing_set	91	1	df-cleq ax-mulcom
+missing_set	92	1	df-cleq ax-nul
+missing_set	93	1	df-cleq df-3
+missing_set	94	1	df-cleq df-4
+missing_set	95	1	df-cleq df-5
+missing_set	96	1	df-cleq df-6
+missing_set	97	1	df-cleq df-7
+missing_set	98	1	df-cleq df-8
+missing_set	99	1	df-cleq df-9
+missing_set	100	1	df-cleq df-clel ax-1cn ax-addcl df-2 df-3
+missing_set	101	1	df-cleq df-clel ax-1cn ax-addcl df-2 df-3 df-4
+missing_set	102	1	df-cleq df-clel ax-1cn ax-addcl df-2 df-3 df-4 df-5
+missing_set	103	1	df-cleq df-clel ax-1cn ax-addcl df-2 df-3 df-4 df-5 df-6
+missing_set	104	1	df-cleq df-clel ax-1cn ax-addcl df-2 df-3 df-4 df-5 df-6 df-7
+missing_set	105	1	df-cleq df-clel ax-1cn ax-addcl df-2 df-3 df-4 df-5 df-6 df-7 df-8
+missing_set	106	1	df-cleq df-clel ax-1cn ax-addcl df-2 df-3 df-4 df-5 df-6 df-7 df-8 df-9
+missing_set	107	1	df-cleq df-clel ax-1cn ax-icn ax-addcl ax-mulcl df-2
+missing_set	108	1	df-cleq df-clel ax-addrcl ax-rnegex
+missing_set	109	1	df-cleq df-clel df-br df-fr
+missing_set	110	1	df-cleq df-clel df-br df-po
+missing_set	111	1	df-cleq df-clel df-br df-po df-so
+missing_set	112	1	df-cleq df-clel df-br df-po df-so df-fr df-we
+missing_set	113	1	df-cleq df-clel df-fn
+missing_set	114	1	df-cleq df-clel df-ss ax-resscn ax-1cn ax-addrcl ax-rnegex ax-cnre
+missing_set	115	1	df-cleq df-clel df-ss ax-resscn ax-icn ax-addrcl ax-rnegex ax-cnre
+missing_set	116	1	df-cleq df-clel df-ss df-br df-fr
+missing_set	117	1	df-cleq df-clel df-ss df-br df-po
+missing_set	118	1	df-cleq df-clel df-ss df-br df-po df-so
+missing_set	119	1	df-cleq df-clel df-ss df-br df-po df-so df-fr df-we
+missing_set	120	1	df-cleq df-dmqs df-part
+missing_set	121	1	df-cleq df-er
+missing_set	122	1	df-cleq df-fn df-f df-f1
+missing_set	123	1	df-cleq df-fn df-f df-f1 df-fo df-f1o df-isom
+missing_set	124	1	df-cleq df-fn df-f df-relp
+missing_set	125	1	df-cleq df-pss
+missing_set	126	1	df-cleq df-qmap df-adjliftmap
+missing_set	127	1	df-cleq df-qmap df-blockliftmap
+missing_set	128	1	df-cleq df-ss df-f df-f1
+missing_set	129	1	df-cleq df-ss df-f df-f1 df-fo df-f1o df-isom
+missing_set	130	1	df-cleq df-ss df-f df-relp
+missing_set	131	1	df-cleq df-ss df-fn df-f df-f1 df-fo df-f1o
+missing_set	132	1	df-cleq df-ss df-fr
+missing_set	133	1	df-cleq df-ss df-po
+missing_set	134	1	df-cleq df-ss df-po df-so
+missing_set	135	1	df-cleq df-ss df-po df-so df-fr df-we
+missing_set	136	1	df-cleq df-ss df-rn df-fn df-f df-f1 df-fo df-f1o
+missing_set	137	1	df-cleq df-txp df-pprod
+missing_set	138	1	df-disjALTV
+missing_set	139	1	df-dmqs df-erALTV
+missing_set	140	1	df-dmqs df-part
+missing_set	141	1	df-f df-f1 df-f1o
+missing_set	142	1	df-f1
+missing_set	143	1	df-f1 df-f1o
+missing_set	144	1	df-f1o
+missing_set	145	1	df-fo
+missing_set	146	1	df-fun
+missing_set	147	1	df-fun df-fn
+missing_set	148	1	df-fun df-fn df-f df-f1 df-f1o
+missing_set	149	1	df-isom
+missing_set	150	1	df-po
+missing_set	151	1	df-po df-so
+missing_set	152	1	df-relp
+missing_set	153	1	df-smo
+missing_set	154	1	df-ss ax-sep
+missing_set	155	1	df-ss df-bnj19
+missing_set	156	1	df-ss df-f df-f1
+missing_set	157	1	df-ss df-fr
+missing_set	158	1	df-ss df-po
+missing_set	159	1	df-ss df-po df-so
+missing_set	160	1	df-ss df-po df-so df-fr df-we
+missing_set	161	1	df-ss df-po df-so df-fr df-we df-ord
+missing_set	162	1	df-ss df-rel
+missing_set	163	1	df-tr df-ord
+missing_set	164	1	df-we df-ord
+optimization	best_1_additions_gain	173	covered=4971; examined=77; tie_count=1
+optimal_addition_set	1	173	df-cleq
+optimization	best_2_additions_gain	473	covered=5271; examined=2926; tie_count=1
+optimal_addition_set	2	473	df-clel df-cleq
+optimization	best_3_additions_gain	586	covered=5384; examined=73150; tie_count=1
+optimal_addition_set	3	586	df-clel df-cleq df-ss

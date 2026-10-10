@@ -1,0 +1,82 @@
+==== run 2026-10-09 18:55:50  example.pmp ====
+2: extern ver C:/ClaudeOutput/pompetzki/lanes/L8G/l8g.dll l8g_api_version
+3: extern run C:/ClaudeOutput/pompetzki/lanes/L8G/l8g.dll l8g_workload
+4: text DIR "C:/ClaudeOutput/pompetzki/lanes/L8G/out2"
+5: set verword call ver
+6: set expect const 1
+7: set dver sub verword expect
+8: check zero dver
+9: set rc call run DIR
+10: check zero rc
+11: load matrix A C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_A.txt
+12: load matrix K C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_K.txt
+13: load matrix Minor C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_minor.txt
+14: load matrix GR C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_gpu_rank.txt
+15: let AK compose A K
+16: claim zero AK "A K is the zero matrix"
+claim by rule zero: A K is the zero matrix
+17: established
+established by rule zero A K is the zero matrix  -- checks passed inside it: 0, lines 16-17
+18: let md det Minor
+19: claim nonzero md "leading minor determinant is nonzero"
+claim by rule nonzero: leading minor determinant is nonzero
+20: established
+established by rule nonzero leading minor determinant is nonzero  -- checks passed inside it: 0, lines 19-20
+21: let r rank A
+22: let nul nullity A
+23: let c cols A
+24: let rn add r nul
+25: claim equal rn c "rank plus nullity equals the number of columns"
+claim by rule equal: rank plus nullity equals the number of columns
+26: established
+established by rule equal rank plus nullity equals the number of columns  -- checks passed inside it: 0, lines 25-26
+27: claim equal r GR "exact rank equals the GPU rank"
+claim by rule equal: exact rank equals the GPU rank
+28: established
+established by rule equal exact rank equals the GPU rank  -- checks passed inside it: 0, lines 27-28
+29: load matrix Tm C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmpT_A.txt
+30: let dt det Tm
+31: let one identity 1
+32: claim equal dt one "unit triangular determinant is 1"
+claim by rule equal: unit triangular determinant is 1
+33: established
+established by rule equal unit triangular determinant is 1  -- checks passed inside it: 0, lines 32-33
+34: load matrix S C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_smith_S.txt
+35: load matrix U C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_smith_U.txt
+36: load matrix V C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_smith_V.txt
+37: load matrix D C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_smith_D.txt
+38: let SV compose S V
+39: let USV compose U SV
+40: let Diff sub USV D
+41: claim zero Diff "U S V equals the Smith form"
+claim by rule zero: U S V equals the Smith form
+42: established
+established by rule zero U S V equals the Smith form  -- checks passed inside it: 0, lines 41-42
+43: let du det U
+44: let du2 compose du du
+45: claim equal du2 one "determinant of U is plus or minus one"
+claim by rule equal: determinant of U is plus or minus one
+46: established
+established by rule equal determinant of U is plus or minus one  -- checks passed inside it: 0, lines 45-46
+47: let dv det V
+48: let dv2 compose dv dv
+49: claim equal dv2 one "determinant of V is plus or minus one"
+claim by rule equal: determinant of V is plus or minus one
+50: established
+established by rule equal determinant of V is plus or minus one  -- checks passed inside it: 0, lines 49-50
+51: say "l8g checks passed"
+certificate: program example.pmp  sha256 92a8132dfc7fac0392c18ab80fe00c915cf6426e245c66773ded86bc6b02772d
+certificate: interpreter C:\ClaudeOutput\pompetzki\pompetzki.exe  sha256 ccf835920e566b8a45468654798fb9577a261cfec171a707e0438696515a3bec
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_A.txt  sha256 a05bcb4a3d9bd4ea0f959f41390096e75e4137e8759db157ba205ee29e0aac4d
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_K.txt  sha256 ead25bf61aeeca0cee2db8b6e406ce9ba14fe6e6f75431e72aab58b8a3a4f881
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_minor.txt  sha256 fee5ad0d6167969e9f8289327ab0370eaa7151b78a0fb890f6032d326004c52a
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_gpu_rank.txt  sha256 7c468f5e59f2871b946e051445493bbcace531d597edbbcc9935e7d02d025114
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmpT_A.txt  sha256 7c9e4a493963a2caf19f5bb13c9ceec1325b8650f8a4ad42eb806f19ed88558f
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_smith_S.txt  sha256 416c19bd50a52f3d158f5556935ec8f314ddd4d1eea75996a10a067a516c2a07
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_smith_U.txt  sha256 8ff4ffbebbf70fca56c636c732e6be229ef356bd27cc8d741e2d442603c08444
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_smith_V.txt  sha256 1cc2c58a51ad6c6562823dabe80c9f61a9a63f708f45e9524f34ec62feae0683
+certificate: input C:/ClaudeOutput/pompetzki/lanes/L8G/out2/pmp_smith_D.txt  sha256 e36c590f31213bdc5ceff704cb32c92a10a3113f52b659496aa3d7bb9bdb3008
+certificate: claims established by rule 8 of 8; annotations closed 0 of 0
+certificate: statements executed 51, checks passed 2, records written 0
+certificate: rational operations 1084, largest integer at most 2 x 64 bits
+end: every obligation discharged

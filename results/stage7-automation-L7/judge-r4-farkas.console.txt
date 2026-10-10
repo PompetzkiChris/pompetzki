@@ -1,0 +1,3 @@
+C:/ClaudeOutput/pompetzki/lanes/L7/out-r4/L7-5-farkas-l2d.jdg | pmp ACCEPT exit 0 374784 ms | racket ACCEPT exit 0 2677 ms | pmp: ACCEPT registry entries at the start, theorems accepted, steps checked, registry entries at the end: 677 236 4985 913 | racket: ACCEPT registry 677 theorems 236 steps 4985 final-registry 913
+C:/ClaudeOutput/pompetzki/lanes/L7/out-r4/mut/L7-5-farkas-l2d-neg-final.jdg | pmp REJECT exit 1 306027 ms | racket REJECT exit 1 1802 ms | pmp: REJECT the last line is not the statement renamed by sig theorem and step (counted from 0): 235 244 line 340: check zero failed: not the zero vector | racket: REJECT theorem 235 step 244 (final: last line is not the statement)
+exit 0

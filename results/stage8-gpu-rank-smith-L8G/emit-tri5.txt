@@ -1,0 +1,31 @@
+exit 0
+C:/ClaudeOutput/pompetzki/lanes/L8G\release\jdg\tri5.jdg  from C:/ClaudeOutput/pompetzki/lanes/L8G\release\sexps\tri5.sexp (Rank certificate), 12 entries
+  note: minor M = ((1 0 0 0 0) (-1 1 0 0 0) (0 -1 1 0 0) (0 0 -1 1 0) (0 0 0 0 1)), adj(M) = ((1 0 0 0 0) (1 1 0 0 0) (1 1 1 0 0) (1 1 1 1 0) (0 0 0 0 1)), det = 1
+  note: kernel minor (), adj (), det 1
+  E1: +1*1 = 1
+  E2: -1*1 +1*1 = 0
+  E3: +1*1 = 1
+  E4: -1*1 +1*1 = 0
+  E5: -1*1 +1*1 = 0
+  E6: +1*1 = 1
+  E7: -1*1 +1*1 = 0
+  E8: -1*1 +1*1 = 0
+  E9: -1*1 +1*1 = 0
+  E10: +1*1 = 1
+  E11: +1*1 = 1
+  E12: 1 /= 0
+  theorems 68 (prelude 50, generated 18), steps 1762 (prelude 1256), bytes 210706, build 107 ms
+  largest tautology test 83 calls
+  sha256 ec5c79410ba31b57d6bdf20811a43974c3339296622aba49a08c30766d4cd9c5
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 68 1762 745)
+  mutant cert-use-swap: copy of the checker (REJECT 67 step 1: taut: not a tautology)
+  mutant neg-final: copy of the checker (REJECT 67 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 67 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 3 step 1: taut: not a tautology)
+  mutant use-shift: copy of the checker (REJECT 3 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 59 step 21: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 3 step 3: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 3 step 6: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 67 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 2 step 23: taut: not a tautology)

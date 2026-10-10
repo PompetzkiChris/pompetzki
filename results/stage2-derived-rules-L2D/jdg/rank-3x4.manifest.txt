@@ -1,0 +1,30 @@
+certs/out2/rank-3x4.jdg  from certs/in/rank-3x4.sexp (Rank certificate), 12 entries
+  note: minor M = ((1 2) (0 1)), adj(M) = ((1 -2) (0 1)), det = 1
+  note: kernel minor ((1 0) (0 1)), adj ((1 0) (0 1)), det 1
+  E1: +1*1 = 1
+  E2: -1*2 +2*1 = 0
+  E3: +1*1 = 1
+  E4: 1 /= 0
+  E5: +1*2 -2*1 = 0
+  E6: -1*1 +1*1 = 0
+  E7: -1*1 +1*1 = 0
+  E8: +1*2 -3*1 +1*1 = 0
+  E9: -1*1 +1*1 = 0
+  E10: +1*1 = 1
+  E11: +1*1 = 1
+  E12: 1 /= 0
+  theorems 98 (prelude 52, generated 46), steps 3209 (prelude 1274), bytes 683079, build 183 ms
+  largest tautology test 113 calls
+  sha256 d58dbebb85fd5b2e2c3e1d592bfa4169e32069fd437a20658448a6b2442679cd
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 98 3209 775)
+  mutant cert-use-swap: copy of the checker (REJECT 97 step 1: taut: not a tautology)
+  mutant neg-final: copy of the checker (REJECT 97 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 97 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 3 step 1: taut: not a tautology)
+  mutant use-shift: copy of the checker (REJECT 3 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 59 step 21: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 3 step 3: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 3 step 6: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 97 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 2 step 23: taut: not a tautology)

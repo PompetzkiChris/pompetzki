@@ -1,0 +1,5 @@
+0 LeSub (Sub(v0,v1) → (P14(v1,v2) → P14(v0,v2)))
+1 PowEx ∃x0 ∀x1 (x1∈x0 ↔ Sub(x1,v0))
+2 NotchPlain (∃x0 ∃x1 ∃x2 ((((Om(x0) ∧ ∀x3 (x3∈x1 → Sub(x3,x0))) ∧ ∀x3 (x3∈x2 → Sub(x3,x0))) ∧ ¬P14(x1,x0)) ∧ ¬P14(x2,x1)) → ¬∀x0 ∀x1 ∀x2 (((Om(x0) → ∃x3 ((x3∈x2 → Sub(x3,x0)) → ¬(Sub(x3,x0) → x3∈x2))) ∨ ¬Sub(x1,x2)) ∨ (P14(x1,x0) ∨ P14(x2,x1))))
+3 PlainNotch (∀x0 ∀x1 ∀x2 (((Om(x0) → ∃x3 ((x3∈x2 → Sub(x3,x0)) → ¬(Sub(x3,x0) → x3∈x2))) ∨ ¬Sub(x1,x2)) ∨ (P14(x1,x0) ∨ P14(x2,x1))) ∨ ∃x0 ∃x1 ∃x2 ((((Om(x0) ∧ ∀x3 (x3∈x1 → Sub(x3,x0))) ∧ ∀x3 (x3∈x2 → Sub(x3,x0))) ∧ ¬P14(x1,x0)) ∧ ¬P14(x2,x1)))
+4 NotchIff (∃x0 ∃x1 ∃x2 ((((Om(x0) ∧ ∀x3 (x3∈x1 → Sub(x3,x0))) ∧ ∀x3 (x3∈x2 → Sub(x3,x0))) ∧ ¬P14(x1,x0)) ∧ ¬P14(x2,x1)) ↔ ¬∀x0 ∀x1 ∀x2 (((Om(x0) → ∃x3 ((x3∈x2 → Sub(x3,x0)) → ¬(Sub(x3,x0) → x3∈x2))) ∨ ¬Sub(x1,x2)) ∨ (P14(x1,x0) ∨ P14(x2,x1))))

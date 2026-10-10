@@ -1,0 +1,2 @@
+2026-10-09 18:53:45
+Run by Codex exec (headless), on Christopher's order to use PowerShell instead of screen control. The Antigravity app has no command line.

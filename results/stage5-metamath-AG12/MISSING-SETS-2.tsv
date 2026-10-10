@@ -1,0 +1,165 @@
+addition_labels	addition_count	theorems_with_exact_missing_set	newly_unlocked_theorems	total_covered_after_additions	newly_unlocked_per_addition_exact	theorems_with_exact_missing_set_labels
+df-clel df-cleq	2	153	473	5271	473/2	eleq1d eleq2d eleq2dALT eleq1 eleq2 eleq12 eleq1i eleq2i eleq12i eleq12d eleq1a eqeltri eqeltrri eleqtri eleqtrri eqeltrd eqeltrrd eleqtrd eleqtrrd eqeltrid eqeltrrid eleqtrid eleqtrrid eqeltrdi eqeltrrdi eleqtrdi eleqtrrdi 3eltr3i 3eltr4i 3eltr3d 3eltr4d 3eltr3g 3eltr4g eleq2s eqneltri eqneltrd eqneltrrd neleqtrd neleqtrrd nelneq nelneq2 cleqh hbxfreq nfceqi nfcxfr nfcxfrd nfeld nfel nfel1 nfel2 dvelimdc dvelimc cleqf nelne1 nelne2 elnelneqd elnelneq2d nelelne neleq12d neleq1 neleq2 nfnel nfneld elnelne1 elnelne2 raleqbii rexeqbii raleqbidv rexeqbidv cbvraldva2 cbvrexdva2 sbralieALT raleqf rexeqf raleqbid rexeqbid rgen2a nfrald nfrexd nfral nfrex nfra2 ralcom2 reueqbidv rmoeq1f reueq1f nfrmod nfreud nfrmo nfreu elex22 gencbvex gencbvex2 gencbval spcimgft spcimgfi1 spcgft spcimgf spcimegf vtoclgft vtocldf spcgf spcegf rspct rspcdf rspc rspce rspc2 clel5 euxfr2w euxfrw euxfr2 euxfr euind reu2eqd reueq reuind cdeqel nfccdeq eqrd eqri spcdvw aceq1 aceq0 ac2 axpowndlem2 rmoeqi rmoeqbii reueqi reueqbii rmoeqbidv cbvralvw2 cbvrexvw2 cbvrmovw2 cbvreuvw2 cbvrmodavw2 cbvreudavw2 eleq2w2ALT bj-vtoclgfALT cbvreud wl-dfcleq wl-dfclel ralbi12f eqeltr eqelb rsp3eq rspcegf rspcef raleqd rexeqif rspced cbvral2 afv2orxorb
+df-clel df-cleq df-ss	3	2	586	5384	586/3	dfss5 opnneilem
+df-cleq	1	173	173	4971	173	dfcleq ax9ALT eleq2w2 eqriv eqrdv eqrdav eqid eqidd eqeq1d eqeq1dALT eqeq1 eqeq1i eqcomd eqcom eqcoms eqcomi neqcomd eqeq2d eqeq2 eqeq2i eqeqan12d eqeqan12rd eqeq12d eqeq12 eqeq12i eqeqan12dALT eqtr eqtr2 eqtr3 eqtri eqtr2i eqtr3i eqtr4i 3eqtri 3eqtrri 3eqtr2i 3eqtr2ri 3eqtr3i 3eqtr3ri 3eqtr4i 3eqtr4ri eqtrd eqtr2d eqtr3d eqtr4d 3eqtrd 3eqtrrd 3eqtr2d 3eqtr2rd 3eqtr3d 3eqtr3rd 3eqtr4d 3eqtr4rd eqtrid eqtr2id eqtr3id eqtr3di eqtrdi eqtr2di eqtr4di eqtr4id sylan9eq sylan9req sylan9eqr 3eqtr3g 3eqtr3a 3eqtr4g 3eqtr4a eq2tri iseqsetvlem iseqsetv-cleq eqsb1 nfceqdf nfeqd nfeq nfeq1 nfeq2 drnfc1 drnfc2 neirr necom necomi necomd nesym nesymi nesymir neeq1d neeq2d neeq12d neeq1 neeq2 neeq1i neeq2i neeq12i eqnetrd eqnetrrd neeqtrd eqnetri eqnetrri neeqtri neeqtrri neeqtrrd eqnetrrid 3netr3d 3netr4d 3netr3g 3netr4g pm13.18 pm13.181 neneor nfne nfned rexeq raleq raleqi rexeqi raleqdv rexeqdv raleqtrdv rexeqtrdv raleqtrrdv rexeqtrrdv raleqbidva rexeqbidva raleqbidvv rexeqbidvv raleqbi1dv rexeqbi1dv raleleq rmoeq1 reueq1 rmoeqd reueqd reueqdv cbvexeqsetf sbhypf moeq mosub rmoeq cdeqeq eusv1 ex-or ex-an eqid1 qlaxr1i qlaxr2i eqtrb rmoeqdv bj-nfcsym wl-cleq-0 wl-cleq-1 wl-cleq-2 wl-cleq-3 wl-cleq-4 wl-cleq-5 wl-cleq-6 wl-isseteq wl-ax12v2cl wl-df.cleq wl-dfcleq.basic wl-dfcleq.just eqeqan2d nfcxfrdf nfded nfded2 dalemccnedd mapdpglem25 frege122d axfrege54c int-eqtransd sbeqal2i ichexmpl1 reueqbidva
+ax-sep df-clel df-cleq	3	13	511	5309	511/3	zfausclOLD axregndlem2 axregnd axinfndlem1 axinfnd axacndlem4 zfcndreg zfcndinf axpowg2 axpowg3 axregprim axinfprim bj-sepg
+ax-rep df-clel df-cleq	3	4	494	5292	494/3	zfrepclf zfrep3cl axrepndlem1 axrepndlem2
+df-clel df-cleq df-fn	3	1	487	5285	487/3	funfni
+df-clel df-cleq df-disj	3	8	484	5282	484/3	cbvdisj cbvdisjv nfdisj cbvdisjf disjeq1i cbvdisjvw2 cbvdisjdavw cbvdisjdavw2
+df-clel df-cleq df-pss	3	3	483	5281	161	ssnelpss ssnelpssd ssexnelpss
+df-br df-clel df-cleq	3	4	477	5275	159	breq breqi breqd breqdi
+df-clel df-cleq df-disj df-ss	4	8	608	5406	152	disjeq2 disjeq2dv disjeq1 disjeq1d disjeq12d disjeq1f disjeq12i disjeq12dv
+df-clel	1	147	147	4945	147	dfclel elex2 issetlem elissetv eleq1w eleq2w clelsb1 clelsb2 hblem hblemg nfcjust nfcr nfcri nfcrd nfcrii clelsb1fw clelsb1f risset nelb rspw cbvralvw cbvrexvw cbvraldva cbvrexdva cbvral2vw cbvrex2vw cbvral3vw cbvral4vw cbvral6vw cbvral8vw r2alf r2exf ralcomf rexcomf cbvralfw cbvrexfw cbvralw cbvrexw nfraldw nfrexdw nfralw nfrexw cbvralsvw cbvrexsvw cbvralf cbvrexf cbvral cbvrex cbvralv cbvrexv cbvralsv cbvrexsv cbvral2v cbvrex2v cbvral3v moel cbvrmovw cbvreuvw cbvrmow cbvreuw nfrmow nfreuw cbvreu cbvrmo cbvrmov cbvreuv isseti rexcom4b ceqsal ceqsalv ceqsralv ceqsex ceqsexv ceqsexv2d ceqsex2 ceqsex2v ceqsex3v ceqsex4v ceqsex6v ceqsex8v vtocle vtocl vtoclef vtoclf vtocl2 vtocl3 vtoclb ralxpxfr2d reu2 reu6 reu3 rmo4 reu4 reu7 reu8 rmo3f rmo4f 2rmorex 2reu5 2reurex 2rexreu reu8nf rmo3 2reu1 2reu2 ralidmw axextnd zfcndext 2reu2reu2 axextprim axextdfeq axextdist axextbdist axextndbi cbvrmodavw cbvreudavw bj-issetiv bj-rexcom4bv bj-ceqsaltv bj-ceqsalgv bj-ceqsalgvALT bj-ceqsal bj-ceqsalv bj-spcimdvv bj-vtoclf bj-vtocl bj-vtoclg1fv bj-vtoclg bj-nfcf wl-df.clel wl-dfclel.basic wl-dfclel.just rsp3 rexlimdvaacbv rexlimddvcbvw rexlimddvcbv rexsb rexrsb 2rexsb 2rexrsb cbvrex2 2reu3 2reu7 2reu8 2reuimp0 nfrals nfralseu
+ax-rep ax-sep df-clel df-cleq	4	3	535	5333	535/4	axrepnd zfcndrep axrepprim
+ax-nul ax-sep df-clel df-cleq	4	2	530	5328	265/2	axsepg2 axnulg
+df-cleq df-ss	2	51	253	5051	253/2	eqss eqssi eqssd sssseq eqelssd sseq1 sseq2 sseq12 sseq1i sseq2i sseq12i sseq1d sseq2d sseq12d eqsstrd eqsstrrd sseqtrd sseqtrrd eqsstrid eqsstrrid sseqtrdi sseqtrrdi sseqtrid sseqtrrid eqsstrdi eqsstrrdi eqsstri eqsstrri sseqtri sseqtrri 3sstr3i 3sstr4i 3sstr3g 3sstr4g 3sstr3d 3sstr4d eqimssd eqimsscd eqimss eqimss2 eqimssi eqimss2i nssne1 nssne2 sbss cleq1lem upgr1wlkdlem2 bnj1241 bnj1262 cleq2lem seppsepf
+df-br df-clel df-cleq df-isom	4	2	480	5278	120	isoeq2 isoeq3
+df-br df-clel df-cleq df-relp	4	2	480	5278	120	relpeq2 relpeq3
+df-br df-clel df-cleq df-po	4	1	479	5277	479/4	poeq1
+df-br df-clel df-cleq df-po df-ss	5	1	598	5396	598/5	poeq12d
+df-br df-clel df-cleq df-fr	4	1	478	5276	239/2	freq1
+df-br df-clel df-cleq df-fr df-ss	5	1	597	5395	597/5	freq12d
+ax-addrcl ax-rnegex df-clel df-cleq	4	1	477	5275	477/4	elre0re
+df-clel df-ss	2	31	207	5005	207/2	dfssf dfss3f nfss ssel ssel2 sseli sselii sselid sseld sselda sseldd ssneld ssneldd ssrd nelss ssrexf ssrmof ralssOLD rexssOLD reuss2 reuss reupick euelss bnj1213 bnj1171 nnssi2 nnssi3 sstrALT2VD sstrALT2 ssnel ssdf2
+df-br df-clel df-cleq df-po df-so df-ss	6	1	605	5403	605/6	soeq12d
+df-br df-clel df-cleq df-po df-so	5	1	483	5281	483/5	soeq1
+ax-1cn ax-addcl df-2 df-clel df-cleq	5	2	482	5280	482/5	2cn 2cnd
+df-cleq df-pss df-ss	3	21	281	5079	281/3	dfpss3 psseq1 psseq2 psseq1i psseq2i psseq12i psseq1d psseq2d psseq12d sspss pssirrOLD pssn2lp sspsstri ssnpss psstr sspsstr psssstr psstrd sspsstrd psssstrd pssnssi
+ax-nul df-cleq	2	1	187	4985	187/2	nfcvb
+df-cleq df-fn	2	6	186	4984	93	funfn funfnd fneq2 fneq2d fneq2i fndmu
+df-cleq df-pss	2	1	180	4978	90	pssirr
+df-cleq df-f df-ss	3	3	266	5064	266/3	feq3 feq3d feq3dd
+ax-mulcom df-cleq	2	1	177	4975	177/2	mulcomli
+df-cleq df-er	2	1	176	4974	88	ereq2
+df-cleq df-fo	2	2	176	4974	88	foeq3 dffn4
+df-2 df-cleq	2	2	175	4973	175/2	1p1e2 1p1e2apr1
+ax-1ne0 df-cleq	2	1	174	4972	87	0ne1
+df-3 df-cleq	2	1	174	4972	87	2p1e3
+df-4 df-cleq	2	1	174	4972	87	3p1e4
+df-5 df-cleq	2	1	174	4972	87	4p1e5
+df-6 df-cleq	2	1	174	4972	87	5p1e6
+df-7 df-cleq	2	1	174	4972	87	6p1e7
+df-8 df-cleq	2	1	174	4972	87	7p1e8
+df-9 df-cleq	2	1	174	4972	87	8p1e9
+ax-sep df-clel	2	1	172	4970	86	axsepg3ALT
+df-cleq df-rel df-ss	3	3	257	5055	257/3	releq releqi releqd
+df-cleq df-po df-ss	3	1	256	5054	256/3	poeq2
+df-cleq df-fr df-ss	3	1	255	5053	85	freq2
+ax-rep df-clel	2	1	164	4962	82	axprALT2
+ax-1cn ax-addcl df-2 df-3 df-clel df-cleq	6	1	484	5282	242/3	3cn
+ax-1cn ax-addrcl ax-cnre ax-rnegex df-clel df-cleq	6	2	481	5279	481/6	0re 0red
+df-br df-clel df-cleq df-fr df-po df-so df-ss df-we	8	1	615	5413	615/8	weeq12d
+df-clel df-disj	2	1	150	4948	75	nfdisjw
+ax-1cn ax-addrcl ax-cnre ax-resscn ax-rnegex df-clel df-cleq df-ss	8	1	598	5396	299/4	0cnALT3
+ax-regs df-clel	2	1	149	4947	149/2	axregscl
+ax-addrcl ax-cnre ax-icn ax-resscn ax-rnegex df-clel df-cleq df-ss	8	1	595	5393	595/8	0cnALT
+df-cleq df-f df-fn df-ss	4	7	296	5094	74	feq23 feq23i fssdmd fssdm ffdm ffdmd fdmrn
+df-clel df-disj df-ss	3	3	213	5011	71	disjss2 disjss1 disjss1f
+ax-resscn df-clel df-ss	3	3	210	5008	70	recn recni recnd
+df-br df-clel df-ss	3	3	210	5008	70	ssbrd ssbr ssbri
+df-clel df-rel df-ss	3	1	209	5007	209/3	nfrel
+df-br df-clel df-cleq df-fr df-po df-so df-we	7	1	487	5285	487/7	weeq1
+ax-1cn ax-addcl ax-icn ax-mulcl df-2 df-clel df-cleq	7	1	486	5284	486/7	2mulicn
+ax-1cn ax-addcl df-2 df-3 df-4 df-clel df-cleq	7	1	486	5284	486/7	4cn
+ax-1cn ax-addcl ax-i2m1 ax-icn ax-mulcl df-clel df-cleq	7	2	483	5281	69	0cn 0cnd
+df-cleq df-f df-fo df-ss	4	3	272	5070	68	fof fofn dffo2
+df-cleq df-f df-f1 df-ss	4	1	271	5069	271/4	f1eq3
+df-cleq df-f df-relp df-ss	4	1	268	5066	67	relpeq5
+df-cleq df-f df-fn	3	4	200	4998	200/3	feq2 feq2d feq2dd feq2i
+df-cleq df-po df-so df-ss	4	1	261	5059	261/4	soeq2
+df-cleq df-fn df-fo	3	2	191	4989	191/3	foeq2 funforn
+ax-nul ax-sep df-clel	3	2	188	4986	188/3	axsepg3 axsepg5
+df-cleq df-f df-fn df-fo df-ss	5	2	306	5104	306/5	fofun fodmrnu
+ax-1cn ax-addcl df-2 df-3 df-4 df-5 df-clel df-cleq	8	1	488	5286	61	5cn
+df-cleq df-dmqs df-part	3	1	175	4973	175/3	parteq2
+df-adjliftmap df-cleq df-qmap	3	1	174	4972	58	dfadjliftmap
+df-blockliftmap df-cleq df-qmap	3	1	174	4972	58	dfblockliftmap
+df-cleq df-pprod df-txp	3	1	174	4972	58	dfpprod2
+ax-1cn ax-addcl df-2 df-3 df-4 df-5 df-6 df-clel df-cleq	9	1	490	5288	490/9	6cn
+df-cleq df-f df-f1 df-fn	4	1	207	5005	207/4	f1eq2
+df-cleq df-f df-fn df-relp	4	1	202	5000	101/2	relpeq4
+ax-1cn ax-addcl df-2 df-3 df-4 df-5 df-6 df-7 df-clel df-cleq	10	1	492	5290	246/5	7cn
+df-cleq df-f df-f1 df-f1o df-fo df-ss	6	9	289	5087	289/6	f1oeq3 f1oeq3d dff1o2 dff1o3 f1ofo dff1o5 f1orn f1f1orn f1oeq3dd
+df-cleq df-f df-f1 df-f1o df-fn df-fo df-ss	7	1	333	5131	333/7	f1oeq23
+ax-1cn ax-addcl df-2 df-3 df-4 df-5 df-6 df-7 df-8 df-clel df-cleq	11	1	494	5292	494/11	8cn
+df-cleq df-fr df-po df-so df-ss df-we	6	1	267	5065	89/2	weeq2
+ax-hv0cl ax-hvaddid ax-hvcom df-cleq	4	2	176	4974	44	hvaddlid hvaddlidi
+df-cleq df-f df-f1 df-f1o df-fn df-fo df-rn df-ss	8	1	334	5132	167/4	dff1o4
+df-cleq df-f df-f1 df-f1o df-fo df-isom df-ss	7	1	291	5089	291/7	isoeq5
+ax-1cn ax-addcl df-2 df-3 df-4 df-5 df-6 df-7 df-8 df-9 df-clel df-cleq	12	1	496	5294	124/3	9cn
+df-cleq df-f df-f1 df-f1o df-fn df-fo	6	2	220	5018	110/3	f1oeq2 f1oeq2d
+df-cleq df-f df-f1 df-f1o df-fn df-fo df-isom	7	1	222	5020	222/7	isoeq4
+df-ss	1	29	29	4827	29	dfss3 dfss6 ssriv ssrdv sstr2 sstr sstri sstrd sstrid sstrdi sylan9ss sylan9ssr ssid ssidd nss nssrex ssralv ssrexv ss2ralv ss2rexv ralss rexss axpow2 bnj1361 ssralv2 ssralv2VD ssdf ssd nsstr
+ax-sep df-ss	2	1	54	4852	27	axpow3
+ax-sep	1	24	24	4822	24	axsepg sepexlem sepex sepexi ax6vsep axnul exnelv nalset nalsetOLD axun2 elirrv elirrvOLD nd1 nd2 nd3 nd4 axregndlem1 axacndlem1 axacndlem2 axacndlem3 exnel distel bj-bm1.3ii ralndv1
+df-f df-ss	2	6	39	4837	39/2	dffn3 ffrn ffrnb ffrnbd fss fssd
+ax-nul ax-sep	2	1	38	4836	19	axsepg4
+ax-nul ax-rep ax-sep	3	1	55	4853	55/3	axpr
+ax-rep	1	16	16	4814	16	axrep1 axrep2 axrep3 axrep4v axrep4 axrep5 axrep6 zfrep6 axsepgfromrep axsep axnulALT axprlem3 axnulALT2 bj-rep sn-axrep5v sn-axprlem3
+df-po df-ss	2	1	31	4829	31/2	poss
+ax-nul ax-sep ax-tco	3	1	45	4843	15	axtcond
+df-bnj19 df-ss	2	1	30	4828	15	bnj978
+df-fr df-ss	2	1	30	4828	15	frss
+df-rel df-ss	2	1	30	4828	15	relss
+df-f df-f1 df-ss	3	1	43	4841	43/3	f1ss
+ax-nul	1	13	13	4811	13	dtruALT2 dtrucor dvdemo1 nfnid axc16b eunex axprlem1OLD exexneq exneq dtru neutru nmotru alneu
+df-po df-so df-ss	3	1	35	4833	35/3	soss
+df-f df-fn	2	6	17	4815	17/2	ffun ffunOLD ffund fdm fdmd fdmi
+df-fr df-po df-so df-ss df-we	5	1	39	4837	39/5	wess
+df-f df-f1 df-fn	3	3	23	4821	23/3	f1fun f1funOLD f1dm
+df-f df-f1 df-f1o df-fn	4	3	29	4827	29/4	f1ofun f1odm f1odmOLD
+df-f df-f1 df-fn df-fun	4	2	29	4827	29/4	f1rel f1relOLD
+df-f df-f1 df-f1o df-fn df-fun	5	1	36	4834	36/5	f1orel
+df-fr df-ord df-po df-so df-ss df-we	6	1	43	4841	43/6	trssord
+df-f df-fn df-fun	3	2	21	4819	7	frel freld
+df-fn	1	7	7	4805	7	fnfun fnfund fndm fndmi fndmd bnj564 bnj1422
+ax-tco	1	6	6	4804	6	axtco1 axtco2 axtco1from2 axuntco axnulregtco elALTtco
+df-pss	1	6	6	4804	6	dfpss2 pssss pssne pssssd pssned npss
+df-fn df-fun	2	1	9	4807	9/2	fnrel
+df-f	1	4	4	4802	4	ffn ffnd frn frnd
+df-f df-f1	2	2	7	4805	7/2	f1fn f1ssr
+df-f df-f1 df-f1o	3	1	10	4808	10/3	f1ofn
+ax-addass	1	3	3	4801	3	addass addassi addassd
+ax-addcl	1	3	3	4801	3	addcl addcli addcld
+ax-addrcl	1	3	3	4801	3	readdcl readdcli readdcld
+ax-distr	1	3	3	4801	3	adddi adddii adddid
+ax-mulass	1	3	3	4801	3	mulass mulassi mulassd
+ax-mulcl	1	3	3	4801	3	mulcl mulcli mulcld
+ax-mulcom	1	3	3	4801	3	mulcom mulcomi mulcomd
+ax-mulrcl	1	3	3	4801	3	remulcl remulcli remulcld
+df-eqvrel	1	3	3	4801	3	eqvrelrefrel eqvrelsymrel eqvreltrrel
+ax-1cn ax-addcl	2	1	5	4803	5/2	peano2cn
+df-ord df-we	2	1	5	4803	5/2	ordfr
+df-po df-so	2	1	4	4802	2	issoi
+df-disj	1	2	2	4800	2	dfdisj2 nfdisj1
+df-er	1	2	2	4800	2	errel erdm
+df-lim	1	2	2	4800	2	limord limuni
+df-ord	1	2	2	4800	2	ordwe ordtr
+df-so	1	2	2	4800	2	sopo issod
+df-we	1	2	2	4800	2	wefr weso
+ax-prv1 ax-prv2 ax-prv3	3	3	5	4803	5/3	bj-babygodel bj-babylob bj-godellob
+df-f1 df-f1o	2	1	3	4801	3/2	f1of
+df-ord df-tr	2	1	3	4801	3/2	orduniss
+ax-prv1 ax-prv2	2	2	2	4800	1	prvlem1 prvlem2
+df-bnj13 df-bnj15	2	1	2	4800	1	bnj93
+ax-1cn	1	1	1	4799	1	1cnd
+ax-cnex	1	1	1	4799	1	cnex
+ax-cnre	1	1	1	4799	1	cnre
+ax-his1	1	1	1	4799	1	his1i
+ax-hvass	1	1	1	4799	1	hvassi
+ax-hvcom	1	1	1	4799	1	hvcomi
+ax-hvdistr1	1	1	1	4799	1	hvdistr1i
+ax-hvmulass	1	1	1	4799	1	hvmulassi
+ax-regs	1	1	1	4799	1	axreg
+df-bnj15	1	1	1	4799	1	bnj1364
+df-disjALTV	1	1	1	4799	1	disjrel
+df-f1	1	1	1	4799	1	f1f
+df-f1o	1	1	1	4799	1	f1of1
+df-fo	1	1	1	4799	1	forn
+df-fun	1	1	1	4799	1	funrel
+df-isom	1	1	1	4799	1	isof1o
+df-po	1	1	1	4799	1	ispod
+df-relp	1	1	1	4799	1	relpf
+df-smo	1	1	1	4799	1	smodm
+df-dmqs df-erALTV	2	1	1	4799	1/2	dferALTV2
+df-dmqs df-part	2	1	1	4799	1/2	dfpart2

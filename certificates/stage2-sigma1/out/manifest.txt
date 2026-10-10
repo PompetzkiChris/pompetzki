@@ -1,0 +1,105 @@
+01-numerals.jdg  von Neumann numerals: existence, uniqueness, membership in omega
+  theorems 73 (prelude 7, generated 66), steps 1679 (prelude 129), bytes 244938, build 51 ms, largest tautology test 61 calls
+  sha256 9827a443b2b6924def86fac57f868155959ac4fda62ec5287b66042484472251
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 73 1679 750)
+  mutant neg-final: copy of the checker (REJECT 72 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 72 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 0 step 0: taut: not a tautology)
+  mutant mp-swap: copy of the checker (REJECT 1 step 8: mp: premise mismatch)
+  mutant use-shift: copy of the checker (REJECT 1 step 8: mp: premise mismatch)
+  mutant leib-swap: copy of the checker (REJECT 32 step 2: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 1 step 3: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 1 step 5: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 72 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 6 step 23: taut: not a tautology)
+02-membership.jdg  k in n for k < n, not k in n for k >= n
+  theorems 226 (prelude 13, generated 213), steps 4168 (prelude 188), bytes 517549, build 68 ms, largest tautology test 35 calls
+  sha256 ac0bf1a85fc41687956d6d268add773d1519ce25655ad9eebc3983dbac819c01
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 226 4168 903)
+  mutant neg-final: copy of the checker (REJECT 225 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 225 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 1 step 2: taut: not a tautology)
+  mutant mp-swap: copy of the checker (REJECT 10 step 8: mp: premise mismatch)
+  mutant use-shift: copy of the checker (REJECT 1 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 11 step 3: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 10 step 3: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 10 step 5: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 225 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 12 step 7: taut: not a tautology)
+03-distinct.jdg  n /= m
+  theorems 248 (prelude 10, generated 238), steps 4076 (prelude 146), bytes 496222, build 68 ms, largest tautology test 35 calls
+  sha256 49e3f6a8654d20a685d26bfe846cfe073c0df77ed0ed3ffb4da86507269bf7ee
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 248 4076 925)
+  mutant neg-final: copy of the checker (REJECT 247 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 247 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 1 step 2: taut: not a tautology)
+  mutant mp-swap: copy of the checker (REJECT 15 step 8: mp: premise mismatch)
+  mutant use-shift: copy of the checker (REJECT 1 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 3 step 1: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 15 step 3: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 3 step 5: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 247 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 2 step 7: taut: not a tautology)
+04-bounded.jdg  bounded quantifiers over numerals
+  theorems 90 (prelude 13, generated 77), steps 1596 (prelude 188), bytes 251800, build 46 ms, largest tautology test 193 calls
+  sha256 b490267b073be72e2ff7ad86b82e35cb8357196f83339f81a3d5a7cad2a455c2
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 90 1596 767)
+  mutant neg-final: copy of the checker (REJECT 89 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 89 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 1 step 2: taut: not a tautology)
+  mutant mp-swap: copy of the checker (REJECT 3 step 8: mp: premise mismatch)
+  mutant use-shift: copy of the checker (REJECT 1 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 4 step 3: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 3 step 3: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 3 step 5: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 89 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 6 step 7: taut: not a tautology)
+05-arithmetic.jdg  successor, addition and multiplication as defined relations
+  theorems 432 (prelude 24, generated 408), steps 20508 (prelude 366), bytes 3019857, build 494 ms, largest tautology test 401 calls
+  sha256 0b9013abf74c48674a0b1e7dbc01e1ff6cb90366667ce2713c5f20fa5e4b95a1
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 432 20508 1109)
+  mutant neg-final: copy of the checker (REJECT 431 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 431 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 1 step 2: taut: not a tautology)
+  mutant mp-swap: copy of the checker (REJECT 9 step 8: mp: premise mismatch)
+  mutant use-shift: copy of the checker (REJECT 1 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 3 step 1: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 5 step 1: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 3 step 5: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 431 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 2 step 7: taut: not a tautology)
+06-sentences.jdg  true bounded sentences, hand-picked and random (false ones as their negations)
+  theorems 364 (prelude 25, generated 339), steps 13904 (prelude 390), bytes 3270867, build 762 ms, largest tautology test 295 calls
+  sha256 565ea0687e8255c7f123a47d8650e1cdb4a400e27f25d1975f4deb144dd92dfb
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 364 13904 1041)
+  mutant neg-final: copy of the checker (REJECT 363 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 363 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 0 step 0: taut: not a tautology)
+  mutant mp-swap: copy of the checker (REJECT 49 step 10: mp: premise mismatch)
+  mutant use-shift: copy of the checker (REJECT 1 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 24 step 3: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 1 step 1: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 47 step 46: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 363 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 20 step 4: taut: not a tautology)
+07-sigma1.jdg  true Sigma-1 sentences: unbounded exists over omega, witness by search
+  theorems 223 (prelude 27, generated 196), steps 7138 (prelude 502), bytes 1461004, build 302 ms, largest tautology test 315 calls
+  sha256 abdbad7e74852ff1b66391dc0cde76e319aded12f1f6a8bd69c8e565c5471173
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 223 7138 900)
+  mutant neg-final: copy of the checker (REJECT 222 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 222 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 0 step 0: taut: not a tautology)
+  mutant mp-swap: copy of the checker (REJECT 73 step 10: mp: premise mismatch)
+  mutant use-shift: copy of the checker (REJECT 1 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 35 step 3: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 1 step 1: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 71 step 57: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 222 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 31 step 4: taut: not a tautology)

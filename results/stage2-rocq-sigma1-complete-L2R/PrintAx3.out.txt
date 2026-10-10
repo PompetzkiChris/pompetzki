@@ -1,0 +1,153 @@
+lsep_from_grefl
+     : forall M : Syn.form,
+       Ax.closedk 1 M = true ->
+       forall Lev : Syn.form,
+       Ax.closedk 1 Lev = true ->
+       Prov.prov Elim.ZFpure (STR Lev) ->
+       Prov.prov Elim.ZFpure (SCOV M Lev) ->
+       GREFL M Lev ->
+       (forall (g : Syn.form) (n : nat),
+        Syn.syms g = nil -> Ax.closedk (S (S n)) g = true -> DEFsep M Lev g n) ->
+       LSEP M
+Closed under the global context
+lcoll_from_grefl
+     : forall M : Syn.form,
+       Ax.closedk 1 M = true ->
+       forall Lev : Syn.form,
+       Ax.closedk 1 Lev = true ->
+       Prov.prov Elim.ZFpure (STR Lev) ->
+       Prov.prov Elim.ZFpure (SSUB M Lev) ->
+       Prov.prov Elim.ZFpure (SIN M Lev) ->
+       Prov.prov Elim.ZFpure (SCOV M Lev) -> GREFL M Lev -> LCOLL M
+Closed under the global context
+reflsep_from_grefl
+     : forall M : Syn.form,
+       Ax.closedk 1 M = true ->
+       forall Lev : Syn.form,
+       Ax.closedk 1 Lev = true ->
+       forall (g : Syn.form) (n : nat),
+       Syn.syms g = nil ->
+       Ax.closedk (S (S n)) g = true ->
+       Prov.prov Elim.ZFpure (SCOV M Lev) -> GREFL M Lev -> REFLsep M Lev g n
+reflcoll_from_grefl
+     : forall M : Syn.form,
+       Ax.closedk 1 M = true ->
+       forall Lev : Syn.form,
+       Ax.closedk 1 Lev = true ->
+       forall (g : Syn.form) (n : nat),
+       Syn.syms g = nil ->
+       Ax.closedk (S (S (S n))) g = true ->
+       Prov.prov Elim.ZFpure (SCOV M Lev) ->
+       GREFL M Lev -> REFLcoll M Lev g n
+GREFL =
+fun M Lev : Syn.form =>
+forall (L : list (nat * Syn.form)) (n : nat),
+(forall c : nat * Syn.form,
+ List.In c L ->
+ Syn.syms (snd c) = nil /\ Ax.closedk (fst c + n) (snd c) = true) ->
+Prov.prov Elim.ZFpure
+  (Rel2.chain (Rel2.G M n)
+     (Syn.All
+        (Syn.Imp Lev (Syn.Xf (Syn.Kf (Syn.Kf Lev (Sub 1 0)) (RFs M L))))))
+     : Syn.form -> Syn.form -> Prop
+
+Arguments GREFL M Lev
+RFs =
+fun M : Syn.form =>
+fix RFs (L : list (nat * Syn.form)) : Syn.form :=
+  match L with
+  | nil => Pure.Top
+  | (c :: r)%list => Syn.Kf (RF1 M c) (RFs r)
+  end
+     : Syn.form -> list (nat * Syn.form) -> Syn.form
+
+Arguments RFs M L%_list_scope
+RF1 =
+fun (M : Syn.form) (c : nat * Syn.form) =>
+let (m, phi) := c in
+wrapQ 0 m
+  (Syn.Qf (Rel2.rel M (Syn.ren (shm m) phi)) (relU m (Syn.ren (shm m) phi)))
+     : Syn.form -> nat * Syn.form -> Syn.form
+
+Arguments RF1 M c
+wrapQ =
+fix wrapQ (w k : nat) (b : Syn.form) {struct k} : Syn.form :=
+  match k with
+  | 0 => b
+  | S k' => Syn.All (Syn.Imp (Syn.Mem 0 (S w)) (wrapQ (S w) k' b))
+  end
+     : nat -> nat -> Syn.form -> Syn.form
+
+Arguments wrapQ (w k)%_nat_scope b
+shm =
+fun m t : nat => if PeanoNat.Nat.ltb t m then t else S (S t)
+     : nat -> nat -> nat
+
+Arguments shm (m t)%_nat_scope
+SCOV =
+fun M Lev : Syn.form =>
+Syn.All (Syn.Imp M (Syn.Xf (Syn.Kf Lev (Syn.Mem 1 0))))
+     : Syn.form -> Syn.form -> Syn.form
+
+Arguments SCOV M Lev
+Sub =
+fun a b : nat => Syn.All (Syn.Imp (Syn.Mem 0 (S a)) (Syn.Mem 0 (S b)))
+     : nat -> nat -> Syn.form
+
+Arguments Sub (a b)%_nat_scope
+relU =
+fix relU (w : nat) (f : Syn.form) {struct f} : Syn.form :=
+  match f with
+  | Syn.Mem x y => Syn.Mem x y
+  | Syn.Eqv x y => Syn.Eqv x y
+  | Syn.Pr p a => Syn.Pr p a
+  | Syn.Neg a => Syn.Neg (relU w a)
+  | Syn.Imp a b => Syn.Imp (relU w a) (relU w b)
+  | Syn.All a => Syn.All (Syn.Imp (Syn.Mem 0 (S w)) (relU (S w) a))
+  end
+     : nat -> Syn.form -> Syn.form
+
+Arguments relU w%_nat_scope f
+goedel_final_red
+     : forall Mf : Syn.form,
+       Ax.closedk 1 Mf = true ->
+       Syn.syms Mf = nil ->
+       forall VL : Syn.form,
+       Ax.closedk 0 VL = true ->
+       LEX Mf ->
+       (forall i : nat,
+        i < 6 ->
+        Prov.prov Elim.ZFpure
+          (Syn.psub (LAXred2.tauM Mf) Prov.sid (LAXred2.HT i))) ->
+       Prov.prov Elim.ZFpure (Rel2.rel Mf (Checks.axf 6)) ->
+       LSEP Mf ->
+       LCOLL Mf ->
+       Prov.prov Elim.ZFpure (Rel2.rel Mf VL) ->
+       Prov.prov (ZFE VL) (Pure.pi ch) ->
+       Prov.prov GamCH Checks.Bot -> Prov.prov Elim.ZFpure Checks.Bot
+goedel_final_red_levels
+     : forall Mf : Syn.form,
+       Ax.closedk 1 Mf = true ->
+       Syn.syms Mf = nil ->
+       forall Lev : Syn.form,
+       Ax.closedk 1 Lev = true ->
+       forall VL : Syn.form,
+       Ax.closedk 0 VL = true ->
+       LEX Mf ->
+       (forall i : nat,
+        i < 6 ->
+        Prov.prov Elim.ZFpure
+          (Syn.psub (LAXred2.tauM Mf) Prov.sid (LAXred2.HT i))) ->
+       Prov.prov Elim.ZFpure (Rel2.rel Mf (Checks.axf 6)) ->
+       Prov.prov Elim.ZFpure (STR Lev) ->
+       Prov.prov Elim.ZFpure (SSUB Mf Lev) ->
+       Prov.prov Elim.ZFpure (SIN Mf Lev) ->
+       Prov.prov Elim.ZFpure (SCOV Mf Lev) ->
+       GREFL Mf Lev ->
+       (forall (g : Syn.form) (n : nat),
+        Syn.syms g = nil ->
+        Ax.closedk (S (S n)) g = true -> DEFsep Mf Lev g n) ->
+       Prov.prov Elim.ZFpure (Rel2.rel Mf VL) ->
+       Prov.prov (ZFE VL) (Pure.pi ch) ->
+       Prov.prov GamCH Checks.Bot -> Prov.prov Elim.ZFpure Checks.Bot
+Closed under the global context

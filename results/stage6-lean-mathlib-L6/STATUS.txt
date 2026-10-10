@@ -1,0 +1,11 @@
+L6 (Stage 6), 18:37 (date): done.
+
+out\L6-nat.jdg (14,399,840 bytes; 345 theorems; 37,714 steps; registry = AX0 ++ DEF0 of RpInit.v; every theorem with hypotheses []) is ACCEPTed by both judges: pmp judge-v3 in 850.1 s, Racket judge.rkt in 3.3 s.
+
+It holds 252 statements of the environment of import Mathlib as closed ZF theorems over omega, each under its Lean name (out\STATEMENTS.md). 9 are declared in Mathlib modules and 243 in Lean core Init.*. They use sigma1's von Neumann numerals and its Add/Mul formulas, and they rest on 22 general lemmas (uniqueness, totality and the recursion equations of + and * via L:RecThm and induction on omega) and on 71 replay theorems.
+
+All 10 mutated copies are REJECTed by both judges at the same theorem and step.
+
+Only the statements come from Lean: the derivations are made by the lane's engine from hints, and translating Lean proof terms is designed (DESIGN.md) but not built. Int is designed but not built.
+
+Numbers: RESULTS.md.

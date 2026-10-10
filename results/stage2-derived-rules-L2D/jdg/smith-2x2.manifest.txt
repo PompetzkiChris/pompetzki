@@ -1,0 +1,33 @@
+certs/out2/smith-2x2.jdg  from certs/in/smith-2x2.sexp (Smith certificate), 14 entries
+  note: W = A V = ((2 0) (6 -4))
+  note: U^-1 = ((1 0) (3 -1))
+  note: V^-1 = ((1 2) (0 1))
+  E1: +2*1 = 2
+  E2: -2*2 +4*1 = 0
+  E3: +6*1 = 6
+  E4: -6*2 +8*1 = -4
+  E5: +1*2 = 2
+  E6: +3*2 -1*6 = 0
+  E7: +1*4 = 4
+  E8: +1*1 = 1
+  E9: +3*1 -1*3 = 0
+  E10: +1*1 = 1
+  E11: +1*1 = 1
+  E12: +1*2 -2*1 = 0
+  E13: +1*1 = 1
+  E14: +2*2 = 4
+  theorems 135 (prelude 52, generated 83), steps 4764 (prelude 1274), bytes 1309264, build 391 ms
+  largest tautology test 113 calls
+  sha256 54e660ec65d94c1fd7f763b7343b63c40fa285c3e15c4be185edbabf74b71af0
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 135 4764 812)
+  mutant cert-use-swap: copy of the checker (REJECT 134 step 1: taut: not a tautology)
+  mutant neg-final: copy of the checker (REJECT 134 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 134 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 3 step 1: taut: not a tautology)
+  mutant use-shift: copy of the checker (REJECT 3 step 0: use: no such entry)
+  mutant leib-swap: copy of the checker (REJECT 63 step 21: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 3 step 3: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 3 step 6: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 134 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 2 step 23: taut: not a tautology)

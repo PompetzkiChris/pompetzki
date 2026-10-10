@@ -1,0 +1,82 @@
+(* AlignB.v - written by lanes/LCH/jdg2v.rkt from out/01-align.jdg: the 5 theorems after its registry of 677 entries. *)
+From Stdlib Require Import List NArith.
+From Cohen Require Import Syn Replay2.
+Import ListNotations.
+Local Open Scope N_scope.
+Definition AB : list thm := [
+(* 0 *) Thm (dI (dP 5 [0;1]) (dI (dP 14 [1;2]) (dP 14 [0;2]))) [0;1;2] [SUse 7 [];
+  SSpec 0 [0;1];
+  SUse 14 [];
+  SSpec 2 [3;1];
+  SUse 14 [];
+  SSpec 4 [3;0];
+  SInst 4 (dI (dA (dI (dE 0 1) (dE 0 2))) (dI (dE 4 0) (dE 4 1)));
+  SInst 4 (dI (dA (dI (dE 0 2) (dX (dP 9 [5;1;0])))) (dI (dE 4 1) (dX (dP 9 [4;5;0]))));
+  STaut [1;3;6;7] (dD (dI (dP 5 [0;1]) (dN (dP 12 [3;1]))) (dI (dE 4 0) (dX (dP 9 [4;5;0]))));
+  SAlli 4 8 (dD (dI (dP 5 [0;1]) (dN (dP 12 [3;1]))) (dA (dI (dE 0 1) (dX (dP 9 [5;1;0])))));
+  STaut [5;9] (dD (dI (dP 5 [0;1]) (dN (dP 12 [3;1]))) (dP 12 [3;0]));
+  SUse 16 [];
+  SSpec 11 [1;2];
+  SUse 16 [];
+  SSpec 13 [0;2];
+  SExi 3 (dD (dD (dI (dP 10 [3]) (dN (dP 11 [3]))) (dN (dK (dP 12 [3;0]) (dP 13 [3;2])))) (dX (dK (dK (dP 10 [0]) (dP 11 [0])) (dK (dP 12 [0;1]) (dP 13 [0;3])))));
+  STaut [10;14;15] (dD (dD (dI (dP 10 [3]) (dN (dP 11 [3]))) (dN (dK (dP 12 [3;1]) (dP 13 [3;2])))) (dI (dP 5 [0;1]) (dP 14 [0;2])));
+  SExel 16 3 (dD (dA (dN (dK (dK (dP 10 [0]) (dP 11 [0])) (dK (dP 12 [0;2]) (dP 13 [0;3]))))) (dI (dP 5 [0;1]) (dP 14 [0;2])));
+  STaut [12;17] (dI (dP 5 [0;1]) (dI (dP 14 [1;2]) (dP 14 [0;2])))] [];
+(* 1 *) Thm (dX (dA (dQ (dE 0 1) (dP 5 [0;2])))) [0] [SUse 3 [];
+  SSpec 0 [0];
+  SAx (dA (dX (dA (dQ (dE 0 1) (dK (dE 0 2) (dP 5 [0;3]))))));
+  SSpec 2 [1];
+  SInst 3 (dI (dA (dQ (dE 0 3) (dK (dE 0 2) (dP 5 [0;1])))) (dQ (dE 3 2) (dK (dE 3 1) (dP 5 [3;0]))));
+  SInst 3 (dI (dA (dI (dA (dI (dE 0 1) (dE 0 2))) (dE 0 2))) (dI (dA (dI (dE 0 4) (dE 0 1))) (dE 3 1)));
+  SUse 7 [];
+  SSpec 6 [3;0];
+  STaut [4;5;7] (dD (dI (dA (dI (dA (dI (dE 0 1) (dE 0 2))) (dE 0 2))) (dX (dI (dI (dE 0 3) (dK (dE 0 2) (dP 5 [0;1]))) (dN (dD (dI (dE 0 2) (dN (dP 5 [0;1]))) (dE 0 3)))))) (dQ (dE 3 2) (dP 5 [3;0])));
+  SAlli 3 8 (dD (dI (dA (dI (dA (dI (dE 0 1) (dE 0 2))) (dE 0 2))) (dX (dI (dI (dE 0 3) (dK (dE 0 2) (dP 5 [0;1]))) (dN (dD (dI (dE 0 2) (dN (dP 5 [0;1]))) (dE 0 3)))))) (dA (dQ (dE 0 3) (dP 5 [0;1]))));
+  SExi 2 (dI (dA (dQ (dE 0 3) (dP 5 [0;1]))) (dX (dA (dQ (dE 0 1) (dP 5 [0;2])))));
+  STaut [9;10] (dI (dA (dQ (dE 0 3) (dK (dE 0 2) (dP 5 [0;1])))) (dI (dA (dI (dA (dI (dE 0 1) (dE 0 2))) (dE 0 2))) (dX (dA (dQ (dE 0 1) (dP 5 [0;2]))))));
+  SExel 11 2 (dD (dA (dX (dI (dI (dE 0 1) (dK (dE 0 3) (dP 5 [0;2]))) (dN (dD (dI (dE 0 3) (dN (dP 5 [0;2]))) (dE 0 1)))))) (dI (dA (dI (dA (dI (dE 0 1) (dE 0 2))) (dE 0 2))) (dX (dA (dQ (dE 0 1) (dP 5 [0;2]))))));
+  SMp 3 12;
+  SExel 13 1 (dD (dA (dN (dA (dI (dA (dI (dE 0 1) (dE 0 3))) (dE 0 1))))) (dX (dA (dQ (dE 0 1) (dP 5 [0;2])))));
+  SMp 1 14] [];
+(* 2 *) Thm (dD (dA (dN (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1]))))))) (dN (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1])))))))) [] [SUse 678 [0];
+  SInst 4 (dI (dA (dQ (dE 0 4) (dP 5 [0;1]))) (dQ (dE 4 3) (dP 5 [4;0])));
+  SInst 4 (dI (dA (dI (dE 0 2) (dP 5 [0;1]))) (dI (dE 4 1) (dP 5 [4;0])));
+  STaut [2;1] (dD (dI (dA (dI (dE 0 2) (dP 5 [0;1]))) (dX (dI (dI (dE 0 4) (dP 5 [0;1])) (dN (dI (dP 5 [0;1]) (dE 0 4)))))) (dI (dE 4 1) (dE 4 3)));
+  SAlli 4 3 (dD (dI (dA (dI (dE 0 2) (dP 5 [0;1]))) (dX (dI (dI (dE 0 4) (dP 5 [0;1])) (dN (dI (dP 5 [0;1]) (dE 0 4)))))) (dA (dI (dE 0 2) (dE 0 4))));
+  SInst 4 (dI (dA (dI (dE 0 3) (dP 5 [0;1]))) (dI (dE 4 2) (dP 5 [4;0])));
+  STaut [5;1] (dD (dI (dA (dI (dE 0 3) (dP 5 [0;1]))) (dX (dI (dI (dE 0 4) (dP 5 [0;1])) (dN (dI (dP 5 [0;1]) (dE 0 4)))))) (dI (dE 4 2) (dE 4 3)));
+  SAlli 4 6 (dD (dI (dA (dI (dE 0 3) (dP 5 [0;1]))) (dX (dI (dI (dE 0 4) (dP 5 [0;1])) (dN (dI (dP 5 [0;1]) (dE 0 4)))))) (dA (dI (dE 0 3) (dE 0 4))));
+  SUse 7 [];
+  SSpec 8 [1;3];
+  SUse 7 [];
+  SSpec 10 [2;3];
+  SUse 677 [2;3;1];
+  SInst 0 (dI (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1])))))) (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1]))))));
+  SInst 1 (dI (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1]))))) (dA (dD (dD (dI (dP 20 [1]) (dX (dI (dI (dE 0 1) (dP 5 [0;2])) (dN (dI (dP 5 [0;2]) (dE 0 1)))))) (dN (dP 5 [2;0]))) (dD (dP 14 [2;1]) (dP 14 [0;2])))));
+  SInst 3 (dI (dA (dD (dD (dI (dP 20 [1]) (dX (dI (dI (dE 0 1) (dP 5 [0;2])) (dN (dI (dP 5 [0;2]) (dE 0 1)))))) (dN (dP 5 [2;0]))) (dD (dP 14 [2;1]) (dP 14 [0;2])))) (dD (dD (dI (dP 20 [0]) (dX (dI (dI (dE 0 4) (dP 5 [0;1])) (dN (dI (dP 5 [0;1]) (dE 0 4)))))) (dN (dP 5 [1;3]))) (dD (dP 14 [1;0]) (dP 14 [3;1]))));
+  STaut [4;7;9;11;12;13;14;15] (dI (dA (dQ (dE 0 4) (dP 5 [0;1]))) (dD (dD (dD (dD (dI (dP 20 [0]) (dN (dA (dI (dE 0 2) (dP 5 [0;1]))))) (dN (dA (dI (dE 0 3) (dP 5 [0;1]))))) (dN (dN (dP 14 [1;0])))) (dN (dN (dP 14 [2;1])))) (dN (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1])))))))));
+  SExel 16 3 (dD (dA (dX (dI (dI (dE 0 1) (dP 5 [0;2])) (dN (dI (dP 5 [0;2]) (dE 0 1)))))) (dD (dD (dD (dD (dI (dP 20 [0]) (dN (dA (dI (dE 0 2) (dP 5 [0;1]))))) (dN (dA (dI (dE 0 3) (dP 5 [0;1]))))) (dN (dN (dP 14 [1;0])))) (dN (dN (dP 14 [2;1])))) (dN (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1])))))))));
+  SMp 0 17;
+  SExel 18 2 (dD (dA (dN (dK (dK (dK (dK (dP 20 [1]) (dA (dI (dE 0 3) (dP 5 [0;2])))) (dA (dI (dE 0 1) (dP 5 [0;2])))) (dN (dP 14 [2;1]))) (dN (dP 14 [0;2]))))) (dN (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1]))))))));
+  SExel 19 1 (dD (dA (dN (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))) (dN (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1]))))))));
+  SExel 20 0 (dD (dA (dN (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1]))))))) (dN (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1]))))))))] [];
+(* 3 *) Thm (dD (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1])))))) (dX (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1]))))))) [] [SInst 0 (dI (dA (dN (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1]))))))) (dN (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))));
+  SInst 1 (dI (dA (dN (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))) (dN (dX (dK (dK (dK (dK (dP 20 [1]) (dA (dI (dE 0 3) (dP 5 [0;2])))) (dA (dI (dE 0 1) (dP 5 [0;2])))) (dN (dP 14 [2;1]))) (dN (dP 14 [0;2]))))));
+  SInst 2 (dI (dA (dN (dK (dK (dK (dK (dP 20 [1]) (dA (dI (dE 0 3) (dP 5 [0;2])))) (dA (dI (dE 0 1) (dP 5 [0;2])))) (dN (dP 14 [2;1]))) (dN (dP 14 [0;2]))))) (dN (dK (dK (dK (dK (dP 20 [0]) (dA (dI (dE 0 2) (dP 5 [0;1])))) (dA (dI (dE 0 3) (dP 5 [0;1])))) (dN (dP 14 [1;0]))) (dN (dP 14 [2;1])))));
+  SUse 7 [];
+  SSpec 3 [1;2];
+  SInst 3 (dI (dA (dQ (dE 0 3) (dP 5 [0;1]))) (dQ (dE 3 2) (dP 5 [3;0])));
+  SInst 3 (dI (dA (dI (dE 0 2) (dE 0 3))) (dI (dE 3 1) (dE 3 2)));
+  STaut [4;6;5] (dD (dI (dP 5 [1;2]) (dX (dI (dI (dE 0 3) (dP 5 [0;1])) (dN (dI (dP 5 [0;1]) (dE 0 3)))))) (dI (dE 3 1) (dP 5 [3;0])));
+  SAlli 3 7 (dD (dI (dP 5 [1;2]) (dX (dI (dI (dE 0 3) (dP 5 [0;1])) (dN (dI (dP 5 [0;1]) (dE 0 3)))))) (dA (dI (dE 0 2) (dP 5 [0;1]))));
+  STaut [5] (dI (dA (dQ (dE 0 3) (dP 5 [0;1]))) (dI (dE 3 2) (dP 5 [3;0])));
+  SAlli 3 9 (dI (dA (dQ (dE 0 3) (dP 5 [0;1]))) (dA (dI (dE 0 3) (dP 5 [0;1]))));
+  STaut [0;1;2;8;10] (dD (dX (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))) (dD (dD (dI (dP 20 [0]) (dX (dI (dI (dE 0 3) (dP 5 [0;1])) (dN (dI (dP 5 [0;1]) (dE 0 3)))))) (dN (dP 5 [1;2]))) (dD (dP 14 [1;0]) (dP 14 [2;1]))));
+  SAlli 2 11 (dD (dX (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))) (dA (dD (dD (dI (dP 20 [1]) (dX (dI (dI (dE 0 1) (dP 5 [0;2])) (dN (dI (dP 5 [0;2]) (dE 0 1)))))) (dN (dP 5 [2;0]))) (dD (dP 14 [2;1]) (dP 14 [0;2])))));
+  SAlli 1 12 (dD (dX (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))) (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1]))))));
+  SAlli 0 13 (dD (dX (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))) (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1])))))));
+  STaut [14] (dD (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1])))))) (dX (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))))] [];
+(* 4 *) Thm (dQ (dX (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))) (dN (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1])))))))) [] [SUse 679 [];
+  SUse 680 [];
+  STaut [0;1] (dQ (dX (dX (dX (dK (dK (dK (dK (dP 20 [2]) (dA (dI (dE 0 2) (dP 5 [0;3])))) (dA (dI (dE 0 1) (dP 5 [0;3])))) (dN (dP 14 [1;2]))) (dN (dP 14 [0;1])))))) (dN (dA (dA (dA (dD (dD (dI (dP 20 [2]) (dX (dI (dI (dE 0 1) (dP 5 [0;3])) (dN (dI (dP 5 [0;3]) (dE 0 1)))))) (dN (dP 5 [1;0]))) (dD (dP 14 [1;2]) (dP 14 [0;1]))))))))] []].

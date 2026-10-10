@@ -1,0 +1,72 @@
+certs/out2/pratt-23.jdg  from certs/in/pratt-23.sexp (Pratt certificate), 55 entries
+  note: p = 23
+  E1: 2*11 = 22
+  E2: 1+22 = 23
+  E3: 5+18 = 23
+  E4: 18 /= 0
+  E5: 5*5 = 25
+  E6: 1*23 = 23
+  E7: 23+2 = 25
+  E8: 2+21 = 23
+  E9: 21 /= 0
+  E10: 2*2 = 4
+  E11: 4+19 = 23
+  E12: 19 /= 0
+  E13: 4*5 = 20
+  E14: 20+3 = 23
+  E15: 3 /= 0
+  E16: 20*20 = 400
+  E17: 17*23 = 391
+  E18: 391+9 = 400
+  E19: 9+14 = 23
+  E20: 14 /= 0
+  E21: 9*5 = 45
+  E22: 23+22 = 45
+  E23: 22+1 = 23
+  E24: 1 /= 0
+  E25: 22*22 = 484
+  E26: 21*23 = 483
+  E27: 483+1 = 484
+  E28: 22 /= 0
+  E29: 1+21 = 22
+  E30: 1+1 = 2
+  E31: 2*5 = 10
+  E32: 1+10 = 11
+  E33: 2+9 = 11
+  E34: 9 /= 0
+  E35: 4+7 = 11
+  E36: 7 /= 0
+  E37: 4*4 = 16
+  E38: 1*11 = 11
+  E39: 11+5 = 16
+  E40: 5+6 = 11
+  E41: 6 /= 0
+  E42: 5*2 = 10
+  E43: 10+1 = 11
+  E44: 10*10 = 100
+  E45: 9*11 = 99
+  E46: 99+1 = 100
+  E47: 10 /= 0
+  E48: 1+9 = 10
+  E49: 1+3 = 4
+  E50: 1+4 = 5
+  E51: 2+3 = 5
+  E52: 4+1 = 5
+  E53: 3*5 = 15
+  E54: 15+1 = 16
+  E55: 4 /= 0
+  theorems 418 (prelude 53, generated 365), steps 18821 (prelude 1326), bytes 10569557, build 3685 ms
+  largest tautology test 119 calls
+  sha256 dc0ded8157294f934987cd34a6e35d6402ef13453c14d20dcab9ef3c741d6f4e
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 418 18821 1095)
+  mutant cert-use-swap: copy of the checker (REJECT 417 step 1: taut: not a tautology)
+  mutant neg-final: copy of the checker (REJECT 417 final: last line is not the statement)
+  mutant twin-final: copy of the checker (REJECT 417 final: last line is not the statement)
+  mutant taut-goal: copy of the checker (REJECT 0 step 0: taut: not a tautology)
+  mutant use-shift: copy of the checker (REJECT 0 step 4: taut: not a tautology)
+  mutant leib-swap: copy of the checker (REJECT 61 step 21: leib: shape)
+  mutant exi-witness: copy of the checker (REJECT 52 step 28: exi: shape)
+  mutant exel-var: copy of the checker (REJECT 0 step 21: exel: conditions)
+  mutant drop-step: copy of the checker (REJECT 417 final: last line is not the statement)
+  mutant registry-suc: copy of the checker (REJECT 2 step 7: taut: not a tautology)

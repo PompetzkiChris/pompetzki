@@ -1,0 +1,17 @@
+==== run 2026-10-09 18:48:06  example.pmp ====
+2: extern ver C:/ClaudeOutput/pompetzki/lanes/L8G/l8g.dll l8g_api_version
+3: extern run C:/ClaudeOutput/pompetzki/lanes/L8G/l8g.dll l8g_workload
+4: text DIR "C:/ClaudeOutput/pompetzki/lanes/L8G/out"
+5: set verword call ver
+6: set expect const 1
+7: set dver sub verword expect
+8: check zero dver
+9: set rc call run DIR
+10: check zero rc
+11: load matrix A "C:/ClaudeOutput/pompetzki/lanes/L8G/out/pmp_A.txt"
+certificate: program example.pmp  sha256 ef77853ef6e80dba5a24352a086b46c95fde528bee01a08f9068e47367a3c0cd
+certificate: interpreter C:\ClaudeOutput\pompetzki\pompetzki.exe  sha256 ccf835920e566b8a45468654798fb9577a261cfec171a707e0438696515a3bec
+certificate: claims established by rule 0 of 0; annotations closed 0 of 0
+certificate: statements executed 11, checks passed 2, records written 0
+certificate: rational operations 0, largest integer at most 1 x 64 bits
+FAILED line 11: syntax

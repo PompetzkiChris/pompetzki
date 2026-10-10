@@ -1,0 +1,17 @@
+Fri Oct  9 20:26:44 EDT 2026
+coqc -R /c/ClaudeOutput/pompetzki/forcing-src/general Cohen -R /c/ClaudeOutput/pompetzki/lanes/LCH/rocq LCH -R /c/ClaudeOutput/pompetzki/lanes/L2R L2R /c/ClaudeOutput/pompetzki/lanes/L2R/L2RDefR4.v
+exit 0
+Fri Oct  9 20:26:52 EDT 2026
+coqc -R /c/ClaudeOutput/pompetzki/forcing-src/general Cohen -R /c/ClaudeOutput/pompetzki/lanes/LCH/rocq LCH -R /c/ClaudeOutput/pompetzki/lanes/L2R L2R /c/ClaudeOutput/pompetzki/lanes/L2R/L2RGoedelD0R4b.v
+exit 0
+Fri Oct  9 20:27:01 EDT 2026
+coqc -R /c/ClaudeOutput/pompetzki/forcing-src/general Cohen -R /c/ClaudeOutput/pompetzki/lanes/LCH/rocq LCH -R /c/ClaudeOutput/pompetzki/lanes/L2R L2R /c/ClaudeOutput/pompetzki/lanes/L2R/PrintAx5r4.v
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+exit 0
+Fri Oct  9 20:27:09 EDT 2026

@@ -1,0 +1,3 @@
+coqc CohB_r4 exit 0
+coqc CmpB_r4 exit 0
+coqc CohCmp_r4 exit 0

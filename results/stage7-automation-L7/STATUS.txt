@@ -1,0 +1,25 @@
+L7 (Stage 7, automation emitters), status at 18:46 (date). Done.
+
+Files and verdicts:
+- Six JDG1 files in out\, all ACCEPT, exit 0, from both judges:
+  - L7-1-equality (98 theorems, 7,057 steps);
+  - L7-1-eqchain-pmp (40, 1,720), whose emitter is the pmp program src\eqchain-v1.pmp;
+  - L7-2-tautologies (17, 79);
+  - L7-2-direct-control (5, 5);
+  - L7-3-quantifiers (47, 10,690);
+  - L7-4-omega-laws (102, 2,360).
+- 42 mutated copies in out\mut, all REJECT, exit 1, from both judges.
+- Every file's registry is the 677 entries of AX0 ++ DEF0 of RpInit.v.
+
+The ω file:
+- It proves, once and for all x, y, z in omega, from sigma1's ZF formulas Add and Mul: commutativity and associativity of Add and Mul, distributivity, 0+y=y, Sx+y=S(x+y), 0*y=0, Sx*y=x*y+y.
+- It goes by induction through L:IndLem, in 1,543 generated steps.
+- Axioms reached: Extensionality, Pairing, Union, Infinity, Foundation and Separation instances. No Power Set, Choice or Collection.
+
+The tautology emitter splits on its own atom order with the vacuous box ∀φ↑ as one atom:
+- clauses-em 16 costs 393,211 taut_bf calls as one step and at most 7 per step split;
+- pmp takes 102.8 s on the 5-step control file and 20.7 s on the 17-theorem split file.
+
+Every .jdg file and mutant reproduces byte for byte from src\.
+
+Not done: linear arithmetic with Farkas certificates, polynomial identities, a Hilbert-style mode for formulas exponential in every order, and order/cancellation on omega. Details and numbers are in RESULTS.md.

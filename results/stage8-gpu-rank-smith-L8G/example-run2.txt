@@ -1,0 +1,39 @@
+zero: yes
+device cc 12 0
+snf known246 3 3
+snf known246 ok signU 1 signV 1 bitsU 3 bitsV 3
+snf smith4x6 4 6
+snf smith4x6 ok signU 1 signV 1 bitsU 10 bitsV 5
+snf smith6x8 6 8
+snf smith6x8 ok signU -1 signV -1 bitsU 12 bitsV 7
+snf smith8x8 8 8
+snf smith8x8 ok signU 1 signV -1 bitsU 24 bitsV 13
+case rn6x8 m 6 n 8 r 4
+case rn6x8 ok ge_ms 1 gemm_gpu 0 gemm_cpu 0
+case tri5 m 5 n 5 r 5
+case tri5 ok ge_ms 1 gemm_gpu 0 gemm_cpu 0
+case tri5b m 5 n 5 r 5
+case tri5b ok ge_ms 1 gemm_gpu 0 gemm_cpu 0
+case rn9x6 m 9 n 6 r 3
+case rn9x6 ok ge_ms 0 gemm_gpu 0 gemm_cpu 0
+case inj8x5 m 8 n 5 r 5
+case inj8x5 ok ge_ms 1 gemm_gpu 0 gemm_cpu 0
+crt det ok bits 97
+case bench64 m 64 n 64 r 60
+case bench64 ok ge_ms 14 gemm_gpu 1 gemm_cpu 1
+case bench128 m 128 n 128 r 124
+case bench128 ok ge_ms 29 gemm_gpu 1 gemm_cpu 0
+case bench256 m 256 n 256 r 252
+case bench256 ok ge_ms 58 gemm_gpu 1 gemm_cpu 1
+case bench512 m 512 n 512 r 508
+case bench512 ok ge_ms 122 gemm_gpu 2 gemm_cpu 6
+case bench1024 m 1024 n 1024 r 1020
+case bench1024 ok ge_ms 320 gemm_gpu 8 gemm_cpu 54
+case bench2048 m 2048 n 2048 r 2044
+case bench2048 ok ge_ms 1358 gemm_gpu 23 gemm_cpu 334
+case bench4096 m 4096 n 4096 r 4092
+case bench4096 ok ge_ms 7376 gemm_gpu 159 gemm_cpu 11007
+case bench8192 m 8192 n 8192 r 8188
+case bench8192 ok ge_ms 50819 gemm_gpu 446 gemm_cpu 108305
+zero: yes
+l8g checks passed

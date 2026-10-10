@@ -1,0 +1,11 @@
+C:/ClaudeOutput/pompetzki/lanes/L7/out/L7-1-eqchain-pmp.jdg (318352 bytes)
+  theorems 40, steps 1720
+  sha256 8fdb1ca3160d5e56e2177fe80ad0158ca5f77d845312c77e0a1b6fd981ab7ad8
+  registry: OK: 677 entries = AX0 (7) ++ DEF0 (670) of RpInit.v, entry for entry, none with hypotheses
+  copy of the checker: (ACCEPT 677 40 1720 717)
+  mutant neg-final (last theorem): copy of the checker (REJECT 39 final: last line is not the statement)
+  mutant twin-final (last theorem): copy of the checker (REJECT 39 final: last line is not the statement)
+  mutant taut-goal (theorem 0 step 1): copy of the checker (REJECT 0 step 1: taut: not a tautology)
+  mutant leib-swap (theorem 0 step 2): copy of the checker (REJECT 0 step 2: leib: shape)
+  mutant drop-step (last theorem): copy of the checker (REJECT 39 final: last line is not the statement)
+  mutant registry-suc (registry entry of Suc2): NOT WRITTEN, the copy of the checker accepts it
