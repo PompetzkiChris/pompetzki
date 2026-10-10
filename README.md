@@ -88,3 +88,7 @@ Gödel's half of CH is reduced in Rocq, kernel-checked, to the obligations O1–
 ## License
 
 The original Pompetzki code and documentation: MIT (`LICENSE`), copyright Christopher Pompetzki. Third-party material keeps its license: Metamath set.mm CC0-1.0, Lean and Mathlib Apache-2.0 (`licenses/`).
+
+## Public-tree quickstart and scope update
+
+Use the [public-tree quickstart](docs/QUICKSTART-PUBLIC-TREE-2026-10-10.md) for the small arithmetic positive and refusal cases, Windows/Linux commands, and pinned runtime results. Read the [current publication scope update](docs/PUBLIC-SCOPE-UPDATE-2026-10-10.md) for the public repository and the separate draft package set. These additive documents are bound to commit `fea61442a6665be6089bb137a553696162281654`; the existing historical quickstart and dated scope documents remain alongside them.
