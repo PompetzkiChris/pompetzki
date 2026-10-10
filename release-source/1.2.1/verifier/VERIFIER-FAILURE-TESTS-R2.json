@@ -1,0 +1,90 @@
+[
+  {
+    "case": "missing-expected",
+    "exit_code": 1,
+    "expected_diagnostic": "Required selftest EXPECTED.tsv is missing",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\missing-expected\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\missing-expected\\verifier.stderr.txt"
+  },
+  {
+    "case": "missing-component",
+    "exit_code": 1,
+    "expected_diagnostic": "Required pompetzki.exe or judge-v3.pmp is missing",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\missing-component\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\missing-component\\verifier.stderr.txt"
+  },
+  {
+    "case": "empty-manifest",
+    "exit_code": 1,
+    "expected_diagnostic": "FAILED (0/0 rows)",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\empty-manifest\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\empty-manifest\\verifier.stderr.txt"
+  },
+  {
+    "case": "malformed-manifest",
+    "exit_code": 1,
+    "expected_diagnostic": "Malformed EXPECTED.tsv row",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\malformed-manifest\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\malformed-manifest\\verifier.stderr.txt"
+  },
+  {
+    "case": "two-payloads",
+    "exit_code": 1,
+    "expected_diagnostic": "found 2",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\two-payloads\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\two-payloads\\verifier.stderr.txt"
+  },
+  {
+    "case": "checksum-mismatch",
+    "exit_code": 1,
+    "expected_diagnostic": "MISMATCH",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\checksum-mismatch\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\checksum-mismatch\\verifier.stderr.txt"
+  },
+  {
+    "case": "extra-unlisted-windows",
+    "exit_code": 1,
+    "expected_diagnostic": "Windows zip is not verified by SHA256SUMS.txt",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\extra-unlisted-windows\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\extra-unlisted-windows\\verifier.stderr.txt"
+  },
+  {
+    "case": "two-listed-windows",
+    "exit_code": 1,
+    "expected_diagnostic": "Expected one verified Windows zip, found 2",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\two-listed-windows\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\two-listed-windows\\verifier.stderr.txt"
+  },
+  {
+    "case": "win-parent-name",
+    "exit_code": 1,
+    "expected_diagnostic": "Expected one verified Windows zip, found 0",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\win-parent-name\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\win-parent-name\\verifier.stderr.txt"
+  },
+  {
+    "case": "unsafe-forward",
+    "exit_code": 1,
+    "expected_diagnostic": "unsafe zip entry path",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\unsafe-forward\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\unsafe-forward\\verifier.stderr.txt"
+  },
+  {
+    "case": "unsafe-backslash",
+    "exit_code": 1,
+    "expected_diagnostic": "unsafe zip entry path",
+    "passed": true,
+    "stdout": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\unsafe-backslash\\verifier.stdout.txt",
+    "stderr": "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-fixtures-r2\\unsafe-backslash\\verifier.stderr.txt"
+  }
+]
