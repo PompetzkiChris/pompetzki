@@ -1,90 +1,34 @@
-# Pompetzki — the pmp judge, release 2026-10-10
+# Abschluss 1.0
 
-A judge for machine-checked mathematics, by Christopher Pompetzki.
+Abschluss 1.0 is the first release of the one system for machine-checked mathematics by Christopher Pompetzki: the cockpit, the pmp language, the pmp judge, the Racket second judge and the Book ledger.
 
-- **What it checks.** `judge/judge-v3.pmp` checks derivations in a Hilbert calculus for first-order logic with equality over ZF: the function `check_batch` of `rocq/Replay2.v`.
-- **What it runs on.** pmp, Christopher Pompetzki's exact linear-algebra language. `bin/windows/pompetzki.exe` and `bin/linux/pompetzki` (static x86-64) are its interpreters.
-- **Second copy.** `judge/racket/judge.rkt` is an independent implementation of the same function, written from the rule text.
-- **Native image.** `bin/linux/jdgchk` is a static Linux ELF of the checker (reads a JDG1 file on stdin).
-- **Proved in Rocq 9.1.0, coqchk `Axioms: <none>`:** `check_batch` accepts only derivable theorems (`rocq/Replay3.v`: `check_thm_ok`, `check_batch_ok`; registry `RpInitOk.REG0_ok`).
+**Start here:** unzip `Abschluss-1.0-windows-x64.zip` and run `Abschluss-1.0\Abschluss Start.exe`, a single launcher for the cockpit, the judges, the Book, the selftest and the examples. Or run `installer\Install-Abschluss.exe` next to the bundle, which installs to `%LOCALAPPDATA%\Programs\Abschluss-1.0` with a Start Menu shortcut and writes an uninstaller.
 
-The method — exact linear algebra, one certificate per run, the Finite Data Principle, Theorem 21.1 — is Christopher Pompetzki's.
+**What is in it**
+- **The cockpit** (`Abschluss.exe`, Windows x64, written in pmp, rebuilt from source for this release; `build.cmd` reproduces the same bytes). It keeps ERP-style books: pmp Process logs as documents of the Computed and Certified subledgers, Rocq checks, a journal, open items, trial balance, reversals, period close by month and TSV exports. It writes new files only.
+- **The judge** (`judge-v3.pmp` on the pmp interpreter) checks derivations in a Hilbert calculus for first-order logic with equality over ZF. `racket/judge.rkt` is an independent second implementation.
+- **The Book** (`book\`): 9,843 postings, each accepted by both judges, in a hash chain; `book\verify-book.cmd` checks the chain and prints `CHECK OK`.
+- **Examples** (`examples\`): 10 worked derivations (tautologies, equality chains, ω numerals, Farkas, rank–nullity 4×4, Smith form 2×2, Pratt certificate for 7) and 10 mutants. Both judges agree with `EXPECTED.tsv` on all 20.
+- **Tools** (`tools\`): JudgeDrop (judge a file from a window), mmverify (Metamath verifier: set.mm, 251,981 statements, 47,842 proofs checked in 8.4 s, counts equal to metamath 0.198), jdg-stats, book-post.
 
-## Run it
+**Downloads**
+- `Abschluss-1.0-windows-x64.zip` (the bundle above, with the installer)
+- `Abschluss-1.0-linux-x64.tar.gz` (the Linux pompetzki judge and its selftest)
+- `Abschluss-1.0-source.zip` (sources: cockpit, pmp libraries, judge, Racket judge, Σ₁ emitter, Rocq `.v` files)
+- `Abschluss-1.0-results.zip` (lane results with their receipts, and the Book)
+- `SHA256SUMS.txt`: check with `certutil -hashfile <file> SHA256` (Windows) or `sha256sum -c SHA256SUMS.txt` (Linux, WSL)
 
-Windows (PowerShell), from the repository root:
+**Proved**
+- `check_batch` is sound for `prov`: Rocq 9.1.0, coqchk `Axioms: <none>` (`Replay3.v`).
+- Both judges ACCEPT Theorem 29's replay, Con(ZFC) → Con(ZFC + ¬CH*): 4,551 theorems, 139,194 steps. An independent replay on a second machine gave identical verdicts on 176 of 176 judge rows.
+- Both judges ACCEPT the Σ₁ files: 7 files, 1,656 theorems, 53,069 steps.
+- Mutation testing: 298 of 300 single-step mutants rejected by both judges; the other 2 leave a valid proof of the same statement (explained in the results).
 
-```
-cd judge
-..\bin\windows\pompetzki.exe judge-v3.pmp ..\certificates\theorem29\replay-all.jdg
-racket racket\judge.rkt ..\certificates\theorem29\replay-all.jdg
-```
+**Owed**
+- The Rocq theorem that the bytes of `judge-v3.pmp` compute `check_batch`; until then a pmp verdict rests on agreement with the Racket copy.
+- Gödel's half of CH; CH independence is not claimed. Stages 2 and 4–9 of the build-out: see `docs\KNOWN-LIMITS.md`.
+- The pmp interpreter judges about 5.8 ms per step, so `replay-all.jdg` takes about 800 s; the cockpit's warm start on 5.4 GB of logs is about 25 s against a 10 s target.
 
-Linux (or WSL):
+Earlier release: [v2026.10.10](https://github.com/PompetzkiChris/pompetzki/releases/tag/v2026.10.10) (the pmp judge release). MIT licence.
 
-```
-cd judge
-../bin/linux/pompetzki judge-v3.pmp ../certificates/theorem29/replay-all.jdg
-racket racket/judge.rkt ../certificates/theorem29/replay-all.jdg
-../bin/linux/jdgchk < ../certificates/theorem29/replay-all.jdg
-```
-
-Both judges print `ACCEPT` with registry 706, theorems 4,551, steps 139,194, final registry 5,257, exit 0. A refused file prints `REJECT` with the theorem and step, exit 1. Format: `docs/JDG1-FORMAT.md`. Soundness argument: `docs/SOUNDNESS.md`. More commands: `docs/QUICKSTART.md`.
-
-**Resource stops are not refusals.** The pmp interpreter stops with `gosub: too deep` on formulas nesting numerals above 38, and with `LIMIT a memory block is full` on registries above 1,091 entries. On those files the Racket judge ACCEPTs; the pmp stop is a resource limit of the interpreter, not a REJECT.
-
-## Results in this release
-
-Every certificate below was accepted by both judges, and every mutated copy listed was refused by both, at the recorded times on 2026-10-09. Each folder holds its own `RESULTS.md` with the commands, exit codes, times and hashes.
-
-| Result | Where | Checked |
-|---|---|---|
-| **Theorem 29**: Con(ZFC) → Con(ZFC + ¬CH*), forcing | `certificates/theorem29/replay-all.jdg` (4,551 theorems, 139,194 steps); Rocq sources in `rocq/` | both judges ACCEPT; coqchk `Axioms: <none>` |
-| **Cohen's half over the plain CH statement**: `AlignCH.con_zfc_con_notch_plain : prov (GamE (Neg ch)) Bot -> prov ZFpure Bot` | `results/ch-theorem29-plain-CH-LCH/` | both judges ACCEPT the alignment file; coqchk clean |
-| **Σ₁-completeness, proved once in Rocq**: `bounded_complete` (every true closed bounded sentence about ω is derivable in Gam, every false one is refuted) and `sigma1_complete` | `results/stage2-rocq-sigma1-complete-L2R/` | coqchk `Axioms: <none>` |
-| **Conservativity of definitions**: `gam_pure_conservative : syms f = [] -> prov Gam f -> prov ZFpure f` | `results/stage1-conservativity-CX3/` | recursive coqchk `Axioms: <none>` |
-| **Arithmetic of ω as ZF theorems** (numerals, membership, n ≠ m, bounded quantifiers, +, ·, true bounded and Σ₁ sentences) | `certificates/stage2-sigma1/` (7 files, 1,656 theorems, 53,069 steps; 70 mutants) | both judges ACCEPT; all mutants REJECT |
-| **Derived rules**: LRAT, Smith normal form, rank–nullity over Q, Pratt primality, Farkas infeasibility | `results/stage2-derived-rules-L2D/` (19 originals) | 19 × both ACCEPT; 186 mutants × both REJECT at the same theorem and step |
-| LRAT corpus (CaDiCaL, 35 instances) | `results/stage2-lrat-AG5/` | 35 LRAT ACCEPT; 3 JDG files both judges ACCEPT |
-| Pratt corpus: all 78,498 primes below 10⁶, 2³¹−1, 2⁶¹−1, 2⁸⁹−1, the 10 largest primes below 2⁶⁴ | `results/stage2-pratt-G1/` (index and hashes; JDG for 7, 13, 23) | checker accepts every certificate; 1,000 composites and 1,000 mutations refused |
-| Farkas certificate `cyclic-k02` | `results/stage2-farkas-G2/` | both judges ACCEPT |
-| **Lean/Mathlib statements as ZF theorems**: 252 statements of the `import Mathlib` environment (9 from Mathlib modules, 243 from Lean core `Init`) under their Lean names | `results/stage6-lean-mathlib-L6/L6-nat.jdg` (345 theorems, 37,714 steps) | both judges ACCEPT |
-| **Automation**: emitters for equality, equality chains (written in pmp), tautologies, quantifiers; the general laws of + and · on ω proved once by induction | `results/stage7-automation-L7/out/` (6 files, 42 mutants) | both judges ACCEPT; 42/42 mutants REJECT |
-| **RTX 5090 through pmp `extern`**: CUDA DLL, exact integer rank, kernel and Smith form, every GPU result rechecked exactly | `results/stage8-gpu-rank-smith-L8G/` (`rn6x8`, `tri5`, `smith3`; 30 mutants) | both judges ACCEPT; 30/30 mutants REJECT |
-| **Metamath set.mm map**: 167 `ax-`/`df-` labels of the 5,757-assertion class-free cohort of set.mm (50,912 assertions) mapped to the registry | `results/stage5-metamath-AG12/` | 10 route-check files, both judges ACCEPT |
-
-## The ten stages
-
-The build-out plan is `docs/PMP-BUILDOUT-2026-10-09.md`.
-
-| # | Stage | In this release | Owed |
-|---|---|---|---|
-| 1 | Judge v0 and its Rocq theorem | `check_batch` sound for `prov` (Replay3, coqchk none); Gam → ZFpure for pure formulas (CX3); `judge/mut` refused by both judges | the Rocq theorem that the bytes of `judge-v3.pmp`, run under the pmp semantics, compute `check_batch`. Until it is closed a pmp verdict rests on its agreement with the Racket copy |
-| 2 | Σ₁-completeness and derived rules | Σ₁-completeness in Rocq; ω arithmetic; LRAT, Smith, rank–nullity, Pratt, Farkas posted | Gröbner and Nullstellensatz posted through the judge |
-| 3 | Racket copy | done; agrees on every file here | — |
-| 4 | Native checker image | `bin/linux/jdgchk` | the Rocq theorem about the image's bytes (x86-64 semantics) |
-| 5 | Metamath set.mm | registry map of the class-free cohort | import of set.mm proofs; export to Metamath format |
-| 6 | Lean/Mathlib | 252 statements as ZF theorems, re-derived | translation of Lean proof terms; Int; universes as inaccessibles |
-| 7 | Automation | 6 emitters, 1 written in pmp | the remaining emitters as pmp programs |
-| 8 | The 5090 | rank / kernel / Smith through `extern` | the other certificate families on the GPU |
-| 9 | The Book in pmp | — | ledger and desk wired to judge postings |
-| 10 | Public release | this repository | Windows and Linux binaries, sources, format, receipts: included |
-
-Gödel's half of CH is reduced in Rocq, kernel-checked, to the obligations O1–O11 (`results/ch-theorem29-plain-CH-LCH/`, `results/stage2-rocq-sigma1-complete-L2R/RESULTS-2.md`); it is not closed, so the independence of CH over ZFC is not claimed.
-
-## Layout
-
-| Folder | Content |
-|---|---|
-| `bin/` | `windows/pompetzki.exe`, `linux/pompetzki`, `linux/jdgchk` |
-| `judge/` | `judge-v3.pmp`, `racket/judge.rkt`, `rocq2jdg.rkt` (untrusted converter), fault cases `mut/` |
-| `rocq/` | the calculus, the checker, its soundness and Theorem 29 |
-| `certificates/` | Theorem 29 and the Stage 2 arithmetic files, with mutants |
-| `results/` | one folder per result after the first release, each with its `RESULTS.md` |
-| `docs/` | format, soundness, quickstart, build-out plan, scope, receipts |
-
-`MANIFEST.sha256` lists every file with its SHA-256 (`sha256sum -c MANIFEST.sha256`).
-
-## License
-
-The original Pompetzki code and documentation: MIT (`LICENSE`), copyright Christopher Pompetzki. Third-party material keeps its license: Metamath set.mm CC0-1.0, Lean and Mathlib Apache-2.0 (`licenses/`).
+Full documentation: [docs/1.0/README.md](docs/1.0/README.md), [QUICKSTART](docs/1.0/QUICKSTART.md), [USER-GUIDE](docs/1.0/USER-GUIDE.md), [KNOWN-LIMITS](docs/1.0/KNOWN-LIMITS.md), [CHANGELOG](docs/1.0/CHANGELOG.md), [Deutsch](docs/1.0/README.de.md). The README of the v2026.10.10 judge release is kept at [docs/README-v2026.10.10.md](docs/README-v2026.10.10.md).
