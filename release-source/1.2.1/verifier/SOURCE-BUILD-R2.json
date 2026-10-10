@@ -1,0 +1,21 @@
+{
+  "commands": [
+    [
+      "raco.exe",
+      "exe",
+      "-o",
+      "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\abschluss-verify-r2.exe",
+      "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\source\\abschluss-verify-r2.rkt"
+    ],
+    [
+      "raco.exe",
+      "distribute",
+      "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\verifier-r2-dist",
+      "C:\\ClaudeOutput\\pompetzki\\release-1.0\\recovery-gpt-20261010\\release-qa\\new-candidate\\abschluss-verify-r2.exe"
+    ]
+  ],
+  "exit_code": 0,
+  "source_sha256": "f6e8629e21991d4f81ccd8f9f1e46f15f39ba9bcbf115253279ea789928c434b",
+  "binary_sha256": "da88601181559d52ea6a88a8f767c82fb8b0f280c5cda9c5ad69b1b9e5b060da",
+  "ended_utc": "2026-10-10T11:37:08.9267142+00:00"
+}

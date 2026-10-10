@@ -1,0 +1,20 @@
+#lang racket/base
+;; Resolve retained historical paths through the portable archive's alias table.
+(require racket/runtime-path racket/string)
+(provide portable-path)
+(define-runtime-path code-dir ".")
+(define root (simplify-path (build-path code-dir 'up)))
+(define (canon p)
+  (define s (string-replace (if (path? p) (path->string p) p) "\\" "/"))
+  (define m (regexp-match-positions #px"[A-Za-z]:/" s))
+  (string-downcase (if m (substring s (caar m)) s)))
+(define aliases
+  (call-with-input-file (build-path root "PATH-ALIASES.tsv")
+    (lambda (in)
+      (read-line in)
+      (for/hash ([s (in-lines in)])
+        (define f (string-split s "\t" #:trim? #f))
+        (values (canon (car f)) (cadr f))))))
+(define (portable-path p)
+  (define a (hash-ref aliases (canon p) #f))
+  (if a (build-path root a) p))
