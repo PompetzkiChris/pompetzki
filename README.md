@@ -32,3 +32,9 @@ Abschluss 1.0 is the first release of the one system for machine-checked mathema
 Earlier release: [v2026.10.10](https://github.com/PompetzkiChris/pompetzki/releases/tag/v2026.10.10) (the pmp judge release). MIT licence.
 
 Full documentation: [docs/1.0/README.md](docs/1.0/README.md), [QUICKSTART](docs/1.0/QUICKSTART.md), [USER-GUIDE](docs/1.0/USER-GUIDE.md), [KNOWN-LIMITS](docs/1.0/KNOWN-LIMITS.md), [CHANGELOG](docs/1.0/CHANGELOG.md), [Deutsch](docs/1.0/README.de.md). The README of the v2026.10.10 judge release is kept at [docs/README-v2026.10.10.md](docs/README-v2026.10.10.md).
+
+## Credits
+
+**Abschluss** and the Pompetzki language — Christopher Pompetzki.
+
+Developed with Anthropic's Claude (Claude Code). Anthropic does not sponsor, endorse or review this project.
