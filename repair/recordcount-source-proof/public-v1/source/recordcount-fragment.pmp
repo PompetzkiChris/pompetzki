@@ -1,0 +1,8 @@
+label RECORDCOUNT
+set t sub lim pos
+set t sub t num
+when negative t goto RECORDCOUNTBAD
+return
+label RECORDCOUNTBAD
+text WHY "a record count exceeds remaining input bytes"
+goto FAIL

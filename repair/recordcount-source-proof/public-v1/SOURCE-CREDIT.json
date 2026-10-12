@@ -1,0 +1,24 @@
+{
+  "project": "Pompetzki / Abschluss, Christopher Pomp and project contributors",
+  "unchanged_semantics": {
+    "Vendor/C2Link/ExecMono.v": "4309ae95d944f4eda8979cd23af95ab47668a50c33b84ef2037ba32d9370b90d",
+    "Vendor/C2Link/ExecSim.v": "ff8d1832e529925a5b6384d8cf8c4e2763a7192f252d49fedf194f28cf7c50ff",
+    "Vendor/C2Link/ExecStep.v": "b5689cd748cf941358fdc4c1e23a21bddd4ba5156b325ebdf83ea9aaaf88d456",
+    "Vendor/C2Link/PmpCore.v": "ba76fc2256e87bfab583f6a9f5a145cf351dfe86d13e295dfa24548e4475b8bc",
+    "Vendor/C2Link/RunKit.v": "a37d0e83a139e10f0d6330f1b837c90a9269b3704b01b24f90578135135dc351",
+    "Vendor/Groebner/ByteText.v": "73d782662def27f0c8de666a12c56001ec58bdb1ce16d14181c318c8ca484482"
+  },
+  "semantics_origin": "Preserved project C2Link and Groebner byte-memory execution developments, reused unchanged from the checked finite-reader subset",
+  "unchanged_Grok_model": {
+    "author": "Grok Bot, original source headers retained",
+    "received_archive_sha256": "f36491d5461065bcec9435e4f9dab9ff0af0b31b627edd4bc1dae7d43930964f",
+    "files": {
+      "GrokRC/GrokRecordCount.v": "16c51c1ba0869aedea59f0f04175f379c58449bcc5d8699c265452abace3bf61",
+      "GrokRC/GrokRecordCountVerify.v": "9d50414d0db71eb58b05b33435562e4958bae409986b78b4d7ac45b67abd940c"
+    }
+  },
+  "new_proofs": "Codex 2026-10-12, current RECORDCOUNT source controller/step/byte-memory/word-bound proofs",
+  "original_theorem_types_and_sources": "Unchanged; new namespaces and files only",
+  "license": "Full existing project MIT LICENSE included",
+  "boundary": "Trusted text-to-AST extraction; no native/compiler/OS/permission/complete-judge/caller-contract or final FAIL handler refinement proved"
+}

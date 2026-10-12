@@ -1,0 +1,25 @@
+{
+  "status": "FROZEN",
+  "manifest_sha256": "c9575109e408104550daba561525aef94408ebb8704e5cbe15877a4a7641d333",
+  "checksums_sha256": "086514d6a9de1f58fe5f188610e1d09e77b0e609be7efababeacc34c3b7db429",
+  "payload_files": 52,
+  "controls": [
+    "PUBLIC-SOURCE-MANIFEST.json",
+    "SHA256SUMS.txt",
+    "RECORDCOUNT-PUBLIC-FREEZE.json",
+    "RECORDCOUNT-PUBLIC-FREEZE.sha256"
+  ],
+  "source_instructions": 8,
+  "fragment_sha256": "33a8406f4545f199f8772b839c9058f62543f3fe2a9f0af3a208df97f41dbca8",
+  "new_closed_selected_types": 19,
+  "retained_Grok_closed_types": 8,
+  "fresh_modules": 13,
+  "kernel_exit": 0,
+  "kernel_axioms": [],
+  "raw_exact_types_sha256": "d3ae6c9ce62fdd7078d91822da98d6faaff562c2793699fdf5a820b1a570948e",
+  "raw_kernel_context_sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+  "source_credits": "Unchanged C2Link/Groebner project semantics, unchanged Grok Bot count model and new Codex source-controller proof; SOURCE-CREDIT.json retained",
+  "full_MIT_license_bytes": 1077,
+  "private_pattern_hits": 0,
+  "boundary": "Trusted text-to-AST extraction; no native/compiler/OS/permission/complete-judge/caller-contract or final FAIL handler refinement proved"
+}

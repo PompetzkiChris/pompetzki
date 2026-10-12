@@ -1,0 +1,1031 @@
+Precord =
+(PmpCore.SLabel
+   (String.String (Ascii.Ascii false true false false true false true false)
+      (String.String
+         (Ascii.Ascii true false true false false false true false)
+         (String.String
+            (Ascii.Ascii true true false false false false true false)
+            (String.String
+               (Ascii.Ascii true true true true false false true false)
+               (String.String
+                  (Ascii.Ascii false true false false true false true false)
+                  (String.String
+                     (Ascii.Ascii false false true false false false true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true false false false false true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true true true false false true
+                              false)
+                           (String.String
+                              (Ascii.Ascii true false true false true false
+                                 true false)
+                              (String.String
+                                 (Ascii.Ascii false true true true false
+                                    false true false)
+                                 (String.String
+                                    (Ascii.Ascii false false true false true
+                                       false true false)
+                                    String.EmptyString)))))))))))
+ :: PmpCore.SSub
+      (String.String
+         (Ascii.Ascii false false true false true true true false)
+         String.EmptyString)
+      (PmpCore.OV
+         (String.String
+            (Ascii.Ascii false false true true false true true false)
+            (String.String
+               (Ascii.Ascii true false false true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true true false true true false)
+                  String.EmptyString))))
+      (PmpCore.OV
+         (String.String
+            (Ascii.Ascii false false false false true true true false)
+            (String.String
+               (Ascii.Ascii true true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true true false false true true true false)
+                  String.EmptyString))))
+    :: PmpCore.SSub
+         (String.String
+            (Ascii.Ascii false false true false true true true false)
+            String.EmptyString)
+         (PmpCore.OV
+            (String.String
+               (Ascii.Ascii false false true false true true true false)
+               String.EmptyString))
+         (PmpCore.OV
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+       :: PmpCore.SWhen PmpCore.CNeg
+            (PmpCore.OV
+               (String.String
+                  (Ascii.Ascii false false true false true true true false)
+                  String.EmptyString))
+            (String.String
+               (Ascii.Ascii false true false false true false true false)
+               (String.String
+                  (Ascii.Ascii true false true false false false true false)
+                  (String.String
+                     (Ascii.Ascii true true false false false false true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true true true false false true
+                           false)
+                        (String.String
+                           (Ascii.Ascii false true false false true false
+                              true false)
+                           (String.String
+                              (Ascii.Ascii false false true false false false
+                                 true false)
+                              (String.String
+                                 (Ascii.Ascii true true false false false
+                                    false true false)
+                                 (String.String
+                                    (Ascii.Ascii true true true true false
+                                       false true false)
+                                    (String.String
+                                       (Ascii.Ascii true false true false
+                                          true false true false)
+                                       (String.String
+                                          (Ascii.Ascii false true true true
+                                             false false true false)
+                                          (String.String
+                                             (Ascii.Ascii false false true
+                                                false true false true false)
+                                             (String.String
+                                                (Ascii.Ascii false true false
+                                                 false false false true false)
+                                                (String.String
+                                                 (Ascii.Ascii true false
+                                                 false false false false true
+                                                 false)
+                                                 (String.String
+                                                 (Ascii.Ascii false false
+                                                 true false false false true
+                                                 false) String.EmptyString))))))))))))))
+          :: PmpCore.SReturn
+             :: PmpCore.SLabel
+                  (String.String
+                     (Ascii.Ascii false true false false true false true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true false true false false false true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true false false false false
+                              true false)
+                           (String.String
+                              (Ascii.Ascii true true true true false false
+                                 true false)
+                              (String.String
+                                 (Ascii.Ascii false true false false true
+                                    false true false)
+                                 (String.String
+                                    (Ascii.Ascii false false true false false
+                                       false true false)
+                                    (String.String
+                                       (Ascii.Ascii true true false false
+                                          false false true false)
+                                       (String.String
+                                          (Ascii.Ascii true true true true
+                                             false false true false)
+                                          (String.String
+                                             (Ascii.Ascii true false true
+                                                false true false true false)
+                                             (String.String
+                                                (Ascii.Ascii false true true
+                                                 true false false true false)
+                                                (String.String
+                                                 (Ascii.Ascii false false
+                                                 true false true false true
+                                                 false)
+                                                 (String.String
+                                                 (Ascii.Ascii false true
+                                                 false false false false true
+                                                 false)
+                                                 (String.String
+                                                 (Ascii.Ascii true false
+                                                 false false false false true
+                                                 false)
+                                                 (String.String
+                                                 (Ascii.Ascii false false
+                                                 true false false false true
+                                                 false) String.EmptyString))))))))))))))
+                :: PmpCore.STextLit
+                     (String.String
+                        (Ascii.Ascii true true true false true false true
+                           false)
+                        (String.String
+                           (Ascii.Ascii false false false true false false
+                              true false)
+                           (String.String
+                              (Ascii.Ascii true false false true true false
+                                 true false)
+                              String.EmptyString)))
+                     (ByteText.bytes_of_str
+                        (String.String
+                           (Ascii.Ascii true false false false false true
+                              true false)
+                           (String.String
+                              (Ascii.Ascii false false false false false true
+                                 false false)
+                              (String.String
+                                 (Ascii.Ascii false true false false true
+                                    true true false)
+                                 (String.String
+                                    (Ascii.Ascii true false true false false
+                                       true true false)
+                                    (String.String
+                                       (Ascii.Ascii true true false false
+                                          false true true false)
+                                       (String.String
+                                          (Ascii.Ascii true true true true
+                                             false true true false)
+                                          (String.String
+                                             (Ascii.Ascii false true false
+                                                false true true true false)
+                                             (String.String
+                                                (Ascii.Ascii false false true
+                                                 false false true true false)
+                                                (String.String
+                                                 (Ascii.Ascii false false
+                                                 false false false true false
+                                                 false)
+                                                 (String.String
+                                                 (Ascii.Ascii true true false
+                                                 false false true true false)
+                                                 (String.String
+                                                 (Ascii.Ascii true true true
+                                                 true false true true false)
+                                                 (String.String
+                                                 (Ascii.Ascii true false true
+                                                 false true true true false)
+                                                 (String.String
+                                                 (Ascii.Ascii false true true
+                                                 true false true true false)
+                                                 (String.String
+                                                 (Ascii.Ascii false false
+                                                 true false true true true
+                                                 false)
+                                                 (String.String
+                                                 (Ascii.Ascii false false
+                                                 false false false true false
+                                                 false)
+                                                 (String.String
+                                                 (Ascii.Ascii true false true
+                                                 false false true true false)
+                                                 (String.String (...) (...)))))))))))))))))))
+                   :: PmpCore.SGoto
+                        (String.String
+                           (Ascii.Ascii false true true false false false
+                              true false)
+                           (String.String
+                              (Ascii.Ascii true false false false false false
+                                 true false)
+                              (String.String
+                                 (Ascii.Ascii true false false true false
+                                    false true false)
+                                 (String.String
+                                    (Ascii.Ascii false false true true false
+                                       false true false)
+                                    String.EmptyString))))
+                      :: nil)%list
+     : list PmpCore.stmt
+count_address_contract =
+fun s : PmpCore.state =>
+(BinInt.Z.le BinNums.Z0
+   (PmpCore.vars s
+      (String.String (Ascii.Ascii false true true true false true true false)
+         (String.String
+            (Ascii.Ascii true false true false true true true false)
+            (String.String
+               (Ascii.Ascii true false true true false true true false)
+               String.EmptyString)))) /\
+ BinInt.Z.le
+   (PmpCore.vars s
+      (String.String (Ascii.Ascii false true true true false true true false)
+         (String.String
+            (Ascii.Ascii true false true false true true true false)
+            (String.String
+               (Ascii.Ascii true false true true false true true false)
+               String.EmptyString))))
+   (BinNums.Zpos
+      (BinNums.xI
+         (BinNums.xI
+            (BinNums.xI
+               (BinNums.xI
+                  (BinNums.xI
+                     (BinNums.xI
+                        (BinNums.xI
+                           (BinNums.xI
+                              (BinNums.xI
+                                 (BinNums.xI
+                                    (BinNums.xI
+                                       (BinNums.xI
+                                          (BinNums.xO
+                                             (BinNums.xO
+                                                (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xI (...)))))))))))))))))))))) /\
+(BinInt.Z.le BinNums.Z0
+   (PmpCore.vars s
+      (String.String
+         (Ascii.Ascii false false false false true true true false)
+         (String.String
+            (Ascii.Ascii true true true true false true true false)
+            (String.String
+               (Ascii.Ascii true true false false true true true false)
+               String.EmptyString)))) /\
+ BinInt.Z.le
+   (PmpCore.vars s
+      (String.String
+         (Ascii.Ascii false false false false true true true false)
+         (String.String
+            (Ascii.Ascii true true true true false true true false)
+            (String.String
+               (Ascii.Ascii true true false false true true true false)
+               String.EmptyString))))
+   (PmpCore.vars s
+      (String.String
+         (Ascii.Ascii false false true true false true true false)
+         (String.String
+            (Ascii.Ascii true false false true false true true false)
+            (String.String
+               (Ascii.Ascii true false true true false true true false)
+               String.EmptyString))))) /\
+BinInt.Z.le
+  (PmpCore.vars s
+     (String.String (Ascii.Ascii false false true true false true true false)
+        (String.String
+           (Ascii.Ascii true false false true false true true false)
+           (String.String
+              (Ascii.Ascii true false true true false true true false)
+              String.EmptyString))))
+  (PmpCore.hp s) /\
+BinInt.Z.lt (PmpCore.hp s)
+  (BinNums.Zpos
+     (BinNums.xO
+        (BinNums.xO
+           (BinNums.xO
+              (BinNums.xO
+                 (BinNums.xO
+                    (BinNums.xO
+                       (BinNums.xO
+                          (BinNums.xO
+                             (BinNums.xO
+                                (BinNums.xO
+                                   (BinNums.xO
+                                      (BinNums.xO
+                                         (BinNums.xO
+                                            (BinNums.xO
+                                               (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO (...)))))))))))))))))))))
+     : PmpCore.state -> Prop
+
+Arguments count_address_contract s
+GrokRecordCount.fits64 =
+fun x : BinNums.Z =>
+BinInt.Z.le
+  (BinInt.Z.opp
+     (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH))
+        (BinNums.Zpos
+           (BinNums.xI
+              (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH))))))))
+  x /\
+BinInt.Z.le x
+  (BinInt.Z.sub
+     (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH))
+        (BinNums.Zpos
+           (BinNums.xI
+              (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH)))))))
+     (BinNums.Zpos BinNums.xH))
+     : BinNums.Z -> Prop
+
+Arguments GrokRecordCount.fits64 x%_Z_scope
+RECORDCOUNT_first_subtraction_prefix
+     : forall (s : PmpCore.state) (ks : list nat) (f : nat),
+       PmpCore.exec (ssrnat.addn 2 f) Precord record_stops pc_RECORDCOUNT ks
+         s =
+       PmpCore.exec f Precord record_stops 2 ks (first_sub_state s)
+RECORDCOUNT_subtraction_prefix
+     : forall (s : PmpCore.state) (ks : list nat) (f : nat),
+       PmpCore.exec (ssrnat.addn 3 f) Precord record_stops pc_RECORDCOUNT ks
+         s =
+       PmpCore.exec f Precord record_stops 3 ks (checked_state s)
+RECORDCOUNT_return_fuel
+     : forall s : PmpCore.state,
+       BinInt.Z.le
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         (remaining s) ->
+       PmpCore.exec 5 Precord record_stops pc_RECORDCOUNT nil s =
+       PmpCore.OReturn (checked_state s)
+RECORDCOUNT_failure_fuel
+     : forall (s : PmpCore.state) (ks : list nat),
+       BinInt.Z.gt
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         (remaining s) ->
+       PmpCore.exec 7 Precord record_stops pc_RECORDCOUNT ks s =
+       PmpCore.OStop
+         (String.String
+            (Ascii.Ascii false true true false false false true false)
+            (String.String
+               (Ascii.Ascii true false false false false false true false)
+               (String.String
+                  (Ascii.Ascii true false false true false false true false)
+                  (String.String
+                     (Ascii.Ascii false false true true false false true
+                        false)
+                     String.EmptyString))))
+         (failure_state s)
+RECORDCOUNT_returns_iff
+     : forall s sf : PmpCore.state,
+       ExecMono.evals Precord record_stops pc_RECORDCOUNT nil s
+         (PmpCore.OReturn sf) <->
+       BinInt.Z.le
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         (remaining s) /\
+       sf = checked_state s
+RECORDCOUNT_fails_iff
+     : forall s sf : PmpCore.state,
+       ExecMono.evals Precord record_stops pc_RECORDCOUNT nil s
+         (PmpCore.OStop
+            (String.String
+               (Ascii.Ascii false true true false false false true false)
+               (String.String
+                  (Ascii.Ascii true false false false false false true false)
+                  (String.String
+                     (Ascii.Ascii true false false true false false true
+                        false)
+                     (String.String
+                        (Ascii.Ascii false false true true false false true
+                           false)
+                        String.EmptyString))))
+            sf) <->
+       BinInt.Z.gt
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         (remaining s) /\
+       sf = failure_state s
+checked_state_effects
+     : forall s : PmpCore.state,
+       PmpCore.vars (checked_state s)
+         (String.String
+            (Ascii.Ascii false false true false true true true false)
+            String.EmptyString) =
+       BinInt.Z.sub (remaining s)
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) /\
+       PmpCore.mem (checked_state s) = PmpCore.mem s /\
+       PmpCore.hp (checked_state s) = PmpCore.hp s /\
+       (forall x : String.string,
+        x <>
+        String.String
+          (Ascii.Ascii false false true false true true true false)
+          String.EmptyString ->
+        PmpCore.vars (checked_state s) x = PmpCore.vars s x)
+failure_state_registers
+     : forall s : PmpCore.state,
+       PmpCore.vars (failure_state s)
+         (String.String
+            (Ascii.Ascii false false true false true true true false)
+            String.EmptyString) =
+       BinInt.Z.sub (remaining s)
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) /\
+       PmpCore.vars (failure_state s)
+         (String.String
+            (Ascii.Ascii true true true false true false true false)
+            (String.String
+               (Ascii.Ascii false false false true false false true false)
+               (String.String
+                  (Ascii.Ascii true false false true true false true false)
+                  String.EmptyString))) =
+       PmpCore.hp s /\
+       PmpCore.vars (failure_state s)
+         (String.String
+            (Ascii.Ascii true true true false true false true false)
+            (String.String
+               (Ascii.Ascii false false false true false false true false)
+               (String.String
+                  (Ascii.Ascii true false false true true false true false)
+                  (String.String
+                     (Ascii.Ascii true true true true true false true false)
+                     (String.String
+                        (Ascii.Ascii false false true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true false true false false true true
+                              false)
+                           (String.String
+                              (Ascii.Ascii false true true true false true
+                                 true false)
+                              String.EmptyString))))))) =
+       BinNums.Zpos
+         (BinNums.xO
+            (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH))))) /\
+       PmpCore.hp (failure_state s) =
+       BinInt.Z.add (PmpCore.hp s)
+         (BinNums.Zpos
+            (BinNums.xI
+               (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH)))))) /\
+       (forall x : String.string,
+        x <>
+        String.String
+          (Ascii.Ascii false false true false true true true false)
+          String.EmptyString ->
+        x <>
+        String.String
+          (Ascii.Ascii true true true false true false true false)
+          (String.String
+             (Ascii.Ascii false false false true false false true false)
+             (String.String
+                (Ascii.Ascii true false false true true false true false)
+                String.EmptyString)) ->
+        x <>
+        String.String
+          (Ascii.Ascii true true true false true false true false)
+          (String.String
+             (Ascii.Ascii false false false true false false true false)
+             (String.String
+                (Ascii.Ascii true false false true true false true false)
+                (String.String
+                   (Ascii.Ascii true true true true true false true false)
+                   (String.String
+                      (Ascii.Ascii false false true true false true true
+                         false)
+                      (String.String
+                         (Ascii.Ascii true false true false false true true
+                            false)
+                         (String.String
+                            (Ascii.Ascii false true true true false true true
+                               false)
+                            String.EmptyString)))))) ->
+        PmpCore.vars (failure_state s) x = PmpCore.vars s x)
+failure_state_memory_outside
+     : forall (s : PmpCore.state) (a : BinNums.Z),
+       BinInt.Z.lt a (PmpCore.hp s) \/
+       BinInt.Z.le
+         (BinInt.Z.add (PmpCore.hp s)
+            (BinNums.Zpos
+               (BinNums.xI
+                  (BinNums.xO
+                     (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH)))))))
+         a ->
+       PmpCore.mem (failure_state s) a = PmpCore.mem s a
+failure_state_memory_content
+     : forall (s : PmpCore.state) (i : nat),
+       i < 45 ->
+       PmpCore.mem (failure_state s)
+         (BinInt.Z.add (PmpCore.hp s) (BinInt.Z.of_nat i)) =
+       seq.nth Byte.x00 (seq.rcons count_diagnostic Byte.x00) i
+failure_state_nul
+     : forall s : PmpCore.state,
+       PmpCore.mem (failure_state s)
+         (BinInt.Z.add (PmpCore.hp s)
+            (BinNums.Zpos
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH))))))) =
+       Byte.x00
+RECORDCOUNT_return_effects
+     : forall s sf : PmpCore.state,
+       ExecMono.evals Precord record_stops pc_RECORDCOUNT nil s
+         (PmpCore.OReturn sf) ->
+       BinInt.Z.le
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         (remaining s) /\
+       PmpCore.vars sf
+         (String.String
+            (Ascii.Ascii false false true false true true true false)
+            String.EmptyString) =
+       BinInt.Z.sub (remaining s)
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) /\
+       PmpCore.mem sf = PmpCore.mem s /\
+       PmpCore.hp sf = PmpCore.hp s /\
+       (forall x : String.string,
+        x <>
+        String.String
+          (Ascii.Ascii false false true false true true true false)
+          String.EmptyString ->
+        PmpCore.vars sf x = PmpCore.vars s x)
+RECORDCOUNT_failure_effects
+     : forall s sf : PmpCore.state,
+       ExecMono.evals Precord record_stops pc_RECORDCOUNT nil s
+         (PmpCore.OStop
+            (String.String
+               (Ascii.Ascii false true true false false false true false)
+               (String.String
+                  (Ascii.Ascii true false false false false false true false)
+                  (String.String
+                     (Ascii.Ascii true false false true false false true
+                        false)
+                     (String.String
+                        (Ascii.Ascii false false true true false false true
+                           false)
+                        String.EmptyString))))
+            sf) ->
+       BinInt.Z.gt
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         (remaining s) /\
+       PmpCore.vars sf
+         (String.String
+            (Ascii.Ascii false false true false true true true false)
+            String.EmptyString) =
+       BinInt.Z.sub (remaining s)
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) /\
+       PmpCore.vars sf
+         (String.String
+            (Ascii.Ascii true true true false true false true false)
+            (String.String
+               (Ascii.Ascii false false false true false false true false)
+               (String.String
+                  (Ascii.Ascii true false false true true false true false)
+                  String.EmptyString))) =
+       PmpCore.hp s /\
+       PmpCore.vars sf
+         (String.String
+            (Ascii.Ascii true true true false true false true false)
+            (String.String
+               (Ascii.Ascii false false false true false false true false)
+               (String.String
+                  (Ascii.Ascii true false false true true false true false)
+                  (String.String
+                     (Ascii.Ascii true true true true true false true false)
+                     (String.String
+                        (Ascii.Ascii false false true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true false true false false true true
+                              false)
+                           (String.String
+                              (Ascii.Ascii false true true true false true
+                                 true false)
+                              String.EmptyString))))))) =
+       BinNums.Zpos
+         (BinNums.xO
+            (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH))))) /\
+       PmpCore.hp sf =
+       BinInt.Z.add (PmpCore.hp s)
+         (BinNums.Zpos
+            (BinNums.xI
+               (BinNums.xO (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH)))))) /\
+       (forall a : BinNums.Z,
+        BinInt.Z.lt a (PmpCore.hp s) \/
+        BinInt.Z.le
+          (BinInt.Z.add (PmpCore.hp s)
+             (BinNums.Zpos
+                (BinNums.xI
+                   (BinNums.xO
+                      (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH)))))))
+          a ->
+        PmpCore.mem sf a = PmpCore.mem s a) /\
+       (forall i : nat,
+        i < 45 ->
+        PmpCore.mem sf (BinInt.Z.add (PmpCore.hp s) (BinInt.Z.of_nat i)) =
+        seq.nth Byte.x00 (seq.rcons count_diagnostic Byte.x00) i) /\
+       (forall x : String.string,
+        x <>
+        String.String
+          (Ascii.Ascii false false true false true true true false)
+          String.EmptyString ->
+        x <>
+        String.String
+          (Ascii.Ascii true true true false true false true false)
+          (String.String
+             (Ascii.Ascii false false false true false false true false)
+             (String.String
+                (Ascii.Ascii true false false true true false true false)
+                String.EmptyString)) ->
+        x <>
+        String.String
+          (Ascii.Ascii true true true false true false true false)
+          (String.String
+             (Ascii.Ascii false false false true false false true false)
+             (String.String
+                (Ascii.Ascii true false false true true false true false)
+                (String.String
+                   (Ascii.Ascii true true true true true false true false)
+                   (String.String
+                      (Ascii.Ascii false false true true false true true
+                         false)
+                      (String.String
+                         (Ascii.Ascii true false true false false true true
+                            false)
+                         (String.String
+                            (Ascii.Ascii false true true true false true true
+                               false)
+                            String.EmptyString)))))) ->
+        PmpCore.vars sf x = PmpCore.vars s x)
+RECORDCOUNT_actual_subtractions_fit
+     : forall s : PmpCore.state,
+       count_address_contract s ->
+       PmpCore.vars (first_sub_state s)
+         (String.String
+            (Ascii.Ascii false false true false true true true false)
+            String.EmptyString) =
+       BinInt.Z.sub
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false false true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false false false true true true false)
+               (String.String
+                  (Ascii.Ascii true true true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true true false false true true true false)
+                     String.EmptyString)))) /\
+       PmpCore.vars (checked_state s)
+         (String.String
+            (Ascii.Ascii false false true false true true true false)
+            String.EmptyString) =
+       BinInt.Z.sub
+         (BinInt.Z.sub
+            (PmpCore.vars s
+               (String.String
+                  (Ascii.Ascii false false true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false false true false true true false)
+                     (String.String
+                        (Ascii.Ascii true false true true false true true
+                           false)
+                        String.EmptyString))))
+            (PmpCore.vars s
+               (String.String
+                  (Ascii.Ascii false false false false true true true false)
+                  (String.String
+                     (Ascii.Ascii true true true true false true true false)
+                     (String.String
+                        (Ascii.Ascii true true false false true true true
+                           false)
+                        String.EmptyString)))))
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) /\
+       G.fits64
+         (PmpCore.vars (first_sub_state s)
+            (String.String
+               (Ascii.Ascii false false true false true true true false)
+               String.EmptyString)) /\
+       G.fits64
+         (PmpCore.vars (checked_state s)
+            (String.String
+               (Ascii.Ascii false false true false true true true false)
+               String.EmptyString)) /\
+       (BinInt.Z.lt
+          (PmpCore.vars (checked_state s)
+             (String.String
+                (Ascii.Ascii false false true false true true true false)
+                String.EmptyString))
+          BinNums.Z0 <->
+        BinInt.Z.gt
+          (PmpCore.vars s
+             (String.String
+                (Ascii.Ascii false true true true false true true false)
+                (String.String
+                   (Ascii.Ascii true false true false true true true false)
+                   (String.String
+                      (Ascii.Ascii true false true true false true true false)
+                      String.EmptyString))))
+          (remaining s))
+RECORDCOUNT_actual_signed64_test
+     : forall s : PmpCore.state,
+       count_address_contract s ->
+       signed64
+         (PmpCore.vars (first_sub_state s)
+            (String.String
+               (Ascii.Ascii false false true false true true true false)
+               String.EmptyString)) =
+       PmpCore.vars (first_sub_state s)
+         (String.String
+            (Ascii.Ascii false false true false true true true false)
+            String.EmptyString) /\
+       signed64
+         (PmpCore.vars (checked_state s)
+            (String.String
+               (Ascii.Ascii false false true false true true true false)
+               String.EmptyString)) =
+       PmpCore.vars (checked_state s)
+         (String.String
+            (Ascii.Ascii false false true false true true true false)
+            String.EmptyString) /\
+       BinInt.Z.ltb
+         (signed64
+            (PmpCore.vars (checked_state s)
+               (String.String
+                  (Ascii.Ascii false false true false true true true false)
+                  String.EmptyString)))
+         BinNums.Z0 =
+       BinInt.Z.ltb (remaining s)
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+RECORDCOUNT_diagnostic_word_bounds
+     : forall s : PmpCore.state,
+       count_address_contract s ->
+       G.fits64
+         (PmpCore.vars (failure_state s)
+            (String.String
+               (Ascii.Ascii true true true false true false true false)
+               (String.String
+                  (Ascii.Ascii false false false true false false true false)
+                  (String.String
+                     (Ascii.Ascii true false false true true false true false)
+                     String.EmptyString)))) /\
+       G.fits64
+         (PmpCore.vars (failure_state s)
+            (String.String
+               (Ascii.Ascii true true true false true false true false)
+               (String.String
+                  (Ascii.Ascii false false false true false false true false)
+                  (String.String
+                     (Ascii.Ascii true false false true true false true false)
+                     (String.String
+                        (Ascii.Ascii true true true true true false true
+                           false)
+                        (String.String
+                           (Ascii.Ascii false false true true false true true
+                              false)
+                           (String.String
+                              (Ascii.Ascii true false true false false true
+                                 true false)
+                              (String.String
+                                 (Ascii.Ascii false true true true false true
+                                    true false)
+                                 String.EmptyString)))))))) /\
+       G.fits64 (PmpCore.hp (failure_state s))
+RECORDCOUNT_input_region_unchanged
+     : forall s sf : PmpCore.state,
+       count_address_contract s ->
+       ExecMono.evals Precord record_stops pc_RECORDCOUNT nil s
+         (PmpCore.OReturn sf) \/
+       ExecMono.evals Precord record_stops pc_RECORDCOUNT nil s
+         (PmpCore.OStop
+            (String.String
+               (Ascii.Ascii false true true false false false true false)
+               (String.String
+                  (Ascii.Ascii true false false false false false true false)
+                  (String.String
+                     (Ascii.Ascii true false false true false false true
+                        false)
+                     (String.String
+                        (Ascii.Ascii false false true true false false true
+                           false)
+                        String.EmptyString))))
+            sf) ->
+       forall a : BinNums.Z,
+       BinInt.Z.le
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false false false true true true false)
+               (String.String
+                  (Ascii.Ascii true true true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true true false false true true true false)
+                     String.EmptyString))))
+         a /\
+       BinInt.Z.lt a
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false false true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) ->
+       PmpCore.mem sf a = PmpCore.mem s a
+RECORDCOUNT_bounded_returns_iff
+     : forall s : PmpCore.state,
+       count_address_contract s ->
+       (exists sf : PmpCore.state,
+          ExecMono.evals Precord record_stops pc_RECORDCOUNT nil s
+            (PmpCore.OReturn sf)) <->
+       BinInt.Z.le
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         (BinInt.Z.sub
+            (PmpCore.vars s
+               (String.String
+                  (Ascii.Ascii false false true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false false true false true true false)
+                     (String.String
+                        (Ascii.Ascii true false true true false true true
+                           false)
+                        String.EmptyString))))
+            (PmpCore.vars s
+               (String.String
+                  (Ascii.Ascii false false false false true true true false)
+                  (String.String
+                     (Ascii.Ascii true true true true false true true false)
+                     (String.String
+                        (Ascii.Ascii true true false false true true true
+                           false)
+                        String.EmptyString)))))
+RECORDCOUNT_bounded_fails_iff
+     : forall s : PmpCore.state,
+       count_address_contract s ->
+       (exists sf : PmpCore.state,
+          ExecMono.evals Precord record_stops pc_RECORDCOUNT nil s
+            (PmpCore.OStop
+               (String.String
+                  (Ascii.Ascii false true true false false false true false)
+                  (String.String
+                     (Ascii.Ascii true false false false false false true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true false false true false false true
+                           false)
+                        (String.String
+                           (Ascii.Ascii false false true true false false
+                              true false)
+                           String.EmptyString))))
+               sf)) <->
+       BinInt.Z.gt
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         (BinInt.Z.sub
+            (PmpCore.vars s
+               (String.String
+                  (Ascii.Ascii false false true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false false true false true true false)
+                     (String.String
+                        (Ascii.Ascii true false true true false true true
+                           false)
+                        String.EmptyString))))
+            (PmpCore.vars s
+               (String.String
+                  (Ascii.Ascii false false false false true true true false)
+                  (String.String
+                     (Ascii.Ascii true true true true false true true false)
+                     (String.String
+                        (Ascii.Ascii true true false false true true true
+                           false)
+                        String.EmptyString)))))
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context

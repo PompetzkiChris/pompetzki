@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "source": "source/judge-v6.pmp",
+  "source_sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+  "fragment": "source/recordcount-fragment.pmp",
+  "fragment_bytes": 182,
+  "fragment_sha256": "33a8406f4545f199f8772b839c9058f62543f3fe2a9f0af3a208df97f41dbca8",
+  "source_lines": [
+    398,
+    405
+  ],
+  "source_instructions": 8,
+  "returned_state_condition": "num<=lim-pos",
+  "failure_state_condition": "num>lim-pos",
+  "source_steps_return": 5,
+  "source_steps_failure": 7,
+  "source_subtraction_prefix_steps": [
+    2,
+    3
+  ],
+  "diagnostic_bytes": 44,
+  "heap_advance_bytes": 45,
+  "nul_terminator": true,
+  "source_count_contract": "0<=num<=999999999999;0<=pos<=lim;lim<=hp;hp<2^62",
+  "new_closed_selected_types": 19,
+  "unchanged_Grok_closed_types": 8,
+  "fresh_modules": 13,
+  "kernel_exit": 0,
+  "kernel_axioms": [],
+  "raw_exact_types": "runs/20261012-051207-741894/logs/RecordCountReceipt.stdout.txt",
+  "raw_exact_types_sha256": "d3ae6c9ce62fdd7078d91822da98d6faaff562c2793699fdf5a820b1a570948e",
+  "raw_kernel_context": "runs/20261012-051207-741894/logs/kernel-check.stderr.txt",
+  "raw_kernel_context_sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+  "checked_source_manifest_sha256": "ae0b70e8e9ef956fac1d1dab120424ce806bec0f136da073e133a32767bda182",
+  "scope_boundary": "Trusted text-to-AST extraction; no native/compiler/OS/permission/complete-judge/caller-contract or final FAIL handler refinement proved",
+  "published_staged_committed": false
+}
