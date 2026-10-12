@@ -21,7 +21,7 @@
 ;; Files that are neither booked nor negative (no row, sha256 not the judged one, registry not a prefix of REG0,
 ;; counts differing from the judges' printed counts, mixed verdicts, unreadable JDG1) are listed on stdout as SUSPENSE.
 (require racket/list racket/string racket/file racket/bytes racket/port racket/path "../../judge/registry-auth-v4.rkt")
-(provide post-receipts!)
+(provide post-receipts! (rename-out [parse-file inspect-jdg]))
 
 (define PFX "")
 (define AXN '#("Ext" "Pair" "Union" "Power" "Inf" "Found" "Choice"))

@@ -1,0 +1,596 @@
+{
+  "schema": "public-judge-runtime-source-inputs/v1",
+  "candidate_release": "1.3.0 runtime-v2",
+  "path_base": "candidate release root for candidate_relative_path; source asset root for package_relative_path",
+  "file_count": 81,
+  "files": [
+    {
+      "candidate_relative_path": "LICENSE",
+      "package_relative_path": "LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077,
+      "role": "project MIT license"
+    },
+    {
+      "candidate_relative_path": "judge/README-public-gate-v2.md",
+      "package_relative_path": "judge/README-v4.md",
+      "sha256": "613a08760ce342257de77901fe1247a996fb882b1ec1ea1b2f8bd2518aa1f978",
+      "bytes": 3102,
+      "role": "public gate/proof/build scope documentation"
+    },
+    {
+      "candidate_relative_path": "judge/REG0-canonical.jdg",
+      "package_relative_path": "judge/REG0-canonical.jdg",
+      "sha256": "53b4287eed0623e7ff48005955d27bbaa5bcdb6a6d15dbc4cef50d892b8e75a0",
+      "bytes": 54458,
+      "role": "exported canonical registry data for inspection"
+    },
+    {
+      "candidate_relative_path": "judge/judge-v4.pmp",
+      "package_relative_path": "judge/judge-v4.pmp",
+      "sha256": "c0698f6c00310e4cf95147d4ddfbfab0f8c06d00aa8f9ca1da8482123c073e33",
+      "bytes": 100528,
+      "role": "frozen program and registry gate"
+    },
+    {
+      "candidate_relative_path": "judge/judge-v4.rkt",
+      "package_relative_path": "judge/judge-v4.rkt",
+      "sha256": "13bffe0ca241b5c4b179e6be25a52a164178b71fc03f913e3b92cc5c2576acc0",
+      "bytes": 23265,
+      "role": "independent Racket checker and embedded canonical data"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/LICENSE",
+      "package_relative_path": "judge/native/portable/LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077,
+      "role": "applicable MIT license text"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/PROVENANCE.json",
+      "package_relative_path": "judge/native/portable/PROVENANCE.json",
+      "sha256": "386171f350accd88747aed6191a91b01268c616d051ec44266c218630404a0b8",
+      "bytes": 3575,
+      "role": "public provenance and tested scope"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/README.md",
+      "package_relative_path": "judge/native/portable/README.md",
+      "sha256": "50dffe227e258e9c46b5f70a4897f3f33955b64bde677b0556a626ee5b3ac4bb",
+      "bytes": 3459,
+      "role": "portable build and usage instructions"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/SHA256SUMS-source.txt",
+      "package_relative_path": "judge/native/portable/SHA256SUMS-source.txt",
+      "sha256": "0fcb7fab913e1f7c67c7b5eae4bedbb3bccefe567090a03272dec546b73349ba",
+      "bytes": 567,
+      "role": "native source metadata"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/SOURCE-INPUTS.json",
+      "package_relative_path": "judge/native/portable/SOURCE-INPUTS.json",
+      "sha256": "da2e039e96b19ae3ef0e7b399c3b2761b3d9286e01a8a0fb3c57b0332191f58c",
+      "bytes": 3421,
+      "role": "native source metadata"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/build-native.py",
+      "package_relative_path": "judge/native/portable/build-native.py",
+      "sha256": "18fc3cb6d94359ae1e62a574097a228aae5bb5e272d36c4dc8ecbf18b3d8dcc7",
+      "bytes": 7935,
+      "role": "portable build driver and assembly service adapter"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/linux-runtime.asm",
+      "package_relative_path": "judge/native/portable/linux-runtime.asm",
+      "sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+      "bytes": 3666,
+      "role": "Linux syscall runtime"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/pmpc-original.rkt",
+      "package_relative_path": "judge/native/portable/pmpc-original.rkt",
+      "sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+      "bytes": 13614,
+      "role": "actual direct pmp compiler with embedded Windows runtime"
+    },
+    {
+      "candidate_relative_path": "judge/registry-auth-v4.rkt",
+      "package_relative_path": "judge/registry-auth-v4.rkt",
+      "sha256": "7369c098521020283016dbe86845790e7456be6ef255d8204ab696b6e4723a26",
+      "bytes": 160758,
+      "role": "independent Racket checker and embedded canonical data"
+    },
+    {
+      "candidate_relative_path": "judge/rocq/CanonicalPrefixSoundness.v",
+      "package_relative_path": "judge/rocq/CanonicalPrefixSoundness.v",
+      "sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "bytes": 1565,
+      "role": "proof"
+    },
+    {
+      "candidate_relative_path": "judge/rocq/CanonicalPrefixSoundnessReceipt.v",
+      "package_relative_path": "judge/rocq/CanonicalPrefixSoundnessReceipt.v",
+      "sha256": "36cb9d20f93273afb2f35a6b8991aab5e1e0831b93462ddece4713eb4f7f2686",
+      "bytes": 788,
+      "role": "proof"
+    },
+    {
+      "candidate_relative_path": "judge/rocq/CanonicalRegistryData.v",
+      "package_relative_path": "judge/rocq/CanonicalRegistryData.v",
+      "sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "bytes": 87642,
+      "role": "proof"
+    },
+    {
+      "candidate_relative_path": "judge/rocq/PrefixSoundness.v",
+      "package_relative_path": "judge/rocq/PrefixSoundness.v",
+      "sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "bytes": 1809,
+      "role": "proof"
+    },
+    {
+      "candidate_relative_path": "judge/rocq/PrefixSoundnessReceipt.v",
+      "package_relative_path": "judge/rocq/PrefixSoundnessReceipt.v",
+      "sha256": "af45edca00420e420bbd2da25bbdff0fc7c0a84e895ec7bc8808fa5a0d60243f",
+      "bytes": 615,
+      "role": "proof"
+    },
+    {
+      "candidate_relative_path": "judge/rocq/README-proof-source.md",
+      "package_relative_path": "judge/rocq/README-proof-source.md",
+      "sha256": "72d5d596a80500dc87d16874ee87d101f1989c17e7127ce3cd49ef67db001b44",
+      "bytes": 3949,
+      "role": "documentation"
+    },
+    {
+      "candidate_relative_path": "judge/rocq/build-registry-proof.py",
+      "package_relative_path": "judge/rocq/build-registry-proof.py",
+      "sha256": "853172d1def4286ddb84f1c3e9f13f47f67e50a8bc94160460203d56174ffed7",
+      "bytes": 11067,
+      "role": "builder"
+    },
+    {
+      "candidate_relative_path": "judge/rocq/public-source-inputs.json",
+      "package_relative_path": "judge/rocq/public-source-inputs.json",
+      "sha256": "409c071774de008160cc8cb186a855d68d44da12046935a72b82e7c6843511f4",
+      "bytes": 10700,
+      "role": "proof source metadata"
+    },
+    {
+      "candidate_relative_path": "rocq/Ax.v",
+      "package_relative_path": "rocq/Ax.v",
+      "sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "bytes": 6120,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Checks.v",
+      "package_relative_path": "rocq/Checks.v",
+      "sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "bytes": 7869,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Claim.v",
+      "package_relative_path": "rocq/Claim.v",
+      "sha256": "058a635cb1caef3b4f992ce34573a6b7242458531cbce78a89e4fe63c961d117",
+      "bytes": 12841,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Data.v",
+      "package_relative_path": "rocq/Data.v",
+      "sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "bytes": 98999,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Elim.v",
+      "package_relative_path": "rocq/Elim.v",
+      "sha256": "74d7a8fbd2fdd3a91425a0dc82fa389f8c709b9f9ca6da98d3a4b8d7171b2389",
+      "bytes": 5922,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Expand.v",
+      "package_relative_path": "rocq/Expand.v",
+      "sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "bytes": 6261,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Final.v",
+      "package_relative_path": "rocq/Final.v",
+      "sha256": "6f2c5d91b8109758567774bdc4ff7305a28f593ae2d7dc45aac18bdd1c8db8ce",
+      "bytes": 2613,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Inv.v",
+      "package_relative_path": "rocq/Inv.v",
+      "sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "bytes": 4709,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Inv2.v",
+      "package_relative_path": "rocq/Inv2.v",
+      "sha256": "b5126c0b7f8f8d263a60b8c6a9d0300098e788ae0b938c8d95b5376f935b518a",
+      "bytes": 11245,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Kal.v",
+      "package_relative_path": "rocq/Kal.v",
+      "sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "bytes": 9692,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Notch.v",
+      "package_relative_path": "rocq/Notch.v",
+      "sha256": "103268c076b037a1e4de943bcf7c0323d90e58acc39fac73876c2517bfa06030",
+      "bytes": 10360,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Parse.v",
+      "package_relative_path": "rocq/Parse.v",
+      "sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "bytes": 4282,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/PinStatement.v",
+      "package_relative_path": "rocq/PinStatement.v",
+      "sha256": "3823d78ac9915ea9fea39caba6d4678b44689838301063fb77bd01e5ebcba8da",
+      "bytes": 669,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/PrintAx.v",
+      "package_relative_path": "rocq/PrintAx.v",
+      "sha256": "e28e723277c90fbc9d24d9c696dba3422f064f540edd1a6214bee61811995f9a",
+      "bytes": 267,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/PrintAxClosed.v",
+      "package_relative_path": "rocq/PrintAxClosed.v",
+      "sha256": "8701f645ba4b9c4012fb3e86b27f345e0d39d76c88c5728430953ec2739286c7",
+      "bytes": 295,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Prov.v",
+      "package_relative_path": "rocq/Prov.v",
+      "sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "bytes": 3580,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Pure.v",
+      "package_relative_path": "rocq/Pure.v",
+      "sha256": "08d0d7145e2faad4613066d870613c46f23244389dfbb00b8d9ca6bc5c2c009e",
+      "bytes": 7377,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Replay.v",
+      "package_relative_path": "rocq/Replay.v",
+      "sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "bytes": 9747,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Replay2.v",
+      "package_relative_path": "rocq/Replay2.v",
+      "sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "bytes": 10867,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Replay3.v",
+      "package_relative_path": "rocq/Replay3.v",
+      "sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "bytes": 8528,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/ReplayT.v",
+      "package_relative_path": "rocq/ReplayT.v",
+      "sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "bytes": 4197,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB0.v",
+      "package_relative_path": "rocq/RpB0.v",
+      "sha256": "ccdfa659663f0dc117f67557c6083366b2d825a929534a1545279dbeb241b8b2",
+      "bytes": 3119207,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB1.v",
+      "package_relative_path": "rocq/RpB1.v",
+      "sha256": "a582b5616322dd5e8692a049823bfc151d3d92834aa99bbbff9a59b8b296d395",
+      "bytes": 3056302,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB10.v",
+      "package_relative_path": "rocq/RpB10.v",
+      "sha256": "b4b569cc50fa0b6a615beab05131b8ada3b522cf8bbda7fd51c6e3ce4a78d646",
+      "bytes": 2544192,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB2.v",
+      "package_relative_path": "rocq/RpB2.v",
+      "sha256": "efb972f96f0a66ced756465dc4bfdef7f759ccb999f40350747ba38af893dce4",
+      "bytes": 3049237,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB3.v",
+      "package_relative_path": "rocq/RpB3.v",
+      "sha256": "4521516fb93f1420d4cb6adc05ca524d98dfd3a2ab59d4f198b9e4d34faf9f65",
+      "bytes": 3879202,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB4.v",
+      "package_relative_path": "rocq/RpB4.v",
+      "sha256": "1565ca2c91df4a320e699ab2a1779d2249a4d8e43e8dd9431be433cc83125405",
+      "bytes": 3126290,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB5.v",
+      "package_relative_path": "rocq/RpB5.v",
+      "sha256": "a838fb9934d85f3d61f07fb25dfaa049e39bf693231e81358ce6657f3f5abf99",
+      "bytes": 3201341,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB6.v",
+      "package_relative_path": "rocq/RpB6.v",
+      "sha256": "79defebe1da4364cc8f68bdeadf1398244cf3eb0b02cc55959118bd170f790f4",
+      "bytes": 3117780,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB7.v",
+      "package_relative_path": "rocq/RpB7.v",
+      "sha256": "a2bff730ef7c30f585b77ba8d97bd98afe8a870ac32246433fd5ff0c9b5dcead",
+      "bytes": 3124407,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB8.v",
+      "package_relative_path": "rocq/RpB8.v",
+      "sha256": "22562f4fa89718c3de52a30b38a5c9c7a9f44842d166aefdb403019e4ba8d787",
+      "bytes": 3064920,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpB9.v",
+      "package_relative_path": "rocq/RpB9.v",
+      "sha256": "276d125f5fe998f0e71632d93f82034a4cb425c313c27d2f8c5e664238f9bf29",
+      "bytes": 3130110,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC0.v",
+      "package_relative_path": "rocq/RpC0.v",
+      "sha256": "95dae03fafde6c05264a6b48145e8256cc7be5ef369ad5179dd6f269c27f4b24",
+      "bytes": 554,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC1.v",
+      "package_relative_path": "rocq/RpC1.v",
+      "sha256": "86737fa9a082eb13d120182d29b07a51572a2432dd1f63088c9fc3216cca6775",
+      "bytes": 550,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC10.v",
+      "package_relative_path": "rocq/RpC10.v",
+      "sha256": "9488d660a882fa1571a06b953b7c2a03b4caf236a2f0edd40590dd7529493ac0",
+      "bytes": 570,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC2.v",
+      "package_relative_path": "rocq/RpC2.v",
+      "sha256": "b0ae70ce673ca531e1db6df19508d99ae570fc0e9465ed840622de54d1b7a5d8",
+      "bytes": 550,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC3.v",
+      "package_relative_path": "rocq/RpC3.v",
+      "sha256": "45f6238b8220aa310f76c6b3e298f663d9828d62968de31a85293be9f9ce753e",
+      "bytes": 550,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC4.v",
+      "package_relative_path": "rocq/RpC4.v",
+      "sha256": "ae401e0be91e74820149ca3e4cc4d11d1c8883cf5f3a865be1762e8bd0e147a4",
+      "bytes": 550,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC5.v",
+      "package_relative_path": "rocq/RpC5.v",
+      "sha256": "ba14dcd3950c147408282037bc81c48811aa79ec2885a6902d968fbad52edeff",
+      "bytes": 550,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC6.v",
+      "package_relative_path": "rocq/RpC6.v",
+      "sha256": "0763ba6062229d4cc5b9d47ec775caeddea2d24c7a2b21f10e199f883fc9847c",
+      "bytes": 550,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC7.v",
+      "package_relative_path": "rocq/RpC7.v",
+      "sha256": "fcce5261ce43d0b97f5f80348a49d1ca92b737aa1ac6b2e9492a74ff1b25856f",
+      "bytes": 550,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC8.v",
+      "package_relative_path": "rocq/RpC8.v",
+      "sha256": "76da5153612a78605f1fcabfc18a0f18dece349e9628c39708879b24f41b7f8c",
+      "bytes": 550,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpC9.v",
+      "package_relative_path": "rocq/RpC9.v",
+      "sha256": "bcfa81423a0dfa859d1b9b7ebd578920f73fc20c7332f11fda64be1203f8c97f",
+      "bytes": 554,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpFinal.v",
+      "package_relative_path": "rocq/RpFinal.v",
+      "sha256": "44b3d9dce167ec38bfa1e8277f989cb51105523c69654a616ff5b5d062e07783",
+      "bytes": 4408,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpInit.v",
+      "package_relative_path": "rocq/RpInit.v",
+      "sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "bytes": 84950,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/RpInitOk.v",
+      "package_relative_path": "rocq/RpInitOk.v",
+      "sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "bytes": 5398,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Sub.v",
+      "package_relative_path": "rocq/Sub.v",
+      "sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "bytes": 4841,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Sub2.v",
+      "package_relative_path": "rocq/Sub2.v",
+      "sha256": "91d4275cb1ee1ee087e743a5ae95a93a37fca9278b8346999268edd0f4ec7492",
+      "bytes": 5367,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Sub3.v",
+      "package_relative_path": "rocq/Sub3.v",
+      "sha256": "9214d5364915be95c5939d2cc234ea727cf736a74c1d5e1c2f1dc8764d3bb522",
+      "bytes": 8948,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Syn.v",
+      "package_relative_path": "rocq/Syn.v",
+      "sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "bytes": 6962,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/T5.v",
+      "package_relative_path": "rocq/T5.v",
+      "sha256": "5ef4f51ca39ff06fc97b043310238b4bd0d6f580c258db94b794d95ce4be3709",
+      "bytes": 7019,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Use.v",
+      "package_relative_path": "rocq/Use.v",
+      "sha256": "b093b9336b700bf938db9c33e2d87409610a8f07887af5f25860e8d4a6b91ea1",
+      "bytes": 6035,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "rocq/Val.v",
+      "package_relative_path": "rocq/Val.v",
+      "sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "bytes": 3666,
+      "role": "released mathematical core source; includes prefix dependencies and closed Theorem 29 sources"
+    },
+    {
+      "candidate_relative_path": "judge/portable-interpreter/LICENSE",
+      "package_relative_path": "runtime/LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077,
+      "role": "interpreter documentation/license/provenance"
+    },
+    {
+      "candidate_relative_path": "repair/runtime-v2/PUBLIC-PROVENANCE.json",
+      "package_relative_path": "runtime/PUBLIC-PROVENANCE.json",
+      "sha256": "617c03c9ff9009bde4badc734668db2e51b31e60f6e12f888f4482cf61d70edc",
+      "bytes": 1012,
+      "role": "interpreter documentation/license/provenance"
+    },
+    {
+      "candidate_relative_path": "repair/runtime-v2/README.md",
+      "package_relative_path": "runtime/README-source.md",
+      "sha256": "a82458c87ee4e8e220e73f44bb050ff1baaf6aa783082a28968f1cc102b40a5c",
+      "bytes": 2208,
+      "role": "interpreter documentation/license/provenance"
+    },
+    {
+      "candidate_relative_path": "judge/portable-interpreter/SOURCE-WHITELIST.json",
+      "package_relative_path": "runtime/SOURCE-WHITELIST.json",
+      "sha256": "47a8c69e99ed2a1681714872b92229224d370a7fe57554c316c49ea802d6422e",
+      "bytes": 1831,
+      "role": "interpreter source mapping metadata"
+    },
+    {
+      "candidate_relative_path": "repair/runtime-v2/build-interpreter.py",
+      "package_relative_path": "runtime/build-interpreter.py",
+      "sha256": "cfab7e257e6055b7680b02f94153b44fc7b8a9b5794c53c2d24d5d9233fa1fc4",
+      "bytes": 4120,
+      "role": "interpreter build input"
+    },
+    {
+      "candidate_relative_path": "repair/runtime-v2/source/pompetzki.asm",
+      "package_relative_path": "runtime/source/pompetzki.asm",
+      "sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+      "bytes": 291854,
+      "role": "interpreter build input"
+    }
+  ],
+  "required_proof_core_source_count": 17,
+  "included_mathematical_core_source_count": 53,
+  "external_tools": [
+    "Python 3",
+    "Racket",
+    "NASM",
+    "MinGW-w64 GCC and Windows import libraries",
+    "GNU ld",
+    "Rocq 9.1.0 for proof rebuild"
+  ],
+  "runtime_author_path_dependencies": [],
+  "scope": "Complete gated judge/native compiler and interpreter source/build inputs plus mathematical proof sources. GUI, installer and Book sources are separately supplied by their release components.",
+  "excluded_local_material": [
+    "historical builders",
+    "failed native attempts",
+    "private tool-path build receipts",
+    "private relocation test directories",
+    "old fixture run"
+  ],
+  "source_to_native_and_executable_to_Gallina_correspondence": "open",
+  "supersedes_source_map": "PUBLIC-SOURCE-WHITELIST.json"
+}
