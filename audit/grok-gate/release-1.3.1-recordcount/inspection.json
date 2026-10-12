@@ -1,0 +1,282 @@
+{
+  "tag_target": "c5253c0922f553b1ac8ef18240c1c372ff39657f",
+  "asset_count": 12,
+  "original_eight_ids_and_sizes_unchanged": true,
+  "assets": [
+    {
+      "id": 632676549,
+      "name": "Abschluss-1.3.1-source.zip",
+      "size": 180990181,
+      "in_earlier_eight_listing": true,
+      "id_present_in_earlier_eight_listing": true
+    },
+    {
+      "id": 632676548,
+      "name": "Abschluss-1.3.1-windows-x64.zip",
+      "size": 200606657,
+      "in_earlier_eight_listing": true,
+      "id_present_in_earlier_eight_listing": true
+    },
+    {
+      "id": 632699338,
+      "name": "COUNT-GUARD-SHA256SUMS.txt",
+      "size": 107,
+      "in_earlier_eight_listing": false,
+      "id_present_in_earlier_eight_listing": false
+    },
+    {
+      "id": 632699340,
+      "name": "grok-count-guard-model-proof-public.zip",
+      "size": 192701,
+      "in_earlier_eight_listing": false,
+      "id_present_in_earlier_eight_listing": false
+    },
+    {
+      "id": 632676572,
+      "name": "rdnum-finite-reader-proof-public.zip",
+      "size": 131636,
+      "in_earlier_eight_listing": true,
+      "id_present_in_earlier_eight_listing": true
+    },
+    {
+      "id": 632676547,
+      "name": "rdnum-instruction-steps-proof-public.zip",
+      "size": 100204,
+      "in_earlier_eight_listing": true,
+      "id_present_in_earlier_eight_listing": true
+    },
+    {
+      "id": 632676594,
+      "name": "READER-V2-SHA256SUMS.txt",
+      "size": 104,
+      "in_earlier_eight_listing": true,
+      "id_present_in_earlier_eight_listing": true
+    },
+    {
+      "id": 632778451,
+      "name": "RECORDCOUNT-SHA256SUMS.txt",
+      "size": 113,
+      "in_earlier_eight_listing": false,
+      "id_present_in_earlier_eight_listing": false
+    },
+    {
+      "id": 632778453,
+      "name": "recordcount-source-controller-proof-public.zip",
+      "size": 72833,
+      "in_earlier_eight_listing": false,
+      "id_present_in_earlier_eight_listing": false
+    },
+    {
+      "id": 632676574,
+      "name": "SHA256SUMS.txt",
+      "size": 489,
+      "in_earlier_eight_listing": true,
+      "id_present_in_earlier_eight_listing": true
+    },
+    {
+      "id": 632676545,
+      "name": "SOURCE-CLOSURE-1.3.1.json",
+      "size": 16532,
+      "in_earlier_eight_listing": true,
+      "id_present_in_earlier_eight_listing": true
+    },
+    {
+      "id": 632676544,
+      "name": "validation-1.3.1-public.zip",
+      "size": 1424927,
+      "in_earlier_eight_listing": true,
+      "id_present_in_earlier_eight_listing": true
+    }
+  ],
+  "downloaded_now": {
+    "recordcount_zip_sha256": "261c4d15c50745ed3844569270459fe440bc913778563132748c04e1e0e8b638",
+    "recordcount_sums_sha256": "948c4c185d48764e939ee72916b4c53e7eb52ae68d511189e811863839c0da02",
+    "count_guard_zip_sha256": "0fedf7e8bd01c7773a16ff3192b29136b0b2c97440bd71ff9096cb062f06a85d",
+    "count_guard_sums_sha256": "834f2c899149163bb0b5b0acdfe65f79ff9b0832025b4b3d6fcfd75c111de513",
+    "SHA256SUMS_txt_sha256": "aa3f502bafa0ae669623772f9a3ba76f24c561261ca5b8abba877889fc8172e2",
+    "SHA256SUMS_txt_matches_earlier_download": true,
+    "READER_V2_text": "9766d3b5ce274b2ac74567efb5b60cf0327591ce546ee358483277389dce99f0  rdnum-finite-reader-proof-public.zip\n"
+  },
+  "large_archives_not_redownloaded": [
+    "Abschluss-1.3.1-source.zip",
+    "Abschluss-1.3.1-windows-x64.zip",
+    "validation-1.3.1-public.zip"
+  ],
+  "archive": {
+    "members": 56,
+    "payloads": 52,
+    "controls": [
+      "PUBLIC-SOURCE-MANIFEST.json",
+      "SHA256SUMS.txt",
+      "RECORDCOUNT-PUBLIC-FREEZE.json",
+      "RECORDCOUNT-PUBLIC-FREEZE.sha256"
+    ],
+    "internal_sums_checked": 53,
+    "internal_sums_bad": 0,
+    "files_excluded_from_SHA256SUMS": [
+      "RECORDCOUNT-PUBLIC-FREEZE.json",
+      "RECORDCOUNT-PUBLIC-FREEZE.sha256",
+      "SHA256SUMS.txt"
+    ],
+    "freeze_sha256_matches_sidecar": true,
+    "manifest_sha256_matches_freeze": true,
+    "checksums_sha256_matches_freeze": true
+  },
+  "license": {
+    "bytes": 1077,
+    "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+    "full_mit_text": true
+  },
+  "source": {
+    "member": "source/judge-v6.pmp",
+    "bytes": 101261,
+    "sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+    "matches_already_extracted_source_zip_member": true,
+    "fragment_equals_lines_398_through_405": true,
+    "fragment_bytes": 182,
+    "fragment_sha256": "33a8406f4545f199f8772b839c9058f62543f3fe2a9f0af3a208df97f41dbca8",
+    "eight_instruction_texts": [
+      {
+        "pc": 0,
+        "source_line": 398,
+        "source_text": "label RECORDCOUNT",
+        "PmpCore_constructor": "SLabel \"RECORDCOUNT\""
+      },
+      {
+        "pc": 1,
+        "source_line": 399,
+        "source_text": "set t sub lim pos",
+        "PmpCore_constructor": "SSub \"t\" (OV \"lim\") (OV \"pos\")"
+      },
+      {
+        "pc": 2,
+        "source_line": 400,
+        "source_text": "set t sub t num",
+        "PmpCore_constructor": "SSub \"t\" (OV \"t\") (OV \"num\")"
+      },
+      {
+        "pc": 3,
+        "source_line": 401,
+        "source_text": "when negative t goto RECORDCOUNTBAD",
+        "PmpCore_constructor": "SWhen CNeg (OV \"t\") \"RECORDCOUNTBAD\""
+      },
+      {
+        "pc": 4,
+        "source_line": 402,
+        "source_text": "return",
+        "PmpCore_constructor": "SReturn"
+      },
+      {
+        "pc": 5,
+        "source_line": 403,
+        "source_text": "label RECORDCOUNTBAD",
+        "PmpCore_constructor": "SLabel \"RECORDCOUNTBAD\""
+      },
+      {
+        "pc": 6,
+        "source_line": 404,
+        "source_text": "text WHY \"a record count exceeds remaining input bytes\"",
+        "PmpCore_constructor": "STextLit \"WHY\" (bytes_of_str \"a record count exceeds remaining input bytes\")"
+      },
+      {
+        "pc": 7,
+        "source_line": 405,
+        "source_text": "goto FAIL",
+        "PmpCore_constructor": "SGoto \"FAIL\""
+      }
+    ]
+  },
+  "credits_match_file_bytes": true,
+  "fresh_module_names": [
+    "Vendor/Groebner/ByteText.v",
+    "Vendor/C2Link/PmpCore.v",
+    "Vendor/C2Link/ExecStep.v",
+    "Vendor/C2Link/ExecMono.v",
+    "Vendor/C2Link/ExecSim.v",
+    "Vendor/C2Link/RunKit.v",
+    "GrokRC/GrokRecordCount.v",
+    "GrokRC/GrokRecordCountVerify.v",
+    "Proof/RecordCountSource.v",
+    "Proof/RecordCountStep.v",
+    "Proof/RecordCountMemory.v",
+    "Proof/RecordCountBounds.v",
+    "Proof/RecordCountReceipt.v"
+  ],
+  "fresh_module_count": 13,
+  "command_names": [
+    "ByteText",
+    "PmpCore",
+    "ExecStep",
+    "ExecMono",
+    "ExecSim",
+    "RunKit",
+    "GrokRecordCount",
+    "GrokRecordCountVerify",
+    "RecordCountSource",
+    "RecordCountStep",
+    "RecordCountMemory",
+    "RecordCountBounds",
+    "RecordCountReceipt",
+    "kernel-check"
+  ],
+  "command_exits": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "kernel_checked_modules": [
+    "RecordCount.RecordCountSource",
+    "RecordCount.RecordCountStep",
+    "RecordCount.RecordCountMemory",
+    "RecordCount.RecordCountBounds",
+    "RecordCount.RecordCountReceipt"
+  ],
+  "kernel_text_has_axioms_none": true,
+  "receipt_closed_under_lines": 19,
+  "grok_verify_closed_under_lines": 8,
+  "nineteen_check_names_in_RecordCountReceipt_v": [
+    "RECORDCOUNT_first_subtraction_prefix",
+    "RECORDCOUNT_subtraction_prefix",
+    "RECORDCOUNT_return_fuel",
+    "RECORDCOUNT_failure_fuel",
+    "RECORDCOUNT_returns_iff",
+    "RECORDCOUNT_fails_iff",
+    "checked_state_effects",
+    "failure_state_registers",
+    "failure_state_memory_outside",
+    "failure_state_memory_content",
+    "failure_state_nul",
+    "RECORDCOUNT_return_effects",
+    "RECORDCOUNT_failure_effects",
+    "RECORDCOUNT_actual_subtractions_fit",
+    "RECORDCOUNT_actual_signed64_test",
+    "RECORDCOUNT_diagnostic_word_bounds",
+    "RECORDCOUNT_input_region_unchanged",
+    "RECORDCOUNT_bounded_returns_iff",
+    "RECORDCOUNT_bounded_fails_iff"
+  ],
+  "eight_model_names_in_GrokRecordCount_v": [
+    "pow2_63",
+    "rem_sub_num_fits",
+    "num_mul8_fits",
+    "num_prefix_sum_fits",
+    "num_prefix_mul24_fits",
+    "num_prefix_mul24_bound",
+    "records_le_bytes",
+    "records_le_rem"
+  ],
+  "not_rerun": "coqc and coqchk were not executed for this audit",
+  "pr5_merge": "e9df54b57945d449662075ed790dce7e0d432b41",
+  "tag_is_not_the_merge_commit": true
+}
