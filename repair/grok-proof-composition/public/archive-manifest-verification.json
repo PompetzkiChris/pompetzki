@@ -1,0 +1,1887 @@
+{
+  "archive_file": "rocq-proof-47ccf28-results.tar.gz",
+  "archive_sha256": "a758a348d3c48bf1916a11a9b2279101338aa93007235459021bb200dbdea45b",
+  "entry_count": 234,
+  "kind_counts": {
+    "delivered-payload": 14,
+    "repository-source-context": 101,
+    "source-alias": 62,
+    "undelivered-compiled-context": 57
+  },
+  "payload_hash_pass": 14,
+  "available_hash_pass": 177,
+  "checks": [
+    {
+      "path": "README.md",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "86793c1fea8b5e39fd23fb271c2f1bf71b2f87e2808027743848b0f810a934ec",
+      "actual_sha256": "86793c1fea8b5e39fd23fb271c2f1bf71b2f87e2808027743848b0f810a934ec",
+      "matches": true
+    },
+    {
+      "path": "logs/compile-GrokCompose47.log",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "d4e49dd8b59469b9ec9b4026c9796f2e272e46b3e0dfe7486db13f05630cfbf9",
+      "actual_sha256": "d4e49dd8b59469b9ec9b4026c9796f2e272e46b3e0dfe7486db13f05630cfbf9",
+      "matches": true
+    },
+    {
+      "path": "logs/compile-GrokVerify47-About-PrintAssumptions.log",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "cd1af832dce93df5a50ae87ffefc5df6764fba5864db292c650ed9a759345cf2",
+      "actual_sha256": "cd1af832dce93df5a50ae87ffefc5df6764fba5864db292c650ed9a759345cf2",
+      "matches": true
+    },
+    {
+      "path": "logs/make-build-resume.log",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "128102f41efa4e966bb74cac6e401860087f0cd1f6c706a1bc6e3435ffcb191a",
+      "actual_sha256": "128102f41efa4e966bb74cac6e401860087f0cd1f6c706a1bc6e3435ffcb191a",
+      "matches": true
+    },
+    {
+      "path": "logs/make-build.log",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "301b2436490e0b000dbb6502fc59b568a1edb4ed5f1c18d41b2dade58de3f419",
+      "actual_sha256": "301b2436490e0b000dbb6502fc59b568a1edb4ed5f1c18d41b2dade58de3f419",
+      "matches": true
+    },
+    {
+      "path": "logs/rocqchk-modules.txt",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "397cbdf16a3334a69b70a6b7df2afcfb31fed2e0e9fe96a79f9dee901e4b2bc0",
+      "actual_sha256": "397cbdf16a3334a69b70a6b7df2afcfb31fed2e0e9fe96a79f9dee901e4b2bc0",
+      "matches": true
+    },
+    {
+      "path": "logs/rocqchk.log",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "40807ee1798df84dc81e899b896fd0f83a564007d06682f1b6ca9a578878a040",
+      "actual_sha256": "40807ee1798df84dc81e899b896fd0f83a564007d06682f1b6ca9a578878a040",
+      "matches": true
+    },
+    {
+      "path": "logs/source-diffs.log",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "c5eb1c7bc024a14d18228d6d3f196415133ccbd97f1836269d894e895487c60e",
+      "actual_sha256": "c5eb1c7bc024a14d18228d6d3f196415133ccbd97f1836269d894e895487c60e",
+      "matches": true
+    },
+    {
+      "path": "logs/tool-versions.log",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "c7ab20eb281c1e7a4ccbcbe734f967609e5928226fad6a19d15bcb246f7fd4e7",
+      "actual_sha256": "c7ab20eb281c1e7a4ccbcbe734f967609e5928226fad6a19d15bcb246f7fd4e7",
+      "matches": true
+    },
+    {
+      "path": "logs/unsafe-grep.log",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "55b382516e38e97d0418aef1843741b15512e476b3b6a406e8280137652f7393",
+      "actual_sha256": "55b382516e38e97d0418aef1843741b15512e476b3b6a406e8280137652f7393",
+      "matches": true
+    },
+    {
+      "path": "rocq/GrokCompose47.v",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "91b68483253d427d1efe7d90418970fe0ddd862d648f7bad390fff46aa67c3d8",
+      "actual_sha256": "91b68483253d427d1efe7d90418970fe0ddd862d648f7bad390fff46aa67c3d8",
+      "matches": true
+    },
+    {
+      "path": "rocq/GrokVerify47.v",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "10a8bd9776330e44ec9909a75da999968a9cf3654374a0e73280cdbbd0b1cae7",
+      "actual_sha256": "10a8bd9776330e44ec9909a75da999968a9cf3654374a0e73280cdbbd0b1cae7",
+      "matches": true
+    },
+    {
+      "path": "scripts/_CoqProject",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "a41aeb15507bbe406c530b0290aa25e6bc8e0d219a64aa56efd7ef0a51c65214",
+      "actual_sha256": "a41aeb15507bbe406c530b0290aa25e6bc8e0d219a64aa56efd7ef0a51c65214",
+      "matches": true
+    },
+    {
+      "path": "scripts/run-all.sh",
+      "kind": "delivered-payload",
+      "available": true,
+      "expected_sha256": "a533b61c963a0af15a4097b222f05099fe07c7a4a86100458b1ad2495a53c43f",
+      "actual_sha256": "a533b61c963a0af15a4097b222f05099fe07c7a4a86100458b1ad2495a53c43f",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/CANONICAL-PREFIX-PROOF-RECEIPT.md",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "1354e9ca88020d9397d22008a75cbd7b7281df9fa3b17609b6fd9607eb351513",
+      "actual_sha256": "1354e9ca88020d9397d22008a75cbd7b7281df9fa3b17609b6fd9607eb351513",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/CanonicalPrefixSoundness.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "actual_sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/CanonicalPrefixSoundnessReceipt.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "36cb9d20f93273afb2f35a6b8991aab5e1e0831b93462ddece4713eb4f7f2686",
+      "actual_sha256": "36cb9d20f93273afb2f35a6b8991aab5e1e0831b93462ddece4713eb4f7f2686",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/CanonicalRegistryData.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "actual_sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/PREFIX-PROOF-RECEIPT.md",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "6fa41bfc1abe61f8579e3312bc7ccd87c233359e5fa79e6d162bf37ccc9578db",
+      "actual_sha256": "6fa41bfc1abe61f8579e3312bc7ccd87c233359e5fa79e6d162bf37ccc9578db",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/PrefixSoundness.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "actual_sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/PrefixSoundnessReceipt.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "af45edca00420e420bbd2da25bbdff0fc7c0a84e895ec7bc8808fa5a0d60243f",
+      "actual_sha256": "af45edca00420e420bbd2da25bbdff0fc7c0a84e895ec7bc8808fa5a0d60243f",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/README-proof-source.md",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "72d5d596a80500dc87d16874ee87d101f1989c17e7127ce3cd49ef67db001b44",
+      "actual_sha256": "72d5d596a80500dc87d16874ee87d101f1989c17e7127ce3cd49ef67db001b44",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/build-registry-proof.py",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "853172d1def4286ddb84f1c3e9f13f47f67e50a8bc94160460203d56174ffed7",
+      "actual_sha256": "853172d1def4286ddb84f1c3e9f13f47f67e50a8bc94160460203d56174ffed7",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/numeric-v5/DecimalSignificantV4.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "actual_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/numeric-v5/README.md",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "30a5a046210900c7df1c209270462feca58dd6eef658cb2cc6ca23308e17c17d",
+      "actual_sha256": "30a5a046210900c7df1c209270462feca58dd6eef658cb2cc6ca23308e17c17d",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/numeric-v5/SHA256SUMS-source.txt",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "b0e47f2357878689daf0aba5a0365625afbd76a9e51b874e980b93ca25ca96a6",
+      "actual_sha256": "b0e47f2357878689daf0aba5a0365625afbd76a9e51b874e980b93ca25ca96a6",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/numeric-v5/SOURCE-INPUTS.json",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "dc2597dc8390f1fff97edbb4ec2fde295712bbda81571966a879b9a62297529f",
+      "actual_sha256": "dc2597dc8390f1fff97edbb4ec2fde295712bbda81571966a879b9a62297529f",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/numeric-v5/build-decimal-proof.py",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "926dc252c4ff0bdc7e353cedc2b20b3b77be744db8da197eca60ba98499263e7",
+      "actual_sha256": "926dc252c4ff0bdc7e353cedc2b20b3b77be744db8da197eca60ba98499263e7",
+      "matches": true
+    },
+    {
+      "path": "judge/rocq/public-source-inputs.json",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "409c071774de008160cc8cb186a855d68d44da12046935a72b82e7c6843511f4",
+      "actual_sha256": "409c071774de008160cc8cb186a855d68d44da12046935a72b82e7c6843511f4",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Ax.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "actual_sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Checks.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "actual_sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Data.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "actual_sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Expand.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "actual_sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Inv.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "actual_sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Kal.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "actual_sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Parse.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "actual_sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Prov.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "actual_sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Replay.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "actual_sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Replay2.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "actual_sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Replay3.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "actual_sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/ReplayT.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "actual_sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/RpInit.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "actual_sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/RpInitOk.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "actual_sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Sub.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "actual_sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Syn.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "actual_sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/Cohen/Val.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "actual_sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/LICENSE",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "actual_sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/PMPRepair/CanonicalPrefixSoundness.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "actual_sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/PMPRepair/CanonicalRegistryData.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "actual_sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/PMPRepair/GrokAuthGate.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "0db4ba9e96dcff41d42d8b4b8e9d32ae5226920151945f0df1494d8c994c3da5",
+      "actual_sha256": "0db4ba9e96dcff41d42d8b4b8e9d32ae5226920151945f0df1494d8c994c3da5",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/PMPRepair/GrokAuthGateReceipt.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "bf55bdfe70a81bef58249fa16a03bb0757c32ca93b0775eebc7b50c841e8064a",
+      "actual_sha256": "bf55bdfe70a81bef58249fa16a03bb0757c32ca93b0775eebc7b50c841e8064a",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/PMPRepair/PrefixSoundness.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "actual_sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/PUBLIC-WHITELIST.json",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "c26a7ae15768a84652e0342a1c17738f733e982d9eaf4d6b0a2620b4054146bf",
+      "actual_sha256": "c26a7ae15768a84652e0342a1c17738f733e982d9eaf4d6b0a2620b4054146bf",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/README.md",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "a228d883850a05a9b2a527ea7f933d09318e841f01f1ae71c67e3be775b4ddf3",
+      "actual_sha256": "a228d883850a05a9b2a527ea7f933d09318e841f01f1ae71c67e3be775b4ddf3",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/SHA256SUMS.txt",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "c91471efc232e8894a9362d4b8d7c31fcf23252ad510b4475c9eee173a9be038",
+      "actual_sha256": "c91471efc232e8894a9362d4b8d7c31fcf23252ad510b4475c9eee173a9be038",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/archive-manifest-verification.json",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "e57c9160d287583f2101862134cead10b47f4490f4e85e683d0d611df345aabf",
+      "actual_sha256": "e57c9160d287583f2101862134cead10b47f4490f4e85e683d0d611df345aabf",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/build-gate-proof.py",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "dbe2432b06873fc8ea5e236e6a66b62c07b0e1db8cf9fc29d2e51a2e5c09c8ea",
+      "actual_sha256": "dbe2432b06873fc8ea5e236e6a66b62c07b0e1db8cf9fc29d2e51a2e5c09c8ea",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/fresh-gate-proof-result.json",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "5453a9aef06c46457a43f79cbcc50b80a16d7e8ecfb1e98c02327a3a4e1a70ae",
+      "actual_sha256": "5453a9aef06c46457a43f79cbcc50b80a16d7e8ecfb1e98c02327a3a4e1a70ae",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/gate-types-and-assumptions.txt",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "5244dbde144b8b19f45e0b1c16a71a281792b46487f7e7c84170323dc9ba7166",
+      "actual_sha256": "5244dbde144b8b19f45e0b1c16a71a281792b46487f7e7c84170323dc9ba7166",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/kernel-check-context.txt",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+      "actual_sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/run-output.txt",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "82e7df16e76fd8aeb0915f613364ae81b078f2b50d0e39b2eb2518af5d4b6019",
+      "actual_sha256": "82e7df16e76fd8aeb0915f613364ae81b078f2b50d0e39b2eb2518af5d4b6019",
+      "matches": true
+    },
+    {
+      "path": "repair/grok-proof-integrated/public/source-credit.json",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "10607dd77218b015ed11a8e58362f31fbff327d238709390de5ee261c4fb7960",
+      "actual_sha256": "10607dd77218b015ed11a8e58362f31fbff327d238709390de5ee261c4fb7960",
+      "matches": true
+    },
+    {
+      "path": "rocq/Ax.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "actual_sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "matches": true
+    },
+    {
+      "path": "rocq/Checks.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "actual_sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "matches": true
+    },
+    {
+      "path": "rocq/Claim.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "058a635cb1caef3b4f992ce34573a6b7242458531cbce78a89e4fe63c961d117",
+      "actual_sha256": "058a635cb1caef3b4f992ce34573a6b7242458531cbce78a89e4fe63c961d117",
+      "matches": true
+    },
+    {
+      "path": "rocq/Data.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "actual_sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "matches": true
+    },
+    {
+      "path": "rocq/Elim.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "74d7a8fbd2fdd3a91425a0dc82fa389f8c709b9f9ca6da98d3a4b8d7171b2389",
+      "actual_sha256": "74d7a8fbd2fdd3a91425a0dc82fa389f8c709b9f9ca6da98d3a4b8d7171b2389",
+      "matches": true
+    },
+    {
+      "path": "rocq/Expand.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "actual_sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "matches": true
+    },
+    {
+      "path": "rocq/Final.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "6f2c5d91b8109758567774bdc4ff7305a28f593ae2d7dc45aac18bdd1c8db8ce",
+      "actual_sha256": "6f2c5d91b8109758567774bdc4ff7305a28f593ae2d7dc45aac18bdd1c8db8ce",
+      "matches": true
+    },
+    {
+      "path": "rocq/Inv.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "actual_sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "matches": true
+    },
+    {
+      "path": "rocq/Inv2.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "b5126c0b7f8f8d263a60b8c6a9d0300098e788ae0b938c8d95b5376f935b518a",
+      "actual_sha256": "b5126c0b7f8f8d263a60b8c6a9d0300098e788ae0b938c8d95b5376f935b518a",
+      "matches": true
+    },
+    {
+      "path": "rocq/Kal.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "actual_sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "matches": true
+    },
+    {
+      "path": "rocq/Notch.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "103268c076b037a1e4de943bcf7c0323d90e58acc39fac73876c2517bfa06030",
+      "actual_sha256": "103268c076b037a1e4de943bcf7c0323d90e58acc39fac73876c2517bfa06030",
+      "matches": true
+    },
+    {
+      "path": "rocq/Parse.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "actual_sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "matches": true
+    },
+    {
+      "path": "rocq/PinStatement.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "3823d78ac9915ea9fea39caba6d4678b44689838301063fb77bd01e5ebcba8da",
+      "actual_sha256": "3823d78ac9915ea9fea39caba6d4678b44689838301063fb77bd01e5ebcba8da",
+      "matches": true
+    },
+    {
+      "path": "rocq/PrintAx.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "e28e723277c90fbc9d24d9c696dba3422f064f540edd1a6214bee61811995f9a",
+      "actual_sha256": "e28e723277c90fbc9d24d9c696dba3422f064f540edd1a6214bee61811995f9a",
+      "matches": true
+    },
+    {
+      "path": "rocq/PrintAxClosed.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "8701f645ba4b9c4012fb3e86b27f345e0d39d76c88c5728430953ec2739286c7",
+      "actual_sha256": "8701f645ba4b9c4012fb3e86b27f345e0d39d76c88c5728430953ec2739286c7",
+      "matches": true
+    },
+    {
+      "path": "rocq/Prov.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "actual_sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "matches": true
+    },
+    {
+      "path": "rocq/Pure.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "08d0d7145e2faad4613066d870613c46f23244389dfbb00b8d9ca6bc5c2c009e",
+      "actual_sha256": "08d0d7145e2faad4613066d870613c46f23244389dfbb00b8d9ca6bc5c2c009e",
+      "matches": true
+    },
+    {
+      "path": "rocq/Replay.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "actual_sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "matches": true
+    },
+    {
+      "path": "rocq/Replay2.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "actual_sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "matches": true
+    },
+    {
+      "path": "rocq/Replay3.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "actual_sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "matches": true
+    },
+    {
+      "path": "rocq/ReplayT.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "actual_sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB0.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "ccdfa659663f0dc117f67557c6083366b2d825a929534a1545279dbeb241b8b2",
+      "actual_sha256": "ccdfa659663f0dc117f67557c6083366b2d825a929534a1545279dbeb241b8b2",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB1.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "a582b5616322dd5e8692a049823bfc151d3d92834aa99bbbff9a59b8b296d395",
+      "actual_sha256": "a582b5616322dd5e8692a049823bfc151d3d92834aa99bbbff9a59b8b296d395",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB10.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "b4b569cc50fa0b6a615beab05131b8ada3b522cf8bbda7fd51c6e3ce4a78d646",
+      "actual_sha256": "b4b569cc50fa0b6a615beab05131b8ada3b522cf8bbda7fd51c6e3ce4a78d646",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB2.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "efb972f96f0a66ced756465dc4bfdef7f759ccb999f40350747ba38af893dce4",
+      "actual_sha256": "efb972f96f0a66ced756465dc4bfdef7f759ccb999f40350747ba38af893dce4",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB3.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "4521516fb93f1420d4cb6adc05ca524d98dfd3a2ab59d4f198b9e4d34faf9f65",
+      "actual_sha256": "4521516fb93f1420d4cb6adc05ca524d98dfd3a2ab59d4f198b9e4d34faf9f65",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB4.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "1565ca2c91df4a320e699ab2a1779d2249a4d8e43e8dd9431be433cc83125405",
+      "actual_sha256": "1565ca2c91df4a320e699ab2a1779d2249a4d8e43e8dd9431be433cc83125405",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB5.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "a838fb9934d85f3d61f07fb25dfaa049e39bf693231e81358ce6657f3f5abf99",
+      "actual_sha256": "a838fb9934d85f3d61f07fb25dfaa049e39bf693231e81358ce6657f3f5abf99",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB6.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "79defebe1da4364cc8f68bdeadf1398244cf3eb0b02cc55959118bd170f790f4",
+      "actual_sha256": "79defebe1da4364cc8f68bdeadf1398244cf3eb0b02cc55959118bd170f790f4",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB7.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "a2bff730ef7c30f585b77ba8d97bd98afe8a870ac32246433fd5ff0c9b5dcead",
+      "actual_sha256": "a2bff730ef7c30f585b77ba8d97bd98afe8a870ac32246433fd5ff0c9b5dcead",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB8.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "22562f4fa89718c3de52a30b38a5c9c7a9f44842d166aefdb403019e4ba8d787",
+      "actual_sha256": "22562f4fa89718c3de52a30b38a5c9c7a9f44842d166aefdb403019e4ba8d787",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpB9.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "276d125f5fe998f0e71632d93f82034a4cb425c313c27d2f8c5e664238f9bf29",
+      "actual_sha256": "276d125f5fe998f0e71632d93f82034a4cb425c313c27d2f8c5e664238f9bf29",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC0.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "95dae03fafde6c05264a6b48145e8256cc7be5ef369ad5179dd6f269c27f4b24",
+      "actual_sha256": "95dae03fafde6c05264a6b48145e8256cc7be5ef369ad5179dd6f269c27f4b24",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC1.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "86737fa9a082eb13d120182d29b07a51572a2432dd1f63088c9fc3216cca6775",
+      "actual_sha256": "86737fa9a082eb13d120182d29b07a51572a2432dd1f63088c9fc3216cca6775",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC10.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "9488d660a882fa1571a06b953b7c2a03b4caf236a2f0edd40590dd7529493ac0",
+      "actual_sha256": "9488d660a882fa1571a06b953b7c2a03b4caf236a2f0edd40590dd7529493ac0",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC2.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "b0ae70ce673ca531e1db6df19508d99ae570fc0e9465ed840622de54d1b7a5d8",
+      "actual_sha256": "b0ae70ce673ca531e1db6df19508d99ae570fc0e9465ed840622de54d1b7a5d8",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC3.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "45f6238b8220aa310f76c6b3e298f663d9828d62968de31a85293be9f9ce753e",
+      "actual_sha256": "45f6238b8220aa310f76c6b3e298f663d9828d62968de31a85293be9f9ce753e",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC4.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "ae401e0be91e74820149ca3e4cc4d11d1c8883cf5f3a865be1762e8bd0e147a4",
+      "actual_sha256": "ae401e0be91e74820149ca3e4cc4d11d1c8883cf5f3a865be1762e8bd0e147a4",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC5.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "ba14dcd3950c147408282037bc81c48811aa79ec2885a6902d968fbad52edeff",
+      "actual_sha256": "ba14dcd3950c147408282037bc81c48811aa79ec2885a6902d968fbad52edeff",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC6.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "0763ba6062229d4cc5b9d47ec775caeddea2d24c7a2b21f10e199f883fc9847c",
+      "actual_sha256": "0763ba6062229d4cc5b9d47ec775caeddea2d24c7a2b21f10e199f883fc9847c",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC7.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "fcce5261ce43d0b97f5f80348a49d1ca92b737aa1ac6b2e9492a74ff1b25856f",
+      "actual_sha256": "fcce5261ce43d0b97f5f80348a49d1ca92b737aa1ac6b2e9492a74ff1b25856f",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC8.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "76da5153612a78605f1fcabfc18a0f18dece349e9628c39708879b24f41b7f8c",
+      "actual_sha256": "76da5153612a78605f1fcabfc18a0f18dece349e9628c39708879b24f41b7f8c",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpC9.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "bcfa81423a0dfa859d1b9b7ebd578920f73fc20c7332f11fda64be1203f8c97f",
+      "actual_sha256": "bcfa81423a0dfa859d1b9b7ebd578920f73fc20c7332f11fda64be1203f8c97f",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpFinal.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "44b3d9dce167ec38bfa1e8277f989cb51105523c69654a616ff5b5d062e07783",
+      "actual_sha256": "44b3d9dce167ec38bfa1e8277f989cb51105523c69654a616ff5b5d062e07783",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpInit.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "actual_sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "matches": true
+    },
+    {
+      "path": "rocq/RpInitOk.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "actual_sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "matches": true
+    },
+    {
+      "path": "rocq/Sub.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "actual_sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "matches": true
+    },
+    {
+      "path": "rocq/Sub2.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "91d4275cb1ee1ee087e743a5ae95a93a37fca9278b8346999268edd0f4ec7492",
+      "actual_sha256": "91d4275cb1ee1ee087e743a5ae95a93a37fca9278b8346999268edd0f4ec7492",
+      "matches": true
+    },
+    {
+      "path": "rocq/Sub3.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "9214d5364915be95c5939d2cc234ea727cf736a74c1d5e1c2f1dc8764d3bb522",
+      "actual_sha256": "9214d5364915be95c5939d2cc234ea727cf736a74c1d5e1c2f1dc8764d3bb522",
+      "matches": true
+    },
+    {
+      "path": "rocq/Syn.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "actual_sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "matches": true
+    },
+    {
+      "path": "rocq/T5.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "5ef4f51ca39ff06fc97b043310238b4bd0d6f580c258db94b794d95ce4be3709",
+      "actual_sha256": "5ef4f51ca39ff06fc97b043310238b4bd0d6f580c258db94b794d95ce4be3709",
+      "matches": true
+    },
+    {
+      "path": "rocq/Use.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "b093b9336b700bf938db9c33e2d87409610a8f07887af5f25860e8d4a6b91ea1",
+      "actual_sha256": "b093b9336b700bf938db9c33e2d87409610a8f07887af5f25860e8d4a6b91ea1",
+      "matches": true
+    },
+    {
+      "path": "rocq/Val.v",
+      "kind": "repository-source-context",
+      "available": true,
+      "expected_sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "actual_sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Ax.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "actual_sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Checks.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "actual_sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Claim.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "058a635cb1caef3b4f992ce34573a6b7242458531cbce78a89e4fe63c961d117",
+      "actual_sha256": "058a635cb1caef3b4f992ce34573a6b7242458531cbce78a89e4fe63c961d117",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Data.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "actual_sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Elim.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "74d7a8fbd2fdd3a91425a0dc82fa389f8c709b9f9ca6da98d3a4b8d7171b2389",
+      "actual_sha256": "74d7a8fbd2fdd3a91425a0dc82fa389f8c709b9f9ca6da98d3a4b8d7171b2389",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Expand.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "actual_sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Final.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "6f2c5d91b8109758567774bdc4ff7305a28f593ae2d7dc45aac18bdd1c8db8ce",
+      "actual_sha256": "6f2c5d91b8109758567774bdc4ff7305a28f593ae2d7dc45aac18bdd1c8db8ce",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Inv.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "actual_sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Inv2.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "b5126c0b7f8f8d263a60b8c6a9d0300098e788ae0b938c8d95b5376f935b518a",
+      "actual_sha256": "b5126c0b7f8f8d263a60b8c6a9d0300098e788ae0b938c8d95b5376f935b518a",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Kal.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "actual_sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Notch.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "103268c076b037a1e4de943bcf7c0323d90e58acc39fac73876c2517bfa06030",
+      "actual_sha256": "103268c076b037a1e4de943bcf7c0323d90e58acc39fac73876c2517bfa06030",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Parse.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "actual_sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "matches": true
+    },
+    {
+      "path": "Cohen/PinStatement.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "3823d78ac9915ea9fea39caba6d4678b44689838301063fb77bd01e5ebcba8da",
+      "actual_sha256": "3823d78ac9915ea9fea39caba6d4678b44689838301063fb77bd01e5ebcba8da",
+      "matches": true
+    },
+    {
+      "path": "Cohen/PrintAx.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "e28e723277c90fbc9d24d9c696dba3422f064f540edd1a6214bee61811995f9a",
+      "actual_sha256": "e28e723277c90fbc9d24d9c696dba3422f064f540edd1a6214bee61811995f9a",
+      "matches": true
+    },
+    {
+      "path": "Cohen/PrintAxClosed.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "8701f645ba4b9c4012fb3e86b27f345e0d39d76c88c5728430953ec2739286c7",
+      "actual_sha256": "8701f645ba4b9c4012fb3e86b27f345e0d39d76c88c5728430953ec2739286c7",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Prov.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "actual_sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Pure.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "08d0d7145e2faad4613066d870613c46f23244389dfbb00b8d9ca6bc5c2c009e",
+      "actual_sha256": "08d0d7145e2faad4613066d870613c46f23244389dfbb00b8d9ca6bc5c2c009e",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Replay.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "actual_sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Replay2.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "actual_sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Replay3.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "actual_sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "matches": true
+    },
+    {
+      "path": "Cohen/ReplayT.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "actual_sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB0.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "ccdfa659663f0dc117f67557c6083366b2d825a929534a1545279dbeb241b8b2",
+      "actual_sha256": "ccdfa659663f0dc117f67557c6083366b2d825a929534a1545279dbeb241b8b2",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB1.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "a582b5616322dd5e8692a049823bfc151d3d92834aa99bbbff9a59b8b296d395",
+      "actual_sha256": "a582b5616322dd5e8692a049823bfc151d3d92834aa99bbbff9a59b8b296d395",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB10.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "b4b569cc50fa0b6a615beab05131b8ada3b522cf8bbda7fd51c6e3ce4a78d646",
+      "actual_sha256": "b4b569cc50fa0b6a615beab05131b8ada3b522cf8bbda7fd51c6e3ce4a78d646",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB2.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "efb972f96f0a66ced756465dc4bfdef7f759ccb999f40350747ba38af893dce4",
+      "actual_sha256": "efb972f96f0a66ced756465dc4bfdef7f759ccb999f40350747ba38af893dce4",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB3.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "4521516fb93f1420d4cb6adc05ca524d98dfd3a2ab59d4f198b9e4d34faf9f65",
+      "actual_sha256": "4521516fb93f1420d4cb6adc05ca524d98dfd3a2ab59d4f198b9e4d34faf9f65",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB4.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "1565ca2c91df4a320e699ab2a1779d2249a4d8e43e8dd9431be433cc83125405",
+      "actual_sha256": "1565ca2c91df4a320e699ab2a1779d2249a4d8e43e8dd9431be433cc83125405",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB5.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "a838fb9934d85f3d61f07fb25dfaa049e39bf693231e81358ce6657f3f5abf99",
+      "actual_sha256": "a838fb9934d85f3d61f07fb25dfaa049e39bf693231e81358ce6657f3f5abf99",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB6.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "79defebe1da4364cc8f68bdeadf1398244cf3eb0b02cc55959118bd170f790f4",
+      "actual_sha256": "79defebe1da4364cc8f68bdeadf1398244cf3eb0b02cc55959118bd170f790f4",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB7.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "a2bff730ef7c30f585b77ba8d97bd98afe8a870ac32246433fd5ff0c9b5dcead",
+      "actual_sha256": "a2bff730ef7c30f585b77ba8d97bd98afe8a870ac32246433fd5ff0c9b5dcead",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB8.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "22562f4fa89718c3de52a30b38a5c9c7a9f44842d166aefdb403019e4ba8d787",
+      "actual_sha256": "22562f4fa89718c3de52a30b38a5c9c7a9f44842d166aefdb403019e4ba8d787",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpB9.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "276d125f5fe998f0e71632d93f82034a4cb425c313c27d2f8c5e664238f9bf29",
+      "actual_sha256": "276d125f5fe998f0e71632d93f82034a4cb425c313c27d2f8c5e664238f9bf29",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC0.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "95dae03fafde6c05264a6b48145e8256cc7be5ef369ad5179dd6f269c27f4b24",
+      "actual_sha256": "95dae03fafde6c05264a6b48145e8256cc7be5ef369ad5179dd6f269c27f4b24",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC1.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "86737fa9a082eb13d120182d29b07a51572a2432dd1f63088c9fc3216cca6775",
+      "actual_sha256": "86737fa9a082eb13d120182d29b07a51572a2432dd1f63088c9fc3216cca6775",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC10.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "9488d660a882fa1571a06b953b7c2a03b4caf236a2f0edd40590dd7529493ac0",
+      "actual_sha256": "9488d660a882fa1571a06b953b7c2a03b4caf236a2f0edd40590dd7529493ac0",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC2.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "b0ae70ce673ca531e1db6df19508d99ae570fc0e9465ed840622de54d1b7a5d8",
+      "actual_sha256": "b0ae70ce673ca531e1db6df19508d99ae570fc0e9465ed840622de54d1b7a5d8",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC3.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "45f6238b8220aa310f76c6b3e298f663d9828d62968de31a85293be9f9ce753e",
+      "actual_sha256": "45f6238b8220aa310f76c6b3e298f663d9828d62968de31a85293be9f9ce753e",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC4.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "ae401e0be91e74820149ca3e4cc4d11d1c8883cf5f3a865be1762e8bd0e147a4",
+      "actual_sha256": "ae401e0be91e74820149ca3e4cc4d11d1c8883cf5f3a865be1762e8bd0e147a4",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC5.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "ba14dcd3950c147408282037bc81c48811aa79ec2885a6902d968fbad52edeff",
+      "actual_sha256": "ba14dcd3950c147408282037bc81c48811aa79ec2885a6902d968fbad52edeff",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC6.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "0763ba6062229d4cc5b9d47ec775caeddea2d24c7a2b21f10e199f883fc9847c",
+      "actual_sha256": "0763ba6062229d4cc5b9d47ec775caeddea2d24c7a2b21f10e199f883fc9847c",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC7.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "fcce5261ce43d0b97f5f80348a49d1ca92b737aa1ac6b2e9492a74ff1b25856f",
+      "actual_sha256": "fcce5261ce43d0b97f5f80348a49d1ca92b737aa1ac6b2e9492a74ff1b25856f",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC8.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "76da5153612a78605f1fcabfc18a0f18dece349e9628c39708879b24f41b7f8c",
+      "actual_sha256": "76da5153612a78605f1fcabfc18a0f18dece349e9628c39708879b24f41b7f8c",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpC9.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "bcfa81423a0dfa859d1b9b7ebd578920f73fc20c7332f11fda64be1203f8c97f",
+      "actual_sha256": "bcfa81423a0dfa859d1b9b7ebd578920f73fc20c7332f11fda64be1203f8c97f",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpFinal.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "44b3d9dce167ec38bfa1e8277f989cb51105523c69654a616ff5b5d062e07783",
+      "actual_sha256": "44b3d9dce167ec38bfa1e8277f989cb51105523c69654a616ff5b5d062e07783",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpInit.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "actual_sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "matches": true
+    },
+    {
+      "path": "Cohen/RpInitOk.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "actual_sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Sub.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "actual_sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Sub2.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "91d4275cb1ee1ee087e743a5ae95a93a37fca9278b8346999268edd0f4ec7492",
+      "actual_sha256": "91d4275cb1ee1ee087e743a5ae95a93a37fca9278b8346999268edd0f4ec7492",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Sub3.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "9214d5364915be95c5939d2cc234ea727cf736a74c1d5e1c2f1dc8764d3bb522",
+      "actual_sha256": "9214d5364915be95c5939d2cc234ea727cf736a74c1d5e1c2f1dc8764d3bb522",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Syn.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "actual_sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "matches": true
+    },
+    {
+      "path": "Cohen/T5.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "5ef4f51ca39ff06fc97b043310238b4bd0d6f580c258db94b794d95ce4be3709",
+      "actual_sha256": "5ef4f51ca39ff06fc97b043310238b4bd0d6f580c258db94b794d95ce4be3709",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Use.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "b093b9336b700bf938db9c33e2d87409610a8f07887af5f25860e8d4a6b91ea1",
+      "actual_sha256": "b093b9336b700bf938db9c33e2d87409610a8f07887af5f25860e8d4a6b91ea1",
+      "matches": true
+    },
+    {
+      "path": "Cohen/Val.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "actual_sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "matches": true
+    },
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "actual_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "matches": true
+    },
+    {
+      "path": "PMPRepair/CanonicalPrefixSoundness.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "actual_sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "matches": true
+    },
+    {
+      "path": "PMPRepair/CanonicalPrefixSoundnessReceipt.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "36cb9d20f93273afb2f35a6b8991aab5e1e0831b93462ddece4713eb4f7f2686",
+      "actual_sha256": "36cb9d20f93273afb2f35a6b8991aab5e1e0831b93462ddece4713eb4f7f2686",
+      "matches": true
+    },
+    {
+      "path": "PMPRepair/CanonicalRegistryData.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "actual_sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "matches": true
+    },
+    {
+      "path": "PMPRepair/GrokAuthGate.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "0db4ba9e96dcff41d42d8b4b8e9d32ae5226920151945f0df1494d8c994c3da5",
+      "actual_sha256": "0db4ba9e96dcff41d42d8b4b8e9d32ae5226920151945f0df1494d8c994c3da5",
+      "matches": true
+    },
+    {
+      "path": "PMPRepair/GrokCompose47.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "91b68483253d427d1efe7d90418970fe0ddd862d648f7bad390fff46aa67c3d8",
+      "actual_sha256": "91b68483253d427d1efe7d90418970fe0ddd862d648f7bad390fff46aa67c3d8",
+      "matches": true
+    },
+    {
+      "path": "PMPRepair/GrokVerify47.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "10a8bd9776330e44ec9909a75da999968a9cf3654374a0e73280cdbbd0b1cae7",
+      "actual_sha256": "10a8bd9776330e44ec9909a75da999968a9cf3654374a0e73280cdbbd0b1cae7",
+      "matches": true
+    },
+    {
+      "path": "PMPRepair/PrefixSoundness.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "actual_sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "matches": true
+    },
+    {
+      "path": "PMPRepair/PrefixSoundnessReceipt.v",
+      "kind": "source-alias",
+      "available": true,
+      "expected_sha256": "af45edca00420e420bbd2da25bbdff0fc7c0a84e895ec7bc8808fa5a0d60243f",
+      "actual_sha256": "af45edca00420e420bbd2da25bbdff0fc7c0a84e895ec7bc8808fa5a0d60243f",
+      "matches": true
+    },
+    {
+      "path": "build/Cohen/Ax.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "2036d7f5d0c887609b30b242dc5c39fe6105e8128c7846e3d9a9f8a223b6ebf4",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Checks.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "bebbb64f51d29c0f4d83164037f4bba0b476497edab4ed81855f64f33b25f96e",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Claim.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "ccff5cfd00b99007d22b30279f6c182b9ea4d939dfb5ff117d0b04a70bed9d98",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Data.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "ae87fae5db7b59c3d6732e5e9eb08953e9dae4d9b4b4cfff7efd464957a0c143",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Elim.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "050a37a27046a1ccf05429400ad42b09a6dcd9b48c60dde088a94b6d7299b408",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Expand.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "4ffe552c99fed471ef35486cc50215857512033f26667d0e5834d548d4fb8485",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Final.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "576978d75332e07522cbece5c1a8efefe92032e371837bc654c4892a527033d7",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Inv.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "7520d3432a7a9ef369d3660d9f653d0c093796e308570cf48ed06b9609ca73f7",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Inv2.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "c6fe2f2449a57af2e8fc6b860f94fc6830027929bc871ae8b6497dc42e5e58da",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Kal.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "e00db6a1a3da6325988eb046d29a3ab5b6d96188b9995a2605ecf46891e0591b",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Notch.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "721e1d0eed3b863575e393c18d885e984d1a331c8c914d8b747952cdf59a1066",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Parse.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "fa77a13297c965b6aef37857f5ec8543f673056bf4bd42d33609b5db8139166c",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Prov.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "0977ebb3fedd3db57483f76b31aaabc7846efa5f4ae48db2838ce167580c2667",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Pure.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "7f7c741467d166e980ff3fcb018e00b53525f27b530dc60f992009612a4d9afe",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Replay.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "6834dfad2c7cf6368b79e0e6d127f6eaa0e4bd937a6e5067934150c241cbd446",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Replay2.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "f2f15ced90868802d3d97935e2a767633e524b9e5aa19f92c53bd763d90ef961",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Replay3.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "b92b9c84bab27a2b3c9b3c6bba88795dde2aecfc1fb306cadc2d4b3238cfc8a3",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/ReplayT.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "474b8f40483be2aa79e371a645b8cd4b06803424c0997ceaad8d72fed10bec43",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB0.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "4d03efd98a7551c6349786ee9c3b7e78b5d9e9c297a4cef592c91b147e055581",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB1.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "9282f88ac7e73a0ecc1c63a13a648e8e959a57206129c3182b9f47b13d93a34d",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB10.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "c31fb4eec7d7895a8c9ad89a794de930989e7ae83476f966ce3cb85be0d016dd",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB2.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "c9d0b46d56035c4fea8905e1ae7dfa3fcb205b81dcd95ae7ffc2bb52679694a0",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB3.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "38216096f9e58174cf765ccf3277dcce4e243e1585c33d17660a7dc92b9859a9",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB4.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "d4e096ce593267c504255e7975d0252941de07e6d19ddfac910bce6013e26d79",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB5.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "1f8231340a6ae668a5cf191fcb30018cd2c24044907c3dad7a77a4f95cc7c182",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB6.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "bb3da134928e67e1678a2ffe0fb246a76c20bcb1d602ddecd78da71f933a78e8",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB7.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "727f2f7d4049a3313bfcdcdaf41a057e1dca8d6b815772dd9b2333db01721acd",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB8.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "8503b7bf62e84e6c09cadaf2a41517755b354c65848f8c39f6a7e5c222d25bc4",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpB9.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "1f5e307a9e5015fa1f6fd9cb7a402f5857ec4eb824a0d353f89bc40df89ffc6f",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC0.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "b80a908c0b1e03159331cf7d43643d43949e31d12871604c2ac5f0a05f9b2b55",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC1.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "c1386dedef01a0e682146e580aee27cf972499769aeddc8521e04f15bf7c0da9",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC10.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "539fd8b6a71654cd933433fd39cbdbabe2fb544ef14e650714e7193d17e40cc6",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC2.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "d1c6fc3f515986c9c334ce93e402dd7c2451e09edf212b398ee296b14f940963",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC3.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "93e535d95ddfb0d85a3c9547697b9cc2867983dd658f1ba340c283f8fdc86186",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC4.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "0db472afbbc7dc2c19f14d0cc31e0d5e464aa20e61c1321e8357b00bb34dbd97",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC5.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "e95064c04136e2fd340e65cc273da952c8c7a4c8299658f140c20a60b8186b04",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC6.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "c4a1512a44c6a253baa9008f268b42a12781984007aa79dd13bb77efe5b9e189",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC7.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "9acfe6c5464e75690e9290e09df5d75afc51f4889eb0a72e60ea51a03b10d568",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC8.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "258d9945622b7357e3d1b631846eda19c4d8844e6ff43454c09d7c3543db09b4",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpC9.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "f232dc719360436a0173a9e29e790426074b5731215d52c7d1b8a79f23956759",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpFinal.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "adf0901254c0eddba2c90d1bd790b466f0de269cb129733b68d3b7f56f533043",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpInit.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "14b31a1182012d0fd1a6acbcba89e5582a21ec4e4df41e52105f643cb3ed8a36",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/RpInitOk.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "6feb7c3eda156678acca275a8aee943023a531be93729748f98c5bb2d951f378",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Sub.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "5e3d3d4aa8ecf6c94dd790240448dfc7ce03de6f67da2db66cdc3e6ed8064b7a",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Sub2.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "60fd601531da7e4cb1d2408ee3c5f046532bfe0ed052a18010720c626fa92aa7",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Sub3.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "b4322222693935688affa141cabf0700c5853a1f6c7a236e7a86a0532cefa203",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Syn.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "265319d0308b174ef889558c208453d3c731a1c5169f17522689fcd62d13cabb",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Use.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "9dbc2e8ac7305ff154c9c680a1852f9fbc5391f7730ceb08d9ca8601caaa0e15",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/Cohen/Val.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "e53269c219ab6baaad52c0508865105438de84ba748536740573434c340771b7",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/NumericV5/DecimalSignificantV4.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "e5600fea8aae1841661e79553e26afacda30e8c47e7e62c0944588b9c1965a31",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/PMPRepair/CanonicalPrefixSoundness.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "fa4b181a6f94521522ea038e5749313319671f9811a8fe8d5a24be4339c0b7d1",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/PMPRepair/CanonicalPrefixSoundnessReceipt.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "79b810447ee5835f9be0c06bf14c42ba6def6ba81933b707c2f11f32113de1ba",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/PMPRepair/CanonicalRegistryData.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "518ca0faf21c5e3fa4c7c263fb7aec2feec332a3679509b5fd570a4710c2b07e",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/PMPRepair/GrokAuthGate.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "cb434a95e16c3f52f3c069ebdf71e584ce282d94fe492d7251b61712dd1afd7f",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/PMPRepair/GrokCompose47.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "ff96abec98a33078bfe89106d9fe6780dfd9a4f809f2001889b00335c3c25905",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/PMPRepair/GrokVerify47.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "539d111764561490d869da78a4de7fa3fbfd9cbc13bfad5ddb46c1840ee8da2f",
+      "actual_sha256": null,
+      "matches": null
+    },
+    {
+      "path": "build/PMPRepair/PrefixSoundness.vo",
+      "kind": "undelivered-compiled-context",
+      "available": false,
+      "expected_sha256": "57ad55f4014067a29434afa0cb500971b0613d171a1227f6c7f120fffb8326ef",
+      "actual_sha256": null,
+      "matches": null
+    }
+  ]
+}
