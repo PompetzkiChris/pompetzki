@@ -1,0 +1,96 @@
+{
+  "version": "1.3.0",
+  "status": "Frozen public packaging source",
+  "files": [
+    {
+      "path": "build-bundle.py",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/build-bundle.py",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/build-bundle.py",
+      "sha256": "ea9928e095b70c49c812e1ad1cf1e82b94c69ca56cc75c9be3f14e1bb4ec4af2"
+    },
+    {
+      "path": "installer.rkt",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/installer.rkt",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/installer.rkt",
+      "sha256": "9700405db9aa8e5681c955611b566b11a4b4604633314e462fe4879da1a900a9"
+    },
+    {
+      "path": "launcher.rkt",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/launcher.rkt",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/launcher.rkt",
+      "sha256": "2e4cb313df3b23a26b8ac8e766e5ebc442dfcec50c091510a27838e0c677b383"
+    },
+    {
+      "path": "MATRIX-SOURCE-MANIFEST.json",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/MATRIX-SOURCE-MANIFEST.json",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/MATRIX-SOURCE-MANIFEST.json",
+      "sha256": "809136d6a2d439f31912fe7d8f1e74b2b8328020b7bd24909fa00ed24e05ffad"
+    },
+    {
+      "path": "package-utils.rkt",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/package-utils.rkt",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/package-utils.rkt",
+      "sha256": "d4f77508ac8f1dd46891ec86e1dfdf19683e6ac3794a3cd7fcecad6e9a40d7d6"
+    },
+    {
+      "path": "README.md",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/README.md",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/README.md",
+      "sha256": "83ad0e600084f71f36c2cd35fee2e0b221a6089490afd1ef65c8659e4833e2be"
+    },
+    {
+      "path": "run-compiled-book.py",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/run-compiled-book.py",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/run-compiled-book.py",
+      "sha256": "8cd9b634afca664487ff0839403681654cb68068896d3fc5c46dd8496f398259"
+    },
+    {
+      "path": "test-package.py",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/test-package.py",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/test-package.py",
+      "sha256": "32045bf09ae1d74788db68c5124adb9b932b73db35e56b7367d00b1cbaedbe3a"
+    },
+    {
+      "path": "test-padded-judge.py",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/test-padded-judge.py",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/test-padded-judge.py",
+      "sha256": "8ed48b35d4c995628f440b8d36d04e6f4d8ef2f1496aa7f848a9e87ce67e2552"
+    },
+    {
+      "path": "test-runtime-modules.rkt",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/test-runtime-modules.rkt",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/test-runtime-modules.rkt",
+      "sha256": "44e8fe4e7f5a2b36db3c4f6edc78649bf7ddc90440299343b71179fbe1fabaaf"
+    },
+    {
+      "path": "test-word-boundaries.py",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/test-word-boundaries.py",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/test-word-boundaries.py",
+      "sha256": "47d05b91ed7d0da8a5e65a090404c803dafb14e61e61a32207fca0ec42d57899"
+    },
+    {
+      "path": "Uninstall-Abschluss.ps1",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/Uninstall-Abschluss.ps1",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/Uninstall-Abschluss.ps1",
+      "sha256": "2a29be6b0faac19b2175d068814881feb7a099867c44a11116abd0d42fc1db92"
+    },
+    {
+      "path": "uninstaller.rkt",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/uninstaller.rkt",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/uninstaller.rkt",
+      "sha256": "66de81c707ad2b1f1c96d029037d9018271888a5ff127b253869d763dc591615"
+    },
+    {
+      "path": "verify-source-closure.py",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/verify-source-closure.py",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/verify-source-closure.py",
+      "sha256": "fb396209cb260549bf3d2d863a299b1801b3d6d8c82b3b6f312a8e373aec82c3"
+    },
+    {
+      "path": "workbench-entry.rkt",
+      "candidate_relative_path": "repair/packaging/v6-workbench-v2/workbench-entry.rkt",
+      "package_relative_path": "repair/packaging/v6-workbench-v2/workbench-entry.rkt",
+      "sha256": "fc2960b0450dc9170bf6b559d53f31f14ff6bdd457ef4e1a3aecd7e97299473c"
+    }
+  ]
+}
