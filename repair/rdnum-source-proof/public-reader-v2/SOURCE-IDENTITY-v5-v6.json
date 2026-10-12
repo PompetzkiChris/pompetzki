@@ -1,0 +1,37 @@
+{
+  "status": "BYTE IDENTITY, not a semantic theorem",
+  "sources": {
+    "v5": {
+      "path": "source/judge-v5.pmp",
+      "sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+      "retained_controller": {
+        "first_line": 477,
+        "last_line": 561,
+        "bytes": 1724,
+        "sha256": "7a282dc71308a1796a0690bce400938a936dd60efcdc70257671660f842a3826"
+      },
+      "through_RDTAG": {
+        "first_line": 477,
+        "last_line": 573,
+        "bytes": 1926,
+        "sha256": "ab06df9ec557f29a05665e3b106019dd2203af311c35b300a6dbf128a496e2d1"
+      }
+    },
+    "v6": {
+      "path": "source/judge-v6.pmp",
+      "sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+      "retained_controller": {
+        "first_line": 490,
+        "last_line": 574,
+        "bytes": 1724,
+        "sha256": "7a282dc71308a1796a0690bce400938a936dd60efcdc70257671660f842a3826"
+      },
+      "through_RDTAG": {
+        "first_line": 490,
+        "last_line": 586,
+        "bytes": 1926,
+        "sha256": "ab06df9ec557f29a05665e3b106019dd2203af311c35b300a6dbf128a496e2d1"
+      }
+    }
+  }
+}
