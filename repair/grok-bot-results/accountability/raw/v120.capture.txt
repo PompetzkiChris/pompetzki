@@ -1,0 +1,125 @@
+=== case a1-false-registry-only.jdg
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki /tmp/pompetzki-acct/w/Abschluss-1.2/judge/judge-v3.pmp /workspace/acct/repair/grok-bot-results/accountability/inputs/a1-false-registry-only.jdg
+--- exit
+0
+--- stdout
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+1
+0
+0
+1
+
+--- stderr
+
+=== case a2-false-registry-thm.jdg
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki /tmp/pompetzki-acct/w/Abschluss-1.2/judge/judge-v3.pmp /workspace/acct/repair/grok-bot-results/accountability/inputs/a2-false-registry-thm.jdg
+--- exit
+0
+--- stdout
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+1
+1
+1
+2
+
+--- stderr
+
+=== case ctl-canonical-reg0.jdg
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki /tmp/pompetzki-acct/w/Abschluss-1.2/judge/judge-v3.pmp /workspace/acct/repair/grok-bot-results/accountability/inputs/ctl-canonical-reg0.jdg
+--- exit
+0
+--- stdout
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+--- stderr
+
+=== case b1-literal-min.pmp
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b1-literal-min.pmp
+--- exit
+1
+--- stdout
+line 1: Menschenwerk: a value left the 64-bit integers. Nothing was rounded; the program stops.
+
+--- stderr
+
+=== case b2-computed-min.pmp
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b2-computed-min.pmp
+--- exit
+0
+--- stdout
+-9223372036854775808
+
+--- stderr
+
+=== case b3-literal-max.pmp
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b3-literal-max.pmp
+--- exit
+0
+--- stdout
+9223372036854775807
+
+--- stderr
+
+=== case b4-literal-overflow.pmp
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b4-literal-overflow.pmp
+--- exit
+1
+--- stdout
+line 1: Menschenwerk: a value left the 64-bit integers. Nothing was rounded; the program stops.
+
+--- stderr
+
+=== case b5-literal-underflow.pmp
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b5-literal-underflow.pmp
+--- exit
+1
+--- stdout
+line 1: Menschenwerk: a value left the 64-bit integers. Nothing was rounded; the program stops.
+
+--- stderr
+
+=== case c1-trim-nul.pmp
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki c1-trim-nul.pmp
+--- exit
+0
+--- stdout
+3
+97
+0
+0
+32
+0
+98
+
+--- stderr
+
+=== case c2-pad-nul.pmp
+--- cmd
+/tmp/pompetzki-acct/l/bin/linux/pompetzki c2-pad-nul.pmp
+--- exit
+0
+--- stdout
+4
+0
+0
+0
+0
+
+--- stderr
+

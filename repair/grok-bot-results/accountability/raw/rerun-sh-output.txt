@@ -1,0 +1,47 @@
+v120-Abschluss-1.2-windows-x64.zip: OK
+rel-pompetzki-linux-x64-20261010.zip: OK
+414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7  l/bin/linux/pompetzki
+afa4471a3bf428864d1a0d9d6b13cb0e604f27d25879ad1fbec1e825bc0bef41  pompetzki-repaired-linux
+f6bb54b3fa56ce436f1140858a000e4acc69e228c7af5314ee268473bcbf66f9  bl/judge-v4-linux
+bf147194d415d0ab6991b5912c718c772f4bcb285ea027326fc5a108a81e6ce7  w/Abschluss-1.2/judge/judge-v3.pmp
+label=v120 interp=/tmp/pompetzki-acct/l/bin/linux/pompetzki judge=/tmp/pompetzki-acct/w/Abschluss-1.2/judge/judge-v3.pmp strx=w/Abschluss-1.2/tools/strx/strx.pmp
+def|case                        |actual(first line/bytes)                     |rc  |expected                                     |erc |result
+a  |a1-false-registry-only.jdg  |ACCEPT                                       |0   |REJECT                                       |1   |FAIL
+a  |a2-false-registry-thm.jdg   |ACCEPT                                       |0   |REJECT                                       |1   |FAIL
+a  |ctl-canonical-reg0.jdg      |ACCEPT                                       |0   |ACCEPT                                       |0   |PASS
+b  |b1-literal-min.pmp          |line 1: Menschenwerk: a value left the 64-bit|1   |-9223372036854775808                         |0   |FAIL
+b  |b2-computed-min.pmp         |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b3-literal-max.pmp          |9223372036854775807                          |0   |9223372036854775807                          |0   |PASS
+b  |b4-literal-overflow.pmp     |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+b  |b5-literal-underflow.pmp    |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+c  |c1-trim-nul.pmp             |3 97 0 0 32 0 98                             |0   |3 97 0 98 32 0 98                            |0   |FAIL
+c  |c2-pad-nul.pmp              |4 0 0 0 0                                    |0   |4 0 97 46 46                                 |0   |FAIL
+FAILURES=5 of 10
+v120 driver exit=1 (expected 1: defects present)
+label=branch interp=/tmp/pompetzki-acct/pompetzki-repaired-linux judge=/tmp/pompetzki-acct/bl/judge-v4-linux strx=/workspace/acct/repair/libraries/strx/strx.pmp
+def|case                        |actual(first line/bytes)                     |rc  |expected                                     |erc |result
+a  |a1-false-registry-only.jdg  |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |a2-false-registry-thm.jdg   |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |ctl-canonical-reg0.jdg      |ACCEPT                                       |0   |ACCEPT                                       |0   |PASS
+b  |b1-literal-min.pmp          |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b2-computed-min.pmp         |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b3-literal-max.pmp          |9223372036854775807                          |0   |9223372036854775807                          |0   |PASS
+b  |b4-literal-overflow.pmp     |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+b  |b5-literal-underflow.pmp    |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+c  |c1-trim-nul.pmp             |3 97 0 98 32 0 98                            |0   |3 97 0 98 32 0 98                            |0   |PASS
+c  |c2-pad-nul.pmp              |4 0 97 46 46                                 |0   |4 0 97 46 46                                 |0   |PASS
+FAILURES=0 of 10
+label=branch-v4pmp interp=/tmp/pompetzki-acct/pompetzki-repaired-linux judge=/workspace/acct/judge/judge-v4.pmp strx=/workspace/acct/repair/libraries/strx/strx.pmp
+def|case                        |actual(first line/bytes)                     |rc  |expected                                     |erc |result
+a  |a1-false-registry-only.jdg  |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |a2-false-registry-thm.jdg   |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |ctl-canonical-reg0.jdg      |ACCEPT                                       |0   |ACCEPT                                       |0   |PASS
+b  |b1-literal-min.pmp          |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b2-computed-min.pmp         |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b3-literal-max.pmp          |9223372036854775807                          |0   |9223372036854775807                          |0   |PASS
+b  |b4-literal-overflow.pmp     |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+b  |b5-literal-underflow.pmp    |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+c  |c1-trim-nul.pmp             |3 97 0 98 32 0 98                            |0   |3 97 0 98 32 0 98                            |0   |PASS
+c  |c2-pad-nul.pmp              |4 0 97 46 46                                 |0   |4 0 97 46 46                                 |0   |PASS
+FAILURES=0 of 10
+branch overall exit=0
