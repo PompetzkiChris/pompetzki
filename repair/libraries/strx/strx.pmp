@@ -1,0 +1,305 @@
+; strx.pmp: byte-string subroutines for Pompetzki.
+; use "strx.pmp" then gosub the selected label.
+; All lengths and widths are exact machine integers. Inputs carry explicit lengths.
+; SX_PAD_LEFT / SX_PAD_RIGHT: SX_S, SX_S_len, SX_WIDTH, SX_PAD, SX_PAD_len -> SX_T, SX_T_len.
+; Padding cycles through SX_PAD bytes and stops at the requested byte width.
+; A width <= input length or an empty pad returns a copy of the input.
+; SX_SPLIT: SX_S, SX_S_len, SX_SEP, SX_SEP_len -> SX_L, SX_COUNT.
+; SX_L is an array of 16-byte records: pointer at +0, byte length at +8.
+; Split retains empty fields. An empty separator returns one field containing the input.
+; SX_GET: SX_L, SX_INDEX (0 <= index < count) -> SX_T, SX_T_len.
+; SX_JOIN: SX_L, SX_COUNT, SX_SEP, SX_SEP_len -> SX_T, SX_T_len.
+; SX_REPLACE: SX_S, SX_S_len, SX_FROM, SX_FROM_len, SX_TO, SX_TO_len -> SX_T, SX_T_len.
+; Replace consumes literal matches left to right without overlap. Empty FROM returns input.
+; SX_TRIM: SX_S, SX_S_len -> SX_T, SX_T_len; removes only bytes 9..13 and 32 at both ends.
+; Internal names begin sx_. Routines allocate new outputs and preserve input byte blocks.
+; No routine relies on zero termination for matching, copying or field lengths.
+goto SX_LIBRARY_END
+
+label SX_PAD_LEFT
+set sx_pad_left const 1
+goto SX_PAD_BEGIN
+label SX_PAD_RIGHT
+set sx_pad_left const 0
+label SX_PAD_BEGIN
+set sx_pad_need sub SX_WIDTH SX_S_len
+when negative sx_pad_need goto SX_PAD_IDENTITY
+when zero sx_pad_need goto SX_PAD_IDENTITY
+when zero SX_PAD_len goto SX_PAD_IDENTITY
+set sx_pad_size add SX_WIDTH 1
+set sx_pad_buf alloc sx_pad_size
+set sx_pad_dst const sx_pad_buf
+when nonzero sx_pad_left goto SX_PAD_FILL_BEGIN
+set sx_copy_src const SX_S
+set sx_copy_dst const sx_pad_dst
+set sx_copy_n const SX_S_len
+gosub SX_COPY_BYTES
+set sx_pad_dst add sx_pad_dst SX_S_len
+label SX_PAD_FILL_BEGIN
+set sx_pad_i const 0
+set sx_pad_j const 0
+label SX_PAD_FILL
+set sx_pad_d sub sx_pad_i sx_pad_need
+when zero sx_pad_d goto SX_PAD_FILL_DONE
+set sx_pad_a add SX_PAD sx_pad_j
+set sx_pad_byte peek sx_pad_a 1
+set sx_pad_a add sx_pad_dst sx_pad_i
+poke sx_pad_a 1 sx_pad_byte
+set sx_pad_i add sx_pad_i 1
+set sx_pad_j add sx_pad_j 1
+set sx_pad_d sub sx_pad_j SX_PAD_len
+when nonzero sx_pad_d goto SX_PAD_FILL
+set sx_pad_j const 0
+goto SX_PAD_FILL
+label SX_PAD_FILL_DONE
+when zero sx_pad_left goto SX_PAD_FINISH
+set sx_copy_src const SX_S
+set sx_copy_dst add sx_pad_buf sx_pad_need
+set sx_copy_n const SX_S_len
+gosub SX_COPY_BYTES
+label SX_PAD_FINISH
+set sx_pad_a add sx_pad_buf SX_WIDTH
+poke sx_pad_a 1 0
+set sx_pad_buf_len const SX_WIDTH
+text SX_T pad sx_pad_buf SX_WIDTH
+return
+label SX_PAD_IDENTITY
+text SX_T pad SX_S SX_S_len
+return
+
+label SX_SPLIT
+set sx_split_cap add SX_S_len 1
+set sx_split_cap mul sx_split_cap 16
+set SX_L alloc sx_split_cap
+set SX_COUNT const 0
+set sx_split_pos const 0
+when zero SX_SEP_len goto SX_SPLIT_REST
+label SX_SPLIT_LOOP
+set SX_H const SX_S
+set SX_H_len const SX_S_len
+set SX_NEED const SX_SEP
+set SX_NEED_len const SX_SEP_len
+set SX_START const sx_split_pos
+gosub SX_FIND_BYTES
+when negative SX_FOUND goto SX_SPLIT_REST
+set sx_split_n sub SX_FOUND sx_split_pos
+set sx_split_a add SX_S sx_split_pos
+set sx_split_a_len const sx_split_n
+text sx_split_piece pad sx_split_a sx_split_n
+gosub SX_SPLIT_STORE
+set sx_split_pos add SX_FOUND SX_SEP_len
+goto SX_SPLIT_LOOP
+label SX_SPLIT_REST
+set sx_split_n sub SX_S_len sx_split_pos
+set sx_split_a add SX_S sx_split_pos
+set sx_split_a_len const sx_split_n
+text sx_split_piece pad sx_split_a sx_split_n
+gosub SX_SPLIT_STORE
+return
+label SX_SPLIT_STORE
+set sx_split_slot mul SX_COUNT 16
+set sx_split_slot add SX_L sx_split_slot
+poke sx_split_slot 8 sx_split_piece
+set sx_split_slot add sx_split_slot 8
+poke sx_split_slot 8 sx_split_n
+set SX_COUNT add SX_COUNT 1
+return
+
+label SX_GET
+set sx_get_slot mul SX_INDEX 16
+set sx_get_slot add SX_L sx_get_slot
+set sx_get_ptr peek sx_get_slot 8
+set sx_get_slot add sx_get_slot 8
+set sx_get_len peek sx_get_slot 8
+set sx_get_ptr_len const sx_get_len
+text SX_T pad sx_get_ptr sx_get_len
+return
+
+label SX_JOIN
+when negative SX_COUNT goto SX_JOIN_EMPTY
+when zero SX_COUNT goto SX_JOIN_EMPTY
+set sx_join_total const 0
+set sx_join_i const 0
+label SX_JOIN_SIZE_LOOP
+set sx_join_d sub sx_join_i SX_COUNT
+when zero sx_join_d goto SX_JOIN_ALLOC
+set sx_join_slot mul sx_join_i 16
+set sx_join_slot add SX_L sx_join_slot
+set sx_join_slot add sx_join_slot 8
+set sx_join_n peek sx_join_slot 8
+set sx_join_total add sx_join_total sx_join_n
+when zero sx_join_i goto SX_JOIN_SIZE_NEXT
+set sx_join_total add sx_join_total SX_SEP_len
+label SX_JOIN_SIZE_NEXT
+set sx_join_i add sx_join_i 1
+goto SX_JOIN_SIZE_LOOP
+label SX_JOIN_ALLOC
+set sx_join_size add sx_join_total 1
+set sx_join_buf alloc sx_join_size
+set sx_join_dst const sx_join_buf
+set sx_join_i const 0
+label SX_JOIN_COPY_LOOP
+set sx_join_d sub sx_join_i SX_COUNT
+when zero sx_join_d goto SX_JOIN_FINISH
+when zero sx_join_i goto SX_JOIN_FIELD
+set sx_copy_src const SX_SEP
+set sx_copy_dst const sx_join_dst
+set sx_copy_n const SX_SEP_len
+gosub SX_COPY_BYTES
+set sx_join_dst add sx_join_dst SX_SEP_len
+label SX_JOIN_FIELD
+set sx_join_slot mul sx_join_i 16
+set sx_join_slot add SX_L sx_join_slot
+set sx_join_ptr peek sx_join_slot 8
+set sx_join_slot add sx_join_slot 8
+set sx_join_n peek sx_join_slot 8
+set sx_copy_src const sx_join_ptr
+set sx_copy_dst const sx_join_dst
+set sx_copy_n const sx_join_n
+gosub SX_COPY_BYTES
+set sx_join_dst add sx_join_dst sx_join_n
+set sx_join_i add sx_join_i 1
+goto SX_JOIN_COPY_LOOP
+label SX_JOIN_FINISH
+poke sx_join_dst 1 0
+set sx_join_buf_len const sx_join_total
+text SX_T pad sx_join_buf sx_join_total
+return
+label SX_JOIN_EMPTY
+text SX_T ""
+return
+
+label SX_REPLACE
+when zero SX_FROM_len goto SX_REPLACE_IDENTITY
+set sx_replace_factor add SX_TO_len 1
+set sx_replace_size mul SX_S_len sx_replace_factor
+set sx_replace_size add sx_replace_size 1
+set sx_replace_buf alloc sx_replace_size
+set sx_replace_dst const sx_replace_buf
+set sx_replace_pos const 0
+label SX_REPLACE_LOOP
+set SX_H const SX_S
+set SX_H_len const SX_S_len
+set SX_NEED const SX_FROM
+set SX_NEED_len const SX_FROM_len
+set SX_START const sx_replace_pos
+gosub SX_FIND_BYTES
+when negative SX_FOUND goto SX_REPLACE_REST
+set sx_replace_n sub SX_FOUND sx_replace_pos
+set sx_copy_src add SX_S sx_replace_pos
+set sx_copy_dst const sx_replace_dst
+set sx_copy_n const sx_replace_n
+gosub SX_COPY_BYTES
+set sx_replace_dst add sx_replace_dst sx_replace_n
+set sx_copy_src const SX_TO
+set sx_copy_dst const sx_replace_dst
+set sx_copy_n const SX_TO_len
+gosub SX_COPY_BYTES
+set sx_replace_dst add sx_replace_dst SX_TO_len
+set sx_replace_pos add SX_FOUND SX_FROM_len
+goto SX_REPLACE_LOOP
+label SX_REPLACE_REST
+set sx_replace_n sub SX_S_len sx_replace_pos
+set sx_copy_src add SX_S sx_replace_pos
+set sx_copy_dst const sx_replace_dst
+set sx_copy_n const sx_replace_n
+gosub SX_COPY_BYTES
+set sx_replace_dst add sx_replace_dst sx_replace_n
+set sx_replace_total sub sx_replace_dst sx_replace_buf
+poke sx_replace_dst 1 0
+set sx_replace_buf_len const sx_replace_total
+text SX_T pad sx_replace_buf sx_replace_total
+return
+label SX_REPLACE_IDENTITY
+text SX_T pad SX_S SX_S_len
+return
+
+label SX_TRIM
+set sx_trim_begin const 0
+set sx_trim_end const SX_S_len
+label SX_TRIM_LEFT
+set sx_trim_d sub sx_trim_begin sx_trim_end
+when zero sx_trim_d goto SX_TRIM_FINISH
+set sx_trim_a add SX_S sx_trim_begin
+set sx_ws_byte peek sx_trim_a 1
+gosub SX_IS_WHITESPACE
+when zero sx_ws_yes goto SX_TRIM_RIGHT
+set sx_trim_begin add sx_trim_begin 1
+goto SX_TRIM_LEFT
+label SX_TRIM_RIGHT
+set sx_trim_d sub sx_trim_begin sx_trim_end
+when zero sx_trim_d goto SX_TRIM_FINISH
+set sx_trim_a add SX_S sx_trim_end
+set sx_trim_a sub sx_trim_a 1
+set sx_ws_byte peek sx_trim_a 1
+gosub SX_IS_WHITESPACE
+when zero sx_ws_yes goto SX_TRIM_FINISH
+set sx_trim_end sub sx_trim_end 1
+goto SX_TRIM_RIGHT
+label SX_TRIM_FINISH
+set sx_trim_n sub sx_trim_end sx_trim_begin
+set sx_trim_a add SX_S sx_trim_begin
+set sx_trim_a_len const sx_trim_n
+text SX_T pad sx_trim_a sx_trim_n
+return
+label SX_IS_WHITESPACE
+set sx_ws_yes const 0
+set sx_ws_d sub sx_ws_byte 32
+when zero sx_ws_d goto SX_WHITESPACE_YES
+set sx_ws_d sub sx_ws_byte 9
+when negative sx_ws_d goto SX_WHITESPACE_DONE
+set sx_ws_d sub sx_ws_byte 14
+when negative sx_ws_d goto SX_WHITESPACE_YES
+goto SX_WHITESPACE_DONE
+label SX_WHITESPACE_YES
+set sx_ws_yes const 1
+label SX_WHITESPACE_DONE
+return
+
+; SX_FIND_BYTES: bounded literal search; SX_FOUND is an index or -1.
+label SX_FIND_BYTES
+set SX_FOUND const -1
+set sx_find_limit sub SX_H_len SX_NEED_len
+set sx_find_i const SX_START
+label SX_FIND_POSITION
+set sx_find_d sub sx_find_i sx_find_limit
+when negative sx_find_d goto SX_FIND_COMPARE_BEGIN
+when zero sx_find_d goto SX_FIND_COMPARE_BEGIN
+return
+label SX_FIND_COMPARE_BEGIN
+set sx_find_j const 0
+label SX_FIND_COMPARE
+set sx_find_d sub sx_find_j SX_NEED_len
+when zero sx_find_d goto SX_FIND_SUCCESS
+set sx_find_a add SX_H sx_find_i
+set sx_find_a add sx_find_a sx_find_j
+set sx_find_b add SX_NEED sx_find_j
+set sx_find_x peek sx_find_a 1
+set sx_find_y peek sx_find_b 1
+set sx_find_d sub sx_find_x sx_find_y
+when nonzero sx_find_d goto SX_FIND_NEXT
+set sx_find_j add sx_find_j 1
+goto SX_FIND_COMPARE
+label SX_FIND_NEXT
+set sx_find_i add sx_find_i 1
+goto SX_FIND_POSITION
+label SX_FIND_SUCCESS
+set SX_FOUND const sx_find_i
+return
+
+; SX_COPY_BYTES uses sx_copy_src, sx_copy_dst, sx_copy_n.
+label SX_COPY_BYTES
+set sx_copy_i const 0
+label SX_COPY_LOOP
+set sx_copy_d sub sx_copy_i sx_copy_n
+when zero sx_copy_d goto SX_COPY_DONE
+set sx_copy_a add sx_copy_src sx_copy_i
+set sx_copy_b add sx_copy_dst sx_copy_i
+set sx_copy_byte peek sx_copy_a 1
+poke sx_copy_b 1 sx_copy_byte
+set sx_copy_i add sx_copy_i 1
+goto SX_COPY_LOOP
+label SX_COPY_DONE
+return
+
+label SX_LIBRARY_END

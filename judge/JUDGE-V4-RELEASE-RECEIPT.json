@@ -1,0 +1,70 @@
+{
+  "source_pmp": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+  "source_pmp_sha256": "c0698f6c00310e4cf95147d4ddfbfab0f8c06d00aa8f9ca1da8482123c073e33",
+  "source_racket": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+  "registry_module": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-auth-v4.rkt",
+  "windows_native": {
+    "sha256": "0ef8485292ff2398fad711b35303d8394a3188f68b20ddac7b7e8fd5bb9a3bad",
+    "path": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\judge-v4-windows.exe"
+  },
+  "linux_native": {
+    "sha256": "182cd46bd9486e99b27e39f80b753f80413f8b88653991b087620e3ae3ff07c5",
+    "path": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\judge-v4-linux"
+  },
+  "source_suite": {
+    "passed": 29,
+    "receipt": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\results.json",
+    "runs": 29,
+    "timeouts": 0,
+    "failed": 0,
+    "cases": 15
+  },
+  "native_suite": {
+    "math_reject_per_platform": 39,
+    "timeouts": 0,
+    "replay_steps": 139194,
+    "registry_reject_per_platform": 9,
+    "receipt": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\native-test-result.json",
+    "math_accept_per_platform": 78,
+    "unexpected": 0,
+    "paired_outputs_identical": 132,
+    "replay_theorems": 4551,
+    "total_runs": 264,
+    "registry_accept_per_platform": 5,
+    "cases_per_platform": 132
+  },
+  "api_suite": {
+    "receipt": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-api-v4-results.json",
+    "passed": 3538,
+    "checks": 3538,
+    "failed": 0
+  },
+  "proof": {
+    "unsafe_fixpoints": "<none>",
+    "assumed_positivity": "<none>",
+    "exact_prefix_equality_is_premise": true,
+    "prefix_reg_ok_universal": true,
+    "axioms": "<none>",
+    "canonical_kernel_exit": 0,
+    "canonical_receipt": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\rocq\\canonical-prefix-run-20261011-211231-299\\canonical-prefix-proof-result.json",
+    "canonical_data_eq_REG0": true,
+    "type_in_type": "<none>",
+    "generic_kernel_exit": 0
+  },
+  "compiler": {
+    "runtime_profile": "single fixed 8-byte variable cells and static literals; no r60 triple-copy/string-integrity protection",
+    "sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+    "linux_runtime": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\linux-runtime.asm",
+    "provenance": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\native-provenance.json",
+    "source": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\compiler\\pmpc-original.rkt",
+    "failed_r60_candidate_preserved": true
+  },
+  "rebuild": {
+    "whole_file_hashes_differ_due_to_filename_symbols_and_PE_timestamp": true,
+    "allocated_PE_ELF_sections_and_addresses_match": true,
+    "assembly_hashes_match": true,
+    "receipt": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\reproduce-build\\build-result.json"
+  },
+  "compiled_source_and_executable_Gallina_correspondence": "open",
+  "new_test_processes_running": false
+}

@@ -1,0 +1,1390 @@
+use "lib/strx.pmp"
+trace off
+text TEST_OUT ""
+text TEST_COLON ":"
+text TEST_SEMICOLON ";"
+text TEST_LF "\n"
+
+; case 1: pad-left
+blob TEST_C1_S_B [ 97 ]
+set TEST_C1_S_B_len const 1
+text SX_S pad TEST_C1_S_B 1
+set SX_S_len const 1
+blob TEST_C1_PAD_B [ 48 ]
+set TEST_C1_PAD_B_len const 1
+text SX_PAD pad TEST_C1_PAD_B 1
+set SX_PAD_len const 1
+set SX_WIDTH const 3
+gosub SX_PAD_LEFT
+text TEST_PREFIX "1|pad-left|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C1_E0_B [ 48 48 97 ]
+set TEST_C1_E0_B_len const 3
+text TEST_EXPECT pad TEST_C1_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 2: pad-right
+blob TEST_C2_S_B [ 97 ]
+set TEST_C2_S_B_len const 1
+text SX_S pad TEST_C2_S_B 1
+set SX_S_len const 1
+blob TEST_C2_PAD_B [ 120 121 ]
+set TEST_C2_PAD_B_len const 2
+text SX_PAD pad TEST_C2_PAD_B 2
+set SX_PAD_len const 2
+set SX_WIDTH const 4
+gosub SX_PAD_RIGHT
+text TEST_PREFIX "2|pad-right|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C2_E0_B [ 97 120 121 120 ]
+set TEST_C2_E0_B_len const 4
+text TEST_EXPECT pad TEST_C2_E0_B 4
+set TEST_EXPECT_len const 4
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 3: pad-left
+blob TEST_C3_S_B [ 97 98 99 ]
+set TEST_C3_S_B_len const 3
+text SX_S pad TEST_C3_S_B 3
+set SX_S_len const 3
+blob TEST_C3_PAD_B [ 120 ]
+set TEST_C3_PAD_B_len const 1
+text SX_PAD pad TEST_C3_PAD_B 1
+set SX_PAD_len const 1
+set SX_WIDTH const 3
+gosub SX_PAD_LEFT
+text TEST_PREFIX "3|pad-left|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C3_E0_B [ 97 98 99 ]
+set TEST_C3_E0_B_len const 3
+text TEST_EXPECT pad TEST_C3_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 4: pad-right
+blob TEST_C4_S_B [ 97 98 99 ]
+set TEST_C4_S_B_len const 3
+text SX_S pad TEST_C4_S_B 3
+set SX_S_len const 3
+blob TEST_C4_PAD_B [ 120 ]
+set TEST_C4_PAD_B_len const 1
+text SX_PAD pad TEST_C4_PAD_B 1
+set SX_PAD_len const 1
+set SX_WIDTH const -1
+gosub SX_PAD_RIGHT
+text TEST_PREFIX "4|pad-right|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C4_E0_B [ 97 98 99 ]
+set TEST_C4_E0_B_len const 3
+text TEST_EXPECT pad TEST_C4_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 5: pad-left
+blob TEST_C5_S_B [ 0 ]
+set TEST_C5_S_B_len const 0
+text SX_S pad TEST_C5_S_B 0
+set SX_S_len const 0
+blob TEST_C5_PAD_B [ 97 98 ]
+set TEST_C5_PAD_B_len const 2
+text SX_PAD pad TEST_C5_PAD_B 2
+set SX_PAD_len const 2
+set SX_WIDTH const 5
+gosub SX_PAD_LEFT
+text TEST_PREFIX "5|pad-left|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C5_E0_B [ 97 98 97 98 97 ]
+set TEST_C5_E0_B_len const 5
+text TEST_EXPECT pad TEST_C5_E0_B 5
+set TEST_EXPECT_len const 5
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 6: pad-right
+blob TEST_C6_S_B [ 0 ]
+set TEST_C6_S_B_len const 0
+text SX_S pad TEST_C6_S_B 0
+set SX_S_len const 0
+blob TEST_C6_PAD_B [ 120 121 122 ]
+set TEST_C6_PAD_B_len const 3
+text SX_PAD pad TEST_C6_PAD_B 3
+set SX_PAD_len const 3
+set SX_WIDTH const 4
+gosub SX_PAD_RIGHT
+text TEST_PREFIX "6|pad-right|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C6_E0_B [ 120 121 122 120 ]
+set TEST_C6_E0_B_len const 4
+text TEST_EXPECT pad TEST_C6_E0_B 4
+set TEST_EXPECT_len const 4
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 7: pad-left
+blob TEST_C7_S_B [ 97 ]
+set TEST_C7_S_B_len const 1
+text SX_S pad TEST_C7_S_B 1
+set SX_S_len const 1
+blob TEST_C7_PAD_B [ 0 ]
+set TEST_C7_PAD_B_len const 0
+text SX_PAD pad TEST_C7_PAD_B 0
+set SX_PAD_len const 0
+set SX_WIDTH const 5
+gosub SX_PAD_LEFT
+text TEST_PREFIX "7|pad-left|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C7_E0_B [ 97 ]
+set TEST_C7_E0_B_len const 1
+text TEST_EXPECT pad TEST_C7_E0_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 8: pad-right
+blob TEST_C8_S_B [ 97 ]
+set TEST_C8_S_B_len const 1
+text SX_S pad TEST_C8_S_B 1
+set SX_S_len const 1
+blob TEST_C8_PAD_B [ 0 ]
+set TEST_C8_PAD_B_len const 0
+text SX_PAD pad TEST_C8_PAD_B 0
+set SX_PAD_len const 0
+set SX_WIDTH const 5
+gosub SX_PAD_RIGHT
+text TEST_PREFIX "8|pad-right|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C8_E0_B [ 97 ]
+set TEST_C8_E0_B_len const 1
+text TEST_EXPECT pad TEST_C8_E0_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 9: pad-left
+blob TEST_C9_S_B [ 0 98 ]
+set TEST_C9_S_B_len const 2
+text SX_S pad TEST_C9_S_B 2
+set SX_S_len const 2
+blob TEST_C9_PAD_B [ 88 89 ]
+set TEST_C9_PAD_B_len const 2
+text SX_PAD pad TEST_C9_PAD_B 2
+set SX_PAD_len const 2
+set SX_WIDTH const 5
+gosub SX_PAD_LEFT
+text TEST_PREFIX "9|pad-left|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C9_E0_B [ 88 89 88 0 98 ]
+set TEST_C9_E0_B_len const 5
+text TEST_EXPECT pad TEST_C9_E0_B 5
+set TEST_EXPECT_len const 5
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 10: pad-right
+blob TEST_C10_S_B [ 206 187 ]
+set TEST_C10_S_B_len const 2
+text SX_S pad TEST_C10_S_B 2
+set SX_S_len const 2
+blob TEST_C10_PAD_B [ 195 169 ]
+set TEST_C10_PAD_B_len const 2
+text SX_PAD pad TEST_C10_PAD_B 2
+set SX_PAD_len const 2
+set SX_WIDTH const 5
+gosub SX_PAD_RIGHT
+text TEST_PREFIX "10|pad-right|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C10_E0_B [ 206 187 195 169 195 ]
+set TEST_C10_E0_B_len const 5
+text TEST_EXPECT pad TEST_C10_E0_B 5
+set TEST_EXPECT_len const 5
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 11: split
+blob TEST_C11_S_B [ 97 44 98 44 99 ]
+set TEST_C11_S_B_len const 5
+text SX_S pad TEST_C11_S_B 5
+set SX_S_len const 5
+blob TEST_C11_SEP_B [ 44 ]
+set TEST_C11_SEP_B_len const 1
+text SX_SEP pad TEST_C11_SEP_B 1
+set SX_SEP_len const 1
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 3
+check zero TEST_DIFF
+text TEST_PREFIX "11|split|3|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C11_E0_B [ 97 ]
+set TEST_C11_E0_B_len const 1
+text TEST_EXPECT pad TEST_C11_E0_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 1
+gosub SX_GET
+blob TEST_C11_E1_B [ 98 ]
+set TEST_C11_E1_B_len const 1
+text TEST_EXPECT pad TEST_C11_E1_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 2
+gosub SX_GET
+blob TEST_C11_E2_B [ 99 ]
+set TEST_C11_E2_B_len const 1
+text TEST_EXPECT pad TEST_C11_E2_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 12: split
+blob TEST_C12_S_B [ 44 97 44 ]
+set TEST_C12_S_B_len const 3
+text SX_S pad TEST_C12_S_B 3
+set SX_S_len const 3
+blob TEST_C12_SEP_B [ 44 ]
+set TEST_C12_SEP_B_len const 1
+text SX_SEP pad TEST_C12_SEP_B 1
+set SX_SEP_len const 1
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 3
+check zero TEST_DIFF
+text TEST_PREFIX "12|split|3|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C12_E0_B [ 0 ]
+set TEST_C12_E0_B_len const 0
+text TEST_EXPECT pad TEST_C12_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 1
+gosub SX_GET
+blob TEST_C12_E1_B [ 97 ]
+set TEST_C12_E1_B_len const 1
+text TEST_EXPECT pad TEST_C12_E1_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 2
+gosub SX_GET
+blob TEST_C12_E2_B [ 0 ]
+set TEST_C12_E2_B_len const 0
+text TEST_EXPECT pad TEST_C12_E2_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 13: split
+blob TEST_C13_S_B [ 97 97 97 ]
+set TEST_C13_S_B_len const 3
+text SX_S pad TEST_C13_S_B 3
+set SX_S_len const 3
+blob TEST_C13_SEP_B [ 97 97 ]
+set TEST_C13_SEP_B_len const 2
+text SX_SEP pad TEST_C13_SEP_B 2
+set SX_SEP_len const 2
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 2
+check zero TEST_DIFF
+text TEST_PREFIX "13|split|2|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C13_E0_B [ 0 ]
+set TEST_C13_E0_B_len const 0
+text TEST_EXPECT pad TEST_C13_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 1
+gosub SX_GET
+blob TEST_C13_E1_B [ 97 ]
+set TEST_C13_E1_B_len const 1
+text TEST_EXPECT pad TEST_C13_E1_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 14: split
+blob TEST_C14_S_B [ 0 ]
+set TEST_C14_S_B_len const 0
+text SX_S pad TEST_C14_S_B 0
+set SX_S_len const 0
+blob TEST_C14_SEP_B [ 44 ]
+set TEST_C14_SEP_B_len const 1
+text SX_SEP pad TEST_C14_SEP_B 1
+set SX_SEP_len const 1
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 1
+check zero TEST_DIFF
+text TEST_PREFIX "14|split|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C14_E0_B [ 0 ]
+set TEST_C14_E0_B_len const 0
+text TEST_EXPECT pad TEST_C14_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 15: split
+blob TEST_C15_S_B [ 97 98 99 ]
+set TEST_C15_S_B_len const 3
+text SX_S pad TEST_C15_S_B 3
+set SX_S_len const 3
+blob TEST_C15_SEP_B [ 0 ]
+set TEST_C15_SEP_B_len const 0
+text SX_SEP pad TEST_C15_SEP_B 0
+set SX_SEP_len const 0
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 1
+check zero TEST_DIFF
+text TEST_PREFIX "15|split|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C15_E0_B [ 97 98 99 ]
+set TEST_C15_E0_B_len const 3
+text TEST_EXPECT pad TEST_C15_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 16: split
+blob TEST_C16_S_B [ 97 98 99 ]
+set TEST_C16_S_B_len const 3
+text SX_S pad TEST_C16_S_B 3
+set SX_S_len const 3
+blob TEST_C16_SEP_B [ 120 121 122 ]
+set TEST_C16_SEP_B_len const 3
+text SX_SEP pad TEST_C16_SEP_B 3
+set SX_SEP_len const 3
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 1
+check zero TEST_DIFF
+text TEST_PREFIX "16|split|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C16_E0_B [ 97 98 99 ]
+set TEST_C16_E0_B_len const 3
+text TEST_EXPECT pad TEST_C16_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 17: split
+blob TEST_C17_S_B [ 97 45 45 98 45 45 45 45 99 45 45 ]
+set TEST_C17_S_B_len const 11
+text SX_S pad TEST_C17_S_B 11
+set SX_S_len const 11
+blob TEST_C17_SEP_B [ 45 45 ]
+set TEST_C17_SEP_B_len const 2
+text SX_SEP pad TEST_C17_SEP_B 2
+set SX_SEP_len const 2
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 5
+check zero TEST_DIFF
+text TEST_PREFIX "17|split|5|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C17_E0_B [ 97 ]
+set TEST_C17_E0_B_len const 1
+text TEST_EXPECT pad TEST_C17_E0_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 1
+gosub SX_GET
+blob TEST_C17_E1_B [ 98 ]
+set TEST_C17_E1_B_len const 1
+text TEST_EXPECT pad TEST_C17_E1_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 2
+gosub SX_GET
+blob TEST_C17_E2_B [ 0 ]
+set TEST_C17_E2_B_len const 0
+text TEST_EXPECT pad TEST_C17_E2_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 3
+gosub SX_GET
+blob TEST_C17_E3_B [ 99 ]
+set TEST_C17_E3_B_len const 1
+text TEST_EXPECT pad TEST_C17_E3_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 4
+gosub SX_GET
+blob TEST_C17_E4_B [ 0 ]
+set TEST_C17_E4_B_len const 0
+text TEST_EXPECT pad TEST_C17_E4_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 18: split
+blob TEST_C18_S_B [ 0 97 0 0 ]
+set TEST_C18_S_B_len const 4
+text SX_S pad TEST_C18_S_B 4
+set SX_S_len const 4
+blob TEST_C18_SEP_B [ 0 ]
+set TEST_C18_SEP_B_len const 1
+text SX_SEP pad TEST_C18_SEP_B 1
+set SX_SEP_len const 1
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 4
+check zero TEST_DIFF
+text TEST_PREFIX "18|split|4|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C18_E0_B [ 0 ]
+set TEST_C18_E0_B_len const 0
+text TEST_EXPECT pad TEST_C18_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 1
+gosub SX_GET
+blob TEST_C18_E1_B [ 97 ]
+set TEST_C18_E1_B_len const 1
+text TEST_EXPECT pad TEST_C18_E1_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 2
+gosub SX_GET
+blob TEST_C18_E2_B [ 0 ]
+set TEST_C18_E2_B_len const 0
+text TEST_EXPECT pad TEST_C18_E2_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 3
+gosub SX_GET
+blob TEST_C18_E3_B [ 0 ]
+set TEST_C18_E3_B_len const 0
+text TEST_EXPECT pad TEST_C18_E3_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 19: split
+blob TEST_C19_S_B [ 206 187 124 195 169 124 ]
+set TEST_C19_S_B_len const 6
+text SX_S pad TEST_C19_S_B 6
+set SX_S_len const 6
+blob TEST_C19_SEP_B [ 124 ]
+set TEST_C19_SEP_B_len const 1
+text SX_SEP pad TEST_C19_SEP_B 1
+set SX_SEP_len const 1
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 3
+check zero TEST_DIFF
+text TEST_PREFIX "19|split|3|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C19_E0_B [ 206 187 ]
+set TEST_C19_E0_B_len const 2
+text TEST_EXPECT pad TEST_C19_E0_B 2
+set TEST_EXPECT_len const 2
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 1
+gosub SX_GET
+blob TEST_C19_E1_B [ 195 169 ]
+set TEST_C19_E1_B_len const 2
+text TEST_EXPECT pad TEST_C19_E1_B 2
+set TEST_EXPECT_len const 2
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 2
+gosub SX_GET
+blob TEST_C19_E2_B [ 0 ]
+set TEST_C19_E2_B_len const 0
+text TEST_EXPECT pad TEST_C19_E2_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 20: split
+blob TEST_C20_S_B [ 97 98 97 98 97 98 97 ]
+set TEST_C20_S_B_len const 7
+text SX_S pad TEST_C20_S_B 7
+set SX_S_len const 7
+blob TEST_C20_SEP_B [ 97 98 97 ]
+set TEST_C20_SEP_B_len const 3
+text SX_SEP pad TEST_C20_SEP_B 3
+set SX_SEP_len const 3
+gosub SX_SPLIT
+set TEST_DIFF sub SX_COUNT 3
+check zero TEST_DIFF
+text TEST_PREFIX "20|split|3|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+set SX_INDEX const 0
+gosub SX_GET
+blob TEST_C20_E0_B [ 0 ]
+set TEST_C20_E0_B_len const 0
+text TEST_EXPECT pad TEST_C20_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 1
+gosub SX_GET
+blob TEST_C20_E1_B [ 98 ]
+set TEST_C20_E1_B_len const 1
+text TEST_EXPECT pad TEST_C20_E1_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_SEMICOLON
+set SX_INDEX const 2
+gosub SX_GET
+blob TEST_C20_E2_B [ 0 ]
+set TEST_C20_E2_B_len const 0
+text TEST_EXPECT pad TEST_C20_E2_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 21: join
+blob TEST_C21_SEP_B [ 44 ]
+set TEST_C21_SEP_B_len const 1
+text SX_SEP pad TEST_C21_SEP_B 1
+set SX_SEP_len const 1
+set SX_COUNT const 0
+set SX_L alloc 16
+gosub SX_JOIN
+text TEST_PREFIX "21|join|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C21_E0_B [ 0 ]
+set TEST_C21_E0_B_len const 0
+text TEST_EXPECT pad TEST_C21_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 22: join
+blob TEST_C22_SEP_B [ 44 ]
+set TEST_C22_SEP_B_len const 1
+text SX_SEP pad TEST_C22_SEP_B 1
+set SX_SEP_len const 1
+set SX_COUNT const 1
+set SX_L alloc 16
+blob TEST_C22_F0_B [ 97 ]
+set TEST_C22_F0_B_len const 1
+text TEST_C22_F0 pad TEST_C22_F0_B 1
+set TEST_C22_F0_len const 1
+set TEST_RECORD add SX_L 0
+poke TEST_RECORD 8 TEST_C22_F0
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 1
+gosub SX_JOIN
+text TEST_PREFIX "22|join|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C22_E0_B [ 97 ]
+set TEST_C22_E0_B_len const 1
+text TEST_EXPECT pad TEST_C22_E0_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 23: join
+blob TEST_C23_SEP_B [ 44 ]
+set TEST_C23_SEP_B_len const 1
+text SX_SEP pad TEST_C23_SEP_B 1
+set SX_SEP_len const 1
+set SX_COUNT const 3
+set SX_L alloc 48
+blob TEST_C23_F0_B [ 97 ]
+set TEST_C23_F0_B_len const 1
+text TEST_C23_F0 pad TEST_C23_F0_B 1
+set TEST_C23_F0_len const 1
+set TEST_RECORD add SX_L 0
+poke TEST_RECORD 8 TEST_C23_F0
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 1
+blob TEST_C23_F1_B [ 98 ]
+set TEST_C23_F1_B_len const 1
+text TEST_C23_F1 pad TEST_C23_F1_B 1
+set TEST_C23_F1_len const 1
+set TEST_RECORD add SX_L 16
+poke TEST_RECORD 8 TEST_C23_F1
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 1
+blob TEST_C23_F2_B [ 99 ]
+set TEST_C23_F2_B_len const 1
+text TEST_C23_F2 pad TEST_C23_F2_B 1
+set TEST_C23_F2_len const 1
+set TEST_RECORD add SX_L 32
+poke TEST_RECORD 8 TEST_C23_F2
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 1
+gosub SX_JOIN
+text TEST_PREFIX "23|join|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C23_E0_B [ 97 44 98 44 99 ]
+set TEST_C23_E0_B_len const 5
+text TEST_EXPECT pad TEST_C23_E0_B 5
+set TEST_EXPECT_len const 5
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 24: join
+blob TEST_C24_SEP_B [ 124 ]
+set TEST_C24_SEP_B_len const 1
+text SX_SEP pad TEST_C24_SEP_B 1
+set SX_SEP_len const 1
+set SX_COUNT const 3
+set SX_L alloc 48
+blob TEST_C24_F0_B [ 0 ]
+set TEST_C24_F0_B_len const 0
+text TEST_C24_F0 pad TEST_C24_F0_B 0
+set TEST_C24_F0_len const 0
+set TEST_RECORD add SX_L 0
+poke TEST_RECORD 8 TEST_C24_F0
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 0
+blob TEST_C24_F1_B [ 97 ]
+set TEST_C24_F1_B_len const 1
+text TEST_C24_F1 pad TEST_C24_F1_B 1
+set TEST_C24_F1_len const 1
+set TEST_RECORD add SX_L 16
+poke TEST_RECORD 8 TEST_C24_F1
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 1
+blob TEST_C24_F2_B [ 0 ]
+set TEST_C24_F2_B_len const 0
+text TEST_C24_F2 pad TEST_C24_F2_B 0
+set TEST_C24_F2_len const 0
+set TEST_RECORD add SX_L 32
+poke TEST_RECORD 8 TEST_C24_F2
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 0
+gosub SX_JOIN
+text TEST_PREFIX "24|join|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C24_E0_B [ 124 97 124 ]
+set TEST_C24_E0_B_len const 3
+text TEST_EXPECT pad TEST_C24_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 25: join
+blob TEST_C25_SEP_B [ 0 ]
+set TEST_C25_SEP_B_len const 0
+text SX_SEP pad TEST_C25_SEP_B 0
+set SX_SEP_len const 0
+set SX_COUNT const 2
+set SX_L alloc 32
+blob TEST_C25_F0_B [ 97 ]
+set TEST_C25_F0_B_len const 1
+text TEST_C25_F0 pad TEST_C25_F0_B 1
+set TEST_C25_F0_len const 1
+set TEST_RECORD add SX_L 0
+poke TEST_RECORD 8 TEST_C25_F0
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 1
+blob TEST_C25_F1_B [ 98 ]
+set TEST_C25_F1_B_len const 1
+text TEST_C25_F1 pad TEST_C25_F1_B 1
+set TEST_C25_F1_len const 1
+set TEST_RECORD add SX_L 16
+poke TEST_RECORD 8 TEST_C25_F1
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 1
+gosub SX_JOIN
+text TEST_PREFIX "25|join|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C25_E0_B [ 97 98 ]
+set TEST_C25_E0_B_len const 2
+text TEST_EXPECT pad TEST_C25_E0_B 2
+set TEST_EXPECT_len const 2
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 26: join
+blob TEST_C26_SEP_B [ 45 45 ]
+set TEST_C26_SEP_B_len const 2
+text SX_SEP pad TEST_C26_SEP_B 2
+set SX_SEP_len const 2
+set SX_COUNT const 3
+set SX_L alloc 48
+blob TEST_C26_F0_B [ 0 ]
+set TEST_C26_F0_B_len const 0
+text TEST_C26_F0 pad TEST_C26_F0_B 0
+set TEST_C26_F0_len const 0
+set TEST_RECORD add SX_L 0
+poke TEST_RECORD 8 TEST_C26_F0
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 0
+blob TEST_C26_F1_B [ 0 ]
+set TEST_C26_F1_B_len const 0
+text TEST_C26_F1 pad TEST_C26_F1_B 0
+set TEST_C26_F1_len const 0
+set TEST_RECORD add SX_L 16
+poke TEST_RECORD 8 TEST_C26_F1
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 0
+blob TEST_C26_F2_B [ 0 ]
+set TEST_C26_F2_B_len const 0
+text TEST_C26_F2 pad TEST_C26_F2_B 0
+set TEST_C26_F2_len const 0
+set TEST_RECORD add SX_L 32
+poke TEST_RECORD 8 TEST_C26_F2
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 0
+gosub SX_JOIN
+text TEST_PREFIX "26|join|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C26_E0_B [ 45 45 45 45 ]
+set TEST_C26_E0_B_len const 4
+text TEST_EXPECT pad TEST_C26_E0_B 4
+set TEST_EXPECT_len const 4
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 27: join
+blob TEST_C27_SEP_B [ 0 ]
+set TEST_C27_SEP_B_len const 1
+text SX_SEP pad TEST_C27_SEP_B 1
+set SX_SEP_len const 1
+set SX_COUNT const 2
+set SX_L alloc 32
+blob TEST_C27_F0_B [ 0 ]
+set TEST_C27_F0_B_len const 1
+text TEST_C27_F0 pad TEST_C27_F0_B 1
+set TEST_C27_F0_len const 1
+set TEST_RECORD add SX_L 0
+poke TEST_RECORD 8 TEST_C27_F0
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 1
+blob TEST_C27_F1_B [ 97 0 ]
+set TEST_C27_F1_B_len const 2
+text TEST_C27_F1 pad TEST_C27_F1_B 2
+set TEST_C27_F1_len const 2
+set TEST_RECORD add SX_L 16
+poke TEST_RECORD 8 TEST_C27_F1
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 2
+gosub SX_JOIN
+text TEST_PREFIX "27|join|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C27_E0_B [ 0 0 97 0 ]
+set TEST_C27_E0_B_len const 4
+text TEST_EXPECT pad TEST_C27_E0_B 4
+set TEST_EXPECT_len const 4
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 28: join
+blob TEST_C28_SEP_B [ 47 ]
+set TEST_C28_SEP_B_len const 1
+text SX_SEP pad TEST_C28_SEP_B 1
+set SX_SEP_len const 1
+set SX_COUNT const 2
+set SX_L alloc 32
+blob TEST_C28_F0_B [ 206 187 ]
+set TEST_C28_F0_B_len const 2
+text TEST_C28_F0 pad TEST_C28_F0_B 2
+set TEST_C28_F0_len const 2
+set TEST_RECORD add SX_L 0
+poke TEST_RECORD 8 TEST_C28_F0
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 2
+blob TEST_C28_F1_B [ 195 169 ]
+set TEST_C28_F1_B_len const 2
+text TEST_C28_F1 pad TEST_C28_F1_B 2
+set TEST_C28_F1_len const 2
+set TEST_RECORD add SX_L 16
+poke TEST_RECORD 8 TEST_C28_F1
+set TEST_RECORD add TEST_RECORD 8
+poke TEST_RECORD 8 2
+gosub SX_JOIN
+text TEST_PREFIX "28|join|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C28_E0_B [ 206 187 47 195 169 ]
+set TEST_C28_E0_B_len const 5
+text TEST_EXPECT pad TEST_C28_E0_B 5
+set TEST_EXPECT_len const 5
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 29: replace
+blob TEST_C29_S_B [ 98 97 110 97 110 97 ]
+set TEST_C29_S_B_len const 6
+text SX_S pad TEST_C29_S_B 6
+set SX_S_len const 6
+blob TEST_C29_FROM_B [ 97 110 97 ]
+set TEST_C29_FROM_B_len const 3
+text SX_FROM pad TEST_C29_FROM_B 3
+set SX_FROM_len const 3
+blob TEST_C29_TO_B [ 88 ]
+set TEST_C29_TO_B_len const 1
+text SX_TO pad TEST_C29_TO_B 1
+set SX_TO_len const 1
+gosub SX_REPLACE
+text TEST_PREFIX "29|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C29_E0_B [ 98 88 110 97 ]
+set TEST_C29_E0_B_len const 4
+text TEST_EXPECT pad TEST_C29_E0_B 4
+set TEST_EXPECT_len const 4
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 30: replace
+blob TEST_C30_S_B [ 97 97 97 97 ]
+set TEST_C30_S_B_len const 4
+text SX_S pad TEST_C30_S_B 4
+set SX_S_len const 4
+blob TEST_C30_FROM_B [ 97 97 ]
+set TEST_C30_FROM_B_len const 2
+text SX_FROM pad TEST_C30_FROM_B 2
+set SX_FROM_len const 2
+blob TEST_C30_TO_B [ 66 ]
+set TEST_C30_TO_B_len const 1
+text SX_TO pad TEST_C30_TO_B 1
+set SX_TO_len const 1
+gosub SX_REPLACE
+text TEST_PREFIX "30|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C30_E0_B [ 66 66 ]
+set TEST_C30_E0_B_len const 2
+text TEST_EXPECT pad TEST_C30_E0_B 2
+set TEST_EXPECT_len const 2
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 31: replace
+blob TEST_C31_S_B [ 97 97 97 ]
+set TEST_C31_S_B_len const 3
+text SX_S pad TEST_C31_S_B 3
+set SX_S_len const 3
+blob TEST_C31_FROM_B [ 97 97 ]
+set TEST_C31_FROM_B_len const 2
+text SX_FROM pad TEST_C31_FROM_B 2
+set SX_FROM_len const 2
+blob TEST_C31_TO_B [ 66 ]
+set TEST_C31_TO_B_len const 1
+text SX_TO pad TEST_C31_TO_B 1
+set SX_TO_len const 1
+gosub SX_REPLACE
+text TEST_PREFIX "31|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C31_E0_B [ 66 97 ]
+set TEST_C31_E0_B_len const 2
+text TEST_EXPECT pad TEST_C31_E0_B 2
+set TEST_EXPECT_len const 2
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 32: replace
+blob TEST_C32_S_B [ 97 98 99 ]
+set TEST_C32_S_B_len const 3
+text SX_S pad TEST_C32_S_B 3
+set SX_S_len const 3
+blob TEST_C32_FROM_B [ 0 ]
+set TEST_C32_FROM_B_len const 0
+text SX_FROM pad TEST_C32_FROM_B 0
+set SX_FROM_len const 0
+blob TEST_C32_TO_B [ 88 ]
+set TEST_C32_TO_B_len const 1
+text SX_TO pad TEST_C32_TO_B 1
+set SX_TO_len const 1
+gosub SX_REPLACE
+text TEST_PREFIX "32|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C32_E0_B [ 97 98 99 ]
+set TEST_C32_E0_B_len const 3
+text TEST_EXPECT pad TEST_C32_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 33: replace
+blob TEST_C33_S_B [ 0 ]
+set TEST_C33_S_B_len const 0
+text SX_S pad TEST_C33_S_B 0
+set SX_S_len const 0
+blob TEST_C33_FROM_B [ 97 ]
+set TEST_C33_FROM_B_len const 1
+text SX_FROM pad TEST_C33_FROM_B 1
+set SX_FROM_len const 1
+blob TEST_C33_TO_B [ 88 ]
+set TEST_C33_TO_B_len const 1
+text SX_TO pad TEST_C33_TO_B 1
+set SX_TO_len const 1
+gosub SX_REPLACE
+text TEST_PREFIX "33|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C33_E0_B [ 0 ]
+set TEST_C33_E0_B_len const 0
+text TEST_EXPECT pad TEST_C33_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 34: replace
+blob TEST_C34_S_B [ 97 98 99 ]
+set TEST_C34_S_B_len const 3
+text SX_S pad TEST_C34_S_B 3
+set SX_S_len const 3
+blob TEST_C34_FROM_B [ 120 ]
+set TEST_C34_FROM_B_len const 1
+text SX_FROM pad TEST_C34_FROM_B 1
+set SX_FROM_len const 1
+blob TEST_C34_TO_B [ 121 ]
+set TEST_C34_TO_B_len const 1
+text SX_TO pad TEST_C34_TO_B 1
+set SX_TO_len const 1
+gosub SX_REPLACE
+text TEST_PREFIX "34|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C34_E0_B [ 97 98 99 ]
+set TEST_C34_E0_B_len const 3
+text TEST_EXPECT pad TEST_C34_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 35: replace
+blob TEST_C35_S_B [ 102 111 111 ]
+set TEST_C35_S_B_len const 3
+text SX_S pad TEST_C35_S_B 3
+set SX_S_len const 3
+blob TEST_C35_FROM_B [ 102 111 111 ]
+set TEST_C35_FROM_B_len const 3
+text SX_FROM pad TEST_C35_FROM_B 3
+set SX_FROM_len const 3
+blob TEST_C35_TO_B [ 0 ]
+set TEST_C35_TO_B_len const 0
+text SX_TO pad TEST_C35_TO_B 0
+set SX_TO_len const 0
+gosub SX_REPLACE
+text TEST_PREFIX "35|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C35_E0_B [ 0 ]
+set TEST_C35_E0_B_len const 0
+text TEST_EXPECT pad TEST_C35_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 36: replace
+blob TEST_C36_S_B [ 97 45 98 45 97 45 98 ]
+set TEST_C36_S_B_len const 7
+text SX_S pad TEST_C36_S_B 7
+set SX_S_len const 7
+blob TEST_C36_FROM_B [ 97 ]
+set TEST_C36_FROM_B_len const 1
+text SX_FROM pad TEST_C36_FROM_B 1
+set SX_FROM_len const 1
+blob TEST_C36_TO_B [ 88 88 ]
+set TEST_C36_TO_B_len const 2
+text SX_TO pad TEST_C36_TO_B 2
+set SX_TO_len const 2
+gosub SX_REPLACE
+text TEST_PREFIX "36|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C36_E0_B [ 88 88 45 98 45 88 88 45 98 ]
+set TEST_C36_E0_B_len const 9
+text TEST_EXPECT pad TEST_C36_E0_B 9
+set TEST_EXPECT_len const 9
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 37: replace
+blob TEST_C37_S_B [ 97 98 97 98 97 98 ]
+set TEST_C37_S_B_len const 6
+text SX_S pad TEST_C37_S_B 6
+set SX_S_len const 6
+blob TEST_C37_FROM_B [ 97 98 ]
+set TEST_C37_FROM_B_len const 2
+text SX_FROM pad TEST_C37_FROM_B 2
+set SX_FROM_len const 2
+blob TEST_C37_TO_B [ 97 98 ]
+set TEST_C37_TO_B_len const 2
+text SX_TO pad TEST_C37_TO_B 2
+set SX_TO_len const 2
+gosub SX_REPLACE
+text TEST_PREFIX "37|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C37_E0_B [ 97 98 97 98 97 98 ]
+set TEST_C37_E0_B_len const 6
+text TEST_EXPECT pad TEST_C37_E0_B 6
+set TEST_EXPECT_len const 6
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 38: replace
+blob TEST_C38_S_B [ 97 97 97 97 ]
+set TEST_C38_S_B_len const 4
+text SX_S pad TEST_C38_S_B 4
+set SX_S_len const 4
+blob TEST_C38_FROM_B [ 97 ]
+set TEST_C38_FROM_B_len const 1
+text SX_FROM pad TEST_C38_FROM_B 1
+set SX_FROM_len const 1
+blob TEST_C38_TO_B [ 97 97 ]
+set TEST_C38_TO_B_len const 2
+text SX_TO pad TEST_C38_TO_B 2
+set SX_TO_len const 2
+gosub SX_REPLACE
+text TEST_PREFIX "38|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C38_E0_B [ 97 97 97 97 97 97 97 97 ]
+set TEST_C38_E0_B_len const 8
+text TEST_EXPECT pad TEST_C38_E0_B 8
+set TEST_EXPECT_len const 8
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 39: replace
+blob TEST_C39_S_B [ 0 97 0 ]
+set TEST_C39_S_B_len const 3
+text SX_S pad TEST_C39_S_B 3
+set SX_S_len const 3
+blob TEST_C39_FROM_B [ 0 ]
+set TEST_C39_FROM_B_len const 1
+text SX_FROM pad TEST_C39_FROM_B 1
+set SX_FROM_len const 1
+blob TEST_C39_TO_B [ 90 ]
+set TEST_C39_TO_B_len const 1
+text SX_TO pad TEST_C39_TO_B 1
+set SX_TO_len const 1
+gosub SX_REPLACE
+text TEST_PREFIX "39|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C39_E0_B [ 90 97 90 ]
+set TEST_C39_E0_B_len const 3
+text TEST_EXPECT pad TEST_C39_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 40: replace
+blob TEST_C40_S_B [ 120 120 206 187 120 120 206 187 ]
+set TEST_C40_S_B_len const 8
+text SX_S pad TEST_C40_S_B 8
+set SX_S_len const 8
+blob TEST_C40_FROM_B [ 206 187 ]
+set TEST_C40_FROM_B_len const 2
+text SX_FROM pad TEST_C40_FROM_B 2
+set SX_FROM_len const 2
+blob TEST_C40_TO_B [ 195 169 ]
+set TEST_C40_TO_B_len const 2
+text SX_TO pad TEST_C40_TO_B 2
+set SX_TO_len const 2
+gosub SX_REPLACE
+text TEST_PREFIX "40|replace|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C40_E0_B [ 120 120 195 169 120 120 195 169 ]
+set TEST_C40_E0_B_len const 8
+text TEST_EXPECT pad TEST_C40_E0_B 8
+set TEST_EXPECT_len const 8
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 41: trim
+blob TEST_C41_S_B [ 32 97 98 99 32 ]
+set TEST_C41_S_B_len const 5
+text SX_S pad TEST_C41_S_B 5
+set SX_S_len const 5
+gosub SX_TRIM
+text TEST_PREFIX "41|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C41_E0_B [ 97 98 99 ]
+set TEST_C41_E0_B_len const 3
+text TEST_EXPECT pad TEST_C41_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 42: trim
+blob TEST_C42_S_B [ 9 10 11 12 13 32 97 98 99 32 9 10 11 12 13 ]
+set TEST_C42_S_B_len const 15
+text SX_S pad TEST_C42_S_B 15
+set SX_S_len const 15
+gosub SX_TRIM
+text TEST_PREFIX "42|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C42_E0_B [ 97 98 99 ]
+set TEST_C42_E0_B_len const 3
+text TEST_EXPECT pad TEST_C42_E0_B 3
+set TEST_EXPECT_len const 3
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 43: trim
+blob TEST_C43_S_B [ 0 ]
+set TEST_C43_S_B_len const 0
+text SX_S pad TEST_C43_S_B 0
+set SX_S_len const 0
+gosub SX_TRIM
+text TEST_PREFIX "43|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C43_E0_B [ 0 ]
+set TEST_C43_E0_B_len const 0
+text TEST_EXPECT pad TEST_C43_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 44: trim
+blob TEST_C44_S_B [ 9 10 11 12 13 32 ]
+set TEST_C44_S_B_len const 6
+text SX_S pad TEST_C44_S_B 6
+set SX_S_len const 6
+gosub SX_TRIM
+text TEST_PREFIX "44|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C44_E0_B [ 0 ]
+set TEST_C44_E0_B_len const 0
+text TEST_EXPECT pad TEST_C44_E0_B 0
+set TEST_EXPECT_len const 0
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 45: trim
+blob TEST_C45_S_B [ 97 32 98 9 99 ]
+set TEST_C45_S_B_len const 5
+text SX_S pad TEST_C45_S_B 5
+set SX_S_len const 5
+gosub SX_TRIM
+text TEST_PREFIX "45|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C45_E0_B [ 97 32 98 9 99 ]
+set TEST_C45_E0_B_len const 5
+text TEST_EXPECT pad TEST_C45_E0_B 5
+set TEST_EXPECT_len const 5
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 46: trim
+blob TEST_C46_S_B [ 0 32 97 32 0 ]
+set TEST_C46_S_B_len const 5
+text SX_S pad TEST_C46_S_B 5
+set SX_S_len const 5
+gosub SX_TRIM
+text TEST_PREFIX "46|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C46_E0_B [ 0 32 97 32 0 ]
+set TEST_C46_E0_B_len const 5
+text TEST_EXPECT pad TEST_C46_E0_B 5
+set TEST_EXPECT_len const 5
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 47: trim
+blob TEST_C47_S_B [ 194 160 97 98 99 194 160 ]
+set TEST_C47_S_B_len const 7
+text SX_S pad TEST_C47_S_B 7
+set SX_S_len const 7
+gosub SX_TRIM
+text TEST_PREFIX "47|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C47_E0_B [ 194 160 97 98 99 194 160 ]
+set TEST_C47_E0_B_len const 7
+text TEST_EXPECT pad TEST_C47_E0_B 7
+set TEST_EXPECT_len const 7
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 48: trim
+blob TEST_C48_S_B [ 32 206 187 9 ]
+set TEST_C48_S_B_len const 4
+text SX_S pad TEST_C48_S_B 4
+set SX_S_len const 4
+gosub SX_TRIM
+text TEST_PREFIX "48|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C48_E0_B [ 206 187 ]
+set TEST_C48_E0_B_len const 2
+text TEST_EXPECT pad TEST_C48_E0_B 2
+set TEST_EXPECT_len const 2
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 49: trim
+blob TEST_C49_S_B [ 32 0 32 ]
+set TEST_C49_S_B_len const 3
+text SX_S pad TEST_C49_S_B 3
+set SX_S_len const 3
+gosub SX_TRIM
+text TEST_PREFIX "49|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C49_E0_B [ 0 ]
+set TEST_C49_E0_B_len const 1
+text TEST_EXPECT pad TEST_C49_E0_B 1
+set TEST_EXPECT_len const 1
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+
+; case 50: trim
+blob TEST_C50_S_B [ 9 32 97 32 10 32 98 32 13 ]
+set TEST_C50_S_B_len const 9
+text SX_S pad TEST_C50_S_B 9
+set SX_S_len const 9
+gosub SX_TRIM
+text TEST_PREFIX "50|trim|1|"
+text TEST_OUT join TEST_OUT TEST_PREFIX
+blob TEST_C50_E0_B [ 97 32 10 32 98 ]
+set TEST_C50_E0_B_len const 5
+text TEST_EXPECT pad TEST_C50_E0_B 5
+set TEST_EXPECT_len const 5
+gosub TEST_CHECK
+gosub TEST_EMIT
+text TEST_OUT join TEST_OUT TEST_LF
+text TEST_ACCEPT "ACCEPT 50\n"
+text TEST_OUT join TEST_OUT TEST_ACCEPT
+text TEST_FILE arg
+write TEST_FILE TEST_OUT TEST_OUT_len
+say "ACCEPT 50"
+goto TEST_END
+
+label TEST_CHECK
+set TEST_DIFF sub SX_T_len TEST_EXPECT_len
+check zero TEST_DIFF
+set TEST_CHECK_I const 0
+label TEST_CHECK_LOOP
+set TEST_DIFF sub TEST_CHECK_I TEST_EXPECT_len
+when zero TEST_DIFF goto TEST_CHECK_DONE
+set TEST_CHECK_A add SX_T TEST_CHECK_I
+set TEST_CHECK_B add TEST_EXPECT TEST_CHECK_I
+set TEST_CHECK_X peek TEST_CHECK_A 1
+set TEST_CHECK_Y peek TEST_CHECK_B 1
+set TEST_DIFF sub TEST_CHECK_X TEST_CHECK_Y
+check zero TEST_DIFF
+set TEST_CHECK_I add TEST_CHECK_I 1
+goto TEST_CHECK_LOOP
+label TEST_CHECK_DONE
+return
+
+label TEST_EMIT
+text TEST_LENGTH int SX_T_len
+text TEST_OUT join TEST_OUT TEST_LENGTH TEST_COLON
+set TEST_HEX_LEN mul SX_T_len 2
+set TEST_HEX_ALLOC add TEST_HEX_LEN 1
+set TEST_HEX_BUF alloc TEST_HEX_ALLOC
+set TEST_EMIT_I const 0
+label TEST_EMIT_LOOP
+set TEST_DIFF sub TEST_EMIT_I SX_T_len
+when zero TEST_DIFF goto TEST_EMIT_DONE
+set TEST_EMIT_ADDR add SX_T TEST_EMIT_I
+set TEST_BYTE peek TEST_EMIT_ADDR 1
+set TEST_BYTE band TEST_BYTE 255
+set TEST_HIGH div TEST_BYTE 16
+set TEST_LOW mod TEST_BYTE 16
+set TEST_DIFF sub TEST_HIGH 10
+when negative TEST_DIFF goto TEST_HIGH_DECIMAL
+set TEST_HIGH add TEST_HIGH 87
+goto TEST_HIGH_DONE
+label TEST_HIGH_DECIMAL
+set TEST_HIGH add TEST_HIGH 48
+label TEST_HIGH_DONE
+set TEST_DIFF sub TEST_LOW 10
+when negative TEST_DIFF goto TEST_LOW_DECIMAL
+set TEST_LOW add TEST_LOW 87
+goto TEST_LOW_DONE
+label TEST_LOW_DECIMAL
+set TEST_LOW add TEST_LOW 48
+label TEST_LOW_DONE
+set TEST_HEX_POS mul TEST_EMIT_I 2
+set TEST_HEX_ADDR add TEST_HEX_BUF TEST_HEX_POS
+poke TEST_HEX_ADDR 1 TEST_HIGH
+set TEST_HEX_ADDR add TEST_HEX_ADDR 1
+poke TEST_HEX_ADDR 1 TEST_LOW
+set TEST_EMIT_I add TEST_EMIT_I 1
+goto TEST_EMIT_LOOP
+label TEST_EMIT_DONE
+set TEST_HEX_ADDR add TEST_HEX_BUF TEST_HEX_LEN
+poke TEST_HEX_ADDR 1 0
+set TEST_HEX_BUF_len const TEST_HEX_LEN
+text TEST_HEX pad TEST_HEX_BUF TEST_HEX_LEN
+text TEST_OUT join TEST_OUT TEST_HEX
+return
+
+label TEST_END

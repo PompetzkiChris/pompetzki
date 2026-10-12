@@ -1,0 +1,3 @@
+Released replay-all.jdg SHA256 a202ed994929c8484f053219047d854729af4a3d97ad8f804bb3cdef3b4a52ae
+Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e
+CanonicalRegistryData.canonical_data is the exact parsed data embedded by both repaired judges.

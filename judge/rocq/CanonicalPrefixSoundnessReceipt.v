@@ -1,0 +1,19 @@
+From Stdlib Require Import List.
+From Cohen Require Import Syn Prov Replay2 RpInitOk.
+From PMPRepair Require Import PrefixSoundness CanonicalRegistryData CanonicalPrefixSoundness.
+
+Check canonical_data_eq_REG0.
+Check canonical_data_length.
+Check canonical_data_ok.
+Check canonical_data_prefix_ok.
+Check authenticated_canonical_prefix_ok.
+Check authenticated_canonical_prefix_check_thm_ok.
+Check authenticated_canonical_prefix_check_batch_ok.
+
+Print Assumptions canonical_data_eq_REG0.
+Print Assumptions canonical_data_length.
+Print Assumptions canonical_data_ok.
+Print Assumptions canonical_data_prefix_ok.
+Print Assumptions authenticated_canonical_prefix_ok.
+Print Assumptions authenticated_canonical_prefix_check_thm_ok.
+Print Assumptions authenticated_canonical_prefix_check_batch_ok.
