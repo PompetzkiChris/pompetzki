@@ -1,0 +1,2116 @@
+653a1bba06386f1d76fc618edfe2073c7c04dd7e0b900b5ac3fb87c4766e69ea  ./Abschluss-1.3/Abschluss Start.exe
+6ec78bdd02821a8dc35ea64e504a6b0501457886591cfe8a422c99b0c6a6476f  ./Abschluss-1.3/Abschluss.exe
+dcad9d622c103bce9e27646c5e8174b5429d5035cb3b0288d3171b337fbddb54  ./Abschluss-1.3/Abschluss.exe.manifest
+8d62f87619b4192dd208e9774eab6f33faa57b4b156e72404b82bc72b19c0072  ./Abschluss-1.3/Install Abschluss.exe
+65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827  ./Abschluss-1.3/LICENSE
+b0586e6549799fa40cfbe61f4993d356df0f8057227278fe1ddbef57050628d5  ./Abschluss-1.3/MANIFEST.sha256
+24ea126e7e95aa0e398ea519f1583cec8fef187995432ebe6daf0336c410c2fd  ./Abschluss-1.3/README.md
+b331aa37ffdbb52d52e6faf1305060234e9de281879ec9759b1a33fe311340cc  ./Abschluss-1.3/Uninstall Abschluss.exe
+2a29be6b0faac19b2175d068814881feb7a099867c44a11116abd0d42fc1db92  ./Abschluss-1.3/Uninstall-Abschluss.ps1
+3c85c66d06c31df0c6511ad18b7e8576fcf8e76a011c5c28bbd66c57f3ed851e  ./Abschluss-1.3/VERSION
+3c85c66d06c31df0c6511ad18b7e8576fcf8e76a011c5c28bbd66c57f3ed851e  ./Abschluss-1.3/VERSION.txt
+d42fe4da418723cd8ca46a1c44edcba1f022f864a2d803cc7e9e19aae8201c17  ./Abschluss-1.3/abschluss.pmp
+653a1bba06386f1d76fc618edfe2073c7c04dd7e0b900b5ac3fb87c4766e69ea  ./Abschluss-1.3/bin/Abschluss Start.exe
+8d62f87619b4192dd208e9774eab6f33faa57b4b156e72404b82bc72b19c0072  ./Abschluss-1.3/bin/Install Abschluss.exe
+928cb40e6558f2723176fbd2880d23f0f242b3f6513cfbffe17af9278394b1a3  ./Abschluss-1.3/bin/MathEngine.exe
+e191017a742f50345f0642cd564ec1fd80ed89340723ad5a9a54f50ca3feb5c8  ./Abschluss-1.3/bin/MathWorkbench.exe
+b331aa37ffdbb52d52e6faf1305060234e9de281879ec9759b1a33fe311340cc  ./Abschluss-1.3/bin/Uninstall Abschluss.exe
+1c4ae71c646ef89b74fb7158a5a0aa19486cff4e312c73c46bae20fe40a95dce  ./Abschluss-1.3/bin/bookverify.exe
+4f7187bfc8c507ce208dd35b3168e68885dfcb0102ad1f357af374f77f3b87ce  ./Abschluss-1.3/bin/judge-rkt.exe
+5b44dbed5cc61d881e2ca841ccb974f85e0008c5145084fd1d8c373057bf5ae8  ./Abschluss-1.3/bin/lib/libiconv-2.dll
+5f9d6b7faaf7e20cf2636228560780d6c0b991427ef84f4b979d6b038b714f5d  ./Abschluss-1.3/bin/lib/libracketcs_exmf9c.dll
+9b2ae0bd0ba549974c2a2fba095dc300fafc78ebe687170031c5a67390cf36ce  ./Abschluss-1.3/bin/lib/longdouble.dll
+1e4443563c7171d692f24d597c01652da1d323649d8461859e3990db0d683fdc  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libcairo-2.dll
+b8fe8e973df30a08c8b82bedcfaae9674b94f3c29fa96377caf43a2116d4c022  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libexpat-1.dll
+ade63a710d98a002ed5cc0963f462c99b82b11df95b9ab477fd49f05fcff689a  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libffi-6.dll
+3443bbb517779d666314304bc11bdd44ea454e9e6d54024a1e3a4a8dfa58853c  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libfontconfig-1.dll
+9e8792c1774782d7f39acebc92e128a812c70da5def88a28a91f84de57ed8cb3  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libfreetype-6.dll
+f9b611aa98a518a911ce8c765a2dcddca77af3e07e236ebd2e7f455b81be67a2  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libfribidi-0.dll
+74cd65ead853cdc6f6ddcd21e8f0c5c0f1fd6fc95d2e3de7bbb91961a681ca8f  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libglib-2.0-0.dll
+bff77c2431966df79d06e39f6c54600172afd18e326a06341e959a515d71233a  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libgmodule-2.0-0.dll
+742818d9ad155e5ac65377a03d067fcf9a9f51906126070585d2dec8cce95631  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libgobject-2.0-0.dll
+2b975c2b0c06b7e541762a1ec8d90fea96cb7564bfbdbade298fb73990265943  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libgthread-2.0-0.dll
+c093cda0096a6b8cbff18a6196671bf0d4c99bf5278c20432e3712e89a2079c4  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libharfbuzz-0.dll
+5b44dbed5cc61d881e2ca841ccb974f85e0008c5145084fd1d8c373057bf5ae8  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libiconv-2.dll
+8a26cc114a58cdd3ae8471b83f01a97f08b90fddd6c6939ed530fc7f015c819e  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libintl-9.dll
+ecb3ed73defc0c14609ac0ccf5c34ccd07792852fcca52995a9efed229639cbe  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libjpeg-9.dll
+5c7778346fb44b12f7840c2992639b787e67056fac1d211192dc028866a1ee12  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libpango-1.0-0.dll
+81b358c7dce1309beefef52dfb9fc64fd4f2cb116f815d290ef25e8a2fef90b9  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libpangocairo-1.0-0.dll
+824eb55230bd45bed08ddf28018221f8d58efc9eb6d438d53c1f5309eeb10c87  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libpangoft2-1.0-0.dll
+63fc3996640ea39dbbd61471990e42e46ac21c8d2a8fe059d8f531d5e4b17323  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libpangowin32-1.0-0.dll
+62a92de8b2a6d0885735cf6eab90fd1a2115dd96c030def202796e382e573392  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libpixman-1-0.dll
+6396ba3cb6f826037d01bc06a5eb4b3154cb313598f83c8f60a47590647c2a30  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/libpng16-16.dll
+10d654ac1e68e06341db6f02bb02aeaeb0128a0cdd0798f71c6cb54eec77ed6b  ./Abschluss-1.3/bin/lib/plt/Abschluss Start/exts/ert/r0/zlib1.dll
+d69f0e10ad4ed70f3530fe497f5c62b3e0aee999a24826fefc689a6e61b82cae  ./Abschluss-1.3/bin/verified-book-check.exe
+6597633eb489a4f16d02233a820356cbb7d96ec83639e3a91bdd1a643a99fe73  ./Abschluss-1.3/bin/verified-book-post.exe
+6a966eca48e0bec5d64c0aac0691b16219e42bedde64aadb7fefba36606cce45  ./Abschluss-1.3/book/BOOK.md
+27a98006ca689be0688bc652b4bcba04bc9295ef439dccfc743c7abfbcfb2aa2  ./Abschluss-1.3/book/RUN.txt
+eeb4d42ba4a94e9456532b715d81bd46e2105295c8b40accc9614936f9c755b0  ./Abschluss-1.3/book/SHA256SUMS.txt
+8316bc1f16f1398d6681ad54d92bf0374ee5ec8dbabe9c2903ecb155ed48d25a  ./Abschluss-1.3/book/book-index.json
+1446a75e072f38d8b4c86dea928d4fc0aab3863a62c216a70c79ef4323e3f947  ./Abschluss-1.3/book/book/J000001.txt
+350e34fb3dd25716e0b39e8b2306af4446faba348f379b0e55189c88a94b4afc  ./Abschluss-1.3/book/book/J000002.txt
+174b7fa21defd494267c3573909e4503b36976eb433b5de349a44b06f88fd9c6  ./Abschluss-1.3/book/book/J000003.txt
+8e51b0537f11ac0082d33f6479a7dcc58fb94bd2143086c3d3e129e1a5b368c8  ./Abschluss-1.3/book/book/J000004.txt
+fb4b418c1d5e644740280ad1c56277e04b6a44fbaf74fc7b2588110e14dbb86b  ./Abschluss-1.3/book/book/J000005.txt
+89e2a743e4849f2ae7fa57547d94f6c7d36cb31bccd4a05a1990196ceb320a0f  ./Abschluss-1.3/book/periods/P-202610-1.txt
+58e2d545c88c16885af1006a32aeea492403a68454d522f3b485ace74ff91de6  ./Abschluss-1.3/book/periods/P-202610-2.txt
+e5a3534b1cdd48be99d11f55a7b6c760f90e5c2c052d26ba951c7d9a40bffc05  ./Abschluss-1.3/book/search.html
+ea581ca24cbc0a7d4fc8f93ccc143ef46e7212579cef3d3db5d7c2cd936f0332  ./Abschluss-1.3/book/tools/bookverify.rkt
+48898456076b2697b4959d2c0ae6d3403f778aa79d7e798096ab117b7ae4c7aa  ./Abschluss-1.3/book/verify-book.cmd
+dd292cd7b326dad59aac77f7a48f1eadb22007a789954c22854be404945b0105  ./Abschluss-1.3/book/verify-book.sh
+7237463a62a608ee3f7b46934e2ad9279d667ff6ba3b58834454827d1fe4aae6  ./Abschluss-1.3/certificates/stage2-sigma1/RESULTS.md
+714b4620b366a87deea108f130f4b21f14ea0396e8c0c1d0767638908722047c  ./Abschluss-1.3/certificates/stage2-sigma1/cli/s1-double.jdg
+395a2691ccdd8b6d960ebfaf4b8d529b32adac2a7242efd9f3dcffae9246226c  ./Abschluss-1.3/certificates/stage2-sigma1/cli/s2-quadratic.jdg
+7a4b862dc8b132cef9bd3509a0de8c955634096a282f512226da9377a05c4aa5  ./Abschluss-1.3/certificates/stage2-sigma1/cli/s3-sum.jdg
+c0e7ca69927c540e0771731d0d94749ff1d0f3d808457c02d9cd15de5330e501  ./Abschluss-1.3/certificates/stage2-sigma1/cli/s4-false.jdg
+49af0c6f5d274208e3ca3fccc2d0d649a4a663d0b82523fdc36fad285056c1fe  ./Abschluss-1.3/certificates/stage2-sigma1/cli/s5-sigma1.jdg
+abec6f6def92eb7fd0cff38cf1037900c9fb3a8e3fc23309e7759b409215d409  ./Abschluss-1.3/certificates/stage2-sigma1/emit-run-1.txt
+3d3f3e2f2acb17db8a235d513375fbcc7324288967b6418ccc34ad2b1874a15f  ./Abschluss-1.3/certificates/stage2-sigma1/judge-run-1.console.txt
+5e15972d69e95c045feb3dd31e09767ec660c25de8303dd0d51df3d2b15d9942  ./Abschluss-1.3/certificates/stage2-sigma1/judge-run-1.end.txt
+508101201c31a61bbecd12eaff65c5872910ba33693f77ef93e29ed06b8f3ad3  ./Abschluss-1.3/certificates/stage2-sigma1/judge-run-1.start.txt
+3d3f3e2f2acb17db8a235d513375fbcc7324288967b6418ccc34ad2b1874a15f  ./Abschluss-1.3/certificates/stage2-sigma1/judge-run-1.txt
+5dff8527b8e298d2ad510f83f6e895221a78c95791c4d3037272b4d9205cb60c  ./Abschluss-1.3/certificates/stage2-sigma1/out/01-numerals.index.txt
+9827a443b2b6924def86fac57f868155959ac4fda62ec5287b66042484472251  ./Abschluss-1.3/certificates/stage2-sigma1/out/01-numerals.jdg
+c83fda46e64ead60620abcfa0c111875152337deda7116e0dcae1b95968856a4  ./Abschluss-1.3/certificates/stage2-sigma1/out/02-membership.index.txt
+ac0bf1a85fc41687956d6d268add773d1519ce25655ad9eebc3983dbac819c01  ./Abschluss-1.3/certificates/stage2-sigma1/out/02-membership.jdg
+bec839164a71ac63e0fdf885d6b47497316980fa3796740716e8f5885d3cc39b  ./Abschluss-1.3/certificates/stage2-sigma1/out/03-distinct.index.txt
+49e3f6a8654d20a685d26bfe846cfe073c0df77ed0ed3ffb4da86507269bf7ee  ./Abschluss-1.3/certificates/stage2-sigma1/out/03-distinct.jdg
+162f7e30df8d769593fa5407b411e3542c811cd35cd09e5fbcf440fddf263ea1  ./Abschluss-1.3/certificates/stage2-sigma1/out/04-bounded.index.txt
+b490267b073be72e2ff7ad86b82e35cb8357196f83339f81a3d5a7cad2a455c2  ./Abschluss-1.3/certificates/stage2-sigma1/out/04-bounded.jdg
+245149864eaa3f130655ec716d7193ba56507f0d1f3e5116fb4570ad4812fd62  ./Abschluss-1.3/certificates/stage2-sigma1/out/05-arithmetic.index.txt
+0b9013abf74c48674a0b1e7dbc01e1ff6cb90366667ce2713c5f20fa5e4b95a1  ./Abschluss-1.3/certificates/stage2-sigma1/out/05-arithmetic.jdg
+36b584367ada1d74ad642eed459597551809766a84657e05dae7649de92935cb  ./Abschluss-1.3/certificates/stage2-sigma1/out/06-sentences.index.txt
+565ea0687e8255c7f123a47d8650e1cdb4a400e27f25d1975f4deb144dd92dfb  ./Abschluss-1.3/certificates/stage2-sigma1/out/06-sentences.jdg
+eecde7f96b2f602474d01f481c2e75c4a70b0c086c55afd72457475b9ac2ef45  ./Abschluss-1.3/certificates/stage2-sigma1/out/07-sigma1.index.txt
+abdbad7e74852ff1b66391dc0cde76e319aded12f1f6a8bd69c8e565c5471173  ./Abschluss-1.3/certificates/stage2-sigma1/out/07-sigma1.jdg
+8ecb1f8f8cc29131551d782b35fe1f6dadb7bd86432326516a7d7a3de9d121bd  ./Abschluss-1.3/certificates/stage2-sigma1/out/manifest.txt
+4767ca5907b55443db31c1a16d2b2163373ef7a9be2b9bf7e7b5055bcab3d509  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-drop-step.jdg
+b7890ac586010cd768d03225dcffafe731bd9fc58ce2ef10ba4b821fc2b23980  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-exel-var.jdg
+157c770fb3edbf2ec843640ae3b41f7ecdcd88e0eeb376fdb6e3aabacc159744  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-exi-witness.jdg
+95d8967e98d1f92a46c8c2e70a15a49080990d6636d2c66cefb74f997f25fba9  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-leib-swap.jdg
+772e8e560846444110b5186c33924b6027fd66861e46dbee64d7a6efe64cd9de  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-mp-swap.jdg
+87c1275929c9cd938b575c0f4eb2fec9169887b87c44f25b6dd353a5baa76a4e  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-neg-final.jdg
+fa78631da3f806cd0738f891e6db751e253dc1eb5317faf4f8723c769b4b9ecf  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-registry-suc.jdg
+88e9baeb6cec58e6b70b8e20e3db5335c34f04c1edcf4e4d41c3063566eb5a0f  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-taut-goal.jdg
+264b63e5ffebf3ad0439b23fd869d68955db36784e96c24ed630623917ef09aa  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-twin-final.jdg
+f89328f9d1b2b7ec32487189f793d6b95beee6d969c90d716f8f34de126ad683  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/01-numerals-use-shift.jdg
+2c288167c890081a5dd79160fcbb8f11a21ce21f305bfa26de5f754a9b0ea5df  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-drop-step.jdg
+3cfb9a3728deeff0219679d04c404d5c152c9685937559e0d5c472de7c15b5ba  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-exel-var.jdg
+3794708712837b6653542d024be6c499fa1cf6a18b089678e5364253cf757055  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-exi-witness.jdg
+ff95ae67e971d5630992d746edace98a6804e7f99a48dc0a0d7079118375a0b7  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-leib-swap.jdg
+8d6f182d07a8f01a734b804e5ed7e9421a0ba3ee6c66a13dada0ddf59c75a1d5  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-mp-swap.jdg
+720bad0d0d17c823761b158673fec60c00909d3a168cec7a593a13be27714452  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-neg-final.jdg
+a5aa07b8a51e85b1d83c7e9a2af192f188384248f1be483dd67c12b17f71f919  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-registry-suc.jdg
+9c8c1ba9ed4a597f23c7b9a66c0cefd8d6bcb1cd52660eb3e11557673ac89f3b  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-taut-goal.jdg
+45d07c89e4f5538830f4fc0dcd461842249adf9718d8c13479d66da55eada881  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-twin-final.jdg
+fcb2cad02a996403e45aa83b42e490988b26162dab36985bf023106dcd0deda4  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/02-membership-use-shift.jdg
+8b9e03098fe25ddd07c4145a59d6c93b9a31246080a9ece3e17691a19200e0fa  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-drop-step.jdg
+b220075b49955e610e10b57a338573cad27a8670f7d955b904acfe1cef0c51ab  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-exel-var.jdg
+193e5628e7b3ee5d5c89590439d3e9a0f757bfc24a02acb59a3401a48cc29caf  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-exi-witness.jdg
+fac00597ce9ee5fb9fb56971d41b131ac37b052db065efab02efa1926b9f5bba  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-leib-swap.jdg
+00dcf338e16dd6d4b53790504a146e7487b9a81d0b6a0b59012f711c7328b3af  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-mp-swap.jdg
+cd9c568519cd94f9b0622a88b543ef87fadfcea16a0dfb15af802500d685563b  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-neg-final.jdg
+55591a731f1284e446a90f163eadbee19f3b65dcd769d4125151393f8a0c3406  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-registry-suc.jdg
+dc48e5005e72e98dac4a850a81bec9683208e33c60ca6b2e2fe5853724ed76ee  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-taut-goal.jdg
+b069af1d7e7c0e116e28da57f5077649090e2749eeabdc1b20737a545cd9fad2  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-twin-final.jdg
+43ceb7074b66faefba1d839ca52d48b332a374452957309c54d628630eadf355  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/03-distinct-use-shift.jdg
+f4992c0c07bdd6fa8c9a7fc90cd6957e7f0af0caf612d99387f13d281c8c7d50  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-drop-step.jdg
+c555bcca0d8e13286b7dfbc84e2cc0fac57e0ec6a697e290ec82e683beb2057b  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-exel-var.jdg
+661a92f8620512965981f3eef03d6c83b56d175cbc1c5b60246f7e054094bbb6  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-exi-witness.jdg
+2d0a8cf68fdbf07304b18c726ef9b27bb08e80ec15c1197e0c41f6d9916eff19  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-leib-swap.jdg
+8b08656e27867848e9ef65e901c82ada8e997b3c206e4f6338d9f991192a6bbb  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-mp-swap.jdg
+1cde4e74fde14d9c371e5860f8df86679e2c88bd2c89614d99d9ce644a380d28  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-neg-final.jdg
+4be4c8ec74f4a9d7b7b512db125de4ffd92018d62c8c5bb7b883dc14641f1673  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-registry-suc.jdg
+4933a4625dec2cda1baad52cae7d6364695cd7e13944b4948708584e0c1978a6  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-taut-goal.jdg
+b778fadc5e37afa7a1912b5fbaa49064e622cac16c0598739c02f162d1463721  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-twin-final.jdg
+52ece0e3bcdb8cc33b01713bedf6ba44dc52205a66b2800fa99fe64364f7ae7b  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/04-bounded-use-shift.jdg
+5eee0166969830549cf66249422676d2370cf830ed324af89e8b287de6b6b0a5  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-drop-step.jdg
+7e44d7c1eeada562a4999c0ceb8ba0d8ce1806861f58993eb5385b6dcff8f24e  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-exel-var.jdg
+5e3526614b28ee39a66fe889d2106853285da792b85707e72b77b7d05e658acb  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-exi-witness.jdg
+70f65ea88d4f8facdbeefc8ad05b18572623c49917b96397e6075a17532f80df  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-leib-swap.jdg
+b23c80afba7ace4674391da4c92b2520a5943cde0e0afd7eedd9495f2502c36d  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-mp-swap.jdg
+2774428c03c9006504723bb7488fc42b000a48134d719c52ce5e2e3fc5e6667b  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-neg-final.jdg
+ff2363cf81e4e38b341de4b7cac27b255ff0be8a401db8fcc47d3d293b57ec30  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-registry-suc.jdg
+6d5f92143b4918141cf08e3651271101be62beea32447de01e6beb588aa89d96  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-taut-goal.jdg
+005553609a529caa1a56c9fd7b87d1c41511d210b9b05a52c988cd0f1a73c9d5  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-twin-final.jdg
+8e77bc155a91a6bf5fe947fb1c9ca80fae56a60c6544ffaa045a9ed5983b8333  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/05-arithmetic-use-shift.jdg
+063b73575e131833a52239233075d3e519397e620b181d7c2801524a6fe59145  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-drop-step.jdg
+cfa4dbabd92b8d07e932ad4b3dbc73cb99867c89a4c872e5d74f073fa7247632  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-exel-var.jdg
+4f8c0a7dc76be40464a46e8fc017f2d7622eed144e9072e224d318f3eeba723b  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-exi-witness.jdg
+b7efb1919e0f0407ca0d09217555f5b1dfe11083042bf74d97a54a1d067f562a  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-leib-swap.jdg
+24fbf4083e4f3639d0e15b2fbf593063c08952907fa42b1f6d8c7aefd8ad248d  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-mp-swap.jdg
+b37d5d2bf066febc6b1d7b539331a18ff87955c9a75d0bf31ee902fd60f79573  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-neg-final.jdg
+0c2da31e00a56e19373a0f8e04948ba290d26016720c6d297a4166b090bafc48  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-registry-suc.jdg
+0ec105c41829041293cf69f1587d5ffeaea3f83f91925a49392a0366ffefbc30  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-taut-goal.jdg
+b37d5d2bf066febc6b1d7b539331a18ff87955c9a75d0bf31ee902fd60f79573  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-twin-final.jdg
+2605ff67219a613233807b26d532f07d8af66d2bcb34518612df069b220b3f66  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/06-sentences-use-shift.jdg
+295c02455d62cb90f99f4d4b0c41f985eac0733009d0d508c9efda4a41f70ac9  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-drop-step.jdg
+5410b57fa3b7f04d9646e6f48bc7a036da6d8bfa562d3f6b359b5718694934aa  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-exel-var.jdg
+ccd4459b20ce24475794d1a7d95dd93b7e4d52051fdef0092f3b0f9d40d9c3d9  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-exi-witness.jdg
+65e67cb9ca76d112be2aa5b16809bc122201529fe6c709af9223c84e312fbaa5  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-leib-swap.jdg
+4bd992883ad44ee979b2771068bccb093b54cf3c2c31e03187144fcc73cf8cb2  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-mp-swap.jdg
+30180b2866dc3ce00027795d2fcf9102bcfaaefc72fbd220a2cd4bf2d947039b  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-neg-final.jdg
+0aff1a2e4c933b18d33a57d41b3fe38bdd709ea08074b186716b050228f5647f  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-registry-suc.jdg
+f3f0f6d297822783ac049b1be3aa954959f6b575e356298d4d74a31a60bb649c  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-taut-goal.jdg
+30180b2866dc3ce00027795d2fcf9102bcfaaefc72fbd220a2cd4bf2d947039b  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-twin-final.jdg
+c0c47e6f2e0e2a66879f2cf16091e65f8c5cf4473c541168b6326e1493de9ec3  ./Abschluss-1.3/certificates/stage2-sigma1/out/mut/07-sigma1-use-shift.jdg
+7d3ff29ca288d952ba7526940c3728aaa1bc202323311cb29b3409a4b4ff3337  ./Abschluss-1.3/certificates/stage2-sigma1/sigma1.rkt
+d2a324ede4d1a49c2e0ddf4cda54f2eb085308b89920875d28a0ae36dc9d3eb8  ./Abschluss-1.3/certificates/theorem29/replay-B0.jdg
+a202ed994929c8484f053219047d854729af4a3d97ad8f804bb3cdef3b4a52ae  ./Abschluss-1.3/certificates/theorem29/replay-all.jdg
+97fbccf5830fe1bde06c906a125185123cad86157e2de03a67788d0102afa6b4  ./Abschluss-1.3/certificates/theorem29/t5.jdg
+2f853d7c075d2283aed0ebfb09c3253981afcf5af1b795c42b5474ebe0c5fdf6  ./Abschluss-1.3/config-sample/config-20261010000000.txt
+a898b7f6cb65affaf5a83f7bea6a281c060db4cbe7b8c34738e40fb25034449f  ./Abschluss-1.3/config/config-20261011000000.txt
+74606241bb2520d9e61dd6d78ce3fe68fa4e18648e807f29d4f8dc5f0d12229f  ./Abschluss-1.3/docs/1.3/RELEASE-1.3.0.md
+24ea126e7e95aa0e398ea519f1583cec8fef187995432ebe6daf0336c410c2fd  ./Abschluss-1.3/docs/1.3/USER-GUIDE.md
+18a0051bd13e5ea2786c0f2a892eff90ca38fb16df25fdfa03311066053c86e5  ./Abschluss-1.3/docs/CHANGELOG.md
+ae7331255da044a67259f455ef64b9419dc88ac41793076f3f4131f1a0b8d54e  ./Abschluss-1.3/docs/KNOWN-LIMITS.md
+9438f31ac9acc93b2c35bbe193105c4fd1ef716e1dbd0635b8dc8ecc3c7c670d  ./Abschluss-1.3/docs/QUICKSTART.md
+6e73e74e21d383e9fc5a55a27565edd2a2fb291d3a7c5c9125058bdea557142f  ./Abschluss-1.3/docs/README.de.md
+38bfce56549d105ec565fcc3582508131e2b2f5476378640552e5785386cc967  ./Abschluss-1.3/docs/README.md
+c7aa09695b706dba369dcb2b4288b020d0e16ddb2ee6ce555599de1ea30697db  ./Abschluss-1.3/docs/USER-GUIDE.md
+a228d883850a05a9b2a527ea7f933d09318e841f01f1ae71c67e3be775b4ddf3  ./Abschluss-1.3/docs/proof-gate/README.md
+5453a9aef06c46457a43f79cbcc50b80a16d7e8ecfb1e98c02327a3a4e1a70ae  ./Abschluss-1.3/docs/proof-gate/fresh-gate-proof-result.json
+5244dbde144b8b19f45e0b1c16a71a281792b46487f7e7c84170323dc9ba7166  ./Abschluss-1.3/docs/proof-gate/gate-types-and-assumptions.txt
+ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b  ./Abschluss-1.3/docs/proof-gate/kernel-check-context.txt
+82e7df16e76fd8aeb0915f613364ae81b078f2b50d0e39b2eb2518af5d4b6019  ./Abschluss-1.3/docs/proof-gate/run-output.txt
+10607dd77218b015ed11a8e58362f31fbff327d238709390de5ee261c4fb7960  ./Abschluss-1.3/docs/proof-gate/source-credit.json
+2cd7597e24d907582a3d01be18dee9e08fe3ec04d454ee4119e0a2769caba468  ./Abschluss-1.3/examples/01-tautem.jdg
+f42eaffa7ce095682201264962656c76e6e0226f1bbf359316cf247c03317ee7  ./Abschluss-1.3/examples/02-tautologies.jdg
+8fdb1ca3160d5e56e2177fe80ad0158ca5f77d845312c77e0a1b6fd981ab7ad8  ./Abschluss-1.3/examples/03-eqchain.jdg
+f925e0b804fb854ea66241fbe13a61d01df05e829484024a94cacfc8a0fa4535  ./Abschluss-1.3/examples/04-quantifiers.jdg
+fdcaa25b28d9be7d97b7ab34998a35f519e736de2892de3ccf5e8d484f60bc14  ./Abschluss-1.3/examples/05-omega-laws.jdg
+9827a443b2b6924def86fac57f868155959ac4fda62ec5287b66042484472251  ./Abschluss-1.3/examples/06-numerals.jdg
+ad09a4d4d475a537f25b9be9285c73bc164d6f605b11a7b21e08d83cae8abf1f  ./Abschluss-1.3/examples/07-farkas.jdg
+026bbb89db2bc4258ff6c7944f005ed273238ae8c931740105ad8d76a30fc44a  ./Abschluss-1.3/examples/08-rank-4x4.jdg
+54e660ec65d94c1fd7f763b7343b63c40fa285c3e15c4be185edbabf74b71af0  ./Abschluss-1.3/examples/09-smith-2x2.jdg
+7c0daa2499dd2bcbf7351b7a33a2175ab871597ab3587c0069c6204b2a6a0b79  ./Abschluss-1.3/examples/10-pratt-7.jdg
+f854101bd2de7f19c2f0c34e7766bb00d4e04046bef941d34c4161870b90d5d0  ./Abschluss-1.3/examples/EXPECTED.tsv
+94858aa5e72d6da805ba701146f5fb2ede1215557d7e547dd0d51a7ccbd2bf91  ./Abschluss-1.3/examples/INDEX.md
+0862983c3b300ac7110fb4ebc1f485ef7824bab680cf3bee5b907f48f204d8c7  ./Abschluss-1.3/examples/RESULTS.tsv
+afc2049e6ba86953fc2903be03e426b1a15f9e0ad713ac080747f5c32f909428  ./Abschluss-1.3/examples/RUN.txt
+db18cc31b95215adf46417a9dc56bc40bb78b0be3c934c9c217a71cbcb32eba8  ./Abschluss-1.3/examples/SHA256SUMS.txt
+350894d2f033d517920d3f884aa81f2961040bad0fc0133db8a52db661f9572e  ./Abschluss-1.3/examples/SOURCES.tsv
+7a29df94ddbcbe8a72d7be7ce6bcfaf365be8d65c31cdd637ebdca3a31ef010a  ./Abschluss-1.3/examples/STATUS.txt
+aa6c24cff7dcf7beddba8e4f97c6c10b9fb02c1a2d61b549cc00002055396bde  ./Abschluss-1.3/examples/logs/01-tautem.jdg.pmp.txt
+a5a63877170d2166c67b1b31799dc057d9d27d08d131fdfc59e4a896fde235dd  ./Abschluss-1.3/examples/logs/01-tautem.jdg.racket.txt
+9b93c43f08873e05361f54d994f938ff30843cf64cb415ed37fa598c8678dee1  ./Abschluss-1.3/examples/logs/02-tautologies.jdg.pmp.txt
+273fc228d3a5a787b6388976abffa18585e0e76a558004f3678bcd439376c0b4  ./Abschluss-1.3/examples/logs/02-tautologies.jdg.racket.txt
+5be59ee8fd909639a5d4a0aa7f37acfe1849648ab2a49e70925bb61d046358e1  ./Abschluss-1.3/examples/logs/03-eqchain.jdg.pmp.txt
+c71184a3bb27ac2fb0dc6860df8f017209f3a64149d983e7bfd2549a471b6349  ./Abschluss-1.3/examples/logs/03-eqchain.jdg.racket.txt
+c68e2322f6c2d139a941caf20b9d2c6b806a746b115fe8b74fbdc4d1011b88cf  ./Abschluss-1.3/examples/logs/04-quantifiers.jdg.pmp.txt
+c0fab43e1323caa43388e815d9cf3f009ee323bfd94e7ffc7c194fa8d2b7af9a  ./Abschluss-1.3/examples/logs/04-quantifiers.jdg.racket.txt
+289e3e8f7d0d77389aba37061c59c96657822b38cf07220067a1a32a865ec873  ./Abschluss-1.3/examples/logs/05-omega-laws.jdg.pmp.txt
+edd127b67c9465895788151ca1a9c944f1b5e0299360ef5b331d5de67df1b87b  ./Abschluss-1.3/examples/logs/05-omega-laws.jdg.racket.txt
+66c513773696931732fafbe842e928d4e525ee0553f72bb9a7b739505ae9b407  ./Abschluss-1.3/examples/logs/06-numerals.jdg.pmp.txt
+16587866b8eb7e3e264d726483850fa5f8aa166eb934b65a7158605cf9196230  ./Abschluss-1.3/examples/logs/06-numerals.jdg.racket.txt
+fa7dff6c3d4fe81b99caa5aacdcd76ecd531e338e6b65af73ff5c430b47014ee  ./Abschluss-1.3/examples/logs/07-farkas.jdg.pmp.txt
+b27ada459d3af30837248b2fd0e1443ad60ec34871145f389c0f63d707fbcd08  ./Abschluss-1.3/examples/logs/07-farkas.jdg.racket.txt
+f76e33989d962e740d30527b6249fb036d123a265429aeb55b122f2ba66e22dd  ./Abschluss-1.3/examples/logs/08-rank-4x4.jdg.pmp.txt
+5037649c2c33522dbc9df7d0d6a617ba810f27e21de9d9e04419b30c29524bb1  ./Abschluss-1.3/examples/logs/08-rank-4x4.jdg.racket.txt
+8a12b782a65acadcef11e0fb364c4b963909f1ebd51f399d1d68c450a0c95820  ./Abschluss-1.3/examples/logs/09-smith-2x2.jdg.pmp.txt
+f909a6b08e130c721b70cbf33c9c53e0022c509290991d9e3d7aa6fac6a89d6f  ./Abschluss-1.3/examples/logs/09-smith-2x2.jdg.racket.txt
+0ba9601883b73adfd59ff72532afc300c83ea4226254958f2912391ca0acb985  ./Abschluss-1.3/examples/logs/10-pratt-7.jdg.pmp.txt
+6352995c0667e208b9c850d430a00cf02aa58f168c7058735b9774848411b6b4  ./Abschluss-1.3/examples/logs/10-pratt-7.jdg.racket.txt
+c9ab7063422eaefdeb5e21d394cbdb6be9f4ac830b26d91b0142da2b5ccd59b5  ./Abschluss-1.3/examples/logs/mut_01-tautem-mp-swap.jdg.pmp.txt
+82ca17351a4801cafb4eaaddecdd28a7440d1125c425d8ff287fd477c5eede26  ./Abschluss-1.3/examples/logs/mut_01-tautem-mp-swap.jdg.racket.txt
+0cbaec417699e6bd98be48d21bc89247814a51896e894ed6693b72091b11cacd  ./Abschluss-1.3/examples/logs/mut_02-tautologies-ax-flip.jdg.pmp.txt
+45a7ed7b08f9d4c32b3571e11b2bd6337d0dd61c2a826b11865efbf4c469d9c3  ./Abschluss-1.3/examples/logs/mut_02-tautologies-ax-flip.jdg.racket.txt
+2297b65c1f429031b8432615740053e16b5c606469ba21168e6887a1343b93c6  ./Abschluss-1.3/examples/logs/mut_03-eqchain-leib-swap.jdg.pmp.txt
+8bcf1238d59d30c9116d225e816948cf577c0c59a9db2f76f3a4c8db5c58412b  ./Abschluss-1.3/examples/logs/mut_03-eqchain-leib-swap.jdg.racket.txt
+c6683956bf33793d107f9c2dcb2637b94a5ae4daba7d177a0e69186a7d18407f  ./Abschluss-1.3/examples/logs/mut_04-quantifiers-exi-witness.jdg.pmp.txt
+caf62a327ed7a924d1d3774a23e3405e2d99ca4b732565d5bee91102d30ec99b  ./Abschluss-1.3/examples/logs/mut_04-quantifiers-exi-witness.jdg.racket.txt
+915b3deec537100a85a7daf6123f1270f3e651d0dba425cd4caddc069bc905a9  ./Abschluss-1.3/examples/logs/mut_05-omega-laws-registry-suc.jdg.pmp.txt
+1cf0fcf6869aa40bf9e3922f63e66bd0e65ecad2b87bd8d3358c3d1f9d37389c  ./Abschluss-1.3/examples/logs/mut_05-omega-laws-registry-suc.jdg.racket.txt
+d5bfc0d8fe5019a761f4b5a2fe4cb51c21928c97f97702641e654b60eadb163c  ./Abschluss-1.3/examples/logs/mut_06-numerals-taut-goal.jdg.pmp.txt
+b69cb12289622eb65fe12e16cb2ea5b95a38eb5eb819463f2f0851963af3a3ab  ./Abschluss-1.3/examples/logs/mut_06-numerals-taut-goal.jdg.racket.txt
+007d0b870e7553c956fe5bc22b91c28b8c9e24af1884804600f2a7e4db0e6b0d  ./Abschluss-1.3/examples/logs/mut_07-farkas-exel-var.jdg.pmp.txt
+bda141a5eae38d975f8e185273e67bd2091f7517292d4ed0a8f85547ef1ddfd3  ./Abschluss-1.3/examples/logs/mut_07-farkas-exel-var.jdg.racket.txt
+d8415dd8911f7945833bcf4daa7b937d294c4cbea1d4375682b819d48f9cea25  ./Abschluss-1.3/examples/logs/mut_08-rank-4x4-use-shift.jdg.pmp.txt
+5784ec72ac3f9de38a87f16be5b6949448d54d0bfb2cdefa93802b2bee9fde48  ./Abschluss-1.3/examples/logs/mut_08-rank-4x4-use-shift.jdg.racket.txt
+19f004d1b46e7df0a319dcd679940ff70e38a7984453aae52970c9764a086bff  ./Abschluss-1.3/examples/logs/mut_09-smith-2x2-exi-witness.jdg.pmp.txt
+6b6e1f866fa313226e4b9c6453a894fffab8148700dce2180f4cd2275908ca5e  ./Abschluss-1.3/examples/logs/mut_09-smith-2x2-exi-witness.jdg.racket.txt
+688aaf2d1ed312115120432f837abb18d738b33e7870cd303d8659972c969793  ./Abschluss-1.3/examples/logs/mut_10-pratt-7-taut-goal.jdg.pmp.txt
+396da2d1997c7239239b41ededf4542fc08ba4b9d3ba6fe9a6d677aa34e2ae9b  ./Abschluss-1.3/examples/logs/mut_10-pratt-7-taut-goal.jdg.racket.txt
+2575707bf75851ed2c5fcbe4080fec1d6681ec3b581749b1856b4c87e2418281  ./Abschluss-1.3/examples/logs/run-end.txt
+a5a0b23786eaeb34fbad576ea7187de74b1f4c4c451385c3681199372741391f  ./Abschluss-1.3/examples/logs/run-start.txt
+9fcf2bd62259cbb1668e6fe2eac3b502b36bbaf0722243f3c5d784c669b7f666  ./Abschluss-1.3/examples/mut/01-tautem-mp-swap.jdg
+420d9878b057f7ffdeeb1221e2d0e1cf6c233dea5c1e9995c400c764587b210d  ./Abschluss-1.3/examples/mut/02-tautologies-ax-flip.jdg
+afca2e50709eaa518106e4c521160253eeea19bdc994f71ae7ba6fa53ca015c5  ./Abschluss-1.3/examples/mut/03-eqchain-leib-swap.jdg
+8ca488cd839d324fd771009360b59e93d9d4e3c4eed15993e8110edf3de5cfd1  ./Abschluss-1.3/examples/mut/04-quantifiers-exi-witness.jdg
+85e9b8826151f35ca48048d7f9a7dd81a83462c0f035fffec1abdcbecc7480d1  ./Abschluss-1.3/examples/mut/05-omega-laws-registry-suc.jdg
+88e9baeb6cec58e6b70b8e20e3db5335c34f04c1edcf4e4d41c3063566eb5a0f  ./Abschluss-1.3/examples/mut/06-numerals-taut-goal.jdg
+b0e82f125d1cda88d4f5238be639d53b469d8800d6305b1264219f3e49687f78  ./Abschluss-1.3/examples/mut/07-farkas-exel-var.jdg
+18ebba770e47dbd164dd21124730f96cedcedc8b2e1b2cb9c32339afbc3f4a57  ./Abschluss-1.3/examples/mut/08-rank-4x4-use-shift.jdg
+d51225583195ef945a021852103488192953ccf167d16cd74551125d525decc5  ./Abschluss-1.3/examples/mut/09-smith-2x2-exi-witness.jdg
+a96db168496af25745055d08fbbb9e9c9fcee24d6387e0ff4da6d910f92b5998  ./Abschluss-1.3/examples/mut/10-pratt-7-taut-goal.jdg
+4f7187bfc8c507ce208dd35b3168e68885dfcb0102ad1f357af374f77f3b87ce  ./Abschluss-1.3/judge-rkt.exe
+53b4287eed0623e7ff48005955d27bbaa5bcdb6a6d15dbc4cef50d892b8e75a0  ./Abschluss-1.3/judge/REG0-canonical.jdg
+3c8604c16652402a7ebbd300535a3d887ccf39a900a9aa4ae391c6845ea232a9  ./Abschluss-1.3/judge/REGISTRY-AUTH-v4.md
+7e3d2f0c4bd92d42b68f0e5cdab80949c4c19023daa3aa1ece9edd6e4226dfb3  ./Abschluss-1.3/judge/judge-v5-windows.exe
+4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b  ./Abschluss-1.3/judge/judge-v5.pmp
+c63bd449af3a7653c483b9bb42039b2942f658614bc2606eb7b40c5b95b6b2d0  ./Abschluss-1.3/judge/judge-v5.rkt
+7369c098521020283016dbe86845790e7456be6ef255d8204ab696b6e4723a26  ./Abschluss-1.3/judge/registry-auth-v4.rkt
+dcad9d622c103bce9e27646c5e8174b5429d5035cb3b0288d3171b337fbddb54  ./Abschluss-1.3/lib/abschluss.manifest
+2a01be691ff012c178454aac3810769387c33fd4730d4853daff04103711991d  ./Abschluss-1.3/lib/app3.pmp
+feebd237be48e059aee5b22ef78f76af6eb929b090c08f226ed0650df8b7241f  ./Abschluss-1.3/lib/cdp.pmp
+4edbff53b19690b8a770bad1bcc2431b73871ec7288fe819c99e0f49d10a76da  ./Abschluss-1.3/lib/close.pmp
+529a8a60a11c6752df76a70831507b4cba2232a22d230889fb022d521e327351  ./Abschluss-1.3/lib/config.pmp
+61fcd54b5ca9cc2b2da566242708a6d96040247baedf8a477feb27b0d4a6add4  ./Abschluss-1.3/lib/date.pmp
+78662fd5bfb9a16a6f8aac82a9f690dbee136607bca7ab598b6d08ec0d1c904c  ./Abschluss-1.3/lib/gl6.pmp
+55d3167d9cbafa04a5e87b48a7d7e5e910c5115bb1eb49db7793d2a7836d7246  ./Abschluss-1.3/lib/graph.pmp
+ec9dfcdb41aedebb50ad5015575d95d35bbe227e7113b280dc833f83c039d88e  ./Abschluss-1.3/lib/grid.pmp
+f626622dde23c48b93dbc1eb529d65277ba0826a718fc77552f32d12bc83c2b2  ./Abschluss-1.3/lib/gui-mub6-20260918.pmp
+5ab421a394e5ae64c946a19e453d81da906c4300392bb843d60c0bcb6e6eb110  ./Abschluss-1.3/lib/gui-pmpmath-20260918.pmp
+47a5713cc7f9ae29ef1a2b3cd88e7e0ecb61e96dffcf66de22e99b0cc19af1b8  ./Abschluss-1.3/lib/gui-responsive.pmp
+3d7f08cd73e9993f9a2b5da95146ab98cad56446fa85db9794a4602ebd6af7db  ./Abschluss-1.3/lib/gui-run-responsive.pmp
+03e310f1e34cef8dad6de220cc4d4b0dc90ba18371590512fed4b933a1ceb4a7  ./Abschluss-1.3/lib/gui.pmp
+7633165232ebf29f342d7388f239ac29b58555e01e80d1e90ca6e50f5ca5c024  ./Abschluss-1.3/lib/hello.pmp
+5d64aab485e554ad4b232df5418603d7f8b0646534eb91dcdf364494aa07bad0  ./Abschluss-1.3/lib/hot.pmp
+200e3f2fda2a372f4b7f9947575ea96ad2d671526cbb85a19f1c4d68dac9300a  ./Abschluss-1.3/lib/jobs.pmp
+2376b3a186343553a6f47cc7c32dfe748e042b6bd66d0e74e0456fea54b1feff  ./Abschluss-1.3/lib/json.pmp
+397beebaa4de2a5498b25499f54ac2f3805264db1091ab6a7f83ff7d468990ce  ./Abschluss-1.3/lib/leanjob.pmp
+4fb818becd59eef823cd6ef7404f0c017d1c06c1c018cda1029f5a5d257a7296  ./Abschluss-1.3/lib/ledger.pmp
+5b44dbed5cc61d881e2ca841ccb974f85e0008c5145084fd1d8c373057bf5ae8  ./Abschluss-1.3/lib/libiconv-2.dll
+5f9d6b7faaf7e20cf2636228560780d6c0b991427ef84f4b979d6b038b714f5d  ./Abschluss-1.3/lib/libracketcs_exmf9c.dll
+c6968d24d920246bd64331a12bda04939e3d8b3df4f0e24d25650283701c9b82  ./Abschluss-1.3/lib/linear.pmp
+43542af044fa67b1ad44f9cc0c879d480f94a32694475c1cfe77a7fe3eac908b  ./Abschluss-1.3/lib/list.pmp
+fdc0909e8430bd8c3b6fe324a4237e59750c4c8ccb6e5455c2f78288cb4f734f  ./Abschluss-1.3/lib/logic.pmp
+00d0d5746c3a3805277f57c6e2281b38d4560f431f18261fa7cd5d02149b488f  ./Abschluss-1.3/lib/logic2.pmp
+9b2ae0bd0ba549974c2a2fba095dc300fafc78ebe687170031c5a67390cf36ce  ./Abschluss-1.3/lib/longdouble.dll
+9109e0f279b46b34a928717831e3941bd9527c79ffacb65964139fd5c59742e5  ./Abschluss-1.3/lib/menu.pmp
+a3e1255e5aacc4e00e2d6911be599c7f4bc8fc4fecfb5700992215ecbcdea146  ./Abschluss-1.3/lib/names.pmp
+c92ba2aa34d6f27226443d25c240561ad3612fce5ce27604e44db986da84952d  ./Abschluss-1.3/lib/native-a01-blob.pmp
+834913c80e8b936514b93a55f048581ed6094db13ace285f5f81aa2d30830e24  ./Abschluss-1.3/lib/native-a01.pmp
+4bafc1b6b9b57a5ce9cb5ed057f8d43ca3bde0a43e7994431b3c029eca8833cf  ./Abschluss-1.3/lib/native-blob.pmp
+53bb2598f707aea36f619d5627429ecfd14628ad2415656c8050072fb9d6f25d  ./Abschluss-1.3/lib/native.pmp
+35d7cf5d852b7a341a6ccefe5ba52348cc169a4659939d90fa5caebd234d5393  ./Abschluss-1.3/lib/numbers.pmp
+170c787e0737ca32ccdb224f22063d9cc1fd5d7d205d0e9415899d39f46e35c2  ./Abschluss-1.3/lib/os.pmp
+1e4443563c7171d692f24d597c01652da1d323649d8461859e3990db0d683fdc  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libcairo-2.dll
+b8fe8e973df30a08c8b82bedcfaae9674b94f3c29fa96377caf43a2116d4c022  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libexpat-1.dll
+ade63a710d98a002ed5cc0963f462c99b82b11df95b9ab477fd49f05fcff689a  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libffi-6.dll
+3443bbb517779d666314304bc11bdd44ea454e9e6d54024a1e3a4a8dfa58853c  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libfontconfig-1.dll
+9e8792c1774782d7f39acebc92e128a812c70da5def88a28a91f84de57ed8cb3  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libfreetype-6.dll
+f9b611aa98a518a911ce8c765a2dcddca77af3e07e236ebd2e7f455b81be67a2  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libfribidi-0.dll
+74cd65ead853cdc6f6ddcd21e8f0c5c0f1fd6fc95d2e3de7bbb91961a681ca8f  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libglib-2.0-0.dll
+bff77c2431966df79d06e39f6c54600172afd18e326a06341e959a515d71233a  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libgmodule-2.0-0.dll
+742818d9ad155e5ac65377a03d067fcf9a9f51906126070585d2dec8cce95631  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libgobject-2.0-0.dll
+2b975c2b0c06b7e541762a1ec8d90fea96cb7564bfbdbade298fb73990265943  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libgthread-2.0-0.dll
+c093cda0096a6b8cbff18a6196671bf0d4c99bf5278c20432e3712e89a2079c4  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libharfbuzz-0.dll
+5b44dbed5cc61d881e2ca841ccb974f85e0008c5145084fd1d8c373057bf5ae8  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libiconv-2.dll
+8a26cc114a58cdd3ae8471b83f01a97f08b90fddd6c6939ed530fc7f015c819e  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libintl-9.dll
+ecb3ed73defc0c14609ac0ccf5c34ccd07792852fcca52995a9efed229639cbe  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libjpeg-9.dll
+5c7778346fb44b12f7840c2992639b787e67056fac1d211192dc028866a1ee12  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libpango-1.0-0.dll
+81b358c7dce1309beefef52dfb9fc64fd4f2cb116f815d290ef25e8a2fef90b9  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libpangocairo-1.0-0.dll
+824eb55230bd45bed08ddf28018221f8d58efc9eb6d438d53c1f5309eeb10c87  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libpangoft2-1.0-0.dll
+63fc3996640ea39dbbd61471990e42e46ac21c8d2a8fe059d8f531d5e4b17323  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libpangowin32-1.0-0.dll
+62a92de8b2a6d0885735cf6eab90fd1a2115dd96c030def202796e382e573392  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libpixman-1-0.dll
+6396ba3cb6f826037d01bc06a5eb4b3154cb313598f83c8f60a47590647c2a30  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/libpng16-16.dll
+10d654ac1e68e06341db6f02bb02aeaeb0128a0cdd0798f71c6cb54eec77ed6b  ./Abschluss-1.3/lib/plt/Abschluss Start/exts/ert/r0/zlib1.dll
+b29c8046f6b0b84596d7bf147fc72ed217d5d96dbc84220958d76eaa65d59df2  ./Abschluss-1.3/lib/rdcache.pmp
+c9a48e5ee2630b9b24a959ae52b1648436037ea3c2eb4ce10a98e46d4164baaf  ./Abschluss-1.3/lib/rdlean.pmp
+c645e976c0aef7747ad1a5d020d974ea34656194e7f47a271d92b7107bcb9dda  ./Abschluss-1.3/lib/rdpmp.pmp
+e7bb39d22983ffa0d14c655004a6cba1a2c4139ea49c89f4899adc128601a288  ./Abschluss-1.3/lib/rocqjob.pmp
+0f2b2bdf52ad4db8baa0246a6d227c93e2ca47b7a37f7531c32a286cafa02b92  ./Abschluss-1.3/lib/shortcut.pmp
+b3d673541c692862c2c67187d7679cae1124c8dd43647dda0b49fea1c86b8395  ./Abschluss-1.3/lib/tar.pmp
+16983e2a14b3feda8aeebebf5247a751420cd390e7e9f868c4cfeb7400858186  ./Abschluss-1.3/lib/text.pmp
+f8f93cf783bdb87c80437a06c0ec22c6fd070ff8a1c720f71efbd4121f07a84f  ./Abschluss-1.3/lib/util.pmp
+64d822ed7378c924660feb98e9af727a2b753f16213c4cd84129021932cd09f5  ./Abschluss-1.3/lib/zfc.pmp
+1bfc119347ac6e0397a8c158e932f3400f819bb51c1ee10753e2467a53fcba03  ./Abschluss-1.3/lib/zfc2.pmp
+e6c363f7e8b9c1fcda27f1968abff205ae5e4dfd8a05222adf497e38edf27457  ./Abschluss-1.3/lib/zfcbase.pmp
+14009c9f6707ed554e70e6ad3a4a1da031cc4da6ff2572d03d1b86b8f8e86bd9  ./Abschluss-1.3/lib/zip.pmp
+a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2  ./Abschluss-1.3/licenses/Racket/LICENSE-APACHE.txt
+fc82ca8b6fdb18d4e3e85cfd8ab58d1bcd3f1b29abe782895abd91d64763f8e7  ./Abschluss-1.3/licenses/Racket/LICENSE-GPL.txt
+a853c2ffec17057872340eee242ae4d96cbf2b520ae27d903e1b2fef1a5f9d1c  ./Abschluss-1.3/licenses/Racket/LICENSE-LGPL.txt
+6ae314acf8e015716cdfbed46fdc6ded0a599411b8b98cd61c87f9940f85ffc7  ./Abschluss-1.3/licenses/Racket/LICENSE-MIT.txt
+4a27eda03f14997f0df1a80d5ed0ca449d2eeb15a5485df0b9389738cb83f395  ./Abschluss-1.3/licenses/Racket/LICENSE-libscheme.txt
+e2595b19b5ca137b9f6a4f1c299c25db5cbaf17314dd4368037ad559bfe9b1d8  ./Abschluss-1.3/licenses/Racket/LICENSE.txt
+d6c6e22a672be461e0bcc8ac6e054656e5ce76e1080570c07736d1e0ada35b10  ./Abschluss-1.3/pompetzki-w.exe
+957366e641219523dc10fb4316c9916ef072fd79d6084703cc9035e74c127daa  ./Abschluss-1.3/pompetzki.exe
+993881a5e970a33793c200fab75ba20fbf3a48ba45c3060eef924f8423b90367  ./Abschluss-1.3/provenance/JUDGE-V5-RELEASE-RECEIPT.json
+4b5a3a37b929bb070f8fdda5200f9d17d6f8681a4894637c945a52ca576b8884  ./Abschluss-1.3/provenance/cockpit-portable-changes.json
+4259da3f96c237d75aa94dc5fc5f9637e9d9c2b4e449c3fa1b79b3179c55781d  ./Abschluss-1.3/provenance/native-provenance.json
+f2225cbc59698b5f44665c99f003dafd4b4bb5e381b8ce891c0fdba5ff9c19f6  ./Abschluss-1.3/provenance/native-rebuild-comparison.json
+0bd13515bfba4d9f4c3d84ea129b0af7d531546fd4bfe135b00052035a977eea  ./Abschluss-1.3/provenance/native-test-result.json
+d8c822e76b3971420474aba83c725c5edd4a438c858ab87fba91ce66a0b86b1c  ./Abschluss-1.3/provenance/native-v5-PROVENANCE.json
+364245e4ef8234f1e62ddc25e3f232b7468a590922b658ab0deb02107f904b46  ./Abschluss-1.3/provenance/package-components.json
+dd08fc7b0df845edfa0efebda0b24df347032067f8535f630d7ed7f6ce49434b  ./Abschluss-1.3/tools/abschluss-verify/abschluss-verify.exe
+5b44dbed5cc61d881e2ca841ccb974f85e0008c5145084fd1d8c373057bf5ae8  ./Abschluss-1.3/tools/abschluss-verify/lib/libiconv-2.dll
+5f9d6b7faaf7e20cf2636228560780d6c0b991427ef84f4b979d6b038b714f5d  ./Abschluss-1.3/tools/abschluss-verify/lib/libracketcs_exmf9c.dll
+9b2ae0bd0ba549974c2a2fba095dc300fafc78ebe687170031c5a67390cf36ce  ./Abschluss-1.3/tools/abschluss-verify/lib/longdouble.dll
+fc9c34ca13b6c95c9d1bb16c54027da4a7535df6af3e46c83dfccf01faf9d6b5  ./Abschluss-1.3/tools/bits/bits-oracle.rkt
+40572348e82fb236350cadc9130cfbb8a00cd357196cecbfdcb5e3f5eadf3b26  ./Abschluss-1.3/tools/bits/bits-test.pmp
+fcdff3a980271296b8a836cfe4a4506887aeef6ca075f6e62826f1a601112cbf  ./Abschluss-1.3/tools/bits/bits.pmp
+76048c4d1422354aadec7dd6bc61dc6a6a59c6df5320e66183e7450e237ac4cc  ./Abschluss-1.3/tools/bits/pmp-out.txt
+61a9c9e2097216f5f01e12bda7d1adab68ce2c6a8f89bdc40174defd3ede6b57  ./Abschluss-1.3/tools/book-html/book-html.rkt
+45f0bfc157643b1f4ed6e1d0301fd10a37bd2653f1b74688eac973d63be1119c  ./Abschluss-1.3/tools/book-search/book-search.exe
+ca1167793d637242781a526b8217f11343024b7e7854a2d412ee9192cc019e04  ./Abschluss-1.3/tools/book-search/book-search.rkt
+5b44dbed5cc61d881e2ca841ccb974f85e0008c5145084fd1d8c373057bf5ae8  ./Abschluss-1.3/tools/book-search/lib/libiconv-2.dll
+5f9d6b7faaf7e20cf2636228560780d6c0b991427ef84f4b979d6b038b714f5d  ./Abschluss-1.3/tools/book-search/lib/libracketcs_exmf9c.dll
+9b2ae0bd0ba549974c2a2fba095dc300fafc78ebe687170031c5a67390cf36ce  ./Abschluss-1.3/tools/book-search/lib/longdouble.dll
+1453c39c990a5383f6a1af27d6a109c762fb67bc1939430eff3bc746905b2924  ./Abschluss-1.3/tools/crt/accepted/crt-test.pmp
+e46f7e35d5fd9cbe252ec327b8f187260ecaa816a9391096eca550d85ed019dc  ./Abschluss-1.3/tools/crt/accepted/crt.pmp
+88beae5e57b4409c4d6f38b12fa1793ba9ba2161ce6098341a8fe442938ed3bd  ./Abschluss-1.3/tools/crt/crt-cases.rktd
+44c1beae8ba897eb80418dcb661b01582a152790d38cbed9b29e14ad97308cf3  ./Abschluss-1.3/tools/crt/crt-crosscheck.rkt
+255281b28a7cefef684c314581d8d68fd8e89a9ba5f161206ab008914d51ccd7  ./Abschluss-1.3/tools/crt/crt-oracle.rkt
+a076e396c15273b18b7d2c1bd6a5245fd1763845d332f47a5b83f8fe7186f02b  ./Abschluss-1.3/tools/crt/pmp-output-v2.txt
+c489d257ec922071fef86c4576f78038dbd48ee79ff40b006f2d74616a92f3aa  ./Abschluss-1.3/tools/item-jdg-index/INDEX.tsv
+b6c1a1408bf2050e5ceea99908de79fcad240eaf041b56bf49ce59ae31256ce1  ./Abschluss-1.3/tools/item-jdg-index/index.html
+bfb5431d54bfffc7ddea1f84ffa239664d0031563b394c492eb54567649f7299  ./Abschluss-1.3/tools/item-jdg-index/item-jdg-index.rkt
+54c3c5122d4e3bcba7060cc776f3eeb3ad5d09b3d9908885b3ed0b818aa4fb55  ./Abschluss-1.3/tools/jdg-lint/jdg-lint.exe
+834365f9ef55c5024439a1812ecc4e81c0d0ceefd9db2cf93ac8b29a0952f0d7  ./Abschluss-1.3/tools/jdg-lint/jdg-lint.rkt
+adc956ae613a147c6e12fe5ffa9d5981d547b64335d5239fa142d4c111c8bb48  ./Abschluss-1.3/tools/jdg-pretty/jdg-pretty.rkt
+dec27840637a38cb7d26273024eceb68ba4d5a057aa3b9e8aaf7dd07f19d85bc  ./Abschluss-1.3/tools/jdg-stats/AXIOM-TRACE.tsv
+733dc89b2c67590eff5e26ec54198a948a1c6b184b7f427144aeb8a01bdf43c5  ./Abschluss-1.3/tools/jdg-stats/RUN-OUTPUT.txt
+5841c664c15d384e4fa2ea97749fa885967a67a8247eff3988705aa80b1aa54e  ./Abschluss-1.3/tools/jdg-stats/SHA256SUMS.txt
+864ff1ff25da59f063a58e60aa5e1755c7fce0d50ba159c65f5ebd89108ca4c9  ./Abschluss-1.3/tools/jdg-stats/STATS.tsv
+4da7b7e97ff2aac1d13c3126a17b1092d52aa8b2d7e56e345eea1965ae58d759  ./Abschluss-1.3/tools/jdg-stats/STATUS.txt
+ecbbb011f97b4274ee7b852c432bb393fa3a628a8065a8a06665c44a10653730  ./Abschluss-1.3/tools/jdg-stats/jdg-stats.rkt
+6b1b38183b31e5648f09380d898ce330b79b947545be1e7039a88887ee20740f  ./Abschluss-1.3/tools/jdg-theorems/jdg-theorems.rkt
+682efa3dc275bdce9046a5d22848e6383ba49f0777870b461b1c304577595e1f  ./Abschluss-1.3/tools/jdg-theorems/tests/all-tags.jdg
+957606bbef2a7530cf9c9df2555f277f3aa717801df1289617575d95553a18d4  ./Abschluss-1.3/tools/jdg-theorems/tests/bad-header.jdg
+81a33bde92eeebd0eee13b5e6183bc71f3d00ecf57196712acee9817ae446eb6  ./Abschluss-1.3/tools/jdg-theorems/tests/bad-index-count.index.txt
+5aedb4ffee05302bc953b6642aa470f3e6fef7b8e0ee91528654bca339aa68d8  ./Abschluss-1.3/tools/jdg-theorems/tests/bad-index-count.jdg
+429ce4f8629d44ad5f473e9e25d7415bcfc4b8dc3004167f874b548e29d51855  ./Abschluss-1.3/tools/jdg-theorems/tests/bad-index.index.txt
+45cab76adb7d53d9a81a14554fceb6bad449e0bd6910d5ebaf971efd98d45f79  ./Abschluss-1.3/tools/jdg-theorems/tests/bad-index.jdg
+704e3edb66e3456e16090e546c3db791429256209f6476cfe6f4093da6aed5f9  ./Abschluss-1.3/tools/jdg-theorems/tests/empty.jdg
+6b92148f185488b1e801b34d89427ffef43053578e4fccb2728652ad7abc2258  ./Abschluss-1.3/tools/jdg-theorems/tests/fixtures-test.rkt
+9f05da4b187afaa2c4d7d2f5923d8539c5960956a265de3510f5be3cfb55d25e  ./Abschluss-1.3/tools/jdg-theorems/tests/indexed.index.txt
+5aedb4ffee05302bc953b6642aa470f3e6fef7b8e0ee91528654bca339aa68d8  ./Abschluss-1.3/tools/jdg-theorems/tests/indexed.jdg
+f20ec831877dd93c199202e0823ea9ab3f7bff1bba1305270a4f3e445dc016b1  ./Abschluss-1.3/tools/jdg-theorems/tests/negative-natural.jdg
+4847ac433b40a1295f18d165141629ef72a63452134328ed0f3a9cc64c938d81  ./Abschluss-1.3/tools/jdg-theorems/tests/non-ascii-space.jdg
+5aedb4ffee05302bc953b6642aa470f3e6fef7b8e0ee91528654bca339aa68d8  ./Abschluss-1.3/tools/jdg-theorems/tests/singleton.jdg
+ddc813f362ad4c1dd625ac1650c9ceb10e2a87ab66e26b43d61c16d4b9ba794e  ./Abschluss-1.3/tools/jdg-theorems/tests/trailing-token.jdg
+54abcb38eaaa107d64a9dc15689ac8b83551b181334540bda63a3be1575e817e  ./Abschluss-1.3/tools/jdg-theorems/tests/truncated-form.jdg
+9b80070e3ebbe38686e95e3493f93ce389a2ab8dc6b77e77c180653420e5e578  ./Abschluss-1.3/tools/jdg-theorems/tests/truncated-list.jdg
+38b9ff2502502ec3ba06f8c3fce7a65a1c7993953301d993204d88ff08d9ac94  ./Abschluss-1.3/tools/jdg-theorems/tests/unknown-form.jdg
+b0bb40aae5ca0cf48f1b85662a775c3dd3b7b8138ee65ae01a3f460bd470bf87  ./Abschluss-1.3/tools/jdg-theorems/tests/unknown-step.jdg
+8db635bf6f2f3754713ab28b37c4544769382400a1cb2112f3ec7562935e9c85  ./Abschluss-1.3/tools/ledger-html/ledger-html.rkt
+df359d09a6ce617307b8f129f7d5baee611a9ddcbb37f0b37abbc203ba42e51a  ./Abschluss-1.3/tools/ledger-merge/RUN-final.txt
+8f7c4bb9f8976204deddc81ac0704f90a7ec6c1fe7baa8f1a6ee1b6ef240f2fe  ./Abschluss-1.3/tools/ledger-merge/bookcheck-view-v2.rkt
+50d09c58acf911aee220581cf6cf8e802bd89ea5cd92476d6a1c950f85eeeb89  ./Abschluss-1.3/tools/ledger-merge/final/ledger-merge.rkt
+c7adda5cabbb078c92182b6d40adc95261c40e763daece44e9c6ed7cd07b2105  ./Abschluss-1.3/tools/ledger-search/jdg-text.rkt
+1723e737d59c889ed7b7edc8b06cf4b125b02e4b32f6353df0530379db392195  ./Abschluss-1.3/tools/ledger-search/ledger-search.rkt
+509c5714b2bf0b04781fe3d9ea171ab052e79a749393c450220891250d627641  ./Abschluss-1.3/tools/ledger-search/tests.rkt
+764d7fcef410859b9048b5d8e9f91c9df3780f61f6c864e717d28b06a86500b2  ./Abschluss-1.3/tools/ledger-stats/ledger-stats.rkt
+452e873881e52ad84fb62ff66f303737f617d809828d73e8c2c5c06036c45308  ./Abschluss-1.3/tools/ledger-verify/ledger-verify.rkt
+5b44dbed5cc61d881e2ca841ccb974f85e0008c5145084fd1d8c373057bf5ae8  ./Abschluss-1.3/tools/mmverify/lib/libiconv-2.dll
+9f07050ab544a45d6a9b02a49182b2379bfe4cd87990437ea89314d09f346c6a  ./Abschluss-1.3/tools/mmverify/lib/libracketcs_ex0znk.dll
+9b2ae0bd0ba549974c2a2fba095dc300fafc78ebe687170031c5a67390cf36ce  ./Abschluss-1.3/tools/mmverify/lib/longdouble.dll
+9f90b67550681eaaafb94686f96722852008240e9d1f1628ba9051ddc3cde4aa  ./Abschluss-1.3/tools/mmverify/mmverify.exe
+66253852a7e6f948114e2c6115503d3c33595b1fb6d80e15f5e10b8c9c69fcf1  ./Abschluss-1.3/tools/modmat/modmat-oracle.rkt
+0563bf63f6138d94df31e3f2c53cd88ef64988998d95d951633c5cdeb5582bb0  ./Abschluss-1.3/tools/modmat/modmat-test.pmp
+ea88e75813e84d6ec03edaea3d021ec153201ba1a5a0588b0420aa1517d7db59  ./Abschluss-1.3/tools/modmat/modmat.pmp
+382f2a3ad10aa64cf05c4dc8d7245f7726bdf0c6317f89229ccf0f15cb9617e8  ./Abschluss-1.3/tools/modmat/racket.out
+4986a69e6ca850c5475563a183e2bd21110c1d945a792e5da672c01d094c4c08  ./Abschluss-1.3/tools/perm/case-data.rkt
+cc13bf0109798a35ea9c78cb2d0067ada07a30efa3102ed024cbb2d5e3d74de1  ./Abschluss-1.3/tools/perm/generate-tests-v2.rkt
+6977b344ca6ee52efda1f4fd30e374b15e850da441a7245221994a07d016b2ba  ./Abschluss-1.3/tools/perm/perm-oracle-v2.rkt
+f17e86d4e8aac5933f4e4adeeab9942fa3ab545bde5d2ea1daf60aeb2fd23c3f  ./Abschluss-1.3/tools/perm/perm-oracle.rkt
+1211f2ced130f3930be42d410ec024dd832bc1a8ca2c5d88d758b8fe9ae5b17d  ./Abschluss-1.3/tools/perm/perm-test.pmp
+00ea807092c5bf661e8169592de311398af043b21873d44a412cfcdda0e30a94  ./Abschluss-1.3/tools/perm/perm.pmp
+6c4b75779fb7e61e97f1b6ae9113df48b8f5a8fad45443b04b6b2c729e757f27  ./Abschluss-1.3/tools/perm/racket-03.out
+4c078aecf62428758da350159333e4d178a132be4ea58876d410361dca0c1cfe  ./Abschluss-1.3/tools/pmp-iroot/iroot-oracle.rkt
+8e881e9c07b59670f5ada681e6952948dc02708a4c1be733c72063796670b936  ./Abschluss-1.3/tools/pmp-iroot/iroot-test.pmp
+8524b1d35ad420744f83ab580258953dbc321fc8ab95f383709adf02360aa0a7  ./Abschluss-1.3/tools/pmp-iroot/iroot.pmp
+7020f83abbcaecd2aa2002af3fb536b8c2909f53d1d584e5a659c31835493e8d  ./Abschluss-1.3/tools/pmp-iroot/pmp-01.out
+95276f6c77a12816e06c39b04b3efb3c17b5f486f91f0e1da5026428a94953f8  ./Abschluss-1.3/tools/pmp-partitions/partitions-oracle.rkt
+9bf6783c3eee4f6b2733b9138480cbf6f34c4c77a8e5f16295166b0a08d7f1cc  ./Abschluss-1.3/tools/pmp-partitions/partitions-test.pmp
+fd7aa59b258c218460cb409e1818e8a35b32bc874f0912bc424d8584f5b6840e  ./Abschluss-1.3/tools/pmp-partitions/partitions.pmp
+97eef820d2a73a1733d5d167007f016ef703d28e6cb57b60b711a45e37e43172  ./Abschluss-1.3/tools/pmp-partitions/pmp-01.out
+d5a804691640d2730c3dc1f26d08e49dc02eef8383d1a09e4b3068bdf0a60ec2  ./Abschluss-1.3/tools/pmp-vscode/pmp-vscode/README.md
+816df6fa469cf11e1f83bb767b6689b26f5b7d61552f4d7acb45aeb474463d42  ./Abschluss-1.3/tools/pmp-vscode/pmp-vscode/language-configuration.json
+c70b35aff19170ac2606645988a2e3caf35c766c60a431b3c870123ef0a2c426  ./Abschluss-1.3/tools/pmp-vscode/pmp-vscode/package.json
+2ac868446dbf10d91dd744cc2d4dfeeb677a56be902efc95568f27f031af7802  ./Abschluss-1.3/tools/pmp-vscode/pmp-vscode/syntaxes/pmp.tmLanguage.json
+7cba3c0582799cb29ff5b005cc1b9e7b8cb41244f1a6bca264e4fc4af499c8df  ./Abschluss-1.3/tools/qsolve/qsolve-oracle.rkt
+22d0d6b0654c83c090952e51889a082f722082d43cb6e87da1377b05f20e36f6  ./Abschluss-1.3/tools/qsolve/qsolve-test.pmp
+66f05fcd76fc3bbc2ca750ac9abfb7a0f53b8e12640df697b388d592d61113e9  ./Abschluss-1.3/tools/qsolve/qsolve.pmp
+aa22e493c341b231ee2a33e7f8901f9c5006851e0b9d7b4620769a9f217eeb47  ./Abschluss-1.3/tools/qsolve/racket-01.out
+0c1d17eeedee6fd085399d0b2406aa6c12399e84798208a10f31382000dd616c  ./Abschluss-1.3/tools/queue-index/queue-index.rkt
+0e15f57d785ef2a590659785510a626080df53bc48947b154004abbc0909e63f  ./Abschluss-1.3/tools/receipts-merge/receipts-merge.rkt
+6491bae0197f0486ced8cfe492aa09437a7fd77fb2f659d4c83087b5c54b8285  ./Abschluss-1.3/tools/receipts-merge/test/01-base.tsv
+76793d3ed71f70b1617ec501bc5a77d81eb22b460f41f8d46caa971b762d3f81  ./Abschluss-1.3/tools/receipts-merge/test/02-duplicate.tsv
+61b544a895c433b94ac7c42674eb0771e1fcf9e39b928c407b15d587f7633ef6  ./Abschluss-1.3/tools/receipts-merge/test/03-mixed.tsv
+76793d3ed71f70b1617ec501bc5a77d81eb22b460f41f8d46caa971b762d3f81  ./Abschluss-1.3/tools/receipts-merge/test/out.tsv
+d72279eb30f48e57ebe7b5e6ebc0699f764631b309389d971e4c068388ed37fe  ./Abschluss-1.3/tools/receipts-merge/test/out.tsv.refused
+4d6d858bca6352936d73dd5b0bdf232301e080a77f01341487802e001b5cd809  ./Abschluss-1.3/tools/sexp-validate/sexp-validate.rkt
+05b773ce83c0c7da3dab6833ee7c9de720de773274c4e2ea16c7b6f59536702f  ./Abschluss-1.3/tools/strx/lib/strx.pmp
+534e3ba5339182781f542cccfd4ba3d0df68e1b2485f25c418941d90862dcf32  ./Abschluss-1.3/tools/strx/oracle-output.txt
+4c10eae15d7752b522f4ef6786243f9417d3861c5d1cbf8b9c669e27ccc352ee  ./Abschluss-1.3/tools/strx/strx-byte-build.rkt
+339c62a8ed6edcd8458b2e1017cd614c17489520becbe0fb5991239cdc3e60c0  ./Abschluss-1.3/tools/strx/strx-cases.rktd
+620cda1a3f35bae3fc99a903d11713d481de7c19f4cfb00612708f4ed09cb0df  ./Abschluss-1.3/tools/strx/strx-gen-test-v2.rkt
+50933c97b7deda92a01ebe481c98948b0e91bc4e5cb967b8cabb9131d3807be5  ./Abschluss-1.3/tools/strx/strx-oracle.rkt
+88a97d6ed9e810d3510854f057215b4de6fdd118401b0d2548a90b43f4bd4d99  ./Abschluss-1.3/tools/strx/strx-test.pmp
+05b773ce83c0c7da3dab6833ee7c9de720de773274c4e2ea16c7b6f59536702f  ./Abschluss-1.3/tools/strx/strx.pmp
+7f34a0b10bab40ad396831bb4303da8eb38490008baa00fcd22c9ecdc3a387ad  ./Abschluss-1.3/tools/timeout-run/final/timeout-run.rkt
+
+## git-only (excluded from source ZIP)
+.gitattributes
+.github/CODEOWNERS
+.github/copilot-instructions.md
+.gitignore
+MANIFEST.sha256
+PREPARATION-TIMESTAMP.txt
+README.md
+RELEASE-1.3.0-final.md
+bin/linux/jdgchk
+bin/linux/pompetzki
+bin/linux/run-elf.sh
+bin/windows/pompetzki.exe
+docs/1.0/CHANGELOG.md
+docs/1.0/KNOWN-LIMITS.md
+docs/1.0/QUICKSTART.md
+docs/1.0/README.de.md
+docs/1.0/README.md
+docs/1.0/RELEASE-NOTES.md
+docs/1.0/USER-GUIDE.md
+docs/FINAL-REPORT-20260925.md
+docs/JDG1-FORMAT.md
+docs/PMP-BUILDOUT-2026-10-09.md
+docs/QUICKSTART.md
+docs/README-v2026.10.10.md
+docs/RECEIPTS.md
+docs/SCOPE-AND-RELEASE-2026-10-09.md
+docs/SOUNDNESS.md
+judge/JUDGE-V4-RELEASE-RECEIPT.json
+judge/JUDGE-V4-SOURCE-RECEIPT.json
+judge/JUDGE-V5-RELEASE-RECEIPT.json
+judge/JUDGE-V5-RUNTIME-V2-SOURCE-CORRECTION-coherent.json
+judge/JUDGE-V5-RUNTIME-V2-SOURCE-CORRECTION-coherent.sha256
+judge/NATIVE-V5-FREEZE.sha256
+judge/PUBLIC-SOURCE-AUDIT-RESULT.json
+judge/PUBLIC-SOURCE-AUDIT-v5.json
+judge/PUBLIC-SOURCE-AUDIT.sha256
+judge/PUBLIC-SOURCE-WHITELIST-runtime-v2.json
+judge/PUBLIC-SOURCE-WHITELIST-v5-runtime-v2-coherent.json
+judge/PUBLIC-SOURCE-WHITELIST-v5.json
+judge/PUBLIC-SOURCE-WHITELIST.json
+judge/README-public-gate-v2.md
+judge/README-public-gate-v5.md
+judge/README.md
+judge/REFERENCE-PROVENANCE.txt
+judge/V5-FINAL-VERIFY.json
+judge/VALIDATION-V5-FREEZE.sha256
+judge/generate-v4.rkt
+judge/judge-v3.pmp
+judge/judge-v4.pmp
+judge/judge-v4.rkt
+judge/mut/base.txt
+judge/mut/m1-refl.jdg
+judge/mut/m2-taut.jdg
+judge/mut/m3-stmt.jdg
+judge/mut/m4-genvar.jdg
+judge/mut/m5-leib.jdg
+judge/mut/m6-line.jdg
+judge/mut/m7-use.jdg
+judge/mut/m8-hyp.jdg
+judge/mut/ok-hyp.jdg
+judge/mut/ok-thm0.jdg
+judge/native-v5/judge-v5-linux
+judge/native-v5/judge-v5-windows.exe
+judge/native-v5/native-provenance.json
+judge/native-v5/native-test-result.json
+judge/native-v5/portable/PROVENANCE-v5.json
+judge/native-v5/portable/README-v5.md
+judge/native-v5/portable/SHA256SUMS-source-v5.txt
+judge/native-v5/portable/SOURCE-INPUTS-v5.json
+judge/native/README-native.md
+judge/native/native-provenance.json
+judge/native/native-test-result.json
+judge/native/portable/LICENSE
+judge/native/portable/PROVENANCE.json
+judge/native/portable/README.md
+judge/native/portable/SHA256SUMS-source.txt
+judge/native/portable/SOURCE-INPUTS.json
+judge/native/portable/build-native.py
+judge/native/portable/linux-runtime.asm
+judge/native/portable/pmpc-original.rkt
+judge/portable-interpreter/LICENSE
+judge/portable-interpreter/PUBLIC-PROVENANCE.json
+judge/portable-interpreter/README-source.md
+judge/portable-interpreter/SOURCE-WHITELIST.json
+judge/portable-interpreter/build-interpreter.py
+judge/portable-interpreter/source/pompetzki.asm
+judge/racket/README.md
+judge/racket/judge.rkt
+judge/registry-api-v4-results.json
+judge/registry-tests-v4b/summary.json
+judge/rocq/CANONICAL-PREFIX-PROOF-RECEIPT.md
+judge/rocq/PREFIX-PROOF-RECEIPT.md
+judge/rocq2jdg.rkt
+judge/test-registry-api-v4.rkt
+licenses/Apache-2.0.txt
+licenses/CC0-1.0.txt
+repair/README.md
+repair/book-v4/LICENSE
+repair/book-v4/PROVENANCE.json
+repair/book-v4/PUBLIC-SOURCE-MANIFEST.json
+repair/book-v4/README.md
+repair/book-v4/book-post-v4.rkt
+repair/book-v4/registry-tests/SHA256SUMS.txt
+repair/book-v4/registry-tests/altered-first-formula.jdg
+repair/book-v4/registry-tests/altered-first-formula.pmp.stderr.txt
+repair/book-v4/registry-tests/altered-first-formula.pmp.stdout.txt
+repair/book-v4/registry-tests/altered-first-formula.racket.stderr.txt
+repair/book-v4/registry-tests/altered-first-formula.racket.stdout.txt
+repair/book-v4/registry-tests/altered-last-pure-formula.jdg
+repair/book-v4/registry-tests/altered-last-pure-formula.pmp.stderr.txt
+repair/book-v4/registry-tests/altered-last-pure-formula.pmp.stdout.txt
+repair/book-v4/registry-tests/altered-last-pure-formula.racket.stderr.txt
+repair/book-v4/registry-tests/altered-last-pure-formula.racket.stdout.txt
+repair/book-v4/registry-tests/altered-placeholder-hypothesis.jdg
+repair/book-v4/registry-tests/altered-placeholder-hypothesis.pmp.stderr.txt
+repair/book-v4/registry-tests/altered-placeholder-hypothesis.pmp.stdout.txt
+repair/book-v4/registry-tests/altered-placeholder-hypothesis.racket.stderr.txt
+repair/book-v4/registry-tests/altered-placeholder-hypothesis.racket.stdout.txt
+repair/book-v4/registry-tests/altered-pure-hypotheses.jdg
+repair/book-v4/registry-tests/altered-pure-hypotheses.pmp.stderr.txt
+repair/book-v4/registry-tests/altered-pure-hypotheses.pmp.stdout.txt
+repair/book-v4/registry-tests/altered-pure-hypotheses.racket.stderr.txt
+repair/book-v4/registry-tests/altered-pure-hypotheses.racket.stdout.txt
+repair/book-v4/registry-tests/false-proof-canonical-prefix.jdg
+repair/book-v4/registry-tests/false-proof-canonical-prefix.pmp.stderr.txt
+repair/book-v4/registry-tests/false-proof-canonical-prefix.pmp.stdout.txt
+repair/book-v4/registry-tests/false-proof-canonical-prefix.racket.stderr.txt
+repair/book-v4/registry-tests/false-proof-canonical-prefix.racket.stdout.txt
+repair/book-v4/registry-tests/false-proof-empty-registry.jdg
+repair/book-v4/registry-tests/false-proof-empty-registry.pmp.stderr.txt
+repair/book-v4/registry-tests/false-proof-empty-registry.pmp.stdout.txt
+repair/book-v4/registry-tests/false-proof-empty-registry.racket.stderr.txt
+repair/book-v4/registry-tests/false-proof-empty-registry.racket.stdout.txt
+repair/book-v4/registry-tests/forged-false-registry.jdg
+repair/book-v4/registry-tests/forged-false-registry.pmp.stderr.txt
+repair/book-v4/registry-tests/forged-false-registry.pmp.stdout.txt
+repair/book-v4/registry-tests/forged-false-registry.racket.stderr.txt
+repair/book-v4/registry-tests/forged-false-registry.racket.stdout.txt
+repair/book-v4/registry-tests/full-replay-4551.racket.stderr.txt
+repair/book-v4/registry-tests/full-replay-4551.racket.stdout.txt
+repair/book-v4/registry-tests/leading-zero-and-tab-prefix.jdg
+repair/book-v4/registry-tests/leading-zero-and-tab-prefix.pmp.stderr.txt
+repair/book-v4/registry-tests/leading-zero-and-tab-prefix.pmp.stdout.txt
+repair/book-v4/registry-tests/leading-zero-and-tab-prefix.racket.stderr.txt
+repair/book-v4/registry-tests/leading-zero-and-tab-prefix.racket.stdout.txt
+repair/book-v4/registry-tests/nonexistent-registry-use.jdg
+repair/book-v4/registry-tests/nonexistent-registry-use.pmp.stderr.txt
+repair/book-v4/registry-tests/nonexistent-registry-use.pmp.stdout.txt
+repair/book-v4/registry-tests/nonexistent-registry-use.racket.stderr.txt
+repair/book-v4/registry-tests/nonexistent-registry-use.racket.stdout.txt
+repair/book-v4/registry-tests/prefix-0-truth.jdg
+repair/book-v4/registry-tests/prefix-0-truth.pmp.stderr.txt
+repair/book-v4/registry-tests/prefix-0-truth.pmp.stdout.txt
+repair/book-v4/registry-tests/prefix-0-truth.racket.stderr.txt
+repair/book-v4/registry-tests/prefix-0-truth.racket.stdout.txt
+repair/book-v4/registry-tests/prefix-1-truth.jdg
+repair/book-v4/registry-tests/prefix-1-truth.pmp.stderr.txt
+repair/book-v4/registry-tests/prefix-1-truth.pmp.stdout.txt
+repair/book-v4/registry-tests/prefix-1-truth.racket.stderr.txt
+repair/book-v4/registry-tests/prefix-1-truth.racket.stdout.txt
+repair/book-v4/registry-tests/prefix-677-truth.jdg
+repair/book-v4/registry-tests/prefix-677-truth.pmp.stderr.txt
+repair/book-v4/registry-tests/prefix-677-truth.pmp.stdout.txt
+repair/book-v4/registry-tests/prefix-677-truth.racket.stderr.txt
+repair/book-v4/registry-tests/prefix-677-truth.racket.stdout.txt
+repair/book-v4/registry-tests/prefix-706-truth.jdg
+repair/book-v4/registry-tests/prefix-706-truth.pmp.stderr.txt
+repair/book-v4/registry-tests/prefix-706-truth.pmp.stdout.txt
+repair/book-v4/registry-tests/prefix-706-truth.racket.stderr.txt
+repair/book-v4/registry-tests/prefix-706-truth.racket.stdout.txt
+repair/book-v4/registry-tests/registry-707-entries.jdg
+repair/book-v4/registry-tests/registry-707-entries.pmp.stderr.txt
+repair/book-v4/registry-tests/registry-707-entries.pmp.stdout.txt
+repair/book-v4/registry-tests/registry-707-entries.racket.stderr.txt
+repair/book-v4/registry-tests/registry-707-entries.racket.stdout.txt
+repair/book-v4/registry-tests/results.json
+repair/book-v4/registry-tests/summary.json
+repair/book-v4/test-adversarial.py
+repair/book-v4/test-verified-book-v4.py
+repair/book-v4/test-verified-check.py
+repair/book-v4/verified-book-check.rkt
+repair/book-v4/verified-book-post.rkt
+repair/book-v5/BOOK-V5-FREEZE.json
+repair/book-v5/BOOK-V5-FREEZE.sha256
+repair/book-v5/LICENSE
+repair/book-v5/PROVENANCE.json
+repair/book-v5/PUBLIC-RUN-RESULTS.json
+repair/book-v5/PUBLIC-SOURCE-MANIFEST.json
+repair/book-v5/README.md
+repair/book-v5/book-post-v4.rkt
+repair/book-v5/registry-tests/altered-first-formula.jdg
+repair/book-v5/registry-tests/altered-last-pure-formula.jdg
+repair/book-v5/registry-tests/altered-placeholder-hypothesis.jdg
+repair/book-v5/registry-tests/altered-pure-hypotheses.jdg
+repair/book-v5/registry-tests/false-proof-canonical-prefix.jdg
+repair/book-v5/registry-tests/false-proof-empty-registry.jdg
+repair/book-v5/registry-tests/forged-false-registry.jdg
+repair/book-v5/registry-tests/leading-zero-and-tab-prefix.jdg
+repair/book-v5/registry-tests/nonexistent-registry-use.jdg
+repair/book-v5/registry-tests/prefix-0-truth.jdg
+repair/book-v5/registry-tests/prefix-1-truth.jdg
+repair/book-v5/registry-tests/prefix-677-truth.jdg
+repair/book-v5/registry-tests/prefix-706-truth.jdg
+repair/book-v5/registry-tests/registry-707-entries.jdg
+repair/book-v5/test-adversarial.py
+repair/book-v5/test-full-replay.py
+repair/book-v5/test-review-v5.py
+repair/book-v5/test-verified-book-v4.py
+repair/book-v5/test-verified-check.py
+repair/book-v5/verified-book-check-v5-source.rkt
+repair/book-v5/verified-book-check.rkt
+repair/book-v5/verified-book-post.rkt
+repair/book-v6/BOOK-V6-FREEZE.json
+repair/book-v6/BOOK-V6-FREEZE.sha256
+repair/book/book-post-v3.rkt
+repair/book/test-verified-book.py
+repair/book/test-verified-check.py
+repair/book/verified-book-check.rkt
+repair/book/verified-book-post.rkt
+repair/browser-gate-correction/ACTUAL-RESULTS.json
+repair/browser-gate-correction/LICENSE
+repair/browser-gate-correction/PROVENANCE.json
+repair/browser-gate-correction/README.md
+repair/browser-gate-correction/SHA256SUMS.txt
+repair/browser-gate-correction/SOURCE-INPUTS.json
+repair/browser-gate-correction/TEST-CASES.json
+repair/browser-gate-correction/actual-linux-run/PUBLIC-SHA256SUMS.txt
+repair/browser-gate-correction/actual-linux-run/api3538.exit.txt
+repair/browser-gate-correction/actual-linux-run/api3538.stderr.txt
+repair/browser-gate-correction/actual-linux-run/api3538.stdout.txt
+repair/browser-gate-correction/actual-linux-run/pmp-nines5000-formula.exit.txt
+repair/browser-gate-correction/actual-linux-run/pmp-nines5000-formula.stderr.txt
+repair/browser-gate-correction/actual-linux-run/pmp-nines5000-formula.stdout.txt
+repair/browser-gate-correction/actual-linux-run/pmp-padding4300-then-2.exit.txt
+repair/browser-gate-correction/actual-linux-run/pmp-padding4300-then-2.stderr.txt
+repair/browser-gate-correction/actual-linux-run/pmp-padding4300-then-2.stdout.txt
+repair/browser-gate-correction/actual-linux-run/pmp-padding5000-then-2.exit.txt
+repair/browser-gate-correction/actual-linux-run/pmp-padding5000-then-2.stderr.txt
+repair/browser-gate-correction/actual-linux-run/pmp-padding5000-then-2.stdout.txt
+repair/browser-gate-correction/actual-linux-run/pmp-zeros5000-formula.exit.txt
+repair/browser-gate-correction/actual-linux-run/pmp-zeros5000-formula.stderr.txt
+repair/browser-gate-correction/actual-linux-run/pmp-zeros5000-formula.stdout.txt
+repair/browser-gate-correction/actual-linux-run/pmp-zeros5000-hypcount.exit.txt
+repair/browser-gate-correction/actual-linux-run/pmp-zeros5000-hypcount.stderr.txt
+repair/browser-gate-correction/actual-linux-run/pmp-zeros5000-hypcount.stdout.txt
+repair/browser-gate-correction/actual-linux-run/pmp-zeros5000-registry-count.exit.txt
+repair/browser-gate-correction/actual-linux-run/pmp-zeros5000-registry-count.stderr.txt
+repair/browser-gate-correction/actual-linux-run/pmp-zeros5000-registry-count.stdout.txt
+repair/browser-gate-correction/actual-linux-run/python-nines5000-formula.exit.txt
+repair/browser-gate-correction/actual-linux-run/python-nines5000-formula.stderr.txt
+repair/browser-gate-correction/actual-linux-run/python-nines5000-formula.stdout.txt
+repair/browser-gate-correction/actual-linux-run/python-padding4300-then-2.exit.txt
+repair/browser-gate-correction/actual-linux-run/python-padding4300-then-2.stderr.txt
+repair/browser-gate-correction/actual-linux-run/python-padding4300-then-2.stdout.txt
+repair/browser-gate-correction/actual-linux-run/python-padding5000-then-2.exit.txt
+repair/browser-gate-correction/actual-linux-run/python-padding5000-then-2.stderr.txt
+repair/browser-gate-correction/actual-linux-run/python-padding5000-then-2.stdout.txt
+repair/browser-gate-correction/actual-linux-run/python-zeros5000-formula.exit.txt
+repair/browser-gate-correction/actual-linux-run/python-zeros5000-formula.stderr.txt
+repair/browser-gate-correction/actual-linux-run/python-zeros5000-formula.stdout.txt
+repair/browser-gate-correction/actual-linux-run/python-zeros5000-hypcount.exit.txt
+repair/browser-gate-correction/actual-linux-run/python-zeros5000-hypcount.stderr.txt
+repair/browser-gate-correction/actual-linux-run/python-zeros5000-hypcount.stdout.txt
+repair/browser-gate-correction/actual-linux-run/python-zeros5000-registry-count.exit.txt
+repair/browser-gate-correction/actual-linux-run/python-zeros5000-registry-count.stderr.txt
+repair/browser-gate-correction/actual-linux-run/python-zeros5000-registry-count.stdout.txt
+repair/browser-gate-correction/actual-linux-run/results.json
+repair/browser-gate-correction/actual-linux-run/wrapper-canonical-false-axiom.exit.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-canonical-false-axiom.stderr.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-canonical-false-axiom.stdout.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-canonical-truth.exit.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-canonical-truth.stderr.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-canonical-truth.stdout.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-explicit-source-route.exit.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-explicit-source-route.stderr.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-explicit-source-route.stdout.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-forged-false-registry.exit.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-forged-false-registry.stderr.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-forged-false-registry.stdout.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-valid-13digit-padding.exit.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-valid-13digit-padding.stderr.txt
+repair/browser-gate-correction/actual-linux-run/wrapper-valid-13digit-padding.stdout.txt
+repair/browser-gate-correction/actual-linux-significant-run/results.json
+repair/browser-gate-correction/actual-linux-significant-run/thirteen-significant-pmp.stderr.txt
+repair/browser-gate-correction/actual-linux-significant-run/thirteen-significant-pmp.stdout.txt
+repair/browser-gate-correction/actual-linux-significant-run/thirteen-significant-python.stderr.txt
+repair/browser-gate-correction/actual-linux-significant-run/thirteen-significant-python.stdout.txt
+repair/browser-gate-correction/actual-linux-significant-run/thirteen-significant.jdg
+repair/browser-gate-correction/actual-linux-significant-run/twelve-significant-pmp.stderr.txt
+repair/browser-gate-correction/actual-linux-significant-run/twelve-significant-pmp.stdout.txt
+repair/browser-gate-correction/actual-linux-significant-run/twelve-significant-python.stderr.txt
+repair/browser-gate-correction/actual-linux-significant-run/twelve-significant-python.stdout.txt
+repair/browser-gate-correction/actual-linux-significant-run/twelve-significant.jdg
+repair/browser-gate-correction/actual-windows-run/PUBLIC-SHA256SUMS.txt
+repair/browser-gate-correction/actual-windows-run/api3538.exit.txt
+repair/browser-gate-correction/actual-windows-run/api3538.stderr.txt
+repair/browser-gate-correction/actual-windows-run/api3538.stdout.txt
+repair/browser-gate-correction/actual-windows-run/pmp-nines5000-formula.exit.txt
+repair/browser-gate-correction/actual-windows-run/pmp-nines5000-formula.stderr.txt
+repair/browser-gate-correction/actual-windows-run/pmp-nines5000-formula.stdout.txt
+repair/browser-gate-correction/actual-windows-run/pmp-padding4300-then-2.exit.txt
+repair/browser-gate-correction/actual-windows-run/pmp-padding4300-then-2.stderr.txt
+repair/browser-gate-correction/actual-windows-run/pmp-padding4300-then-2.stdout.txt
+repair/browser-gate-correction/actual-windows-run/pmp-padding5000-then-2.exit.txt
+repair/browser-gate-correction/actual-windows-run/pmp-padding5000-then-2.stderr.txt
+repair/browser-gate-correction/actual-windows-run/pmp-padding5000-then-2.stdout.txt
+repair/browser-gate-correction/actual-windows-run/pmp-zeros5000-formula.exit.txt
+repair/browser-gate-correction/actual-windows-run/pmp-zeros5000-formula.stderr.txt
+repair/browser-gate-correction/actual-windows-run/pmp-zeros5000-formula.stdout.txt
+repair/browser-gate-correction/actual-windows-run/pmp-zeros5000-hypcount.exit.txt
+repair/browser-gate-correction/actual-windows-run/pmp-zeros5000-hypcount.stderr.txt
+repair/browser-gate-correction/actual-windows-run/pmp-zeros5000-hypcount.stdout.txt
+repair/browser-gate-correction/actual-windows-run/pmp-zeros5000-registry-count.exit.txt
+repair/browser-gate-correction/actual-windows-run/pmp-zeros5000-registry-count.stderr.txt
+repair/browser-gate-correction/actual-windows-run/pmp-zeros5000-registry-count.stdout.txt
+repair/browser-gate-correction/actual-windows-run/python-nines5000-formula.exit.txt
+repair/browser-gate-correction/actual-windows-run/python-nines5000-formula.stderr.txt
+repair/browser-gate-correction/actual-windows-run/python-nines5000-formula.stdout.txt
+repair/browser-gate-correction/actual-windows-run/python-padding4300-then-2.exit.txt
+repair/browser-gate-correction/actual-windows-run/python-padding4300-then-2.stderr.txt
+repair/browser-gate-correction/actual-windows-run/python-padding4300-then-2.stdout.txt
+repair/browser-gate-correction/actual-windows-run/python-padding5000-then-2.exit.txt
+repair/browser-gate-correction/actual-windows-run/python-padding5000-then-2.stderr.txt
+repair/browser-gate-correction/actual-windows-run/python-padding5000-then-2.stdout.txt
+repair/browser-gate-correction/actual-windows-run/python-zeros5000-formula.exit.txt
+repair/browser-gate-correction/actual-windows-run/python-zeros5000-formula.stderr.txt
+repair/browser-gate-correction/actual-windows-run/python-zeros5000-formula.stdout.txt
+repair/browser-gate-correction/actual-windows-run/python-zeros5000-hypcount.exit.txt
+repair/browser-gate-correction/actual-windows-run/python-zeros5000-hypcount.stderr.txt
+repair/browser-gate-correction/actual-windows-run/python-zeros5000-hypcount.stdout.txt
+repair/browser-gate-correction/actual-windows-run/python-zeros5000-registry-count.exit.txt
+repair/browser-gate-correction/actual-windows-run/python-zeros5000-registry-count.stderr.txt
+repair/browser-gate-correction/actual-windows-run/python-zeros5000-registry-count.stdout.txt
+repair/browser-gate-correction/actual-windows-run/results.json
+repair/browser-gate-correction/actual-windows-run/wrapper-canonical-false-axiom.exit.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-canonical-false-axiom.stderr.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-canonical-false-axiom.stdout.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-canonical-truth.exit.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-canonical-truth.stderr.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-canonical-truth.stdout.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-explicit-source-route.exit.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-explicit-source-route.stderr.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-explicit-source-route.stdout.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-forged-false-registry.exit.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-forged-false-registry.stderr.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-forged-false-registry.stdout.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-valid-13digit-padding.exit.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-valid-13digit-padding.stderr.txt
+repair/browser-gate-correction/actual-windows-run/wrapper-valid-13digit-padding.stdout.txt
+repair/browser-gate-correction/actual-windows-significant-run/results.json
+repair/browser-gate-correction/actual-windows-significant-run/thirteen-significant-pmp.stderr.txt
+repair/browser-gate-correction/actual-windows-significant-run/thirteen-significant-pmp.stdout.txt
+repair/browser-gate-correction/actual-windows-significant-run/thirteen-significant-python.stderr.txt
+repair/browser-gate-correction/actual-windows-significant-run/thirteen-significant-python.stdout.txt
+repair/browser-gate-correction/actual-windows-significant-run/thirteen-significant.jdg
+repair/browser-gate-correction/actual-windows-significant-run/twelve-significant-pmp.stderr.txt
+repair/browser-gate-correction/actual-windows-significant-run/twelve-significant-pmp.stdout.txt
+repair/browser-gate-correction/actual-windows-significant-run/twelve-significant-python.stderr.txt
+repair/browser-gate-correction/actual-windows-significant-run/twelve-significant-python.stdout.txt
+repair/browser-gate-correction/actual-windows-significant-run/twelve-significant.jdg
+repair/browser-gate-correction/cases/canonical-false-axiom.jdg
+repair/browser-gate-correction/cases/canonical-truth.jdg
+repair/browser-gate-correction/cases/explicit-source-route.jdg
+repair/browser-gate-correction/cases/forged-false-registry.jdg
+repair/browser-gate-correction/cases/nines5000-formula.jdg
+repair/browser-gate-correction/cases/padding4300-then-2.jdg
+repair/browser-gate-correction/cases/padding5000-then-2.jdg
+repair/browser-gate-correction/cases/valid-13digit-padding.jdg
+repair/browser-gate-correction/cases/zeros5000-formula.jdg
+repair/browser-gate-correction/cases/zeros5000-hypcount.jdg
+repair/browser-gate-correction/cases/zeros5000-registry-count.jdg
+repair/browser-gate-correction/embed_data.py
+repair/browser-gate-correction/gate.py
+repair/browser-gate-correction/gate_core.py
+repair/browser-gate-correction/judge-gated.ps1
+repair/browser-gate-correction/judge-gated.sh
+repair/browser-gate-correction/reggate.pmp
+repair/browser-gate-correction/test-correction.py
+repair/browser-gate-correction/test-significant-boundary.py
+repair/browser-gate-correction/test_api.py
+repair/grok-proof-composition/public/Cohen/Ax.v
+repair/grok-proof-composition/public/Cohen/Checks.v
+repair/grok-proof-composition/public/Cohen/Data.v
+repair/grok-proof-composition/public/Cohen/Expand.v
+repair/grok-proof-composition/public/Cohen/Inv.v
+repair/grok-proof-composition/public/Cohen/Kal.v
+repair/grok-proof-composition/public/Cohen/Parse.v
+repair/grok-proof-composition/public/Cohen/Prov.v
+repair/grok-proof-composition/public/Cohen/Replay.v
+repair/grok-proof-composition/public/Cohen/Replay2.v
+repair/grok-proof-composition/public/Cohen/Replay3.v
+repair/grok-proof-composition/public/Cohen/ReplayT.v
+repair/grok-proof-composition/public/Cohen/RpInit.v
+repair/grok-proof-composition/public/Cohen/RpInitOk.v
+repair/grok-proof-composition/public/Cohen/Sub.v
+repair/grok-proof-composition/public/Cohen/Syn.v
+repair/grok-proof-composition/public/Cohen/Val.v
+repair/grok-proof-composition/public/LICENSE
+repair/grok-proof-composition/public/NumericV5/DecimalSignificantV4.v
+repair/grok-proof-composition/public/PMPRepair/CanonicalPrefixSoundness.v
+repair/grok-proof-composition/public/PMPRepair/CanonicalRegistryData.v
+repair/grok-proof-composition/public/PMPRepair/GrokAuthGate.v
+repair/grok-proof-composition/public/PMPRepair/GrokCompose47.v
+repair/grok-proof-composition/public/PMPRepair/GrokCompositionReceipt.v
+repair/grok-proof-composition/public/PMPRepair/PrefixSoundness.v
+repair/grok-proof-composition/public/PUBLIC-SOURCE-MANIFEST.json
+repair/grok-proof-composition/public/README.md
+repair/grok-proof-composition/public/SHA256SUMS.txt
+repair/grok-proof-composition/public/archive-manifest-verification.json
+repair/grok-proof-composition/public/build-composition-proof.py
+repair/grok-proof-composition/public/composition-types-and-assumptions.txt
+repair/grok-proof-composition/public/fresh-composition-result.json
+repair/grok-proof-composition/public/kernel-check-context.txt
+repair/grok-proof-composition/public/run-output.txt
+repair/grok-proof-composition/public/source-credit.json
+repair/math-workbench-corrected/INITIAL-SOURCE-RECEIPT.json
+repair/math-workbench-corrected/README.md
+repair/math-workbench-corrected/SHA256SUMS-source.txt
+repair/math-workbench-corrected/build.py
+repair/math-workbench-corrected/engine.rkt
+repair/math-workbench-corrected/exact.rkt
+repair/math-workbench-corrected/gui.rkt
+repair/math-workbench-corrected/test-gui.rkt
+repair/runtime-v2/LICENSE
+repair/runtime-v2/PUBLIC-PROVENANCE.json
+repair/runtime-v2/README.md
+repair/runtime-v2/SHA256SUMS-source.txt
+repair/runtime-v2/SOURCE-WHITELIST-runtime-v2.json
+repair/runtime-v2/build-interpreter.py
+repair/runtime-v2/source/pompetzki.asm
+repair/runtime-v2/test-word-division.py
+repair/runtime/README.md
+repair/runtime/source/pompetzki.asm
+repair/verify-release-assets.py
+results/ch-theorem29-plain-CH-LCH/HANDOFF-R4-FINAL.md
+results/ch-theorem29-plain-CH-LCH/HANDOFF-R4.md
+results/ch-theorem29-plain-CH-LCH/L-DEFINITION.md
+results/ch-theorem29-plain-CH-LCH/RESULTS-correction-1.md
+results/ch-theorem29-plain-CH-LCH/RESULTS-correction-2.md
+results/ch-theorem29-plain-CH-LCH/RESULTS.md
+results/ch-theorem29-plain-CH-LCH/STATUS.txt
+results/ch-theorem29-plain-CH-LCH/jdg2v.rkt
+results/ch-theorem29-plain-CH-LCH/judge-run-1.end.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-1.start.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-1.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-2.end.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-2.start.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-2.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-3.end.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-3.start.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-3.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-4.end.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-4.start.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-4.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-5.end.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-5.start.txt
+results/ch-theorem29-plain-CH-LCH/judge-run-5.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-L.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-L2.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-L3.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-L4.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-L5.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-L6.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-cmd11.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-cmd13.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-derivations.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch-part-relativized.rkt.txt
+results/ch-theorem29-plain-CH-LCH/lch.rkt
+results/ch-theorem29-plain-CH-LCH/lch10.rkt
+results/ch-theorem29-plain-CH-LCH/lch11.rkt
+results/ch-theorem29-plain-CH-LCH/lch12.rkt
+results/ch-theorem29-plain-CH-LCH/lch13.rkt
+results/ch-theorem29-plain-CH-LCH/lch14.rkt
+results/ch-theorem29-plain-CH-LCH/lch2.rkt
+results/ch-theorem29-plain-CH-LCH/lch3.rkt
+results/ch-theorem29-plain-CH-LCH/lch4.rkt
+results/ch-theorem29-plain-CH-LCH/lch5-probe.rkt
+results/ch-theorem29-plain-CH-LCH/lch5.rkt
+results/ch-theorem29-plain-CH-LCH/lch6.rkt
+results/ch-theorem29-plain-CH-LCH/lch7.rkt
+results/ch-theorem29-plain-CH-LCH/lch8.rkt
+results/ch-theorem29-plain-CH-LCH/lch9.rkt
+results/ch-theorem29-plain-CH-LCH/ldef.rkt
+results/ch-theorem29-plain-CH-LCH/out/01-align.index.txt
+results/ch-theorem29-plain-CH-LCH/out/01-align.jdg
+results/ch-theorem29-plain-CH-LCH/out/mut/01-align-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out/mut/01-align-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out/mut/01-align-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out/mut/01-align-mp-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out/mut/01-align-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out/mut/01-align-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out/mut/01-align-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out/mut/01-align-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out/mut/01-align-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out10/05-coh.index.txt
+results/ch-theorem29-plain-CH-LCH/out10/05-coh.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-leib-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-mp-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out10/mut/05-coh-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out11/06-cmp.index.txt
+results/ch-theorem29-plain-CH-LCH/out11/06-cmp.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-leib-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-mp-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out11/mut/06-cmp-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out12/06-cmp.index.txt
+results/ch-theorem29-plain-CH-LCH/out12/06-cmp.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-leib-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-mp-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out12/mut/06-cmp-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out3/01-align.index.txt
+results/ch-theorem29-plain-CH-LCH/out3/01-align.jdg
+results/ch-theorem29-plain-CH-LCH/out3/02-relax.index.txt
+results/ch-theorem29-plain-CH-LCH/out3/02-relax.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-mp-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/01-align-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/02-relax-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/02-relax-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/02-relax-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/02-relax-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/02-relax-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/02-relax-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/02-relax-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/02-relax-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out3/mut/02-relax-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out4/01-align.index.txt
+results/ch-theorem29-plain-CH-LCH/out4/01-align.jdg
+results/ch-theorem29-plain-CH-LCH/out4/02-relax.index.txt
+results/ch-theorem29-plain-CH-LCH/out4/02-relax.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-mp-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/01-align-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/02-relax-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/02-relax-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/02-relax-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/02-relax-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/02-relax-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/02-relax-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/02-relax-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/02-relax-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out4/mut/02-relax-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out5/03-lex.index.txt
+results/ch-theorem29-plain-CH-LCH/out5/03-lex.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-leib-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-mp-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out5/mut/03-lex-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out6/03-lex.index.txt
+results/ch-theorem29-plain-CH-LCH/out6/03-lex.jdg
+results/ch-theorem29-plain-CH-LCH/out6/04-ltr.index.txt
+results/ch-theorem29-plain-CH-LCH/out6/04-ltr.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-leib-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-mp-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/03-lex-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/04-ltr-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/04-ltr-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/04-ltr-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/04-ltr-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/04-ltr-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/04-ltr-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out6/mut/04-ltr-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/03-lex.index.txt
+results/ch-theorem29-plain-CH-LCH/out6b/03-lex.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/04-ltr.index.txt
+results/ch-theorem29-plain-CH-LCH/out6b/04-ltr.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-leib-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-mp-swap.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-registry-used.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/03-lex-use-shift.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/04-ltr-drop-step.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/04-ltr-exel-var.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/04-ltr-exi-witness.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/04-ltr-neg-final.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/04-ltr-registry-suc.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/04-ltr-taut-goal.jdg
+results/ch-theorem29-plain-CH-LCH/out6b/mut/04-ltr-twin-final.jdg
+results/ch-theorem29-plain-CH-LCH/rocq/.lia.cache
+results/ch-theorem29-plain-CH-LCH/rocq/Abs.v
+results/ch-theorem29-plain-CH-LCH/rocq/Abs2.v
+results/ch-theorem29-plain-CH-LCH/rocq/AlignB.v
+results/ch-theorem29-plain-CH-LCH/rocq/AlignCH.v
+results/ch-theorem29-plain-CH-LCH/rocq/CmpB-r4.v
+results/ch-theorem29-plain-CH-LCH/rocq/CmpB_r4.v
+results/ch-theorem29-plain-CH-LCH/rocq/CohB-r4.v
+results/ch-theorem29-plain-CH-LCH/rocq/CohB_r4.v
+results/ch-theorem29-plain-CH-LCH/rocq/CohCmp_r4.v
+results/ch-theorem29-plain-CH-LCH/rocq/GoedelCH.v
+results/ch-theorem29-plain-CH-LCH/rocq/LAXred.v
+results/ch-theorem29-plain-CH-LCH/rocq/LAXred2.v
+results/ch-theorem29-plain-CH-LCH/rocq/LDef.v
+results/ch-theorem29-plain-CH-LCH/rocq/LRed.v
+results/ch-theorem29-plain-CH-LCH/rocq/LexB.v
+results/ch-theorem29-plain-CH-LCH/rocq/LtrB.v
+results/ch-theorem29-plain-CH-LCH/rocq/PrintLCH.v
+results/ch-theorem29-plain-CH-LCH/rocq/PrintLCH2.v
+results/ch-theorem29-plain-CH-LCH/rocq/Rel.v
+results/ch-theorem29-plain-CH-LCH/rocq/Rel2.v
+results/ch-theorem29-plain-CH-LCH/rocq/RelB.v
+results/ch-theorem29-plain-CH-LCH/rocq/T0.v
+results/ch-theorem29-plain-CH-LCH/rocq/VLred.v
+results/ch-theorem29-plain-CH-LCH/rocq/coqc-r4.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-1.end.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-1.start.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-1.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-2.end.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-2.start.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-2.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-3.end.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-3.start.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-3.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-4.end.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-4.start.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-4.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-5.end.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-5.start.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-5.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-6-r4.end.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-6-r4.start.txt
+results/ch-theorem29-plain-CH-LCH/rocq/coqchk-6-r4.txt
+results/ch-theorem29-plain-CH-LCH/rocq/print-assumptions-1.txt
+results/ch-theorem29-plain-CH-LCH/rocq/print-assumptions-2.txt
+results/stage1-conservativity-CX3/CURRENT-ROUND2-FREEZE-1.json
+results/stage1-conservativity-CX3/CURRENT-ROUND2-FREEZE-1.md
+results/stage1-conservativity-CX3/CURRENT-ROUND2-FREEZE-1.sha256
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-1.copy-plan.tsv
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-1.json
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-1.md
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-1.sha256
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-2.copy-plan.tsv
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-2.json
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-2.md
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-2.sha256
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-3.copy-plan.tsv
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-3.json
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-3.md
+results/stage1-conservativity-CX3/CURRENT-ROUND2-INTEGRATION-3.sha256
+results/stage1-conservativity-CX3/CURRENT-ROUND2-PACKAGE-VERIFY-1.json
+results/stage1-conservativity-CX3/CURRENT-ROUND2-PACKAGE-VERIFY-1.sha256
+results/stage1-conservativity-CX3/CURRENT-ROUND2-PACKAGE-VERIFY-2.json
+results/stage1-conservativity-CX3/CURRENT-ROUND2-PACKAGE-VERIFY-2.sha256
+results/stage1-conservativity-CX3/Conservativity.compile1.receipt.txt
+results/stage1-conservativity-CX3/Conservativity.compile1.txt
+results/stage1-conservativity-CX3/Conservativity.v
+results/stage1-conservativity-CX3/Conservativity2.check1.receipt.txt
+results/stage1-conservativity-CX3/Conservativity2.check1.txt
+results/stage1-conservativity-CX3/Conservativity2.compile1.receipt.txt
+results/stage1-conservativity-CX3/Conservativity2.compile1.txt
+results/stage1-conservativity-CX3/Conservativity2.v
+results/stage1-conservativity-CX3/INTEGRATION-RECOVERY-1.json
+results/stage1-conservativity-CX3/INTEGRATION-RECOVERY-1.md
+results/stage1-conservativity-CX3/INTEGRATION-RECOVERY-1.sha256
+results/stage1-conservativity-CX3/INTEGRATION-RECOVERY-first-failure.txt
+results/stage1-conservativity-CX3/LIVE-OWNERSHIP-RECOVERY-1.json
+results/stage1-conservativity-CX3/MANIFEST.sha256
+results/stage1-conservativity-CX3/RESTART-HANDOFF-2152-ADDENDUM-1.md
+results/stage1-conservativity-CX3/RESTART-HANDOFF-2152-ADDENDUM-1.sha256
+results/stage1-conservativity-CX3/RESTART-HANDOFF-2152.md
+results/stage1-conservativity-CX3/RESTART-HANDOFF-2152.sha256
+results/stage1-conservativity-CX3/RESULTS.md
+results/stage1-conservativity-CX3/SOURCE-HASHES.txt
+results/stage1-conservativity-CX3/STATUS-CURRENT-ROUND2-2.sha256
+results/stage1-conservativity-CX3/STATUS-CURRENT-ROUND2-2.txt
+results/stage1-conservativity-CX3/STATUS-CURRENT-ROUND2-3.sha256
+results/stage1-conservativity-CX3/STATUS-CURRENT-ROUND2-3.txt
+results/stage1-conservativity-CX3/STATUS-INTEGRATION-1.txt
+results/stage1-conservativity-CX3/STATUS.txt
+results/stage1-conservativity-CX3/Stage2Conservativity.compile1.receipt.txt
+results/stage1-conservativity-CX3/Stage2Conservativity.compile1.txt
+results/stage1-conservativity-CX3/Stage2Conservativity.v
+results/stage1-conservativity-CX3/Stage2Conservativity2.check1.receipt.txt
+results/stage1-conservativity-CX3/Stage2Conservativity2.check1.txt
+results/stage1-conservativity-CX3/Stage2Conservativity2.compile1.receipt.txt
+results/stage1-conservativity-CX3/Stage2Conservativity2.compile1.txt
+results/stage1-conservativity-CX3/Stage2Conservativity2.v
+results/stage1-conservativity-CX3/correct-current-round2-1.rkt
+results/stage1-conservativity-CX3/correct-current-round2-2.rkt
+results/stage1-conservativity-CX3/correct-current-round2-3.rkt
+results/stage1-conservativity-CX3/correct-integration-recovery-1.rkt
+results/stage1-conservativity-CX3/finish-current-round2-checkin-1.rkt
+results/stage1-conservativity-CX3/finish.rkt
+results/stage1-conservativity-CX3/freeze-current-round2-1.rkt
+results/stage1-conservativity-CX3/integrate-current-round2-1.rkt
+results/stage1-conservativity-CX3/integrate-current-round2-2.rkt
+results/stage1-conservativity-CX3/integrate-current-round2-3.rkt
+results/stage1-conservativity-CX3/integrate-current-round2-4.rkt
+results/stage1-conservativity-CX3/run-rocq.rkt
+results/stage1-conservativity-CX3/stage2-coverage-first-failure.txt
+results/stage1-conservativity-CX3/stage2-coverage-receipt.txt
+results/stage1-conservativity-CX3/stage2-coverage.rkt
+results/stage1-conservativity-CX3/stage2-coverage2.rkt
+results/stage1-conservativity-CX3/verify-current-round2-package-1.rkt
+results/stage1-conservativity-CX3/write-integration-recovery-1.rkt
+results/stage1-conservativity-CX3/write-integration-recovery-2.rkt
+results/stage1-conservativity-CX3/write-restart-addendum-1.rkt
+results/stage1-conservativity-CX3/write-restart-handoff-2152.rkt
+results/stage2-derived-rules-L2D/HANDOFF-R4-FINAL.md
+results/stage2-derived-rules-L2D/HANDOFF-R4.md
+results/stage2-derived-rules-L2D/RESULTS.md
+results/stage2-derived-rules-L2D/bin-v1.rkt
+results/stage2-derived-rules-L2D/bin-v2.rkt
+results/stage2-derived-rules-L2D/bin-v3.rkt
+results/stage2-derived-rules-L2D/bin-v4.rkt
+results/stage2-derived-rules-L2D/bin-v5.rkt
+results/stage2-derived-rules-L2D/bin-v6.rkt
+results/stage2-derived-rules-L2D/cert-v1.rkt
+results/stage2-derived-rules-L2D/certs-v1.rkt
+results/stage2-derived-rules-L2D/certs-v2.rkt
+results/stage2-derived-rules-L2D/certs-v3.rkt
+results/stage2-derived-rules-L2D/core-v1.rkt
+results/stage2-derived-rules-L2D/farkas-v1.rkt
+results/stage2-derived-rules-L2D/farkas-v2.rkt
+results/stage2-derived-rules-L2D/farkas-v3.rkt
+results/stage2-derived-rules-L2D/forms-v1.rkt
+results/stage2-derived-rules-L2D/forms-v2.rkt
+results/stage2-derived-rules-L2D/forms2-v1.rkt
+results/stage2-derived-rules-L2D/forms2-v2.rkt
+results/stage2-derived-rules-L2D/jdg/pratt-13.index.txt
+results/stage2-derived-rules-L2D/jdg/pratt-13.jdg
+results/stage2-derived-rules-L2D/jdg/pratt-13.manifest.txt
+results/stage2-derived-rules-L2D/jdg/pratt-23.index.txt
+results/stage2-derived-rules-L2D/jdg/pratt-23.jdg
+results/stage2-derived-rules-L2D/jdg/pratt-23.manifest.txt
+results/stage2-derived-rules-L2D/jdg/pratt-7.index.txt
+results/stage2-derived-rules-L2D/jdg/pratt-7.jdg
+results/stage2-derived-rules-L2D/jdg/pratt-7.manifest.txt
+results/stage2-derived-rules-L2D/jdg/rank-3x3.index.txt
+results/stage2-derived-rules-L2D/jdg/rank-3x3.jdg
+results/stage2-derived-rules-L2D/jdg/rank-3x3.manifest.txt
+results/stage2-derived-rules-L2D/jdg/rank-3x4.index.txt
+results/stage2-derived-rules-L2D/jdg/rank-3x4.jdg
+results/stage2-derived-rules-L2D/jdg/rank-3x4.manifest.txt
+results/stage2-derived-rules-L2D/jdg/smith-2x2.index.txt
+results/stage2-derived-rules-L2D/jdg/smith-2x2.jdg
+results/stage2-derived-rules-L2D/jdg/smith-2x2.manifest.txt
+results/stage2-derived-rules-L2D/jdg/smith-2x3.index.txt
+results/stage2-derived-rules-L2D/jdg/smith-2x3.jdg
+results/stage2-derived-rules-L2D/jdg/smith-2x3.manifest.txt
+results/stage2-derived-rules-L2D/jdg/smith-3x3.index.txt
+results/stage2-derived-rules-L2D/jdg/smith-3x3.jdg
+results/stage2-derived-rules-L2D/jdg/smith-3x3.manifest.txt
+results/stage2-derived-rules-L2D/kernel-v1.rkt
+results/stage2-derived-rules-L2D/kernel-v2.rkt
+results/stage2-derived-rules-L2D/kernel-v3.rkt
+results/stage2-derived-rules-L2D/kernel-v4.rkt
+results/stage2-derived-rules-L2D/kernel-v5.rkt
+results/stage2-derived-rules-L2D/kernel-v6.rkt
+results/stage2-derived-rules-L2D/kernel2-v1.rkt
+results/stage2-derived-rules-L2D/kernel2-v2.rkt
+results/stage2-derived-rules-L2D/kernel3-v1.rkt
+results/stage2-derived-rules-L2D/kernel3-v2.rkt
+results/stage2-derived-rules-L2D/kernel3-v3.rkt
+results/stage2-derived-rules-L2D/kernel3-v4.rkt
+results/stage2-derived-rules-L2D/kernel4-v1.rkt
+results/stage2-derived-rules-L2D/kernel4-v2.rkt
+results/stage2-derived-rules-L2D/kernel4-v3.rkt
+results/stage2-derived-rules-L2D/kernel4-v4.rkt
+results/stage2-derived-rules-L2D/kernel4-v5.rkt
+results/stage2-derived-rules-L2D/lrat-v1.rkt
+results/stage2-derived-rules-L2D/lrat-v2.rkt
+results/stage2-derived-rules-L2D/lrat-v3.rkt
+results/stage2-derived-rules-L2D/lrat-v4.rkt
+results/stage2-derived-rules-L2D/nd-v1.rkt
+results/stage2-derived-rules-L2D/nd-v2.rkt
+results/stage2-derived-rules-L2D/nd-v3.rkt
+results/stage2-derived-rules-L2D/sigma1-copy.rkt
+results/stage2-farkas-G2/CLOSURE-sha256-v1.hash.txt
+results/stage2-farkas-G2/CLOSURE-sha256-v1.txt
+results/stage2-farkas-G2/HANDOFF-L7-v1.md
+results/stage2-farkas-G2/HANDOFF-L7-v2.md
+results/stage2-farkas-G2/ORDER.md
+results/stage2-farkas-G2/RESULTS.md
+results/stage2-farkas-G2/STATUS-1916.txt
+results/stage2-farkas-G2/STATUS-2021.txt
+results/stage2-farkas-G2/STATUS-2032.txt
+results/stage2-farkas-G2/STATUS.txt
+results/stage2-farkas-G2/corpus-counts-v1.txt
+results/stage2-farkas-G2/cyclic-k02.jdg
+results/stage2-farkas-G2/launch.start.txt
+results/stage2-farkas-G2/manifest-sha256-v1.txt
+results/stage2-farkas-G2/sha256-lines-v1.txt
+results/stage2-farkas-G2/sha256-lines-v1.txt.paths.txt
+results/stage2-farkas-G2/sha256-lines-v2.txt
+results/stage2-lrat-AG5/HANDOFF-L2D.md
+results/stage2-lrat-AG5/INDEX.tsv
+results/stage2-lrat-AG5/MANIFEST.sha256
+results/stage2-lrat-AG5/RESULTS.md
+results/stage2-lrat-AG5/STATUS.txt
+results/stage2-lrat-AG5/build-corpus.rkt
+results/stage2-lrat-AG5/check-lrat.rkt
+results/stage2-lrat-AG5/cnf/php-2-1.cnf
+results/stage2-lrat-AG5/cnf/php-3-2.cnf
+results/stage2-lrat-AG5/cnf/php-4-3.cnf
+results/stage2-lrat-AG5/cnf/php-5-4.cnf
+results/stage2-lrat-AG5/cnf/php-6-5.cnf
+results/stage2-lrat-AG5/cnf/php-7-6.cnf
+results/stage2-lrat-AG5/cnf/rand3-v15-s101.cnf
+results/stage2-lrat-AG5/cnf/rand3-v15-s103.cnf
+results/stage2-lrat-AG5/cnf/rand3-v20-s201.cnf
+results/stage2-lrat-AG5/cnf/rand3-v20-s203.cnf
+results/stage2-lrat-AG5/cnf/rand3-v20-s205.cnf
+results/stage2-lrat-AG5/cnf/rand3-v25-s251.cnf
+results/stage2-lrat-AG5/cnf/rand3-v25-s252.cnf
+results/stage2-lrat-AG5/cnf/rand3-v25-s253.cnf
+results/stage2-lrat-AG5/cnf/rand3-v30-s301.cnf
+results/stage2-lrat-AG5/cnf/rand3-v30-s302.cnf
+results/stage2-lrat-AG5/cnf/rand3-v30-s303.cnf
+results/stage2-lrat-AG5/cnf/rand3-v35-s351.cnf
+results/stage2-lrat-AG5/cnf/rand3-v35-s352.cnf
+results/stage2-lrat-AG5/cnf/rand3-v40-s401.cnf
+results/stage2-lrat-AG5/cnf/rand3-v40-s402.cnf
+results/stage2-lrat-AG5/cnf/rand3-v50-s501.cnf
+results/stage2-lrat-AG5/cnf/rand3-v50-s502.cnf
+results/stage2-lrat-AG5/cnf/tseitin-c3.cnf
+results/stage2-lrat-AG5/cnf/tseitin-c5.cnf
+results/stage2-lrat-AG5/cnf/tseitin-c7.cnf
+results/stage2-lrat-AG5/cnf/tseitin-cube.cnf
+results/stage2-lrat-AG5/cnf/tseitin-k33.cnf
+results/stage2-lrat-AG5/cnf/tseitin-k4.cnf
+results/stage2-lrat-AG5/cnf/tseitin-ladder3.cnf
+results/stage2-lrat-AG5/cnf/tseitin-ladder4.cnf
+results/stage2-lrat-AG5/cnf/tseitin-petersen.cnf
+results/stage2-lrat-AG5/cnf/tseitin-prism3.cnf
+results/stage2-lrat-AG5/cnf/tseitin-wheel4.cnf
+results/stage2-lrat-AG5/cnf/tseitin-wheel5.cnf
+results/stage2-lrat-AG5/generate-corpus.rkt
+results/stage2-lrat-AG5/lrat/php-2-1.lrat
+results/stage2-lrat-AG5/lrat/php-3-2.lrat
+results/stage2-lrat-AG5/lrat/php-4-3.lrat
+results/stage2-lrat-AG5/lrat/php-5-4.lrat
+results/stage2-lrat-AG5/lrat/php-6-5.lrat
+results/stage2-lrat-AG5/lrat/php-7-6.lrat
+results/stage2-lrat-AG5/lrat/rand3-v15-s101.lrat
+results/stage2-lrat-AG5/lrat/rand3-v15-s103.lrat
+results/stage2-lrat-AG5/lrat/rand3-v20-s201.lrat
+results/stage2-lrat-AG5/lrat/rand3-v20-s203.lrat
+results/stage2-lrat-AG5/lrat/rand3-v20-s205.lrat
+results/stage2-lrat-AG5/lrat/rand3-v25-s251.lrat
+results/stage2-lrat-AG5/lrat/rand3-v25-s252.lrat
+results/stage2-lrat-AG5/lrat/rand3-v25-s253.lrat
+results/stage2-lrat-AG5/lrat/rand3-v30-s301.lrat
+results/stage2-lrat-AG5/lrat/rand3-v30-s302.lrat
+results/stage2-lrat-AG5/lrat/rand3-v30-s303.lrat
+results/stage2-lrat-AG5/lrat/rand3-v35-s351.lrat
+results/stage2-lrat-AG5/lrat/rand3-v35-s352.lrat
+results/stage2-lrat-AG5/lrat/rand3-v40-s401.lrat
+results/stage2-lrat-AG5/lrat/rand3-v40-s402.lrat
+results/stage2-lrat-AG5/lrat/rand3-v50-s501.lrat
+results/stage2-lrat-AG5/lrat/rand3-v50-s502.lrat
+results/stage2-lrat-AG5/lrat/tseitin-c3.lrat
+results/stage2-lrat-AG5/lrat/tseitin-c5.lrat
+results/stage2-lrat-AG5/lrat/tseitin-c7.lrat
+results/stage2-lrat-AG5/lrat/tseitin-cube.lrat
+results/stage2-lrat-AG5/lrat/tseitin-k33.lrat
+results/stage2-lrat-AG5/lrat/tseitin-k4.lrat
+results/stage2-lrat-AG5/lrat/tseitin-ladder3.lrat
+results/stage2-lrat-AG5/lrat/tseitin-ladder4.lrat
+results/stage2-lrat-AG5/lrat/tseitin-petersen.lrat
+results/stage2-lrat-AG5/lrat/tseitin-prism3.lrat
+results/stage2-lrat-AG5/lrat/tseitin-wheel4.lrat
+results/stage2-lrat-AG5/lrat/tseitin-wheel5.lrat
+results/stage2-lrat-AG5/mutants/mutant-1-wrong-hint.lrat
+results/stage2-lrat-AG5/mutants/mutant-2-missing-conflict-hint.lrat
+results/stage2-lrat-AG5/mutants/mutant-3-flipped-literal.lrat
+results/stage2-lrat-AG5/mutants/mutant-4-non-increasing-id.lrat
+results/stage2-lrat-AG5/mutants/mutant-5-use-deleted-clause.lrat
+results/stage2-lrat-AG5/mutants/mutant-6-truncated-before-empty.lrat
+results/stage2-lrat-AG5/mutants/mutant-7-non-empty-final-clause.lrat
+results/stage2-lrat-AG5/mutants/mutant-8-nonexistent-hint.lrat
+results/stage2-lrat-AG5/mutants/mutant-9-non-unit-hint.lrat
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-cnf-flip.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-conflict-drop.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-drop-step.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-exel-var.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-exi-witness.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-input-goal-neg.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-leib-swap.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-mp-swap.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-neg-final.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-registry-suc.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-rup-goal-neg.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-taut-goal.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-twin-final.jdg
+results/stage2-lrat-AG5/php-2-1-mut/php-2-1-use-shift.jdg
+results/stage2-lrat-AG5/php-2-1.index.txt
+results/stage2-lrat-AG5/php-2-1.jdg
+results/stage2-lrat-AG5/php-2-1.manifest.txt
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-cnf-flip.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-conflict-drop.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-drop-step.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-exel-var.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-exi-witness.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-input-goal-neg.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-leib-swap.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-mp-swap.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-neg-final.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-registry-suc.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-rup-goal-neg.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-taut-goal.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-twin-final.jdg
+results/stage2-lrat-AG5/rand3-v15-s101-mut/rand3-v15-s101-use-shift.jdg
+results/stage2-lrat-AG5/rand3-v15-s101.index.txt
+results/stage2-lrat-AG5/rand3-v15-s101.jdg
+results/stage2-lrat-AG5/rand3-v15-s101.manifest.txt
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-cnf-flip.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-conflict-drop.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-drop-step.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-exel-var.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-exi-witness.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-input-goal-neg.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-leib-swap.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-mp-swap.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-neg-final.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-registry-suc.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-rup-goal-neg.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-taut-goal.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-twin-final.jdg
+results/stage2-lrat-AG5/tseitin-c3-mut/tseitin-c3-use-shift.jdg
+results/stage2-lrat-AG5/tseitin-c3.index.txt
+results/stage2-lrat-AG5/tseitin-c3.jdg
+results/stage2-lrat-AG5/tseitin-c3.manifest.txt
+results/stage2-pratt-G1/CORPUS.tsv
+results/stage2-pratt-G1/HANDOFF-G1-PRATT-L8A.txt
+results/stage2-pratt-G1/HANDOFF-G1-PRATT.txt
+results/stage2-pratt-G1/INDEX.tsv
+results/stage2-pratt-G1/MANIFEST-ADDENDUM-2045.txt
+results/stage2-pratt-G1/ORDER.md
+results/stage2-pratt-G1/RESULTS.md
+results/stage2-pratt-G1/SHA256SUMS.txt
+results/stage2-pratt-G1/SPECIAL.tsv
+results/stage2-pratt-G1/STATUS-1904.txt
+results/stage2-pratt-G1/STATUS-1927.txt
+results/stage2-pratt-G1/STATUS-2032.txt
+results/stage2-pratt-G1/STATUS-2042.txt
+results/stage2-pratt-G1/STATUS-2046.txt
+results/stage2-pratt-G1/STATUS.txt
+results/stage2-pratt-G1/fermat-type-30.tsv
+results/stage2-pratt-G1/jdg/pratt-13.jdg
+results/stage2-pratt-G1/jdg/pratt-23.jdg
+results/stage2-pratt-G1/jdg/pratt-7.jdg
+results/stage2-pratt-G1/launch.start.txt
+results/stage2-pratt-G1/neg-composites.tsv
+results/stage2-pratt-G1/neg-mutations.tsv
+results/stage2-rocq-sigma1-complete-L2R/.lia.cache
+results/stage2-rocq-sigma1-complete-L2R/HANDOFF-R4-FINAL.md
+results/stage2-rocq-sigma1-complete-L2R/HANDOFF-R4.md
+results/stage2-rocq-sigma1-complete-L2R/L2RAgree.v
+results/stage2-rocq-sigma1-complete-L2R/L2RAgreeMut.v
+results/stage2-rocq-sigma1-complete-L2R/L2RArith.v
+results/stage2-rocq-sigma1-complete-L2R/L2RCases.v
+results/stage2-rocq-sigma1-complete-L2R/L2RDef.v
+results/stage2-rocq-sigma1-complete-L2R/L2RDefR4.v
+results/stage2-rocq-sigma1-complete-L2R/L2RFin.v
+results/stage2-rocq-sigma1-complete-L2R/L2RGoedel.v
+results/stage2-rocq-sigma1-complete-L2R/L2RGoedelD0R4b.v
+results/stage2-rocq-sigma1-complete-L2R/L2RGoedelD0r4.v
+results/stage2-rocq-sigma1-complete-L2R/L2RLogic.v
+results/stage2-rocq-sigma1-complete-L2R/L2RLogicA.v
+results/stage2-rocq-sigma1-complete-L2R/L2RRefl.v
+results/stage2-rocq-sigma1-complete-L2R/L2RSent.v
+results/stage2-rocq-sigma1-complete-L2R/L2RSepL.v
+results/stage2-rocq-sigma1-complete-L2R/L2RSigma1.v
+results/stage2-rocq-sigma1-complete-L2R/PrintAx2.out.txt
+results/stage2-rocq-sigma1-complete-L2R/PrintAx2.v
+results/stage2-rocq-sigma1-complete-L2R/PrintAx3.out.txt
+results/stage2-rocq-sigma1-complete-L2R/PrintAx3.v
+results/stage2-rocq-sigma1-complete-L2R/PrintAx4r4.v
+results/stage2-rocq-sigma1-complete-L2R/PrintAx5r4.v
+results/stage2-rocq-sigma1-complete-L2R/PrintAxAll.out.txt
+results/stage2-rocq-sigma1-complete-L2R/PrintAxAll.v
+results/stage2-rocq-sigma1-complete-L2R/PrintAxL2R.v
+results/stage2-rocq-sigma1-complete-L2R/RESULTS-2.md
+results/stage2-rocq-sigma1-complete-L2R/RESULTS.md
+results/stage2-rocq-sigma1-complete-L2R/STATUS-2.txt
+results/stage2-rocq-sigma1-complete-L2R/STATUS.txt
+results/stage2-rocq-sigma1-complete-L2R/agree.rkt
+results/stage2-rocq-sigma1-complete-L2R/build-L2R.sh
+results/stage2-rocq-sigma1-complete-L2R/build-run-1.log
+results/stage2-rocq-sigma1-complete-L2R/compile-r4.log
+results/stage2-rocq-sigma1-complete-L2R/compile-r4b.log
+results/stage2-rocq-sigma1-complete-L2R/coqchk-2.end.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-2.log
+results/stage2-rocq-sigma1-complete-L2R/coqchk-2.start.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-3.log
+results/stage2-rocq-sigma1-complete-L2R/coqchk-3.start.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-all.end.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-all.log
+results/stage2-rocq-sigma1-complete-L2R/coqchk-all.start.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-r4.cmd.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-r4.end.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-r4.log
+results/stage2-rocq-sigma1-complete-L2R/coqchk-r4.start.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-r4b.cmd.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-r4b.end.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk-r4b.log
+results/stage2-rocq-sigma1-complete-L2R/coqchk-r4b.start.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk.end.txt
+results/stage2-rocq-sigma1-complete-L2R/coqchk.log
+results/stage2-rocq-sigma1-complete-L2R/coqchk.start.txt
+results/stage2-rocq-sigma1-complete-L2R/hashes-r4.txt
+results/stage5-metamath-AG12/BLOCKERS.tsv
+results/stage5-metamath-AG12/CLASS-FREE.tsv
+results/stage5-metamath-AG12/COVERAGE-2.tsv
+results/stage5-metamath-AG12/COVERAGE.tsv
+results/stage5-metamath-AG12/EXTENSION-FORMULAS-v2.tsv
+results/stage5-metamath-AG12/EXTENSION-FORMULAS.tsv
+results/stage5-metamath-AG12/EXTENSION-VERIFY.tsv
+results/stage5-metamath-AG12/HANDOFF-RECOVERY-INTEGRATION.md
+results/stage5-metamath-AG12/INDEPENDENT-COVERAGE-2.tsv
+results/stage5-metamath-AG12/INDEPENDENT-FINAL-AUDIT-2.tsv
+results/stage5-metamath-AG12/INDEPENDENT-VERIFICATION-2.tsv
+results/stage5-metamath-AG12/INVENTORY.tsv
+results/stage5-metamath-AG12/LOGIC-BOOLEAN-CHECK.rkt
+results/stage5-metamath-AG12/LOGIC-BOOLEAN-CHECK.tsv
+results/stage5-metamath-AG12/LOGIC-MATCHES.tsv
+results/stage5-metamath-AG12/LOGIC-ROUTES.rkt
+results/stage5-metamath-AG12/LOGIC-ROUTES.tsv
+results/stage5-metamath-AG12/LOGIC-SOURCE-UNION.tsv
+results/stage5-metamath-AG12/LOGIC-SOURCE.rkt
+results/stage5-metamath-AG12/MAP-SUMMARY.tsv
+results/stage5-metamath-AG12/MAP.tsv
+results/stage5-metamath-AG12/MATCH-ANALYSIS.md
+results/stage5-metamath-AG12/MATCH-VALIDATION.tsv
+results/stage5-metamath-AG12/MISSING-SETS-2.tsv
+results/stage5-metamath-AG12/OPTIMAL-ADDITIONS-2.tsv
+results/stage5-metamath-AG12/ORDER-2.md
+results/stage5-metamath-AG12/ORDER.md
+results/stage5-metamath-AG12/ORIGINALS-SHA256-2.tsv
+results/stage5-metamath-AG12/REGISTRY.tsv
+results/stage5-metamath-AG12/RESULTS-2.md
+results/stage5-metamath-AG12/RESULTS.md
+results/stage5-metamath-AG12/ROUND2-METRICS.tsv
+results/stage5-metamath-AG12/ROUTE-CHECK/MANIFEST.tsv
+results/stage5-metamath-AG12/ROUTE-CHECK/READOUT.md
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-1.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-1.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-1.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-1.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-1.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-1.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-1.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-10.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-10.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-10.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-10.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-10.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-10.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-10.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-2.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-2.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-2.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-2.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-2.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-2.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-2.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-3.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-3.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-3.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-3.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-3.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-3.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-3.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-4.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-4.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-4.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-4.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-4.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-4.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-4.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-5.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-5.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-5.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-5.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-5.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-5.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-5.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-6.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-6.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-6.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-6.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-6.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-6.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-6.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-7.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-7.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-7.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-7.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-7.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-7.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-7.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-8.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-8.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-8.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-8.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-8.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-8.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-8.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-9.jdg
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-9.pmp.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-9.pmp.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-9.pmp.stdout.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-9.racket.run.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-9.racket.stderr.txt
+results/stage5-metamath-AG12/ROUTE-CHECK/ax-9.racket.stdout.txt
+results/stage5-metamath-AG12/ROUTES-2.tsv
+results/stage5-metamath-AG12/RUN-BY.txt
+results/stage5-metamath-AG12/SET-CANDIDATES.tsv
+results/stage5-metamath-AG12/SET-DERIVATION-SOURCES.md
+results/stage5-metamath-AG12/SET-EXTENSION-PROTOTYPES.tsv
+results/stage5-metamath-AG12/SET-MATCH-ANALYSIS.md
+results/stage5-metamath-AG12/SHA256-2.tsv
+results/stage5-metamath-AG12/SHA256.tsv
+results/stage5-metamath-AG12/SOURCE-LABELS.tsv
+results/stage5-metamath-AG12/SOURCE-SHA256-2.tsv
+results/stage5-metamath-AG12/SOURCE-SHA256.tsv
+results/stage5-metamath-AG12/STATUS-2.txt
+results/stage5-metamath-AG12/STATUS-2047.txt
+results/stage5-metamath-AG12/STATUS.txt
+results/stage5-metamath-AG12/UNLOCK-PREFIX-2.tsv
+results/stage5-metamath-AG12/VERIFY-2.tsv
+results/stage5-metamath-AG12/VERIFY-DELIVERY-2.tsv
+results/stage5-metamath-AG12/VERIFY-FINAL.tsv
+results/stage5-metamath-AG12/codex-run-2.log
+results/stage5-metamath-AG12/codex-run.log
+results/stage5-metamath-AG12/extension-formulas-v2.rkt
+results/stage5-metamath-AG12/extension-formulas.rkt
+results/stage5-metamath-AG12/extension-verify-v2.rkt
+results/stage5-metamath-AG12/extension-verify-v3.rkt
+results/stage5-metamath-AG12/extension-verify-v4.rkt
+results/stage5-metamath-AG12/extension-verify.rkt
+results/stage5-metamath-AG12/independent-coverage-verify-2-v2.rkt
+results/stage5-metamath-AG12/independent-coverage-verify-2.rkt
+results/stage5-metamath-AG12/independent-final-audit-2.rkt
+results/stage5-metamath-AG12/independent-summary-tables-2.rkt
+results/stage5-metamath-AG12/inventory-v2.rkt
+results/stage5-metamath-AG12/inventory-v3.rkt
+results/stage5-metamath-AG12/inventory-v4.rkt
+results/stage5-metamath-AG12/inventory.rkt
+results/stage5-metamath-AG12/launch.end.txt
+results/stage5-metamath-AG12/launch.start.txt
+results/stage5-metamath-AG12/launch2.end.txt
+results/stage5-metamath-AG12/launch2.start.txt
+results/stage5-metamath-AG12/make-map-v2.rkt
+results/stage5-metamath-AG12/make-map.rkt
+results/stage5-metamath-AG12/mm-extension-existence.rkt
+results/stage5-metamath-AG12/mm-extension-inspect.rkt
+results/stage5-metamath-AG12/recompute-round2.rkt
+results/stage5-metamath-AG12/registry-correction-01.rkt
+results/stage5-metamath-AG12/registry-correction-02.rkt
+results/stage5-metamath-AG12/registry-reader-v2.rkt
+results/stage5-metamath-AG12/registry-reader-v3.rkt
+results/stage5-metamath-AG12/registry-reader.rkt
+results/stage5-metamath-AG12/round2-core.rkt
+results/stage5-metamath-AG12/route-check-round2.rkt
+results/stage5-metamath-AG12/route-classification-2.rkt
+results/stage5-metamath-AG12/set-candidate-writer.rkt
+results/stage5-metamath-AG12/set-extension-prototypes.rkt
+results/stage5-metamath-AG12/snapshot-round2.rkt
+results/stage5-metamath-AG12/verify-final.rkt
+results/stage5-metamath-AG12/verify-round2-v2.rkt
+results/stage5-metamath-AG12/verify-round2-v3.rkt
+results/stage5-metamath-AG12/verify-round2.rkt
+results/stage5-metamath-AG12/write-report-v2.rkt
+results/stage5-metamath-AG12/write-report-v3.rkt
+results/stage5-metamath-AG12/write-report.rkt
+results/stage5-metamath-AG12/write-results-round2.rkt
+results/stage6-lean-mathlib-L6/DESIGN.md
+results/stage6-lean-mathlib-L6/HANDOFF-R4-FINAL.md
+results/stage6-lean-mathlib-L6/HANDOFF-R4.md
+results/stage6-lean-mathlib-L6/L6-nat.jdg
+results/stage6-lean-mathlib-L6/RESULTS.md
+results/stage6-lean-mathlib-L6/STATUS.txt
+results/stage6-lean-mathlib-L6/engine.rkt
+results/stage6-lean-mathlib-L6/lean/L6Export.lean
+results/stage6-lean-mathlib-L6/lean/L6Export2.lean
+results/stage6-lean-mathlib-L6/lean/L6Export3.lean
+results/stage6-lean-mathlib-L6/lean/export-int.sexp
+results/stage6-lean-mathlib-L6/lean/export-nat.sexp
+results/stage6-lean-mathlib-L6/lean/export-proofs.sexp
+results/stage6-lean-mathlib-L6/lean/export-run.end.txt
+results/stage6-lean-mathlib-L6/lean/export-run.log
+results/stage6-lean-mathlib-L6/lean/export-run.start.txt
+results/stage6-lean-mathlib-L6/lean/export2-run.end.txt
+results/stage6-lean-mathlib-L6/lean/export2-run.log
+results/stage6-lean-mathlib-L6/lean/export2-run.start.txt
+results/stage6-lean-mathlib-L6/lean/export3-run.log
+results/stage6-lean-mathlib-L6/lean/export3-run.start.txt
+results/stage6-lean-mathlib-L6/lean/proofs-wanted.txt
+results/stage6-lean-mathlib-L6/lean2zf.rkt
+results/stage6-lean-mathlib-L6/leanstmt.rkt
+results/stage6-lean-mathlib-L6/scripts.rkt
+results/stage6-lean-mathlib-L6/zfbatch.rkt
+results/stage6-lean-mathlib-L6/zfcore.rkt
+results/stage6-lean-mathlib-L6/zfnat.rkt
+results/stage7-automation-L7/HANDOFF-R4-FINAL.md
+results/stage7-automation-L7/HANDOFF-R4.md
+results/stage7-automation-L7/RESULTS-CORRECTION-1.md
+results/stage7-automation-L7/RESULTS.md
+results/stage7-automation-L7/STATUS-1854.txt
+results/stage7-automation-L7/STATUS-1911.txt
+results/stage7-automation-L7/STATUS.txt
+results/stage7-automation-L7/judge-eq-1.console.txt
+results/stage7-automation-L7/judge-eq-1.end.txt
+results/stage7-automation-L7/judge-eq-1.start.txt
+results/stage7-automation-L7/judge-eq-1.txt
+results/stage7-automation-L7/judge-omega-1.console.txt
+results/stage7-automation-L7/judge-omega-1.end.txt
+results/stage7-automation-L7/judge-omega-1.start.txt
+results/stage7-automation-L7/judge-omega-1.txt
+results/stage7-automation-L7/judge-pmpchain-1.console.txt
+results/stage7-automation-L7/judge-pmpchain-1.end.txt
+results/stage7-automation-L7/judge-pmpchain-1.start.txt
+results/stage7-automation-L7/judge-pmpchain-1.txt
+results/stage7-automation-L7/judge-quant-1.console.txt
+results/stage7-automation-L7/judge-quant-1.end.txt
+results/stage7-automation-L7/judge-quant-1.start.txt
+results/stage7-automation-L7/judge-quant-1.txt
+results/stage7-automation-L7/judge-r4-cyc-m1.console.txt
+results/stage7-automation-L7/judge-r4-cyc-m1.end.txt
+results/stage7-automation-L7/judge-r4-cyc-m1.start.txt
+results/stage7-automation-L7/judge-r4-cyc-m1.txt
+results/stage7-automation-L7/judge-r4-cyc-m2.console.txt
+results/stage7-automation-L7/judge-r4-cyc-m2.end.txt
+results/stage7-automation-L7/judge-r4-cyc-m2.start.txt
+results/stage7-automation-L7/judge-r4-cyc-m2.txt
+results/stage7-automation-L7/judge-r4-cyc-m3.console.txt
+results/stage7-automation-L7/judge-r4-cyc-m3.end.txt
+results/stage7-automation-L7/judge-r4-cyc-m3.start.txt
+results/stage7-automation-L7/judge-r4-cyc-m3.txt
+results/stage7-automation-L7/judge-r4-cyc.console.txt
+results/stage7-automation-L7/judge-r4-cyc.end.txt
+results/stage7-automation-L7/judge-r4-cyc.start.txt
+results/stage7-automation-L7/judge-r4-cyc.txt
+results/stage7-automation-L7/judge-r4-farkas-mutA.console.txt
+results/stage7-automation-L7/judge-r4-farkas-mutA.end.txt
+results/stage7-automation-L7/judge-r4-farkas-mutA.start.txt
+results/stage7-automation-L7/judge-r4-farkas-mutA.txt
+results/stage7-automation-L7/judge-r4-farkas-mutB.console.txt
+results/stage7-automation-L7/judge-r4-farkas-mutB.end.txt
+results/stage7-automation-L7/judge-r4-farkas-mutB.start.txt
+results/stage7-automation-L7/judge-r4-farkas-mutB.txt
+results/stage7-automation-L7/judge-r4-farkas.console.txt
+results/stage7-automation-L7/judge-r4-farkas.end.txt
+results/stage7-automation-L7/judge-r4-farkas.start.txt
+results/stage7-automation-L7/judge-r4-farkas.txt
+results/stage7-automation-L7/judge-r4-order.console.txt
+results/stage7-automation-L7/judge-r4-order.end.txt
+results/stage7-automation-L7/judge-r4-order.start.txt
+results/stage7-automation-L7/judge-r4-order.txt
+results/stage7-automation-L7/judge-tables.md
+results/stage7-automation-L7/judge-taut-1.console.txt
+results/stage7-automation-L7/judge-taut-1.end.txt
+results/stage7-automation-L7/judge-taut-1.start.txt
+results/stage7-automation-L7/judge-taut-1.txt
+results/stage7-automation-L7/out/L7-1-eqchain-pmp.index.txt
+results/stage7-automation-L7/out/L7-1-eqchain-pmp.jdg
+results/stage7-automation-L7/out/L7-1-eqchain-pmp.manifest.txt
+results/stage7-automation-L7/out/L7-1-equality.index.txt
+results/stage7-automation-L7/out/L7-1-equality.jdg
+results/stage7-automation-L7/out/L7-1-equality.manifest.txt
+results/stage7-automation-L7/out/L7-2-direct-control.index.txt
+results/stage7-automation-L7/out/L7-2-direct-control.jdg
+results/stage7-automation-L7/out/L7-2-direct-control.manifest.txt
+results/stage7-automation-L7/out/L7-2-tautologies.index.txt
+results/stage7-automation-L7/out/L7-2-tautologies.jdg
+results/stage7-automation-L7/out/L7-2-tautologies.manifest.txt
+results/stage7-automation-L7/out/L7-3-quantifiers.index.txt
+results/stage7-automation-L7/out/L7-3-quantifiers.jdg
+results/stage7-automation-L7/out/L7-3-quantifiers.manifest.txt
+results/stage7-automation-L7/out/L7-4-omega-laws.index.txt
+results/stage7-automation-L7/out/L7-4-omega-laws.jdg
+results/stage7-automation-L7/out/L7-4-omega-laws.manifest.txt
+results/stage7-automation-L7/out/mut/L7-1-eqchain-pmp-drop-step.jdg
+results/stage7-automation-L7/out/mut/L7-1-eqchain-pmp-leib-swap.jdg
+results/stage7-automation-L7/out/mut/L7-1-eqchain-pmp-neg-final.jdg
+results/stage7-automation-L7/out/mut/L7-1-eqchain-pmp-taut-goal.jdg
+results/stage7-automation-L7/out/mut/L7-1-eqchain-pmp-twin-final.jdg
+results/stage7-automation-L7/out/mut/L7-1-equality-drop-step.jdg
+results/stage7-automation-L7/out/mut/L7-1-equality-leib-swap.jdg
+results/stage7-automation-L7/out/mut/L7-1-equality-neg-final.jdg
+results/stage7-automation-L7/out/mut/L7-1-equality-registry-suc.jdg
+results/stage7-automation-L7/out/mut/L7-1-equality-taut-goal.jdg
+results/stage7-automation-L7/out/mut/L7-1-equality-twin-final.jdg
+results/stage7-automation-L7/out/mut/L7-1-equality-use-shift.jdg
+results/stage7-automation-L7/out/mut/L7-2-direct-control-drop-step.jdg
+results/stage7-automation-L7/out/mut/L7-2-direct-control-neg-final.jdg
+results/stage7-automation-L7/out/mut/L7-2-direct-control-taut-goal.jdg
+results/stage7-automation-L7/out/mut/L7-2-direct-control-twin-final.jdg
+results/stage7-automation-L7/out/mut/L7-2-tautologies-ax-flip.jdg
+results/stage7-automation-L7/out/mut/L7-2-tautologies-drop-step.jdg
+results/stage7-automation-L7/out/mut/L7-2-tautologies-mp-swap.jdg
+results/stage7-automation-L7/out/mut/L7-2-tautologies-neg-final.jdg
+results/stage7-automation-L7/out/mut/L7-2-tautologies-taut-goal.jdg
+results/stage7-automation-L7/out/mut/L7-2-tautologies-twin-final.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-alli-var.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-ax-flip.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-drop-step.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-exel-var.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-exi-witness.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-gen-var.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-mp-swap.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-neg-final.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-taut-goal.jdg
+results/stage7-automation-L7/out/mut/L7-3-quantifiers-twin-final.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-drop-step.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-exel-var.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-exi-witness.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-leib-swap.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-mp-swap.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-neg-final.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-registry-suc.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-taut-goal.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-twin-final.jdg
+results/stage7-automation-L7/out/mut/L7-4-omega-laws-use-shift.jdg
+results/stage7-automation-L7/sha256-r4.txt
+results/stage7-automation-L7/sigma1-copy.rkt
+results/stage7-automation-L7/src-r4/emit-r4-v1.rkt
+results/stage7-automation-L7/src-r4/emit-r4-v2.rkt
+results/stage7-automation-L7/src-r4/farkas7-v5.rkt
+results/stage7-automation-L7/src-r4/genfarkas-v1.rkt
+results/stage7-automation-L7/src-r4/judge-run-v1.rkt
+results/stage7-automation-L7/src-r4/l7core-v1.rkt
+results/stage7-automation-L7/src-r4/mutants-v1.rkt
+results/stage7-automation-L7/src-r4/mutants-v2.rkt
+results/stage7-automation-L7/src-r4/omega-base-v1.rkt
+results/stage7-automation-L7/src-r4/omega-kind-v5.rkt
+results/stage7-automation-L7/src-r4/omega-laws-v3.rkt
+results/stage7-automation-L7/src-r4/order2-v4.rkt
+results/stage7-automation-L7/src-r4/parencheck.rkt
+results/stage7-automation-L7/src-r4/sums-v4.rkt
+results/stage7-automation-L7/src/assemble-v2.rkt
+results/stage7-automation-L7/src/axtrace-v1.rkt
+results/stage7-automation-L7/src/dump-v1.rkt
+results/stage7-automation-L7/src/emit-eq-v4.rkt
+results/stage7-automation-L7/src/emit-omega-v2.rkt
+results/stage7-automation-L7/src/emit-pnx-v3.rkt
+results/stage7-automation-L7/src/emit-taut-v1.rkt
+results/stage7-automation-L7/src/eq-v1.rkt
+results/stage7-automation-L7/src/eqchain-v1.pmp
+results/stage7-automation-L7/src/judge-run-v1.rkt
+results/stage7-automation-L7/src/l7core-v1.rkt
+results/stage7-automation-L7/src/mut-file-v1.rkt
+results/stage7-automation-L7/src/mutants-v1.rkt
+results/stage7-automation-L7/src/mutants-v2.rkt
+results/stage7-automation-L7/src/omega-base-v1.rkt
+results/stage7-automation-L7/src/omega-kind-v5.rkt
+results/stage7-automation-L7/src/omega-laws-v3.rkt
+results/stage7-automation-L7/src/parencheck.rkt
+results/stage7-automation-L7/src/pnx-extra-v2.rkt
+results/stage7-automation-L7/src/pnx-v1.rkt
+results/stage7-automation-L7/src/sigma1-copy.rkt
+results/stage7-automation-L7/src/superseded/assemble-v1.rkt
+results/stage7-automation-L7/src/superseded/core-add-v1.txt
+results/stage7-automation-L7/src/superseded/emit-eq-v1.rkt
+results/stage7-automation-L7/src/superseded/emit-eq-v2.rkt
+results/stage7-automation-L7/src/superseded/emit-eq-v3.rkt
+results/stage7-automation-L7/src/superseded/emit-omega-v1.rkt
+results/stage7-automation-L7/src/superseded/emit-pnx-v1.rkt
+results/stage7-automation-L7/src/superseded/emit-pnx-v2.rkt
+results/stage7-automation-L7/src/superseded/omega-kind-v1.rkt
+results/stage7-automation-L7/src/superseded/omega-kind-v2.rkt
+results/stage7-automation-L7/src/superseded/omega-kind-v3.rkt
+results/stage7-automation-L7/src/superseded/omega-kind-v4.rkt
+results/stage7-automation-L7/src/superseded/omega-laws-v1.rkt
+results/stage7-automation-L7/src/superseded/omega-laws-v2.rkt
+results/stage7-automation-L7/src/superseded/pnx-extra-v1.rkt
+results/stage7-automation-L7/src/superseded/tables-v1.rkt
+results/stage7-automation-L7/src/tables-v2.rkt
+results/stage7-automation-L7/src/taut-v1.rkt
+results/stage7-automation-L7/src/taut-v2.rkt
+results/stage7-automation-L7/src/taut-v3.rkt
+results/stage8-gpu-rank-smith-L8G/EXAMPLE.txt
+results/stage8-gpu-rank-smith-L8G/HANDOFF-L2D.md
+results/stage8-gpu-rank-smith-L8G/HASHES.txt
+results/stage8-gpu-rank-smith-L8G/ORDER.md
+results/stage8-gpu-rank-smith-L8G/RESULTS.md
+results/stage8-gpu-rank-smith-L8G/STATUS-RECOVERY.txt
+results/stage8-gpu-rank-smith-L8G/STATUS.txt
+results/stage8-gpu-rank-smith-L8G/checks-process.txt
+results/stage8-gpu-rank-smith-L8G/corrupt/rn6x8-bad-emit.txt
+results/stage8-gpu-rank-smith-L8G/corrupt/rn6x8-bad.sexp
+results/stage8-gpu-rank-smith-L8G/corrupt/smith3-bad-emit.txt
+results/stage8-gpu-rank-smith-L8G/corrupt/smith3-bad.sexp
+results/stage8-gpu-rank-smith-L8G/emit-rn6x8.txt
+results/stage8-gpu-rank-smith-L8G/emit-smith3.txt
+results/stage8-gpu-rank-smith-L8G/emit-tri5.txt
+results/stage8-gpu-rank-smith-L8G/example-process-2.txt
+results/stage8-gpu-rank-smith-L8G/example-process.txt
+results/stage8-gpu-rank-smith-L8G/example-run.txt
+results/stage8-gpu-rank-smith-L8G/example-run2.txt
+results/stage8-gpu-rank-smith-L8G/example.rkt
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-cert-use-swap.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-drop-step.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-exel-var.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-exi-witness.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-leib-swap.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-neg-final.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-registry-suc.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-taut-goal.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-twin-final.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8-mut/rn6x8-use-shift.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8.index.txt
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/rn6x8.manifest.txt
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-cert-use-swap.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-drop-step.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-exel-var.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-exi-witness.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-leib-swap.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-neg-final.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-registry-suc.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-taut-goal.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-twin-final.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3-mut/smith3-use-shift.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3.index.txt
+results/stage8-gpu-rank-smith-L8G/jdg/smith3.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/smith3.manifest.txt
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-cert-use-swap.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-drop-step.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-exel-var.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-exi-witness.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-leib-swap.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-neg-final.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-registry-suc.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-taut-goal.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-twin-final.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5-mut/tri5-use-shift.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5.index.txt
+results/stage8-gpu-rank-smith-L8G/jdg/tri5.jdg
+results/stage8-gpu-rank-smith-L8G/jdg/tri5.manifest.txt
+results/stage8-gpu-rank-smith-L8G/judge-run.txt
+results/stage8-gpu-rank-smith-L8G/out-try10-err.txt
+results/stage8-gpu-rank-smith-L8G/out-try11-err.txt
+results/stage8-gpu-rank-smith-L8G/out-try2-err.txt
+results/stage8-gpu-rank-smith-L8G/out-try3-err.txt
+results/stage8-gpu-rank-smith-L8G/out-try4-err.txt
+results/stage8-gpu-rank-smith-L8G/out-try5-err.txt
+results/stage8-gpu-rank-smith-L8G/out-try6-err.txt
+results/stage8-gpu-rank-smith-L8G/out-try7-err.txt
+results/stage8-gpu-rank-smith-L8G/out-try8-err.txt
+results/stage8-gpu-rank-smith-L8G/out-try9-err.txt
+results/stage8-gpu-rank-smith-L8G/sexps/rn6x8.sexp
+results/stage8-gpu-rank-smith-L8G/sexps/smith3.sexp
+results/stage8-gpu-rank-smith-L8G/sexps/tri5.sexp
+## zip-only
+PUBLIC-SOURCE-WHITELIST.json
+cockpit/Pompetzki-Window.manifest
+cockpit/REPORT.md
+cockpit/abschluss.pmp
+cockpit/config/config-20260927000000.txt
+cockpit/docs/RELEASE-DAY-ORDERS-2026-10-09.md
+cockpit/docs/SCOPE-AND-RELEASE-2026-10-09.md
+cockpit/docs/brainstorm-2026-10-09/CLAUDE-POSITION-2026-10-09.md
+cockpit/docs/brainstorm-2026-10-09/GAME-PLAN-2026-10-09.md
+cockpit/docs/brainstorm-2026-10-09/MAX-PACKAGE-v2.md
+cockpit/docs/brainstorm-2026-10-09/MAX-PACKAGE.md
+cockpit/docs/brainstorm-2026-10-09/NEXT-SESSION-PROMPT-2026-10-09.md
+cockpit/docs/brainstorm-2026-10-09/PMP-BUILDOUT-2026-10-09.md
+cockpit/docs/brainstorm-2026-10-09/bible-software-digest.txt
+cockpit/docs/brainstorm-2026-10-09/bible-software-journal.jsonl
+cockpit/docs/brainstorm-2026-10-09/critic-digest.txt
+cockpit/docs/brainstorm-2026-10-09/factcheck-2026-10-09/digest.txt
+cockpit/docs/brainstorm-2026-10-09/factcheck-2026-10-09/grok-claims-factcheck-result.json
+cockpit/docs/brainstorm-2026-10-09/factcheck-2026-10-09/journal.jsonl
+cockpit/docs/brainstorm-2026-10-09/lists-digest.txt
+cockpit/docs/brainstorm-2026-10-09/max-package-workflow-result.json
+cockpit/docs/cube-and-conquer.md
+cockpit/docs/plans/2026-09-27-cockpit-plan-1.md
+cockpit/docs/plans/2026-09-28-cockpit-plan-2a.md
+cockpit/docs/plans/2026-09-28-cockpit-plan-3.md
+cockpit/docs/plans/2026-09-28-cockpit-plan-4.md
+cockpit/docs/plans/2026-09-28-lean-core-plan-5.md
+cockpit/docs/plans/2026-09-29-cube-and-conquer-plan-8.md
+cockpit/docs/plans/2026-09-29-lean-gl-plan-6.md
+cockpit/docs/plans/2026-09-29-sat-encoders-plan-7.md
+cockpit/docs/specs/2026-09-27-cockpit-design.md
+cockpit/lean-job.pmp
+cockpit/lib/abschluss.manifest
+cockpit/lib/app3.pmp
+cockpit/lib/cdp.pmp
+cockpit/lib/close.pmp
+cockpit/lib/config.pmp
+cockpit/lib/date.pmp
+cockpit/lib/gl6.pmp
+cockpit/lib/graph.pmp
+cockpit/lib/grid.pmp
+cockpit/lib/gui-mub6-20260918.pmp
+cockpit/lib/gui-pmpmath-20260918.pmp
+cockpit/lib/gui-responsive.pmp
+cockpit/lib/gui-run-responsive.pmp
+cockpit/lib/gui.pmp
+cockpit/lib/hello.pmp
+cockpit/lib/hot.pmp
+cockpit/lib/jobs.pmp
+cockpit/lib/json.pmp
+cockpit/lib/leanjob.pmp
+cockpit/lib/ledger.pmp
+cockpit/lib/linear.pmp
+cockpit/lib/list.pmp
+cockpit/lib/logic.pmp
+cockpit/lib/logic2.pmp
+cockpit/lib/menu.pmp
+cockpit/lib/names.pmp
+cockpit/lib/native-a01-blob.pmp
+cockpit/lib/native-a01.pmp
+cockpit/lib/native-blob.pmp
+cockpit/lib/native.pmp
+cockpit/lib/numbers.pmp
+cockpit/lib/os.pmp
+cockpit/lib/rdcache.pmp
+cockpit/lib/rdlean.pmp
+cockpit/lib/rdpmp.pmp
+cockpit/lib/rocqjob.pmp
+cockpit/lib/shortcut.pmp
+cockpit/lib/tar.pmp
+cockpit/lib/text.pmp
+cockpit/lib/util.pmp
+cockpit/lib/zfc.pmp
+cockpit/lib/zfc2.pmp
+cockpit/lib/zfcbase.pmp
+cockpit/lib/zip.pmp
+cockpit/probe-refresh-ledger.pmp
+cockpit/probe-refresh-reader.pmp
+cockpit/rocq-check.pmp
+cockpit/test-abort.pmp
+cockpit/test-abort3.pmp
+cockpit/test-cache.pmp
+cockpit/test-config.pmp
+cockpit/test-config3.pmp
+cockpit/test-dialogs.pmp
+cockpit/test-filesha.pmp
+cockpit/test-grid-show.pmp
+cockpit/test-grid.pmp
+cockpit/test-grid3.pmp
+cockpit/test-jobs.pmp
+cockpit/test-ldtick.pmp
+cockpit/test-leanjob.pmp
+cockpit/test-ledger.pmp
+cockpit/test-native.pmp
+cockpit/test-open.pmp
+cockpit/test-progchg.pmp
+cockpit/test-rcver.pmp
+cockpit/test-rderr.pmp
+cockpit/test-rdlean.pmp
+cockpit/test-rdpmp.pmp
+cockpit/test-refresh.pmp
+cockpit/test-rocqjob.pmp
+cockpit/test-rptick.pmp
+cockpit/test-util.pmp
+cockpit/test-util3.pmp
+cockpit/timing-selftest.pmp
+cockpit/tools/EncDimacs.lean
+cockpit/tools/cert-to-lean.rkt
+cockpit/tools/cube.rkt
+cockpit/tools/g6.rkt
+cockpit/tools/gen-blob.rkt
+cockpit/tools/knapsack-bb-propose.rkt
+cockpit/tools/lexrows-experiment.rkt
+cockpit/tools/lrat-stats.rkt
+cockpit/tools/native.asm
+cockpit/tools/native.bin
+cockpit/tools/paley-extend.rkt
+cockpit/tools/pmp-to-lean.rkt
+cockpit/tools/polytope-edges-propose.rkt
+cockpit/tools/post-cert.rkt
+cockpit/tools/pratt-propose.rkt
+cockpit/tools/r36-sb-experiment.rkt
+cockpit/tools/sat-model.rkt
+cockpit/tools/sos-propose.rkt
+judge/README-v5.md
+judge/native-v5/portable/PROVENANCE.json
+judge/native-v5/portable/README.md
+judge/native-v5/portable/SHA256SUMS-source.txt
+judge/native-v5/portable/SOURCE-INPUTS.json
+repair/book-v6/registry-tests/altered-first-formula.jdg
+repair/book-v6/registry-tests/altered-last-pure-formula.jdg
+repair/book-v6/registry-tests/altered-placeholder-hypothesis.jdg
+repair/book-v6/registry-tests/altered-pure-hypotheses.jdg
+repair/book-v6/registry-tests/false-proof-canonical-prefix.jdg
+repair/book-v6/registry-tests/false-proof-empty-registry.jdg
+repair/book-v6/registry-tests/forged-false-registry.jdg
+repair/book-v6/registry-tests/leading-zero-and-tab-prefix.jdg
+repair/book-v6/registry-tests/nonexistent-registry-use.jdg
+repair/book-v6/registry-tests/prefix-0-truth.jdg
+repair/book-v6/registry-tests/prefix-1-truth.jdg
+repair/book-v6/registry-tests/prefix-677-truth.jdg
+repair/book-v6/registry-tests/prefix-706-truth.jdg
+repair/book-v6/registry-tests/registry-707-entries.jdg
+repair/book-v6/tests/.keep
+repair/libraries/baseline-strx/strx-byte-build.rkt
+repair/libraries/baseline-strx/strx-cases.rktd
+repair/libraries/baseline-strx/strx-oracle.rkt
+repair/libraries/baseline-strx/strx-test.pmp
+repair/libraries/baseline-strx/strx.pmp
+repair/libraries/prepare.py
+repair/libraries/source-provenance.json
+repair/libraries/strx/lib/strx.pmp
+repair/runtime-oracles/generate-exact.py
+repair/runtime-oracles/generate-strx.py
+runtime/LICENSE
+runtime/PUBLIC-PROVENANCE.json
+runtime/README-source.md
+runtime/SOURCE-WHITELIST.json
+runtime/build-interpreter.py
+runtime/source/pompetzki.asm
+vendor/Abschluss-1.2-windows-x64.zip
+vendor/SHA256SUMS-base.txt
+vendor/gated-native/JUDGE-V5-RELEASE-RECEIPT.json
+vendor/gated-native/PROVENANCE.json
+vendor/gated-native/judge-v5-windows.exe
+vendor/gated-native/native-provenance.json
+vendor/gated-native/native-test-result.json

@@ -1,0 +1,1785 @@
+=== ./book6.sh (3001 bytes, sha256 e15825706c583b164c14e02444b0bcae40e01e9402eb401366bbc31f50a9dc03)
+#!/bin/bash
+# Independent Book v6 attack harness (Grok Bot accountability). Usage: book6.sh REPO BUNDLE OUTDIR
+set -u
+REPO=$1; B=$2; O=$3; BK=$REPO/repair/book-v6; W=${W:-/workspace/bw6}; rm -rf $W; mkdir -p $W $O/raw $O/inputs
+cp $REPO/judge/mut/ok-hyp.jdg $REPO/judge/mut/m1-refl.jdg $W/; cp $W/*.jdg $O/inputs/
+run(){ n=$1; shift; (cd $BK && "$@") >$O/raw/$n.stdout 2>$O/raw/$n.stderr; echo $? >$O/raw/$n.exit; printf '%-34s exit=%s %s\n' "$n" "$(cat $O/raw/$n.exit)" "$(cat $O/raw/$n.stderr $O/raw/$n.stdout | tr '\n' ' ' | cut -c1-170)"; }
+post(){ run "$1" racket verified-book-post.rkt "${@:3}" --bundle $B $W/$2 2026-10-11 ; }
+chk(){ run "$1" racket verified-book-check.rkt --bundle $B $W/$2; }
+run 01-post-default racket verified-book-post.rkt --bundle $B $W/post-default 2026-10-11 $W/ok-hyp.jdg
+run 02-post-interpreted racket verified-book-post.rkt --interpreted --bundle $B $W/post-interp 2026-10-11 $W/ok-hyp.jdg
+chk 03-check-default post-default
+chk 04-check-interpreted post-interp
+run 05-post-m1 racket verified-book-post.rkt --bundle $B $W/post-m1 2026-10-11 $W/m1-refl.jdg
+chk 06-check-m1 post-m1
+# v5 forgery dirs replayed unchanged against the v6 checker
+for d in forge-consistent-false2 forge-rehashed forge-orphan-n forge-orphan-snapshot forge-changed-input forge-bad-f-sha forge-dup-receipt forge-reorder-B forge-wrong-bytes forge-bad-timestamp forge-orphan-file; do
+  rm -rf $W/v5-$d; cp -a /workspace/bw5/$d $W/v5-$d; chk 10-v5replay-$d v5-$d; done
+mk(){ rm -rf $W/$1; cp -a $W/post-default $W/$1; }
+mk a-orphan-run; echo 'ACCEPT' > $W/a-orphan-run/judge-runs/orphan.stdout.txt; chk 20-orphan-judge-runs-file a-orphan-run
+mk a-empty-runs; rm -f $W/a-empty-runs/judge-runs/*; chk 21-empty-judge-runs a-empty-runs
+mk a-empty-inputs; rm -f $W/a-empty-inputs/judge-inputs/*; chk 22-empty-judge-inputs a-empty-inputs
+mk a-extra-top; echo x > $W/a-extra-top/NOTES.txt; chk 23-extra-top-level-file a-extra-top
+mk a-extra-topdir; mkdir $W/a-extra-topdir/extra; chk 24-extra-top-level-dir a-extra-topdir
+mk a-nested; mkdir $W/a-nested/judge-runs/sub; chk 25-nested-dir-in-judge-runs a-nested
+mk a-symlink; f=$(ls $W/a-symlink/judge-runs | head -1); mv $W/a-symlink/judge-runs/$f $W/$f.real; ln -s $W/$f.real $W/a-symlink/judge-runs/$f; chk 26-symlinked-run-file a-symlink
+mk a-missing; f=$(ls $W/a-missing/judge-runs | head -1); rm $W/a-missing/judge-runs/$f; chk 27-missing-run-file a-missing
+# duplicate output identity: two inputs with identical bytes posted together
+cp $W/ok-hyp.jdg $W/ok-hyp-copy.jdg
+run 28-post-duplicate-bytes racket verified-book-post.rkt --bundle $B $W/post-dup 2026-10-11 $W/ok-hyp.jdg $W/ok-hyp-copy.jdg
+[ -d $W/post-dup ] && chk 29-check-duplicate-bytes post-dup
+run 30-post-same-input-twice racket verified-book-post.rkt --bundle $B $W/post-same 2026-10-11 $W/ok-hyp.jdg $W/ok-hyp.jdg
+[ -d $W/post-same ] && chk 31-check-same-input-twice post-same
+ls -la $W/post-default $W/post-default/judge-runs $W/post-default/judge-inputs > $O/raw/posting-layout.txt
+
+=== ./inputs/a1-false-registry-only.jdg (25 bytes, sha256 83d5ddc9d19102770ce5d978124e39f1e75c599f89974740bdd88f05b0b58ba8)
+JDG1
+R 1
+a n q 0 0 0
+T 0
+
+=== ./inputs/ctl-canonical-reg0.jdg (54458 bytes, sha256 53b4287eed0623e7ff48005955d27bbaa5bcdb6a6d15dbc4cef50d892b8e75a0)
+JDG1
+R 706
+a a i a b e 0 2 e 0 1 q 1 0 0
+a a x k e 2 0 e 1 0 0
+a x a a i k e 0 1 e 1 3 e 0 2 0
+a x a i a i e 0 1 e 0 3 e 0 1 0
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0
+a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0
+a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0
+a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0
+a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0
+a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0
+a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0
+a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0
+a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0
+a b p 17 1 0 a n e 0 1 0
+a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0
+a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0
+a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0
+a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0
+a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0
+a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0
+a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0
+a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0
+a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0
+a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0
+a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0
+a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0
+a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0
+a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0
+a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0
+a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0
+a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0
+a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0
+a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0
+a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0
+a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0
+a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0
+a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0
+a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0
+a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0
+a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0
+a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0
+a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0
+a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0
+a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0
+a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0
+a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0
+a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0
+a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0
+a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0
+a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0
+a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0
+a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k k k k k k k k p 16 1 7 p 20 1 6 p 5 2 6 7 p 28 3 5 7 7 p 38 3 4 5 7 p 17 1 3 p
+=== ./inputs/d1-min-div-neg1.pmp (69 bytes, sha256 0a04e8519efad7ab6f504c758b3f54cf72c90af91aa7dab77d419aa10a27f5b2)
+set A const -9223372036854775808
+set B const -1
+set C div A B
+show C
+
+=== ./inputs/d2-min-mod-neg1.pmp (69 bytes, sha256 38480564b53143d9c40b8228289d6079c1955fc05d6a19f935361e7324ff6de2)
+set A const -9223372036854775808
+set B const -1
+set C mod A B
+show C
+
+=== ./inputs/lz-pad13-reg0.jdg (260066 bytes, sha256 2cab9054017b1febe9b7fb777b6b06deb8a518bc5e179e4ac9fe2ff632dc5d85)
+JDG1
+R 0000000000000706
+a a i a b e 00000000000000 00000000000002 e 00000000000000 00000000000001 q 00000000000001 00000000000000 00000000000000
+a a x k e 00000000000002 00000000000000 e 00000000000001 00000000000000 00000000000000
+a x a a i k e 00000000000000 00000000000001 e 00000000000001 00000000000003 e 00000000000000 00000000000002 00000000000000
+a x a i a i e 00000000000000 00000000000001 e 00000000000000 00000000000003 e 00000000000000 00000000000001 00000000000000
+x k x k a n e 00000000000000 00000000000001 e 00000000000000 00000000000001 a i e 00000000000000 00000000000001 x k a b e 00000000000000 00000000000001 d e 00000000000000 00000000000002 q 00000000000000 00000000000002 e 00000000000000 00000000000002 00000000000000
+a i x e 00000000000000 00000000000001 x k e 00000000000000 00000000000001 n x k e 00000000000000 00000000000002 e 00000000000000 00000000000001 00000000000000
+a i k a i e 00000000000000 00000000000001 x e 00000000000000 00000000000001 a a i k e 00000000000001 00000000000002 k e 00000000000000 00000000000002 n q 00000000000001 00000000000000 n x k e 00000000000000 00000000000002 e 00000000000000 00000000000001 x a i e 00000000000000 00000000000002 x k k e 00000000000000 00000000000001 e 00000000000000 00000000000002 a i k e 00000000000000 00000000000002 e 00000000000000 00000000000003 q 00000000000000 00000000000001 00000000000000
+a a b p 00000000000005 00000000000002 00000000000001 00000000000000 a i e 00000000000000 00000000000002 e 00000000000000 00000000000001 00000000000000
+a a b p 00000000000006 00000000000002 00000000000001 00000000000000 a b e 00000000000000 00000000000002 q 00000000000000 00000000000001 00000000000000
+a a a b p 00000000000007 00000000000003 00000000000002 00000000000001 00000000000000 a b e 00000000000000 00000000000003 d q 00000000000000 00000000000002 q 00000000000000 00000000000001 00000000000000
+a a a b p 00000000000008 00000000000003 00000000000002 00000000000001 00000000000000 a b e 00000000000000 00000000000003 d p 00000000000006 00000000000002 00000000000000 00000000000002 p 00000000000007 00000000000003 00000000000000 00000000000002 00000000000001 00000000000000
+a a a b p 00000000000009 00000000000003 00000000000002 00000000000001 00000000000000 x k e 00000000000000 00000000000003 p 00000000000008 00000000000003 00000000000000 00000000000002 00000000000001 00000000000000
+a b p 000000000000010 00000000000001 00000000000000 a a a i k p 00000000000009 00000000000003 00000000000003 00000000000002 00000000000001 p 00000000000009 00000000000003 00000000000003 00000000000002 00000000000000 q 00000000000001 00000000000000 00000000000000
+a b p 000000000000011 00000000000001 00000000000000 a a a i k p 00000000000009 00000000000003 00000000000003 00000000000002 00000000000000 p 00000000000009 00000000000003 00000000000003 00000000000001 00000000000000 q 00000000000002 00000000000001 00000000000000
+a a b p 000000000000012 00000000000002 00000000000001 00000000000000 a i e 00000000000000 00000000000001 x p 00000000000009 00000000000003 00000000000003 00000000000001 00000000000000 00000000000000
+a a b p 000000000000013 00000000000002 00000000000001 00000000000000 a a i p 00000000000009 00000000000003 00000000000003 00000000000001 00000000000000 e 00000000000000 00000000000002 00000000000000
+a a b p 000000000000014 00000000000002 00000000000001 00000000000000 x k k p 000000000000010 00000000000001 00000000000000 p 000000000000011 00000000000001 00000000000000 k p 000000000000012 00000000000002 00000000000000 00000000000002 p 000000000000013 00000000000002 00000000000000 00000000000001 00000000000000
+a b p 000000000000015 00000000000001 00000000000000 a a i k e 00000000000001 00000000000000 e 00000000000000 00000000000002 e 00000000000001 00000000000002 00000000000000
+a b p 000000000000016 00000000000001 00000000000000 k p 000000000000015 00000000000001 00000000000000 a a i k e 00000000000001 00000000000002 e 00000000000000 00000000000002 d d e 00000000000001 00000000000000 q 0000
+=== ./inputs/lz-pad3-reg0.jdg (101906 bytes, sha256 7b2ae8ba2de218dbe6f91f3f930201aeee8f35930cc45b3dedd016bccc619a40)
+JDG1
+R 000706
+a a i a b e 0000 0002 e 0000 0001 q 0001 0000 0000
+a a x k e 0002 0000 e 0001 0000 0000
+a x a a i k e 0000 0001 e 0001 0003 e 0000 0002 0000
+a x a i a i e 0000 0001 e 0000 0003 e 0000 0001 0000
+x k x k a n e 0000 0001 e 0000 0001 a i e 0000 0001 x k a b e 0000 0001 d e 0000 0002 q 0000 0002 e 0000 0002 0000
+a i x e 0000 0001 x k e 0000 0001 n x k e 0000 0002 e 0000 0001 0000
+a i k a i e 0000 0001 x e 0000 0001 a a i k e 0001 0002 k e 0000 0002 n q 0001 0000 n x k e 0000 0002 e 0000 0001 x a i e 0000 0002 x k k e 0000 0001 e 0000 0002 a i k e 0000 0002 e 0000 0003 q 0000 0001 0000
+a a b p 0005 0002 0001 0000 a i e 0000 0002 e 0000 0001 0000
+a a b p 0006 0002 0001 0000 a b e 0000 0002 q 0000 0001 0000
+a a a b p 0007 0003 0002 0001 0000 a b e 0000 0003 d q 0000 0002 q 0000 0001 0000
+a a a b p 0008 0003 0002 0001 0000 a b e 0000 0003 d p 0006 0002 0000 0002 p 0007 0003 0000 0002 0001 0000
+a a a b p 0009 0003 0002 0001 0000 x k e 0000 0003 p 0008 0003 0000 0002 0001 0000
+a b p 00010 0001 0000 a a a i k p 0009 0003 0003 0002 0001 p 0009 0003 0003 0002 0000 q 0001 0000 0000
+a b p 00011 0001 0000 a a a i k p 0009 0003 0003 0002 0000 p 0009 0003 0003 0001 0000 q 0002 0001 0000
+a a b p 00012 0002 0001 0000 a i e 0000 0001 x p 0009 0003 0003 0001 0000 0000
+a a b p 00013 0002 0001 0000 a a i p 0009 0003 0003 0001 0000 e 0000 0002 0000
+a a b p 00014 0002 0001 0000 x k k p 00010 0001 0000 p 00011 0001 0000 k p 00012 0002 0000 0002 p 00013 0002 0000 0001 0000
+a b p 00015 0001 0000 a a i k e 0001 0000 e 0000 0002 e 0001 0002 0000
+a b p 00016 0001 0000 k p 00015 0001 0000 a a i k e 0001 0002 e 0000 0002 d d e 0001 0000 q 0001 0000 e 0000 0001 0000
+a b p 00017 0001 0000 a n e 0000 0001 0000
+a a b p 00018 0002 0001 0000 a b e 0000 0002 d e 0000 0001 q 0000 0001 0000
+a b p 00019 0001 0000 k x k p 00017 0001 0000 e 0000 0001 a i e 0000 0001 x k p 00018 0002 0000 0001 e 0000 0002 0000
+a b p 00020 0001 0000 k p 00019 0001 0000 a i p 00019 0001 0000 p 0005 0002 0001 0000 0000
+a b p 00021 0001 0000 x k p 00020 0001 0000 p 00014 0002 0001 0000 0000
+a b p 00022 0001 0000 k p 00016 0001 0000 a i e 0000 0001 n p 00014 0002 0001 0000 0000
+a b p 00023 0001 0000 x k p 00020 0001 0000 p 0005 0002 0000 0001 0000
+a a a b p 00024 0003 0002 0001 0000 a b e 0000 0003 p 0009 0003 0002 0001 0000 0000
+a a b p 00025 0002 0001 0000 a i e 0000 0001 x k p 00024 0003 0000 0003 0001 p 00021 0001 0000 0000
+a a a b p 00026 0003 0002 0001 0000 a i e 0000 0003 x k e 0000 0002 p 0009 0003 0003 0000 0001 0000
+a a a b p 00027 0003 0002 0001 0000 a b e 0000 0003 x k e 0000 0002 p 0009 0003 0003 0000 0001 0000
+a a a b p 00028 0003 0002 0001 0000 a b e 0000 0003 x x k k e 0001 0004 e 0000 0003 p 0008 0003 0002 0001 0000 0000
+a a a a b p 00029 0004 0003 0002 0001 0000 k k p 0005 0002 0003 0002 a i p 00017 0001 0000 p 0009 0003 0004 0000 0001 a a a a i k k p 0009 0003 0007 0003 0002 p 00018 0002 0001 0003 p 0009 0003 0005 0002 0000 p 0009 0003 0007 0001 0000 0000
+a a a a a b p 00030 0005 0004 0003 0002 0001 0000 k k k p 00010 0001 0004 p 00012 0002 0004 0003 k p 00013 0002 0004 0001 a i p 00017 0001 0000 p 0009 0003 0005 0000 0001 a a a a i k k p 0009 0003 0008 0003 0002 p 00018 0002 0001 0003 p 0009 0003 0006 0002 0000 p 0009 0003 0008 0001 0000 0000
+a a a a a b p 00031 0005 0004 0003 0002 0001 0000 d d d k k e 0003 0004 e 0002 0004 k q 0001 0004 q 0000 0002 k k e 0003 0004 q 0002 0004 k p 00017 0001 0001 q 0000 0004 k e 0004 0003 k p 00018 0002 0001 0004 q 0000 0003 k q 0004 0003 k p 00018 0002 0001 0004 p 00017 0001 0000 0000
+a a a a b p 00032 0004 0003 0002 0001 0000 x k p 00018 0002 0000 0003 p 00031 0005 0004 0003 0000 0002 0001 0000
+a a a b p 00033 0003 0002 0001 0000 a b e 0000 0003 k e 0000 0002 x x x x x x k k p 0008 0003 0006 0001 0000 p 0008 0003 0001 0005 0004 k p 0008 0003 0000 0003 0002 k k e 0005 0007 e 0004 0007 p 00032 0004 0005 0004 0003 0002 0000
+a a a b p 00034 0003 0002 0001 0000 k k k p 00010 0001 0002 p 00012 0002 0002 0001 p 00013 0002 0002 0001 
+=== ./inputs/lz-pad64-reg0.jdg (1066682 bytes, sha256 a656311d5ad1aa77c33daf7818daff6f6f17a614a4cec715ea4546f8a37d06f8)
+JDG1
+R 0000000000000000000000000000000000000000000000000000000000000000706
+a a i a b e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000002 e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 q 00000000000000000000000000000000000000000000000000000000000000001 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000000
+a a x k e 00000000000000000000000000000000000000000000000000000000000000002 00000000000000000000000000000000000000000000000000000000000000000 e 00000000000000000000000000000000000000000000000000000000000000001 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000000
+a x a a i k e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 e 00000000000000000000000000000000000000000000000000000000000000001 00000000000000000000000000000000000000000000000000000000000000003 e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000002 00000000000000000000000000000000000000000000000000000000000000000
+a x a i a i e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000003 e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 00000000000000000000000000000000000000000000000000000000000000000
+x k x k a n e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 a i e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 x k a b e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 d e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000002 q 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000002 e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000002 00000000000000000000000000000000000000000000000000000000000000000
+a i x e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 x k e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 n x k e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000002 e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 00000000000000000000000000000000000000000000000000000000000000000
+a i k a i e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 x e 00000000000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000000000000000000001 a a i k e 00000000000000000000000000000000000000000000000000000000000000001 00000000000000000000000000000000000000000000000000000000000000002 k e 00000000000000000000000000000000000000000000000000000000000000000 00000
+=== ./inputs/prefix10-reg0.jdg (484 bytes, sha256 b26b6a38234762331db64a49090a09ed0d87b338f611545555ecec25a30f8fea)
+JDG1
+R 10
+a a i a b e 0 2 e 0 1 q 1 0 0
+a a x k e 2 0 e 1 0 0
+a x a a i k e 0 1 e 1 3 e 0 2 0
+a x a i a i e 0 1 e 0 3 e 0 1 0
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0
+T 0
+
+=== ./inputs/prefix705-reg0.jdg (54403 bytes, sha256 aee0bbe1bda2ea243095bbe85d5b9ee7a19b9ecd1d24d8aa83b16f85e4da0e09)
+JDG1
+R 705
+a a i a b e 0 2 e 0 1 q 1 0 0
+a a x k e 2 0 e 1 0 0
+a x a a i k e 0 1 e 1 3 e 0 2 0
+a x a i a i e 0 1 e 0 3 e 0 1 0
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0
+a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0
+a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0
+a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0
+a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0
+a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0
+a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0
+a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0
+a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0
+a b p 17 1 0 a n e 0 1 0
+a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0
+a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0
+a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0
+a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0
+a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0
+a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0
+a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0
+a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0
+a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0
+a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0
+a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0
+a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0
+a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0
+a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0
+a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0
+a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0
+a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0
+a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0
+a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0
+a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0
+a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0
+a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0
+a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0
+a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0
+a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0
+a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0
+a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0
+a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0
+a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0
+a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0
+a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0
+a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0
+a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0
+a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0
+a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0
+a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0
+a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0
+a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k k k k k k k k p 16 1 7 p 20 1 6 p 5 2 6 7 p 28 3 5 7 7 p 38 3 4 5 7 p 17 1 3 p
+=== ./inputs/sig12-R.jdg (55234 bytes, sha256 d1f42e6def2ac5d49d06d3b904c7f3f0186f40ea2a21f73d6528c6669d01a950)
+JDG1
+R 999999999999 
+a a i a b e 0 2 e 0 1 q 1 0 0 
+a a x k e 2 0 e 1 0 0 
+a x a a i k e 0 1 e 1 3 e 0 2 0 
+a x a i a i e 0 1 e 0 3 e 0 1 0 
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0 
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0 
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0 
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0 
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0 
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0 
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0 
+a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0 
+a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0 
+a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0 
+a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0 
+a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0 
+a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0 
+a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0 
+a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0 
+a b p 17 1 0 a n e 0 1 0 
+a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0 
+a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0 
+a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0 
+a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0 
+a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0 
+a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0 
+a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0 
+a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0 
+a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0 
+a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0 
+a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0 
+a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0 
+a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0 
+a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0 
+a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0 
+a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0 
+a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0 
+a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0 
+a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0 
+a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0 
+a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0 
+a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0 
+a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0 
+a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0 
+a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0 
+a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0 
+a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0 
+a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0 
+a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0 
+a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0 
+a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0 
+a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0 
+a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0 
+a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0 
+a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0 
+a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k k k k k k k
+=== ./inputs/sig12-pad-R.jdg (55246 bytes, sha256 6ef15b31f49b6a3edec91e5b55ea8ba520449b02e6973f8b6a7d0f7149956934)
+JDG1
+R 000000000000000000000706 
+a a i a b e 0 2 e 0 1 q 1 0 0 
+a a x k e 2 0 e 1 0 0 
+a x a a i k e 0 1 e 1 3 e 0 2 0 
+a x a i a i e 0 1 e 0 3 e 0 1 0 
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0 
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0 
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0 
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0 
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0 
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0 
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0 
+a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0 
+a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0 
+a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0 
+a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0 
+a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0 
+a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0 
+a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0 
+a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0 
+a b p 17 1 0 a n e 0 1 0 
+a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0 
+a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0 
+a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0 
+a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0 
+a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0 
+a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0 
+a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0 
+a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0 
+a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0 
+a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0 
+a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0 
+a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0 
+a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0 
+a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0 
+a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0 
+a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0 
+a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0 
+a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0 
+a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0 
+a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0 
+a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0 
+a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0 
+a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0 
+a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0 
+a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0 
+a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0 
+a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0 
+a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0 
+a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0 
+a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0 
+a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0 
+a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0 
+a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0 
+a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0 
+a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0 
+a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k
+=== ./inputs/sig13-R.jdg (55235 bytes, sha256 560b9225087c12e2699dbc783b7fd7e10d1f26ac2cee44c20f96c7465fe47089)
+JDG1
+R 1000000000000 
+a a i a b e 0 2 e 0 1 q 1 0 0 
+a a x k e 2 0 e 1 0 0 
+a x a a i k e 0 1 e 1 3 e 0 2 0 
+a x a i a i e 0 1 e 0 3 e 0 1 0 
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0 
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0 
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0 
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0 
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0 
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0 
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0 
+a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0 
+a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0 
+a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0 
+a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0 
+a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0 
+a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0 
+a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0 
+a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0 
+a b p 17 1 0 a n e 0 1 0 
+a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0 
+a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0 
+a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0 
+a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0 
+a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0 
+a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0 
+a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0 
+a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0 
+a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0 
+a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0 
+a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0 
+a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0 
+a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0 
+a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0 
+a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0 
+a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0 
+a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0 
+a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0 
+a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0 
+a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0 
+a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0 
+a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0 
+a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0 
+a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0 
+a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0 
+a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0 
+a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0 
+a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0 
+a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0 
+a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0 
+a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0 
+a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0 
+a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0 
+a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0 
+a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0 
+a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k k k k k k 
+=== ./matrix.py (5903 bytes, sha256 df53ec55865fec7fc6a01b5cb256977fcb776241e85c1f6ebd8c4794f46b8e9d)
+#!/usr/bin/env python3
+"""Independent matrix batch harness. Exact Fraction oracle; no floats."""
+import json, subprocess, sys
+from pathlib import Path
+from fractions import Fraction
+from itertools import permutations
+OUT=Path(sys.argv[1]); RAW=OUT/'raw'; IN=OUT/'inputs'; RAW.mkdir(parents=True,exist_ok=True); IN.mkdir(parents=True,exist_ok=True)
+SRC=Path(sys.argv[2])
+ENG={'corrected':['racket',str(SRC/'math-workbench-corrected/engine.rkt')],'v2-racket':['racket',str(SRC/'math-workbench-v2/engine.rkt')]}
+if len(sys.argv)>3 and Path(sys.argv[3]).exists(): ENG['v2-compiled']=[sys.argv[3]]
+def P(t): return [[Fraction(x.strip()) for x in r.split(',')] for r in t.strip()[1:-1].split(';')]
+def S(M): return [[str(x) for x in r] for r in M]
+def det(A):
+    n=len(A); s=Fraction(0)
+    for p in permutations(range(n)):
+        inv=sum(1 for i in range(n) for j in range(i+1,n) if p[i]>p[j]); pr=Fraction(1)
+        for i in range(n): pr*=A[i][p[i]]
+        s+=pr if inv%2==0 else -pr
+    return s
+def rref(A):
+    M=[r[:] for r in A]; R,C=len(M),len(M[0]); r=0
+    for c in range(C):
+        pv=next((i for i in range(r,R) if M[i][c]!=0),None)
+        if pv is None: continue
+        M[r],M[pv]=M[pv],M[r]; v=M[r][c]; M[r]=[x/v for x in M[r]]
+        for i in range(R):
+            if i!=r: f=M[i][c]; M[i]=[M[i][j]-f*M[r][j] for j in range(C)]
+        r+=1
+        if r==R: break
+    return M
+def oracle(op,a,b):
+    A=P(a)
+    if op=='det': return str(det(A))
+    if op=='transpose': return S([list(c) for c in zip(*A)])
+    if op=='mul': B=P(b); return S([[sum(A[i][k]*B[k][j] for k in range(len(B))) for j in range(len(B[0]))] for i in range(len(A))])
+    if op=='rref': return S(rref(A))
+    if op=='inv':
+        n=len(A); R=rref([A[i]+[Fraction(int(i==j)) for j in range(n)] for i in range(n)]); return S([r[n:] for r in R])
+    if op=='solve':
+        B=P(b); n=len(A[0]); R=rref([A[i]+B[i] for i in range(len(A))]); x=[Fraction(0)]*n
+        for r in R:
+            nz=[j for j in range(n) if r[j]!=0]
+            if nz: x[nz[0]]=r[n]
+        return [str(v) for v in x]
+def flat(v):
+    # collect all rational strings in machine output for order-insensitive structural comparison
+    out=[]
+    if isinstance(v,dict):
+        for k in sorted(v): out+=flat(v[k])
+    elif isinstance(v,list):
+        for x in v: out+=flat(x)
+    elif isinstance(v,str): out.append(v)
+    return out
+def run(eng,name,content):
+    p=IN/(name+'.json'); p.write_text(content if isinstance(content,str) else json.dumps(content))
+    r=subprocess.run([*eng,'--batch',str(p)],capture_output=True,timeout=120)
+    for s,b in (('stdout',r.stdout),('stderr',r.stderr)): (RAW/f'{name}.{s}').write_bytes(b)
+    (RAW/f'{name}.exit').write_text(f'{r.returncode}\n'); return r
+rows=[]
+def rec(c,cmd,o,v): rows.append(dict(claim=c,command=cmd,output=o,outcome=v)); print(v,'|',c,'|',o[:200])
+bad=[None,7,'bad',[],{},{'id':'missing-op','a':'[1]'},{'id':'missing-a','op':'det'},{'id':'unknown-op','op':'frobnicate','a':'[1]'},
+     {'id':'wrong-dims','op':'mul','a':'[1,2]','b':'[1,2]'},{'id':'non-rational','op':'det','a':'[1.5]'},{'id':'numeric-a','op':'det','a':3}]
+valid=[{'id':'det','op':'det','a':'[1,2;3,4]'},{'id':'det3','op':'det','a':'[2,1/3,0;1,1,1;0,5/7,3]'},
+       {'id':'transpose','op':'transpose','a':'[1,2,3;4,5,6]'},{'id':'mul','op':'mul','a':'[1,2;3,4]','b':'[1/2,0;0,1/3]'},
+       {'id':'rref','op':'rref','a':'[1,2,3;2,4,7]'},{'id':'inv','op':'inv','a':'[2,1;1,1]'},{'id':'solve','op':'solve','a':'[2,1;1,3]','b':'[3;5]'}]
+mixed=[]
+for i,v in enumerate(valid): mixed.append(v); mixed.append(bad[i%len(bad)])
+mixed+=bad[len(valid):]
+for label,eng in ENG.items():
+    cmd=' '.join(eng)+' --batch'
+    r=run(eng,f'{label}-mixed',mixed)
+    if r.returncode!=0:
+        rec(f'{label}: mixed valid+malformed batch','%s mixed.json'%cmd,f'exit={r.returncode} stdout={len(r.stdout)}B stderr={r.stderr.decode(errors="replace").strip()[:150]}',
+            'WHOLE-BATCH FAILURE (defect)' if label=='corrected' else
+=== ./matrix/inputs/corrected-allbad.json (302 bytes, sha256 4e0bdb820b98052e719c8b5ed956eff2eea066206ec5a512cb5af7f8a52f0e49)
+[null, 7, "bad", [], {}, {"id": "missing-op", "a": "[1]"}, {"id": "missing-a", "op": "det"}, {"id": "unknown-op", "op": "frobnicate", "a": "[1]"}, {"id": "wrong-dims", "op": "mul", "a": "[1,2]", "b": "[1,2]"}, {"id": "non-rational", "op": "det", "a": "[1.5]"}, {"id": "numeric-a", "op": "det", "a": 3}]
+=== ./matrix/inputs/corrected-empty.json (2 bytes, sha256 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945)
+[]
+=== ./matrix/inputs/corrected-mixed.json (701 bytes, sha256 0d1835db8e6ea20c69e3be50ec215f5bf5dfcb9e686286325f983907ccddf496)
+[{"id": "det", "op": "det", "a": "[1,2;3,4]"}, null, {"id": "det3", "op": "det", "a": "[2,1/3,0;1,1,1;0,5/7,3]"}, 7, {"id": "transpose", "op": "transpose", "a": "[1,2,3;4,5,6]"}, "bad", {"id": "mul", "op": "mul", "a": "[1,2;3,4]", "b": "[1/2,0;0,1/3]"}, [], {"id": "rref", "op": "rref", "a": "[1,2,3;2,4,7]"}, {}, {"id": "inv", "op": "inv", "a": "[2,1;1,1]"}, {"id": "missing-op", "a": "[1]"}, {"id": "solve", "op": "solve", "a": "[2,1;1,3]", "b": "[3;5]"}, {"id": "missing-a", "op": "det"}, {"id": "unknown-op", "op": "frobnicate", "a": "[1]"}, {"id": "wrong-dims", "op": "mul", "a": "[1,2]", "b": "[1,2]"}, {"id": "non-rational", "op": "det", "a": "[1.5]"}, {"id": "numeric-a", "op": "det", "a": 3}]
+=== ./matrix/inputs/v2-racket-allbad.json (302 bytes, sha256 4e0bdb820b98052e719c8b5ed956eff2eea066206ec5a512cb5af7f8a52f0e49)
+[null, 7, "bad", [], {}, {"id": "missing-op", "a": "[1]"}, {"id": "missing-a", "op": "det"}, {"id": "unknown-op", "op": "frobnicate", "a": "[1]"}, {"id": "wrong-dims", "op": "mul", "a": "[1,2]", "b": "[1,2]"}, {"id": "non-rational", "op": "det", "a": "[1.5]"}, {"id": "numeric-a", "op": "det", "a": 3}]
+=== ./matrix/inputs/v2-racket-empty.json (2 bytes, sha256 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945)
+[]
+=== ./matrix/inputs/v2-racket-mixed.json (701 bytes, sha256 0d1835db8e6ea20c69e3be50ec215f5bf5dfcb9e686286325f983907ccddf496)
+[{"id": "det", "op": "det", "a": "[1,2;3,4]"}, null, {"id": "det3", "op": "det", "a": "[2,1/3,0;1,1,1;0,5/7,3]"}, 7, {"id": "transpose", "op": "transpose", "a": "[1,2,3;4,5,6]"}, "bad", {"id": "mul", "op": "mul", "a": "[1,2;3,4]", "b": "[1/2,0;0,1/3]"}, [], {"id": "rref", "op": "rref", "a": "[1,2,3;2,4,7]"}, {}, {"id": "inv", "op": "inv", "a": "[2,1;1,1]"}, {"id": "missing-op", "a": "[1]"}, {"id": "solve", "op": "solve", "a": "[2,1;1,3]", "b": "[3;5]"}, {"id": "missing-a", "op": "det"}, {"id": "unknown-op", "op": "frobnicate", "a": "[1]"}, {"id": "wrong-dims", "op": "mul", "a": "[1,2]", "b": "[1,2]"}, {"id": "non-rational", "op": "det", "a": "[1.5]"}, {"id": "numeric-a", "op": "det", "a": 3}]
+=== ./matrix/raw/corrected-allbad.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./matrix/raw/corrected-allbad.stderr (116 bytes, sha256 8179486700067f0b1fce3a75851b855f7fb7f1073cc94a43dcc2d06b4f16cce3)
+hash-ref: contract violation
+  expected: hash?
+  given: 'null
+  argument position: 1st
+  other arguments...:
+   'op
+
+=== ./matrix/raw/corrected-allbad.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./matrix/raw/corrected-empty.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./matrix/raw/corrected-empty.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./matrix/raw/corrected-empty.stdout (3 bytes, sha256 37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570)
+[]
+
+=== ./matrix/raw/corrected-mixed.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./matrix/raw/corrected-mixed.stderr (116 bytes, sha256 8179486700067f0b1fce3a75851b855f7fb7f1073cc94a43dcc2d06b4f16cce3)
+hash-ref: contract violation
+  expected: hash?
+  given: 'null
+  argument position: 1st
+  other arguments...:
+   'op
+
+=== ./matrix/raw/corrected-mixed.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./matrix/raw/rows.json (1597 bytes, sha256 a1c37dd6249d2c6f29dc0ac277c50b9a1944320618835d1ccae3bd43ff458bdd)
+[
+ {
+  "claim": "corrected: mixed valid+malformed batch",
+  "command": "racket /workspace/acct-v130/mwroot/math-workbench-corrected/engine.rkt --batch mixed.json",
+  "output": "exit=1 stdout=0B stderr=hash-ref: contract violation\n  expected: hash?\n  given: 'null\n  argument position: 1st\n  other arguments...:\n   'op",
+  "outcome": "WHOLE-BATCH FAILURE (defect)"
+ },
+ {
+  "claim": "corrected: empty batch",
+  "command": "racket /workspace/acct-v130/mwroot/math-workbench-corrected/engine.rkt --batch []",
+  "output": "exit=0 out=b'[]'",
+  "outcome": "PASS"
+ },
+ {
+  "claim": "corrected: all-malformed batch",
+  "command": "racket /workspace/acct-v130/mwroot/math-workbench-corrected/engine.rkt --batch allbad.json",
+  "output": "exit=1 hash-ref: contract violation\n  expected: hash?\n  given: 'null\n  argument position: 1st\n  other arguments...:\n   'op",
+  "outcome": "WHOLE-BATCH FAILURE (defect)"
+ },
+ {
+  "claim": "v2-racket: mixed batch (7 valid / 11 malformed) per-item records + Fraction oracle",
+  "command": "racket /workspace/acct-v130/mwroot/math-workbench-v2/engine.rkt --batch mixed.json",
+  "output": "exit=0 n=18 all exact/rejected as expected",
+  "outcome": "PASS"
+ },
+ {
+  "claim": "v2-racket: empty batch",
+  "command": "racket /workspace/acct-v130/mwroot/math-workbench-v2/engine.rkt --batch []",
+  "output": "exit=0 out=b'[]'",
+  "outcome": "PASS"
+ },
+ {
+  "claim": "v2-racket: all-malformed batch",
+  "command": "racket /workspace/acct-v130/mwroot/math-workbench-v2/engine.rkt --batch allbad.json",
+  "output": "exit=0 n=11 all rejected=True",
+  "outcome": "PASS"
+ }
+]
+=== ./matrix/raw/v2-racket-allbad.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./matrix/raw/v2-racket-allbad.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./matrix/raw/v2-racket-allbad.stdout (3115 bytes, sha256 92287fb9639134edd7aac08a764a538a9b87eed40826fe98cdec6c5a29daf8e2)
+[{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item requires a text op field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text op field."},{"exit":1,"id":"missing-op","machine":{"op":null,"reason":"batch: Each batch item requires a text op field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text op field."},{"exit":1,"id":"missing-a","machine":{"op":"det","reason":"batch: Each batch item requires a text a field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text a field."},{"exit":1,"id":"unknown-op","machine":{"a_cols":null,"a_rows":null,"b_cols":null,"b_rows":null,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":null,"nullity":null,"op":"frobnicate","particular":null,"pivots":null,"rank":null,"reason":"Unknown operation \"frobnicate\".","rows":null,"status":"rejected"},"text":"Rejected. Unknown operation \"frobnicate\"."},{"exit":1,"id":"wrong-dims","machine":{"a_cols":null,"a_rows":null,"b_cols":null,"b_rows":null,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":null,"nullity":null,"op":"mul","particular":null,"pivots":null,"rank":null,"reason":"parse: The product A B is defined when the number of columns of A equals the number of rows of B. A is 1 by 2 and B is 1 by 2.","rows":null,"status":"rejected"},"text":"Rejected. parse: The product A B is defined when the number of columns of A equals the number of rows of B. A is 1 by 2 and B is 1 by 2."},{"exit":1,"id":"non-rational","machine":{"a_cols":null,"a_rows":null,"b_cols":null,"b_rows":null,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":null,"nullity":null,"op":"det","particular":null,"pivots":null,"rank":null,"reason":"parse: The entry \"1.5\" in matrix A row 1 is not an integer or a rational fraction. Decimal points and exponent letters are rejected, and this workspace does not approximate.","rows":null,"status":"rejected"},"text":"Rejected. parse: The entry \"1.5\" in matrix A row 1 is not an integer or a rational fraction. Decimal points and exponent letters are rejected, and this workspace does not approximate."},{"exit":1,"id":"numeric-a","machine":{"op":"det","reason":"batch: Each batch item requires a text a field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text a field."}]
+
+=== ./matrix/raw/v2-racket-empty.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./matrix/raw/v2-racket-empty.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./matrix/raw/v2-racket-empty.stdout (3 bytes, sha256 37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570)
+[]
+
+=== ./matrix/raw/v2-racket-mixed.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./matrix/raw/v2-racket-mixed.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./matrix/raw/v2-racket-mixed.stdout (6203 bytes, sha256 d3c3e1707805f1f6233758b3b9e6b20744a5e69ed776fc2fe2b78d44637df141)
+[{"exit":0,"id":"det","machine":{"a_cols":2,"a_rows":2,"b_cols":null,"b_rows":null,"cols":2,"determinant":"-2","entries":null,"image":null,"kernel":null,"nullity":null,"op":"det","particular":null,"pivots":null,"rank":null,"reason":null,"rows":2,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 2.\nThe determinant of A is -2."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":0,"id":"det3","machine":{"a_cols":3,"a_rows":3,"b_cols":null,"b_rows":null,"cols":3,"determinant":"25/7","entries":null,"image":null,"kernel":null,"nullity":null,"op":"det","particular":null,"pivots":null,"rank":null,"reason":null,"rows":3,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 3 by 3.\nThe determinant of A is 25/7."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":0,"id":"transpose","machine":{"a_cols":3,"a_rows":2,"b_cols":null,"b_rows":null,"cols":2,"determinant":null,"entries":["1","4","2","5","3","6"],"image":null,"kernel":null,"nullity":null,"op":"transpose","particular":null,"pivots":null,"rank":null,"reason":null,"rows":3,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 3.\nThe transpose of A is 3 by 2 and is shown below.\n[ 1 4 ]\n[ 2 5 ]\n[ 3 6 ]"},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":0,"id":"mul","machine":{"a_cols":2,"a_rows":2,"b_cols":2,"b_rows":2,"cols":2,"determinant":null,"entries":["1/2","2/3","3/2","4/3"],"image":null,"kernel":null,"nullity":null,"op":"mul","particular":null,"pivots":null,"rank":null,"reason":null,"rows":2,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 2.\nB is 2 by 2.\nThe product A B is 2 by 2 and is shown below.\n[ 1/2 2/3 ]\n[ 3/2 4/3 ]"},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":0,"id":"rref","machine":{"a_cols":3,"a_rows":2,"b_cols":null,"b_rows":null,"cols":3,"determinant":null,"entries":["1","2","0","0","0","1"],"image":null,"kernel":null,"nullity":1,"op":"rref","particular":null,"pivots":[0,2],"rank":2,"reason":null,"rows":2,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 3.\nThe reduced row echelon form of A is shown below. The rank is 2 and the nullity is 1.\nThe pivot columns, counting from 0, are 0, 2.\n[ 1 2 0 ]\n[ 0 0 1 ]"},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item requires a text op field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text op field."},{"exit":0,"id":"inv","machine":{"a_cols":2,"a_rows":2,"b_cols":null,"b_rows":null,"cols":2,"determinant":"1","entries":["1","-1","-1","2"],"image":null,"kernel":null,"nullity":0,"op":"inv","particular":null,"pivots":null,"rank":2,"reason":null,"rows":2,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 2.\nThe inverse of A is shown below. The determinant of A is 1.\n[ 1 -1 ]\n[ -1 2 ]"},{"exit":1,"id":"missing-op","machine":{"op":null,"reason":"batch: Each batch item requires a text op field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text op field."},{"exit":0,"id":"solve","machine":{"a_cols":2,"a_rows":2,"b_cols":1,"b_rows":2,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":[],"nullity":0,"op":"solve","particular":["4/5","7/5"],"pivots":[0,1],"rank":2,"reason":null,"rows":null,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 2.\nMatrix B is 2 by 1.\nThe system A x = b has a unique solut
+=== ./raw/assets/SHA256SUMS.txt (485 bytes, sha256 06979781f94346d85b4c61fca351891d8d9305b1c08154cb0a8f673c8418d811)
+13d936dfdaeaacbecf9849044522ef4ca7fafc8ad02f23c31430bdad1632f85f *Abschluss-1.3-source.zip
+f1c1fc7488f65301d58d808643c5eef560665eaec35a9be9e199895ff3c047ab *Abschluss-1.3-windows-x64.zip
+2511586e08116b1d2fb64714b8a079b6bec8e257e8615ba2eb687101985c0642 *SOURCE-CLOSURE-1.3.0.json
+97b0ae20691322edcd359092b607c039c5688273806d6d01f62875d23eaf03d9 *grok-composition-proof-public.zip
+5721667677b327ff431c8ef1ebad7da0a5ae1c9aebfd89974182fd1efcdc6773 *browser-gate-correction-public.zip
+
+=== ./raw/assets/SOURCE-CLOSURE-1.3.0.json (5070 bytes, sha256 2511586e08116b1d2fb64714b8a079b6bec8e257e8615ba2eb687101985c0642)
+{
+  "candidate": "C:\\ClaudeOutput\\abschluss-repair-20261011\\repair\\packaging\\v6-workbench-v2\\build\\20261012-030148\\Abschluss-1.3",
+  "source_archive_only_rebuild": "C:\\ClaudeOutput\\abschluss-repair-20261011\\repair\\packaging\\v6-workbench-v2\\source-only-build-0306\\Abschluss-1.3",
+  "candidate_file_count": 443,
+  "source_rebuilt_file_count": 443,
+  "missing_from_source_rebuild": [],
+  "extra_in_source_rebuild": [],
+  "ordinary_files_compared": 418,
+  "ordinary_files_identical": 418,
+  "unexpected_content_differences": [],
+  "build_context_metadata": [
+    "MANIFEST.sha256",
+    "provenance/cockpit-portable-changes.json",
+    "provenance/native-rebuild-comparison.json",
+    "provenance/package-components.json"
+  ],
+  "executable_files_rebuilt_or_inherited": [
+    "Abschluss Start.exe",
+    "Abschluss.exe",
+    "Install Abschluss.exe",
+    "Uninstall Abschluss.exe",
+    "bin/Abschluss Start.exe",
+    "bin/Install Abschluss.exe",
+    "bin/MathEngine.exe",
+    "bin/MathWorkbench.exe",
+    "bin/Uninstall Abschluss.exe",
+    "bin/bookverify.exe",
+    "bin/judge-rkt.exe",
+    "bin/verified-book-check.exe",
+    "bin/verified-book-post.exe",
+    "judge-rkt.exe",
+    "judge/judge-v5-windows.exe",
+    "pompetzki-w.exe",
+    "pompetzki.exe",
+    "tools/abschluss-verify/abschluss-verify.exe",
+    "tools/book-search/book-search.exe",
+    "tools/jdg-lint/jdg-lint.exe",
+    "tools/mmverify/mmverify.exe"
+  ],
+  "console_sha256": "957366e641219523dc10fb4316c9916ef072fd79d6084703cc9035e74c127daa",
+  "window_sha256": "d6c6e22a672be461e0bcc8ac6e054656e5ce76e1080570c07736d1e0ada35b10",
+  "component_source_sha256": {
+    "repair/packaging/v6-workbench-v2/installer.rkt": "9700405db9aa8e5681c955611b566b11a4b4604633314e462fe4879da1a900a9",
+    "repair/packaging/v6-workbench-v2/launcher.rkt": "2e4cb313df3b23a26b8ac8e766e5ebc442dfcec50c091510a27838e0c677b383",
+    "repair/packaging/v6-workbench-v2/package-utils.rkt": "d4f77508ac8f1dd46891ec86e1dfdf19683e6ac3794a3cd7fcecad6e9a40d7d6",
+    "repair/packaging/v6-workbench-v2/test-runtime-modules.rkt": "44e8fe4e7f5a2b36db3c4f6edc78649bf7ddc90440299343b71179fbe1fabaaf",
+    "repair/packaging/v6-workbench-v2/uninstaller.rkt": "66de81c707ad2b1f1c96d029037d9018271888a5ff127b253869d763dc591615",
+    "repair/packaging/v6-workbench-v2/workbench-entry.rkt": "fc2960b0450dc9170bf6b559d53f31f14ff6bdd457ef4e1a3aecd7e97299473c",
+    "repair/math-workbench-v2/engine.rkt": "99084a403cc0b38b149878e8cce74667caa62ea13b8f8de0a64e43e0a767b5b9",
+    "repair/math-workbench-v2/exact.rkt": "eaa5917f0ec3b6816689cd2371c2f6f64050f26b287b8531c6f9abb0096c3ef3",
+    "repair/math-workbench-v2/gui.rkt": "07fd6e0f9577b1174a447b5eb115d221d1d3ed31f4235d3ba3e406ad20f8e7ce",
+    "repair/math-workbench-v2/test-gui.rkt": "b56c9d09ecf7173477df1c6a26dc4757fb678048bf9f96b047646305828fe837",
+    "judge/judge-v5.rkt": "c63bd449af3a7653c483b9bb42039b2942f658614bc2606eb7b40c5b95b6b2d0",
+    "judge/registry-auth-v4.rkt": "7369c098521020283016dbe86845790e7456be6ef255d8204ab696b6e4723a26",
+    "repair/book-v6/book-post-v4.rkt": "6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720",
+    "repair/book-v6/verified-book-check-v6-source.rkt": "9215daae5f88d786bc7e26e386fab59386e652602940a013cc4d25057725f8c5",
+    "repair/book-v6/verified-book-check.rkt": "9215daae5f88d786bc7e26e386fab59386e652602940a013cc4d25057725f8c5",
+    "repair/book-v6/verified-book-post.rkt": "c6779f520f1ce4438eda2cec01f36e0bc023c584f20233f1565d8c531040deb3",
+    "cockpit/abschluss.pmp": "d42fe4da418723cd8ca46a1c44edcba1f022f864a2d803cc7e9e19aae8201c17"
+  },
+  "checks": {
+    "same_bundle_paths": true,
+    "all_ordinary_files_identical": true,
+    "same_audited_base_sha256": true,
+    "same_judge_source_sha256": true,
+    "same_math_source_sha256": true,
+    "same_racket_tool_version": true,
+    "same_portable_cockpit_result_hashes": true,
+    "same_native_allocated_pe_sections": true,
+    "console
+=== ./raw/assets/assets.sha256 (561 bytes, sha256 636445e25e6ca03893281c3dfb69da0a7ae983a8854259fe4e909afec0d6ddfa)
+13d936dfdaeaacbecf9849044522ef4ca7fafc8ad02f23c31430bdad1632f85f  Abschluss-1.3-source.zip
+f1c1fc7488f65301d58d808643c5eef560665eaec35a9be9e199895ff3c047ab  Abschluss-1.3-windows-x64.zip
+06979781f94346d85b4c61fca351891d8d9305b1c08154cb0a8f673c8418d811  SHA256SUMS.txt
+2511586e08116b1d2fb64714b8a079b6bec8e257e8615ba2eb687101985c0642  SOURCE-CLOSURE-1.3.0.json
+5721667677b327ff431c8ef1ebad7da0a5ae1c9aebfd89974182fd1efcdc6773  browser-gate-correction-public.zip
+97b0ae20691322edcd359092b607c039c5688273806d6d01f62875d23eaf03d9  grok-composition-proof-public.zip
+
+=== ./raw/assets/bytediff.txt (16 bytes, sha256 cf65a225fa76c50057e41e37abd91d41d7dbcac9b7942d5fe857ac413ce67daa)
+RELEASE-1.3.0.md
+=== ./raw/assets/closure-component-check.txt (1947 bytes, sha256 54ef3c9889b70e64efa770e4704564b3bd386067145c7218e5ae5295c5e079a8)
+MATCH repair/packaging/v6-workbench-v2/installer.rkt 9700405db9aa8e56 9700405db9aa8e56
+MATCH repair/packaging/v6-workbench-v2/launcher.rkt 2e4cb313df3b23a2 2e4cb313df3b23a2
+MATCH repair/packaging/v6-workbench-v2/package-utils.rkt d4f77508ac8f1dd4 d4f77508ac8f1dd4
+MATCH repair/packaging/v6-workbench-v2/test-runtime-modules.rkt 44e8fe4e7f5a2b36 44e8fe4e7f5a2b36
+MATCH repair/packaging/v6-workbench-v2/uninstaller.rkt 66de81c707ad2b1f 66de81c707ad2b1f
+MATCH repair/packaging/v6-workbench-v2/workbench-entry.rkt fc2960b0450dc917 fc2960b0450dc917
+MATCH repair/math-workbench-v2/engine.rkt 99084a403cc0b38b 99084a403cc0b38b
+MATCH repair/math-workbench-v2/exact.rkt eaa5917f0ec3b681 eaa5917f0ec3b681
+MATCH repair/math-workbench-v2/gui.rkt 07fd6e0f9577b117 07fd6e0f9577b117
+MATCH repair/math-workbench-v2/test-gui.rkt b56c9d09ecf71734 b56c9d09ecf71734
+MATCH judge/judge-v5.rkt c63bd449af3a7653 c63bd449af3a7653
+MATCH judge/registry-auth-v4.rkt 7369c09852102028 7369c09852102028
+MATCH repair/book-v6/book-post-v4.rkt 6a9f70c6e0f4c314 6a9f70c6e0f4c314
+MATCH repair/book-v6/verified-book-check-v6-source.rkt 9215daae5f88d786 9215daae5f88d786
+MATCH repair/book-v6/verified-book-check.rkt 9215daae5f88d786 9215daae5f88d786
+MATCH repair/book-v6/verified-book-post.rkt c6779f520f1ce443 c6779f520f1ce443
+MATCH cockpit/abschluss.pmp d42fe4da418723cd d42fe4da418723cd
+MATCH console_sha256 957366e641219523 957366e641219523
+MATCH window_sha256 d6c6e22a672be461 d6c6e22a672be461
+windows file count 443 claimed 443
+['candidate', 'source_archive_only_rebuild', 'candidate_file_count', 'source_rebuilt_file_count', 'missing_from_source_rebuild', 'extra_in_source_rebuild', 'ordinary_files_compared', 'ordinary_files_identical', 'unexpected_content_differences', 'build_context_metadata', 'console_sha256', 'window_sha256', 'passed', 'reproducibility_scope', 'current_declared_source_count', 'additional_candidate_context_sources', 'source_zip_rebuilt_byte_identical']
+
+=== ./raw/assets/cmp-summary.txt (5259 bytes, sha256 b530899be81eefc1b143fd2892808b9cdd6c0a5551108811389e351b8e92a5ce)
+zip files 1949 git files 3285 common 1782 byte-diff 1 zip-only 167 git-only 1503
+BYTE DIFFS: ['RELEASE-1.3.0.md']
+ZIP-ONLY: ['PUBLIC-SOURCE-WHITELIST.json', 'cockpit/Pompetzki-Window.manifest', 'cockpit/REPORT.md', 'cockpit/abschluss.pmp', 'cockpit/config/config-20260927000000.txt', 'cockpit/docs/RELEASE-DAY-ORDERS-2026-10-09.md', 'cockpit/docs/SCOPE-AND-RELEASE-2026-10-09.md', 'cockpit/docs/brainstorm-2026-10-09/CLAUDE-POSITION-2026-10-09.md', 'cockpit/docs/brainstorm-2026-10-09/GAME-PLAN-2026-10-09.md', 'cockpit/docs/brainstorm-2026-10-09/MAX-PACKAGE-v2.md', 'cockpit/docs/brainstorm-2026-10-09/MAX-PACKAGE.md', 'cockpit/docs/brainstorm-2026-10-09/NEXT-SESSION-PROMPT-2026-10-09.md', 'cockpit/docs/brainstorm-2026-10-09/PMP-BUILDOUT-2026-10-09.md', 'cockpit/docs/brainstorm-2026-10-09/bible-software-digest.txt', 'cockpit/docs/brainstorm-2026-10-09/bible-software-journal.jsonl', 'cockpit/docs/brainstorm-2026-10-09/critic-digest.txt', 'cockpit/docs/brainstorm-2026-10-09/factcheck-2026-10-09/digest.txt', 'cockpit/docs/brainstorm-2026-10-09/factcheck-2026-10-09/grok-claims-factcheck-result.json', 'cockpit/docs/brainstorm-2026-10-09/factcheck-2026-10-09/journal.jsonl', 'cockpit/docs/brainstorm-2026-10-09/lists-digest.txt', 'cockpit/docs/brainstorm-2026-10-09/max-package-workflow-result.json', 'cockpit/docs/cube-and-conquer.md', 'cockpit/docs/plans/2026-09-27-cockpit-plan-1.md', 'cockpit/docs/plans/2026-09-28-cockpit-plan-2a.md', 'cockpit/docs/plans/2026-09-28-cockpit-plan-3.md', 'cockpit/docs/plans/2026-09-28-cockpit-plan-4.md', 'cockpit/docs/plans/2026-09-28-lean-core-plan-5.md', 'cockpit/docs/plans/2026-09-29-cube-and-conquer-plan-8.md', 'cockpit/docs/plans/2026-09-29-lean-gl-plan-6.md', 'cockpit/docs/plans/2026-09-29-sat-encoders-plan-7.md', 'cockpit/docs/specs/2026-09-27-cockpit-design.md', 'cockpit/lean-job.pmp', 'cockpit/lib/abschluss.manifest', 'cockpit/lib/app3.pmp', 'cockpit/lib/cdp.pmp', 'cockpit/lib/close.pmp', 'cockpit/lib/config.pmp', 'cockpit/lib/date.pmp', 'cockpit/lib/gl6.pmp', 'cockpit/lib/graph.pmp', 'cockpit/lib/grid.pmp', 'cockpit/lib/gui-mub6-20260918.pmp', 'cockpit/lib/gui-pmpmath-20260918.pmp', 'cockpit/lib/gui-responsive.pmp', 'cockpit/lib/gui-run-responsive.pmp', 'cockpit/lib/gui.pmp', 'cockpit/lib/hello.pmp', 'cockpit/lib/hot.pmp', 'cockpit/lib/jobs.pmp', 'cockpit/lib/json.pmp', 'cockpit/lib/leanjob.pmp', 'cockpit/lib/ledger.pmp', 'cockpit/lib/linear.pmp', 'cockpit/lib/list.pmp', 'cockpit/lib/logic.pmp', 'cockpit/lib/logic2.pmp', 'cockpit/lib/menu.pmp', 'cockpit/lib/names.pmp', 'cockpit/lib/native-a01-blob.pmp', 'cockpit/lib/native-a01.pmp', 'cockpit/lib/native-blob.pmp', 'cockpit/lib/native.pmp', 'cockpit/lib/numbers.pmp', 'cockpit/lib/os.pmp', 'cockpit/lib/rdcache.pmp', 'cockpit/lib/rdlean.pmp', 'cockpit/lib/rdpmp.pmp', 'cockpit/lib/rocqjob.pmp', 'cockpit/lib/shortcut.pmp', 'cockpit/lib/tar.pmp', 'cockpit/lib/text.pmp', 'cockpit/lib/util.pmp', 'cockpit/lib/zfc.pmp', 'cockpit/lib/zfc2.pmp', 'cockpit/lib/zfcbase.pmp', 'cockpit/lib/zip.pmp', 'cockpit/probe-refresh-ledger.pmp', 'cockpit/probe-refresh-reader.pmp', 'cockpit/rocq-check.pmp', 'cockpit/test-abort.pmp']
+GIT-ONLY by top dir: [('results/ch-theorem29-plain-CH-LCH', 247), ('results/stage7-automation-L7', 177), ('results/stage5-metamath-AG12', 166), ('repair/browser-gate-correction', 161), ('results/stage2-lrat-AG5', 138), ('repair/book-v4', 85), ('results/stage1-conservativity-CX3', 74), ('results/stage8-gpu-rank-smith-L8G', 73), ('results/stage2-derived-rules-L2D', 70), ('results/stage2-rocq-sigma1-complete-L2R', 57), ('repair/grok-proof-composition', 35), ('repair/book-v5', 30), ('results/stage6-lean-mathlib-L6', 28), ('results/stage2-pratt-G1', 22), ('results/stage2-farkas-G2', 17), ('judge/mut', 11), ('judge/native', 11), ('judge/native-v5', 8), ('repair/math-workbench-corrected', 8), ('repair/runtime-v2', 8), ('docs/1.0', 7), ('judge/portable-interpreter', 6), ('repair/book', 5), ('bin/linux', 3), ('judge/racket', 2), ('judge/rocq', 2), ('repair/boo
+=== ./raw/assets/release-body.md (7008 bytes, sha256 dfa04e3b0b12629f7e0ff94b830fe2dfb8b1d13e6b909ede666b4576255d0f63)
+# Abschluss 1.3.0
+
+This release adds an editable exact matrix workspace and authenticates the initial registry before a certificate can receive an ACCEPT verdict. It also repairs embedded-zero byte strings, signed minimum literals, signed minimum division by minus one, padded certificate integers, and verified Book posting and rejudgment.
+
+Open `Abschluss Start.exe`, enter integer or rational matrix entries in A and B, select an operation, and click Compute. Answer shows the result. The workspace computes RREF, rank and nullity, kernel and image bases, particular and homogeneous solutions of Ax=b, inconsistent systems, determinant, inverse, transpose, addition and multiplication. It supports explicit zero dimensions and arbitrary integer/rational matrix entries. Decimal and exponent input are refused. Font controls and file import/export are included.
+
+The launcher menu runs the authenticated pmp judge and the independent Racket cross-check, creates a posting from freshly judged copied inputs, verifies a posting by fresh rejudgment, and checks installation hashes. The installer creates a fresh local folder and shortcut. The uninstaller removes listed unchanged program files while retaining additional and modified files.
+
+The matrix engine and built-in integer/rational matrix operations use exact arithmetic. The interpreter's Word64 interface retains its declared wrapping operations: minimum signed word divided by minus one wraps to the minimum word, and its remainder is zero. Certificate indices in both v5 judges have the declared domain 0 through 999999999999; any number of insignificant leading zeros is accepted, and a thirteenth significant digit is refused before arithmetic.
+
+The Book v6 verifier checks chain hashes, copied input and output hashes, current tool hashes, receipt consistency, exact ordered timing fields, record identities and links, theorem hypotheses, statement and derivation hashes, and recorded trace fields. It checks the complete declared posting contents, rejecting extra run files, unexpected directories and duplicate output identities. It reruns both judges on the copied input. Ledger metadata is unsigned; a hash chain alone does not authenticate a past execution. The supported posting command executes the judges itself, and the supported verification command performs fresh rejudgment.
+
+Matrix batch processing now returns one ordered result per item. A malformed item gets its own rejection and the surrounding valid jobs still run. A valid JSON array completes with process exit 0 and per-item exit values; a malformed envelope or additional JSON value exits 1. Existing output files are preserved.
+
+Executed validation for the current sources includes:
+
+- 898 v5 judge runs: 254 each on Windows native, Linux native and Racket, plus 136 interpreted pmp runs. There were zero unexpected verdicts or timeouts. Native Windows/Linux output and exits agree on all 254; native/interpreted pmp agree on all 136.
+- A 94-certificate bot corpus with 23 valid controls, 24 proof-step mutants, 14 final-statement mutants, 17 registry-authentication mutants and 16 malformed parser inputs. Malformed input is counted separately from semantic proof coverage.
+- The full 4,551-theorem replay, with 139,194 proof steps, on both native judges and Racket. Book posting and fresh rejudgment preserve 4,373 Proved and 178 Qualified entries.
+- An independent Fraction matrix corpus: 429 cases, 7,288 exact mathematical identity checks and 3,754 engine jobs, including 179 inconsistent systems, with zero failures. The earlier independent 849-case matrix suite also passes source and compiled engine routes.
+- Matrix batch recovery passes 24 checks on each source and compiled route. A fresh local rerun of the delivered independent Grok Bot error driver passes all 76 engine checks, with no wrong exact result in either tool. The interpreter also retains its exact decimal syntax and stdout error stream; those observations are separ
+=== ./raw/book-a.log (4748 bytes, sha256 870c6c2490c526ef4cdc6d14360e1b0500eadcda73b6731581792fda29b3bed0)
+01-post-default                    exit=0 /workspace/bw130a/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t files found 1, receipt rows 1 BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct stateme
+02-post-interpreted                exit=0 /workspace/bw130a/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t files found 1, receipt rows 1 BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct stateme
+03-check-default                   exit=0 {"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"a432311fc3e08534cb4bf50c6342f7b0117c87ead01c39bde640ec07fab2acaa","negative_files":0,"positive_files":1
+04-check-interpreted               exit=0 {"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"1d770c80be472ab6993a4e205c18d15099c4b14f2cec3a6309529ba289c14e7b","negative_files":0,"positive_files":1
+05-post-m1                         exit=0 /workspace/bw130a/m1-refl.jdg pmp REJECT racket REJECT unchanged #t files found 1, receipt rows 1 BOOK-1.0.ledger: F 0 B 0 (Proved 0, Qualified 0) steps 0 distinct statem
+06-check-m1                        exit=0 {"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"d4bceaaeaab3a87b784d551b5a864cc040432defe1e5c2cce16a9c8dbb652e1e","negative_files":1,"positive_files":0
+10-v5replay-forge-consistent-false2 exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-rehashed         exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-orphan-n         exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-orphan-snapshot  exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-changed-input    exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-bad-f-sha        exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-dup-receipt      exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-reorder-B        exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-wrong-bytes      exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-bad-timestamp    exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+10-v5replay-forge-orphan-file      exit=1 CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool 
+20-orphan-judge-runs-file          exit=1 CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts 
+21-empty-judge-runs                exit=1 CHECK FAILED: verified-book-check: recorded file missing: 1-pmp.stdout.txt 
+22-empty-judge-inputs              exit=1 CHECK FAILED: verified-book-check: recorded file missing: 1-ok-hyp.jdg 
+23-extra-top-level-file            exit=1 CHECK FAILED: verified-book-check: posting contains artifacts outside its supported file/directory contract 
+24-extra-top-level-dir             exit=1 CHECK FAILED: verified-book-check: posting contains artifacts outside its supported file/directory contract 
+25-nested-dir-in-judge-runs        exit=1 CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts 
+26-symlinked-run-file              exit=1 CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts 
+27-missing-run-file                exit=1 CHECK FAILED: verified-book-check: recorded file missing: 1-pmp.stderr.txt 
+28-post-duplicate-bytes            exit=0 /workspace/bw130a/ok-hyp-copy.jdg pmp ACCEPT racket ACCEPT unchanged 
+=== ./raw/book-b.log (4610 bytes, sha256 f54b9b4bdada5409f78c1128f958cd1ee7e17e35a2b433050c4443a5be5acbf2)
+01-post-default                    exit=0 /workspace/bw130b/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t files found 1, receipt rows 1 BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct stateme
+02-post-interpreted                exit=0 /workspace/bw130b/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t files found 1, receipt rows 1 BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct stateme
+03-check-default                   exit=0 {"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"e364b9518b484771f58ddb7c08757e5838bd9bdc035f9cf366fb1d38d219a938","negative_files":0,"positive_files":1
+04-check-interpreted               exit=0 {"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"917bdb2643bc83f8137897973e7eee52782ae6c36c6b09d36f332a989a47ade7","negative_files":0,"positive_files":1
+05-post-m1                         exit=0 /workspace/bw130b/m1-refl.jdg pmp REJECT racket REJECT unchanged #t files found 1, receipt rows 1 BOOK-1.0.ledger: F 0 B 0 (Proved 0, Qualified 0) steps 0 distinct statem
+06-check-m1                        exit=0 {"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"46a0b3736f67ec342126a70805cca658226018b2834f8e3c5448355620e8efce","negative_files":1,"positive_files":0
+10-v5replay-forge-consistent-false2 exit=1 CHECK FAILED: verified-book-check: rerun differs from stored verdict 
+10-v5replay-forge-rehashed         exit=1 CHECK FAILED: verified-book-check: B record differs from the complete checked theorem evidence 
+10-v5replay-forge-orphan-n         exit=1 CHECK FAILED: verified-book-check: input/receipt/ledger counts differ 
+10-v5replay-forge-orphan-snapshot  exit=1 CHECK FAILED: verified-book-check: judge-inputs contains missing, duplicate or unreferenced artifacts 
+10-v5replay-forge-changed-input    exit=1 CHECK FAILED: verified-book-check: snapshot hashes or unchanged state differ 
+10-v5replay-forge-bad-f-sha        exit=1 CHECK FAILED: verified-book-check: F/N input identity, bytes, source or date differs 
+10-v5replay-forge-dup-receipt      exit=1 CHECK FAILED: verified-book-check: duplicate RECEIPTS input identity 
+10-v5replay-forge-reorder-B        exit=1 CHECK FAILED: verified-book-check: B record shape/ordered ID/F link differs 
+10-v5replay-forge-wrong-bytes      exit=1 CHECK FAILED: verified-book-check: F/N input identity, bytes, source or date differs 
+10-v5replay-forge-bad-timestamp    exit=1 CHECK FAILED: verified-book-check: metadata timestamps are inexact, negative or unordered 
+10-v5replay-forge-orphan-file      exit=1 CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts 
+20-orphan-judge-runs-file          exit=1 CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts 
+21-empty-judge-runs                exit=1 CHECK FAILED: verified-book-check: recorded file missing: 1-pmp.stdout.txt 
+22-empty-judge-inputs              exit=1 CHECK FAILED: verified-book-check: recorded file missing: 1-ok-hyp.jdg 
+23-extra-top-level-file            exit=1 CHECK FAILED: verified-book-check: posting contains artifacts outside its supported file/directory contract 
+24-extra-top-level-dir             exit=1 CHECK FAILED: verified-book-check: posting contains artifacts outside its supported file/directory contract 
+25-nested-dir-in-judge-runs        exit=1 CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts 
+26-symlinked-run-file              exit=1 CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts 
+27-missing-run-file                exit=1 CHECK FAILED: verified-book-check: recorded file missing: 1-pmp.stderr.txt 
+28-post-duplicate-bytes            exit=0 /workspace/bw130b/ok-hyp-copy.jdg pmp ACCEPT racket ACCEPT unchanged #t /workspace/bw130b/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t files found 2, receipt rows 2 B
+29-check-duplicate-bytes           e
+=== ./raw/build/build-jn.log (3050 bytes, sha256 5fe944c5d38bf660cbbd44f910655aa44bf72ab3031840364c814b670716609c)
+{
+  "created_at": "2026-10-12T03:19:13.750376+00:00",
+  "source": "/workspace/acct-v130/src/Abschluss-1.3-source/judge/judge-v5.pmp",
+  "source_sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+  "compiler_sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+  "linux_runtime_sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+  "target": "linux",
+  "steps": [
+    {
+      "step": "lower-pmp",
+      "command": [
+        "/workspace/tools/racket/bin/racket",
+        "/workspace/acct-v130/src/Abschluss-1.3-source/judge/native-v5/portable/pmpc-original.rkt",
+        "/workspace/acct-v130/src/Abschluss-1.3-source/judge/judge-v5.pmp",
+        "/workspace/acct-v130/build-jn/judge-v5-base-windows.asm"
+      ],
+      "exit_code": 0,
+      "seconds": 0.43270128799485974,
+      "stdout": "lower-pmp.stdout.txt",
+      "stderr": "lower-pmp.stderr.txt",
+      "stdout_sha256": "f319af63f7c1ec41296e46c401323b0e1e6b380823f0386aece7f333ce0d49d4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "assemble-linux",
+      "command": [
+        "/workspace/nasm-local/root/usr/bin/nasm",
+        "-O0",
+        "-f",
+        "elf64",
+        "/workspace/acct-v130/build-jn/judge-v5-linux.asm",
+        "-o",
+        "/workspace/acct-v130/build-jn/judge-v5-linux.o"
+      ],
+      "exit_code": 0,
+      "seconds": 0.37400279799476266,
+      "stdout": "assemble-linux.stdout.txt",
+      "stderr": "assemble-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "link-linux",
+      "command": [
+        "/usr/bin/ld",
+        "-o",
+        "/workspace/acct-v130/build-jn/judge-v5-linux",
+        "/workspace/acct-v130/build-jn/judge-v5-linux.o",
+        "-e",
+        "start"
+      ],
+      "exit_code": 0,
+      "seconds": 0.014815333997830749,
+      "stdout": "link-linux.stdout.txt",
+      "stderr": "link-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "judge-v5-base-windows.asm",
+      "sha256": "74ba8cc353a0a2cc156fc3194fff6eff395db821c576c74775d0f01ad915eaba",
+      "bytes": 337153
+    },
+    {
+      "file": "judge-v5-linux.asm",
+      "sha256": "7928e397a48a2f786d8a2683c7f49d889f5d5687e0c762096d93f0ea94d6c4b5",
+      "bytes": 336048
+    },
+    {
+      "file": "judge-v5-linux.o",
+      "sha256": "308cf58ad19e3e09c7699d68e39b076d5ddd3565d880daf819ef05ebdb72cee3",
+      "bytes": 172416
+    },
+    {
+      "file": "judge-v5-linux",
+      "sha256": "92f9a77259e9b70d06f0f344087aaecd1dff0271c76f33625b433f7f1ecd465e",
+      "bytes": 113384
+    }
+  ],
+  "source_native_correspondence": "Open; a build receipt is finite evidence only."
+}
+
+=== ./raw/build/build-rt.log (1629 bytes, sha256 95debfe3db7241c9252e085bfd5e1827182df7192ecf752bdffae65013430fd9)
+{
+  "target": "linux",
+  "source": "pompetzki.asm",
+  "source_sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+  "source_matches_verified_revision": true,
+  "steps": [
+    {
+      "step": "assemble",
+      "argv": [
+        "/workspace/nasm-local/root/usr/bin/nasm",
+        "-DLINUX",
+        "-f",
+        "elf64",
+        "/workspace/acct-v130/src/Abschluss-1.3-source/runtime/source/pompetzki.asm",
+        "-o",
+        "/workspace/acct-v130/build-rt/pompetzki.o"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.2951521390059497,
+      "stdout": "assemble.stdout.txt",
+      "stderr": "assemble.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "link-linux",
+      "argv": [
+        "/usr/bin/ld",
+        "-o",
+        "/workspace/acct-v130/build-rt/pompetzki",
+        "/workspace/acct-v130/build-rt/pompetzki.o",
+        "-e",
+        "_start"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.00489196099806577,
+      "stdout": "link-linux.stdout.txt",
+      "stderr": "link-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "pompetzki",
+      "sha256": "aafc0b3670bf55ec1c888b743db0f9d2f9331db9d360f5245137f10c17593c97",
+      "bytes": 128320
+    }
+  ],
+  "source_to_executable_correspondence": "Open"
+}
+
+=== ./raw/build/built.sha256 (217 bytes, sha256 b6e3882127ee210d4204bfd89a0f4927b1a23b47ff604ce4c063e28968079a1f)
+aafc0b3670bf55ec1c888b743db0f9d2f9331db9d360f5245137f10c17593c97  /workspace/acct-v130/build-rt/pompetzki
+92f9a77259e9b70d06f0f344087aaecd1dff0271c76f33625b433f7f1ecd465e  /workspace/acct-v130/build-jn/judge-v5-linux
+
+=== ./raw/driver/table.txt (1792 bytes, sha256 58d96c58163068e7799192d4bcc7557b3f38c13d96e349a1dcdfec6f0273ad5b)
+label=v130-rtv2-judgev5 interp=/workspace/acct-v130/build-rt/pompetzki judge=/workspace/acct-v130/src/Abschluss-1.3-source/judge/judge-v5.pmp strx=/workspace/acct-v130/src/Abschluss-1.3-source/repair/libraries/strx/strx.pmp
+def|case                        |actual(first line/bytes)                     |rc  |expected                                     |erc |result
+a  |a1-false-registry-only.jdg  |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |a2-false-registry-thm.jdg   |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |ctl-canonical-reg0.jdg      |ACCEPT                                       |0   |ACCEPT                                       |0   |PASS
+b  |b1-literal-min.pmp          |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b2-computed-min.pmp         |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b3-literal-max.pmp          |9223372036854775807                          |0   |9223372036854775807                          |0   |PASS
+b  |b4-literal-overflow.pmp     |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+b  |b5-literal-underflow.pmp    |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+c  |c1-trim-nul.pmp             |3 97 0 98 32 0 98                            |0   |3 97 0 98 32 0 98                            |0   |PASS
+c  |c2-pad-nul.pmp              |4 0 97 46 46                                 |0   |4 0 97 46 46                                 |0   |PASS
+FAILURES=0 of 10
+driver=0
+
+=== ./raw/driver/v130-rtv2-judgev5.capture.txt (2815 bytes, sha256 d184e6af07a008adc0deea60110314d1f753365db1fb7bc5a25608e76bca4b0b)
+=== case a1-false-registry-only.jdg
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki /workspace/acct-v130/src/Abschluss-1.3-source/judge/judge-v5.pmp /workspace/acct/repair/grok-bot-results/accountability/inputs/a1-false-registry-only.jdg
+--- exit
+1
+--- stdout
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+
+--- stderr
+
+=== case a2-false-registry-thm.jdg
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki /workspace/acct-v130/src/Abschluss-1.3-source/judge/judge-v5.pmp /workspace/acct/repair/grok-bot-results/accountability/inputs/a2-false-registry-thm.jdg
+--- exit
+1
+--- stdout
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+
+--- stderr
+
+=== case ctl-canonical-reg0.jdg
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki /workspace/acct-v130/src/Abschluss-1.3-source/judge/judge-v5.pmp /workspace/acct/repair/grok-bot-results/accountability/inputs/ctl-canonical-reg0.jdg
+--- exit
+0
+--- stdout
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+--- stderr
+
+=== case b1-literal-min.pmp
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b1-literal-min.pmp
+--- exit
+0
+--- stdout
+-9223372036854775808
+
+--- stderr
+
+=== case b2-computed-min.pmp
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b2-computed-min.pmp
+--- exit
+0
+--- stdout
+-9223372036854775808
+
+--- stderr
+
+=== case b3-literal-max.pmp
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b3-literal-max.pmp
+--- exit
+0
+--- stdout
+9223372036854775807
+
+--- stderr
+
+=== case b4-literal-overflow.pmp
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b4-literal-overflow.pmp
+--- exit
+1
+--- stdout
+line 1: Menschenwerk: a value left the 64-bit integers. Nothing was rounded; the program stops.
+
+--- stderr
+
+=== case b5-literal-underflow.pmp
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki /workspace/acct/repair/grok-bot-results/accountability/inputs/b5-literal-underflow.pmp
+--- exit
+1
+--- stdout
+line 1: Menschenwerk: a value left the 64-bit integers. Nothing was rounded; the program stops.
+
+--- stderr
+
+=== case c1-trim-nul.pmp
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki c1-trim-nul.pmp
+--- exit
+0
+--- stdout
+3
+97
+0
+98
+32
+0
+98
+
+--- stderr
+
+=== case c2-pad-nul.pmp
+--- cmd
+/workspace/acct-v130/build-rt/pompetzki c2-pad-nul.pmp
+--- exit
+0
+--- stdout
+4
+0
+97
+46
+46
+
+--- stderr
+
+
+=== ./raw/gate/a1-false-registry-only.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/gate/a1-false-registry-only.prooflog (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/a1-false-registry-only.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/a1-false-registry-only.stdout (75 bytes, sha256 8be09165b205dd50b4ffa145e63088141c5a0ede7127cedc32952adf9e505581)
+REJECT registry
+0
+formula
+line 350: check zero failed: not the zero vector
+
+=== ./raw/gate/ctl-canonical-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/ctl-canonical-reg0.prooflog (100 bytes, sha256 8dd1319f4bbae5d65c1e285f4245f4fa2f1184251518bfd0929f51f324368c05)
+/workspace/acct/repair/grok-bot-results/accountability/release-v1.3.0/inputs/ctl-canonical-reg0.jdg
+
+=== ./raw/gate/ctl-canonical-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/ctl-canonical-reg0.stdout (126 bytes, sha256 55f2a5cf6df3b68b4e5ad0524d600624335bd3494704fe437ec18327037831f2)
+GATE
+706
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/gate/lz-pad13-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/lz-pad13-reg0.prooflog (95 bytes, sha256 c472e51fdf91abf4ec48b09740fecd2a7bda0448940a68b2275430232425dc82)
+/workspace/acct/repair/grok-bot-results/accountability/release-v1.3.0/inputs/lz-pad13-reg0.jdg
+
+=== ./raw/gate/lz-pad13-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/lz-pad13-reg0.stdout (126 bytes, sha256 55f2a5cf6df3b68b4e5ad0524d600624335bd3494704fe437ec18327037831f2)
+GATE
+706
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/gate/lz-pad3-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/lz-pad3-reg0.prooflog (94 bytes, sha256 2a7b675ee682e9f1a5775bb9d54f2b06c8c6210f7b602e5854faa0fe61c38407)
+/workspace/acct/repair/grok-bot-results/accountability/release-v1.3.0/inputs/lz-pad3-reg0.jdg
+
+=== ./raw/gate/lz-pad3-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/lz-pad3-reg0.stdout (126 bytes, sha256 55f2a5cf6df3b68b4e5ad0524d600624335bd3494704fe437ec18327037831f2)
+GATE
+706
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/gate/lz-pad64-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/lz-pad64-reg0.prooflog (95 bytes, sha256 1ce560339e3552255f9dd4e974a1bf76ace35fedb2ee3fe230a436b358f26801)
+/workspace/acct/repair/grok-bot-results/accountability/release-v1.3.0/inputs/lz-pad64-reg0.jdg
+
+=== ./raw/gate/lz-pad64-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/lz-pad64-reg0.stdout (126 bytes, sha256 55f2a5cf6df3b68b4e5ad0524d600624335bd3494704fe437ec18327037831f2)
+GATE
+706
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/gate/prefix10-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/prefix10-reg0.prooflog (95 bytes, sha256 dd93312c28a4a7e6e516cdb8febce235b7bd436a0a045bdee89f6087a8e93722)
+/workspace/acct/repair/grok-bot-results/accountability/release-v1.3.0/inputs/prefix10-reg0.jdg
+
+=== ./raw/gate/prefix10-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/prefix10-reg0.stdout (123 bytes, sha256 0b02ffaba5d673f79159299071e71146d37fa8d25902590038904ed62d2bf31b)
+GATE
+10
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+10
+0
+0
+10
+
+=== ./raw/gate/prefix705-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/prefix705-reg0.prooflog (96 bytes, sha256 baa0ac8c7832dbc9b961f8e4fa0d568cc24dd945973ee852986354c86d81752e)
+/workspace/acct/repair/grok-bot-results/accountability/release-v1.3.0/inputs/prefix705-reg0.jdg
+
+=== ./raw/gate/prefix705-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/prefix705-reg0.stdout (126 bytes, sha256 93ba803b9444a6b82b319cf145ee6e0e5edf31de3d98a261ea0dc283fd904221)
+GATE
+705
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+705
+0
+0
+705
+
+=== ./raw/gate/py-a1-false-registry-only.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/gate/py-a1-false-registry-only.stdout (26 bytes, sha256 68580bcea2762e443846833bef1803e80984874f5b132da9daafca4a151c1386)
+REJECT registry
+0
+formula
+
+=== ./raw/gate/py-ctl-canonical-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/py-ctl-canonical-reg0.stdout (13 bytes, sha256 520ed570c43c05246ba298377afb036efd3d2497362cd2fb1f448d6b2915f645)
+GATE
+706
+706
+
+=== ./raw/gate/py-lz-pad13-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/py-lz-pad13-reg0.stdout (13 bytes, sha256 520ed570c43c05246ba298377afb036efd3d2497362cd2fb1f448d6b2915f645)
+GATE
+706
+706
+
+=== ./raw/gate/py-lz-pad3-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/py-lz-pad3-reg0.stdout (13 bytes, sha256 520ed570c43c05246ba298377afb036efd3d2497362cd2fb1f448d6b2915f645)
+GATE
+706
+706
+
+=== ./raw/gate/py-lz-pad64-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/py-lz-pad64-reg0.stdout (13 bytes, sha256 520ed570c43c05246ba298377afb036efd3d2497362cd2fb1f448d6b2915f645)
+GATE
+706
+706
+
+=== ./raw/gate/py-prefix10-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/py-prefix10-reg0.stdout (12 bytes, sha256 5c909426379d9d8531a5e3d68511c99b541e2a7524d10ec37c04f16403c85b65)
+GATE
+10
+706
+
+=== ./raw/gate/py-prefix705-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/gate/py-prefix705-reg0.stdout (13 bytes, sha256 df482e86ded73389f68436f4337dc648ebc7913c17e32ee570a352a59931ece6)
+GATE
+705
+706
+
+=== ./raw/gate/py-sig13-R.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/gate/py-sig13-R.stdout (22 bytes, sha256 fecb1cdfc4ba6e5c11cf238fe262fc24984c47864b0d16c0e769aff377e5bf01)
+REJECT registry
+parse
+
+=== ./raw/gate/sig13-R.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/gate/sig13-R.prooflog (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/sig13-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/gate/sig13-R.stdout (71 bytes, sha256 dbb88aebdbba573f339c513431c1592165d220a2edd3271fd22df85ac91fd163)
+REJECT registry
+parse
+line 350: check zero failed: not the zero vector
+
+=== ./raw/interp-a1-false-registry-only.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/interp-a1-false-registry-only.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/interp-a1-false-registry-only.stdout (189 bytes, sha256 08faf67b3b71e5b476e63bc11e6016b59663b9852059d488e8258bf513cc044b)
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+
+=== ./raw/interp-ctl-canonical-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/interp-ctl-canonical-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/interp-ctl-canonical-reg0.stdout (113 bytes, sha256 58464b360277f78a11b3694534b419354d60dea3833c8cfafbacadd9086cc450)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/interp-lz-pad13-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/interp-lz-pad13-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/interp-lz-pad13-reg0.stdout (113 bytes, sha256 58464b360277f78a11b3694534b419354d60dea3833c8cfafbacadd9086cc450)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/interp-lz-pad3-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/interp-lz-pad3-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/interp-lz-pad3-reg0.stdout (113 bytes, sha256 58464b360277f78a11b3694534b419354d60dea3833c8cfafbacadd9086cc450)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/interp-lz-pad64-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/interp-lz-pad64-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/interp-lz-pad64-reg0.stdout (113 bytes, sha256 58464b360277f78a11b3694534b419354d60dea3833c8cfafbacadd9086cc450)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/interp-sig12-R.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/interp-sig12-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/interp-sig12-R.stdout (138 bytes, sha256 b95f7cae47b4562f4e5b98e6f21515e717561613a9e94ec4c2a594bb1c25814e)
+REJECT
+initial registry has more than 706 entries
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+
+=== ./raw/interp-sig12-pad-R.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/interp-sig12-pad-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/interp-sig12-pad-R.stdout (113 bytes, sha256 0c18857a7f142af903dcb91fba8645ecbfdaca85b31cbe69149c1a90ee96b3cd)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+1
+1
+707
+
+=== ./raw/interp-sig13-R.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/interp-sig13-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/interp-sig13-R.stdout (140 bytes, sha256 810e90071d6da3a96515eac0b9d3e1f88c6d01ab22d958f759b4cbb0257f2169)
+REJECT
+a number has more than 12 significant digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+
+=== ./raw/matrix-corpus/RECEIPT.json (2140 bytes, sha256 8f9dd0adc843120517fb9bcbd831d95c61e44939bce4e3c5c497650c48f64e62)
+{
+  "schema": "exact-matrix-bot-rerun-v1",
+  "cases": 429,
+  "identity_checks": 7288,
+  "jobs": 3754,
+  "failures": 0,
+  "engine_command": [
+    "racket",
+    "/workspace/acct-v130/src/Abschluss-1.3-source/repair/math-workbench-v2/engine.rkt"
+  ],
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/acct-v130/src/Abschluss-1.3-source/repair/bot-matrix-validation/negative_control.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/acct-v130/src/Abschluss-1.3-source/repair/bot-matrix-validation/run_oracle.py"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/workspace/acct-v130/src/Abschluss-1.3-source/repair/bot-matrix-validation/test_engine.py"
+      ],
+      "exit": 0
+    }
+  ],
+  "engine_files": [
+    {
+      "name": "engine.rkt",
+      "sha256": "99084a403cc0b38b149878e8cce74667caa62ea13b8f8de0a64e43e0a767b5b9"
+    }
+  ],
+  "source_files": [
+    {
+      "name": "LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827"
+    },
+    {
+      "name": "README.md",
+      "sha256": "0796bef9bd7b63455eca5f6c189562e5b087392c03aff76395e45d1cd29fad5f"
+    },
+    {
+      "name": "SOURCE-CREDIT.json",
+      "sha256": "dd45febaff84d8ce3d08d3c2fd55560952a7d3477336bf8deb826856ef6e6bc9"
+    },
+    {
+      "name": "inputs/cases.json",
+      "sha256": "8cc07382e6ea664e04dab7688a7531f4baa818bcfa9da119deb0e2514c43e5a6"
+    },
+    {
+      "name": "negative_control.py",
+      "sha256": "70b93718b4d83d0729659d88aebaa5ee7b46336bec7c5965e3f910b827d3df21"
+    },
+    {
+      "name": "oracle.py",
+      "sha256": "b07386de37b47d95a3b3648be9e6ad01eb8be0782c42978e16ec7dbdeaf3c947"
+    },
+    {
+      "name": "run_oracle.py",
+      "sha256": "77f49226daf994e8de36e128110fdac0656ec010b95384ed2cb498f2de144e81"
+    },
+    {
+      "name": "test_engine.py",
+      "sha256": "d0ec86c7621a3c0fc995ea531432bc33811344d2ceeaf9908fa3196b78226cba"
+    },
+    {
+      "name": "verify.py",
+      "sha256": "629599e944b4f6ed5dd2d98489fbc01dd7c6fa8f3b47d8126d301863cc24c707"
+    }
+  ]
+}
+=== ./raw/matrix-corpus/SHA256SUMS.txt (1370 bytes, sha256 b9b1716ca63fba2172427d8df9540a6d92bdfa5c0c2c4f7da3d5b3f33aff823e)
+8f9dd0adc843120517fb9bcbd831d95c61e44939bce4e3c5c497650c48f64e62  RECEIPT.json
+8cc07382e6ea664e04dab7688a7531f4baa818bcfa9da119deb0e2514c43e5a6  inputs/cases.json
+e2eadf2ee74f654f8c8c38ddc8d11ca2e8b2c25d0ba990214c0a0fa62be28abc  inputs/engine-jobs.json
+930d21ee0c403bd1ccb58f029b02b5df1a8448a0001512c0b2c9f334319d98ab  logs/engine.exit
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  logs/engine.stderr
+ca5d6a13a968d513c1d82ca3a95416ceced5085518cb0ed9e2841055914c3601  logs/engine.stdout
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  logs/negative_control.py.stderr.txt
+1445529752f37b313e5d86f3733cc0e6a4f9547789661380d06a7ab9b71c95ec  logs/negative_control.py.stdout.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  logs/run_oracle.py.stderr.txt
+9debe3d39b2f24c9ad0ad5432cf931997f3198e5b8c8d92bdabd1791e5150910  logs/run_oracle.py.stdout.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  logs/test_engine.py.stderr.txt
+352a90b25b3fec1f431d68ab14e5f2c74902c8d6344dca34cf9253e00f58aa9a  logs/test_engine.py.stdout.txt
+647d3307ce06fc7b632dc16a18c0c090b0cce50aeece803f2758f01f83363218  outputs/engine-compare.json
+915ab276fab091f6e7e0b00bda2c874a5bb1aad9a3c7b8a8701172aa661d5997  outputs/engine-results.json
+7bef2a3ffc4971c88168238c33ee5ff3409872609ccceb3617f829b5fb808ea4  outputs/oracle.json
+
+=== ./raw/matrix-corpus/mval.log (115 bytes, sha256 fce0715ecfab5ed94b20a20c0ebae7d142ab9c6868523579d68d4f929583d37d)
+{"output": "/workspace/acct-v130/mval", "cases": 429, "identity_checks": 7288, "jobs": 3754, "failures": 0}
+exit=0
+
+=== ./raw/native-a1-false-registry-only.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/native-a1-false-registry-only.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/native-a1-false-registry-only.stdout (189 bytes, sha256 08faf67b3b71e5b476e63bc11e6016b59663b9852059d488e8258bf513cc044b)
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+
+=== ./raw/native-ctl-canonical-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/native-ctl-canonical-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/native-ctl-canonical-reg0.stdout (113 bytes, sha256 58464b360277f78a11b3694534b419354d60dea3833c8cfafbacadd9086cc450)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/native-lz-pad13-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/native-lz-pad13-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/native-lz-pad13-reg0.stdout (113 bytes, sha256 58464b360277f78a11b3694534b419354d60dea3833c8cfafbacadd9086cc450)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/native-lz-pad3-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/native-lz-pad3-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/native-lz-pad3-reg0.stdout (113 bytes, sha256 58464b360277f78a11b3694534b419354d60dea3833c8cfafbacadd9086cc450)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/native-lz-pad64-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/native-lz-pad64-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/native-lz-pad64-reg0.stdout (113 bytes, sha256 58464b360277f78a11b3694534b419354d60dea3833c8cfafbacadd9086cc450)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/native-prefix10-reg0.stdout (111 bytes, sha256 9d3a5f55a92405c599ae4083714bd0207b27893a2de0352905ffd60486a586e7)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+10
+0
+0
+10
+
+=== ./raw/native-prefix705-reg0.stdout (113 bytes, sha256 51936da5282dffe27ac730dddb34e7122029594970b50eff31e8a29397ffc3dd)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+705
+0
+0
+705
+
+=== ./raw/native-sig12-R.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/native-sig12-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/native-sig12-R.stdout (138 bytes, sha256 b95f7cae47b4562f4e5b98e6f21515e717561613a9e94ec4c2a594bb1c25814e)
+REJECT
+initial registry has more than 706 entries
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+
+=== ./raw/native-sig12-pad-R.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/native-sig12-pad-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/native-sig12-pad-R.stdout (113 bytes, sha256 0c18857a7f142af903dcb91fba8645ecbfdaca85b31cbe69149c1a90ee96b3cd)
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+1
+1
+707
+
+=== ./raw/native-sig13-R.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/native-sig13-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/native-sig13-R.stdout (140 bytes, sha256 810e90071d6da3a96515eac0b9d3e1f88c6d01ab22d958f759b4cbb0257f2169)
+REJECT
+a number has more than 12 significant digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+
+=== ./raw/racket-a1-false-registry-only.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/racket-a1-false-registry-only.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/racket-a1-false-registry-only.stdout (61 bytes, sha256 37b29cb32cbb950d30246b60668f900669d0329a7100ec47c9d9d92fae091486)
+REJECT initial registry 0: entry differs from canonical REG0
+
+=== ./raw/racket-ctl-canonical-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/racket-ctl-canonical-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/racket-ctl-canonical-reg0.stdout (58 bytes, sha256 68b56e94c0b7ad27d915949c12d24f98a3fa58646b013615983e5bf836508345)
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+
+=== ./raw/racket-lz-pad13-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/racket-lz-pad13-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/racket-lz-pad13-reg0.stdout (58 bytes, sha256 68b56e94c0b7ad27d915949c12d24f98a3fa58646b013615983e5bf836508345)
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+
+=== ./raw/racket-lz-pad3-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/racket-lz-pad3-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/racket-lz-pad3-reg0.stdout (58 bytes, sha256 68b56e94c0b7ad27d915949c12d24f98a3fa58646b013615983e5bf836508345)
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+
+=== ./raw/racket-lz-pad64-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/racket-lz-pad64-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/racket-lz-pad64-reg0.stdout (58 bytes, sha256 68b56e94c0b7ad27d915949c12d24f98a3fa58646b013615983e5bf836508345)
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+
+=== ./raw/racket-sig12-R.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/racket-sig12-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/racket-sig12-R.stdout (53 bytes, sha256 fc24b243796c6984497dfd13617e42d4159b26356db12ea1203cdcc20e908dc8)
+REJECT initial registry count: more than 706 entries
+
+=== ./raw/racket-sig12-pad-R.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/racket-sig12-pad-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/racket-sig12-pad-R.stdout (58 bytes, sha256 8c06b5a21e79ab2d8b6dcdc109234de5017508101d2e87b956d6d2da28ba0cbb)
+ACCEPT registry 706 theorems 1 steps 1 final-registry 707
+
+=== ./raw/racket-sig13-R.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/racket-sig13-R.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/racket-sig13-R.stdout (76 bytes, sha256 add6ca08079e10de4b074dcebecd49c431cce9201422e4d466bac177db3e699f)
+REJECT parse error at byte 20: a number has more than 12 significant digits
+
+=== ./raw/rt-d1-min-div-neg1.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/rt-d1-min-div-neg1.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/rt-d1-min-div-neg1.stdout (21 bytes, sha256 6597fb5664deb37b5413ea87a2566ffb9da2fb1376d820e4a40dd30c05aa8b04)
+-9223372036854775808
+
+=== ./raw/rt-d2-min-mod-neg1.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/rt-d2-min-mod-neg1.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/rt-d2-min-mod-neg1.stdout (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/validation-v5/run.log (1789 bytes, sha256 f8bb9c54eda8930561fa1f227a33958561715cf328d5a1b6bc89512bea5fad48)
+{
+  "schema": "portable-v5-validation-run/v1",
+  "lane": "full",
+  "interpreted_lane": "fast",
+  "families": null,
+  "selected_cases": 254,
+  "runs": 644,
+  "passed": 644,
+  "failed": 0,
+  "timeouts": 0,
+  "seconds": 302.9285271700064,
+  "expectations_sha256": "94425d972276fa7396d7bcdc542be4d2786f53f338aa83f6fe70a40a27a22bbd",
+  "driver_sha256": "f74eafd6f04f5373b6c4ebe9633b02cbf6a934b30f57ef7b6f95a85743ccb5f1",
+  "runtime_inputs": [
+    {
+      "route": "native",
+      "role": "NATIVE_CHECKER",
+      "filename": "judge-v5-linux",
+      "sha256": "92f9a77259e9b70d06f0f344087aaecd1dff0271c76f33625b433f7f1ecd465e"
+    },
+    {
+      "route": "interpreted",
+      "role": "PMP_INTERPRETER",
+      "filename": "pompetzki",
+      "sha256": "aafc0b3670bf55ec1c888b743db0f9d2f9331db9d360f5245137f10c17593c97"
+    },
+    {
+      "route": "interpreted",
+      "role": "PMP_SOURCE",
+      "filename": "judge-v5.pmp",
+      "sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b"
+    },
+    {
+      "route": "racket",
+      "role": "RACKET_EXECUTABLE",
+      "filename": "racket",
+      "sha256": "25fa312bfb612fed51f0432283ec9cb2ccdafa91dc36fd02b8a97858d5ebda07"
+    },
+    {
+      "route": "racket",
+      "role": "RACKET_SOURCE",
+      "filename": "judge-v5.rkt",
+      "sha256": "c63bd449af3a7653c483b9bb42039b2942f658614bc2606eb7b40c5b95b6b2d0"
+    }
+  ],
+  "by_judge": {
+    "native": {
+      "runs": 254,
+      "passed": 254
+    },
+    "interpreted": {
+      "runs": 136,
+      "passed": 136
+    },
+    "racket": {
+      "runs": 254,
+      "passed": 254
+    }
+  },
+  "failures": [],
+  "command_path_policy": "Recorded commands use explicit role names and package-relative corpus paths; runtime input filenames and hashes identify the supplied artifacts."
+}
+exit=0
+
