@@ -1,0 +1,8 @@
+initial registry entry (counted from 0):
+676
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector

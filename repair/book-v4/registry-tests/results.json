@@ -1,0 +1,495 @@
+﻿[
+    {
+        "Case":  "prefix-0-truth",
+        "Kind":  "pmp",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  0.032,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-0-truth.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-0-truth.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-0-truth.pmp.stderr.txt"
+    },
+    {
+        "Case":  "prefix-0-truth",
+        "Kind":  "racket",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  0.279,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-0-truth.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-0-truth.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-0-truth.racket.stderr.txt"
+    },
+    {
+        "Case":  "prefix-1-truth",
+        "Kind":  "pmp",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  0.037,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-1-truth.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-1-truth.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-1-truth.pmp.stderr.txt"
+    },
+    {
+        "Case":  "prefix-1-truth",
+        "Kind":  "racket",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  0.253,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-1-truth.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-1-truth.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-1-truth.racket.stderr.txt"
+    },
+    {
+        "Case":  "prefix-677-truth",
+        "Kind":  "pmp",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  1.137,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-677-truth.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-677-truth.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-677-truth.pmp.stderr.txt"
+    },
+    {
+        "Case":  "prefix-677-truth",
+        "Kind":  "racket",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  0.24,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-677-truth.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-677-truth.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-677-truth.racket.stderr.txt"
+    },
+    {
+        "Case":  "prefix-706-truth",
+        "Kind":  "pmp",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  1.164,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-706-truth.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-706-truth.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-706-truth.pmp.stderr.txt"
+    },
+    {
+        "Case":  "prefix-706-truth",
+        "Kind":  "racket",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  0.253,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-706-truth.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-706-truth.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\prefix-706-truth.racket.stderr.txt"
+    },
+    {
+        "Case":  "forged-false-registry",
+        "Kind":  "pmp",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.033,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\forged-false-registry.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\forged-false-registry.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\forged-false-registry.pmp.stderr.txt"
+    },
+    {
+        "Case":  "forged-false-registry",
+        "Kind":  "racket",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.229,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\forged-false-registry.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\forged-false-registry.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\forged-false-registry.racket.stderr.txt"
+    },
+    {
+        "Case":  "false-proof-empty-registry",
+        "Kind":  "pmp",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.026,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-empty-registry.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-empty-registry.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-empty-registry.pmp.stderr.txt"
+    },
+    {
+        "Case":  "false-proof-empty-registry",
+        "Kind":  "racket",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.224,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-empty-registry.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-empty-registry.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-empty-registry.racket.stderr.txt"
+    },
+    {
+        "Case":  "false-proof-canonical-prefix",
+        "Kind":  "pmp",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.027,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-canonical-prefix.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-canonical-prefix.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-canonical-prefix.pmp.stderr.txt"
+    },
+    {
+        "Case":  "false-proof-canonical-prefix",
+        "Kind":  "racket",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.219,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-canonical-prefix.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-canonical-prefix.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\false-proof-canonical-prefix.racket.stderr.txt"
+    },
+    {
+        "Case":  "nonexistent-registry-use",
+        "Kind":  "pmp",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.026,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\nonexistent-registry-use.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\nonexistent-registry-use.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\nonexistent-registry-use.pmp.stderr.txt"
+    },
+    {
+        "Case":  "nonexistent-registry-use",
+        "Kind":  "racket",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.229,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\nonexistent-registry-use.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\nonexistent-registry-use.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\nonexistent-registry-use.racket.stderr.txt"
+    },
+    {
+        "Case":  "altered-first-formula",
+        "Kind":  "pmp",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.028,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-first-formula.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-first-formula.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-first-formula.pmp.stderr.txt"
+    },
+    {
+        "Case":  "altered-first-formula",
+        "Kind":  "racket",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.237,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-first-formula.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-first-formula.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-first-formula.racket.stderr.txt"
+    },
+    {
+        "Case":  "altered-last-pure-formula",
+        "Kind":  "pmp",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  1.12,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-last-pure-formula.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-last-pure-formula.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-last-pure-formula.pmp.stderr.txt"
+    },
+    {
+        "Case":  "altered-last-pure-formula",
+        "Kind":  "racket",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.229,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-last-pure-formula.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-last-pure-formula.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-last-pure-formula.racket.stderr.txt"
+    },
+    {
+        "Case":  "altered-pure-hypotheses",
+        "Kind":  "pmp",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.027,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-pure-hypotheses.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-pure-hypotheses.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-pure-hypotheses.pmp.stderr.txt"
+    },
+    {
+        "Case":  "altered-pure-hypotheses",
+        "Kind":  "racket",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.227,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-pure-hypotheses.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-pure-hypotheses.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-pure-hypotheses.racket.stderr.txt"
+    },
+    {
+        "Case":  "altered-placeholder-hypothesis",
+        "Kind":  "pmp",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  1.139,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-placeholder-hypothesis.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-placeholder-hypothesis.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-placeholder-hypothesis.pmp.stderr.txt"
+    },
+    {
+        "Case":  "altered-placeholder-hypothesis",
+        "Kind":  "racket",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.225,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-placeholder-hypothesis.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-placeholder-hypothesis.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\altered-placeholder-hypothesis.racket.stderr.txt"
+    },
+    {
+        "Case":  "registry-707-entries",
+        "Kind":  "pmp",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.027,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\registry-707-entries.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\registry-707-entries.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\registry-707-entries.pmp.stderr.txt"
+    },
+    {
+        "Case":  "registry-707-entries",
+        "Kind":  "racket",
+        "Expected":  "REJECT",
+        "Verdict":  "REJECT",
+        "ExitCode":  1,
+        "Timeout":  false,
+        "Seconds":  0.227,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\registry-707-entries.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\registry-707-entries.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\registry-707-entries.racket.stderr.txt"
+    },
+    {
+        "Case":  "leading-zero-and-tab-prefix",
+        "Kind":  "pmp",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  0.027,
+        "Pass":  true,
+        "Executable":  "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\bin\\windows\\pompetzki.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\leading-zero-and-tab-prefix.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\leading-zero-and-tab-prefix.pmp.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\leading-zero-and-tab-prefix.pmp.stderr.txt"
+    },
+    {
+        "Case":  "leading-zero-and-tab-prefix",
+        "Kind":  "racket",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  0.22,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\leading-zero-and-tab-prefix.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\leading-zero-and-tab-prefix.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\leading-zero-and-tab-prefix.racket.stderr.txt"
+    },
+    {
+        "Case":  "full-replay-4551",
+        "Kind":  "racket",
+        "Expected":  "ACCEPT",
+        "Verdict":  "ACCEPT",
+        "ExitCode":  0,
+        "Timeout":  false,
+        "Seconds":  3.112,
+        "Pass":  true,
+        "Executable":  "C:\\Program Files\\Racket\\Racket.exe",
+        "Arguments":  [
+                          "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+                          "C:\\ClaudeOutput\\public-math-test-20261011-2115\\source-review\\public-main\\certificates\\theorem29\\replay-all.jdg"
+                      ],
+        "Stdout":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\full-replay-4551.racket.stdout.txt",
+        "Stderr":  "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\full-replay-4551.racket.stderr.txt"
+    }
+]

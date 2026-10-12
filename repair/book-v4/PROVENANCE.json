@@ -1,0 +1,10 @@
+{
+  "grok_bot_archive_sha256": "4a3b78665503aae95ab32bd365cc537bbb78baf921862adff310c299c9afed26",
+  "sources": {
+    "book-post-v4.rkt": "Grok Bot Book lane corrected low-level writer; root restores inspect-jdg export and project-relative registry path.",
+    "verified-book-post.rkt": "Grok Bot corrected poster, root adds v5 preference with v4 fallback.",
+    "verified-book-check.rkt": "Root rejudging verifier; root adopts bounded reader drains, process groups and unambiguous verdict classification, v5 preference."
+  },
+  "low_level_receipts": "Metadata backing is checked but is not a signature; verified-book-check reruns both judges and recomputes theorem hashes.",
+  "executable_Gallina_correspondence": "Open"
+}
