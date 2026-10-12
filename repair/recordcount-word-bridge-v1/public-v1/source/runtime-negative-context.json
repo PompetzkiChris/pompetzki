@@ -1,0 +1,12 @@
+{
+  "source_origin": "Published repair/runtime-v2/source/pompetzki.asm",
+  "source_sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+  "lines": [
+    13591,
+    13594
+  ],
+  "fragment_sha256": "041a0221ac32d0043c2a7b6c3212c6d9f59b3a73324d38c4f86f7e43cf8de01e",
+  "fragment_bytes": 52,
+  "scope": "Context for TEST sign-flag obligation; no compiler/interpreter correspondence theorem asserted",
+  "legacy_native_JS_support": false
+}

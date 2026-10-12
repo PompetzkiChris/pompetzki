@@ -1,0 +1,12 @@
+{
+  "schema": "packaging-version-and-native-context-correction/v1",
+  "old_stage": "repair/packaging/v8-judge-v6-1.3.1-utf8",
+  "new_stage": "repair/packaging/v9-judge-v6-1.3.1",
+  "observed_helper_error": "VERSION 1.3.0 is required.",
+  "correction": "PowerShell uninstall helper version guards and owned shortcut name now select 1.3.1.",
+  "preserved_failed_test": "repair/packaging/v8-judge-v6-1.3.1-utf8/tests/candidate-package-01",
+  "source_closure_context_correction": "Candidate and source-cold bundles both include native-selection context. Candidate copies exactly tested v6 native bytes; cold build compares allocated sections against those bytes.",
+  "ordinary_v8_file_comparisons": 417,
+  "ordinary_v8_file_differences": 0,
+  "program_inputs": "Judge v6, Book v7, Matrix v2 and runtime v2 remain unchanged."
+}

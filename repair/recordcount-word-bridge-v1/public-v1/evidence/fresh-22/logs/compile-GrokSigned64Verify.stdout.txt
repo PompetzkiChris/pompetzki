@@ -1,0 +1,206 @@
+fits64 = fun x : Z => - 2 ^ 63 <= x <= 2 ^ 63 - 1
+     : Z -> Prop
+
+Arguments fits64 x%_Z_scope
+signed64 = fun z : Z => let u := z mod 2 ^ 64 in if u <? 2 ^ 63 then u else u - 2 ^ 64
+     : Z -> Z
+
+Arguments signed64 z%_Z_scope
+pow2_63 : 2 ^ 63 = 9223372036854775808
+
+pow2_63 is not universe polymorphic
+pow2_63 is opaque
+Expands to: Constant GrokRC.GrokRecordCount.pow2_63
+Declared in library GrokRC.GrokRecordCount, line 10, characters 6-13
+rem_sub_num_fits : forall num rem : Z, 0 <= num <= 999999999999 -> 0 <= rem <= 2 ^ 63 - 1 -> fits64 (rem - num) /\ (rem - num < 0 <-> num > rem)
+
+rem_sub_num_fits is not universe polymorphic
+Arguments rem_sub_num_fits (num rem)%_Z_scope _ _
+rem_sub_num_fits is opaque
+Expands to: Constant GrokRC.GrokRecordCount.rem_sub_num_fits
+Declared in library GrokRC.GrokRecordCount, line 13, characters 8-24
+num_mul8_fits : forall num : Z, 0 <= num <= 999999999999 -> fits64 (num * 8)
+
+num_mul8_fits is not universe polymorphic
+Arguments num_mul8_fits num%_Z_scope _
+num_mul8_fits is opaque
+Expands to: Constant GrokRC.GrokRecordCount.num_mul8_fits
+Declared in library GrokRC.GrokRecordCount, line 18, characters 8-21
+num_prefix_sum_fits : forall num prefix : Z, 0 <= num <= 999999999999 -> 0 <= prefix <= 706 -> fits64 (num + prefix)
+
+num_prefix_sum_fits is not universe polymorphic
+Arguments num_prefix_sum_fits (num prefix)%_Z_scope _ _
+num_prefix_sum_fits is opaque
+Expands to: Constant GrokRC.GrokRecordCount.num_prefix_sum_fits
+Declared in library GrokRC.GrokRecordCount, line 21, characters 8-27
+num_prefix_mul24_fits : forall num prefix : Z, 0 <= num <= 999999999999 -> 0 <= prefix <= 706 -> fits64 ((num + prefix) * 24)
+
+num_prefix_mul24_fits is not universe polymorphic
+Arguments num_prefix_mul24_fits (num prefix)%_Z_scope _ _
+num_prefix_mul24_fits is opaque
+Expands to: Constant GrokRC.GrokRecordCount.num_prefix_mul24_fits
+Declared in library GrokRC.GrokRecordCount, line 25, characters 8-29
+num_prefix_mul24_bound : forall num prefix : Z, 0 <= num <= 999999999999 -> 0 <= prefix <= 706 -> 0 <= (num + prefix) * 24 <= 24000000016920
+
+num_prefix_mul24_bound is not universe polymorphic
+Arguments num_prefix_mul24_bound (num prefix)%_Z_scope _ _
+num_prefix_mul24_bound is opaque
+Expands to: Constant GrokRC.GrokRecordCount.num_prefix_mul24_bound
+Declared in library GrokRC.GrokRecordCount, line 29, characters 8-30
+records_le_bytes : forall (A : Type) (rs : list (list A)), Forall (fun r : list A => r <> nil) rs -> (length rs <= length (concat rs))%nat
+
+records_le_bytes is not universe polymorphic
+Arguments records_le_bytes A%_type_scope rs%_list_scope _
+records_le_bytes is opaque
+Expands to: Constant GrokRC.GrokRecordCount.records_le_bytes
+Declared in library GrokRC.GrokRecordCount, line 34, characters 8-24
+records_le_rem : forall (A : Type) (rs : list (list A)) (rem : Z), Forall (fun r : list A => r <> nil) rs -> Z.of_nat (length (concat rs)) <= rem -> Z.of_nat (length rs) <= rem
+
+records_le_rem is not universe polymorphic
+Arguments records_le_rem A%_type_scope rs%_list_scope rem%_Z_scope _ _ _
+records_le_rem is opaque
+Expands to: Constant GrokRC.GrokRecordCount.records_le_rem
+Declared in library GrokRC.GrokRecordCount, line 41, characters 10-24
+pow2_64 : 2 ^ 64 = 18446744073709551616
+
+pow2_64 is not universe polymorphic
+pow2_64 is opaque
+Expands to: Constant GrokRC.GrokSigned64.pow2_64
+Declared in library GrokRC.GrokSigned64, line 11, characters 6-13
+signed64_id : forall z : Z, fits64 z -> signed64 z = z
+
+signed64_id is not universe polymorphic
+Arguments signed64_id z%_Z_scope _
+signed64_id is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_id
+Declared in library GrokRC.GrokSigned64, line 14, characters 8-19
+signed64_range : forall z : Z, fits64 (signed64 z)
+
+signed64_range is not universe polymorphic
+Arguments signed64_range z%_Z_scope
+signed64_range is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_range
+Declared in library GrokRC.GrokSigned64, line 23, characters 8-22
+signed64_periodic : forall z k : Z, signed64 (z + k * 2 ^ 64) = signed64 z
+
+signed64_periodic is not universe polymorphic
+Arguments signed64_periodic (z k)%_Z_scope
+signed64_periodic is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_periodic
+Declared in library GrokRC.GrokSigned64, line 30, characters 8-25
+signed64_idempotent : forall z : Z, signed64 (signed64 z) = signed64 z
+
+signed64_idempotent is not universe polymorphic
+Arguments signed64_idempotent z%_Z_scope
+signed64_idempotent is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_idempotent
+Declared in library GrokRC.GrokSigned64, line 33, characters 8-27
+signed64_rem_sub : forall num rem : Z, 0 <= num <= 999999999999 -> 0 <= rem <= 2 ^ 63 - 1 -> signed64 (rem - num) = rem - num
+
+signed64_rem_sub is not universe polymorphic
+Arguments signed64_rem_sub (num rem)%_Z_scope Hnum Hrem
+signed64_rem_sub is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_rem_sub
+Declared in library GrokRC.GrokSigned64, line 42, characters 8-24
+signed64_mul8 : forall num : Z, 0 <= num <= 999999999999 -> signed64 (num * 8) = num * 8
+
+signed64_mul8 is not universe polymorphic
+Arguments signed64_mul8 num%_Z_scope Hnum
+signed64_mul8 is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_mul8
+Declared in library GrokRC.GrokSigned64, line 45, characters 8-21
+signed64_mul24 : forall num prefix : Z, 0 <= num <= 999999999999 -> 0 <= prefix <= 706 -> signed64 ((num + prefix) * 24) = (num + prefix) * 24
+
+signed64_mul24 is not universe polymorphic
+Arguments signed64_mul24 (num prefix)%_Z_scope Hnum Hprefix
+signed64_mul24 is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_mul24
+Declared in library GrokRC.GrokSigned64, line 48, characters 8-22
+signed64_sum : forall num prefix : Z, 0 <= num <= 999999999999 -> 0 <= prefix <= 706 -> signed64 (num + prefix) = num + prefix
+
+signed64_sum is not universe polymorphic
+Arguments signed64_sum (num prefix)%_Z_scope Hnum Hprefix
+signed64_sum is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_sum
+Declared in library GrokRC.GrokSigned64, line 51, characters 8-20
+num_fits : forall num : Z, 0 <= num <= 999999999999 -> fits64 num
+
+num_fits is not universe polymorphic
+Arguments num_fits num%_Z_scope Hnum
+num_fits is opaque
+Expands to: Constant GrokRC.GrokSigned64.num_fits
+Declared in library GrokRC.GrokSigned64, line 54, characters 6-14
+rem_fits : forall rem : Z, 0 <= rem <= 2 ^ 63 - 1 -> fits64 rem
+
+rem_fits is not universe polymorphic
+Arguments rem_fits rem%_Z_scope Hrem
+rem_fits is opaque
+Expands to: Constant GrokRC.GrokSigned64.rem_fits
+Declared in library GrokRC.GrokSigned64, line 56, characters 6-14
+prefix_fits : forall prefix : Z, 0 <= prefix <= 706 -> fits64 prefix
+
+prefix_fits is not universe polymorphic
+Arguments prefix_fits prefix%_Z_scope Hprefix
+prefix_fits is opaque
+Expands to: Constant GrokRC.GrokSigned64.prefix_fits
+Declared in library GrokRC.GrokSigned64, line 58, characters 6-17
+signed64_wrapped_rem_sub : forall num rem : Z, 0 <= num <= 999999999999 -> 0 <= rem <= 2 ^ 63 - 1 -> signed64 (signed64 rem - signed64 num) = rem - num
+
+signed64_wrapped_rem_sub is not universe polymorphic
+Arguments signed64_wrapped_rem_sub (num rem)%_Z_scope Hnum Hrem
+signed64_wrapped_rem_sub is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_wrapped_rem_sub
+Declared in library GrokRC.GrokSigned64, line 61, characters 8-32
+signed64_wrapped_mul8 : forall num : Z, 0 <= num <= 999999999999 -> signed64 (signed64 num * 8) = num * 8
+
+signed64_wrapped_mul8 is not universe polymorphic
+Arguments signed64_wrapped_mul8 num%_Z_scope Hnum
+signed64_wrapped_mul8 is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_wrapped_mul8
+Declared in library GrokRC.GrokSigned64, line 64, characters 8-29
+signed64_wrapped_mul24 : forall num prefix : Z, 0 <= num <= 999999999999 -> 0 <= prefix <= 706 -> signed64 (signed64 (signed64 num + signed64 prefix) * 24) = (num + prefix) * 24
+
+signed64_wrapped_mul24 is not universe polymorphic
+Arguments signed64_wrapped_mul24 (num prefix)%_Z_scope Hnum Hprefix
+signed64_wrapped_mul24 is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_wrapped_mul24
+Declared in library GrokRC.GrokSigned64, line 67, characters 8-30
+signed64_rem_sub_neg_iff : forall num rem : Z, 0 <= num <= 999999999999 -> 0 <= rem <= 2 ^ 63 - 1 -> signed64 (rem - num) < 0 <-> num > rem
+
+signed64_rem_sub_neg_iff is not universe polymorphic
+Arguments signed64_rem_sub_neg_iff (num rem)%_Z_scope Hnum Hrem
+signed64_rem_sub_neg_iff is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_rem_sub_neg_iff
+Declared in library GrokRC.GrokSigned64, line 74, characters 8-32
+signed64_rem_sub_neg_bool : forall num rem : Z, 0 <= num <= 999999999999 -> 0 <= rem <= 2 ^ 63 - 1 -> (signed64 (rem - num) <? 0) = (rem <? num)
+
+signed64_rem_sub_neg_bool is not universe polymorphic
+Arguments signed64_rem_sub_neg_bool (num rem)%_Z_scope Hnum Hrem
+signed64_rem_sub_neg_bool is opaque
+Expands to: Constant GrokRC.GrokSigned64.signed64_rem_sub_neg_bool
+Declared in library GrokRC.GrokSigned64, line 77, characters 8-33
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context

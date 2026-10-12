@@ -1,0 +1,67 @@
+fits64 = fun x : Z => - 2 ^ 63 <= x <= 2 ^ 63 - 1
+     : Z -> Prop
+
+Arguments fits64 x%_Z_scope
+pow2_63 : 2 ^ 63 = 9223372036854775808
+
+pow2_63 is not universe polymorphic
+pow2_63 is opaque
+Expands to: Constant GrokRC.GrokRecordCount.pow2_63
+Declared in library GrokRC.GrokRecordCount, line 10, characters 6-13
+rem_sub_num_fits : forall num rem : Z, 0 <= num <= 999999999999 -> 0 <= rem <= 2 ^ 63 - 1 -> fits64 (rem - num) /\ (rem - num < 0 <-> num > rem)
+
+rem_sub_num_fits is not universe polymorphic
+Arguments rem_sub_num_fits (num rem)%_Z_scope _ _
+rem_sub_num_fits is opaque
+Expands to: Constant GrokRC.GrokRecordCount.rem_sub_num_fits
+Declared in library GrokRC.GrokRecordCount, line 13, characters 8-24
+num_mul8_fits : forall num : Z, 0 <= num <= 999999999999 -> fits64 (num * 8)
+
+num_mul8_fits is not universe polymorphic
+Arguments num_mul8_fits num%_Z_scope _
+num_mul8_fits is opaque
+Expands to: Constant GrokRC.GrokRecordCount.num_mul8_fits
+Declared in library GrokRC.GrokRecordCount, line 18, characters 8-21
+num_prefix_sum_fits : forall num prefix : Z, 0 <= num <= 999999999999 -> 0 <= prefix <= 706 -> fits64 (num + prefix)
+
+num_prefix_sum_fits is not universe polymorphic
+Arguments num_prefix_sum_fits (num prefix)%_Z_scope _ _
+num_prefix_sum_fits is opaque
+Expands to: Constant GrokRC.GrokRecordCount.num_prefix_sum_fits
+Declared in library GrokRC.GrokRecordCount, line 21, characters 8-27
+num_prefix_mul24_fits : forall num prefix : Z, 0 <= num <= 999999999999 -> 0 <= prefix <= 706 -> fits64 ((num + prefix) * 24)
+
+num_prefix_mul24_fits is not universe polymorphic
+Arguments num_prefix_mul24_fits (num prefix)%_Z_scope _ _
+num_prefix_mul24_fits is opaque
+Expands to: Constant GrokRC.GrokRecordCount.num_prefix_mul24_fits
+Declared in library GrokRC.GrokRecordCount, line 25, characters 8-29
+num_prefix_mul24_bound : forall num prefix : Z, 0 <= num <= 999999999999 -> 0 <= prefix <= 706 -> 0 <= (num + prefix) * 24 <= 24000000016920
+
+num_prefix_mul24_bound is not universe polymorphic
+Arguments num_prefix_mul24_bound (num prefix)%_Z_scope _ _
+num_prefix_mul24_bound is opaque
+Expands to: Constant GrokRC.GrokRecordCount.num_prefix_mul24_bound
+Declared in library GrokRC.GrokRecordCount, line 29, characters 8-30
+records_le_bytes : forall (A : Type) (rs : list (list A)), Forall (fun r : list A => r <> nil) rs -> (length rs <= length (concat rs))%nat
+
+records_le_bytes is not universe polymorphic
+Arguments records_le_bytes A%_type_scope rs%_list_scope _
+records_le_bytes is opaque
+Expands to: Constant GrokRC.GrokRecordCount.records_le_bytes
+Declared in library GrokRC.GrokRecordCount, line 34, characters 8-24
+records_le_rem : forall (A : Type) (rs : list (list A)) (rem : Z), Forall (fun r : list A => r <> nil) rs -> Z.of_nat (length (concat rs)) <= rem -> Z.of_nat (length rs) <= rem
+
+records_le_rem is not universe polymorphic
+Arguments records_le_rem A%_type_scope rs%_list_scope rem%_Z_scope _ _ _
+records_le_rem is opaque
+Expands to: Constant GrokRC.GrokRecordCount.records_le_rem
+Declared in library GrokRC.GrokRecordCount, line 41, characters 10-24
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context

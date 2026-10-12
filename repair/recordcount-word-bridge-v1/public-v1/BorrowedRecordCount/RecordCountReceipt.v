@@ -1,0 +1,43 @@
+From RecordCount Require Import RecordCountSource RecordCountStep RecordCountMemory RecordCountBounds.
+From GrokRC Require GrokRecordCount.
+Print Precord.
+Print count_address_contract.
+Print GrokRecordCount.fits64.
+Check @RECORDCOUNT_first_subtraction_prefix.
+Check @RECORDCOUNT_subtraction_prefix.
+Check @RECORDCOUNT_return_fuel.
+Check @RECORDCOUNT_failure_fuel.
+Check @RECORDCOUNT_returns_iff.
+Check @RECORDCOUNT_fails_iff.
+Check @checked_state_effects.
+Check @failure_state_registers.
+Check @failure_state_memory_outside.
+Check @failure_state_memory_content.
+Check @failure_state_nul.
+Check @RECORDCOUNT_return_effects.
+Check @RECORDCOUNT_failure_effects.
+Check @RECORDCOUNT_actual_subtractions_fit.
+Check @RECORDCOUNT_actual_signed64_test.
+Check @RECORDCOUNT_diagnostic_word_bounds.
+Check @RECORDCOUNT_input_region_unchanged.
+Check @RECORDCOUNT_bounded_returns_iff.
+Check @RECORDCOUNT_bounded_fails_iff.
+Print Assumptions RECORDCOUNT_first_subtraction_prefix.
+Print Assumptions RECORDCOUNT_subtraction_prefix.
+Print Assumptions RECORDCOUNT_return_fuel.
+Print Assumptions RECORDCOUNT_failure_fuel.
+Print Assumptions RECORDCOUNT_returns_iff.
+Print Assumptions RECORDCOUNT_fails_iff.
+Print Assumptions checked_state_effects.
+Print Assumptions failure_state_registers.
+Print Assumptions failure_state_memory_outside.
+Print Assumptions failure_state_memory_content.
+Print Assumptions failure_state_nul.
+Print Assumptions RECORDCOUNT_return_effects.
+Print Assumptions RECORDCOUNT_failure_effects.
+Print Assumptions RECORDCOUNT_actual_subtractions_fit.
+Print Assumptions RECORDCOUNT_actual_signed64_test.
+Print Assumptions RECORDCOUNT_diagnostic_word_bounds.
+Print Assumptions RECORDCOUNT_input_region_unchanged.
+Print Assumptions RECORDCOUNT_bounded_returns_iff.
+Print Assumptions RECORDCOUNT_bounded_fails_iff.
