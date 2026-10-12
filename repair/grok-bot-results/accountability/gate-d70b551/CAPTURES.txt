@@ -1,0 +1,599 @@
+=== ./inputs/canonical-reg0.jdg (54458 bytes, sha256 53b4287eed0623e7ff48005955d27bbaa5bcdb6a6d15dbc4cef50d892b8e75a0)
+JDG1
+R 706
+a a i a b e 0 2 e 0 1 q 1 0 0
+a a x k e 2 0 e 1 0 0
+a x a a i k e 0 1 e 1 3 e 0 2 0
+a x a i a i e 0 1 e 0 3 e 0 1 0
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0
+a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0
+a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0
+a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0
+a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0
+a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0
+a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0
+a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0
+a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0
+a b p 17 1 0 a n e 0 1 0
+a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0
+a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0
+a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0
+a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0
+a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0
+a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0
+a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0
+a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0
+a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0
+a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0
+a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0
+a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0
+a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0
+a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0
+a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0
+a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0
+a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0
+a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0
+a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0
+a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0
+a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0
+a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0
+a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0
+a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0
+a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0
+a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0
+a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0
+a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0
+a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0
+a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0
+a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0
+a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0
+a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0
+a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0
+a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0
+a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0
+a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0
+a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k k k k k k k k p 16 1 7 p 20 1 6 p 5 2 6 7 p 28 3 5 7 7 p 38 3 4 5 7 p 17 1 3 p 18 2 2 3 p 10 1 1 p 11 1 1 p 12 2 1 0 p 13 2 1 6 p 28 3 0 6 6 0
+a a a a a a a a a b p 56 9 8 7 6 5 4 3 2 1 0 x x x x k k k p 54 8 11 2 3 8 7 6 5 4 p 30 5 1 6 8 7 3 p 48 4 9 10 2 0 p 9 3 1 0 12 0
+a a a a a a a a b p 57 8 7 6 5 4 3 2 1 0 x x k k k k p 8 3 9 1 0 e 1 5 p 39 1 1 e 0 4 p 56 9 8 1 0 7 6 5 4 3 2 0
+a a a a a a a a b p 58 8 7 6 5 4 3 2 1 0 a b e 0 8 k e 0 7 x x k p 8 3 2 1 0 p 57 8 1 0 8 7 6 5 4 3 0
+a a a a b p 59 4 3 2 1 0 k k k p 10 1 3 p 11 1 3 p 13 2 3 0 a i p 9 3 3 2 0 x p 9 3 5 1 0 0
+a a b p 60 2 1 0 a i p 5 2 0 1 e 0 2 0
+a a a a a b p 61 5 4 3 2 1 0 a b e 0 5 k e 0 4 x k p 8 3 1 4 0 p 59 4 0 3 4 2 0
+a a a a a a b p 62 6 5 4 3 2 1 0 a b e 0 6 k e 0 5 x k e 0 5 p 61 5 1 4 0 3 2 0
+a a b p 63 2 1 0 a i e 0 1 x k k e 0 1 e 0 3 a i k e 0 2 e 0 4 q 0 1 0
+a a a a a a b p 64 6 5 4 3 2 1 0 x k k k p 8 3 0 4 3 e 0 6 e 0 5 p 59 4 3 2 4 1 0
+a a a a a b p 65 5 4 3 2 1 0 a a a i k k e 2 3 p 64 6 7 6 2 1 5 4 p 64 6 7 6 2 0 5 4 q 1 0 0
+a a a a a b p 66 5 4 3 2 1 0 a i e 0 1 x p 64 6 6 5 1 0 4 3 0
+a a a a b p 67 4 3 2 1 0 k k e 3 0 p 9 3 1 3 2 a i e 0 4 n p 9 3 2 0 3 0
+a a a a b p 68 4 3 2 1 0 x k p 9 3 2 4 0 p 8 3 3 1 0 0
+a a a a a a a b p 69 7 6 5 4 3 2 1 0 x x k k p 67 4 1 8 6 5 p 64 6 4 3 1 0 6 2 p 68 4 8 7 0 1 0
+a a a a a a a b p 70 7 6 5 4 3 2 1 0 a b e 0 7 k e 0 6 x x k p 8 3 2 1 0 p 69 7 1 0 7 6 5 4 3 0
+a a a b p 71 3 2 1 0 k k k p 10 1 2 p 11 1 2 k p 12 2 2 1 p 13 2 2 0 k a i e 0 1 x k e 0 3 p 9 3 4 0 1 a a i k e 1 3 p 9 3 4 1 0 a b e 0 1 x k k e 0 5 e 0 3 p 9 3 6 0 1 0
+a b p 72 1 0 x k p 20 1 0 e 1 0 0
+a a b p 73 2 1 0 a i e 0 2 x x k e 1 3 p 8 3 2 1 0 0
+a a b p 74 2 1 0 k k p 72 1 0 p 10 1 1 k p 12 2 1 0 p 73 2 1 0 0
+a a a b p 75 3 2 1 0 k p 74 2 2 1 p 13 2 2 0 0
+a a b p 76 2 1 0 x p 75 3 2 0 1 0
+a a a a b p 77 4 3 2 1 0 a b e 0 4 d e 0 3 p 8 3 0 1 2 0
+a a a a b p 78 4 3 2 1 0 a b e 0 4 k p 76 2 0 3 x x k k p 9 3 2 4 1 p 9 3 2 3 0 e 1 0 0
+a a a a b p 79 4 3 2 1 0 a b e 0 4 k p 76 2 0 3 x x k k p 9 3 2 4 1 p 9 3 2 3 0 q 1 0 0
+a a a b p 80 3 2 1 0 a b e 0 3 k 
+=== ./inputs/false-registry.jdg (25 bytes, sha256 83d5ddc9d19102770ce5d978124e39f1e75c599f89974740bdd88f05b0b58ba8)
+JDG1
+R 1
+a n q 0 0 0
+T 0
+
+=== ./inputs/padded13-reg0.jdg (260066 bytes, sha256 2cab9054017b1febe9b7fb777b6b06deb8a518bc5e179e4ac9fe2ff632dc5d85)
+JDG1
+R 0000000000000706
+a a i a b e 00000000000000 00000000000002 e 00000000000000 00000000000001 q 00000000000001 00000000000000 00000000000000
+a a x k e 00000000000002 00000000000000 e 00000000000001 00000000000000 00000000000000
+a x a a i k e 00000000000000 00000000000001 e 00000000000001 00000000000003 e 00000000000000 00000000000002 00000000000000
+a x a i a i e 00000000000000 00000000000001 e 00000000000000 00000000000003 e 00000000000000 00000000000001 00000000000000
+x k x k a n e 00000000000000 00000000000001 e 00000000000000 00000000000001 a i e 00000000000000 00000000000001 x k a b e 00000000000000 00000000000001 d e 00000000000000 00000000000002 q 00000000000000 00000000000002 e 00000000000000 00000000000002 00000000000000
+a i x e 00000000000000 00000000000001 x k e 00000000000000 00000000000001 n x k e 00000000000000 00000000000002 e 00000000000000 00000000000001 00000000000000
+a i k a i e 00000000000000 00000000000001 x e 00000000000000 00000000000001 a a i k e 00000000000001 00000000000002 k e 00000000000000 00000000000002 n q 00000000000001 00000000000000 n x k e 00000000000000 00000000000002 e 00000000000000 00000000000001 x a i e 00000000000000 00000000000002 x k k e 00000000000000 00000000000001 e 00000000000000 00000000000002 a i k e 00000000000000 00000000000002 e 00000000000000 00000000000003 q 00000000000000 00000000000001 00000000000000
+a a b p 00000000000005 00000000000002 00000000000001 00000000000000 a i e 00000000000000 00000000000002 e 00000000000000 00000000000001 00000000000000
+a a b p 00000000000006 00000000000002 00000000000001 00000000000000 a b e 00000000000000 00000000000002 q 00000000000000 00000000000001 00000000000000
+a a a b p 00000000000007 00000000000003 00000000000002 00000000000001 00000000000000 a b e 00000000000000 00000000000003 d q 00000000000000 00000000000002 q 00000000000000 00000000000001 00000000000000
+a a a b p 00000000000008 00000000000003 00000000000002 00000000000001 00000000000000 a b e 00000000000000 00000000000003 d p 00000000000006 00000000000002 00000000000000 00000000000002 p 00000000000007 00000000000003 00000000000000 00000000000002 00000000000001 00000000000000
+a a a b p 00000000000009 00000000000003 00000000000002 00000000000001 00000000000000 x k e 00000000000000 00000000000003 p 00000000000008 00000000000003 00000000000000 00000000000002 00000000000001 00000000000000
+a b p 000000000000010 00000000000001 00000000000000 a a a i k p 00000000000009 00000000000003 00000000000003 00000000000002 00000000000001 p 00000000000009 00000000000003 00000000000003 00000000000002 00000000000000 q 00000000000001 00000000000000 00000000000000
+a b p 000000000000011 00000000000001 00000000000000 a a a i k p 00000000000009 00000000000003 00000000000003 00000000000002 00000000000000 p 00000000000009 00000000000003 00000000000003 00000000000001 00000000000000 q 00000000000002 00000000000001 00000000000000
+a a b p 000000000000012 00000000000002 00000000000001 00000000000000 a i e 00000000000000 00000000000001 x p 00000000000009 00000000000003 00000000000003 00000000000001 00000000000000 00000000000000
+a a b p 000000000000013 00000000000002 00000000000001 00000000000000 a a i p 00000000000009 00000000000003 00000000000003 00000000000001 00000000000000 e 00000000000000 00000000000002 00000000000000
+a a b p 000000000000014 00000000000002 00000000000001 00000000000000 x k k p 000000000000010 00000000000001 00000000000000 p 000000000000011 00000000000001 00000000000000 k p 000000000000012 00000000000002 00000000000000 00000000000002 p 000000000000013 00000000000002 00000000000000 00000000000001 00000000000000
+a b p 000000000000015 00000000000001 00000000000000 a a i k e 00000000000001 00000000000000 e 00000000000000 00000000000002 e 00000000000001 00000000000002 00000000000000
+a b p 000000000000016 00000000000001 00000000000000 k p 000000000000015 00000000000001 00000000000000 a a i k e 00000000000001 00000000000002 e 00000000000000 00000000000002 d d e 00000000000001 00000000000000 q 00000000000001 00000000000000 e 00000000000000 00000000000001 00000000000000
+a b p 000000000000017 00000000000001 00000000000000 a n e 00000000000000 00000000000001 00000000000000
+a a b p 000000000000018 00000000000002 00000000000001 00000000000000 a b e 00000000000000 00000000000002 d e 00000000000000 00000000000001 q 00000000000000 00000000000001 00000000000000
+a b p 000000000000019 00000000000001 00000000000000 k x k p 000000000000017 00000000000001 00000000000000 e 00000000000000 00000000000001 a i e 00000000000000 00000000000001 x k p 000000000000018 00000000000002 00000000000000 00000000000001 e 00000000000000 00000000000002 00000000000000
+a b p 000000000000020 00000000000001 00000000000000 k p 000000000000019 00000000000001 00000000000000 a i p 000000000000019 00000000000001 00000000000000 p 00000000000005 00000000000002 00000000000001 00000000000000 00000000000000
+a b p 000000000000021 00000000000001 00000000000000 x k p 000000000000020 00000000000001 00000000000000 p 000000000000014 00000000000002 00000000000001 00000000000000 00000000000000
+a b p 000000000000022 00000000000001 00000000000000 k p 000000000000016 00000000000001 00000000000000 a i e 00000000000000 00000000000001 n p 000000000000014 00000000000002 00000000000001 00000000000000 00000000000000
+a b p 000000000000023 00000000000001 00000000000000 x k p 000000000000020 00000000000001 00000000000000 p 00000000000005 00000000000002 00000000000000 00000000000001 00000000000000
+a a a b p 000000000000024 00000000000003 00000000000002 00000000000001 00000000000000 a b e 00000000000000 00000000000003 p 00000000000009 00000000000003 00000000000002 00000000000001 00000000000000 00000000000000
+a a b p 000000000000025 00000000000002 00000000000001 00000000000000 a i e 00000000000000 00000000000001 x k p 000000000000024 00000000000003 00000000000000 00000000000003 00000000000001 p 000000000000021 00000000000001 00000000000000 00000000000000
+a a a b p 000000000000026 00000000000003 00000000000002 00000000000001 000
+=== ./inputs/padded3-reg0.jdg (101903 bytes, sha256 7ee3f6fa1a853cf037f0a92caf1ed40196ecd79e2bf8aa103d5954c7c16d2ba6)
+JDG1
+R 706
+a a i a b e 0000 0002 e 0000 0001 q 0001 0000 0000
+a a x k e 0002 0000 e 0001 0000 0000
+a x a a i k e 0000 0001 e 0001 0003 e 0000 0002 0000
+a x a i a i e 0000 0001 e 0000 0003 e 0000 0001 0000
+x k x k a n e 0000 0001 e 0000 0001 a i e 0000 0001 x k a b e 0000 0001 d e 0000 0002 q 0000 0002 e 0000 0002 0000
+a i x e 0000 0001 x k e 0000 0001 n x k e 0000 0002 e 0000 0001 0000
+a i k a i e 0000 0001 x e 0000 0001 a a i k e 0001 0002 k e 0000 0002 n q 0001 0000 n x k e 0000 0002 e 0000 0001 x a i e 0000 0002 x k k e 0000 0001 e 0000 0002 a i k e 0000 0002 e 0000 0003 q 0000 0001 0000
+a a b p 0005 0002 0001 0000 a i e 0000 0002 e 0000 0001 0000
+a a b p 0006 0002 0001 0000 a b e 0000 0002 q 0000 0001 0000
+a a a b p 0007 0003 0002 0001 0000 a b e 0000 0003 d q 0000 0002 q 0000 0001 0000
+a a a b p 0008 0003 0002 0001 0000 a b e 0000 0003 d p 0006 0002 0000 0002 p 0007 0003 0000 0002 0001 0000
+a a a b p 0009 0003 0002 0001 0000 x k e 0000 0003 p 0008 0003 0000 0002 0001 0000
+a b p 00010 0001 0000 a a a i k p 0009 0003 0003 0002 0001 p 0009 0003 0003 0002 0000 q 0001 0000 0000
+a b p 00011 0001 0000 a a a i k p 0009 0003 0003 0002 0000 p 0009 0003 0003 0001 0000 q 0002 0001 0000
+a a b p 00012 0002 0001 0000 a i e 0000 0001 x p 0009 0003 0003 0001 0000 0000
+a a b p 00013 0002 0001 0000 a a i p 0009 0003 0003 0001 0000 e 0000 0002 0000
+a a b p 00014 0002 0001 0000 x k k p 00010 0001 0000 p 00011 0001 0000 k p 00012 0002 0000 0002 p 00013 0002 0000 0001 0000
+a b p 00015 0001 0000 a a i k e 0001 0000 e 0000 0002 e 0001 0002 0000
+a b p 00016 0001 0000 k p 00015 0001 0000 a a i k e 0001 0002 e 0000 0002 d d e 0001 0000 q 0001 0000 e 0000 0001 0000
+a b p 00017 0001 0000 a n e 0000 0001 0000
+a a b p 00018 0002 0001 0000 a b e 0000 0002 d e 0000 0001 q 0000 0001 0000
+a b p 00019 0001 0000 k x k p 00017 0001 0000 e 0000 0001 a i e 0000 0001 x k p 00018 0002 0000 0001 e 0000 0002 0000
+a b p 00020 0001 0000 k p 00019 0001 0000 a i p 00019 0001 0000 p 0005 0002 0001 0000 0000
+a b p 00021 0001 0000 x k p 00020 0001 0000 p 00014 0002 0001 0000 0000
+a b p 00022 0001 0000 k p 00016 0001 0000 a i e 0000 0001 n p 00014 0002 0001 0000 0000
+a b p 00023 0001 0000 x k p 00020 0001 0000 p 0005 0002 0000 0001 0000
+a a a b p 00024 0003 0002 0001 0000 a b e 0000 0003 p 0009 0003 0002 0001 0000 0000
+a a b p 00025 0002 0001 0000 a i e 0000 0001 x k p 00024 0003 0000 0003 0001 p 00021 0001 0000 0000
+a a a b p 00026 0003 0002 0001 0000 a i e 0000 0003 x k e 0000 0002 p 0009 0003 0003 0000 0001 0000
+a a a b p 00027 0003 0002 0001 0000 a b e 0000 0003 x k e 0000 0002 p 0009 0003 0003 0000 0001 0000
+a a a b p 00028 0003 0002 0001 0000 a b e 0000 0003 x x k k e 0001 0004 e 0000 0003 p 0008 0003 0002 0001 0000 0000
+a a a a b p 00029 0004 0003 0002 0001 0000 k k p 0005 0002 0003 0002 a i p 00017 0001 0000 p 0009 0003 0004 0000 0001 a a a a i k k p 0009 0003 0007 0003 0002 p 00018 0002 0001 0003 p 0009 0003 0005 0002 0000 p 0009 0003 0007 0001 0000 0000
+a a a a a b p 00030 0005 0004 0003 0002 0001 0000 k k k p 00010 0001 0004 p 00012 0002 0004 0003 k p 00013 0002 0004 0001 a i p 00017 0001 0000 p 0009 0003 0005 0000 0001 a a a a i k k p 0009 0003 0008 0003 0002 p 00018 0002 0001 0003 p 0009 0003 0006 0002 0000 p 0009 0003 0008 0001 0000 0000
+a a a a a b p 00031 0005 0004 0003 0002 0001 0000 d d d k k e 0003 0004 e 0002 0004 k q 0001 0004 q 0000 0002 k k e 0003 0004 q 0002 0004 k p 00017 0001 0001 q 0000 0004 k e 0004 0003 k p 00018 0002 0001 0004 q 0000 0003 k q 0004 0003 k p 00018 0002 0001 0004 p 00017 0001 0000 0000
+a a a a b p 00032 0004 0003 0002 0001 0000 x k p 00018 0002 0000 0003 p 00031 0005 0004 0003 0000 0002 0001 0000
+a a a b p 00033 0003 0002 0001 0000 a b e 0000 0003 k e 0000 0002 x x x x x x k k p 0008 0003 0006 0001 0000 p 0008 0003 0001 0005 0004 k p 0008 0003 0000 0003 0002 k k e 0005 0007 e 0004 0007 p 00032 0004 0005 0004 0003 0002 0000
+a a a b p 00034 0003 0002 0001 0000 k k k p 00010 0001 0002 p 00012 0002 0002 0001 p 00013 0002 0002 0001 a a a a a a i k k k p 0008 0003 0001 0005 0004 p 0008 0003 0000 0003 0002 k e 0005 0006 e 0004 0006 p 00032 0004 0005 0004 0003 0002 p 0009 0003 0008 0001 0000 0000
+a a a a b p 00035 0004 0003 0002 0001 0000 x x k k e 0001 0004 p 0008 0003 0000 0003 0002 p 0009 0003 0005 0001 0000 0000
+a a a a a b p 00036 0005 0004 0003 0002 0001 0000 k k k k k p 00020 0001 0000 p 00016 0001 0000 p 00028 0003 0002 0000 0000 p 00034 0003 0003 0002 0000 p 00030 0005 0004 0000 0003 0002 0001 a i p 00017 0001 0000 p 0008 0003 0002 0000 0000 0000
+a a a b p 00037 0003 0002 0001 0000 a b e 0000 0003 k e 0000 0002 x x k p 0008 0003 0002 0001 0000 k p 0009 0003 0003 0000 0001 a i e 0000 0001 n p 0009 0003 0004 0000 0002 0000
+a a a b p 00038 0003 0002 0001 0000 a b e 0000 0003 k e 0000 0002 x x k p 0008 0003 0002 0001 0000 d p 00018 0002 0000 0001 k q 0000 0001 n x k e 0000 0004 p 00018 0002 0000 0002 0000
+a b p 00039 0001 0000 a i e 0000 0001 x k e 0000 0002 e 0001 0000 0000
+a a a b p 00040 0003 0002 0001 0000 a a i k e 0001 0003 p 0009 0003 0004 0001 0000 x k e 0000 0003 p 00018 0002 0000 0001 0000
+a a a b p 00041 0003 0002 0001 0000 a b e 0000 0003 k e 0000 0002 x x k p 0008 0003 0002 0001 0000 p 00039 0001 0001 0000
+a a a a a a a a b p 00042 0008 0007 0006 0005 0004 0003 0002 0001 0000 k k k p 0008 0003 0007 0006 0005 e 0006 0001 p 00039 0001 0006 k p 00030 0005 0004 0000 0002 0001 0006 k k e 0005 0000 p 0009 0003 0004 0005 0003 a i e 0000 0006 n p 0009 0003 0005 0000 0004 0000
+a a a a a b p 00043 0005 0004 0003 0002 0001 0000 x x x p 00042 0008 0006 0002 0001 0000 0007 0005 0004 0003 0000
+a a a a a b p 00044 0005 0004 0003 0002 0001 0000 a b e 0000 0005 k e 0000 0004 x x k p 0008 0003 0002 0001 0000 p 00043 0005 0001 0000 0005 0004 0003 0000
+a a a a a a b p 00045 0006 0005 0004 0003 0002 0001 0000 k k p 0008 0003 0005 0002 0000 p 0009 0003 0003 0002 0001 p 0008 0003 0004 0001 0000 0000
+a a a b p 00046 0003 0002 0001 0000 x x x p 00045 0006 0005 0004 0003 0002 0001 0000 0000
+a a a b p 00047 
+=== ./inputs/prefix10-reg0.jdg (484 bytes, sha256 b26b6a38234762331db64a49090a09ed0d87b338f611545555ecec25a30f8fea)
+JDG1
+R 10
+a a i a b e 0 2 e 0 1 q 1 0 0
+a a x k e 2 0 e 1 0 0
+a x a a i k e 0 1 e 1 3 e 0 2 0
+a x a i a i e 0 1 e 0 3 e 0 1 0
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0
+T 0
+
+=== ./inputs/prefix705-reg0.jdg (54403 bytes, sha256 aee0bbe1bda2ea243095bbe85d5b9ee7a19b9ecd1d24d8aa83b16f85e4da0e09)
+JDG1
+R 705
+a a i a b e 0 2 e 0 1 q 1 0 0
+a a x k e 2 0 e 1 0 0
+a x a a i k e 0 1 e 1 3 e 0 2 0
+a x a i a i e 0 1 e 0 3 e 0 1 0
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0
+a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0
+a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0
+a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0
+a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0
+a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0
+a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0
+a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0
+a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0
+a b p 17 1 0 a n e 0 1 0
+a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0
+a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0
+a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0
+a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0
+a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0
+a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0
+a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0
+a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0
+a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0
+a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0
+a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0
+a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0
+a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0
+a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0
+a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0
+a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0
+a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0
+a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0
+a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0
+a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0
+a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0
+a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0
+a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0
+a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0
+a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0
+a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0
+a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0
+a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0
+a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0
+a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0
+a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0
+a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0
+a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0
+a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0
+a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0
+a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0
+a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0
+a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k k k k k k k k p 16 1 7 p 20 1 6 p 5 2 6 7 p 28 3 5 7 7 p 38 3 4 5 7 p 17 1 3 p 18 2 2 3 p 10 1 1 p 11 1 1 p 12 2 1 0 p 13 2 1 6 p 28 3 0 6 6 0
+a a a a a a a a a b p 56 9 8 7 6 5 4 3 2 1 0 x x x x k k k p 54 8 11 2 3 8 7 6 5 4 p 30 5 1 6 8 7 3 p 48 4 9 10 2 0 p 9 3 1 0 12 0
+a a a a a a a a b p 57 8 7 6 5 4 3 2 1 0 x x k k k k p 8 3 9 1 0 e 1 5 p 39 1 1 e 0 4 p 56 9 8 1 0 7 6 5 4 3 2 0
+a a a a a a a a b p 58 8 7 6 5 4 3 2 1 0 a b e 0 8 k e 0 7 x x k p 8 3 2 1 0 p 57 8 1 0 8 7 6 5 4 3 0
+a a a a b p 59 4 3 2 1 0 k k k p 10 1 3 p 11 1 3 p 13 2 3 0 a i p 9 3 3 2 0 x p 9 3 5 1 0 0
+a a b p 60 2 1 0 a i p 5 2 0 1 e 0 2 0
+a a a a a b p 61 5 4 3 2 1 0 a b e 0 5 k e 0 4 x k p 8 3 1 4 0 p 59 4 0 3 4 2 0
+a a a a a a b p 62 6 5 4 3 2 1 0 a b e 0 6 k e 0 5 x k e 0 5 p 61 5 1 4 0 3 2 0
+a a b p 63 2 1 0 a i e 0 1 x k k e 0 1 e 0 3 a i k e 0 2 e 0 4 q 0 1 0
+a a a a a a b p 64 6 5 4 3 2 1 0 x k k k p 8 3 0 4 3 e 0 6 e 0 5 p 59 4 3 2 4 1 0
+a a a a a b p 65 5 4 3 2 1 0 a a a i k k e 2 3 p 64 6 7 6 2 1 5 4 p 64 6 7 6 2 0 5 4 q 1 0 0
+a a a a a b p 66 5 4 3 2 1 0 a i e 0 1 x p 64 6 6 5 1 0 4 3 0
+a a a a b p 67 4 3 2 1 0 k k e 3 0 p 9 3 1 3 2 a i e 0 4 n p 9 3 2 0 3 0
+a a a a b p 68 4 3 2 1 0 x k p 9 3 2 4 0 p 8 3 3 1 0 0
+a a a a a a a b p 69 7 6 5 4 3 2 1 0 x x k k p 67 4 1 8 6 5 p 64 6 4 3 1 0 6 2 p 68 4 8 7 0 1 0
+a a a a a a a b p 70 7 6 5 4 3 2 1 0 a b e 0 7 k e 0 6 x x k p 8 3 2 1 0 p 69 7 1 0 7 6 5 4 3 0
+a a a b p 71 3 2 1 0 k k k p 10 1 2 p 11 1 2 k p 12 2 2 1 p 13 2 2 0 k a i e 0 1 x k e 0 3 p 9 3 4 0 1 a a i k e 1 3 p 9 3 4 1 0 a b e 0 1 x k k e 0 5 e 0 3 p 9 3 6 0 1 0
+a b p 72 1 0 x k p 20 1 0 e 1 0 0
+a a b p 73 2 1 0 a i e 0 2 x x k e 1 3 p 8 3 2 1 0 0
+a a b p 74 2 1 0 k k p 72 1 0 p 10 1 1 k p 12 2 1 0 p 73 2 1 0 0
+a a a b p 75 3 2 1 0 k p 74 2 2 1 p 13 2 2 0 0
+a a b p 76 2 1 0 x p 75 3 2 0 1 0
+a a a a b p 77 4 3 2 1 0 a b e 0 4 d e 0 3 p 8 3 0 1 2 0
+a a a a b p 78 4 3 2 1 0 a b e 0 4 k p 76 2 0 3 x x k k p 9 3 2 4 1 p 9 3 2 3 0 e 1 0 0
+a a a a b p 79 4 3 2 1 0 a b e 0 4 k p 76 2 0 3 x x k k p 9 3 2 4 1 p 9 3 2 3 0 q 1 0 0
+a a a b p 80 3 2 1 0 a b e 0 3 k 
+=== ./raw/files-vs-merge-base.txt (9530 bytes, sha256 b8fe0fc53f27b5c182c14aea038200e50076ece97af6d4f5563bb94fb8281596)
+branch grok/embedded-reg0-gate HEAD d70b551c6559a2c1cde0bc46f1b7e310a26bfe92 merge-base 52e4a28ecf47c9e06b230d975c04a174272a3cdf
+A 88408f00124e8e281b6a54796891f658e52d851874f4bac0a8ad73fbdf7c00ce audit/grok-gate/README.md
+A e87974f6219abff6a0498de075fa0afe5a1bb56c66eb9b9e8eee0b95aead6ea1 audit/grok-gate/SHA256SUMS
+A 01f5c6bbc8f334df1f6e9528851ac6ce51bbb2fa2ca01770d1f79b83a83107f6 audit/grok-gate/fixtures/SHA256SUMS
+A f9a2cb6faf21c91b489fa4ba9411fc4c1c722c3a5bc1d1badcdba71fa3580e39 audit/grok-gate/fixtures/altered-first-formula.jdg
+A 930bcac3f9ca59a45c22427169e432b7d34dc69091d447b67556dab4589892dd audit/grok-gate/fixtures/altered-last-pure-formula.jdg
+A a019455f47ae96c565912a99d76f588092e1906af69906103c43f580ead6c05f audit/grok-gate/fixtures/altered-placeholder-hypothesis.jdg
+A 598a5f59407d82287c1493f24dac1901be2be3f5460245fb0f5fa44adbcafe8f audit/grok-gate/fixtures/altered-pure-hypotheses.jdg
+A ea82ea42bc02903f38be97adb23d5378af625e05ae1c3583060316fbab3342ab audit/grok-gate/fixtures/false-proof-canonical-prefix.jdg
+A 5c2e5b7700e8fc7bee703cb32fa3e81309e34532f08f73952e06373e0b565b18 audit/grok-gate/fixtures/false-proof-empty-registry.jdg
+A 2b585b1f140d06b8cd8135c549fdc30bbc04dc3c87f4d7f0e622186c742751ce audit/grok-gate/fixtures/forged-false-registry.jdg
+A d060927f32c6c76f8058078d52fe658d73fd14b575b4d83decba61f035c2a6bb audit/grok-gate/fixtures/leading-zero-and-tab-prefix.jdg
+A 3d0d6e9e4390c16ad9e5e2800c66c15f86f7c184e03a7f1f494c2513bc150a30 audit/grok-gate/fixtures/nonexistent-registry-use.jdg
+A 1a7da16d3e6226c8b0bbda63cb388cbd05207264e9d78c5aac9731189577819c audit/grok-gate/fixtures/prefix-0-truth.jdg
+A 7293fecc54f1fdbba0eb663fba507f9467d8102bb2c09b4a43fbbb8abb88eea8 audit/grok-gate/fixtures/prefix-1-truth.jdg
+A 2b486479e1420739426cd9d70b590c4872431ada2a1c118eafbc6623c0974dfa audit/grok-gate/fixtures/prefix-677-truth.jdg
+A 03efab7344d36bd275a5de0eaa928e6509d348c3dd76b284a3185dd63dfb6614 audit/grok-gate/fixtures/prefix-706-truth.jdg
+A e8f7f857241774f1d143a3dc92877eee417b6693df819ad8bed56b3e357d661a audit/grok-gate/fixtures/registry-707-entries.jdg
+A 12153aed1e630bb953299b2c6c5577677747498f598f371554f66ad70c5361d1 audit/grok-gate/mutants/README.tsv
+A 2d8b9b7829aadcdc9a5aa4a0f5efa853352dac20ee1de31e33d92355c9387ae4 audit/grok-gate/mutants/fail-count-707.jdg
+A 40362864fa94c36e31ce936f42ea43b0f5297f0a35ed9ae9235c368dca3d9ae8 audit/grok-gate/mutants/fail-false.jdg
+A 068e1cbab80c68d58461c18e36ada6885a2be7135d564373ae60f84e26322b62 audit/grok-gate/mutants/fail-formula-0.jdg
+A ae5838522e31fc6374a2a7f8fcccd7378aaaafb66c8e1b1b045d35e2f7e9b291 audit/grok-gate/mutants/fail-formula-10.jdg
+A 9e91d0fec53aa7d804e2a67e63bf045ba1c50ba1af4f2370f7b92e0e4b2bcdbd audit/grok-gate/mutants/fail-hyp-0.jdg
+A 410742b715b6ba41d510fb33be527c7f8c3581e2b1648353472473f82ef09c4d audit/grok-gate/mutants/fail-hyp-677.jdg
+A 705a2eee70753cb047207f2041d92cd1361689035a2cfc99464ba6048233299f audit/grok-gate/mutants/fail-hyp-spell-677.jdg
+A 4c6d1c8ab7b12ad44fe2027843cbca149bcb6cac4643af13019965772285c1cf audit/grok-gate/mutants/fail-hypcount-spell-0.jdg
+A 651288c2eac1e10ce8a9610a2505a28a80380a375f6304d7a2aee60c720092ba audit/grok-gate/mutants/fail-parse.jdg
+A f5e011d8452aaea5fe04b02d0060c5b912c3875dcdfe6900732b6748899f7ee4 audit/grok-gate/mutants/fail-spell-0.jdg
+A 1d590931a166794d3f259dc16732e42d8e3b694b6bd2bd24d91673ca40acdbf6 audit/grok-gate/mutants/fail-truncated.jdg
+A 53b4287eed0623e7ff48005955d27bbaa5bcdb6a6d15dbc4cef50d892b8e75a0 audit/grok-gate/mutants/pass-all.jdg
+A 588845ea1657dee0130912e4b99a23b1941cad338562e0b17412455a3bb8b67c audit/grok-gate/mutants/pass-empty.jdg
+A 01aab4f87dad1090939e7fb107eaf9a91838d68d1bac0473ebf1eb388a75a80f audit/grok-gate/mutants/pass-one.jdg
+A 29572688b6c62cf341e49c9e9a6e731e0c331679533c4de10e8782b219a2a819 audit/grok-gate/mutants/pass-three.jdg
+A c946e351e52890aae7cf94e27b90dfd4227aa2646c36650e8fea6878df0a7de2 audit/grok-gate/mutants/proof-reject-false-axiom.jdg
+A 79b082fb5b35f8b021dca7dd256570c45ec4e455c5109b2a7840e05a2a3387ca audit/grok-gate/v4cap/PRESERVED.txt
+A fc1b224bb53cd5ca8244858d004538c236203c1d7803b749064a6a489b7fa45b audit/grok-gate/v4cap/README.md
+A 1ca7b6ea5f51bc26f51f07f462636c292797c36d53fc480dfaa6c00c8a30a64e audit/grok-gate/v4cap/SHA256SUMS
+A 7b993f2b3425a54b359ebd12470540799c095515bddc5ba73c469c21bf12a35e audit/grok-gate/v4cap/SOURCE-REG0-OK.txt
+A cbd3a6cd8044960464d2bba5868354989f09fd549cdbca31355f01da955b09d3 audit/grok-gate/v4cap/build.py
+A 3178d95c8ad0f9ffc5e0bbdeb8dbee59dcabbb88a3bbb18524ae6bf29a3d630f audit/grok-gate/v4cap/embed_data.py
+A 84e6d7bd89079d196f0bff0472f4385e1a434a3f90a49fa393936be0e7c4811e audit/grok-gate/v4cap/gate.py
+A 27481c35d78ec376044ed411ddad3181018d75211fc9ee388c15b9f9ddabb86e audit/grok-gate/v4cap/gate_core.py
+A 66aecb3262979254b67ba96a6c5782745ad9a3404b30d6e56269cf27154d4f0d audit/grok-gate/v4cap/judge-gated.ps1
+A a9bdf541faa15a04f35046bc45a200ab0dc5b63a9edd863b824848e1c8b0149d audit/grok-gate/v4cap/judge-gated.sh
+A 0ddde7980c7f4e28a835d12f250a31323e20cdccba2fc5c8816f4ba9c48491e0 audit/grok-gate/v4cap/reggate.pmp
+A 296f98197ceee1cc481b3f6a75c37c874b642d4da71994251bbc08072030f693 audit/grok-gate/v4cap/reggate.pmp.tpl
+A 0b6fb6cffbd658750b1c1b28ca671240e4a60df5704eaeed611a884123b89324 audit/grok-gate/v4cap/test_all.py
+A 500d36418f6c1a510503ce4d055e5835b3992717d37c4180e97950ed84c366b8 audit/grok-gate/v4cap/tests/linux-output.txt
+A 41223b5ba91f1e8cfc2371d56584e3cacd76a75fd46121cdaf4eca24e34687b1 audit/grok-gate/v5/README.md
+A 3178d95c8ad0f9ffc5e0bbdeb8dbee59dcabbb88a3bbb18524ae6bf29a3d630f audit/grok-gate/v5/embed_data.py
+A 84e6d7bd89079d196f0bff0472f4385e1a434a3f90a49fa393936be0e7c4811e audit/grok-gate/v5/gate.py
+A e7e11cd2e9c56e800b72b23cf383302759a72b32ad800ca4e8a0a920368aa559 audit/grok-gate/v5/gate_core.py
+A 66aecb3262979254b67ba96a6c5782745ad9a3404b30d6e56269cf27154d4f0d audit/grok-gate/v5/judge-gated.ps1
+A a9bdf541faa15a04f35046bc45a200ab0dc5b63a9edd863b824848e1c8b0149d audit/grok-gate/v5/judge-gated.sh
+A cbac6ec38ba359bc5b16be64c62e3eb3b31dd2
+=== ./raw/py-canonical-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/py-canonical-reg0.stdout (13 bytes, sha256 520ed570c43c05246ba298377afb036efd3d2497362cd2fb1f448d6b2915f645)
+GATE
+706
+706
+
+=== ./raw/py-false-registry.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/py-false-registry.stdout (26 bytes, sha256 68580bcea2762e443846833bef1803e80984874f5b132da9daafca4a151c1386)
+REJECT registry
+0
+formula
+
+=== ./raw/py-padded13-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/py-padded13-reg0.stdout (13 bytes, sha256 520ed570c43c05246ba298377afb036efd3d2497362cd2fb1f448d6b2915f645)
+GATE
+706
+706
+
+=== ./raw/py-padded3-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/py-padded3-reg0.stdout (13 bytes, sha256 520ed570c43c05246ba298377afb036efd3d2497362cd2fb1f448d6b2915f645)
+GATE
+706
+706
+
+=== ./raw/py-prefix10-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/py-prefix10-reg0.stdout (12 bytes, sha256 5c909426379d9d8531a5e3d68511c99b541e2a7524d10ec37c04f16403c85b65)
+GATE
+10
+706
+
+=== ./raw/py-prefix705-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/py-prefix705-reg0.stdout (13 bytes, sha256 df482e86ded73389f68436f4337dc648ebc7913c17e32ee570a352a59931ece6)
+GATE
+705
+706
+
+=== ./raw/released-canonical-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/released-canonical-reg0.prooflog (94 bytes, sha256 b2864360172fdf90d64063d8d2345a34ec33ad76b9f1644c23171ac2e31f20bc)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/canonical-reg0.jdg
+
+=== ./raw/released-canonical-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/released-canonical-reg0.stdout (126 bytes, sha256 55f2a5cf6df3b68b4e5ad0524d600624335bd3494704fe437ec18327037831f2)
+GATE
+706
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/released-false-registry.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/released-false-registry.prooflog (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/released-false-registry.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/released-false-registry.stdout (75 bytes, sha256 34ee31decf7d2d8f2a96ba0de9f0af269060d803aa6e9e4ba995db82a0518e9a)
+REJECT registry
+0
+formula
+line 351: check zero failed: not the zero vector
+
+=== ./raw/released-padded13-reg0.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/released-padded13-reg0.prooflog (93 bytes, sha256 948709c89038d59675dc6d16315d1b13e22a13b28d953d1ad0c41197a8176d64)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/padded13-reg0.jdg
+
+=== ./raw/released-padded13-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/released-padded13-reg0.stdout (141 bytes, sha256 3e1c1e7e936fd8856232914ccf3723e9937230bc50e92cae54cdf1151a0d5865)
+GATE
+706
+706
+REJECT
+a number has more than 12 digits
+theorem and step (counted from 0):
+0
+0
+line 340: check zero failed: not the zero vector
+
+=== ./raw/released-padded3-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/released-padded3-reg0.prooflog (92 bytes, sha256 3f5b05b90dabdcc3e9bf445a0ec311f2b61ea05f47b5bda97f666692e8a95bdc)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/padded3-reg0.jdg
+
+=== ./raw/released-padded3-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/released-padded3-reg0.stdout (126 bytes, sha256 55f2a5cf6df3b68b4e5ad0524d600624335bd3494704fe437ec18327037831f2)
+GATE
+706
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/released-prefix10-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/released-prefix10-reg0.prooflog (93 bytes, sha256 570df9d3b46e2563c8a11db943f16240b8f784374adfbd136d520a2eabbe2eb1)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/prefix10-reg0.jdg
+
+=== ./raw/released-prefix10-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/released-prefix10-reg0.stdout (123 bytes, sha256 0b02ffaba5d673f79159299071e71146d37fa8d25902590038904ed62d2bf31b)
+GATE
+10
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+10
+0
+0
+10
+
+=== ./raw/released-prefix705-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/released-prefix705-reg0.prooflog (94 bytes, sha256 084e23c43387ef90f2d50758bfe1f88b00a1d450d54cf0f0856a3af074da4cb4)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/prefix705-reg0.jdg
+
+=== ./raw/released-prefix705-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/released-prefix705-reg0.stdout (126 bytes, sha256 93ba803b9444a6b82b319cf145ee6e0e5edf31de3d98a261ea0dc283fd904221)
+GATE
+705
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+705
+0
+0
+705
+
+=== ./raw/rtv2-canonical-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/rtv2-canonical-reg0.prooflog (94 bytes, sha256 b2864360172fdf90d64063d8d2345a34ec33ad76b9f1644c23171ac2e31f20bc)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/canonical-reg0.jdg
+
+=== ./raw/rtv2-canonical-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/rtv2-canonical-reg0.stdout (126 bytes, sha256 55f2a5cf6df3b68b4e5ad0524d600624335bd3494704fe437ec18327037831f2)
+GATE
+706
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/rtv2-false-registry.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/rtv2-false-registry.prooflog (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/rtv2-false-registry.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/rtv2-false-registry.stdout (75 bytes, sha256 34ee31decf7d2d8f2a96ba0de9f0af269060d803aa6e9e4ba995db82a0518e9a)
+REJECT registry
+0
+formula
+line 351: check zero failed: not the zero vector
+
+=== ./raw/rtv2-padded13-reg0.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/rtv2-padded13-reg0.prooflog (93 bytes, sha256 948709c89038d59675dc6d16315d1b13e22a13b28d953d1ad0c41197a8176d64)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/padded13-reg0.jdg
+
+=== ./raw/rtv2-padded13-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/rtv2-padded13-reg0.stdout (141 bytes, sha256 3e1c1e7e936fd8856232914ccf3723e9937230bc50e92cae54cdf1151a0d5865)
+GATE
+706
+706
+REJECT
+a number has more than 12 digits
+theorem and step (counted from 0):
+0
+0
+line 340: check zero failed: not the zero vector
+
+=== ./raw/rtv2-padded3-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/rtv2-padded3-reg0.prooflog (92 bytes, sha256 3f5b05b90dabdcc3e9bf445a0ec311f2b61ea05f47b5bda97f666692e8a95bdc)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/padded3-reg0.jdg
+
+=== ./raw/rtv2-padded3-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/rtv2-padded3-reg0.stdout (126 bytes, sha256 55f2a5cf6df3b68b4e5ad0524d600624335bd3494704fe437ec18327037831f2)
+GATE
+706
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+
+=== ./raw/rtv2-prefix10-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/rtv2-prefix10-reg0.prooflog (93 bytes, sha256 570df9d3b46e2563c8a11db943f16240b8f784374adfbd136d520a2eabbe2eb1)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/prefix10-reg0.jdg
+
+=== ./raw/rtv2-prefix10-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/rtv2-prefix10-reg0.stdout (123 bytes, sha256 0b02ffaba5d673f79159299071e71146d37fa8d25902590038904ed62d2bf31b)
+GATE
+10
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+10
+0
+0
+10
+
+=== ./raw/rtv2-prefix705-reg0.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/rtv2-prefix705-reg0.prooflog (94 bytes, sha256 084e23c43387ef90f2d50758bfe1f88b00a1d450d54cf0f0856a3af074da4cb4)
+/workspace/acct/repair/grok-bot-results/accountability/gate-d70b551/inputs/prefix705-reg0.jdg
+
+=== ./raw/rtv2-prefix705-reg0.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/rtv2-prefix705-reg0.stdout (126 bytes, sha256 93ba803b9444a6b82b319cf145ee6e0e5edf31de3d98a261ea0dc283fd904221)
+GATE
+705
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+705
+0
+0
+705
+
