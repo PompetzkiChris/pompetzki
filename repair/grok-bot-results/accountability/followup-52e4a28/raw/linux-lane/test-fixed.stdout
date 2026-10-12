@@ -1,0 +1,1494 @@
+PASS [literal-valid] -9223372036854775808
+PASS [literal-valid] -0x8000000000000000
+PASS [literal-valid] -9223372036854775807
+PASS [literal-valid] -0x7fffffffffffffff
+PASS [literal-valid] -1
+PASS [literal-valid] -0x1
+PASS [literal-valid] 0
+PASS [literal-valid] 0x0
+PASS [literal-valid] 1
+PASS [literal-valid] 0x1
+PASS [literal-valid] 9223372036854775806
+PASS [literal-valid] 0x7FFFFFFFFFFFFFFE
+PASS [literal-valid] 9223372036854775807
+PASS [literal-valid] 0x7FFFFFFFFFFFFFFF
+PASS [literal-valid] 0x7fffffffffffffff
+PASS [literal-valid] -0x8000000000000000
+PASS [literal-valid] 0X7FFFFFFFFFFFFFFF
+PASS [literal-valid] -09223372036854775808
+PASS [literal-valid] 0009223372036854775807
+PASS [literal-invalid] 9223372036854775808
+PASS [literal-invalid] 0x8000000000000000
+PASS [literal-invalid] -9223372036854775809
+PASS [literal-invalid] -0x8000000000000001
+PASS [literal-invalid] 18446744073709551616
+PASS [literal-invalid] 0x10000000000000000
+PASS [literal-invalid] -18446744073709551616
+PASS [literal-invalid] -0x10000000000000000
+PASS [literal-invalid] 18446744073709551615
+PASS [literal-invalid] 0xFFFFFFFFFFFFFFFF
+PASS [literal-invalid] 100000000000000000000
+PASS [literal-invalid] 0x56BC75E2D63100000
+PASS [literal-invalid] -100000000000000000000
+PASS [literal-invalid] -0x56bc75e2d63100000
+PASS [literal-invalid] 10000000000000000000000000000000000000000
+PASS [literal-invalid] 0x1D6329F1C35CA4BFABB9F5610000000000
+PASS [literal-invalid] 0x8000000000000000
+PASS [literal-invalid] -0x8000000000000001
+PASS [literal-invalid] 0xFFFFFFFFFFFFFFFF
+PASS [literal-invalid] 0x10000000000000000
+PASS [literal-invalid] 00009223372036854775808
+PASS [literal-invalid] syntax:0x
+PASS [literal-invalid] syntax:-
+PASS [literal-invalid] syntax:-0x
+PASS [literal-invalid] syntax:0xG
+PASS [literal-invalid] syntax:12a
+PASS [literal-invalid] syntax:--1
+PASS [emit-roundtrip-valid] -9223372036854775808
+PASS [emit-roundtrip-valid] -0x8000000000000000
+PASS [emit-roundtrip-valid] -9223372036854775807
+PASS [emit-roundtrip-valid] -0x7fffffffffffffff
+PASS [emit-roundtrip-valid] -1
+PASS [emit-roundtrip-valid] -0x1
+PASS [emit-roundtrip-valid] 0
+PASS [emit-roundtrip-valid] 0x0
+PASS [emit-roundtrip-valid] 1
+PASS [emit-roundtrip-valid] 0x1
+PASS [emit-roundtrip-valid] 9223372036854775806
+PASS [emit-roundtrip-valid] 0x7FFFFFFFFFFFFFFE
+PASS [emit-roundtrip-valid] 9223372036854775807
+PASS [emit-roundtrip-valid] 0x7FFFFFFFFFFFFFFF
+PASS [emit-roundtrip-valid] 0x7fffffffffffffff
+PASS [emit-roundtrip-valid] -0x8000000000000000
+PASS [emit-roundtrip-valid] 0X7FFFFFFFFFFFFFFF
+PASS [emit-roundtrip-valid] -09223372036854775808
+PASS [emit-roundtrip-valid] 0009223372036854775807
+PASS [emit-roundtrip-invalid] 9223372036854775808 (stage=run)
+PASS [emit-roundtrip-invalid] 0x8000000000000000 (stage=run)
+PASS [emit-roundtrip-invalid] -9223372036854775809 (stage=run)
+PASS [emit-roundtrip-invalid] -0x8000000000000001 (stage=run)
+PASS [emit-roundtrip-invalid] 18446744073709551616 (stage=run)
+PASS [emit-roundtrip-invalid] 0x10000000000000000 (stage=run)
+PASS [emit-roundtrip-invalid] -18446744073709551616 (stage=run)
+PASS [emit-roundtrip-invalid] -0x10000000000000000 (stage=run)
+PASS [emit-roundtrip-invalid] 18446744073709551615 (stage=run)
+PASS [emit-roundtrip-invalid] 0xFFFFFFFFFFFFFFFF (stage=run)
+PASS [emit-roundtrip-invalid] 100000000000000000000 (stage=run)
+PASS [emit-roundtrip-invalid] 0x56BC75E2D63100000 (stage=run)
+PASS [emit-roundtrip-invalid] -100000000000000000000 (stage=run)
+PASS [emit-roundtrip-invalid] -0x56bc75e2d63100000 (stage=run)
+PASS [emit-roundtrip-invalid] 10000000000000000000000000000000000000000 (stage=run)
+PASS [emit-roundtrip-invalid] 0x1D6329F1C35CA4BFABB9F5610000000000 (stage=run)
+PASS [emit-roundtrip-invalid] 0x8000000000000000 (stage=run)
+PASS [emit-roundtrip-invalid] -0x8000000000000001 (stage=run)
+PASS [emit-roundtrip-invalid] 0xFFFFFFFFFFFFFFFF (stage=run)
+PASS [emit-roundtrip-invalid] 0x10000000000000000 (stage=run)
+PASS [emit-roundtrip-invalid] 00009223372036854775808 (stage=run)
+PASS [overflow-word] add -9223372036854775808 -9223372036854775808
+PASS [overflow-word] add -9223372036854775808 -9223372036854775807
+PASS [overflow-word] add -9223372036854775808 -3
+PASS [overflow-word] add -9223372036854775808 -1
+PASS [overflow-word] add -9223372036854775808 0
+PASS [overflow-word] add -9223372036854775808 1
+PASS [overflow-word] add -9223372036854775808 2
+PASS [overflow-word] add -9223372036854775808 3
+PASS [overflow-word] add -9223372036854775808 9223372036854775806
+PASS [overflow-word] add -9223372036854775808 9223372036854775807
+PASS [overflow-word] add -9223372036854775808 4294967296
+PASS [overflow-word] add -9223372036854775808 -4294967296
+PASS [overflow-word] add -9223372036854775807 -9223372036854775808
+PASS [overflow-word] add -9223372036854775807 -9223372036854775807
+PASS [overflow-word] add -9223372036854775807 -3
+PASS [overflow-word] add -9223372036854775807 -1
+PASS [overflow-word] add -9223372036854775807 0
+PASS [overflow-word] add -9223372036854775807 1
+PASS [overflow-word] add -9223372036854775807 2
+PASS [overflow-word] add -9223372036854775807 3
+PASS [overflow-word] add -9223372036854775807 9223372036854775806
+PASS [overflow-word] add -9223372036854775807 9223372036854775807
+PASS [overflow-word] add -9223372036854775807 4294967296
+PASS [overflow-word] add -9223372036854775807 -4294967296
+PASS [overflow-word] add -3 -9223372036854775808
+PASS [overflow-word] add -3 -9223372036854775807
+PASS [overflow-word] add -3 -3
+PASS [overflow-word] add -3 -1
+PASS [overflow-word] add -3 0
+PASS [overflow-word] add -3 1
+PASS [overflow-word] add -3 2
+PASS [overflow-word] add -3 3
+PASS [overflow-word] add -3 9223372036854775806
+PASS [overflow-word] add -3 9223372036854775807
+PASS [overflow-word] add -3 4294967296
+PASS [overflow-word] add -3 -4294967296
+PASS [overflow-word] add -1 -9223372036854775808
+PASS [overflow-word] add -1 -9223372036854775807
+PASS [overflow-word] add -1 -3
+PASS [overflow-word] add -1 -1
+PASS [overflow-word] add -1 0
+PASS [overflow-word] add -1 1
+PASS [overflow-word] add -1 2
+PASS [overflow-word] add -1 3
+PASS [overflow-word] add -1 9223372036854775806
+PASS [overflow-word] add -1 9223372036854775807
+PASS [overflow-word] add -1 4294967296
+PASS [overflow-word] add -1 -4294967296
+PASS [overflow-word] add 0 -9223372036854775808
+PASS [overflow-word] add 0 -9223372036854775807
+PASS [overflow-word] add 0 -3
+PASS [overflow-word] add 0 -1
+PASS [overflow-word] add 0 0
+PASS [overflow-word] add 0 1
+PASS [overflow-word] add 0 2
+PASS [overflow-word] add 0 3
+PASS [overflow-word] add 0 9223372036854775806
+PASS [overflow-word] add 0 9223372036854775807
+PASS [overflow-word] add 0 4294967296
+PASS [overflow-word] add 0 -4294967296
+PASS [overflow-word] add 1 -9223372036854775808
+PASS [overflow-word] add 1 -9223372036854775807
+PASS [overflow-word] add 1 -3
+PASS [overflow-word] add 1 -1
+PASS [overflow-word] add 1 0
+PASS [overflow-word] add 1 1
+PASS [overflow-word] add 1 2
+PASS [overflow-word] add 1 3
+PASS [overflow-word] add 1 9223372036854775806
+PASS [overflow-word] add 1 9223372036854775807
+PASS [overflow-word] add 1 4294967296
+PASS [overflow-word] add 1 -4294967296
+PASS [overflow-word] add 2 -9223372036854775808
+PASS [overflow-word] add 2 -9223372036854775807
+PASS [overflow-word] add 2 -3
+PASS [overflow-word] add 2 -1
+PASS [overflow-word] add 2 0
+PASS [overflow-word] add 2 1
+PASS [overflow-word] add 2 2
+PASS [overflow-word] add 2 3
+PASS [overflow-word] add 2 9223372036854775806
+PASS [overflow-word] add 2 9223372036854775807
+PASS [overflow-word] add 2 4294967296
+PASS [overflow-word] add 2 -4294967296
+PASS [overflow-word] add 3 -9223372036854775808
+PASS [overflow-word] add 3 -9223372036854775807
+PASS [overflow-word] add 3 -3
+PASS [overflow-word] add 3 -1
+PASS [overflow-word] add 3 0
+PASS [overflow-word] add 3 1
+PASS [overflow-word] add 3 2
+PASS [overflow-word] add 3 3
+PASS [overflow-word] add 3 9223372036854775806
+PASS [overflow-word] add 3 9223372036854775807
+PASS [overflow-word] add 3 4294967296
+PASS [overflow-word] add 3 -4294967296
+PASS [overflow-word] add 9223372036854775806 -9223372036854775808
+PASS [overflow-word] add 9223372036854775806 -9223372036854775807
+PASS [overflow-word] add 9223372036854775806 -3
+PASS [overflow-word] add 9223372036854775806 -1
+PASS [overflow-word] add 9223372036854775806 0
+PASS [overflow-word] add 9223372036854775806 1
+PASS [overflow-word] add 9223372036854775806 2
+PASS [overflow-word] add 9223372036854775806 3
+PASS [overflow-word] add 9223372036854775806 9223372036854775806
+PASS [overflow-word] add 9223372036854775806 9223372036854775807
+PASS [overflow-word] add 9223372036854775806 4294967296
+PASS [overflow-word] add 9223372036854775806 -4294967296
+PASS [overflow-word] add 9223372036854775807 -9223372036854775808
+PASS [overflow-word] add 9223372036854775807 -9223372036854775807
+PASS [overflow-word] add 9223372036854775807 -3
+PASS [overflow-word] add 9223372036854775807 -1
+PASS [overflow-word] add 9223372036854775807 0
+PASS [overflow-word] add 9223372036854775807 1
+PASS [overflow-word] add 9223372036854775807 2
+PASS [overflow-word] add 9223372036854775807 3
+PASS [overflow-word] add 9223372036854775807 9223372036854775806
+PASS [overflow-word] add 9223372036854775807 9223372036854775807
+PASS [overflow-word] add 9223372036854775807 4294967296
+PASS [overflow-word] add 9223372036854775807 -4294967296
+PASS [overflow-word] add 4294967296 -9223372036854775808
+PASS [overflow-word] add 4294967296 -9223372036854775807
+PASS [overflow-word] add 4294967296 -3
+PASS [overflow-word] add 4294967296 -1
+PASS [overflow-word] add 4294967296 0
+PASS [overflow-word] add 4294967296 1
+PASS [overflow-word] add 4294967296 2
+PASS [overflow-word] add 4294967296 3
+PASS [overflow-word] add 4294967296 9223372036854775806
+PASS [overflow-word] add 4294967296 9223372036854775807
+PASS [overflow-word] add 4294967296 4294967296
+PASS [overflow-word] add 4294967296 -4294967296
+PASS [overflow-word] add -4294967296 -9223372036854775808
+PASS [overflow-word] add -4294967296 -9223372036854775807
+PASS [overflow-word] add -4294967296 -3
+PASS [overflow-word] add -4294967296 -1
+PASS [overflow-word] add -4294967296 0
+PASS [overflow-word] add -4294967296 1
+PASS [overflow-word] add -4294967296 2
+PASS [overflow-word] add -4294967296 3
+PASS [overflow-word] add -4294967296 9223372036854775806
+PASS [overflow-word] add -4294967296 9223372036854775807
+PASS [overflow-word] add -4294967296 4294967296
+PASS [overflow-word] add -4294967296 -4294967296
+PASS [overflow-word] sub -9223372036854775808 -9223372036854775808
+PASS [overflow-word] sub -9223372036854775808 -9223372036854775807
+PASS [overflow-word] sub -9223372036854775808 -3
+PASS [overflow-word] sub -9223372036854775808 -1
+PASS [overflow-word] sub -9223372036854775808 0
+PASS [overflow-word] sub -9223372036854775808 1
+PASS [overflow-word] sub -9223372036854775808 2
+PASS [overflow-word] sub -9223372036854775808 3
+PASS [overflow-word] sub -9223372036854775808 9223372036854775806
+PASS [overflow-word] sub -9223372036854775808 9223372036854775807
+PASS [overflow-word] sub -9223372036854775808 4294967296
+PASS [overflow-word] sub -9223372036854775808 -4294967296
+PASS [overflow-word] sub -9223372036854775807 -9223372036854775808
+PASS [overflow-word] sub -9223372036854775807 -9223372036854775807
+PASS [overflow-word] sub -9223372036854775807 -3
+PASS [overflow-word] sub -9223372036854775807 -1
+PASS [overflow-word] sub -9223372036854775807 0
+PASS [overflow-word] sub -9223372036854775807 1
+PASS [overflow-word] sub -9223372036854775807 2
+PASS [overflow-word] sub -9223372036854775807 3
+PASS [overflow-word] sub -9223372036854775807 9223372036854775806
+PASS [overflow-word] sub -9223372036854775807 9223372036854775807
+PASS [overflow-word] sub -9223372036854775807 4294967296
+PASS [overflow-word] sub -9223372036854775807 -4294967296
+PASS [overflow-word] sub -3 -9223372036854775808
+PASS [overflow-word] sub -3 -9223372036854775807
+PASS [overflow-word] sub -3 -3
+PASS [overflow-word] sub -3 -1
+PASS [overflow-word] sub -3 0
+PASS [overflow-word] sub -3 1
+PASS [overflow-word] sub -3 2
+PASS [overflow-word] sub -3 3
+PASS [overflow-word] sub -3 9223372036854775806
+PASS [overflow-word] sub -3 9223372036854775807
+PASS [overflow-word] sub -3 4294967296
+PASS [overflow-word] sub -3 -4294967296
+PASS [overflow-word] sub -1 -9223372036854775808
+PASS [overflow-word] sub -1 -9223372036854775807
+PASS [overflow-word] sub -1 -3
+PASS [overflow-word] sub -1 -1
+PASS [overflow-word] sub -1 0
+PASS [overflow-word] sub -1 1
+PASS [overflow-word] sub -1 2
+PASS [overflow-word] sub -1 3
+PASS [overflow-word] sub -1 9223372036854775806
+PASS [overflow-word] sub -1 9223372036854775807
+PASS [overflow-word] sub -1 4294967296
+PASS [overflow-word] sub -1 -4294967296
+PASS [overflow-word] sub 0 -9223372036854775808
+PASS [overflow-word] sub 0 -9223372036854775807
+PASS [overflow-word] sub 0 -3
+PASS [overflow-word] sub 0 -1
+PASS [overflow-word] sub 0 0
+PASS [overflow-word] sub 0 1
+PASS [overflow-word] sub 0 2
+PASS [overflow-word] sub 0 3
+PASS [overflow-word] sub 0 9223372036854775806
+PASS [overflow-word] sub 0 9223372036854775807
+PASS [overflow-word] sub 0 4294967296
+PASS [overflow-word] sub 0 -4294967296
+PASS [overflow-word] sub 1 -9223372036854775808
+PASS [overflow-word] sub 1 -9223372036854775807
+PASS [overflow-word] sub 1 -3
+PASS [overflow-word] sub 1 -1
+PASS [overflow-word] sub 1 0
+PASS [overflow-word] sub 1 1
+PASS [overflow-word] sub 1 2
+PASS [overflow-word] sub 1 3
+PASS [overflow-word] sub 1 9223372036854775806
+PASS [overflow-word] sub 1 9223372036854775807
+PASS [overflow-word] sub 1 4294967296
+PASS [overflow-word] sub 1 -4294967296
+PASS [overflow-word] sub 2 -9223372036854775808
+PASS [overflow-word] sub 2 -9223372036854775807
+PASS [overflow-word] sub 2 -3
+PASS [overflow-word] sub 2 -1
+PASS [overflow-word] sub 2 0
+PASS [overflow-word] sub 2 1
+PASS [overflow-word] sub 2 2
+PASS [overflow-word] sub 2 3
+PASS [overflow-word] sub 2 9223372036854775806
+PASS [overflow-word] sub 2 9223372036854775807
+PASS [overflow-word] sub 2 4294967296
+PASS [overflow-word] sub 2 -4294967296
+PASS [overflow-word] sub 3 -9223372036854775808
+PASS [overflow-word] sub 3 -9223372036854775807
+PASS [overflow-word] sub 3 -3
+PASS [overflow-word] sub 3 -1
+PASS [overflow-word] sub 3 0
+PASS [overflow-word] sub 3 1
+PASS [overflow-word] sub 3 2
+PASS [overflow-word] sub 3 3
+PASS [overflow-word] sub 3 9223372036854775806
+PASS [overflow-word] sub 3 9223372036854775807
+PASS [overflow-word] sub 3 4294967296
+PASS [overflow-word] sub 3 -4294967296
+PASS [overflow-word] sub 9223372036854775806 -9223372036854775808
+PASS [overflow-word] sub 9223372036854775806 -9223372036854775807
+PASS [overflow-word] sub 9223372036854775806 -3
+PASS [overflow-word] sub 9223372036854775806 -1
+PASS [overflow-word] sub 9223372036854775806 0
+PASS [overflow-word] sub 9223372036854775806 1
+PASS [overflow-word] sub 9223372036854775806 2
+PASS [overflow-word] sub 9223372036854775806 3
+PASS [overflow-word] sub 9223372036854775806 9223372036854775806
+PASS [overflow-word] sub 9223372036854775806 9223372036854775807
+PASS [overflow-word] sub 9223372036854775806 4294967296
+PASS [overflow-word] sub 9223372036854775806 -4294967296
+PASS [overflow-word] sub 9223372036854775807 -9223372036854775808
+PASS [overflow-word] sub 9223372036854775807 -9223372036854775807
+PASS [overflow-word] sub 9223372036854775807 -3
+PASS [overflow-word] sub 9223372036854775807 -1
+PASS [overflow-word] sub 9223372036854775807 0
+PASS [overflow-word] sub 9223372036854775807 1
+PASS [overflow-word] sub 9223372036854775807 2
+PASS [overflow-word] sub 9223372036854775807 3
+PASS [overflow-word] sub 9223372036854775807 9223372036854775806
+PASS [overflow-word] sub 9223372036854775807 9223372036854775807
+PASS [overflow-word] sub 9223372036854775807 4294967296
+PASS [overflow-word] sub 9223372036854775807 -4294967296
+PASS [overflow-word] sub 4294967296 -9223372036854775808
+PASS [overflow-word] sub 4294967296 -9223372036854775807
+PASS [overflow-word] sub 4294967296 -3
+PASS [overflow-word] sub 4294967296 -1
+PASS [overflow-word] sub 4294967296 0
+PASS [overflow-word] sub 4294967296 1
+PASS [overflow-word] sub 4294967296 2
+PASS [overflow-word] sub 4294967296 3
+PASS [overflow-word] sub 4294967296 9223372036854775806
+PASS [overflow-word] sub 4294967296 9223372036854775807
+PASS [overflow-word] sub 4294967296 4294967296
+PASS [overflow-word] sub 4294967296 -4294967296
+PASS [overflow-word] sub -4294967296 -9223372036854775808
+PASS [overflow-word] sub -4294967296 -9223372036854775807
+PASS [overflow-word] sub -4294967296 -3
+PASS [overflow-word] sub -4294967296 -1
+PASS [overflow-word] sub -4294967296 0
+PASS [overflow-word] sub -4294967296 1
+PASS [overflow-word] sub -4294967296 2
+PASS [overflow-word] sub -4294967296 3
+PASS [overflow-word] sub -4294967296 9223372036854775806
+PASS [overflow-word] sub -4294967296 9223372036854775807
+PASS [overflow-word] sub -4294967296 4294967296
+PASS [overflow-word] sub -4294967296 -4294967296
+PASS [overflow-word] mul -9223372036854775808 -9223372036854775808
+PASS [overflow-word] mul -9223372036854775808 -9223372036854775807
+PASS [overflow-word] mul -9223372036854775808 -3
+PASS [overflow-word] mul -9223372036854775808 -1
+PASS [overflow-word] mul -9223372036854775808 0
+PASS [overflow-word] mul -9223372036854775808 1
+PASS [overflow-word] mul -9223372036854775808 2
+PASS [overflow-word] mul -9223372036854775808 3
+PASS [overflow-word] mul -9223372036854775808 9223372036854775806
+PASS [overflow-word] mul -9223372036854775808 9223372036854775807
+PASS [overflow-word] mul -9223372036854775808 4294967296
+PASS [overflow-word] mul -9223372036854775808 -4294967296
+PASS [overflow-word] mul -9223372036854775807 -9223372036854775808
+PASS [overflow-word] mul -9223372036854775807 -9223372036854775807
+PASS [overflow-word] mul -9223372036854775807 -3
+PASS [overflow-word] mul -9223372036854775807 -1
+PASS [overflow-word] mul -9223372036854775807 0
+PASS [overflow-word] mul -9223372036854775807 1
+PASS [overflow-word] mul -9223372036854775807 2
+PASS [overflow-word] mul -9223372036854775807 3
+PASS [overflow-word] mul -9223372036854775807 9223372036854775806
+PASS [overflow-word] mul -9223372036854775807 9223372036854775807
+PASS [overflow-word] mul -9223372036854775807 4294967296
+PASS [overflow-word] mul -9223372036854775807 -4294967296
+PASS [overflow-word] mul -3 -9223372036854775808
+PASS [overflow-word] mul -3 -9223372036854775807
+PASS [overflow-word] mul -3 -3
+PASS [overflow-word] mul -3 -1
+PASS [overflow-word] mul -3 0
+PASS [overflow-word] mul -3 1
+PASS [overflow-word] mul -3 2
+PASS [overflow-word] mul -3 3
+PASS [overflow-word] mul -3 9223372036854775806
+PASS [overflow-word] mul -3 9223372036854775807
+PASS [overflow-word] mul -3 4294967296
+PASS [overflow-word] mul -3 -4294967296
+PASS [overflow-word] mul -1 -9223372036854775808
+PASS [overflow-word] mul -1 -9223372036854775807
+PASS [overflow-word] mul -1 -3
+PASS [overflow-word] mul -1 -1
+PASS [overflow-word] mul -1 0
+PASS [overflow-word] mul -1 1
+PASS [overflow-word] mul -1 2
+PASS [overflow-word] mul -1 3
+PASS [overflow-word] mul -1 9223372036854775806
+PASS [overflow-word] mul -1 9223372036854775807
+PASS [overflow-word] mul -1 4294967296
+PASS [overflow-word] mul -1 -4294967296
+PASS [overflow-word] mul 0 -9223372036854775808
+PASS [overflow-word] mul 0 -9223372036854775807
+PASS [overflow-word] mul 0 -3
+PASS [overflow-word] mul 0 -1
+PASS [overflow-word] mul 0 0
+PASS [overflow-word] mul 0 1
+PASS [overflow-word] mul 0 2
+PASS [overflow-word] mul 0 3
+PASS [overflow-word] mul 0 9223372036854775806
+PASS [overflow-word] mul 0 9223372036854775807
+PASS [overflow-word] mul 0 4294967296
+PASS [overflow-word] mul 0 -4294967296
+PASS [overflow-word] mul 1 -9223372036854775808
+PASS [overflow-word] mul 1 -9223372036854775807
+PASS [overflow-word] mul 1 -3
+PASS [overflow-word] mul 1 -1
+PASS [overflow-word] mul 1 0
+PASS [overflow-word] mul 1 1
+PASS [overflow-word] mul 1 2
+PASS [overflow-word] mul 1 3
+PASS [overflow-word] mul 1 9223372036854775806
+PASS [overflow-word] mul 1 9223372036854775807
+PASS [overflow-word] mul 1 4294967296
+PASS [overflow-word] mul 1 -4294967296
+PASS [overflow-word] mul 2 -9223372036854775808
+PASS [overflow-word] mul 2 -9223372036854775807
+PASS [overflow-word] mul 2 -3
+PASS [overflow-word] mul 2 -1
+PASS [overflow-word] mul 2 0
+PASS [overflow-word] mul 2 1
+PASS [overflow-word] mul 2 2
+PASS [overflow-word] mul 2 3
+PASS [overflow-word] mul 2 9223372036854775806
+PASS [overflow-word] mul 2 9223372036854775807
+PASS [overflow-word] mul 2 4294967296
+PASS [overflow-word] mul 2 -4294967296
+PASS [overflow-word] mul 3 -9223372036854775808
+PASS [overflow-word] mul 3 -9223372036854775807
+PASS [overflow-word] mul 3 -3
+PASS [overflow-word] mul 3 -1
+PASS [overflow-word] mul 3 0
+PASS [overflow-word] mul 3 1
+PASS [overflow-word] mul 3 2
+PASS [overflow-word] mul 3 3
+PASS [overflow-word] mul 3 9223372036854775806
+PASS [overflow-word] mul 3 9223372036854775807
+PASS [overflow-word] mul 3 4294967296
+PASS [overflow-word] mul 3 -4294967296
+PASS [overflow-word] mul 9223372036854775806 -9223372036854775808
+PASS [overflow-word] mul 9223372036854775806 -9223372036854775807
+PASS [overflow-word] mul 9223372036854775806 -3
+PASS [overflow-word] mul 9223372036854775806 -1
+PASS [overflow-word] mul 9223372036854775806 0
+PASS [overflow-word] mul 9223372036854775806 1
+PASS [overflow-word] mul 9223372036854775806 2
+PASS [overflow-word] mul 9223372036854775806 3
+PASS [overflow-word] mul 9223372036854775806 9223372036854775806
+PASS [overflow-word] mul 9223372036854775806 9223372036854775807
+PASS [overflow-word] mul 9223372036854775806 4294967296
+PASS [overflow-word] mul 9223372036854775806 -4294967296
+PASS [overflow-word] mul 9223372036854775807 -9223372036854775808
+PASS [overflow-word] mul 9223372036854775807 -9223372036854775807
+PASS [overflow-word] mul 9223372036854775807 -3
+PASS [overflow-word] mul 9223372036854775807 -1
+PASS [overflow-word] mul 9223372036854775807 0
+PASS [overflow-word] mul 9223372036854775807 1
+PASS [overflow-word] mul 9223372036854775807 2
+PASS [overflow-word] mul 9223372036854775807 3
+PASS [overflow-word] mul 9223372036854775807 9223372036854775806
+PASS [overflow-word] mul 9223372036854775807 9223372036854775807
+PASS [overflow-word] mul 9223372036854775807 4294967296
+PASS [overflow-word] mul 9223372036854775807 -4294967296
+PASS [overflow-word] mul 4294967296 -9223372036854775808
+PASS [overflow-word] mul 4294967296 -9223372036854775807
+PASS [overflow-word] mul 4294967296 -3
+PASS [overflow-word] mul 4294967296 -1
+PASS [overflow-word] mul 4294967296 0
+PASS [overflow-word] mul 4294967296 1
+PASS [overflow-word] mul 4294967296 2
+PASS [overflow-word] mul 4294967296 3
+PASS [overflow-word] mul 4294967296 9223372036854775806
+PASS [overflow-word] mul 4294967296 9223372036854775807
+PASS [overflow-word] mul 4294967296 4294967296
+PASS [overflow-word] mul 4294967296 -4294967296
+PASS [overflow-word] mul -4294967296 -9223372036854775808
+PASS [overflow-word] mul -4294967296 -9223372036854775807
+PASS [overflow-word] mul -4294967296 -3
+PASS [overflow-word] mul -4294967296 -1
+PASS [overflow-word] mul -4294967296 0
+PASS [overflow-word] mul -4294967296 1
+PASS [overflow-word] mul -4294967296 2
+PASS [overflow-word] mul -4294967296 3
+PASS [overflow-word] mul -4294967296 9223372036854775806
+PASS [overflow-word] mul -4294967296 9223372036854775807
+PASS [overflow-word] mul -4294967296 4294967296
+PASS [overflow-word] mul -4294967296 -4294967296
+PASS [overflow-word] div -9223372036854775808 -9223372036854775808
+PASS [overflow-word] div -9223372036854775808 -9223372036854775807
+PASS [overflow-word] div -9223372036854775808 -3
+PASS [overflow-word] div -9223372036854775808 -1
+PASS [overflow-word] div -9223372036854775808 0
+PASS [overflow-word] div -9223372036854775808 1
+PASS [overflow-word] div -9223372036854775808 2
+PASS [overflow-word] div -9223372036854775808 3
+PASS [overflow-word] div -9223372036854775808 9223372036854775806
+PASS [overflow-word] div -9223372036854775808 9223372036854775807
+PASS [overflow-word] div -9223372036854775808 4294967296
+PASS [overflow-word] div -9223372036854775808 -4294967296
+PASS [overflow-word] div -9223372036854775807 -9223372036854775808
+PASS [overflow-word] div -9223372036854775807 -9223372036854775807
+PASS [overflow-word] div -9223372036854775807 -3
+PASS [overflow-word] div -9223372036854775807 -1
+PASS [overflow-word] div -9223372036854775807 0
+PASS [overflow-word] div -9223372036854775807 1
+PASS [overflow-word] div -9223372036854775807 2
+PASS [overflow-word] div -9223372036854775807 3
+PASS [overflow-word] div -9223372036854775807 9223372036854775806
+PASS [overflow-word] div -9223372036854775807 9223372036854775807
+PASS [overflow-word] div -9223372036854775807 4294967296
+PASS [overflow-word] div -9223372036854775807 -4294967296
+PASS [overflow-word] div -3 -9223372036854775808
+PASS [overflow-word] div -3 -9223372036854775807
+PASS [overflow-word] div -3 -3
+PASS [overflow-word] div -3 -1
+PASS [overflow-word] div -3 0
+PASS [overflow-word] div -3 1
+PASS [overflow-word] div -3 2
+PASS [overflow-word] div -3 3
+PASS [overflow-word] div -3 9223372036854775806
+PASS [overflow-word] div -3 9223372036854775807
+PASS [overflow-word] div -3 4294967296
+PASS [overflow-word] div -3 -4294967296
+PASS [overflow-word] div -1 -9223372036854775808
+PASS [overflow-word] div -1 -9223372036854775807
+PASS [overflow-word] div -1 -3
+PASS [overflow-word] div -1 -1
+PASS [overflow-word] div -1 0
+PASS [overflow-word] div -1 1
+PASS [overflow-word] div -1 2
+PASS [overflow-word] div -1 3
+PASS [overflow-word] div -1 9223372036854775806
+PASS [overflow-word] div -1 9223372036854775807
+PASS [overflow-word] div -1 4294967296
+PASS [overflow-word] div -1 -4294967296
+PASS [overflow-word] div 0 -9223372036854775808
+PASS [overflow-word] div 0 -9223372036854775807
+PASS [overflow-word] div 0 -3
+PASS [overflow-word] div 0 -1
+PASS [overflow-word] div 0 0
+PASS [overflow-word] div 0 1
+PASS [overflow-word] div 0 2
+PASS [overflow-word] div 0 3
+PASS [overflow-word] div 0 9223372036854775806
+PASS [overflow-word] div 0 9223372036854775807
+PASS [overflow-word] div 0 4294967296
+PASS [overflow-word] div 0 -4294967296
+PASS [overflow-word] div 1 -9223372036854775808
+PASS [overflow-word] div 1 -9223372036854775807
+PASS [overflow-word] div 1 -3
+PASS [overflow-word] div 1 -1
+PASS [overflow-word] div 1 0
+PASS [overflow-word] div 1 1
+PASS [overflow-word] div 1 2
+PASS [overflow-word] div 1 3
+PASS [overflow-word] div 1 9223372036854775806
+PASS [overflow-word] div 1 9223372036854775807
+PASS [overflow-word] div 1 4294967296
+PASS [overflow-word] div 1 -4294967296
+PASS [overflow-word] div 2 -9223372036854775808
+PASS [overflow-word] div 2 -9223372036854775807
+PASS [overflow-word] div 2 -3
+PASS [overflow-word] div 2 -1
+PASS [overflow-word] div 2 0
+PASS [overflow-word] div 2 1
+PASS [overflow-word] div 2 2
+PASS [overflow-word] div 2 3
+PASS [overflow-word] div 2 9223372036854775806
+PASS [overflow-word] div 2 9223372036854775807
+PASS [overflow-word] div 2 4294967296
+PASS [overflow-word] div 2 -4294967296
+PASS [overflow-word] div 3 -9223372036854775808
+PASS [overflow-word] div 3 -9223372036854775807
+PASS [overflow-word] div 3 -3
+PASS [overflow-word] div 3 -1
+PASS [overflow-word] div 3 0
+PASS [overflow-word] div 3 1
+PASS [overflow-word] div 3 2
+PASS [overflow-word] div 3 3
+PASS [overflow-word] div 3 9223372036854775806
+PASS [overflow-word] div 3 9223372036854775807
+PASS [overflow-word] div 3 4294967296
+PASS [overflow-word] div 3 -4294967296
+PASS [overflow-word] div 9223372036854775806 -9223372036854775808
+PASS [overflow-word] div 9223372036854775806 -9223372036854775807
+PASS [overflow-word] div 9223372036854775806 -3
+PASS [overflow-word] div 9223372036854775806 -1
+PASS [overflow-word] div 9223372036854775806 0
+PASS [overflow-word] div 9223372036854775806 1
+PASS [overflow-word] div 9223372036854775806 2
+PASS [overflow-word] div 9223372036854775806 3
+PASS [overflow-word] div 9223372036854775806 9223372036854775806
+PASS [overflow-word] div 9223372036854775806 9223372036854775807
+PASS [overflow-word] div 9223372036854775806 4294967296
+PASS [overflow-word] div 9223372036854775806 -4294967296
+PASS [overflow-word] div 9223372036854775807 -9223372036854775808
+PASS [overflow-word] div 9223372036854775807 -9223372036854775807
+PASS [overflow-word] div 9223372036854775807 -3
+PASS [overflow-word] div 9223372036854775807 -1
+PASS [overflow-word] div 9223372036854775807 0
+PASS [overflow-word] div 9223372036854775807 1
+PASS [overflow-word] div 9223372036854775807 2
+PASS [overflow-word] div 9223372036854775807 3
+PASS [overflow-word] div 9223372036854775807 9223372036854775806
+PASS [overflow-word] div 9223372036854775807 9223372036854775807
+PASS [overflow-word] div 9223372036854775807 4294967296
+PASS [overflow-word] div 9223372036854775807 -4294967296
+PASS [overflow-word] div 4294967296 -9223372036854775808
+PASS [overflow-word] div 4294967296 -9223372036854775807
+PASS [overflow-word] div 4294967296 -3
+PASS [overflow-word] div 4294967296 -1
+PASS [overflow-word] div 4294967296 0
+PASS [overflow-word] div 4294967296 1
+PASS [overflow-word] div 4294967296 2
+PASS [overflow-word] div 4294967296 3
+PASS [overflow-word] div 4294967296 9223372036854775806
+PASS [overflow-word] div 4294967296 9223372036854775807
+PASS [overflow-word] div 4294967296 4294967296
+PASS [overflow-word] div 4294967296 -4294967296
+PASS [overflow-word] div -4294967296 -9223372036854775808
+PASS [overflow-word] div -4294967296 -9223372036854775807
+PASS [overflow-word] div -4294967296 -3
+PASS [overflow-word] div -4294967296 -1
+PASS [overflow-word] div -4294967296 0
+PASS [overflow-word] div -4294967296 1
+PASS [overflow-word] div -4294967296 2
+PASS [overflow-word] div -4294967296 3
+PASS [overflow-word] div -4294967296 9223372036854775806
+PASS [overflow-word] div -4294967296 9223372036854775807
+PASS [overflow-word] div -4294967296 4294967296
+PASS [overflow-word] div -4294967296 -4294967296
+PASS [overflow-word] mod -9223372036854775808 -9223372036854775808
+PASS [overflow-word] mod -9223372036854775808 -9223372036854775807
+PASS [overflow-word] mod -9223372036854775808 -3
+PASS [overflow-word] mod -9223372036854775808 -1
+PASS [overflow-word] mod -9223372036854775808 0
+PASS [overflow-word] mod -9223372036854775808 1
+PASS [overflow-word] mod -9223372036854775808 2
+PASS [overflow-word] mod -9223372036854775808 3
+PASS [overflow-word] mod -9223372036854775808 9223372036854775806
+PASS [overflow-word] mod -9223372036854775808 9223372036854775807
+PASS [overflow-word] mod -9223372036854775808 4294967296
+PASS [overflow-word] mod -9223372036854775808 -4294967296
+PASS [overflow-word] mod -9223372036854775807 -9223372036854775808
+PASS [overflow-word] mod -9223372036854775807 -9223372036854775807
+PASS [overflow-word] mod -9223372036854775807 -3
+PASS [overflow-word] mod -9223372036854775807 -1
+PASS [overflow-word] mod -9223372036854775807 0
+PASS [overflow-word] mod -9223372036854775807 1
+PASS [overflow-word] mod -9223372036854775807 2
+PASS [overflow-word] mod -9223372036854775807 3
+PASS [overflow-word] mod -9223372036854775807 9223372036854775806
+PASS [overflow-word] mod -9223372036854775807 9223372036854775807
+PASS [overflow-word] mod -9223372036854775807 4294967296
+PASS [overflow-word] mod -9223372036854775807 -4294967296
+PASS [overflow-word] mod -3 -9223372036854775808
+PASS [overflow-word] mod -3 -9223372036854775807
+PASS [overflow-word] mod -3 -3
+PASS [overflow-word] mod -3 -1
+PASS [overflow-word] mod -3 0
+PASS [overflow-word] mod -3 1
+PASS [overflow-word] mod -3 2
+PASS [overflow-word] mod -3 3
+PASS [overflow-word] mod -3 9223372036854775806
+PASS [overflow-word] mod -3 9223372036854775807
+PASS [overflow-word] mod -3 4294967296
+PASS [overflow-word] mod -3 -4294967296
+PASS [overflow-word] mod -1 -9223372036854775808
+PASS [overflow-word] mod -1 -9223372036854775807
+PASS [overflow-word] mod -1 -3
+PASS [overflow-word] mod -1 -1
+PASS [overflow-word] mod -1 0
+PASS [overflow-word] mod -1 1
+PASS [overflow-word] mod -1 2
+PASS [overflow-word] mod -1 3
+PASS [overflow-word] mod -1 9223372036854775806
+PASS [overflow-word] mod -1 9223372036854775807
+PASS [overflow-word] mod -1 4294967296
+PASS [overflow-word] mod -1 -4294967296
+PASS [overflow-word] mod 0 -9223372036854775808
+PASS [overflow-word] mod 0 -9223372036854775807
+PASS [overflow-word] mod 0 -3
+PASS [overflow-word] mod 0 -1
+PASS [overflow-word] mod 0 0
+PASS [overflow-word] mod 0 1
+PASS [overflow-word] mod 0 2
+PASS [overflow-word] mod 0 3
+PASS [overflow-word] mod 0 9223372036854775806
+PASS [overflow-word] mod 0 9223372036854775807
+PASS [overflow-word] mod 0 4294967296
+PASS [overflow-word] mod 0 -4294967296
+PASS [overflow-word] mod 1 -9223372036854775808
+PASS [overflow-word] mod 1 -9223372036854775807
+PASS [overflow-word] mod 1 -3
+PASS [overflow-word] mod 1 -1
+PASS [overflow-word] mod 1 0
+PASS [overflow-word] mod 1 1
+PASS [overflow-word] mod 1 2
+PASS [overflow-word] mod 1 3
+PASS [overflow-word] mod 1 9223372036854775806
+PASS [overflow-word] mod 1 9223372036854775807
+PASS [overflow-word] mod 1 4294967296
+PASS [overflow-word] mod 1 -4294967296
+PASS [overflow-word] mod 2 -9223372036854775808
+PASS [overflow-word] mod 2 -9223372036854775807
+PASS [overflow-word] mod 2 -3
+PASS [overflow-word] mod 2 -1
+PASS [overflow-word] mod 2 0
+PASS [overflow-word] mod 2 1
+PASS [overflow-word] mod 2 2
+PASS [overflow-word] mod 2 3
+PASS [overflow-word] mod 2 9223372036854775806
+PASS [overflow-word] mod 2 9223372036854775807
+PASS [overflow-word] mod 2 4294967296
+PASS [overflow-word] mod 2 -4294967296
+PASS [overflow-word] mod 3 -9223372036854775808
+PASS [overflow-word] mod 3 -9223372036854775807
+PASS [overflow-word] mod 3 -3
+PASS [overflow-word] mod 3 -1
+PASS [overflow-word] mod 3 0
+PASS [overflow-word] mod 3 1
+PASS [overflow-word] mod 3 2
+PASS [overflow-word] mod 3 3
+PASS [overflow-word] mod 3 9223372036854775806
+PASS [overflow-word] mod 3 9223372036854775807
+PASS [overflow-word] mod 3 4294967296
+PASS [overflow-word] mod 3 -4294967296
+PASS [overflow-word] mod 9223372036854775806 -9223372036854775808
+PASS [overflow-word] mod 9223372036854775806 -9223372036854775807
+PASS [overflow-word] mod 9223372036854775806 -3
+PASS [overflow-word] mod 9223372036854775806 -1
+PASS [overflow-word] mod 9223372036854775806 0
+PASS [overflow-word] mod 9223372036854775806 1
+PASS [overflow-word] mod 9223372036854775806 2
+PASS [overflow-word] mod 9223372036854775806 3
+PASS [overflow-word] mod 9223372036854775806 9223372036854775806
+PASS [overflow-word] mod 9223372036854775806 9223372036854775807
+PASS [overflow-word] mod 9223372036854775806 4294967296
+PASS [overflow-word] mod 9223372036854775806 -4294967296
+PASS [overflow-word] mod 9223372036854775807 -9223372036854775808
+PASS [overflow-word] mod 9223372036854775807 -9223372036854775807
+PASS [overflow-word] mod 9223372036854775807 -3
+PASS [overflow-word] mod 9223372036854775807 -1
+PASS [overflow-word] mod 9223372036854775807 0
+PASS [overflow-word] mod 9223372036854775807 1
+PASS [overflow-word] mod 9223372036854775807 2
+PASS [overflow-word] mod 9223372036854775807 3
+PASS [overflow-word] mod 9223372036854775807 9223372036854775806
+PASS [overflow-word] mod 9223372036854775807 9223372036854775807
+PASS [overflow-word] mod 9223372036854775807 4294967296
+PASS [overflow-word] mod 9223372036854775807 -4294967296
+PASS [overflow-word] mod 4294967296 -9223372036854775808
+PASS [overflow-word] mod 4294967296 -9223372036854775807
+PASS [overflow-word] mod 4294967296 -3
+PASS [overflow-word] mod 4294967296 -1
+PASS [overflow-word] mod 4294967296 0
+PASS [overflow-word] mod 4294967296 1
+PASS [overflow-word] mod 4294967296 2
+PASS [overflow-word] mod 4294967296 3
+PASS [overflow-word] mod 4294967296 9223372036854775806
+PASS [overflow-word] mod 4294967296 9223372036854775807
+PASS [overflow-word] mod 4294967296 4294967296
+PASS [overflow-word] mod 4294967296 -4294967296
+PASS [overflow-word] mod -4294967296 -9223372036854775808
+PASS [overflow-word] mod -4294967296 -9223372036854775807
+PASS [overflow-word] mod -4294967296 -3
+PASS [overflow-word] mod -4294967296 -1
+PASS [overflow-word] mod -4294967296 0
+PASS [overflow-word] mod -4294967296 1
+PASS [overflow-word] mod -4294967296 2
+PASS [overflow-word] mod -4294967296 3
+PASS [overflow-word] mod -4294967296 9223372036854775806
+PASS [overflow-word] mod -4294967296 9223372036854775807
+PASS [overflow-word] mod -4294967296 4294967296
+PASS [overflow-word] mod -4294967296 -4294967296
+PASS [overflow-word] shl/shr 1 0
+PASS [overflow-word] shl/shr 1 1
+PASS [overflow-word] shl/shr 1 62
+PASS [overflow-word] shl/shr 1 63
+PASS [overflow-word] shl/shr -1 0
+PASS [overflow-word] shl/shr -1 1
+PASS [overflow-word] shl/shr -1 62
+PASS [overflow-word] shl/shr -1 63
+PASS [overflow-word] shl/shr 7 0
+PASS [overflow-word] shl/shr 7 1
+PASS [overflow-word] shl/shr 7 62
+PASS [overflow-word] shl/shr 7 63
+PASS [overflow-word] shl/shr -9223372036854775808 0
+PASS [overflow-word] shl/shr -9223372036854775808 1
+PASS [overflow-word] shl/shr -9223372036854775808 62
+PASS [overflow-word] shl/shr -9223372036854775808 63
+PASS [overflow-word] shl/shr 9223372036854775807 0
+PASS [overflow-word] shl/shr 9223372036854775807 1
+PASS [overflow-word] shl/shr 9223372036854775807 62
+PASS [overflow-word] shl/shr 9223372036854775807 63
+PASS [overflow-rational] 9223372036854775807,9223372036854775807
+PASS [overflow-rational] 9223372036854775807,-9223372036854775808
+PASS [overflow-rational] 9223372036854775807,1/3
+PASS [overflow-rational] 9223372036854775807,-22/7
+PASS [overflow-rational] 9223372036854775807,-9223372036854775807/9223372036854775808
+PASS [overflow-rational] 9223372036854775807,1000000000000000000000000000001/3
+PASS [overflow-rational] -9223372036854775808,9223372036854775807
+PASS [overflow-rational] -9223372036854775808,-9223372036854775808
+PASS [overflow-rational] -9223372036854775808,1/3
+PASS [overflow-rational] -9223372036854775808,-22/7
+PASS [overflow-rational] -9223372036854775808,-9223372036854775807/9223372036854775808
+PASS [overflow-rational] -9223372036854775808,1000000000000000000000000000001/3
+PASS [overflow-rational] 1/3,9223372036854775807
+PASS [overflow-rational] 1/3,-9223372036854775808
+PASS [overflow-rational] 1/3,1/3
+PASS [overflow-rational] 1/3,-22/7
+PASS [overflow-rational] 1/3,-9223372036854775807/9223372036854775808
+PASS [overflow-rational] 1/3,1000000000000000000000000000001/3
+PASS [overflow-rational] -22/7,9223372036854775807
+PASS [overflow-rational] -22/7,-9223372036854775808
+PASS [overflow-rational] -22/7,1/3
+PASS [overflow-rational] -22/7,-22/7
+PASS [overflow-rational] -22/7,-9223372036854775807/9223372036854775808
+PASS [overflow-rational] -22/7,1000000000000000000000000000001/3
+PASS [overflow-rational] -9223372036854775807/9223372036854775808,9223372036854775807
+PASS [overflow-rational] -9223372036854775807/9223372036854775808,-9223372036854775808
+PASS [overflow-rational] -9223372036854775807/9223372036854775808,1/3
+PASS [overflow-rational] -9223372036854775807/9223372036854775808,-22/7
+PASS [overflow-rational] -9223372036854775807/9223372036854775808,-9223372036854775807/9223372036854775808
+PASS [overflow-rational] -9223372036854775807/9223372036854775808,1000000000000000000000000000001/3
+PASS [overflow-rational] 1000000000000000000000000000001/3,9223372036854775807
+PASS [overflow-rational] 1000000000000000000000000000001/3,-9223372036854775808
+PASS [overflow-rational] 1000000000000000000000000000001/3,1/3
+PASS [overflow-rational] 1000000000000000000000000000001/3,-22/7
+PASS [overflow-rational] 1000000000000000000000000000001/3,-9223372036854775807/9223372036854775808
+PASS [overflow-rational] 1000000000000000000000000000001/3,1000000000000000000000000000001/3
+PASS [overflow-rational] det boundary 2x2
+PASS [overflow-rational] power 9223372036854775807^2
+PASS [overflow-rational] power 9223372036854775807^3
+PASS [overflow-rational] power 9223372036854775807^5
+PASS [strx-top-vs-nested] library bytes identical
+PASS [strx-bytes] 1 pad-left (b'', -1, b'')
+PASS [strx-top-vs-nested] 1 pad-left
+PASS [strx-bytes] 2 pad-right (b'', -1, b'')
+PASS [strx-top-vs-nested] 2 pad-right
+PASS [strx-bytes] 3 pad-left (b'', -1, b'\x00')
+PASS [strx-top-vs-nested] 3 pad-left
+PASS [strx-bytes] 4 pad-right (b'', -1, b'\x00')
+PASS [strx-top-vs-nested] 4 pad-right
+PASS [strx-bytes] 5 pad-left (b'', -1, b'x\x00')
+PASS [strx-top-vs-nested] 5 pad-left
+PASS [strx-bytes] 6 pad-right (b'', -1, b'x\x00')
+PASS [strx-top-vs-nested] 6 pad-right
+PASS [strx-bytes] 7 pad-left (b'', 0, b'')
+PASS [strx-top-vs-nested] 7 pad-left
+PASS [strx-bytes] 8 pad-right (b'', 0, b'')
+PASS [strx-top-vs-nested] 8 pad-right
+PASS [strx-bytes] 9 pad-left (b'', 0, b'\x00')
+PASS [strx-top-vs-nested] 9 pad-left
+PASS [strx-bytes] 10 pad-right (b'', 0, b'\x00')
+PASS [strx-top-vs-nested] 10 pad-right
+PASS [strx-bytes] 11 pad-left (b'', 0, b'x\x00')
+PASS [strx-top-vs-nested] 11 pad-left
+PASS [strx-bytes] 12 pad-right (b'', 0, b'x\x00')
+PASS [strx-top-vs-nested] 12 pad-right
+PASS [strx-bytes] 13 pad-left (b'', 3, b'')
+PASS [strx-top-vs-nested] 13 pad-left
+PASS [strx-bytes] 14 pad-right (b'', 3, b'')
+PASS [strx-top-vs-nested] 14 pad-right
+PASS [strx-bytes] 15 pad-left (b'', 3, b'\x00')
+PASS [strx-top-vs-nested] 15 pad-left
+PASS [strx-bytes] 16 pad-right (b'', 3, b'\x00')
+PASS [strx-top-vs-nested] 16 pad-right
+PASS [strx-bytes] 17 pad-left (b'', 3, b'x\x00')
+PASS [strx-top-vs-nested] 17 pad-left
+PASS [strx-bytes] 18 pad-right (b'', 3, b'x\x00')
+PASS [strx-top-vs-nested] 18 pad-right
+PASS [strx-bytes] 19 pad-left (b'', 6, b'')
+PASS [strx-top-vs-nested] 19 pad-left
+PASS [strx-bytes] 20 pad-right (b'', 6, b'')
+PASS [strx-top-vs-nested] 20 pad-right
+PASS [strx-bytes] 21 pad-left (b'', 6, b'\x00')
+PASS [strx-top-vs-nested] 21 pad-left
+PASS [strx-bytes] 22 pad-right (b'', 6, b'\x00')
+PASS [strx-top-vs-nested] 22 pad-right
+PASS [strx-bytes] 23 pad-left (b'', 6, b'x\x00')
+PASS [strx-top-vs-nested] 23 pad-left
+PASS [strx-bytes] 24 pad-right (b'', 6, b'x\x00')
+PASS [strx-top-vs-nested] 24 pad-right
+PASS [strx-bytes] 25 pad-left (b'a', -1, b'')
+PASS [strx-top-vs-nested] 25 pad-left
+PASS [strx-bytes] 26 pad-right (b'a', -1, b'')
+PASS [strx-top-vs-nested] 26 pad-right
+PASS [strx-bytes] 27 pad-left (b'a', -1, b'\x00')
+PASS [strx-top-vs-nested] 27 pad-left
+PASS [strx-bytes] 28 pad-right (b'a', -1, b'\x00')
+PASS [strx-top-vs-nested] 28 pad-right
+PASS [strx-bytes] 29 pad-left (b'a', -1, b'x\x00')
+PASS [strx-top-vs-nested] 29 pad-left
+PASS [strx-bytes] 30 pad-right (b'a', -1, b'x\x00')
+PASS [strx-top-vs-nested] 30 pad-right
+PASS [strx-bytes] 31 pad-left (b'a', 0, b'')
+PASS [strx-top-vs-nested] 31 pad-left
+PASS [strx-bytes] 32 pad-right (b'a', 0, b'')
+PASS [strx-top-vs-nested] 32 pad-right
+PASS [strx-bytes] 33 pad-left (b'a', 0, b'\x00')
+PASS [strx-top-vs-nested] 33 pad-left
+PASS [strx-bytes] 34 pad-right (b'a', 0, b'\x00')
+PASS [strx-top-vs-nested] 34 pad-right
+PASS [strx-bytes] 35 pad-left (b'a', 0, b'x\x00')
+PASS [strx-top-vs-nested] 35 pad-left
+PASS [strx-bytes] 36 pad-right (b'a', 0, b'x\x00')
+PASS [strx-top-vs-nested] 36 pad-right
+PASS [strx-bytes] 37 pad-left (b'a', 3, b'')
+PASS [strx-top-vs-nested] 37 pad-left
+PASS [strx-bytes] 38 pad-right (b'a', 3, b'')
+PASS [strx-top-vs-nested] 38 pad-right
+PASS [strx-bytes] 39 pad-left (b'a', 3, b'\x00')
+PASS [strx-top-vs-nested] 39 pad-left
+PASS [strx-bytes] 40 pad-right (b'a', 3, b'\x00')
+PASS [strx-top-vs-nested] 40 pad-right
+PASS [strx-bytes] 41 pad-left (b'a', 3, b'x\x00')
+PASS [strx-top-vs-nested] 41 pad-left
+PASS [strx-bytes] 42 pad-right (b'a', 3, b'x\x00')
+PASS [strx-top-vs-nested] 42 pad-right
+PASS [strx-bytes] 43 pad-left (b'a', 6, b'')
+PASS [strx-top-vs-nested] 43 pad-left
+PASS [strx-bytes] 44 pad-right (b'a', 6, b'')
+PASS [strx-top-vs-nested] 44 pad-right
+PASS [strx-bytes] 45 pad-left (b'a', 6, b'\x00')
+PASS [strx-top-vs-nested] 45 pad-left
+PASS [strx-bytes] 46 pad-right (b'a', 6, b'\x00')
+PASS [strx-top-vs-nested] 46 pad-right
+PASS [strx-bytes] 47 pad-left (b'a', 6, b'x\x00')
+PASS [strx-top-vs-nested] 47 pad-left
+PASS [strx-bytes] 48 pad-right (b'a', 6, b'x\x00')
+PASS [strx-top-vs-nested] 48 pad-right
+PASS [strx-bytes] 49 pad-left (b'\x00', -1, b'')
+PASS [strx-top-vs-nested] 49 pad-left
+PASS [strx-bytes] 50 pad-right (b'\x00', -1, b'')
+PASS [strx-top-vs-nested] 50 pad-right
+PASS [strx-bytes] 51 pad-left (b'\x00', -1, b'\x00')
+PASS [strx-top-vs-nested] 51 pad-left
+PASS [strx-bytes] 52 pad-right (b'\x00', -1, b'\x00')
+PASS [strx-top-vs-nested] 52 pad-right
+PASS [strx-bytes] 53 pad-left (b'\x00', -1, b'x\x00')
+PASS [strx-top-vs-nested] 53 pad-left
+PASS [strx-bytes] 54 pad-right (b'\x00', -1, b'x\x00')
+PASS [strx-top-vs-nested] 54 pad-right
+PASS [strx-bytes] 55 pad-left (b'\x00', 0, b'')
+PASS [strx-top-vs-nested] 55 pad-left
+PASS [strx-bytes] 56 pad-right (b'\x00', 0, b'')
+PASS [strx-top-vs-nested] 56 pad-right
+PASS [strx-bytes] 57 pad-left (b'\x00', 0, b'\x00')
+PASS [strx-top-vs-nested] 57 pad-left
+PASS [strx-bytes] 58 pad-right (b'\x00', 0, b'\x00')
+PASS [strx-top-vs-nested] 58 pad-right
+PASS [strx-bytes] 59 pad-left (b'\x00', 0, b'x\x00')
+PASS [strx-top-vs-nested] 59 pad-left
+PASS [strx-bytes] 60 pad-right (b'\x00', 0, b'x\x00')
+PASS [strx-top-vs-nested] 60 pad-right
+PASS [strx-bytes] 61 pad-left (b'\x00', 3, b'')
+PASS [strx-top-vs-nested] 61 pad-left
+PASS [strx-bytes] 62 pad-right (b'\x00', 3, b'')
+PASS [strx-top-vs-nested] 62 pad-right
+PASS [strx-bytes] 63 pad-left (b'\x00', 3, b'\x00')
+PASS [strx-top-vs-nested] 63 pad-left
+PASS [strx-bytes] 64 pad-right (b'\x00', 3, b'\x00')
+PASS [strx-top-vs-nested] 64 pad-right
+PASS [strx-bytes] 65 pad-left (b'\x00', 3, b'x\x00')
+PASS [strx-top-vs-nested] 65 pad-left
+PASS [strx-bytes] 66 pad-right (b'\x00', 3, b'x\x00')
+PASS [strx-top-vs-nested] 66 pad-right
+PASS [strx-bytes] 67 pad-left (b'\x00', 6, b'')
+PASS [strx-top-vs-nested] 67 pad-left
+PASS [strx-bytes] 68 pad-right (b'\x00', 6, b'')
+PASS [strx-top-vs-nested] 68 pad-right
+PASS [strx-bytes] 69 pad-left (b'\x00', 6, b'\x00')
+PASS [strx-top-vs-nested] 69 pad-left
+PASS [strx-bytes] 70 pad-right (b'\x00', 6, b'\x00')
+PASS [strx-top-vs-nested] 70 pad-right
+PASS [strx-bytes] 71 pad-left (b'\x00', 6, b'x\x00')
+PASS [strx-top-vs-nested] 71 pad-left
+PASS [strx-bytes] 72 pad-right (b'\x00', 6, b'x\x00')
+PASS [strx-top-vs-nested] 72 pad-right
+PASS [strx-bytes] 73 pad-left (b'\x00\x00', -1, b'')
+PASS [strx-top-vs-nested] 73 pad-left
+PASS [strx-bytes] 74 pad-right (b'\x00\x00', -1, b'')
+PASS [strx-top-vs-nested] 74 pad-right
+PASS [strx-bytes] 75 pad-left (b'\x00\x00', -1, b'\x00')
+PASS [strx-top-vs-nested] 75 pad-left
+PASS [strx-bytes] 76 pad-right (b'\x00\x00', -1, b'\x00')
+PASS [strx-top-vs-nested] 76 pad-right
+PASS [strx-bytes] 77 pad-left (b'\x00\x00', -1, b'x\x00')
+PASS [strx-top-vs-nested] 77 pad-left
+PASS [strx-bytes] 78 pad-right (b'\x00\x00', -1, b'x\x00')
+PASS [strx-top-vs-nested] 78 pad-right
+PASS [strx-bytes] 79 pad-left (b'\x00\x00', 0, b'')
+PASS [strx-top-vs-nested] 79 pad-left
+PASS [strx-bytes] 80 pad-right (b'\x00\x00', 0, b'')
+PASS [strx-top-vs-nested] 80 pad-right
+PASS [strx-bytes] 81 pad-left (b'\x00\x00', 0, b'\x00')
+PASS [strx-top-vs-nested] 81 pad-left
+PASS [strx-bytes] 82 pad-right (b'\x00\x00', 0, b'\x00')
+PASS [strx-top-vs-nested] 82 pad-right
+PASS [strx-bytes] 83 pad-left (b'\x00\x00', 0, b'x\x00')
+PASS [strx-top-vs-nested] 83 pad-left
+PASS [strx-bytes] 84 pad-right (b'\x00\x00', 0, b'x\x00')
+PASS [strx-top-vs-nested] 84 pad-right
+PASS [strx-bytes] 85 pad-left (b'\x00\x00', 3, b'')
+PASS [strx-top-vs-nested] 85 pad-left
+PASS [strx-bytes] 86 pad-right (b'\x00\x00', 3, b'')
+PASS [strx-top-vs-nested] 86 pad-right
+PASS [strx-bytes] 87 pad-left (b'\x00\x00', 3, b'\x00')
+PASS [strx-top-vs-nested] 87 pad-left
+PASS [strx-bytes] 88 pad-right (b'\x00\x00', 3, b'\x00')
+PASS [strx-top-vs-nested] 88 pad-right
+PASS [strx-bytes] 89 pad-left (b'\x00\x00', 3, b'x\x00')
+PASS [strx-top-vs-nested] 89 pad-left
+PASS [strx-bytes] 90 pad-right (b'\x00\x00', 3, b'x\x00')
+PASS [strx-top-vs-nested] 90 pad-right
+PASS [strx-bytes] 91 pad-left (b'\x00\x00', 6, b'')
+PASS [strx-top-vs-nested] 91 pad-left
+PASS [strx-bytes] 92 pad-right (b'\x00\x00', 6, b'')
+PASS [strx-top-vs-nested] 92 pad-right
+PASS [strx-bytes] 93 pad-left (b'\x00\x00', 6, b'\x00')
+PASS [strx-top-vs-nested] 93 pad-left
+PASS [strx-bytes] 94 pad-right (b'\x00\x00', 6, b'\x00')
+PASS [strx-top-vs-nested] 94 pad-right
+PASS [strx-bytes] 95 pad-left (b'\x00\x00', 6, b'x\x00')
+PASS [strx-top-vs-nested] 95 pad-left
+PASS [strx-bytes] 96 pad-right (b'\x00\x00', 6, b'x\x00')
+PASS [strx-top-vs-nested] 96 pad-right
+PASS [strx-bytes] 97 pad-left (b'a\x00b', -1, b'')
+PASS [strx-top-vs-nested] 97 pad-left
+PASS [strx-bytes] 98 pad-right (b'a\x00b', -1, b'')
+PASS [strx-top-vs-nested] 98 pad-right
+PASS [strx-bytes] 99 pad-left (b'a\x00b', -1, b'\x00')
+PASS [strx-top-vs-nested] 99 pad-left
+PASS [strx-bytes] 100 pad-right (b'a\x00b', -1, b'\x00')
+PASS [strx-top-vs-nested] 100 pad-right
+PASS [strx-bytes] 101 pad-left (b'a\x00b', -1, b'x\x00')
+PASS [strx-top-vs-nested] 101 pad-left
+PASS [strx-bytes] 102 pad-right (b'a\x00b', -1, b'x\x00')
+PASS [strx-top-vs-nested] 102 pad-right
+PASS [strx-bytes] 103 pad-left (b'a\x00b', 0, b'')
+PASS [strx-top-vs-nested] 103 pad-left
+PASS [strx-bytes] 104 pad-right (b'a\x00b', 0, b'')
+PASS [strx-top-vs-nested] 104 pad-right
+PASS [strx-bytes] 105 pad-left (b'a\x00b', 0, b'\x00')
+PASS [strx-top-vs-nested] 105 pad-left
+PASS [strx-bytes] 106 pad-right (b'a\x00b', 0, b'\x00')
+PASS [strx-top-vs-nested] 106 pad-right
+PASS [strx-bytes] 107 pad-left (b'a\x00b', 0, b'x\x00')
+PASS [strx-top-vs-nested] 107 pad-left
+PASS [strx-bytes] 108 pad-right (b'a\x00b', 0, b'x\x00')
+PASS [strx-top-vs-nested] 108 pad-right
+PASS [strx-bytes] 109 pad-left (b'a\x00b', 3, b'')
+PASS [strx-top-vs-nested] 109 pad-left
+PASS [strx-bytes] 110 pad-right (b'a\x00b', 3, b'')
+PASS [strx-top-vs-nested] 110 pad-right
+PASS [strx-bytes] 111 pad-left (b'a\x00b', 3, b'\x00')
+PASS [strx-top-vs-nested] 111 pad-left
+PASS [strx-bytes] 112 pad-right (b'a\x00b', 3, b'\x00')
+PASS [strx-top-vs-nested] 112 pad-right
+PASS [strx-bytes] 113 pad-left (b'a\x00b', 3, b'x\x00')
+PASS [strx-top-vs-nested] 113 pad-left
+PASS [strx-bytes] 114 pad-right (b'a\x00b', 3, b'x\x00')
+PASS [strx-top-vs-nested] 114 pad-right
+PASS [strx-bytes] 115 pad-left (b'a\x00b', 6, b'')
+PASS [strx-top-vs-nested] 115 pad-left
+PASS [strx-bytes] 116 pad-right (b'a\x00b', 6, b'')
+PASS [strx-top-vs-nested] 116 pad-right
+PASS [strx-bytes] 117 pad-left (b'a\x00b', 6, b'\x00')
+PASS [strx-top-vs-nested] 117 pad-left
+PASS [strx-bytes] 118 pad-right (b'a\x00b', 6, b'\x00')
+PASS [strx-top-vs-nested] 118 pad-right
+PASS [strx-bytes] 119 pad-left (b'a\x00b', 6, b'x\x00')
+PASS [strx-top-vs-nested] 119 pad-left
+PASS [strx-bytes] 120 pad-right (b'a\x00b', 6, b'x\x00')
+PASS [strx-top-vs-nested] 120 pad-right
+PASS [strx-bytes] 121 pad-left (b'\x00ab\x00', -1, b'')
+PASS [strx-top-vs-nested] 121 pad-left
+PASS [strx-bytes] 122 pad-right (b'\x00ab\x00', -1, b'')
+PASS [strx-top-vs-nested] 122 pad-right
+PASS [strx-bytes] 123 pad-left (b'\x00ab\x00', -1, b'\x00')
+PASS [strx-top-vs-nested] 123 pad-left
+PASS [strx-bytes] 124 pad-right (b'\x00ab\x00', -1, b'\x00')
+PASS [strx-top-vs-nested] 124 pad-right
+PASS [strx-bytes] 125 pad-left (b'\x00ab\x00', -1, b'x\x00')
+PASS [strx-top-vs-nested] 125 pad-left
+PASS [strx-bytes] 126 pad-right (b'\x00ab\x00', -1, b'x\x00')
+PASS [strx-top-vs-nested] 126 pad-right
+PASS [strx-bytes] 127 pad-left (b'\x00ab\x00', 0, b'')
+PASS [strx-top-vs-nested] 127 pad-left
+PASS [strx-bytes] 128 pad-right (b'\x00ab\x00', 0, b'')
+PASS [strx-top-vs-nested] 128 pad-right
+PASS [strx-bytes] 129 pad-left (b'\x00ab\x00', 0, b'\x00')
+PASS [strx-top-vs-nested] 129 pad-left
+PASS [strx-bytes] 130 pad-right (b'\x00ab\x00', 0, b'\x00')
+PASS [strx-top-vs-nested] 130 pad-right
+PASS [strx-bytes] 131 pad-left (b'\x00ab\x00', 0, b'x\x00')
+PASS [strx-top-vs-nested] 131 pad-left
+PASS [strx-bytes] 132 pad-right (b'\x00ab\x00', 0, b'x\x00')
+PASS [strx-top-vs-nested] 132 pad-right
+PASS [strx-bytes] 133 pad-left (b'\x00ab\x00', 3, b'')
+PASS [strx-top-vs-nested] 133 pad-left
+PASS [strx-bytes] 134 pad-right (b'\x00ab\x00', 3, b'')
+PASS [strx-top-vs-nested] 134 pad-right
+PASS [strx-bytes] 135 pad-left (b'\x00ab\x00', 3, b'\x00')
+PASS [strx-top-vs-nested] 135 pad-left
+PASS [strx-bytes] 136 pad-right (b'\x00ab\x00', 3, b'\x00')
+PASS [strx-top-vs-nested] 136 pad-right
+PASS [strx-bytes] 137 pad-left (b'\x00ab\x00', 3, b'x\x00')
+PASS [strx-top-vs-nested] 137 pad-left
+PASS [strx-bytes] 138 pad-right (b'\x00ab\x00', 3, b'x\x00')
+PASS [strx-top-vs-nested] 138 pad-right
+PASS [strx-bytes] 139 pad-left (b'\x00ab\x00', 6, b'')
+PASS [strx-top-vs-nested] 139 pad-left
+PASS [strx-bytes] 140 pad-right (b'\x00ab\x00', 6, b'')
+PASS [strx-top-vs-nested] 140 pad-right
+PASS [strx-bytes] 141 pad-left (b'\x00ab\x00', 6, b'\x00')
+PASS [strx-top-vs-nested] 141 pad-left
+PASS [strx-bytes] 142 pad-right (b'\x00ab\x00', 6, b'\x00')
+PASS [strx-top-vs-nested] 142 pad-right
+PASS [strx-bytes] 143 pad-left (b'\x00ab\x00', 6, b'x\x00')
+PASS [strx-top-vs-nested] 143 pad-left
+PASS [strx-bytes] 144 pad-right (b'\x00ab\x00', 6, b'x\x00')
+PASS [strx-top-vs-nested] 144 pad-right
+PASS [strx-bytes] 145 pad-left (b'\xff\x00\xfe', -1, b'')
+PASS [strx-top-vs-nested] 145 pad-left
+PASS [strx-bytes] 146 pad-right (b'\xff\x00\xfe', -1, b'')
+PASS [strx-top-vs-nested] 146 pad-right
+PASS [strx-bytes] 147 pad-left (b'\xff\x00\xfe', -1, b'\x00')
+PASS [strx-top-vs-nested] 147 pad-left
+PASS [strx-bytes] 148 pad-right (b'\xff\x00\xfe', -1, b'\x00')
+PASS [strx-top-vs-nested] 148 pad-right
+PASS [strx-bytes] 149 pad-left (b'\xff\x00\xfe', -1, b'x\x00')
+PASS [strx-top-vs-nested] 149 pad-left
+PASS [strx-bytes] 150 pad-right (b'\xff\x00\xfe', -1, b'x\x00')
+PASS [strx-top-vs-nested] 150 pad-right
+PASS [strx-bytes] 151 pad-left (b'\xff\x00\xfe', 0, b'')
+PASS [strx-top-vs-nested] 151 pad-left
+PASS [strx-bytes] 152 pad-right (b'\xff\x00\xfe', 0, b'')
+PASS [strx-top-vs-nested] 152 pad-right
+PASS [strx-bytes] 153 pad-left (b'\xff\x00\xfe', 0, b'\x00')
+PASS [strx-top-vs-nested] 153 pad-left
+PASS [strx-bytes] 154 pad-right (b'\xff\x00\xfe', 0, b'\x00')
+PASS [strx-top-vs-nested] 154 pad-right
+PASS [strx-bytes] 155 pad-left (b'\xff\x00\xfe', 0, b'x\x00')
+PASS [strx-top-vs-nested] 155 pad-left
+PASS [strx-bytes] 156 pad-right (b'\xff\x00\xfe', 0, b'x\x00')
+PASS [strx-top-vs-nested] 156 pad-right
+PASS [strx-bytes] 157 pad-left (b'\xff\x00\xfe', 3, b'')
+PASS [strx-top-vs-nested] 157 pad-left
+PASS [strx-bytes] 158 pad-right (b'\xff\x00\xfe', 3, b'')
+PASS [strx-top-vs-nested] 158 pad-right
+PASS [strx-bytes] 159 pad-left (b'\xff\x00\xfe', 3, b'\x00')
+PASS [strx-top-vs-nested] 159 pad-left
+PASS [strx-bytes] 160 pad-right (b'\xff\x00\xfe', 3, b'\x00')
+PASS [strx-top-vs-nested] 160 pad-right
+PASS [strx-bytes] 161 pad-left (b'\xff\x00\xfe', 3, b'x\x00')
+PASS [strx-top-vs-nested] 161 pad-left
+PASS [strx-bytes] 162 pad-right (b'\xff\x00\xfe', 3, b'x\x00')
+PASS [strx-top-vs-nested] 162 pad-right
+PASS [strx-bytes] 163 pad-left (b'\xff\x00\xfe', 6, b'')
+PASS [strx-top-vs-nested] 163 pad-left
+PASS [strx-bytes] 164 pad-right (b'\xff\x00\xfe', 6, b'')
+PASS [strx-top-vs-nested] 164 pad-right
+PASS [strx-bytes] 165 pad-left (b'\xff\x00\xfe', 6, b'\x00')
+PASS [strx-top-vs-nested] 165 pad-left
+PASS [strx-bytes] 166 pad-right (b'\xff\x00\xfe', 6, b'\x00')
+PASS [strx-top-vs-nested] 166 pad-right
+PASS [strx-bytes] 167 pad-left (b'\xff\x00\xfe', 6, b'x\x00')
+PASS [strx-top-vs-nested] 167 pad-left
+PASS [strx-bytes] 168 pad-right (b'\xff\x00\xfe', 6, b'x\x00')
+PASS [strx-top-vs-nested] 168 pad-right
+PASS [strx-bytes] 169 pad-left (b'\xce\xbb\x00', -1, b'')
+PASS [strx-top-vs-nested] 169 pad-left
+PASS [strx-bytes] 170 pad-right (b'\xce\xbb\x00', -1, b'')
+PASS [strx-top-vs-nested] 170 pad-right
+PASS [strx-bytes] 171 pad-left (b'\xce\xbb\x00', -1, b'\x00')
+PASS [strx-top-vs-nested] 171 pad-left
+PASS [strx-bytes] 172 pad-right (b'\xce\xbb\x00', -1, b'\x00')
+PASS [strx-top-vs-nested] 172 pad-right
+PASS [strx-bytes] 173 pad-left (b'\xce\xbb\x00', -1, b'x\x00')
+PASS [strx-top-vs-nested] 173 pad-left
+PASS [strx-bytes] 174 pad-right (b'\xce\xbb\x00', -1, b'x\x00')
+PASS [strx-top-vs-nested] 174 pad-right
+PASS [strx-bytes] 175 pad-left (b'\xce\xbb\x00', 0, b'')
+PASS [strx-top-vs-nested] 175 pad-left
+PASS [strx-bytes] 176 pad-right (b'\xce\xbb\x00', 0, b'')
+PASS [strx-top-vs-nested] 176 pad-right
+PASS [strx-bytes] 177 pad-left (b'\xce\xbb\x00', 0, b'\x00')
+PASS [strx-top-vs-nested] 177 pad-left
+PASS [strx-bytes] 178 pad-right (b'\xce\xbb\x00', 0, b'\x00')
+PASS [strx-top-vs-nested] 178 pad-right
+PASS [strx-bytes] 179 pad-left (b'\xce\xbb\x00', 0, b'x\x00')
+PASS [strx-top-vs-nested] 179 pad-left
+PASS [strx-bytes] 180 pad-right (b'\xce\xbb\x00', 0, b'x\x00')
+PASS [strx-top-vs-nested] 180 pad-right
+PASS [strx-bytes] 181 pad-left (b'\xce\xbb\x00', 3, b'')
+PASS [strx-top-vs-nested] 181 pad-left
+PASS [strx-bytes] 182 pad-right (b'\xce\xbb\x00', 3, b'')
+PASS [strx-top-vs-nested] 182 pad-right
+PASS [strx-bytes] 183 pad-left (b'\xce\xbb\x00', 3, b'\x00')
+PASS [strx-top-vs-nested] 183 pad-left
+PASS [strx-bytes] 184 pad-right (b'\xce\xbb\x00', 3, b'\x00')
+PASS [strx-top-vs-nested] 184 pad-right
+PASS [strx-bytes] 185 pad-left (b'\xce\xbb\x00', 3, b'x\x00')
+PASS [strx-top-vs-nested] 185 pad-left
+PASS [strx-bytes] 186 pad-right (b'\xce\xbb\x00', 3, b'x\x00')
+PASS [strx-top-vs-nested] 186 pad-right
+PASS [strx-bytes] 187 pad-left (b'\xce\xbb\x00', 6, b'')
+PASS [strx-top-vs-nested] 187 pad-left
+PASS [strx-bytes] 188 pad-right (b'\xce\xbb\x00', 6, b'')
+PASS [strx-top-vs-nested] 188 pad-right
+PASS [strx-bytes] 189 pad-left (b'\xce\xbb\x00', 6, b'\x00')
+PASS [strx-top-vs-nested] 189 pad-left
+PASS [strx-bytes] 190 pad-right (b'\xce\xbb\x00', 6, b'\x00')
+PASS [strx-top-vs-nested] 190 pad-right
+PASS [strx-bytes] 191 pad-left (b'\xce\xbb\x00', 6, b'x\x00')
+PASS [strx-top-vs-nested] 191 pad-left
+PASS [strx-bytes] 192 pad-right (b'\xce\xbb\x00', 6, b'x\x00')
+PASS [strx-top-vs-nested] 192 pad-right
+PASS [strx-bytes] 193 pad-left (b' \x00 ', -1, b'')
+PASS [strx-top-vs-nested] 193 pad-left
+PASS [strx-bytes] 194 pad-right (b' \x00 ', -1, b'')
+PASS [strx-top-vs-nested] 194 pad-right
+PASS [strx-bytes] 195 pad-left (b' \x00 ', -1, b'\x00')
+PASS [strx-top-vs-nested] 195 pad-left
+PASS [strx-bytes] 196 pad-right (b' \x00 ', -1, b'\x00')
+PASS [strx-top-vs-nested] 196 pad-right
+PASS [strx-bytes] 197 pad-left (b' \x00 ', -1, b'x\x00')
+PASS [strx-top-vs-nested] 197 pad-left
+PASS [strx-bytes] 198 pad-right (b' \x00 ', -1, b'x\x00')
+PASS [strx-top-vs-nested] 198 pad-right
+PASS [strx-bytes] 199 pad-left (b' \x00 ', 0, b'')
+PASS [strx-top-vs-nested] 199 pad-left
+PASS [strx-bytes] 200 pad-right (b' \x00 ', 0, b'')
+PASS [strx-top-vs-nested] 200 pad-right
+PASS [strx-bytes] 201 pad-left (b' \x00 ', 0, b'\x00')
+PASS [strx-top-vs-nested] 201 pad-left
+PASS [strx-bytes] 202 pad-right (b' \x00 ', 0, b'\x00')
+PASS [strx-top-vs-nested] 202 pad-right
+PASS [strx-bytes] 203 pad-left (b' \x00 ', 0, b'x\x00')
+PASS [strx-top-vs-nested] 203 pad-left
+PASS [strx-bytes] 204 pad-right (b' \x00 ', 0, b'x\x00')
+PASS [strx-top-vs-nested] 204 pad-right
+PASS [strx-bytes] 205 pad-left (b' \x00 ', 3, b'')
+PASS [strx-top-vs-nested] 205 pad-left
+PASS [strx-bytes] 206 pad-right (b' \x00 ', 3, b'')
+PASS [strx-top-vs-nested] 206 pad-right
+PASS [strx-bytes] 207 pad-left (b' \x00 ', 3, b'\x00')
+PASS [strx-top-vs-nested] 207 pad-left
+PASS [strx-bytes] 208 pad-right (b' \x00 ', 3, b'\x00')
+PASS [strx-top-vs-nested] 208 pad-right
+PASS [strx-bytes] 209 pad-left (b' \x00 ', 3, b'x\x00')
+PASS [strx-top-vs-nested] 209 pad-left
+PASS [strx-bytes] 210 pad-right (b' \x00 ', 3, b'x\x00')
+PASS [strx-top-vs-nested] 210 pad-right
+PASS [strx-bytes] 211 pad-left (b' \x00 ', 6, b'')
+PASS [strx-top-vs-nested] 211 pad-left
+PASS [strx-bytes] 212 pad-right (b' \x00 ', 6, b'')
+PASS [strx-top-vs-nested] 212 pad-right
+PASS [strx-bytes] 213 pad-left (b' \x00 ', 6, b'\x00')
+PASS [strx-top-vs-nested] 213 pad-left
+PASS [strx-bytes] 214 pad-right (b' \x00 ', 6, b'\x00')
+PASS [strx-top-vs-nested] 214 pad-right
+PASS [strx-bytes] 215 pad-left (b' \x00 ', 6, b'x\x00')
+PASS [strx-top-vs-nested] 215 pad-left
+PASS [strx-bytes] 216 pad-right (b' \x00 ', 6, b'x\x00')
+PASS [strx-top-vs-nested] 216 pad-right
+PASS [strx-bytes] 217 pad-left (b'\t\x00x\n', -1, b'')
+PASS [strx-top-vs-nested] 217 pad-left
+PASS [strx-bytes] 218 pad-right (b'\t\x00x\n', -1, b'')
+PASS [strx-top-vs-nested] 218 pad-right
+PASS [strx-bytes] 219 pad-left (b'\t\x00x\n', -1, b'\x00')
+PASS [strx-top-vs-nested] 219 pad-left
+PASS [strx-bytes] 220 pad-right (b'\t\x00x\n', -1, b'\x00')
+PASS [strx-top-vs-nested] 220 pad-right
+PASS [strx-bytes] 221 pad-left (b'\t\x00x\n', -1, b'x\x00')
+PASS [strx-top-vs-nested] 221 pad-left
+PASS [strx-bytes] 222 pad-right (b'\t\x00x\n', -1, b'x\x00')
+PASS [strx-top-vs-nested] 222 pad-right
+PASS [strx-bytes] 223 pad-left (b'\t\x00x\n', 0, b'')
+PASS [strx-top-vs-nested] 223 pad-left
+PASS [strx-bytes] 224 pad-right (b'\t\x00x\n', 0, b'')
+PASS [strx-top-vs-nested] 224 pad-right
+PASS [strx-bytes] 225 pad-left (b'\t\x00x\n', 0, b'\x00')
+PASS [strx-top-vs-nested] 225 pad-left
+PASS [strx-bytes] 226 pad-right (b'\t\x00x\n', 0, b'\x00')
+PASS [strx-top-vs-nested] 226 pad-right
+PASS [strx-bytes] 227 pad-left (b'\t\x00x\n', 0, b'x\x00')
+PASS [strx-top-vs-nested] 227 pad-left
+PASS [strx-bytes] 228 pad-right (b'\t\x00x\n', 0, b'x\x00')
+PASS [strx-top-vs-nested] 228 pad-right
+PASS [strx-bytes] 229 pad-left (b'\t\x00x\n', 3, b'')
+PASS [strx-top-vs-nested] 229 pad-left
+PASS [strx-bytes] 230 pad-right (b'\t\x00x\n', 3, b'')
+PASS [strx-top-vs-nested] 230 pad-right
+PASS [strx-bytes] 231 pad-left (b'\t\x00x\n', 3, b'\x00')
+PASS [strx-top-vs-nested] 231 pad-left
+PASS [strx-bytes] 232 pad-right (b'\t\x00x\n', 3, b'\x00')
+PASS [strx-top-vs-nested] 232 pad-right
+PASS [strx-bytes] 233 pad-left (b'\t\x00x\n', 3, b'x\x00')
+PASS [strx-top-vs-nested] 233 pad-left
+PASS [strx-bytes] 234 pad-right (b'\t\x00x\n', 3, b'x\x00')
+PASS [strx-top-vs-nested] 234 pad-right
+PASS [strx-bytes] 235 pad-left (b'\t\x00x\n', 6, b'')
+PASS [strx-top-vs-nested] 235 pad-left
+PASS [strx-bytes] 236 pad-right (b'\t\x00x\n', 6, b'')
+PASS [strx-top-vs-nested] 236 pad-right
+PASS [strx-bytes] 237 pad-left (b'\t\x00x\n', 6, b'\x00')
+PASS [strx-top-vs-nested] 237 pad-left
+PASS [strx-bytes] 238 pad-right (b'\t\x00x\n', 6, b'\x00')
+PASS [strx-top-vs-nested] 238 pad-right
+PASS [strx-bytes] 239 pad-left (b'\t\x00x\n', 6, b'x\x00')
+PASS [strx-top-vs-nested] 239 pad-left
+PASS [strx-bytes] 240 pad-right (b'\t\x00x\n', 6, b'x\x00')
+PASS [strx-top-vs-nested] 240 pad-right
+PASS [strx-bytes] 241 split (b'', b'\x00')
+PASS [strx-top-vs-nested] 241 split
+PASS [strx-bytes] 242 split (b'', b'\x00\x00')
+PASS [strx-top-vs-nested] 242 split
+PASS [strx-bytes] 243 split (b'', b'a')
+PASS [strx-top-vs-nested] 243 split
+PASS [strx-bytes] 244 split (b'', b'')
+PASS [strx-top-vs-nested] 244 split
+PASS [strx-bytes] 245 split (b'', b'zz')
+PASS [strx-top-vs-nested] 245 split
+PASS [strx-bytes] 246 split (b'\x00', b'\x00')
+PASS [strx-top-vs-nested] 246 split
+PASS [strx-bytes] 247 split (b'\x00', b'\x00\x00')
+PASS [strx-top-vs-nested] 247 split
+PASS [strx-bytes] 248 split (b'\x00', b'a')
+PASS [strx-top-vs-nested] 248 split
+PASS [strx-bytes] 249 split (b'\x00', b'')
+PASS [strx-top-vs-nested] 249 split
+PASS [strx-bytes] 250 split (b'\x00', b'zz')
+PASS [strx-top-vs-nested] 250 split
+PASS [strx-bytes] 251 split (b'a\x00b\x00c', b'\x00')
+PASS [strx-top-vs-nested] 251 split
+PASS [strx-bytes] 252 split (b'a\x00b\x00c', b'\x00\x00')
+PASS [strx-top-vs-nested] 252 split
+PASS [strx-bytes] 253 split (b'a\x00b\x00c', b'a')
+PASS [strx-top-vs-nested] 253 split
+PASS [strx-bytes] 254 split (b'a\x00b\x00c', b'')
+PASS [strx-top-vs-nested] 254 split
+PASS [strx-bytes] 255 split (b'a\x00b\x00c', b'zz')
+PASS [strx-top-vs-nested] 255 split
+PASS [strx-bytes] 256 split (b'\x00\x00\x00', b'\x00')
+PASS [strx-top-vs-nested] 256 split
+PASS [strx-bytes] 257 split (b'\x00\x00\x00', b'\x00\x00')
+PASS [strx-top-vs-nested] 257 split
+PASS [strx-bytes] 258 split (b'\x00\x00\x00', b'a')
+PASS [strx-top-vs-nested] 258 split
+PASS [strx-bytes] 259 split (b'\x00\x00\x00', b'')
+PASS [strx-top-vs-nested] 259 split
+PASS [strx-bytes] 260 split (b'\x00\x00\x00', b'zz')
+PASS [strx-top-vs-nested] 260 split
+PASS [strx-bytes] 261 split (b'ab\x00\x00cd\x00\x00', b'\x00')
+PASS [strx-top-vs-nested] 261 split
+PASS [strx-bytes] 262 split (b'ab\x00\x00cd\x00\x00', b'\x00\x00')
+PASS [strx-top-vs-nested] 262 split
+PASS [strx-bytes] 263 split (b'ab\x00\x00cd\x00\x00', b'a')
+PASS [strx-top-vs-nested] 263 split
+PASS [strx-bytes] 264 split (b'ab\x00\x00cd\x00\x00', b'')
+PASS [strx-top-vs-nested] 264 split
+PASS [strx-bytes] 265 split (b'ab\x00\x00cd\x00\x00', b'zz')
+PASS [strx-top-vs-nested] 265 split
+PASS [strx-bytes] 266 split (b'\x00a\x00', b'\x00')
+PASS [strx-top-vs-nested] 266 split
+PASS [strx-bytes] 267 split (b'\x00a\x00', b'\x00\x00')
+PASS [strx-top-vs-nested] 267 split
+PASS [strx-bytes] 268 split (b'\x00a\x00', b'a')
+PASS [strx-top-vs-nested] 268 split
+PASS [strx-bytes] 269 split (b'\x00a\x00', b'')
+PASS [strx-top-vs-nested] 269 split
+PASS [strx-bytes] 270 split (b'\x00a\x00', b'zz')
+PASS [strx-top-vs-nested] 270 split
+PASS [strx-bytes] 271 replace (b'\x00a\x00a\x00', b'\x00', b'Z')
+PASS [strx-top-vs-nested] 271 replace
+PASS [strx-bytes] 272 replace (b'\x00a\x00a\x00', b'a', b'\x00\x00')
+PASS [strx-top-vs-nested] 272 replace
+PASS [strx-bytes] 273 replace (b'\x00a\x00a\x00', b'\x00\x00', b'')
+PASS [strx-top-vs-nested] 273 replace
+PASS [strx-bytes] 274 replace (b'\x00a\x00a\x00', b'', b'x')
+PASS [strx-top-vs-nested] 274 replace
+PASS [strx-bytes] 275 replace (b'\x00a\x00a\x00', b'\x00a', b'\x00')
+PASS [strx-top-vs-nested] 275 replace
+PASS [strx-bytes] 276 replace (b'aaaa', b'\x00', b'Z')
+PASS [strx-top-vs-nested] 276 replace
+PASS [strx-bytes] 277 replace (b'aaaa', b'a', b'\x00\x00')
+PASS [strx-top-vs-nested] 277 replace
+PASS [strx-bytes] 278 replace (b'aaaa', b'\x00\x00', b'')
+PASS [strx-top-vs-nested] 278 replace
+PASS [strx-bytes] 279 replace (b'aaaa', b'', b'x')
+PASS [strx-top-vs-nested] 279 replace
+PASS [strx-bytes] 280 replace (b'aaaa', b'\x00a', b'\x00')
+PASS [strx-top-vs-nested] 280 replace
+PASS [strx-bytes] 281 replace (b'', b'\x00', b'Z')
+PASS [strx-top-vs-nested] 281 replace
+PASS [strx-bytes] 282 replace (b'', b'a', b'\x00\x00')
+PASS [strx-top-vs-nested] 282 replace
+PASS [strx-bytes] 283 replace (b'', b'\x00\x00', b'')
+PASS [strx-top-vs-nested] 283 replace
+PASS [strx-bytes] 284 replace (b'', b'', b'x')
+PASS [strx-top-vs-nested] 284 replace
+PASS [strx-bytes] 285 replace (b'', b'\x00a', b'\x00')
+PASS [strx-top-vs-nested] 285 replace
+PASS [strx-bytes] 286 replace (b'\x00\x00\x00\x00', b'\x00', b'Z')
+PASS [strx-top-vs-nested] 286 replace
+PASS [strx-bytes] 287 replace (b'\x00\x00\x00\x00', b'a', b'\x00\x00')
+PASS [strx-top-vs-nested] 287 replace
+PASS [strx-bytes] 288 replace (b'\x00\x00\x00\x00', b'\x00\x00', b'')
+PASS [strx-top-vs-nested] 288 replace
+PASS [strx-bytes] 289 replace (b'\x00\x00\x00\x00', b'', b'x')
+PASS [strx-top-vs-nested] 289 replace
+PASS [strx-bytes] 290 replace (b'\x00\x00\x00\x00', b'\x00a', b'\x00')
+PASS [strx-top-vs-nested] 290 replace
+PASS [strx-bytes] 291 trim (b'',)
+PASS [strx-top-vs-nested] 291 trim
+PASS [strx-bytes] 292 trim (b' ',)
+PASS [strx-top-vs-nested] 292 trim
+PASS [strx-bytes] 293 trim (b'\x00',)
+PASS [strx-top-vs-nested] 293 trim
+PASS [strx-bytes] 294 trim (b' \x00 ',)
+PASS [strx-top-vs-nested] 294 trim
+PASS [strx-bytes] 295 trim (b'\t\n\x00x\x00\r ',)
+PASS [strx-top-vs-nested] 295 trim
+PASS [strx-bytes] 296 trim (b'\x0b\x0cab\x00',)
+PASS [strx-top-vs-nested] 296 trim
+PASS [strx-bytes] 297 trim (b'   ',)
+PASS [strx-top-vs-nested] 297 trim
+PASS [strx-bytes] 298 trim (b'\x00 \x00',)
+PASS [strx-top-vs-nested] 298 trim
+PASS [strx-bytes] 299 join ([], b'')
+PASS [strx-top-vs-nested] 299 join
+PASS [strx-bytes] 300 join ([], b'\x00')
+PASS [strx-top-vs-nested] 300 join
+PASS [strx-bytes] 301 join ([], b',\x00')
+PASS [strx-top-vs-nested] 301 join
+PASS [strx-bytes] 302 join ([b''], b'')
+PASS [strx-top-vs-nested] 302 join
+PASS [strx-bytes] 303 join ([b''], b'\x00')
+PASS [strx-top-vs-nested] 303 join
+PASS [strx-bytes] 304 join ([b''], b',\x00')
+PASS [strx-top-vs-nested] 304 join
+PASS [strx-bytes] 305 join ([b'\x00'], b'')
+PASS [strx-top-vs-nested] 305 join
+PASS [strx-bytes] 306 join ([b'\x00'], b'\x00')
+PASS [strx-top-vs-nested] 306 join
+PASS [strx-bytes] 307 join ([b'\x00'], b',\x00')
+PASS [strx-top-vs-nested] 307 join
+PASS [strx-bytes] 308 join ([b'a', b'\x00', b''], b'')
+PASS [strx-top-vs-nested] 308 join
+PASS [strx-bytes] 309 join ([b'a', b'\x00', b''], b'\x00')
+PASS [strx-top-vs-nested] 309 join
+PASS [strx-bytes] 310 join ([b'a', b'\x00', b''], b',\x00')
+PASS [strx-top-vs-nested] 310 join
+PASS [strx-bytes] 311 join ([b'\x00\x00', b'\x00'], b'')
+PASS [strx-top-vs-nested] 311 join
+PASS [strx-bytes] 312 join ([b'\x00\x00', b'\x00'], b'\x00')
+PASS [strx-top-vs-nested] 312 join
+PASS [strx-bytes] 313 join ([b'\x00\x00', b'\x00'], b',\x00')
+PASS [strx-top-vs-nested] 313 join
+SUMMARY {"emit-roundtrip-invalid": [21, 0], "emit-roundtrip-valid": [19, 0], "literal-invalid": [27, 0], "literal-valid": [19, 0], "overflow-rational": [40, 0], "overflow-word": [740, 0], "strx-bytes": [313, 0], "strx-top-vs-nested": [314, 0]}

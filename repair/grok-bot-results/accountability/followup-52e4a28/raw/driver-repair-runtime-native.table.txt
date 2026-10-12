@@ -1,0 +1,13 @@
+label=52e4a28-repair-runtime-native interp=/workspace/b52/pompetzki-repaired-linux judge=/workspace/b52/native/judge-v4-linux strx=/workspace/acct-52e4/repair/libraries/strx/strx.pmp
+def|case                        |actual(first line/bytes)                     |rc  |expected                                     |erc |result
+a  |a1-false-registry-only.jdg  |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |a2-false-registry-thm.jdg   |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |ctl-canonical-reg0.jdg      |ACCEPT                                       |0   |ACCEPT                                       |0   |PASS
+b  |b1-literal-min.pmp          |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b2-computed-min.pmp         |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b3-literal-max.pmp          |9223372036854775807                          |0   |9223372036854775807                          |0   |PASS
+b  |b4-literal-overflow.pmp     |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+b  |b5-literal-underflow.pmp    |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+c  |c1-trim-nul.pmp             |3 97 0 98 32 0 98                            |0   |3 97 0 98 32 0 98                            |0   |PASS
+c  |c2-pad-nul.pmp              |4 0 97 46 46                                 |0   |4 0 97 46 46                                 |0   |PASS
+FAILURES=0 of 10
