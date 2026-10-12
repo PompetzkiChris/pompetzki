@@ -1,0 +1,485 @@
+=== ./book6.sh (2995 bytes, sha256 4dcc96952e056e8165359d536919aaa92efa87916ce599519b5ad005e68a7f09)
+#!/bin/bash
+# Independent Book v6 attack harness (Grok Bot accountability). Usage: book6.sh REPO BUNDLE OUTDIR
+set -u
+REPO=$1; B=$2; O=$3; BK=$REPO/repair/book-v6; W=/workspace/bw6; rm -rf $W; mkdir -p $W $O/raw $O/inputs
+cp $REPO/judge/mut/ok-hyp.jdg $REPO/judge/mut/m1-refl.jdg $W/; cp $W/*.jdg $O/inputs/
+run(){ n=$1; shift; (cd $BK && "$@") >$O/raw/$n.stdout 2>$O/raw/$n.stderr; echo $? >$O/raw/$n.exit; printf '%-34s exit=%s %s\n' "$n" "$(cat $O/raw/$n.exit)" "$(cat $O/raw/$n.stderr $O/raw/$n.stdout | tr '\n' ' ' | cut -c1-170)"; }
+post(){ run "$1" racket verified-book-post.rkt "${@:3}" --bundle $B $W/$2 2026-10-11 ; }
+chk(){ run "$1" racket verified-book-check.rkt --bundle $B $W/$2; }
+run 01-post-default racket verified-book-post.rkt --bundle $B $W/post-default 2026-10-11 $W/ok-hyp.jdg
+run 02-post-interpreted racket verified-book-post.rkt --interpreted --bundle $B $W/post-interp 2026-10-11 $W/ok-hyp.jdg
+chk 03-check-default post-default
+chk 04-check-interpreted post-interp
+run 05-post-m1 racket verified-book-post.rkt --bundle $B $W/post-m1 2026-10-11 $W/m1-refl.jdg
+chk 06-check-m1 post-m1
+# v5 forgery dirs replayed unchanged against the v6 checker
+for d in forge-consistent-false2 forge-rehashed forge-orphan-n forge-orphan-snapshot forge-changed-input forge-bad-f-sha forge-dup-receipt forge-reorder-B forge-wrong-bytes forge-bad-timestamp forge-orphan-file; do
+  rm -rf $W/v5-$d; cp -a /workspace/bw5/$d $W/v5-$d; chk 10-v5replay-$d v5-$d; done
+mk(){ rm -rf $W/$1; cp -a $W/post-default $W/$1; }
+mk a-orphan-run; echo 'ACCEPT' > $W/a-orphan-run/judge-runs/orphan.stdout.txt; chk 20-orphan-judge-runs-file a-orphan-run
+mk a-empty-runs; rm -f $W/a-empty-runs/judge-runs/*; chk 21-empty-judge-runs a-empty-runs
+mk a-empty-inputs; rm -f $W/a-empty-inputs/judge-inputs/*; chk 22-empty-judge-inputs a-empty-inputs
+mk a-extra-top; echo x > $W/a-extra-top/NOTES.txt; chk 23-extra-top-level-file a-extra-top
+mk a-extra-topdir; mkdir $W/a-extra-topdir/extra; chk 24-extra-top-level-dir a-extra-topdir
+mk a-nested; mkdir $W/a-nested/judge-runs/sub; chk 25-nested-dir-in-judge-runs a-nested
+mk a-symlink; f=$(ls $W/a-symlink/judge-runs | head -1); mv $W/a-symlink/judge-runs/$f $W/$f.real; ln -s $W/$f.real $W/a-symlink/judge-runs/$f; chk 26-symlinked-run-file a-symlink
+mk a-missing; f=$(ls $W/a-missing/judge-runs | head -1); rm $W/a-missing/judge-runs/$f; chk 27-missing-run-file a-missing
+# duplicate output identity: two inputs with identical bytes posted together
+cp $W/ok-hyp.jdg $W/ok-hyp-copy.jdg
+run 28-post-duplicate-bytes racket verified-book-post.rkt --bundle $B $W/post-dup 2026-10-11 $W/ok-hyp.jdg $W/ok-hyp-copy.jdg
+[ -d $W/post-dup ] && chk 29-check-duplicate-bytes post-dup
+run 30-post-same-input-twice racket verified-book-post.rkt --bundle $B $W/post-same 2026-10-11 $W/ok-hyp.jdg $W/ok-hyp.jdg
+[ -d $W/post-same ] && chk 31-check-same-input-twice post-same
+ls -la $W/post-default $W/post-default/judge-runs $W/post-default/judge-inputs > $O/raw/posting-layout.txt
+
+=== ./inputs/m1-refl.jdg (55262 bytes, sha256 2b29ecb7f47ca5585eeb8ca66b0eee90467aa6a570c14063ce69a2b172aa3cb0)
+JDG1
+R 706 
+a a i a b e 0 2 e 0 1 q 1 0 0 
+a a x k e 2 0 e 1 0 0 
+a x a a i k e 0 1 e 1 3 e 0 2 0 
+a x a i a i e 0 1 e 0 3 e 0 1 0 
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0 
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0 
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0 
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0 
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0 
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0 
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0 
+a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0 
+a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0 
+a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0 
+a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0 
+a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0 
+a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0 
+a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0 
+a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0 
+a b p 17 1 0 a n e 0 1 0 
+a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0 
+a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0 
+a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0 
+a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0 
+a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0 
+a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0 
+a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0 
+a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0 
+a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0 
+a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0 
+a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0 
+a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0 
+a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0 
+a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0 
+a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0 
+a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0 
+a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0 
+a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0 
+a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0 
+a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0 
+a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0 
+a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0 
+a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0 
+a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0 
+a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0 
+a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0 
+a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0 
+a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0 
+a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0 
+a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0 
+a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0 
+a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0 
+a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0 
+a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0 
+a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0 
+a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k k k k k k k k p 16 1 7 p 20 1 6 p 5 2 6 7 p 28 3 5 7 7 p 38 3 4 5 7 p 17 1 3 p 18 2 2 3 p 10 1 1 p 11 1 1 p 12 2 1 0 p 13 2 1 6 p 28 3 0 6 6 0 
+a a a a a a a a a b p 56 9 8 7 6 5 4 3 2 1 0 x x x x k k k p 54 8 11 2 3 8 7 6 5 4 p 30 5 1 6 8 7 3 p 48 4 9 10 2 0 p 9 3 1 0 12 0 
+a a a a a a a a b p 57 8 7 6 5 4 3 2 1 0 x x k k k k p 8 3 9 1 0 e 1 5 p 39 1 1 e 0 4 p 56 9 8 1 0 7 6 5 4 3 2 0 
+a a a a a a a a b p 58 8 7 6 5 4 3 2 1 0 a b e 0 8 k e 0 7 x x k p 8 3 2 1 0 p 57 8 1 0 8 7 6 5 4 3 0 
+a a a a b p 59 4 3 2 1 0 k k k p 10 1 3 p 11 1 3 p 13 2 3 0 a i p 9 3 3 2 0 x p 9 3 5 1 0 0 
+a a b p 60 2 1 0 a i p 5 2 0 1 e 0 2 0 
+a a a a a b p 61 5 4 3 2 1 0 a b e 0 5 k e 0 4 x k p 8 3 1 4 0 p 59 4 0 3 4 2 0 
+a a a a a a b p 62 6 5 4 3 2 1 0 a b e 0 6 k e 0 5 x k e 0 5 p 61 5 1 4 0 3 2 0 
+a a b p 63 2 1 0 a i e 0 1 x k k e 0 1 e 0 3 a i k e 0 2 e 0 4 q 0 1 0 
+a a a a a a b p 64 6 5 4 3 2 1 0 x k k k p 8 3 0 4 3 e 0 6 e 0 5 p 59 4 3 2 4 1 0 
+a a a a a b p 65 5 4 3 2 1 0 a a a i k k e 2 3 p 64 6 7 6 2 1 5 4 p 64 6 7 6 2 0 5 4 q 1 0 0 
+a a a a a b p 66 5 4 3 2 1 0 a i e 0 1 x p 64 6 6 5 1 0 4 3 0 
+a a a a b p 67 4 3 2 1 0 k k e 3 0 p 9 3 1 3 2 a i e 0 4 n p 9 3 2 0 3 0 
+a a a a b p 68 4 3 2 1 0 x k p 9 3 2 4 0 p 8 3 3 1 0 0 
+a a a a a a a b p 69 7 6 5 4 3 2 1 0 x x k k p 67 4 1 8 6 5 p 64 6 4 3 1 0 6 2 p 68 4 8 7 0 1 0 
+a a a a a a a b p 70 7 6 5 4 3 2 1 0 a b e 0 7 k e 0 6 x x k p 8 3 2 1 0 p 69 7 1 0 7 6 5 4 3 0 
+a a a b p 71 3 2 1 0 k k k p 10 1 2 p 11 1 2 k p 12 2 2 1 p 13 2 2 0 k a i e 0 1 x k e 0 3 p 9 3 4 0 1 a a i k e 1 3 p 9 3 4 1 0 a b e 0 1 x k k e 0 5 e 0 3 p 9 3 6 0 1 0 
+a b p 72 1 0 x k p 20 1 0 e 1 0 0 
+a a b p 73 2 1 0 a i e 0 2 x x k e 1 3 p 8 3 2 1 0 0 
+a a b p 74 2 1 0 k k p 72 1 0 p 10 1 1 k p 12 2 1 0 p 73 2 1 0 0 
+a a a b p 75 3 2 1 0 k p 74 2 2 1 p 13 2 2 0 0 
+a a b p 76 2 1 0 x p 75 3 2 0 1 0 
+a a a a b p 77 4 3 2 1 0 a b e 0 4 d e 0 3 p 8 3 0 1 2 0 
+a a a a b p 78 4 3 2 1 0 a b e 0 4 k p 76 2 0 3 x x k k p 9 3 2 4 1 p 9 3 2 3 0 e 1 0 0 
+a a a a b p 79 4 3 2 1 0 a b e 0 4 k p 
+=== ./inputs/ok-hyp.jdg (55225 bytes, sha256 248dd93c8ee72d7b1f8db8bbbf4d4c150aef4fe8a39ba40cb2bd73a6c9e5b34d)
+JDG1
+R 706 
+a a i a b e 0 2 e 0 1 q 1 0 0 
+a a x k e 2 0 e 1 0 0 
+a x a a i k e 0 1 e 1 3 e 0 2 0 
+a x a i a i e 0 1 e 0 3 e 0 1 0 
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0 
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0 
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0 
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0 
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0 
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0 
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0 
+a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0 
+a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0 
+a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0 
+a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0 
+a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0 
+a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0 
+a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0 
+a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0 
+a b p 17 1 0 a n e 0 1 0 
+a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0 
+a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0 
+a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0 
+a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0 
+a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0 
+a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0 
+a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0 
+a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0 
+a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0 
+a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0 
+a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0 
+a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0 
+a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0 
+a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0 
+a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0 
+a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0 
+a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0 
+a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0 
+a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0 
+a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0 
+a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0 
+a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0 
+a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0 
+a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0 
+a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0 
+a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0 
+a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0 
+a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0 
+a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0 
+a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0 
+a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0 
+a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0 
+a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0 
+a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0 
+a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0 
+a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0 
+a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k k k k k k k k p 16 1 7 p 20 1 6 p 5 2 6 7 p 28 3 5 7 7 p 38 3 4 5 7 p 17 1 3 p 18 2 2 3 p 10 1 1 p 11 1 1 p 12 2 1 0 p 13 2 1 6 p 28 3 0 6 6 0 
+a a a a a a a a a b p 56 9 8 7 6 5 4 3 2 1 0 x x x x k k k p 54 8 11 2 3 8 7 6 5 4 p 30 5 1 6 8 7 3 p 48 4 9 10 2 0 p 9 3 1 0 12 0 
+a a a a a a a a b p 57 8 7 6 5 4 3 2 1 0 x x k k k k p 8 3 9 1 0 e 1 5 p 39 1 1 e 0 4 p 56 9 8 1 0 7 6 5 4 3 2 0 
+a a a a a a a a b p 58 8 7 6 5 4 3 2 1 0 a b e 0 8 k e 0 7 x x k p 8 3 2 1 0 p 57 8 1 0 8 7 6 5 4 3 0 
+a a a a b p 59 4 3 2 1 0 k k k p 10 1 3 p 11 1 3 p 13 2 3 0 a i p 9 3 3 2 0 x p 9 3 5 1 0 0 
+a a b p 60 2 1 0 a i p 5 2 0 1 e 0 2 0 
+a a a a a b p 61 5 4 3 2 1 0 a b e 0 5 k e 0 4 x k p 8 3 1 4 0 p 59 4 0 3 4 2 0 
+a a a a a a b p 62 6 5 4 3 2 1 0 a b e 0 6 k e 0 5 x k e 0 5 p 61 5 1 4 0 3 2 0 
+a a b p 63 2 1 0 a i e 0 1 x k k e 0 1 e 0 3 a i k e 0 2 e 0 4 q 0 1 0 
+a a a a a a b p 64 6 5 4 3 2 1 0 x k k k p 8 3 0 4 3 e 0 6 e 0 5 p 59 4 3 2 4 1 0 
+a a a a a b p 65 5 4 3 2 1 0 a a a i k k e 2 3 p 64 6 7 6 2 1 5 4 p 64 6 7 6 2 0 5 4 q 1 0 0 
+a a a a a b p 66 5 4 3 2 1 0 a i e 0 1 x p 64 6 6 5 1 0 4 3 0 
+a a a a b p 67 4 3 2 1 0 k k e 3 0 p 9 3 1 3 2 a i e 0 4 n p 9 3 2 0 3 0 
+a a a a b p 68 4 3 2 1 0 x k p 9 3 2 4 0 p 8 3 3 1 0 0 
+a a a a a a a b p 69 7 6 5 4 3 2 1 0 x x k k p 67 4 1 8 6 5 p 64 6 4 3 1 0 6 2 p 68 4 8 7 0 1 0 
+a a a a a a a b p 70 7 6 5 4 3 2 1 0 a b e 0 7 k e 0 6 x x k p 8 3 2 1 0 p 69 7 1 0 7 6 5 4 3 0 
+a a a b p 71 3 2 1 0 k k k p 10 1 2 p 11 1 2 k p 12 2 2 1 p 13 2 2 0 k a i e 0 1 x k e 0 3 p 9 3 4 0 1 a a i k e 1 3 p 9 3 4 1 0 a b e 0 1 x k k e 0 5 e 0 3 p 9 3 6 0 1 0 
+a b p 72 1 0 x k p 20 1 0 e 1 0 0 
+a a b p 73 2 1 0 a i e 0 2 x x k e 1 3 p 8 3 2 1 0 0 
+a a b p 74 2 1 0 k k p 72 1 0 p 10 1 1 k p 12 2 1 0 p 73 2 1 0 0 
+a a a b p 75 3 2 1 0 k p 74 2 2 1 p 13 2 2 0 0 
+a a b p 76 2 1 0 x p 75 3 2 0 1 0 
+a a a a b p 77 4 3 2 1 0 a b e 0 4 d e 0 3 p 8 3 0 1 2 0 
+a a a a b p 78 4 3 2 1 0 a b e 0 4 k p 76 2 0 3 x x k k p 9 3 2 4 1 p 9 3 2 3 0 e 1 0 0 
+a a a a b p 79 4 3 2 1 0 a b e 0 4 k p 
+=== ./raw/01-post-default.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/01-post-default.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/01-post-default.stdout (381 bytes, sha256 ff9c3c0bf7ce41037e276e67978f85805f59c4e1e4b4da4a564347f09fa7623a)
+/workspace/bw6/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct statements 1 records 4 chain head e7579b5b430a3753112fbf619ec06d39cee7a2a32f6be0730d5488a5b177e41f
+NEGATIVE-1.0.ledger: N 0 records 2 chain head f02d4efdf60c76b5806be7a38458aef0720b8e461496271ed5add2da5bda35a5
+SUSPENSE 0
+
+=== ./raw/02-post-interpreted.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/02-post-interpreted.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/02-post-interpreted.stdout (381 bytes, sha256 07c8b57de75d86729fa66295d7a390994f78121db5f17dc3feb8ddf0bfcdbc2c)
+/workspace/bw6/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct statements 1 records 4 chain head 4075daa3f67b8fbce299dde9e17e72f6d6707199113398d4f9329cf392ed3723
+NEGATIVE-1.0.ledger: N 0 records 2 chain head c733c3165629cda34c7a32350340690ec4b02197707d2b7c163438cb29084bc5
+SUSPENSE 0
+
+=== ./raw/03-check-default.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/03-check-default.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/03-check-default.stdout (921 bytes, sha256 b9337e8f02d2bfdb1446a32a73a38c73e14df40a7f899415b72dddc10d68a42d)
+{"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"8b5174dcaf4d5a15a117d6f6c50f753ed5d86341d15229d8d6ba970091526c5f","negative_files":0,"positive_files":1,"reruns":[{"input":"/workspace/bw6/post-default/judge-inputs/1-ok-hyp.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw6/post-default/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT\nregistry entries at the start, theorems accepted, steps checked, registry entries at the end:\n706\n1\n1\n707\n","verdict":"ACCEPT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw6/post-default/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT registry 706 theorems 1 steps 1 final-registry 707\n","verdict":"ACCEPT"},"sha256":"248dd93c8ee72d7b1f8db8bbbf4d4c150aef4fe8a39ba40cb2bd73a6c9e5b34d","verdict":"ACCEPT"}],"status":"CHECK OK","theorems":1}
+
+=== ./raw/04-check-interpreted.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/04-check-interpreted.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/04-check-interpreted.stdout (918 bytes, sha256 9f36771d3ab1c93f3f52a1f83d81203ce5bb1412ccfa1250768e850aa64ae101)
+{"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"b8d67c156a80d3e7088a02bf240304c5de1d0e1f9a909e3bdd234ee0ce07f87a","negative_files":0,"positive_files":1,"reruns":[{"input":"/workspace/bw6/post-interp/judge-inputs/1-ok-hyp.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw6/post-interp/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT\nregistry entries at the start, theorems accepted, steps checked, registry entries at the end:\n706\n1\n1\n707\n","verdict":"ACCEPT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw6/post-interp/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT registry 706 theorems 1 steps 1 final-registry 707\n","verdict":"ACCEPT"},"sha256":"248dd93c8ee72d7b1f8db8bbbf4d4c150aef4fe8a39ba40cb2bd73a6c9e5b34d","verdict":"ACCEPT"}],"status":"CHECK OK","theorems":1}
+
+=== ./raw/05-post-m1.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/05-post-m1.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/05-post-m1.stdout (382 bytes, sha256 d6051f03fb6fc268b04424d6800d7645130d61f8fb61c09f3017d1c56956e32e)
+/workspace/bw6/m1-refl.jdg pmp REJECT racket REJECT unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 0 B 0 (Proved 0, Qualified 0) steps 0 distinct statements 0 records 2 chain head 18a719a8827df1c1946d291c48b2861d9f9699bdabdc75a1920978bc2b7598f6
+NEGATIVE-1.0.ledger: N 1 records 3 chain head 9d763f1416cc2dde807e310886f2a214aee245e82e1dcf8b038079970c20b3c0
+SUSPENSE 0
+
+=== ./raw/06-check-m1.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/06-check-m1.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/06-check-m1.stdout (889 bytes, sha256 67e214e12fe62ecb7230393687f5145a3e0e9ca684aa597ca21b3267fe226e8d)
+{"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"e96c26dce42ec387060854ed353e2990bed7641869123cb4d8ad54262e428ffd","negative_files":1,"positive_files":0,"reruns":[{"input":"/workspace/bw6/post-m1/judge-inputs/1-m1-refl.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw6/post-m1/judge-inputs/1-m1-refl.jdg"],"exit":1,"stdout":"REJECT\nax: not an axiom shape\ntheorem and step (counted from 0):\n0\n1\nline 351: check zero failed: not the zero vector\n","verdict":"REJECT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw6/post-m1/judge-inputs/1-m1-refl.jdg"],"exit":1,"stdout":"REJECT theorem 0 step 1 (step Y)\n","verdict":"REJECT"},"sha256":"2b29ecb7f47ca5585eeb8ca66b0eee90467aa6a570c14063ce69a2b172aa3cb0","verdict":"REJECT"}],"status":"CHECK OK","theorems":0}
+
+=== ./raw/10-v5replay-forge-bad-f-sha.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-bad-f-sha.stderr (85 bytes, sha256 88cc1c7aeb4a070c6d14c4b1fe7e5df4f603c1be50a5f8dcfb3658ab6b965b65)
+CHECK FAILED: verified-book-check: F/N input identity, bytes, source or date differs
+
+=== ./raw/10-v5replay-forge-bad-f-sha.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-bad-timestamp.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-bad-timestamp.stderr (90 bytes, sha256 5ef7cbb2bbd357dd0c93bb8cc0d40734e78109cd0f042c06ae7cc1d2c44a0c6d)
+CHECK FAILED: verified-book-check: metadata timestamps are inexact, negative or unordered
+
+=== ./raw/10-v5replay-forge-bad-timestamp.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-changed-input.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-changed-input.stderr (77 bytes, sha256 daf27c249e8b128436b75388cdd0321198f8b5618fd2bb46dca31b92f531bf78)
+CHECK FAILED: verified-book-check: snapshot hashes or unchanged state differ
+
+=== ./raw/10-v5replay-forge-changed-input.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-consistent-false2.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-consistent-false2.stderr (69 bytes, sha256 8c1794dc7ac8fbb539065471d04b2a2cd99d9567d05d40e5c2b763623863d048)
+CHECK FAILED: verified-book-check: rerun differs from stored verdict
+
+=== ./raw/10-v5replay-forge-consistent-false2.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-dup-receipt.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-dup-receipt.stderr (69 bytes, sha256 e3f694ba1be5ef92bb11d21fd6ed70d53d2a398a81d21e2de54edd35dfb56c5d)
+CHECK FAILED: verified-book-check: duplicate RECEIPTS input identity
+
+=== ./raw/10-v5replay-forge-dup-receipt.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-orphan-file.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-orphan-file.stderr (100 bytes, sha256 1810f97298a24488cdc3d236e1c79886b2bd5b3ac8da039c0eae785f3d8644a8)
+CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts
+
+=== ./raw/10-v5replay-forge-orphan-file.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-orphan-n.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-orphan-n.stderr (70 bytes, sha256 2ad9c1d19bf196b8cb53c8758dc8886c26777b985f8326b14dc8ac2368a0ab14)
+CHECK FAILED: verified-book-check: input/receipt/ledger counts differ
+
+=== ./raw/10-v5replay-forge-orphan-n.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-orphan-snapshot.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-orphan-snapshot.stderr (102 bytes, sha256 0d150b8e3789bf9086627787546335ae2b6b33c5aa576efcbb7f3d50a2cd6911)
+CHECK FAILED: verified-book-check: judge-inputs contains missing, duplicate or unreferenced artifacts
+
+=== ./raw/10-v5replay-forge-orphan-snapshot.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-rehashed.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-rehashed.stderr (95 bytes, sha256 60fb37ea1d4ed6bd3f3edbf45fa547f7b47df55d9d525da31b6a90d2979d421f)
+CHECK FAILED: verified-book-check: B record differs from the complete checked theorem evidence
+
+=== ./raw/10-v5replay-forge-rehashed.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-reorder-B.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-reorder-B.stderr (76 bytes, sha256 4db4494d3aef089b493202744248b8ce97989287cfc432d445d816ef90e8ad7a)
+CHECK FAILED: verified-book-check: B record shape/ordered ID/F link differs
+
+=== ./raw/10-v5replay-forge-reorder-B.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/10-v5replay-forge-wrong-bytes.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/10-v5replay-forge-wrong-bytes.stderr (85 bytes, sha256 88cc1c7aeb4a070c6d14c4b1fe7e5df4f603c1be50a5f8dcfb3658ab6b965b65)
+CHECK FAILED: verified-book-check: F/N input identity, bytes, source or date differs
+
+=== ./raw/10-v5replay-forge-wrong-bytes.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/20-orphan-judge-runs-file.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/20-orphan-judge-runs-file.stderr (100 bytes, sha256 1810f97298a24488cdc3d236e1c79886b2bd5b3ac8da039c0eae785f3d8644a8)
+CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts
+
+=== ./raw/20-orphan-judge-runs-file.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/21-empty-judge-runs.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/21-empty-judge-runs.stderr (75 bytes, sha256 0fb72feb3bd199b0fd61177e2d7e0fbde9a2affb76b8dc4e6464b279aa803e2b)
+CHECK FAILED: verified-book-check: recorded file missing: 1-pmp.stdout.txt
+
+=== ./raw/21-empty-judge-runs.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/22-empty-judge-inputs.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/22-empty-judge-inputs.stderr (71 bytes, sha256 b5435cd33280c563c99525f80957e9a91c68bcf614c6ec7f932779937cc77dfe)
+CHECK FAILED: verified-book-check: recorded file missing: 1-ok-hyp.jdg
+
+=== ./raw/22-empty-judge-inputs.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/23-extra-top-level-file.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/23-extra-top-level-file.stderr (108 bytes, sha256 2e4cfa88888821e65dc51d24ab332c738e4df0ffdd25f0c23614353d6f099135)
+CHECK FAILED: verified-book-check: posting contains artifacts outside its supported file/directory contract
+
+=== ./raw/23-extra-top-level-file.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/24-extra-top-level-dir.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/24-extra-top-level-dir.stderr (108 bytes, sha256 2e4cfa88888821e65dc51d24ab332c738e4df0ffdd25f0c23614353d6f099135)
+CHECK FAILED: verified-book-check: posting contains artifacts outside its supported file/directory contract
+
+=== ./raw/24-extra-top-level-dir.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/25-nested-dir-in-judge-runs.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/25-nested-dir-in-judge-runs.stderr (100 bytes, sha256 1810f97298a24488cdc3d236e1c79886b2bd5b3ac8da039c0eae785f3d8644a8)
+CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts
+
+=== ./raw/25-nested-dir-in-judge-runs.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/26-symlinked-run-file.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/26-symlinked-run-file.stderr (100 bytes, sha256 1810f97298a24488cdc3d236e1c79886b2bd5b3ac8da039c0eae785f3d8644a8)
+CHECK FAILED: verified-book-check: judge-runs contains missing, duplicate or unreferenced artifacts
+
+=== ./raw/26-symlinked-run-file.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/27-missing-run-file.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/27-missing-run-file.stderr (75 bytes, sha256 a980181fc57e4b30d3bee64add61faa80d975847fd7e44f6c78b005e13b8759d)
+CHECK FAILED: verified-book-check: recorded file missing: 1-pmp.stderr.txt
+
+=== ./raw/27-missing-run-file.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/28-post-duplicate-bytes.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/28-post-duplicate-bytes.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/28-post-duplicate-bytes.stdout (450 bytes, sha256 edacdc17ab17fed889eaad2c399d3170c752c976ed48302ff5aa3ebbb5fbec16)
+/workspace/bw6/ok-hyp-copy.jdg pmp ACCEPT racket ACCEPT unchanged #t
+/workspace/bw6/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t
+files found 2, receipt rows 2
+BOOK-1.0.ledger: F 2 B 2 (Proved 0, Qualified 2) steps 2 distinct statements 1 records 6 chain head 61c486232ac17b84222e1c6cbeee736e205b16759134980e8ca98579def80fbd
+NEGATIVE-1.0.ledger: N 0 records 2 chain head 1b1bc1f4d361126d83dc7ac7af86de42cd9dcde44c1ca50d394448b744c8ff5c
+SUSPENSE 0
+
+=== ./raw/29-check-duplicate-bytes.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/29-check-duplicate-bytes.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/29-check-duplicate-bytes.stdout (1617 bytes, sha256 d06fc57304f9f11ddb28d1134223a614e1c1942c28120c2142ac23eb5e9c3bff)
+{"evidence_schema":"verified-book-v6","files":2,"metadata_sha256":"865885fa236d305b3552c5bd3c03a90680ae23c60ecca7d60b52e197e069d4b3","negative_files":0,"positive_files":2,"reruns":[{"input":"/workspace/bw6/post-dup/judge-inputs/1-ok-hyp-copy.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw6/post-dup/judge-inputs/1-ok-hyp-copy.jdg"],"exit":0,"stdout":"ACCEPT\nregistry entries at the start, theorems accepted, steps checked, registry entries at the end:\n706\n1\n1\n707\n","verdict":"ACCEPT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw6/post-dup/judge-inputs/1-ok-hyp-copy.jdg"],"exit":0,"stdout":"ACCEPT registry 706 theorems 1 steps 1 final-registry 707\n","verdict":"ACCEPT"},"sha256":"248dd93c8ee72d7b1f8db8bbbf4d4c150aef4fe8a39ba40cb2bd73a6c9e5b34d","verdict":"ACCEPT"},{"input":"/workspace/bw6/post-dup/judge-inputs/2-ok-hyp.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw6/post-dup/judge-inputs/2-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT\nregistry entries at the start, theorems accepted, steps checked, registry entries at the end:\n706\n1\n1\n707\n","verdict":"ACCEPT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw6/post-dup/judge-inputs/2-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT registry 706 theorems 1 steps 1 final-registry 707\n","verdict":"ACCEPT"},"sha256":"248dd93c8ee72d7b1f8db8bbbf4d4c150aef4fe8a39ba40cb2bd73a6c9e5b34d","verdict":"ACCEPT"}],"status":"CHECK OK","theorems":2}
+
+=== ./raw/30-post-same-input-twice.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/30-post-same-input-twice.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/30-post-same-input-twice.stdout (381 bytes, sha256 159394de86d74b4f08dd80e1b7dbf20e5472abf9e5a97f98a9c5627fb6e9cf34)
+/workspace/bw6/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct statements 1 records 4 chain head bddda862e98453d6d88e7b0019e9ff7dace9b94488f1965f8a2072c5bdc9a964
+NEGATIVE-1.0.ledger: N 0 records 2 chain head 6d95884c81355851c63445c2f2c0a614b45b81ba3a2bcbb9136572a472da2efc
+SUSPENSE 0
+
+=== ./raw/31-check-same-input-twice.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/31-check-same-input-twice.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/31-check-same-input-twice.stdout (912 bytes, sha256 92e3f8c5c8ddd78acb8642c22a98cb1bbba01c096c780e072078ae7283976e31)
+{"evidence_schema":"verified-book-v6","files":1,"metadata_sha256":"837a74b53e283b9b3a50c696da85c628e3d185f062bbdf86598c78c716afe55d","negative_files":0,"positive_files":1,"reruns":[{"input":"/workspace/bw6/post-same/judge-inputs/1-ok-hyp.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw6/post-same/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT\nregistry entries at the start, theorems accepted, steps checked, registry entries at the end:\n706\n1\n1\n707\n","verdict":"ACCEPT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw6/post-same/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT registry 706 theorems 1 steps 1 final-registry 707\n","verdict":"ACCEPT"},"sha256":"248dd93c8ee72d7b1f8db8bbbf4d4c150aef4fe8a39ba40cb2bd73a6c9e5b34d","verdict":"ACCEPT"}],"status":"CHECK OK","theorems":1}
+
+=== ./raw/posting-layout.txt (1007 bytes, sha256 2e7f955b3938dea8a4b059af4350944a456d30572547d67177bca1dd8d836cb5)
+/workspace/bw6/post-default:
+total 32
+drwxr-xr-x  4 box box 4096 Oct 11 23:05 .
+drwxr-xr-x 26 box box 4096 Oct 11 23:06 ..
+-rw-r--r--  1 box box 1781 Oct 11 23:05 BOOK-1.0.ledger
+-rw-r--r--  1 box box  525 Oct 11 23:05 NEGATIVE-1.0.ledger
+-rw-r--r--  1 box box  538 Oct 11 23:05 RECEIPTS.tsv
+drwxr-xr-x  2 box box 4096 Oct 11 23:05 judge-inputs
+drwxr-xr-x  2 box box 4096 Oct 11 23:05 judge-runs
+-rw-r--r--  1 box box 2180 Oct 11 23:05 run-metadata.json
+
+/workspace/bw6/post-default/judge-inputs:
+total 64
+drwxr-xr-x 2 box box  4096 Oct 11 23:05 .
+drwxr-xr-x 4 box box  4096 Oct 11 23:05 ..
+-rw-r--r-- 1 box box 55225 Oct 11 23:05 1-ok-hyp.jdg
+
+/workspace/bw6/post-default/judge-runs:
+total 16
+drwxr-xr-x 2 box box 4096 Oct 11 23:05 .
+drwxr-xr-x 4 box box 4096 Oct 11 23:05 ..
+-rw-r--r-- 1 box box    0 Oct 11 23:05 1-pmp.stderr.txt
+-rw-r--r-- 1 box box  113 Oct 11 23:05 1-pmp.stdout.txt
+-rw-r--r-- 1 box box    0 Oct 11 23:05 1-racket.stderr.txt
+-rw-r--r-- 1 box box   58 Oct 11 23:05 1-racket.stdout.txt
+
