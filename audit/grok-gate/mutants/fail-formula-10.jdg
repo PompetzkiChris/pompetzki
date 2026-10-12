@@ -1,0 +1,19 @@
+JDG1
+R 11
+a a i a b e 0 2 e 0 1 q 1 0 0
+a a x k e 2 0 e 1 0 0
+a x a a i k e 0 1 e 1 3 e 0 2 0
+a x a i a i e 0 1 e 0 3 e 0 1 0
+x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0
+a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0
+a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0
+a a b p 5 2 1 0 a i e 0 2 e 0 1 0
+a a b p 6 2 1 0 a b e 0 2 q 0 1 0
+a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0
+a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 2 0
+T 1
+a a i a b e 0 2 e 0 1 q 1 0
+0
+1
+U 0 0
+0

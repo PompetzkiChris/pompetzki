@@ -1,0 +1,340 @@
+preserved previous archive
+917b30b3aec0d5fc84afdd0733861fae7229d21114e6b0ac87f238bb2bade841  reg0-initial-registry-gate-2026-10-11.zip  bytes 74542
+ok previous zip bytes unchanged
+ok pinned sha is public AUTHREF
+ok embedded string equals public judge-v4.pmp literal
+ok pmp literal equals public AUTHREF
+AUTHREF sha256 d3dbc73283b61a2ba72431552d33c1810e140e24bbfda85b1a30aef006dac047 entries 706
+
+integer spelling
+api checks 3538 failed 0
+ok 3538/3538 embedded API checks
+ok decimal 02 means integer 2
+ok decimal 00 means integer 0
+ok unpadded 0 and 2 unchanged
+ok 0.0 is not an integer spelling
+
+preserved mutants: old token gate versus repaired integer gate
+ok fail-count-707.jdg same class REJECT
+  fail-count-707.jdg old REJECT new REJECT REJECT registry | count | 707 | 706 pmp 0.001s py 0.000s
+ok fail-false.jdg same class REJECT
+  fail-false.jdg old REJECT new REJECT REJECT registry | 0 | formula pmp 0.001s py 0.000s
+ok fail-formula-0.jdg same class REJECT
+  fail-formula-0.jdg old REJECT new REJECT REJECT registry | 0 | formula pmp 0.001s py 0.000s
+ok fail-formula-10.jdg same class REJECT
+  fail-formula-10.jdg old REJECT new REJECT REJECT registry | 10 | formula pmp 0.007s py 0.000s
+ok fail-hyp-0.jdg same class REJECT
+  fail-hyp-0.jdg old REJECT new REJECT REJECT registry | 0 | hypotheses pmp 0.001s py 0.000s
+ok fail-hyp-677.jdg same class REJECT
+  fail-hyp-677.jdg old REJECT new REJECT REJECT registry | 677 | hypotheses pmp 0.692s py 0.023s
+ok fail-hyp-spell-677.jdg old REJECT new GATE
+  fail-hyp-spell-677.jdg old REJECT new GATE GATE | 678 | 706 pmp 0.691s py 0.023s
+ok fail-hypcount-spell-0.jdg old REJECT new GATE
+  fail-hypcount-spell-0.jdg old REJECT new GATE GATE | 1 | 706 pmp 0.001s py 0.000s
+ok fail-parse.jdg same class REJECT
+  fail-parse.jdg old REJECT new REJECT REJECT registry | parse pmp 0.001s py 0.000s
+ok fail-spell-0.jdg old REJECT new GATE
+  fail-spell-0.jdg old REJECT new GATE GATE | 1 | 706 pmp 0.001s py 0.000s
+ok fail-truncated.jdg same class REJECT
+  fail-truncated.jdg old REJECT new REJECT REJECT registry | parse pmp 0.001s py 0.000s
+ok pass-all.jdg same class GATE
+  pass-all.jdg old GATE new GATE GATE | 706 | 706 pmp 0.707s py 0.024s
+ok pass-empty.jdg same class GATE
+  pass-empty.jdg old GATE new GATE GATE | 0 | 706 pmp 0.001s py 0.000s
+ok pass-one.jdg same class GATE
+  pass-one.jdg old GATE new GATE GATE | 1 | 706 pmp 0.001s py 0.000s
+ok pass-three.jdg same class GATE
+  pass-three.jdg old GATE new GATE GATE | 3 | 706 pmp 0.002s py 0.000s
+ok proof-reject-false-axiom.jdg same class GATE
+  proof-reject-false-axiom.jdg old GATE new GATE GATE | 0 | 706 pmp 0.001s py 0.000s
+
+public v4 fixtures
+ok 14 public fixtures present
+ok altered-first-formula.jdg rejected before a proof accept
+  altered-first-formula.jdg gate REJECT v4 'initial registry entry (counted from 0):' exit 1 0.002s
+  gate:
+    REJECT registry
+    0
+    formula
+  v4:
+    initial registry entry (counted from 0):
+    0
+    REJECT
+    initial registry entry differs from canonical REG0
+    theorem and step (counted from 0):
+    0
+    0
+    line 351: check zero failed: not the zero vector
+ok altered-last-pure-formula.jdg rejected before a proof accept
+  altered-last-pure-formula.jdg gate REJECT v4 'initial registry entry (counted from 0):' exit 1 2.879s
+  gate:
+    REJECT registry
+    676
+    formula
+  v4:
+    initial registry entry (counted from 0):
+    676
+    REJECT
+    initial registry entry differs from canonical REG0
+    theorem and step (counted from 0):
+    0
+    0
+    line 351: check zero failed: not the zero vector
+ok altered-placeholder-hypothesis.jdg rejected before a proof accept
+  altered-placeholder-hypothesis.jdg gate REJECT v4 'initial registry entry (counted from 0):' exit 1 2.908s
+  gate:
+    REJECT registry
+    705
+    hypotheses
+  v4:
+    initial registry entry (counted from 0):
+    705
+    REJECT
+    initial registry entry differs from canonical REG0
+    theorem and step (counted from 0):
+    0
+    0
+    line 351: check zero failed: not the zero vector
+ok altered-pure-hypotheses.jdg rejected before a proof accept
+  altered-pure-hypotheses.jdg gate REJECT v4 'initial registry entry (counted from 0):' exit 1 0.003s
+  gate:
+    REJECT registry
+    0
+    hypotheses
+  v4:
+    initial registry entry (counted from 0):
+    0
+    REJECT
+    initial registry entry differs from canonical REG0
+    theorem and step (counted from 0):
+    0
+    0
+    line 351: check zero failed: not the zero vector
+ok false-proof-canonical-prefix.jdg canonical prefix, proof rejected
+  false-proof-canonical-prefix.jdg gate GATE v4 'REJECT' exit 1 0.003s
+  gate:
+    GATE
+    1
+    706
+  v4:
+    REJECT
+    ax: not an axiom shape
+    theorem and step (counted from 0):
+    0
+    0
+    line 351: check zero failed: not the zero vector
+ok false-proof-empty-registry.jdg canonical prefix, proof rejected
+  false-proof-empty-registry.jdg gate GATE v4 'REJECT' exit 1 0.002s
+  gate:
+    GATE
+    0
+    706
+  v4:
+    REJECT
+    ax: not an axiom shape
+    theorem and step (counted from 0):
+    0
+    0
+    line 351: check zero failed: not the zero vector
+ok forged-false-registry.jdg rejected before a proof accept
+  forged-false-registry.jdg gate REJECT v4 'initial registry entry (counted from 0):' exit 1 0.001s
+  gate:
+    REJECT registry
+    0
+    formula
+  v4:
+    initial registry entry (counted from 0):
+    0
+    REJECT
+    initial registry entry differs from canonical REG0
+    theorem and step (counted from 0):
+    0
+    0
+    line 351: check zero failed: not the zero vector
+ok leading-zero-and-tab-prefix.jdg prefix accepted
+  leading-zero-and-tab-prefix.jdg gate GATE v4 'ACCEPT' exit 0 0.004s
+  gate:
+    GATE
+    1
+    706
+  v4:
+    ACCEPT
+    registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+    1
+    1
+    2
+    2
+ok nonexistent-registry-use.jdg canonical prefix, proof rejected
+  nonexistent-registry-use.jdg gate GATE v4 'REJECT' exit 1 0.002s
+  gate:
+    GATE
+    0
+    706
+  v4:
+    REJECT
+    use: no such registry entry
+    theorem and step (counted from 0):
+    0
+    0
+    line 351: check zero failed: not the zero vector
+ok prefix-0-truth.jdg prefix accepted
+  prefix-0-truth.jdg gate GATE v4 'ACCEPT' exit 0 0.002s
+  gate:
+    GATE
+    0
+    706
+  v4:
+    ACCEPT
+    registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+    0
+    1
+    2
+    1
+ok prefix-1-truth.jdg prefix accepted
+  prefix-1-truth.jdg gate GATE v4 'ACCEPT' exit 0 0.004s
+  gate:
+    GATE
+    1
+    706
+  v4:
+    ACCEPT
+    registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+    1
+    1
+    2
+    2
+ok prefix-677-truth.jdg prefix accepted
+  prefix-677-truth.jdg gate GATE v4 'ACCEPT' exit 0 2.852s
+  gate:
+    GATE
+    677
+    706
+  v4:
+    ACCEPT
+    registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+    677
+    1
+    2
+    678
+ok prefix-706-truth.jdg prefix accepted
+  prefix-706-truth.jdg gate GATE v4 'ACCEPT' exit 0 2.939s
+  gate:
+    GATE
+    706
+    706
+  v4:
+    ACCEPT
+    registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+    706
+    1
+    2
+    707
+ok registry-707-entries.jdg rejected before a proof accept
+  registry-707-entries.jdg gate REJECT v4 'REJECT' exit 1 0.002s
+  gate:
+    REJECT registry
+    count
+    707
+    706
+  v4:
+    REJECT
+    initial registry has more than 706 entries
+    theorem and step (counted from 0):
+    0
+    0
+    line 351: check zero failed: not the zero vector
+
+altered external canon must not authenticate a forged registry
+ok source canon still has 706 F markers
+ok entry 0 formula present
+ok old gate accepts the forged file when REG0.canon is altered
+old gate, cwd holds the altered canon:
+  GATE
+  1
+  706
+ok repaired gate rejects forged entry 0
+repaired gate, same cwd and REG0_CANON set:
+  REJECT registry
+  0
+  formula
+ok released judge-v3 would accept this forged file if reached
+judge-v3 on the forged file, not used by the repaired wrapper:
+  ACCEPT
+  registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+  1
+  1
+  1
+  2
+ok wrapper rejects before proof checking
+ok wrapper output has no proof verdict
+wrapper:
+  REJECT registry
+  0
+  formula
+  line 335: check zero failed: not the zero vector
+
+equivalent spellings reach the proof judge and are accepted
+ok wrapper accepts fail-hyp-spell-677.jdg
+fail-hyp-spell-677.jdg exit 0
+  GATE
+  678
+  706
+  ACCEPT
+  registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+  678
+  1
+  1
+  679
+ok wrapper accepts fail-hypcount-spell-0.jdg
+fail-hypcount-spell-0.jdg exit 0
+  GATE
+  1
+  706
+  ACCEPT
+  registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+  1
+  1
+  1
+  2
+ok wrapper accepts fail-spell-0.jdg
+fail-spell-0.jdg exit 0
+  GATE
+  1
+  706
+  ACCEPT
+  registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+  1
+  1
+  1
+  2
+
+empty prefix is not a proof of a false axiom
+ok false axiom passes the gate and fails the proof judge
+ok false axiom wrapper does not accept
+proof-reject-false-axiom.jdg
+  GATE
+  0
+  706
+  REJECT
+  ax: not an axiom shape
+  theorem and step (counted from 0):
+  0
+  0
+  line 340: check zero failed: not the zero vector
+
+no canon file in the working directory
+ok pass-empty gates with no REG0.canon present
+GATE
+0
+706
+
+tool hashes
+414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7  /workspace/pmp-audit/linux-judge/bin/linux/pompetzki
+bf147194d415d0ab6991b5912c718c772f4bcb285ea027326fc5a108a81e6ce7  /workspace/pmp-audit/linux-judge/judge/judge-v3.pmp
+c0698f6c00310e4cf95147d4ddfbfab0f8c06d00aa8f9ca1da8482123c073e33  /tmp/v4src/judge/judge-v4.pmp
+e5f9a371771ec024e286c19393cf7f0ed200bfbc4a77fb4fd1ddbf1ef2758dc3  /workspace/reg0-gate/reggate.pmp
+917b30b3aec0d5fc84afdd0733861fae7229d21114e6b0ac87f238bb2bade841  /workspace/reg0-initial-registry-gate-2026-10-11.zip
+judge-v4 commit 63f45bbcaa88e370827d2dd2e95a6d422fb8c589
+RpInitOk.v e8958a92 sha256 827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3
+Theorem REG0_ok : reg_ok hypf REG0. Proof. ... Qed. Not an Axiom.
+ALL CHECKS PASSED

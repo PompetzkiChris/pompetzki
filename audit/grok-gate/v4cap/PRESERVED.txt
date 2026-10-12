@@ -1,0 +1,9 @@
+The 2026-10-11 external-canon gate archive was not modified.
+
+917b30b3aec0d5fc84afdd0733861fae7229d21114e6b0ac87f238bb2bade841  reg0-initial-registry-gate-2026-10-11.zip
+74542 bytes
+
+Its reggate.pmp sha256 is e5f9a371771ec024e286c19393cf7f0ed200bfbc4a77fb4fd1ddbf1ef2758dc3.
+That program still rejects decimal spellings and still reads REG0.canon from the working directory.
+The run that produced it is tests/linux-output.txt inside that zip.
+This directory does not replace those bytes.

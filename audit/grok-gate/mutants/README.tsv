@@ -1,0 +1,18 @@
+# name	what
+# expected gate results are recomputed by test-linux.py from REG0.canon
+pass-empty.jdg	prefix 0; proof of nothing, both judges ACCEPT
+pass-one.jdg	prefix 1, no theorems
+pass-three.jdg	prefix 3, no theorems
+pass-all.jdg	the whole REG0, no theorems
+fail-formula-0.jdg	entry 0 last numeral + 1; ungated proof check trusts it
+fail-spell-0.jdg	entry 0 spells 2 as 02; same integer, different token
+fail-false.jdg	registry is only forall x. x != x, cited by U
+fail-hyp-0.jdg	entry 0 formula unchanged, hypothesis list [0] instead of []
+fail-hypcount-spell-0.jdg	entry 0 hypothesis count spelled 00; same empty list, different token
+fail-formula-10.jdg	entries 0..9 canonical; entry 10 formula altered; theorem cites only entry 0
+fail-hyp-677.jdg	entry 677 hypothesis [0] changed to [5]; theorem cites only entry 0
+fail-hyp-spell-677.jdg	entry 677 hypothesis token 0 spelled 00; same integer, different token
+fail-count-707.jdg	707 entries: REG0 plus a copy of entry 0
+fail-parse.jdg	registry formula is not a tag
+fail-truncated.jdg	registry count with no entry
+proof-reject-false-axiom.jdg	empty registry is a prefix; Y of forall x. x != x is not an axiom

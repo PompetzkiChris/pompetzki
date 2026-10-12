@@ -1,0 +1,51 @@
+specification is the integer value; v4-cap is the 12-digit gate; v5 drops that cap
+name	spec	v4-cap pmp	v4-cap py	v5 pmp	v5 py
+zeros12-then-2	GATE:-	REJECT:parse	REJECT:parse	GATE:-	GATE:-
+zeros12-value0	GATE:-	GATE:-	GATE:-	GATE:-	GATE:-
+zeros13-then-2	GATE:-	REJECT:parse	REJECT:parse	GATE:-	GATE:-
+zeros13-value0	GATE:-	REJECT:parse	REJECT:parse	GATE:-	GATE:-
+zeros64-then-2	GATE:-	REJECT:parse	REJECT:parse	GATE:-	GATE:-
+zeros64-value0	GATE:-	REJECT:parse	REJECT:parse	GATE:-	GATE:-
+zeros1024-then-2	GATE:-	REJECT:parse	REJECT:parse	GATE:-	GATE:-
+zeros1024-value0	GATE:-	REJECT:parse	REJECT:parse	GATE:-	GATE:-
+digits12-value2	GATE:-	GATE:-	GATE:-	GATE:-	GATE:-
+zeros12-hypcount	GATE:-	GATE:-	GATE:-	GATE:-	GATE:-
+zeros13-hypcount	GATE:-	REJECT:parse	REJECT:parse	GATE:-	GATE:-
+zeros1024-hypcount	GATE:-	REJECT:parse	REJECT:parse	GATE:-	GATE:-
+huge-64-nines	REJECT:formula	REJECT:parse	REJECT:parse	REJECT:formula	REJECT:formula
+huge-1024-nines	REJECT:formula	REJECT:parse	REJECT:parse	REJECT:formula	REJECT:formula
+huge-2-then-100-zeros	REJECT:formula	REJECT:parse	REJECT:parse	REJECT:formula	REJECT:formula
+huge-int64-max	REJECT:formula	REJECT:parse	REJECT:parse	REJECT:formula	REJECT:formula
+huge-hypcount	REJECT:hypotheses	REJECT:parse	REJECT:parse	REJECT:hypotheses	REJECT:hypotheses
+malformed-0.0	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse
+malformed-plus2	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse
+malformed-minus1	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse
+malformed-2a	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse
+malformed-0x2	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse
+malformed-dot	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse
+malformed-2dot	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse	REJECT:parse
+
+v5 regression against preserved mutants and the public leading-zero fixture
+ok v5-pmp fail-false.jdg REJECT:formula
+ok v5-py fail-false.jdg REJECT:formula
+ok v5-pmp fail-spell-0.jdg GATE:-
+ok v5-py fail-spell-0.jdg GATE:-
+ok v5-pmp fail-hypcount-spell-0.jdg GATE:-
+ok v5-py fail-hypcount-spell-0.jdg GATE:-
+ok v5-pmp fail-hyp-spell-677.jdg GATE:-
+ok v5-py fail-hyp-spell-677.jdg GATE:-
+ok v5-pmp pass-empty.jdg GATE:-
+ok v5-py pass-empty.jdg GATE:-
+ok v5-pmp proof-reject-false-axiom.jdg GATE:-
+ok v5-py proof-reject-false-axiom.jdg GATE:-
+ok v5-pmp leading-zero-and-tab-prefix.jdg GATE:-
+ok v5-py leading-zero-and-tab-prefix.jdg GATE:-
+ok v5-pmp forged-false-registry.jdg REJECT:formula
+ok v5-py forged-false-registry.jdg REJECT:formula
+ok v5-pmp altered-pure-hypotheses.jdg REJECT:hypotheses
+ok v5-py altered-pure-hypotheses.jdg REJECT:hypotheses
+ok v5-pmp registry-707-entries.jdg REJECT:count
+ok v5-py registry-707-entries.jdg REJECT:count
+
+failures 0
+ALL PADDING CHECKS PASSED

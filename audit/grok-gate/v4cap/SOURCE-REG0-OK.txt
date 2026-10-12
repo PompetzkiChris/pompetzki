@@ -1,0 +1,56 @@
+Source: rocq/RpInitOk.v
+Commit: e8958a92d72c0b4cace72949510807b8a5b1320e
+sha256: 827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3
+Declaration: Theorem, Proof, Qed. The file contains no Axiom, Hypothesis, or Parameter.
+
+Definition REG0 : list entry :=
+  map (fun d => (d, [])) AX0 ++ map (fun d => (d, [])) DEF0 ++ mapi (fun i d => (d, [N.of_nat i])) 0 HYPD.
+
+Theorem REG0_ok : reg_ok hypf REG0.
+Proof.
+  intros i d h E. unfold REG0 in E.
+  destruct (Nat.lt_ge_cases i (length (map (fun d => (d, [] : list N)) AX0))) as [L1|L1].
+  - rewrite nth_error_app1 in E by exact L1. rewrite nth_error_map in E. destruct (nth_error AX0 i) as [d0|] eqn:E0; simpl in E; [|discriminate]. injection E as <- <-.
+    rewrite length_map in L1. pose proof ax_check_x as C. rewrite forallb_forall in C.
+    assert (Hs : nth_error (seq 0 7) i = Some i) by (rewrite nth_error_seq; rewrite len_AX0 in L1; destruct (i <? 7) eqn:Q; [reflexivity|apply Nat.ltb_ge in Q; lia]).
+    specialize (C _ (in_combine_nth _ _ _ _ _ E0 Hs)). simpl in C. apply form_eqb_true in C. rewrite C.
+    apply p_ax. left. left. exists i. rewrite len_AX0 in L1. split; [exact L1|reflexivity].
+  - rewrite nth_error_app2 in E by exact L1. rewrite length_map in E, L1.
+    destruct (Nat.lt_ge_cases (i - length AX0) (length (map (fun d => (d, [] : list N)) DEF0))) as [L2|L2].
+    + rewrite nth_error_app1 in E by exact L2. rewrite nth_error_map in E. destruct (nth_error DEF0 (i - length AX0)) as [d0|] eqn:E0; simpl in E; [|discriminate]. injection E as <- <-.
+      rewrite length_map in L2. rewrite len_DEF0 in L2.
+      destruct (nth_error Dall (i - length AX0)) as [dd|] eqn:ED; [|apply nth_error_None in ED; lia].
+      pose proof def_check_x as C. rewrite forallb_forall in C.
+      specialize (C _ (in_combine_nth _ _ _ _ _ E0 ED)). simpl in C. apply form_eqb_true in C. rewrite C.
+      apply closed_def_prov. exact (nth_error_In _ _ ED).
+    + rewrite nth_error_app2 in E by exact L2. rewrite length_map in E.
+      apply nth_error_mapi_inv in E as [x [E0 Ex]]. injection Ex as Ed Eh. subst d h.
+      apply p_ax. right. eexists. split; [left; reflexivity|].
+      unfold hypf. rewrite Nat2N.id. f_equal. symmetry. apply nth_error_nth. rewrite <- E0. f_equal.
+Qed.
+
+PrefixSoundness.v at 63f45bbcaa88e370827d2dd2e95a6d422fb8c589 uses that theorem.
+It does not redeclare it:
+
+Theorem REG0_prefix_ok (n : nat) :
+  reg_ok hypf (firstn n REG0).
+Proof.
+  apply reg_ok_firstn. exact REG0_ok.
+Qed.
+
+The authenticated checker results keep the equality premise:
+
+Theorem authenticated_REG0_prefix_check_batch_ok
+    (reg : list entry) (n : nat) (ts : list thm) :
+  reg = firstn n REG0 ->
+  check_batch reg ts = true ->
+  reg_ok hypf (reg ++ map ent ts).
+
+CanonicalPrefixSoundness.v likewise keeps:
+
+  reg = firstn n canonical_data
+
+before calling check_thm_ok or check_batch_ok.
+canonical_data_eq_REG0 is stated there as a theorem proved by vm_compute; reflexivity.
+This sandbox did not re-run the kernel check.
+Parser behavior, token comparison, and executable/Gallina correspondence are not discharged by those theorems.
