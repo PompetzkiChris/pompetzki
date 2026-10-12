@@ -1,0 +1,31 @@
+Executed source: codex/exact-release-repair commit 7360674cbe123b931403cdcf03c4ea1726d974f0
+judge/judge-v6.pmp
+sha256 87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7
+101261 bytes
+That file was not written into this branch.
+
+Route: interpreted pmp.
+Interpreter: released Linux pompetzki
+sha256 414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7
+Not the native judge, and not Racket. The published 938-run suite is not a compiler theorem and was not re-executed here. Book-v7 was not executed here.
+
+Each child set, before exec:
+  RLIMIT_AS  = 1342177280
+  RLIMIT_DATA= 1342177280
+  RLIMIT_CPU = 20
+
+RECORDCOUNT runs before the theorem vector, the step vector, and RDLIST's vector.
+A count greater than the bytes still unread is REJECT, not LIMIT.
+
+12/12:
+  five huge counts     REJECT / a record count exceeds remaining input bytes
+  T 0                  ACCEPT
+  canonical truth      ACCEPT
+  no lines             REJECT / the theorem has no lines
+  max predicate id, no lines   REJECT / the theorem has no lines
+  max-numeric-predicate.jdg    ACCEPT
+  zero-count-padded-1024.jdg   ACCEPT
+  signature-zero-padded-1024.jdg ACCEPT
+
+VmPeak 1083352 KiB on the theorem-count REJECT and on the ACCEPT controls.
+The nine inputs are the bytes from judge-v5-count-allocation. The three added fixtures match the public cases.json hashes.
