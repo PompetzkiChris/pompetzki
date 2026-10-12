@@ -1,0 +1,219 @@
+{
+  "cases": 26,
+  "passed": 26,
+  "results": [
+    {
+      "case": "bundle0-v6-native",
+      "route": "native",
+      "selected_version": "v6",
+      "recorded_fresh_commands_identical": true,
+      "post_exit": 0,
+      "check_exit": 0,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-artifact-slash",
+      "route": "native",
+      "path_category": "artifact",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-artifact-backslash",
+      "route": "native",
+      "path_category": "artifact",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-command-program-slash",
+      "route": "native",
+      "path_category": "command-program",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-command-program-backslash",
+      "route": "native",
+      "path_category": "command-program",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-command-input-slash",
+      "route": "native",
+      "path_category": "command-input",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-command-input-backslash",
+      "route": "native",
+      "path_category": "command-input",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-snapshot-slash",
+      "route": "native",
+      "path_category": "snapshot",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-snapshot-backslash",
+      "route": "native",
+      "path_category": "snapshot",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-stdout-slash",
+      "route": "native",
+      "path_category": "stdout",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-stdout-backslash",
+      "route": "native",
+      "path_category": "stdout",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-receipt-directory-slash",
+      "route": "native",
+      "path_category": "receipt-directory",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-native-receipt-directory-backslash",
+      "route": "native",
+      "path_category": "receipt-directory",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted",
+      "route": "interpreted",
+      "selected_version": "v6",
+      "recorded_fresh_commands_identical": true,
+      "post_exit": 0,
+      "check_exit": 0,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-artifact-slash",
+      "route": "interpreted",
+      "path_category": "artifact",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-artifact-backslash",
+      "route": "interpreted",
+      "path_category": "artifact",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-command-program-slash",
+      "route": "interpreted",
+      "path_category": "command-program",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-command-program-backslash",
+      "route": "interpreted",
+      "path_category": "command-program",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-command-input-slash",
+      "route": "interpreted",
+      "path_category": "command-input",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-command-input-backslash",
+      "route": "interpreted",
+      "path_category": "command-input",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-snapshot-slash",
+      "route": "interpreted",
+      "path_category": "snapshot",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-snapshot-backslash",
+      "route": "interpreted",
+      "path_category": "snapshot",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-stdout-slash",
+      "route": "interpreted",
+      "path_category": "stdout",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-stdout-backslash",
+      "route": "interpreted",
+      "path_category": "stdout",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-receipt-directory-slash",
+      "route": "interpreted",
+      "path_category": "receipt-directory",
+      "separator": "slash",
+      "check_exit": 1,
+      "passed": true
+    },
+    {
+      "case": "bundle0-v6-interpreted-receipt-directory-backslash",
+      "route": "interpreted",
+      "path_category": "receipt-directory",
+      "separator": "backslash",
+      "check_exit": 1,
+      "passed": true
+    }
+  ],
+  "poster_sha256": "33c5d540220df1ca52c430a392e9a050354f29bd05517f14bb00247c08a87e0d",
+  "checker_sha256": "8fa76a95058da7e41d06123536afef327283dd4f4c47dda167526686f43b2efb",
+  "lowlevel_writer_sha256": "6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720"
+}

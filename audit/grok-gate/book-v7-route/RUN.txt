@@ -1,0 +1,45 @@
+Public source commit db8f8b7d3774757c143a0834e90da4ef3b1982b2
+repair/book-v7/PUBLIC-SOURCE-MANIFEST.json : 14 files, 14 hashes matched.
+Those sources were not written into this branch.
+
+Route driver, unchanged public test-route-path-v7.py, one current bundle, no historical bundle, no full replay:
+  python3 test-route-path-v7.py --bundle /tmp/bv7/bundle --racket /tmp/racket/bin/racket
+The process set, before exec, and children inherited:
+  RLIMIT_AS   = 1342177280
+  RLIMIT_DATA = 1342177280
+  RLIMIT_CPU  = 180
+Driver exit 0. cases 26, passed 26. Driver stderr empty.
+Output: route-path-v7-20261012-043832
+
+The poster and checker are the public Racket sources:
+  verified-book-post.rkt  33c5d540220df1ca52c430a392e9a050354f29bd05517f14bb00247c08a87e0d
+  verified-book-check.rkt 8fa76a95058da7e41d06123536afef327283dd4f4c47dda167526686f43b2efb
+  book-post-v4.rkt        6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720
+
+judge/judge-v6.pmp sha256 87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7
+
+Interpreter slot: the source names pompetzki.exe. The bytes are the released Linux ELF
+  sha256 414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7
+  magic 7f454c46
+
+Native slot: the source names judge-v6-windows.exe. The bytes are an ELF built here, not a PE.
+  build: python3 build-native.py --source judge-v6.pmp --output native-build --target linux --racket /tmp/racket/bin/racket --linux-nasm /tmp/nasm-install/bin/nasm --linux-ld /usr/bin/ld
+  built file judge-v6-linux
+  sha256 afc148582fab368a01e27ae4d6a340402f6ee31a4003d1cc40f9ef32145fd6af
+  compiler pmpc-original.rkt 660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96
+  linux-runtime.asm 89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c
+  source/native correspondence: open. This receipt is not a compiler theorem.
+
+With that native present, the interpreted posting recorded and rejudged:
+  pompetzki.exe  judge-v6.pmp  INPUT
+The native posting recorded and rejudged:
+  judge-v6-windows.exe  INPUT
+Recorded and fresh commands are equal on both routes. See recorded-and-fresh-commands.json.
+False-proof input REJECT exit 1. prefix-0-truth ACCEPT exit 0. Racket agreed.
+24 trailing slash and backslash metadata checks exited 1 with:
+  CHECK FAILED: verified-book-check: recorded path ends in slash or backslash
+
+Inputs are the public book-v5 registry-tests copies, which match book-v4:
+  prefix-0-truth.jdg 1a7da16d3e6226c8b0bbda63cb388cbd05207264e9d78c5aac9731189577819c
+  false-proof-empty-registry.jdg 5c2e5b7700e8fc7bee703cb32fa3e81309e34532f08f73952e06373e0b565b18
+The 938 suite and the 4551 replay were not run.

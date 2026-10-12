@@ -1,0 +1,66 @@
+[
+  {
+    "posting": "bundle0-v6-native",
+    "recorded": [
+      "/tmp/bv7/bundle/judge/judge-v6-windows.exe",
+      "/tmp/bv7/tree/repair/book-v7/tests/route-path-v7-20261012-043832/bundle0-v6-native/judge-inputs/1-false-proof-empty-registry.jdg"
+    ],
+    "fresh": [
+      "/tmp/bv7/bundle/judge/judge-v6-windows.exe",
+      "/tmp/bv7/tree/repair/book-v7/tests/route-path-v7-20261012-043832/bundle0-v6-native/judge-inputs/1-false-proof-empty-registry.jdg"
+    ],
+    "identical": true,
+    "verdict": "REJECT",
+    "exit": 1,
+    "racket_verdict": "REJECT"
+  },
+  {
+    "posting": "bundle0-v6-native",
+    "recorded": [
+      "/tmp/bv7/bundle/judge/judge-v6-windows.exe",
+      "/tmp/bv7/tree/repair/book-v7/tests/route-path-v7-20261012-043832/bundle0-v6-native/judge-inputs/2-prefix-0-truth.jdg"
+    ],
+    "fresh": [
+      "/tmp/bv7/bundle/judge/judge-v6-windows.exe",
+      "/tmp/bv7/tree/repair/book-v7/tests/route-path-v7-20261012-043832/bundle0-v6-native/judge-inputs/2-prefix-0-truth.jdg"
+    ],
+    "identical": true,
+    "verdict": "ACCEPT",
+    "exit": 0,
+    "racket_verdict": "ACCEPT"
+  },
+  {
+    "posting": "bundle0-v6-interpreted",
+    "recorded": [
+      "/tmp/bv7/bundle/pompetzki.exe",
+      "/tmp/bv7/bundle/judge/judge-v6.pmp",
+      "/tmp/bv7/tree/repair/book-v7/tests/route-path-v7-20261012-043832/bundle0-v6-interpreted/judge-inputs/1-false-proof-empty-registry.jdg"
+    ],
+    "fresh": [
+      "/tmp/bv7/bundle/pompetzki.exe",
+      "/tmp/bv7/bundle/judge/judge-v6.pmp",
+      "/tmp/bv7/tree/repair/book-v7/tests/route-path-v7-20261012-043832/bundle0-v6-interpreted/judge-inputs/1-false-proof-empty-registry.jdg"
+    ],
+    "identical": true,
+    "verdict": "REJECT",
+    "exit": 1,
+    "racket_verdict": "REJECT"
+  },
+  {
+    "posting": "bundle0-v6-interpreted",
+    "recorded": [
+      "/tmp/bv7/bundle/pompetzki.exe",
+      "/tmp/bv7/bundle/judge/judge-v6.pmp",
+      "/tmp/bv7/tree/repair/book-v7/tests/route-path-v7-20261012-043832/bundle0-v6-interpreted/judge-inputs/2-prefix-0-truth.jdg"
+    ],
+    "fresh": [
+      "/tmp/bv7/bundle/pompetzki.exe",
+      "/tmp/bv7/bundle/judge/judge-v6.pmp",
+      "/tmp/bv7/tree/repair/book-v7/tests/route-path-v7-20261012-043832/bundle0-v6-interpreted/judge-inputs/2-prefix-0-truth.jdg"
+    ],
+    "identical": true,
+    "verdict": "ACCEPT",
+    "exit": 0,
+    "racket_verdict": "ACCEPT"
+  }
+]

@@ -1,0 +1,1 @@
+CHECK FAILED: verified-book-check: recorded path ends in slash or backslash
