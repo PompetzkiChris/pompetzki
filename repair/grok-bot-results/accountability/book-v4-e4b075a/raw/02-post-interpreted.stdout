@@ -1,0 +1,5 @@
+/workspace/bw/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct statements 1 records 4 chain head 870e80bcbf274a2c753664ff25ed907ec44ff751cf9c522f114aaf9d3675c06c
+NEGATIVE-1.0.ledger: N 0 records 2 chain head d1d1e2915cf26617da44ad48d7f0b543472c959be1614b95520debe5044ec23a
+SUSPENSE 0
