@@ -1,0 +1,194 @@
+=== raw/build-native-judge.exit (2 bytes)
+0
+=== raw/build-native-judge.stderr (0 bytes)
+=== raw/build-native-judge.stdout (2926 bytes)
+{
+  "created_at": "2026-10-12T01:40:41.331114+00:00",
+  "source": "/workspace/acct-52e4/judge/judge-v4.pmp",
+  "source_sha256": "c0698f6c00310e4cf95147d4ddfbfab0f8c06d00aa8f9ca1da8482123c073e33",
+  "compiler_sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+  "linux_runtime_sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+  "target": "linux",
+  "steps": [
+    {
+      "step": "lower-pmp",
+      "command": [
+        "/workspace/tools/racket/bin/racket",
+        "/workspace/acct-52e4/judge/native/portable/pmpc-original.rkt",
+        "/workspace/acct-52e4/judge/judge-v4.pmp",
+        "/workspace/b52/native/judge-v4-base-windows.asm"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5652867089956999,
+      "stdout": "lower-pmp.stdout.txt",
+      "stderr": "lower-pmp.stderr.txt",
+      "stdout_sha256": "83f0d79d51c09297e04717d50cf356c881b172f7d1d925cc73ae8d84237ff057",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "assemble-linux",
+      "command": [
+        "/workspace/tools/nasm-2.16.03/nasm",
+        "-O0",
+        "-f",
+        "elf64",
+        "/workspace/b52/native/judge-v4-linux.asm",
+        "-o",
+        "/workspace/b52/native/judge-v4-linux.o"
+      ],
+      "exit_code": 0,
+      "seconds": 0.21472334199643228,
+      "stdout": "assemble-linux.stdout.txt",
+      "stderr": "assemble-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "link-linux",
+      "command": [
+        "/usr/bin/ld",
+        "-o",
+        "/workspace/b52/native/judge-v4-linux",
+        "/workspace/b52/native/judge-v4-linux.o",
+        "-e",
+        "start"
+      ],
+      "exit_code": 0,
+      "seconds": 0.003825823005172424,
+      "stdout": "link-linux.stdout.txt",
+      "stderr": "link-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "judge-v4-base-windows.asm",
+      "sha256": "b02c2d12331b724d3be954bb24b3dc1e1bd4d41e251e06e91d1b21d4262e6dce",
+      "bytes": 336771
+    },
+    {
+      "file": "judge-v4-linux.asm",
+      "sha256": "9b4c1bc9d6a8dc63feb990fb80b021a72648036d11d9755930033e8df24c0e44",
+      "bytes": 335666
+    },
+    {
+      "file": "judge-v4-linux.o",
+      "sha256": "698fa8451fa4edaf04fa00d41caa38c2a5366819b8da7818795e53cf938857b0",
+      "bytes": 172096
+    },
+    {
+      "file": "judge-v4-linux",
+      "sha256": "ece313c902ab3a610c5b76b5cc080157f39d99e79515102930a11cb677d5c48a",
+      "bytes": 113216
+    }
+  ],
+  "source_native_correspondence": "Open; a build receipt is finite evidence only."
+}
+=== raw/build-portable-interp.exit (2 bytes)
+0
+=== raw/build-portable-interp.stderr (0 bytes)
+=== raw/build-portable-interp.stdout (1595 bytes)
+{
+  "target": "linux",
+  "source": "pompetzki.asm",
+  "source_sha256": "778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db",
+  "source_matches_verified_revision": true,
+  "steps": [
+    {
+      "step": "assemble",
+      "argv": [
+        "/workspace/tools/nasm-2.16.03/nasm",
+        "-DLINUX",
+        "-f",
+        "elf64",
+        "/workspace/acct-52e4/judge/portable-interpreter/source/pompetzki.asm",
+        "-o",
+        "/workspace/b52/interp/pompetzki.o"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.21453160300006857,
+      "stdout": "assemble.stdout.txt",
+      "stderr": "assemble.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "link-linux",
+      "argv": [
+        "/usr/bin/ld",
+        "-o",
+        "/workspace/b52/interp/pompetzki",
+        "/workspace/b52/interp/pompetzki.o",
+        "-e",
+        "_start"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.00836879899725318,
+      "stdout": "link-linux.stdout.txt",
+      "stderr": "link-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "pompetzki",
+      "sha256": "00f3e9a680987dd68e230409498284d0318080f8400bfb5e915b32216fe11baf",
+      "bytes": 128232
+    }
+  ],
+  "source_to_executable_correspondence": "Open"
+}
+=== raw/build-repair-runtime.exit (2 bytes)
+0
+=== raw/build-repair-runtime.log (0 bytes)
+=== raw/driver-portable-interp-native.exit (2 bytes)
+0
+=== raw/driver-portable-interp-v4pmp.exit (2 bytes)
+0
+=== raw/driver-repair-runtime-native.exit (2 bytes)
+0
+=== raw/driver-repair-runtime-v4pmp.exit (2 bytes)
+0
+=== raw/linux-lane/build-fixed.exit (2 bytes)
+0
+=== raw/linux-lane/build-fixed.log (447 bytes)
+nasm: NASM version 2.16.03 compiled on Oct 11 2026
+ld:   GNU ld (GNU Binutils for Debian) 2.44
+source: fixed/pompetzki.asm sha256=7e10802206a549330884b78271729c408cc9cf59c5d652dc26c61f331daf031a
++ nasm -DLINUX -f elf64 fixed/pompetzki.asm -o /workspace/b52/lane-fixed.o
++ ld -o /workspace/b52/lane-fixed /workspace/b52/lane-fixed.o -e _start
+built: /workspace/b52/lane-fixed sha256=8e47518f0da828c66168bd1a777fde30eb1b63e4d490f89ba39d584c3cfff5d4
+=== raw/linux-lane/build-original.exit (2 bytes)
+0
+=== raw/linux-lane/build-original.log (489 bytes)
+nasm: NASM version 2.16.03 compiled on Oct 11 2026
+ld:   GNU ld (GNU Binutils for Debian) 2.44
+source: ../../runtime/source/pompetzki.asm sha256=778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db
++ nasm -DLINUX -f elf64 ../../runtime/source/pompetzki.asm -o /workspace/b52/lane-original.o
++ ld -o /workspace/b52/lane-original /workspace/b52/lane-original.o -e _start
+built: /workspace/b52/lane-original sha256=24ff4762b54502724e3f131492beb5e4d3d81aa5048d79c7740dba0f3ae64911
+=== raw/linux-lane/hashes-before.txt (747 bytes)
+6291ca0958aa6bdb60e6d2e560c6d0196034685f0e0d9e458c64734dae512af7  build/pompetzki-linux
+8e47518f0da828c66168bd1a777fde30eb1b63e4d490f89ba39d584c3cfff5d4  build/pompetzki-linux-fixed
+7e10802206a549330884b78271729c408cc9cf59c5d652dc26c61f331daf031a  fixed/pompetzki.asm
+778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db  ../../runtime/source/pompetzki.asm
+8e47518f0da828c66168bd1a777fde30eb1b63e4d490f89ba39d584c3cfff5d4  /workspace/b52/lane-fixed
+c5d0a94c513fec37b3fab779b904a9f3bd6f9f1e328ac9aadbb67775a593ef8c  /workspace/b52/lane-fixed.o
+24ff4762b54502724e3f131492beb5e4d3d81aa5048d79c7740dba0f3ae64911  /workspace/b52/lane-original
+8856ddf396da142a58adbeafbf554c6e5174d742ad7c958744c6c0e9487a7068  /workspace/b52/lane-original.o
+=== raw/linux-lane/test-fixed.exit (2 bytes)
+0
+=== raw/linux-lane/test-fixed.stderr (0 bytes)
+=== raw/linux-lane/test-original.exit (2 bytes)
+1
+=== raw/linux-lane/test-original.stderr (0 bytes)
+=== raw/linux-lane/test-prebuilt-pompetzki-linux-fixed.exit (2 bytes)
+0
+=== raw/linux-lane/test-prebuilt-pompetzki-linux-fixed.stderr (0 bytes)
+=== raw/linux-lane/test-prebuilt-pompetzki-linux.exit (2 bytes)
+1
+=== raw/linux-lane/test-prebuilt-pompetzki-linux.stderr (0 bytes)
+=== raw/sha.txt (41 bytes)
+52e4a28ecf47c9e06b230d975c04a174272a3cdf
