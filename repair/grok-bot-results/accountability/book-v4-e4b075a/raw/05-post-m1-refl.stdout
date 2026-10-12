@@ -1,0 +1,5 @@
+/workspace/bw/m1-refl.jdg pmp REJECT racket REJECT unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 0 B 0 (Proved 0, Qualified 0) steps 0 distinct statements 0 records 2 chain head 4382c15d0445a95f0614f69118c3dc597c57e927a094925491c398950ae71357
+NEGATIVE-1.0.ledger: N 1 records 3 chain head 867b6ae8ae412437c2e65f1aa7185984140887756facd29c6c4fba866a5efc57
+SUSPENSE 0
