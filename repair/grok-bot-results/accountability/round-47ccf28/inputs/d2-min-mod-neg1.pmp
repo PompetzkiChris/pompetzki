@@ -1,0 +1,4 @@
+set A const -9223372036854775808
+set B const -1
+set C mod A B
+show C
