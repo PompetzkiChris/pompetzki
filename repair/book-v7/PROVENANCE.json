@@ -1,0 +1,22 @@
+{
+  "grok_bot_archive_sha256": "4a3b78665503aae95ab32bd365cc537bbb78baf921862adff310c299c9afed26",
+  "sources": {
+    "book-post-v4.rkt": "Grok Bot Book lane corrected low-level writer; root restores inspect-jdg export and project-relative registry path.",
+    "verified-book-post.rkt": "Grok Bot preceding posting corrections; Codex v7 selects one common v6/v5/v4 source/native version, preferring v6.",
+    "verified-book-check.rkt": "Codex complete evidence verifier, retaining v6 artifact closure and theorem reconstruction; v7 applies Grok Bot recorded-route correction and rejects trailing path separators before basename resolution."
+  },
+  "low_level_receipts": "Metadata backing is checked but is not a signature; verified-book-check reruns both judges and recomputes theorem hashes.",
+  "executable_Gallina_correspondence": "Open",
+  "version": "7",
+  "version_4_evidence": "Preserved in sibling book-v4 and book-v4-review directories.",
+  "mathematical_statement_changes": "None.",
+  "version_5_evidence": "Preserved in sibling book-v5; independently reproduced extra judge-runs file acceptance is preserved in book-v6/tests/pre-fix-extra-log.",
+  "grok_v6_review_patch_sha256": "f437cf9846a66016070f62d137c39673ccb1a683892f5252b15da39b96a8013b",
+  "grok_v6_review_fixed_source_sha256": "4521e58fda29fb53f88ae6d704421f5e296192d89bd92cdbcc528ec7245bb116",
+  "grok_received_manifest_sha256": "81dea0484cf9db6deba9804fb78769af304024b3558dbb7d64bb99b4f287a107",
+  "grok_received_manifest_entries_verified": 1163,
+  "lowlevel_writer_sha256": "6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720",
+  "lowlevel_writer_unchanged": true,
+  "v6_evidence": "Retained in sibling book-v6; new route and trailing-path reproductions are retained in book-v7/private.",
+  "route_scope": "Fresh primary execution uses the recorded native or interpreted route after binding selected executable/source hashes in the current bundle."
+}

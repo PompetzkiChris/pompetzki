@@ -1,0 +1,101 @@
+{
+  "schema": "book-v7-public-source-manifest-v1",
+  "version": "7",
+  "status": "CURRENT FROZEN SOURCE",
+  "file_count": 14,
+  "files": [
+    {
+      "path": "book-post-v4.rkt",
+      "sha256": "6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720",
+      "bytes": 21085
+    },
+    {
+      "path": "verified-book-post.rkt",
+      "sha256": "33c5d540220df1ca52c430a392e9a050354f29bd05517f14bb00247c08a87e0d",
+      "bytes": 9543
+    },
+    {
+      "path": "verified-book-check.rkt",
+      "sha256": "8fa76a95058da7e41d06123536afef327283dd4f4c47dda167526686f43b2efb",
+      "bytes": 21266
+    },
+    {
+      "path": "verified-book-check-v7-source.rkt",
+      "sha256": "8fa76a95058da7e41d06123536afef327283dd4f4c47dda167526686f43b2efb",
+      "bytes": 21266
+    },
+    {
+      "path": "test-verified-book-v4.py",
+      "sha256": "7a135706973c805bc35280418148eda574d9a629d9d02d58db766ee654523c0f",
+      "bytes": 5802
+    },
+    {
+      "path": "test-verified-check.py",
+      "sha256": "683c085b20469a3deb405c5458a8f55e1f075533f6d4723a4ecf3038375cf365",
+      "bytes": 4235
+    },
+    {
+      "path": "test-adversarial.py",
+      "sha256": "8c9dfae6706762b25df67548d04bc238191e83713f05723f20f2791ddb2df5e2",
+      "bytes": 3823
+    },
+    {
+      "path": "test-review-v7.py",
+      "sha256": "b7cbbabb32f8bf42917b5f58fe02eb988cdb22c2ff9ca71df0b0f3f5947a0ccc",
+      "bytes": 11842
+    },
+    {
+      "path": "test-full-replay.py",
+      "sha256": "8f85117c015b6ffacde082ca5029390d5e5affae1d90bf922f8b2fd8e5312441",
+      "bytes": 2534
+    },
+    {
+      "path": "test-route-path-v7.py",
+      "sha256": "704880547e9527ac55c14092e37ba30516c2bebe0fee38dc85aaedc0f0082725",
+      "bytes": 6113
+    },
+    {
+      "path": "README.md",
+      "sha256": "0b241fa9d7eea2a188e912702af2cc1e3fcf5a81ee9826b8811c4a1d0a053733",
+      "bytes": 4448
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077
+    },
+    {
+      "path": "PROVENANCE.json",
+      "sha256": "6a6b27ae008e4c61eacce7add5ff27b0b786a9a2242d23ffdf3da7ac44f3775b",
+      "bytes": 1961
+    },
+    {
+      "path": "PUBLIC-RUN-RESULTS.json",
+      "sha256": "5b37cf8e3a139ee3c707b9a11653571111aa8d3d62509eaac435f626504706d7",
+      "bytes": 4900
+    }
+  ],
+  "tests": {
+    "source": {
+      "posting": "tests/regression-20261011-235327/results.json",
+      "checker": "tests/check-regression-20261011-235330/results.json",
+      "review": "tests/review-v7-20261011-235422/results.json",
+      "adversarial": "tests/adversarial-20261011-235422/results.json",
+      "full_replay": "tests/full-replay-20261011-235434/results.json",
+      "route_path": "tests/route-path-v7-20261011-235622/results.json"
+    },
+    "compiled": {
+      "posting": "tests/regression-20261011-235435/results.json",
+      "checker": "tests/check-regression-20261011-235439/results.json",
+      "review": "tests/review-v7-20261011-235608/results.json",
+      "adversarial": "tests/adversarial-20261011-235608/results.json",
+      "full_replay": "tests/full-replay-20261011-235620/results.json",
+      "route_path": "tests/route-path-v7-20261011-235423/results.json"
+    }
+  },
+  "excluded_historical_files": [
+    "verified-book-check-v6-source.rkt",
+    "test-review-v6.py"
+  ],
+  "note": "The 14 entries in files are the authoritative public source whitelist; private scripts, compiled objects, local account/machine paths, and earlier driver versions are excluded."
+}
