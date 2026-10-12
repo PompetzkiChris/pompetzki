@@ -1,0 +1,54 @@
+prefix_eqb_spec : forall reg ref : list entry, prefix_eqb reg ref = true <-> reg = firstn (length reg) ref
+
+prefix_eqb_spec is not universe polymorphic
+Arguments prefix_eqb_spec (reg ref)%_list_scope
+prefix_eqb_spec is opaque
+Expands to: Constant PMPRepair.GrokAuthGate.prefix_eqb_spec
+Declared in library PMPRepair.GrokAuthGate, line 26, characters 6-21
+auth_gate_iff : forall reg : list entry, auth_gate reg = true <-> (exists n : nat, reg = firstn n REG0)
+
+auth_gate_iff is not universe polymorphic
+Arguments auth_gate_iff reg%_list_scope
+auth_gate_iff is opaque
+Expands to: Constant PMPRepair.GrokAuthGate.auth_gate_iff
+Declared in library PMPRepair.GrokAuthGate, line 35, characters 8-21
+auth_gate_length : forall reg : list entry, auth_gate reg = true -> length reg <= 706
+
+auth_gate_length is not universe polymorphic
+Arguments auth_gate_length reg%_list_scope _
+auth_gate_length is opaque
+Expands to: Constant PMPRepair.GrokAuthGate.auth_gate_length
+Declared in library PMPRepair.GrokAuthGate, line 46, characters 8-24
+auth_gate_check_thm_ok : forall (reg : list entry) (t : thm), auth_gate reg = true -> check_thm reg t = true -> prov (AH hypf (t_hyps t)) (tof (t_stmt t))
+
+auth_gate_check_thm_ok is not universe polymorphic
+Arguments auth_gate_check_thm_ok reg%_list_scope t _ _
+auth_gate_check_thm_ok is opaque
+Expands to: Constant PMPRepair.GrokAuthGate.auth_gate_check_thm_ok
+Declared in library PMPRepair.GrokAuthGate, line 52, characters 8-30
+auth_gate_check_batch_ok : forall (reg : list entry) (ts : list thm), auth_gate reg = true -> check_batch reg ts = true -> reg_ok hypf (reg ++ map ent ts)
+
+auth_gate_check_batch_ok is not universe polymorphic
+Arguments auth_gate_check_batch_ok (reg ts)%_list_scope _ _ i d h _
+auth_gate_check_batch_ok is opaque
+Expands to: Constant PMPRepair.GrokAuthGate.auth_gate_check_batch_ok
+Declared in library PMPRepair.GrokAuthGate, line 59, characters 8-32
+auth_gate_REG0 : auth_gate REG0 = true
+
+auth_gate_REG0 is not universe polymorphic
+auth_gate_REG0 is opaque
+Expands to: Constant PMPRepair.GrokAuthGate.auth_gate_REG0
+Declared in library PMPRepair.GrokAuthGate, line 65, characters 8-22
+auth_gate_canonical : auth_gate canonical_data = true
+
+auth_gate_canonical is not universe polymorphic
+auth_gate_canonical is opaque
+Expands to: Constant PMPRepair.GrokAuthGate.auth_gate_canonical
+Declared in library PMPRepair.GrokAuthGate, line 67, characters 8-27
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
