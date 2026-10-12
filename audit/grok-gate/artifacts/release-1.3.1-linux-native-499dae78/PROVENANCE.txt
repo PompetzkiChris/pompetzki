@@ -1,0 +1,15 @@
+These are the original files still present at /tmp/a131/native-linux, copied byte for byte.
+They were not rebuilt for this commit.
+This is the native used by the twenty controls.
+judge-v6-linux sha256 499dae7893233a33b27e0fc5bcf4c075d590b0ad5f9446f992074b9747667a98
+build-result.json sha256 f1846299852b5cfdfd9a9dc2ac82b1481c8e1332128d04287648e0614891c6e1
+That hash matches audit/grok-gate/release-1.3.1-linux/native-build-result.json.
+Built from Abschluss-1.3.1-source.zip members:
+  Abschluss-1.3.1-source/judge/judge-v6.pmp
+  Abschluss-1.3.1-source/judge/native-v6/portable/build-native.py
+  Abschluss-1.3.1-source/judge/native-v6/portable/pmpc-original.rkt
+  Abschluss-1.3.1-source/judge/native-v6/portable/linux-runtime.asm
+The source ZIP has no member named judge-v6-linux. The included PE member is
+  Abschluss-1.3.1-source/vendor/gated-native/judge-v6-windows.exe
+and is a different file.
+No source-map file was in the build directory. Attempted: find /tmp/a131/native-linux -iname '*map*' and -iname '*source*'. Result: no matches.

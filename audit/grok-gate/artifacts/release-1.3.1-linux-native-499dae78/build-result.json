@@ -1,0 +1,83 @@
+{
+  "created_at": "2026-10-12T04:45:24.168367+00:00",
+  "source": "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+  "source_sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+  "compiler_sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+  "linux_runtime_sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+  "target": "linux",
+  "steps": [
+    {
+      "step": "lower-pmp",
+      "command": [
+        "/tmp/racket/bin/racket",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/native-v6/portable/pmpc-original.rkt",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/native-linux/judge-v6-base-windows.asm"
+      ],
+      "exit_code": 0,
+      "seconds": 0.31441625899992687,
+      "stdout": "lower-pmp.stdout.txt",
+      "stderr": "lower-pmp.stderr.txt",
+      "stdout_sha256": "84617df94a115f96e79f4dbfd1cee57ab765da7c71607bbfb758d4140ed94013",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "assemble-linux",
+      "command": [
+        "/tmp/nasm-install/bin/nasm",
+        "-O0",
+        "-f",
+        "elf64",
+        "/tmp/a131/native-linux/judge-v6-linux.asm",
+        "-o",
+        "/tmp/a131/native-linux/judge-v6-linux.o"
+      ],
+      "exit_code": 0,
+      "seconds": 0.21443173000000115,
+      "stdout": "assemble-linux.stdout.txt",
+      "stderr": "assemble-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "link-linux",
+      "command": [
+        "/usr/bin/ld",
+        "-o",
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/native-linux/judge-v6-linux.o",
+        "-e",
+        "start"
+      ],
+      "exit_code": 0,
+      "seconds": 0.0035666429999992033,
+      "stdout": "link-linux.stdout.txt",
+      "stderr": "link-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "judge-v6-base-windows.asm",
+      "sha256": "b152bba8005473eb836ce13b700d12163f336e231c585cffd34d7e8fc073a2c4",
+      "bytes": 337780
+    },
+    {
+      "file": "judge-v6-linux.asm",
+      "sha256": "ce4b58829cd96793289043d5d000e6daef227c634b428229815cd63ae48cbef4",
+      "bytes": 336675
+    },
+    {
+      "file": "judge-v6-linux.o",
+      "sha256": "1adbb3688d0e8ff21a7add85b84b32858f72c103a619e73da15fe98ac85808af",
+      "bytes": 172896
+    },
+    {
+      "file": "judge-v6-linux",
+      "sha256": "499dae7893233a33b27e0fc5bcf4c075d590b0ad5f9446f992074b9747667a98",
+      "bytes": 113520
+    }
+  ],
+  "source_native_correspondence": "Open; a build receipt is finite evidence only."
+}

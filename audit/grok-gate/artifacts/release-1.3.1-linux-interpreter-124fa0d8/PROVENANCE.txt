@@ -1,0 +1,15 @@
+These are the original files still present at /tmp/a131/interpreter-linux, copied byte for byte.
+They were not rebuilt for this commit.
+This is the interpreter used by the twenty interpreted controls.
+pompetzki sha256 124fa0d82784bd875ceca3e5b21463e0337a79f163a8d45ad52f45ed04833cb5
+It is not the released interpreter 414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7.
+Source archive member, not an inferred equivalent:
+  Abschluss-1.3.1-source.zip
+  Abschluss-1.3.1-source/runtime/source/pompetzki.asm
+  sha256 2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e
+  291854 bytes
+Builder member:
+  Abschluss-1.3.1-source/runtime/build-interpreter.py
+build-receipt.json sha256 b7c4d3c27475287b65cb627347ca2d45d54f02fdd822d0840c56c2348996b169
+That hash matches audit/grok-gate/release-1.3.1-linux/interpreter-build-receipt.json.
+No source-map file was in the build directory. Attempted: find /tmp/a131/interpreter-linux -iname '*map*' and -iname '*source*'. Result: no matches.

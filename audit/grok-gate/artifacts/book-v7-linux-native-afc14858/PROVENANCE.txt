@@ -1,0 +1,7 @@
+These are the original files still present at /tmp/bv7/native-build, copied byte for byte.
+They were not rebuilt for this commit.
+build-result.json sha256 f122256347b0e639063f4b065d580de6bf1886dc8d69717d451b62942db5d4ce
+That hash matches the copy already committed at audit/grok-gate/book-v7-route/native-build-result.json.
+judge-v6-linux sha256 afc148582fab368a01e27ae4d6a340402f6ee31a4003d1cc40f9ef32145fd6af
+The Book route executed a later copy of these same bytes at /tmp/bv7/bundle/judge/judge-v6-windows.exe. The file stored here keeps the build output name.
+No source-map file was in the build directory. Attempted: find /tmp/bv7/native-build -iname '*map*' and -iname '*source*'. Result: no matches.

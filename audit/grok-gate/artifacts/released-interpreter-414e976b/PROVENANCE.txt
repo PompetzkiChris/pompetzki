@@ -1,0 +1,10 @@
+This file is the payload of one archive member, written from that member.
+Archive: /workspace/pmp-audit/pompetzki-linux-x64-20261010.zip
+Archive bytes: 175190
+Archive sha256: 6b411b40c2664feabd5fe13146f5a735253e2c026a124c9bb92e6ad950d00052
+Member name: bin/linux/pompetzki
+Member bytes: 128176
+Member sha256: 414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7
+The workspace file /workspace/pmp-audit/linux-judge/bin/linux/pompetzki has the same size and sha256. That observation is not an archive-member claim.
+This interpreter was not used for the twenty 1.3.1 controls. It is not pompetzki sha256 124fa0d82784bd875ceca3e5b21463e0337a79f163a8d45ad52f45ed04833cb5.
+No source-map accompanies this member. Attempted member names containing 'map' in that zip were not part of this extract; the only member stored here is bin/linux/pompetzki.
