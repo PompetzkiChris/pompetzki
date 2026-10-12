@@ -1,0 +1,4 @@
+command: command -v x86_64-w64-mingw32-gcc
+exit: 1
+stdout: empty
+stderr: empty

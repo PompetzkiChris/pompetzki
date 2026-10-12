@@ -1,0 +1,157 @@
+{
+  "linux_release_zip_build": {
+    "bytes": 113520,
+    "whole_file_sha256": "499dae7893233a33b27e0fc5bcf4c075d590b0ad5f9446f992074b9747667a98",
+    "allocated_payload_sha256": "0f885fac3e57b917a3df7c467b14818d5466fa31e7653f93fc59ca3285952e02",
+    "whole_equals_allocated_payload": false,
+    "allocated_sections": [
+      {
+        "name": ".text",
+        "size": 30853,
+        "flags": 6,
+        "sha256": "22b67fe6563d862c0a7fd50d8c15ca21ed97ae6ac1d9fdf9da7257ce167fc8f0"
+      },
+      {
+        "name": ".data",
+        "size": 57311,
+        "flags": 3,
+        "sha256": "1eb611b8ee4d95241ebf7da9756ad3c84280faf26fa754992d5f3e0ad7f99317"
+      },
+      {
+        "name": ".bss",
+        "size": 1054872,
+        "flags": 3,
+        "sha256": null
+      }
+    ]
+  },
+  "earlier_build_same_pinned_sources": {
+    "bytes": 113520,
+    "whole_file_sha256": "afc148582fab368a01e27ae4d6a340402f6ee31a4003d1cc40f9ef32145fd6af",
+    "allocated_sections": [
+      {
+        "name": ".text",
+        "size": 30853,
+        "flags": 6,
+        "sha256": "22b67fe6563d862c0a7fd50d8c15ca21ed97ae6ac1d9fdf9da7257ce167fc8f0"
+      },
+      {
+        "name": ".data",
+        "size": 57311,
+        "flags": 3,
+        "sha256": "1eb611b8ee4d95241ebf7da9756ad3c84280faf26fa754992d5f3e0ad7f99317"
+      },
+      {
+        "name": ".bss",
+        "size": 1054872,
+        "flags": 3,
+        "sha256": null
+      }
+    ],
+    "whole_files_equal": false,
+    "allocated_section_hashes_equal": true,
+    "per_section_equal": {
+      ".bss": true,
+      ".data": true,
+      ".text": true
+    }
+  },
+  "all_named_sections_equal": {
+    ".bss": true,
+    ".data": true,
+    ".shstrtab": true,
+    ".strtab": false,
+    ".symtab": false,
+    ".text": true
+  },
+  "windows_exe_in_source_zip": {
+    "bytes": 107114,
+    "whole_file_sha256": "9b84cb4b1dacde788f693682dba571bf9b75e5b78df71cd6be90164131ea1554",
+    "sections": [
+      {
+        "name": ".text",
+        "virtual_size": 31136,
+        "raw_size": 31232,
+        "raw_offset": 1024,
+        "characteristics": 1610612768,
+        "sha256": "c40070eb5c9b622293b211352d539ccf96160c91be3ba4fd02bf4ac308db7218",
+        "payload_bytes": 31136
+      },
+      {
+        "name": ".data",
+        "virtual_size": 57312,
+        "raw_size": 57344,
+        "raw_offset": 32256,
+        "characteristics": 3221225536,
+        "sha256": "c282d9f667843607be0ff2e747f6efff304847d153aa93a11a9e984b82bfbee5",
+        "payload_bytes": 57312
+      },
+      {
+        "name": ".rdata",
+        "virtual_size": 32,
+        "raw_size": 512,
+        "raw_offset": 89600,
+        "characteristics": 1073741888,
+        "sha256": "7fd52aeb23c86dbb87f694db8996953e4528b66ba477cd7287fcb46f1762f0a6",
+        "payload_bytes": 32
+      },
+      {
+        "name": ".bss",
+        "virtual_size": 1054864,
+        "raw_size": 0,
+        "raw_offset": 0,
+        "characteristics": 3221225600,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "payload_bytes": 0
+      },
+      {
+        "name": ".idata",
+        "virtual_size": 384,
+        "raw_size": 512,
+        "raw_offset": 90112,
+        "characteristics": 1073741888,
+        "sha256": "64bf960a166c1aaebba78cd0ddfda8544d96c25844ae788923695422703943c4",
+        "payload_bytes": 384
+      }
+    ],
+    "compared_equal_to_linux_elf": false,
+    "reason": "The included gate is a PE image. The Linux rebuild is an ELF. Allocated-section equality was not claimed across formats."
+  },
+  "interpreter_from_zip": {
+    "bytes": 128312,
+    "whole_file_sha256": "124fa0d82784bd875ceca3e5b21463e0337a79f163a8d45ad52f45ed04833cb5",
+    "allocated_payload_sha256": "6ca837173b349cfd753dd6f2a89900e76424aba548516f52a0ab263b0b76c409",
+    "whole_equals_allocated_payload": false,
+    "allocated_sections": [
+      {
+        "name": ".text",
+        "size": 44575,
+        "flags": 6,
+        "sha256": "3d540c2f670da6898d979d898d26d9b051f1a96a05f9a7a8753ab04f7fc1a7dc"
+      },
+      {
+        "name": ".data",
+        "size": 6262,
+        "flags": 3,
+        "sha256": "4b7b681ae22b3d49b0b985cc8d8c7a58c7802f7bf518bd43bb873c264ef4799f"
+      },
+      {
+        "name": ".bss",
+        "size": 35393880,
+        "flags": 3,
+        "sha256": null
+      }
+    ]
+  },
+  "released_interpreter_observed_not_used": {
+    "bytes": 128176,
+    "whole_file_sha256": "414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7",
+    "whole_files_equal": false,
+    "allocated_section_hashes_equal": false,
+    "per_section_equal": {
+      ".bss": true,
+      ".data": true,
+      ".text": false
+    }
+  }
+}

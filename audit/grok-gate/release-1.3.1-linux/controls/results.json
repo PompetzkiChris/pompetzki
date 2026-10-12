@@ -1,0 +1,464 @@
+{
+  "source_zip_sha256": "8db56c0cd336d84f3c4b6f867324683c28f33e8c390f773926a4c21ac225282a",
+  "source_zip_bytes": 180990181,
+  "tag_target": "c5253c0922f553b1ac8ef18240c1c372ff39657f",
+  "rlimit_as": 1342177280,
+  "rlimit_data": 1342177280,
+  "rlimit_cpu_seconds": 30,
+  "passed": 20,
+  "failed": 0,
+  "runs": 20,
+  "not_a_compiler_preservation_proof": true,
+  "rows": [
+    {
+      "case": "true",
+      "route": "native",
+      "expected": "ACCEPT",
+      "verdict": "ACCEPT",
+      "exit": 0,
+      "passed": true,
+      "seconds": 0.0015,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/true.jdg"
+      ],
+      "input_bytes": 41,
+      "input_sha256": "01eb20b4957bbf08b35d7ae5865f3981766984e12cbcf5ac5520fd3c32c97b8e",
+      "stdout_sha256": "d11bfea3af0f97cbbcc387d8ac34edc81248b65a023ec2ede8e328545fe0a0b1",
+      "stdout_head": [
+        "ACCEPT",
+        "registry entries at the start, theorems accepted, steps checked, registry entries at the end:",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "case": "true",
+      "route": "interpreted",
+      "expected": "ACCEPT",
+      "verdict": "ACCEPT",
+      "exit": 0,
+      "passed": true,
+      "seconds": 0.0031,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/true.jdg"
+      ],
+      "input_bytes": 41,
+      "input_sha256": "01eb20b4957bbf08b35d7ae5865f3981766984e12cbcf5ac5520fd3c32c97b8e",
+      "stdout_sha256": "d11bfea3af0f97cbbcc387d8ac34edc81248b65a023ec2ede8e328545fe0a0b1",
+      "stdout_head": [
+        "ACCEPT",
+        "registry entries at the start, theorems accepted, steps checked, registry entries at the end:",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "case": "false-proof",
+      "route": "native",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0014,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/false-proof.jdg"
+      ],
+      "input_bytes": 43,
+      "input_sha256": "69f4ee86830901f9b0b0509256ea61b6b94a110b683987ad80ac0848ae396805",
+      "stdout_sha256": "9ce1aa89a925a809a52b5a5f7f1dc22fded9cdee82a09cac2e55c8b0e4616c9a",
+      "stdout_head": [
+        "REJECT",
+        "the last line is not the statement renamed by sig",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "false-proof",
+      "route": "interpreted",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0031,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/false-proof.jdg"
+      ],
+      "input_bytes": 43,
+      "input_sha256": "69f4ee86830901f9b0b0509256ea61b6b94a110b683987ad80ac0848ae396805",
+      "stdout_sha256": "9ce1aa89a925a809a52b5a5f7f1dc22fded9cdee82a09cac2e55c8b0e4616c9a",
+      "stdout_head": [
+        "REJECT",
+        "the last line is not the statement renamed by sig",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "forged-registry",
+      "route": "native",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0013,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/forged-registry.jdg"
+      ],
+      "input_bytes": 47,
+      "input_sha256": "354ce66852fe33c80b64d621dfb871c027df57c21fb4f1281f7868a351c2f9d6",
+      "stdout_sha256": "de2dece20a804ea492d68cbee1c06f53061a40422257989eee6459d89c04e2ca",
+      "stdout_head": [
+        "initial registry entry (counted from 0):",
+        "0",
+        "REJECT",
+        "initial registry entry differs from canonical REG0"
+      ]
+    },
+    {
+      "case": "forged-registry",
+      "route": "interpreted",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0026,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/forged-registry.jdg"
+      ],
+      "input_bytes": 47,
+      "input_sha256": "354ce66852fe33c80b64d621dfb871c027df57c21fb4f1281f7868a351c2f9d6",
+      "stdout_sha256": "de2dece20a804ea492d68cbee1c06f53061a40422257989eee6459d89c04e2ca",
+      "stdout_head": [
+        "initial registry entry (counted from 0):",
+        "0",
+        "REJECT",
+        "initial registry entry differs from canonical REG0"
+      ]
+    },
+    {
+      "case": "huge-registry",
+      "route": "native",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0013,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/huge-registry.jdg"
+      ],
+      "input_bytes": 24,
+      "input_sha256": "2bd540a5fb935b731669e66f6c42f58c62346ddee7d8a69a9baa3522e31e375e",
+      "stdout_sha256": "6d4e574687c23eb690b340a31524ffc37ce139de91f389b7f6ba9216a92e28ae",
+      "stdout_head": [
+        "REJECT",
+        "initial registry has more than 706 entries",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "huge-registry",
+      "route": "interpreted",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0024,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/huge-registry.jdg"
+      ],
+      "input_bytes": 24,
+      "input_sha256": "2bd540a5fb935b731669e66f6c42f58c62346ddee7d8a69a9baa3522e31e375e",
+      "stdout_sha256": "6d4e574687c23eb690b340a31524ffc37ce139de91f389b7f6ba9216a92e28ae",
+      "stdout_head": [
+        "REJECT",
+        "initial registry has more than 706 entries",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "huge-theorems",
+      "route": "native",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0013,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/huge-theorems.jdg"
+      ],
+      "input_bytes": 24,
+      "input_sha256": "78168f53ead878259bcfb5c623b1938c3a8f529f12bdc9320299148894fccbe5",
+      "stdout_sha256": "99970a523af18f69c168f7efd31b244bc6a30ee37358ffd0e0ef5dc6d702a109",
+      "stdout_head": [
+        "REJECT",
+        "a record count exceeds remaining input bytes",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "huge-theorems",
+      "route": "interpreted",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0025,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/huge-theorems.jdg"
+      ],
+      "input_bytes": 24,
+      "input_sha256": "78168f53ead878259bcfb5c623b1938c3a8f529f12bdc9320299148894fccbe5",
+      "stdout_sha256": "99970a523af18f69c168f7efd31b244bc6a30ee37358ffd0e0ef5dc6d702a109",
+      "stdout_head": [
+        "REJECT",
+        "a record count exceeds remaining input bytes",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "huge-steps",
+      "route": "native",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0014,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/huge-steps.jdg"
+      ],
+      "input_bytes": 36,
+      "input_sha256": "9d57822c713715056fec353f0f1604c10adee9ae5a850061855a2de6d0dad920",
+      "stdout_sha256": "99970a523af18f69c168f7efd31b244bc6a30ee37358ffd0e0ef5dc6d702a109",
+      "stdout_head": [
+        "REJECT",
+        "a record count exceeds remaining input bytes",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "huge-steps",
+      "route": "interpreted",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0026,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/huge-steps.jdg"
+      ],
+      "input_bytes": 36,
+      "input_sha256": "9d57822c713715056fec353f0f1604c10adee9ae5a850061855a2de6d0dad920",
+      "stdout_sha256": "99970a523af18f69c168f7efd31b244bc6a30ee37358ffd0e0ef5dc6d702a109",
+      "stdout_head": [
+        "REJECT",
+        "a record count exceeds remaining input bytes",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "huge-hypotheses",
+      "route": "native",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0013,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/huge-hypotheses.jdg"
+      ],
+      "input_bytes": 34,
+      "input_sha256": "54d25d215223ac3d9a599de2a8b4d531f25a170dd5abd8d76257e974de3d799f",
+      "stdout_sha256": "99970a523af18f69c168f7efd31b244bc6a30ee37358ffd0e0ef5dc6d702a109",
+      "stdout_head": [
+        "REJECT",
+        "a record count exceeds remaining input bytes",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "huge-hypotheses",
+      "route": "interpreted",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0026,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/huge-hypotheses.jdg"
+      ],
+      "input_bytes": 34,
+      "input_sha256": "54d25d215223ac3d9a599de2a8b4d531f25a170dd5abd8d76257e974de3d799f",
+      "stdout_sha256": "99970a523af18f69c168f7efd31b244bc6a30ee37358ffd0e0ef5dc6d702a109",
+      "stdout_head": [
+        "REJECT",
+        "a record count exceeds remaining input bytes",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "padded-true",
+      "route": "native",
+      "expected": "ACCEPT",
+      "verdict": "ACCEPT",
+      "exit": 0,
+      "passed": true,
+      "seconds": 0.0015,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/padded-true.jdg"
+      ],
+      "input_bytes": 55030,
+      "input_sha256": "c88ffcdee9031136bd626b5876c3f21424d4666f3d01de8d717955eb61624e35",
+      "stdout_sha256": "d11bfea3af0f97cbbcc387d8ac34edc81248b65a023ec2ede8e328545fe0a0b1",
+      "stdout_head": [
+        "ACCEPT",
+        "registry entries at the start, theorems accepted, steps checked, registry entries at the end:",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "case": "padded-true",
+      "route": "interpreted",
+      "expected": "ACCEPT",
+      "verdict": "ACCEPT",
+      "exit": 0,
+      "passed": true,
+      "seconds": 0.385,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/padded-true.jdg"
+      ],
+      "input_bytes": 55030,
+      "input_sha256": "c88ffcdee9031136bd626b5876c3f21424d4666f3d01de8d717955eb61624e35",
+      "stdout_sha256": "d11bfea3af0f97cbbcc387d8ac34edc81248b65a023ec2ede8e328545fe0a0b1",
+      "stdout_head": [
+        "ACCEPT",
+        "registry entries at the start, theorems accepted, steps checked, registry entries at the end:",
+        "0",
+        "1"
+      ]
+    },
+    {
+      "case": "thirteenth-significant-digit",
+      "route": "native",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0016,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/thirteenth-significant-digit.jdg"
+      ],
+      "input_bytes": 53,
+      "input_sha256": "3242a46bd464109c655d76243488909aa04c1dc009b944b485a31b6f5ed8ef7d",
+      "stdout_sha256": "7eca8c2b0dd1b4c944cf7660505f43692dc92924fd9476c5a540b7e7b55f053a",
+      "stdout_head": [
+        "REJECT",
+        "a number has more than 12 significant digits",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "thirteenth-significant-digit",
+      "route": "interpreted",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0026,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/thirteenth-significant-digit.jdg"
+      ],
+      "input_bytes": 53,
+      "input_sha256": "3242a46bd464109c655d76243488909aa04c1dc009b944b485a31b6f5ed8ef7d",
+      "stdout_sha256": "7eca8c2b0dd1b4c944cf7660505f43692dc92924fd9476c5a540b7e7b55f053a",
+      "stdout_head": [
+        "REJECT",
+        "a number has more than 12 significant digits",
+        "theorem and step (counted from 0):",
+        "0"
+      ]
+    },
+    {
+      "case": "trailing-nul",
+      "route": "native",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0015,
+      "command": [
+        "/tmp/a131/native-linux/judge-v6-linux",
+        "/tmp/a131/controls/trailing-nul.jdg"
+      ],
+      "input_bytes": 42,
+      "input_sha256": "78d205b11b19150107264e9d32410072ca87ff815fbf4b68d5a7f0ba422c7dd2",
+      "stdout_sha256": "f3fd61aa63bf1615bbf6c21ab2d677632c416aa0f5777b5c17504d8fedbe9ef6",
+      "stdout_head": [
+        "REJECT",
+        "text after the last theorem",
+        "theorem and step (counted from 0):",
+        "1"
+      ]
+    },
+    {
+      "case": "trailing-nul",
+      "route": "interpreted",
+      "expected": "REJECT",
+      "verdict": "REJECT",
+      "exit": 1,
+      "passed": true,
+      "seconds": 0.0031,
+      "command": [
+        "/tmp/a131/interpreter-linux/pompetzki",
+        "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+        "/tmp/a131/controls/trailing-nul.jdg"
+      ],
+      "input_bytes": 42,
+      "input_sha256": "78d205b11b19150107264e9d32410072ca87ff815fbf4b68d5a7f0ba422c7dd2",
+      "stdout_sha256": "f3fd61aa63bf1615bbf6c21ab2d677632c416aa0f5777b5c17504d8fedbe9ef6",
+      "stdout_head": [
+        "REJECT",
+        "text after the last theorem",
+        "theorem and step (counted from 0):",
+        "1"
+      ]
+    }
+  ]
+}
