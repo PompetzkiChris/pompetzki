@@ -1,0 +1,132 @@
+{
+  "schema": "v5-runtime-v2-coherent-source-correction/v1",
+  "error": "The frozen v5 map selected the older repaired interpreter and packaged older SOURCE-WHITELIST.json hashes as current interpreter metadata. The earlier four-row correction still retained that older metadata.",
+  "reported_source_asset_failure": {
+    "operation": "INT64_MIN div -1",
+    "windows_status": 3221225621,
+    "reported_by": "packager; publication held by root"
+  },
+  "preserved_maps": [
+    {
+      "path": "PUBLIC-SOURCE-WHITELIST-v5.json",
+      "sha256": "029b50bf2c23f100a458fa33171341c69b98c6642416e92562297b38c6d3c3ab"
+    },
+    {
+      "path": "PUBLIC-SOURCE-WHITELIST-v5-runtime-v2.json",
+      "sha256": "ed787614eefcdcf95daae0826dd2a9b737f7434f8af9ab09b8e76f3296f5e3c7"
+    }
+  ],
+  "corrected_map": {
+    "path": "PUBLIC-SOURCE-WHITELIST-v5-runtime-v2-coherent.json",
+    "sha256": "27d1827df6f70457805c7be584c3b441a729fba83c2cf3c1e5d276d01fdb3843",
+    "files": 86,
+    "rows_changed": 5,
+    "rows_unchanged": 81,
+    "package_destinations_unchanged": true
+  },
+  "new_interpreter_metadata": {
+    "path": "repair/runtime-v2/SOURCE-WHITELIST-runtime-v2.json",
+    "sha256": "410bb2953ad0c03ecc9abd449887185f9bfe036a41afcb55619d79b42e40926d",
+    "input_count": 5,
+    "all_metadata_rows_equal_final_map_rows": true
+  },
+  "source_sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+  "builder_sha256": "cfab7e257e6055b7680b02f94153b44fc7b8a9b5794c53c2d24d5d9233fa1fc4",
+  "builder_expected_source_sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+  "source_builder_pin_identical": true,
+  "relative_public_provenance_source": "source/pompetzki.asm",
+  "relative_public_provenance_sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+  "current_runtime_license_matches_unchanged_license_row": true,
+  "all86mapped_file_hashes_match": true,
+  "author_path_matches": [],
+  "changes": [
+    {
+      "package_relative_path": "runtime/PUBLIC-PROVENANCE.json",
+      "prior": {
+        "candidate_relative_path": "judge/portable-interpreter/PUBLIC-PROVENANCE.json",
+        "package_relative_path": "runtime/PUBLIC-PROVENANCE.json",
+        "sha256": "b56150e12db3c76657d6bd2bd9ee5f7049de7e4b4c093145dce110ed7ec434f5",
+        "bytes": 1019,
+        "role": "interpreter documentation/license/provenance"
+      },
+      "corrected": {
+        "candidate_relative_path": "repair/runtime-v2/PUBLIC-PROVENANCE.json",
+        "package_relative_path": "runtime/PUBLIC-PROVENANCE.json",
+        "sha256": "617c03c9ff9009bde4badc734668db2e51b31e60f6e12f888f4482cf61d70edc",
+        "bytes": 1012,
+        "role": "interpreter documentation/license/provenance"
+      }
+    },
+    {
+      "package_relative_path": "runtime/README-source.md",
+      "prior": {
+        "candidate_relative_path": "judge/portable-interpreter/README-source.md",
+        "package_relative_path": "runtime/README-source.md",
+        "sha256": "b826b58f1f1692c66348c6a36cd6f191b130dbbb8104a7f9d32c5e274f5acd0f",
+        "bytes": 1948,
+        "role": "interpreter documentation/license/provenance"
+      },
+      "corrected": {
+        "candidate_relative_path": "repair/runtime-v2/README.md",
+        "package_relative_path": "runtime/README-source.md",
+        "sha256": "a82458c87ee4e8e220e73f44bb050ff1baaf6aa783082a28968f1cc102b40a5c",
+        "bytes": 2208,
+        "role": "interpreter documentation/license/provenance"
+      }
+    },
+    {
+      "package_relative_path": "runtime/SOURCE-WHITELIST.json",
+      "prior": {
+        "candidate_relative_path": "judge/portable-interpreter/SOURCE-WHITELIST.json",
+        "package_relative_path": "runtime/SOURCE-WHITELIST.json",
+        "sha256": "47a8c69e99ed2a1681714872b92229224d370a7fe57554c316c49ea802d6422e",
+        "bytes": 1831,
+        "role": "interpreter source mapping metadata"
+      },
+      "corrected": {
+        "candidate_relative_path": "repair/runtime-v2/SOURCE-WHITELIST-runtime-v2.json",
+        "package_relative_path": "runtime/SOURCE-WHITELIST.json",
+        "sha256": "410bb2953ad0c03ecc9abd449887185f9bfe036a41afcb55619d79b42e40926d",
+        "bytes": 2275,
+        "role": "interpreter source mapping metadata"
+      }
+    },
+    {
+      "package_relative_path": "runtime/build-interpreter.py",
+      "prior": {
+        "candidate_relative_path": "judge/portable-interpreter/build-interpreter.py",
+        "package_relative_path": "runtime/build-interpreter.py",
+        "sha256": "cb5702f2e2a073b85fec2f944b5c9af64403a02cc61ea5dba05d7a830b5f2115",
+        "bytes": 4034,
+        "role": "interpreter build input"
+      },
+      "corrected": {
+        "candidate_relative_path": "repair/runtime-v2/build-interpreter.py",
+        "package_relative_path": "runtime/build-interpreter.py",
+        "sha256": "cfab7e257e6055b7680b02f94153b44fc7b8a9b5794c53c2d24d5d9233fa1fc4",
+        "bytes": 4120,
+        "role": "interpreter build input"
+      }
+    },
+    {
+      "package_relative_path": "runtime/source/pompetzki.asm",
+      "prior": {
+        "candidate_relative_path": "judge/portable-interpreter/source/pompetzki.asm",
+        "package_relative_path": "runtime/source/pompetzki.asm",
+        "sha256": "778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db",
+        "bytes": 291548,
+        "role": "interpreter build input"
+      },
+      "corrected": {
+        "candidate_relative_path": "repair/runtime-v2/source/pompetzki.asm",
+        "package_relative_path": "runtime/source/pompetzki.asm",
+        "sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+        "bytes": 291854,
+        "role": "interpreter build input"
+      }
+    }
+  ],
+  "runtime_native_book_source_modified": false,
+  "prior_maps_metadata_assets_modified": false,
+  "source_zip_only_rebuild": "Packager will build from the new archive using this coherent map; this receipt checks exact source selection and metadata/hash/pin agreement."
+}
