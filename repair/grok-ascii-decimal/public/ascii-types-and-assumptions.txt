@@ -1,0 +1,277 @@
+ascii_digit = fun b : Z => ((48 <=? b) && (b <=? 57))%bool
+     : Z -> bool
+
+Arguments ascii_digit b%_Z_scope
+decode_byte = fun b : Z => b - 48
+     : Z -> Z
+
+Arguments decode_byte b%_Z_scope
+decode_ascii =
+fix decode_ascii (bs : list Z) : option (list Z) := match bs with
+                                                    | nil => Some nil
+                                                    | b :: r => if ascii_digit b then option_map (cons (decode_byte b)) (decode_ascii r) else None
+                                                    end
+     : list Z -> option (list Z)
+
+Arguments decode_ascii bs%_list_scope
+parse_ascii_decimal = fun bs : list Z => match decode_ascii bs with
+                                         | Some ds => parse_decimal ds
+                                         | None => None
+                                         end
+     : list Z -> option Z
+
+Arguments parse_ascii_decimal bs%_list_scope
+all_ascii_digits = fun bs : list Z => Forall (fun b : Z => ascii_digit b = true) bs
+     : list Z -> Prop
+
+Arguments all_ascii_digits bs%_list_scope
+ascii_significant_split = fun (bs : list Z) (k : nat) (b : Z) (tail : list Z) => bs = repeat 48 k ++ b :: tail /\ b <> 48
+     : list Z -> nat -> Z -> list Z -> Prop
+
+Arguments ascii_significant_split bs%_list_scope k%_nat_scope b%_Z_scope tail%_list_scope
+horner = fun (ds : list Z) (a : Z) => fold_left (fun acc d : Z => 10 * acc + d) ds a
+     : list Z -> Z -> Z
+
+Arguments horner ds%_list_scope a%_Z_scope
+digits_w = fix digits_w (w : nat) (v : Z) {struct w} : list Z := match w with
+                                                                 | 0%nat => nil
+                                                                 | S w' => digits_w w' (v / 10) ++ v mod 10 :: nil
+                                                                 end
+     : nat -> Z -> list Z
+
+Arguments digits_w w%_nat_scope v%_Z_scope
+ascii_spell12 = fun v : Z => map (fun d : Z => d + 48) (digits_w 12 v)
+     : Z -> list Z
+
+Arguments ascii_spell12 v%_Z_scope
+strip48 = fix strip48 (bs : list Z) : list Z := match bs with
+                                                | nil => nil
+                                                | b :: r => if b =? 48 then strip48 r else bs
+                                                end
+     : list Z -> list Z
+
+Arguments strip48 bs%_list_scope
+ascii_spell = fun v : Z => match strip48 (ascii_spell12 v) with
+                           | nil => 48 :: nil
+                           | z :: l => z :: l
+                           end
+     : Z -> list Z
+
+Arguments ascii_spell v%_Z_scope
+decode_ascii_ok_iff : forall bs ds : list Z, decode_ascii bs = Some ds <-> all_ascii_digits bs /\ ds = map decode_byte bs
+
+decode_ascii_ok_iff is not universe polymorphic
+Arguments decode_ascii_ok_iff (bs ds)%_list_scope
+decode_ascii_ok_iff is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.decode_ascii_ok_iff
+Declared in library GrokNumeric.GrokAsciiDecimal, line 27, characters 8-27
+decode_ascii_digits_true : forall bs : list Z, all_ascii_digits bs -> decode_ascii bs = Some (map decode_byte bs)
+
+decode_ascii_digits_true is not universe polymorphic
+Arguments decode_ascii_digits_true bs%_list_scope _
+decode_ascii_digits_true is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.decode_ascii_digits_true
+Declared in library GrokNumeric.GrokAsciiDecimal, line 42, characters 6-30
+decode_ascii_none : forall bs : list Z, ~ all_ascii_digits bs -> decode_ascii bs = None
+
+decode_ascii_none is not universe polymorphic
+Arguments decode_ascii_none bs%_list_scope _
+decode_ascii_none is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.decode_ascii_none
+Declared in library GrokNumeric.GrokAsciiDecimal, line 45, characters 6-23
+ascii_digit_decode : forall b : Z, ascii_digit b = true -> digit (decode_byte b) = true
+
+ascii_digit_decode is not universe polymorphic
+Arguments ascii_digit_decode b%_Z_scope _
+ascii_digit_decode is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_digit_decode
+Declared in library GrokNumeric.GrokAsciiDecimal, line 51, characters 6-24
+decode_ascii_digits : forall bs ds : list Z, decode_ascii bs = Some ds -> Forall (fun d : Z => digit d = true) ds
+
+decode_ascii_digits is not universe polymorphic
+Arguments decode_ascii_digits (bs ds)%_list_scope _
+decode_ascii_digits is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.decode_ascii_digits
+Declared in library GrokNumeric.GrokAsciiDecimal, line 58, characters 8-27
+ascii_malformed_refused : forall bs : list Z, ~ all_ascii_digits bs -> parse_ascii_decimal bs = None
+
+ascii_malformed_refused is not universe polymorphic
+Arguments ascii_malformed_refused bs%_list_scope _
+ascii_malformed_refused is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_malformed_refused
+Declared in library GrokNumeric.GrokAsciiDecimal, line 66, characters 8-31
+ascii_empty_refused : parse_ascii_decimal nil = None
+
+ascii_empty_refused is not universe polymorphic
+ascii_empty_refused is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_empty_refused
+Declared in library GrokNumeric.GrokAsciiDecimal, line 69, characters 8-27
+decode_repeat48_app : forall (k : nat) (bs : list Z), decode_ascii (repeat 48 k ++ bs) = option_map (fun ds : list Z => repeat 0 k ++ ds) (decode_ascii bs)
+
+decode_repeat48_app is not universe polymorphic
+Arguments decode_repeat48_app k%_nat_scope bs%_list_scope
+decode_repeat48_app is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.decode_repeat48_app
+Declared in library GrokNumeric.GrokAsciiDecimal, line 72, characters 6-25
+ascii_all_zeros : forall n : nat, (1 <= n)%nat -> parse_ascii_decimal (repeat 48 n) = Some 0
+
+ascii_all_zeros is not universe polymorphic
+Arguments ascii_all_zeros n%_nat_scope _
+ascii_all_zeros is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_all_zeros
+Declared in library GrokNumeric.GrokAsciiDecimal, line 80, characters 8-23
+ascii_padding : forall (k : nat) (bs : list Z), bs <> nil -> parse_ascii_decimal (repeat 48 k ++ bs) = parse_ascii_decimal bs
+
+ascii_padding is not universe polymorphic
+Arguments ascii_padding k%_nat_scope bs%_list_scope _
+ascii_padding is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_padding
+Declared in library GrokNumeric.GrokAsciiDecimal, line 89, characters 8-21
+ascii_more_than_twelve_refused : forall (bs : list Z) (k : nat) (b : Z) (tail : list Z), ascii_significant_split bs k b tail -> (12 < length (b :: tail))%nat -> parse_ascii_decimal bs = None
+
+ascii_more_than_twelve_refused is not universe polymorphic
+Arguments ascii_more_than_twelve_refused bs%_list_scope k%_nat_scope b%_Z_scope tail%_list_scope _ _
+ascii_more_than_twelve_refused is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_more_than_twelve_refused
+Declared in library GrokNumeric.GrokAsciiDecimal, line 103, characters 8-38
+ascii_bound : forall (bs : list Z) (v : Z), parse_ascii_decimal bs = Some v -> 0 <= v <= 999999999999
+
+ascii_bound is not universe polymorphic
+Arguments ascii_bound bs%_list_scope v%_Z_scope _
+ascii_bound is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_bound
+Declared in library GrokNumeric.GrokAsciiDecimal, line 114, characters 8-19
+map_decode_repeat0 : forall (l : list Z) (k : nat), map decode_byte l = repeat 0 k -> l = repeat 48 k
+
+map_decode_repeat0 is not universe polymorphic
+Arguments map_decode_repeat0 l%_list_scope k%_nat_scope _
+map_decode_repeat0 is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.map_decode_repeat0
+Declared in library GrokNumeric.GrokAsciiDecimal, line 120, characters 6-24
+all_ascii_digits_dec : forall bs : list Z, {all_ascii_digits bs} + {~ all_ascii_digits bs}
+
+all_ascii_digits_dec is not universe polymorphic
+Arguments all_ascii_digits_dec bs%_list_scope
+all_ascii_digits_dec is transparent
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.all_ascii_digits_dec
+Declared in library GrokNumeric.GrokAsciiDecimal, line 126, characters 6-26
+parse_ascii_decimal_none_iff :
+forall bs : list Z,
+parse_ascii_decimal bs = None <-> bs = nil \/ ~ all_ascii_digits bs \/ (exists (k : nat) (b : Z) (tail : list Z), ascii_significant_split bs k b tail /\ (12 < length (b :: tail))%nat)
+
+parse_ascii_decimal_none_iff is not universe polymorphic
+Arguments parse_ascii_decimal_none_iff bs%_list_scope
+parse_ascii_decimal_none_iff is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.parse_ascii_decimal_none_iff
+Declared in library GrokNumeric.GrokAsciiDecimal, line 134, characters 8-36
+parse_digits_horner : forall (ds : list Z) (a : Z) (c : nat), Forall (fun d : Z => digit d = true) ds -> (c = 0%nat -> a = 0) -> (c + length ds <= 12)%nat -> parse_digits ds a c = Some (horner ds a)
+
+parse_digits_horner is not universe polymorphic
+Arguments parse_digits_horner ds%_list_scope a%_Z_scope c%_nat_scope _ _%_function_scope _
+parse_digits_horner is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.parse_digits_horner
+Declared in library GrokNumeric.GrokAsciiDecimal, line 161, characters 6-25
+digits_w_length : forall (w : nat) (v : Z), length (digits_w w v) = w
+
+digits_w_length is not universe polymorphic
+Arguments digits_w_length w%_nat_scope v%_Z_scope
+digits_w_length is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.digits_w_length
+Declared in library GrokNumeric.GrokAsciiDecimal, line 178, characters 6-21
+digits_w_valid : forall (w : nat) (v : Z), Forall (fun d : Z => digit d = true) (digits_w w v)
+
+digits_w_valid is not universe polymorphic
+Arguments digits_w_valid w%_nat_scope v%_Z_scope
+digits_w_valid is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.digits_w_valid
+Declared in library GrokNumeric.GrokAsciiDecimal, line 181, characters 6-20
+digits_w_value : forall (w : nat) (v : Z), 0 <= v -> horner (digits_w w v) 0 = v mod pow10 w
+
+digits_w_value is not universe polymorphic
+Arguments digits_w_value w%_nat_scope v%_Z_scope _
+digits_w_value is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.digits_w_value
+Declared in library GrokNumeric.GrokAsciiDecimal, line 188, characters 6-20
+decode_spelled : forall ds : list Z, Forall (fun d : Z => digit d = true) ds -> decode_ascii (map (fun d : Z => d + 48) ds) = Some ds
+
+decode_spelled is not universe polymorphic
+Arguments decode_spelled ds%_list_scope _
+decode_spelled is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.decode_spelled
+Declared in library GrokNumeric.GrokAsciiDecimal, line 205, characters 6-20
+ascii_round_trip12 : forall v : Z, 0 <= v <= 999999999999 -> parse_ascii_decimal (ascii_spell12 v) = Some v
+
+ascii_round_trip12 is not universe polymorphic
+Arguments ascii_round_trip12 v%_Z_scope _
+ascii_round_trip12 is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_round_trip12
+Declared in library GrokNumeric.GrokAsciiDecimal, line 215, characters 8-26
+ascii_round_trip12_padded : forall (k : nat) (v : Z), 0 <= v <= 999999999999 -> parse_ascii_decimal (repeat 48 k ++ ascii_spell12 v) = Some v
+
+ascii_round_trip12_padded is not universe polymorphic
+Arguments ascii_round_trip12_padded k%_nat_scope v%_Z_scope _
+ascii_round_trip12_padded is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_round_trip12_padded
+Declared in library GrokNumeric.GrokAsciiDecimal, line 225, characters 8-33
+strip48_split : forall bs : list Z, exists k : nat, bs = repeat 48 k ++ strip48 bs
+
+strip48_split is not universe polymorphic
+Arguments strip48_split bs%_list_scope
+strip48_split is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.strip48_split
+Declared in library GrokNumeric.GrokAsciiDecimal, line 236, characters 6-19
+strip48_head : forall (bs : list Z) (b : Z) (r : list Z), strip48 bs = b :: r -> b <> 48
+
+strip48_head is not universe polymorphic
+Arguments strip48_head bs%_list_scope b%_Z_scope r%_list_scope _ _
+strip48_head is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.strip48_head
+Declared in library GrokNumeric.GrokAsciiDecimal, line 243, characters 6-18
+ascii_spell_no_leading_zero : forall (v b : Z) (r : list Z), ascii_spell v = b :: r -> b = 48 -> r = nil
+
+ascii_spell_no_leading_zero is not universe polymorphic
+Arguments ascii_spell_no_leading_zero (v b)%_Z_scope r%_list_scope _ _
+ascii_spell_no_leading_zero is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_spell_no_leading_zero
+Declared in library GrokNumeric.GrokAsciiDecimal, line 252, characters 8-35
+ascii_round_trip : forall v : Z, 0 <= v <= 999999999999 -> parse_ascii_decimal (ascii_spell v) = Some v
+
+ascii_round_trip is not universe polymorphic
+Arguments ascii_round_trip v%_Z_scope _
+ascii_round_trip is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_round_trip
+Declared in library GrokNumeric.GrokAsciiDecimal, line 259, characters 8-24
+ascii_round_trip_padded : forall (k : nat) (v : Z), 0 <= v <= 999999999999 -> parse_ascii_decimal (repeat 48 k ++ ascii_spell v) = Some v
+
+ascii_round_trip_padded is not universe polymorphic
+Arguments ascii_round_trip_padded k%_nat_scope v%_Z_scope _
+ascii_round_trip_padded is opaque
+Expands to: Constant GrokNumeric.GrokAsciiDecimal.ascii_round_trip_padded
+Declared in library GrokNumeric.GrokAsciiDecimal, line 271, characters 8-31
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context

@@ -1,0 +1,190 @@
+{
+  "schema": "grok-ascii-decimal-public-v1",
+  "status": "CURRENT SOURCE-ONLY ADDENDUM",
+  "files": [
+    {
+      "path": "archive-manifest-verification-v2.json",
+      "sha256": "3707aee49876b125ea39436a0244d846b82d0e006f77916b508b6da49c7e6f93",
+      "bytes": 9084
+    },
+    {
+      "path": "archive-manifest-verification.json",
+      "sha256": "a7e4476597493854e39306e71e68e2e9a095d5c9d0ec68a5223c0389831fb335",
+      "bytes": 8688
+    },
+    {
+      "path": "ascii-boundary-result.json",
+      "sha256": "029028a76a3be21a0d6aecbc5e8af1de6bf898bdbe4a0106c31ef4b6fa5ffc96",
+      "bytes": 2813
+    },
+    {
+      "path": "ascii-types-and-assumptions.txt",
+      "sha256": "601a611ffb1343af56ec6e6b69978f65d3505723d5afd649f33021e40734af95",
+      "bytes": 14329
+    },
+    {
+      "path": "build-ascii-decimal-proof.py",
+      "sha256": "8a3d63bc51ba767797401114123c4f4491db771f1a5f30205ac2ebb4422a8258",
+      "bytes": 4063
+    },
+    {
+      "path": "check-ascii-boundaries.py",
+      "sha256": "0ab5078ee2999b5d677b2232144c949db1dcf170b7b6157ac198ce512b90a7ff",
+      "bytes": 3703
+    },
+    {
+      "path": "checked-statements.json",
+      "sha256": "d0b5908b515a0742bd4d0b9ada2b3c932354ea27d64c226b8a53d19f5cd24904",
+      "bytes": 850
+    },
+    {
+      "path": "fresh-ascii-decimal-result.json",
+      "sha256": "89d507e8852e07c39459cebcdad56c8490c85e074159a46e26c9c9f1ef8cd98f",
+      "bytes": 4362
+    },
+    {
+      "path": "GrokNumeric/AsciiBoundaryExamples.v",
+      "sha256": "ff9759df90b875c607ee297f4489dd8b79a1a8f989c6ab14d103069c1ec4740e",
+      "bytes": 3521
+    },
+    {
+      "path": "GrokNumeric/GrokAsciiDecimal.v",
+      "sha256": "a9133d76930260ca59fb2420a2bb406070ee23ea1b47c2a4a3e6ccb8fc811fd4",
+      "bytes": 13530
+    },
+    {
+      "path": "GrokNumeric/GrokAsciiDecimalVerify.v",
+      "sha256": "cee401084afe11732b76fc843015eb4b3a18e79b7bfe38645246a3e2b911b93e",
+      "bytes": 2169
+    },
+    {
+      "path": "GrokNumeric/GrokNumericGaps.v",
+      "sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "bytes": 5544
+    },
+    {
+      "path": "kernel-check-context.txt",
+      "sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+      "bytes": 321
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077
+    },
+    {
+      "path": "logs/compile-AsciiBoundaryExamples.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/compile-AsciiBoundaryExamples.stdout.txt",
+      "sha256": "343db95cb6c3eda4bbc80e230aed7c32f1cefb2ef762211a2e50b3ea8caa5931",
+      "bytes": 726
+    },
+    {
+      "path": "logs/compile-DecimalSignificantV4.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/compile-DecimalSignificantV4.stdout.txt",
+      "sha256": "1bdd3742f8d7da5f287152ffc433a3e530c0b84154036807f3a415a263d76153",
+      "bytes": 165
+    },
+    {
+      "path": "logs/compile-GrokAsciiDecimal.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/compile-GrokAsciiDecimal.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/compile-GrokAsciiDecimalVerify.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/compile-GrokAsciiDecimalVerify.stdout.txt",
+      "sha256": "601a611ffb1343af56ec6e6b69978f65d3505723d5afd649f33021e40734af95",
+      "bytes": 14329
+    },
+    {
+      "path": "logs/compile-GrokNumericGaps.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/compile-GrokNumericGaps.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/compiler-version.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/compiler-version.stdout.txt",
+      "sha256": "749c308cfe9f2d4bc4b3c9b33c374a78697e5588da9a8e20c7063386846ec8ad",
+      "bytes": 60
+    },
+    {
+      "path": "logs/recursive-boundary-kernel-check.stderr.txt",
+      "sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+      "bytes": 321
+    },
+    {
+      "path": "logs/recursive-boundary-kernel-check.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "logs/recursive-kernel-check.stderr.txt",
+      "sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+      "bytes": 321
+    },
+    {
+      "path": "logs/recursive-kernel-check.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "bytes": 4152
+    },
+    {
+      "path": "README.md",
+      "sha256": "6325af779dcf88e2bbb44cb7d25936d3348f2a34d1a72a752c6ca190d4204b4b",
+      "bytes": 4036
+    },
+    {
+      "path": "review-boundaries.json",
+      "sha256": "91d1729c18f63cf0ebfeb6645ab04c6bc21839420bd03d16aa19991080e272c4",
+      "bytes": 1519
+    },
+    {
+      "path": "source-credit.json",
+      "sha256": "f6a5e9cf3912d5abd4f1480cb15a90be6eb466093e8e1dd4a404a574dea26c41",
+      "bytes": 1477
+    }
+  ],
+  "primary_fresh_project_modules": 4,
+  "received_closed_statements": 27,
+  "supplemental_finite_examples": 22,
+  "kernel_check": "PASS",
+  "privacy_scan": "PASS",
+  "archive_manifest_current": "archive-manifest-verification-v2.json",
+  "historical_context_file": "archive-manifest-verification.json",
+  "excluded_categories": [
+    "account and delivery metadata",
+    "author machine paths",
+    "private orchestration",
+    "received and fresh compiled objects"
+  ],
+  "scope": "Prove that actual RDNUM/text tokenizer input bytes and state transitions implement this Gallina decoder and decimal model; compiler and shipped executable correspondence remain separate."
+}

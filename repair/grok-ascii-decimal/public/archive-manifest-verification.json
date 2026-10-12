@@ -1,0 +1,200 @@
+{
+  "archive_file": "rocq-ascii-decoder-v130.tar.gz",
+  "archive_bytes": 251094,
+  "archive_sha256": "23c359431aec35ef055a7f733742701092b66df85be894202d904ddf540ba2ba",
+  "received_manifest_sha256": "0aef753a80f6f11b20a72d75f5ab86d3df02481063763efd974dd2a6f9d86bdb",
+  "received_manifest_entries": 27,
+  "all_available_hashes_match": true,
+  "checks": [
+    {
+      "path": "./README.md",
+      "sha256": "2353fffbaf8c946d641b0acd3fbe390ee98b49fa1d86fd455d627750bdf10fbd",
+      "actual_sha256": "2353fffbaf8c946d641b0acd3fbe390ee98b49fa1d86fd455d627750bdf10fbd",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./download/release-v1.3.0.json",
+      "sha256": "56d46e4c6e2cfd6218d4f5d9b7860d6a451d89410367ba83f6f270f38b70a3ed",
+      "actual_sha256": "56d46e4c6e2cfd6218d4f5d9b7860d6a451d89410367ba83f6f270f38b70a3ed",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./logs/compile-DecimalSignificantV4.log",
+      "sha256": "2bcdbfa96eaf2a863e110e8ba59564f66b6f0b45ed1df6c67ddf00431cd57eb4",
+      "actual_sha256": "2bcdbfa96eaf2a863e110e8ba59564f66b6f0b45ed1df6c67ddf00431cd57eb4",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./logs/compile-GrokAsciiDecimal.log",
+      "sha256": "d4e49dd8b59469b9ec9b4026c9796f2e272e46b3e0dfe7486db13f05630cfbf9",
+      "actual_sha256": "d4e49dd8b59469b9ec9b4026c9796f2e272e46b3e0dfe7486db13f05630cfbf9",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./logs/compile-GrokAsciiDecimalVerify-About-PrintAssumptions.log",
+      "sha256": "fe59404f9c6db187bffd3f38a9d943dcb23ba60ba8d47d293cc890dd3a4b8f0e",
+      "actual_sha256": "fe59404f9c6db187bffd3f38a9d943dcb23ba60ba8d47d293cc890dd3a4b8f0e",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./logs/compile-GrokNumericGaps.log",
+      "sha256": "d4e49dd8b59469b9ec9b4026c9796f2e272e46b3e0dfe7486db13f05630cfbf9",
+      "actual_sha256": "d4e49dd8b59469b9ec9b4026c9796f2e272e46b3e0dfe7486db13f05630cfbf9",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./logs/release-zip-verify.log",
+      "sha256": "99428e253b9d8c52854039d6a029234b6952a1dfd9f15601d0a30da37436fe2b",
+      "actual_sha256": "99428e253b9d8c52854039d6a029234b6952a1dfd9f15601d0a30da37436fe2b",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./logs/rocqchk.log",
+      "sha256": "c0b6355fecfc36e225b137eb3c48c5a64775915a0279c3ecc8d7506b497aecca",
+      "actual_sha256": "c0b6355fecfc36e225b137eb3c48c5a64775915a0279c3ecc8d7506b497aecca",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./logs/source-diff.log",
+      "sha256": "e4d17edcf4fe22e273bb11cd04126b5954559c03456c9f9bffd9df9f18a51275",
+      "actual_sha256": "e4d17edcf4fe22e273bb11cd04126b5954559c03456c9f9bffd9df9f18a51275",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./logs/tool-versions.log",
+      "sha256": "f88075a046866e14ff582d4394359335cedcbfff23dccf6b58e2b0f0c4926fc3",
+      "actual_sha256": "f88075a046866e14ff582d4394359335cedcbfff23dccf6b58e2b0f0c4926fc3",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./logs/unsafe-grep.log",
+      "sha256": "03763f5ba133323ef42c7058c6e4fe3d3137a6d73948a026bbb2a80c4764d941",
+      "actual_sha256": "03763f5ba133323ef42c7058c6e4fe3d3137a6d73948a026bbb2a80c4764d941",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./rocq/GrokAsciiDecimal.v",
+      "sha256": "a9133d76930260ca59fb2420a2bb406070ee23ea1b47c2a4a3e6ccb8fc811fd4",
+      "actual_sha256": "a9133d76930260ca59fb2420a2bb406070ee23ea1b47c2a4a3e6ccb8fc811fd4",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./rocq/GrokAsciiDecimal.vo",
+      "sha256": "e882a5b9babdef5989625fa74a1715bd2178f8afa3e838d7e0d0b140a2e7a6d4",
+      "actual_sha256": "e882a5b9babdef5989625fa74a1715bd2178f8afa3e838d7e0d0b140a2e7a6d4",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./rocq/GrokAsciiDecimalVerify.v",
+      "sha256": "cee401084afe11732b76fc843015eb4b3a18e79b7bfe38645246a3e2b911b93e",
+      "actual_sha256": "cee401084afe11732b76fc843015eb4b3a18e79b7bfe38645246a3e2b911b93e",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./rocq/GrokAsciiDecimalVerify.vo",
+      "sha256": "c568a85a58bcba7cb7fb9ef39132e719d9f6c6d0404c003fe5195264e3d4be3d",
+      "actual_sha256": "c568a85a58bcba7cb7fb9ef39132e719d9f6c6d0404c003fe5195264e3d4be3d",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./rocq/GrokNumericGaps.v",
+      "sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "actual_sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "./scripts/run-all.sh",
+      "sha256": "b991c44a955b0232ac6cbc98f42d8599dbb2119a5b049755d69cf26959ec071d",
+      "actual_sha256": "b991c44a955b0232ac6cbc98f42d8599dbb2119a5b049755d69cf26959ec071d",
+      "matches": true,
+      "role": "delivered-payload"
+    },
+    {
+      "path": "judge/rocq/numeric-v5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "actual_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "matches": true,
+      "role": "numeric-model-context"
+    },
+    {
+      "path": "download-dir/Abschluss-1.3-source.zip",
+      "sha256": "13d936dfdaeaacbecf9849044522ef4ca7fafc8ad02f23c31430bdad1632f85f",
+      "actual_sha256": null,
+      "matches": null,
+      "role": "undelivered-context"
+    },
+    {
+      "path": "download-dir/x/Abschluss-1.3-source/judge/rocq/numeric-v5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "actual_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "matches": true,
+      "role": "numeric-model-context"
+    },
+    {
+      "path": "build/NumericV5/DecimalSignificantV4.vo",
+      "sha256": "e5600fea8aae1841661e79553e26afacda30e8c47e7e62c0944588b9c1965a31",
+      "actual_sha256": null,
+      "matches": null,
+      "role": "undelivered-context"
+    },
+    {
+      "path": "build/GrokNumeric/GrokAsciiDecimal.v",
+      "sha256": "a9133d76930260ca59fb2420a2bb406070ee23ea1b47c2a4a3e6ccb8fc811fd4",
+      "actual_sha256": "a9133d76930260ca59fb2420a2bb406070ee23ea1b47c2a4a3e6ccb8fc811fd4",
+      "matches": true,
+      "role": "build-alias-of-delivered-payload"
+    },
+    {
+      "path": "build/GrokNumeric/GrokAsciiDecimalVerify.v",
+      "sha256": "cee401084afe11732b76fc843015eb4b3a18e79b7bfe38645246a3e2b911b93e",
+      "actual_sha256": "cee401084afe11732b76fc843015eb4b3a18e79b7bfe38645246a3e2b911b93e",
+      "matches": true,
+      "role": "build-alias-of-delivered-payload"
+    },
+    {
+      "path": "build/GrokNumeric/GrokNumericGaps.v",
+      "sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "actual_sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "matches": true,
+      "role": "build-alias-of-delivered-payload"
+    },
+    {
+      "path": "build/GrokNumeric/GrokAsciiDecimal.vo",
+      "sha256": "e882a5b9babdef5989625fa74a1715bd2178f8afa3e838d7e0d0b140a2e7a6d4",
+      "actual_sha256": "e882a5b9babdef5989625fa74a1715bd2178f8afa3e838d7e0d0b140a2e7a6d4",
+      "matches": true,
+      "role": "build-alias-of-delivered-payload"
+    },
+    {
+      "path": "build/GrokNumeric/GrokAsciiDecimalVerify.vo",
+      "sha256": "c568a85a58bcba7cb7fb9ef39132e719d9f6c6d0404c003fe5195264e3d4be3d",
+      "actual_sha256": "c568a85a58bcba7cb7fb9ef39132e719d9f6c6d0404c003fe5195264e3d4be3d",
+      "matches": true,
+      "role": "build-alias-of-delivered-payload"
+    },
+    {
+      "path": "build/GrokNumeric/GrokNumericGaps.vo",
+      "sha256": "2cd830fcd06cdbb7e9c347c3522f24517f2eac747a5e5824c14a1e238db4c452",
+      "actual_sha256": null,
+      "matches": null,
+      "role": "undelivered-context"
+    }
+  ],
+  "scope": "Received payload entries and locally available source context checked; remote object and release ZIP context are classified separately. Received compiled objects were not used in the fresh build."
+}

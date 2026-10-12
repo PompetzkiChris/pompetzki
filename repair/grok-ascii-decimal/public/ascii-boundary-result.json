@@ -1,0 +1,69 @@
+{
+  "result": "PASS",
+  "supplemental_finite_examples": 22,
+  "newly_compiled_project_modules": 1,
+  "dependencies_from_fresh_core_modules": 4,
+  "dependencies": [
+    {
+      "source": "NumericV5/DecimalSignificantV4.v",
+      "source_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "fresh_core_object_sha256": "e6f3174f7fb5d194c5d112b81227a60e2978efbd40237bf99a82af77f84cf22a"
+    },
+    {
+      "source": "GrokNumeric/GrokNumericGaps.v",
+      "source_sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "fresh_core_object_sha256": "e17ae75b43246c55140b1d18a00d6a26574b9abfc911c27cf286d2402bb74f01"
+    },
+    {
+      "source": "GrokNumeric/GrokAsciiDecimal.v",
+      "source_sha256": "a9133d76930260ca59fb2420a2bb406070ee23ea1b47c2a4a3e6ccb8fc811fd4",
+      "fresh_core_object_sha256": "922e32bffd1c263e38c51279d2e733778071530f8ec7717b819ba38d8687b8cf"
+    },
+    {
+      "source": "GrokNumeric/GrokAsciiDecimalVerify.v",
+      "source_sha256": "cee401084afe11732b76fc843015eb4b3a18e79b7bfe38645246a3e2b911b93e",
+      "fresh_core_object_sha256": "7afe264218b68c3beea98a3aad66b5ed9f48092fc60034a492d3e8132e7aec1c"
+    }
+  ],
+  "boundary_source": "GrokNumeric/AsciiBoundaryExamples.v",
+  "boundary_source_sha256": "ff9759df90b875c607ee297f4489dd8b79a1a8f989c6ab14d103069c1ec4740e",
+  "commands": [
+    {
+      "label": "compile-AsciiBoundaryExamples",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "GrokNumeric/AsciiBoundaryExamples.v"
+      ],
+      "exit_code": 0,
+      "stdout": "logs/compile-AsciiBoundaryExamples.stdout.txt",
+      "stderr": "logs/compile-AsciiBoundaryExamples.stderr.txt"
+    },
+    {
+      "label": "recursive-boundary-kernel-check",
+      "command": [
+        "rocqchk.exe",
+        "-silent",
+        "-o",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "GrokNumeric.AsciiBoundaryExamples"
+      ],
+      "exit_code": 0,
+      "stdout": "logs/recursive-boundary-kernel-check.stdout.txt",
+      "stderr": "logs/recursive-boundary-kernel-check.stderr.txt"
+    }
+  ],
+  "kernel_context": "\nCONTEXT SUMMARY\n===============\n\n* Theory: Set is predicative\n  \n* Theory: Rewrite rules are not allowed\n  \n* Axioms: <none>\n  \n* Constants/Inductives relying on type-in-type: <none>\n  \n* Constants/Inductives relying on unsafe (co)fixpoints: <none>\n  \n* Inductives whose positivity is assumed: <none>\n  \n",
+  "whole_run_seconds": 9.193709,
+  "scope": "Concrete evaluations and proof checks of the Gallina model; no executable correspondence claim."
+}

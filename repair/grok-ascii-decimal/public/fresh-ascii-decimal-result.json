@@ -1,0 +1,132 @@
+{
+  "result": "PASS",
+  "fresh_project_module_count": 4,
+  "closed_checked_statements": 27,
+  "source_inputs": [
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "copy_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6"
+    },
+    {
+      "path": "GrokNumeric/GrokNumericGaps.v",
+      "sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "copy_sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5"
+    },
+    {
+      "path": "GrokNumeric/GrokAsciiDecimal.v",
+      "sha256": "a9133d76930260ca59fb2420a2bb406070ee23ea1b47c2a4a3e6ccb8fc811fd4",
+      "copy_sha256": "a9133d76930260ca59fb2420a2bb406070ee23ea1b47c2a4a3e6ccb8fc811fd4"
+    },
+    {
+      "path": "GrokNumeric/GrokAsciiDecimalVerify.v",
+      "sha256": "cee401084afe11732b76fc843015eb4b3a18e79b7bfe38645246a3e2b911b93e",
+      "copy_sha256": "cee401084afe11732b76fc843015eb4b3a18e79b7bfe38645246a3e2b911b93e"
+    }
+  ],
+  "source_bytes_unchanged": true,
+  "commands": [
+    {
+      "label": "compiler-version",
+      "command": [
+        "coqc.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.012379,
+      "stdout": "logs/compiler-version.stdout.txt",
+      "stderr": "logs/compiler-version.stderr.txt"
+    },
+    {
+      "label": "compile-DecimalSignificantV4",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "NumericV5/DecimalSignificantV4.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.692376,
+      "stdout": "logs/compile-DecimalSignificantV4.stdout.txt",
+      "stderr": "logs/compile-DecimalSignificantV4.stderr.txt"
+    },
+    {
+      "label": "compile-GrokNumericGaps",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "GrokNumeric/GrokNumericGaps.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.373096,
+      "stdout": "logs/compile-GrokNumericGaps.stdout.txt",
+      "stderr": "logs/compile-GrokNumericGaps.stderr.txt"
+    },
+    {
+      "label": "compile-GrokAsciiDecimal",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "GrokNumeric/GrokAsciiDecimal.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.463566,
+      "stdout": "logs/compile-GrokAsciiDecimal.stdout.txt",
+      "stderr": "logs/compile-GrokAsciiDecimal.stderr.txt"
+    },
+    {
+      "label": "compile-GrokAsciiDecimalVerify",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "GrokNumeric/GrokAsciiDecimalVerify.v"
+      ],
+      "exit_code": 0,
+      "seconds": 1.915907,
+      "stdout": "logs/compile-GrokAsciiDecimalVerify.stdout.txt",
+      "stderr": "logs/compile-GrokAsciiDecimalVerify.stderr.txt"
+    },
+    {
+      "label": "recursive-kernel-check",
+      "command": [
+        "rocqchk.exe",
+        "-silent",
+        "-o",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "GrokNumeric.GrokAsciiDecimalVerify"
+      ],
+      "exit_code": 0,
+      "seconds": 8.692187,
+      "stdout": "logs/recursive-kernel-check.stdout.txt",
+      "stderr": "logs/recursive-kernel-check.stderr.txt"
+    }
+  ],
+  "tool_version_stdout": "The Rocq Prover, version 9.1.0\ncompiled with OCaml 4.14.2\n",
+  "kernel_context": "\nCONTEXT SUMMARY\n===============\n\n* Theory: Set is predicative\n  \n* Theory: Rewrite rules are not allowed\n  \n* Axioms: <none>\n  \n* Constants/Inductives relying on type-in-type: <none>\n  \n* Constants/Inductives relying on unsafe (co)fixpoints: <none>\n  \n* Inductives whose positivity is assumed: <none>\n  \n",
+  "whole_run_seconds": 12.151367,
+  "scope": "Gallina ASCII decoder over list Z composed with the unchanged decimal model; no RDNUM, pmp/Racket tokenizer, compiler or executable correspondence theorem."
+}
