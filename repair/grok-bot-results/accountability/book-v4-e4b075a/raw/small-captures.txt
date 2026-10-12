@@ -1,0 +1,69 @@
+=== 01-post-default.exit (2 bytes)
+0
+=== 01-post-default.stderr (0 bytes)
+=== 02-post-interpreted.exit (2 bytes)
+0
+=== 02-post-interpreted.stderr (0 bytes)
+=== 03-check-default.exit (2 bytes)
+0
+=== 03-check-default.stderr (0 bytes)
+=== 04-check-interpreted.exit (2 bytes)
+0
+=== 04-check-interpreted.stderr (0 bytes)
+=== 05-post-m1-refl.exit (2 bytes)
+0
+=== 05-post-m1-refl.stderr (0 bytes)
+=== 06-check-m1-refl.exit (2 bytes)
+0
+=== 06-check-m1-refl.stderr (0 bytes)
+=== 07-check-forge-consistent-false.exit (2 bytes)
+1
+=== 07-check-forge-consistent-false.stderr (73 bytes)
+CHECK FAILED: verified-book-check: rerun differs from the stored verdict
+=== 08-check-rehashed-thm.exit (2 bytes)
+1
+=== 08-check-rehashed-thm.stderr (87 bytes)
+CHECK FAILED: verified-book-check: theorem posting differs from its checked derivation
+=== 09-post-ambiguous.exit (2 bytes)
+3
+=== 09-post-ambiguous.stderr (0 bytes)
+=== 10-check-ambiguous.exit (2 bytes)
+1
+=== 10-check-ambiguous.stderr (71 bytes)
+CHECK FAILED: verified-book-check: stored verdict and exit code differ
+=== 11-check-orphan.exit (2 bytes)
+1
+=== 11-check-orphan.stderr (84 bytes)
+CHECK FAILED: verified-book-check: ledger includes postings without a checked input
+=== 12-check-changed-input.exit (2 bytes)
+1
+=== 12-check-changed-input.stderr (63 bytes)
+CHECK FAILED: verified-book-check: snapshot input hash differs
+=== 13-check-bad-f-sha.exit (2 bytes)
+1
+=== 13-check-bad-f-sha.stderr (80 bytes)
+CHECK FAILED: verified-book-check: judge run has no corresponding ledger record
+=== 14-check-orphan-file.exit (2 bytes)
+0
+=== 14-check-orphan-file.stderr (0 bytes)
+=== 15-book-post-v4-refuse-import.exit (2 bytes)
+2
+=== 15-book-post-v4-refuse-import.stderr (70 bytes)
+Use verified-book-post.rkt to run the judges and create a new ledger.
+=== 16-refuse-existing.exit (2 bytes)
+3
+=== 16-refuse-existing.stderr (61 bytes)
+book-post: output already exists: /workspace/bw/post-default
+=== inspect-m1.txt (185 bytes)
+auth=#t n0=706 thc=1 sc=5
+j=0 stmt=e032a16055c458105817c76061aaebf193794d12c47cbedaeba65389e652b7a7 drv=08368b179b152443846549862d845bbc28a32b1aad91ae287fc43bdb2e76f7a3 steps=5 hyps=()
+=== posting-commands.txt (276 bytes)
+default pmp: ['/workspace/bundle-e4b0/judge/judge-v4-windows.exe', '/workspace/bw/post-default/judge-inputs/1-ok-hyp.jdg']
+interp pmp: ['/workspace/bundle-e4b0/pompetzki.exe', '/workspace/bundle-e4b0/judge/judge-v4.pmp', '/workspace/bw/post-interp/judge-inputs/1-ok-hyp.jdg']
+=== tool-hashes.txt (687 bytes)
+b8725cbdc19b189b092268cdfbc1187e2e70bbb88ffd24792f77887af4ff7fcc  /workspace/be4/pompetzki
+a715ee69d5c3842f39b4ed3c5cebcf5fdf7f8766c85c738b047dc1359f8d8b93  /workspace/be4/native/judge-v4-linux
+778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db  /workspace/acct-e4b0/repair/runtime/source/pompetzki.asm
+6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720  /workspace/acct-e4b0/repair/book-v4/book-post-v4.rkt
+4fa68edd7ceb43f65d3c20f40f006d025e988d5a20169004c8f4f7c393df8e08  /workspace/acct-e4b0/repair/book-v4/verified-book-check.rkt
+c6779f520f1ce4438eda2cec01f36e0bc023c584f20233f1565d8c531040deb3  /workspace/acct-e4b0/repair/book-v4/verified-book-post.rkt
