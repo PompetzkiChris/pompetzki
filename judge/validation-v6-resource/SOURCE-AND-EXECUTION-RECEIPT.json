@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "version": "judge-v6",
+  "primary_source_sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+  "independent_source_sha256": "a16ffa34b4eb03d814c20079c96de82041329aa206cfdf37f6cee0c67cc5b04f",
+  "windows_native_sha256": "9b84cb4b1dacde788f693682dba571bf9b75e5b78df71cd6be90164131ea1554",
+  "linux_native_sha256": "6db4c7dfb25921f529a7716b6ebbcdee276bbf2f3881f0882c38869de7fb256d",
+  "portable_source_manifest_sha256": "3258977cce9a094de8d02531cf9e16423dd617e34dcd2ff7fce36c258d450be6",
+  "full_source_map_path": "judge/PUBLIC-SOURCE-WHITELIST-v6-runtime-v2-coherent.json",
+  "full_source_map_sha256": "9486d3b9e1e16e758ce2914e8895f36724da7a575d5d4726f34c93897241d2f7",
+  "full_source_map_files": 86,
+  "changed_map_rows": 11,
+  "component_manifest_path": "judge/PUBLIC-SOURCE-COMPONENT-v6.json",
+  "component_manifest_sha256": "8d619fa6dd77d27126c64a28e79564d2e6fc3871b9fbdd0d1098d31b2b3fd9d0",
+  "corrected_crossroute_passed": 938,
+  "racket_parity_passed": 508,
+  "timeouts": 0,
+  "reader_block_byte_identical": true,
+  "reader_block_sha256": "ab06df9ec557f29a05665e3b106019dd2203af311c35b300a6dbf128a496e2d1",
+  "v5_originals_preserved": true,
+  "public_source_path_scan": "PASS",
+  "review_scope": "Source and finite evidence for necessary count-byte bounds; no publication, compiler theorem, or whole-judge soundness claim."
+}

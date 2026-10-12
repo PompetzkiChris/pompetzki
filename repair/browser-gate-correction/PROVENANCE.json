@@ -1,0 +1,26 @@
+{
+  "schema": "browser-gate-correction-provenance/v1",
+  "upstream_repository": "https://github.com/PompetzkiChris/pompetzki",
+  "upstream_branch": "grok/embedded-reg0-gate",
+  "upstream_commit": "d70b551c6559a2c1cde0bc46f1b7e310a26bfe92",
+  "upstream_code_credit": "Grok; gate and API test source as published in the project repository",
+  "correction_credit": "Codex local correction under Christopher Pompetzki's authorized project work",
+  "upstream_source_hashes": {
+    "gate.py": "84e6d7bd89079d196f0bff0472f4385e1a434a3f90a49fa393936be0e7c4811e",
+    "gate_core.py": "e7e11cd2e9c56e800b72b23cf383302759a72b32ad800ca4e8a0a920368aa559",
+    "embed_data.py": "3178d95c8ad0f9ffc5e0bbdeb8dbee59dcabbb88a3bbb18524ae6bf29a3d630f",
+    "reggate.pmp": "cbac6ec38ba359bc5b16be64c62e3eb3b31dd2ceef6b1c0c869766bea4033991",
+    "judge-gated.ps1": "66aecb3262979254b67ba96a6c5782745ad9a3404b30d6e56269cf27154d4f0d",
+    "judge-gated.sh": "a9bdf541faa15a04f35046bc45a200ab0dc5b63a9edd863b824848e1c8b0149d"
+  },
+  "license": "LICENSE copied byte-for-byte from the upstream repository commit",
+  "numeric_domain": "0..999999999999; arbitrary insignificant leading zeros",
+  "changes": [
+    "Trim leading zeros before bounded integer conversion; reject more than12significant digits before conversion or arithmetic",
+    "Use judge-v5.pmp as the default downstream proof source in new wrappers"
+  ],
+  "global_python_integer_string_limit_changed": false,
+  "embedded_authref_changed": false,
+  "root_candidate_core_modified": false,
+  "executable_correspondence": "open"
+}

@@ -1,0 +1,6 @@
+REJECT
+the input ends where a tag was expected
+theorem and step (counted from 0):
+1
+0
+line 353: check zero failed: not the zero vector

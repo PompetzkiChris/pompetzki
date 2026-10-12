@@ -1,0 +1,20 @@
+{
+  "received_exact_statements": 27,
+  "all_received_statements_closed": true,
+  "received_source_and_receipt_unchanged": true,
+  "original_decimal_model_unchanged": true,
+  "previous_numeric_gap_source_unchanged": true,
+  "ascii_padding_premise": "bs <> []",
+  "all_zeros_premise": "(1 <= n)%nat",
+  "empty_padding_counterexample": "parse_ascii_decimal [] = None; parse_ascii_decimal [48] = Some 0",
+  "byte_representation": "list Z; all 48..57 accepted as digits; every other integer refused, including outside 0..255",
+  "sign_and_delimiter_scope": "This model consumes a complete unsigned decimal token. Signs and delimiters are refused as token bytes. Actual surrounding tokenizer rules are outside these statements.",
+  "significant_limit": "At most 12 significant digits, after arbitrary leading ASCII 48 bytes; accepted values lie in 0..999999999999.",
+  "roundtrip_scope": "Both the fixed-width 12-digit and minimal spellings, with arbitrary zero padding, round-trip for 0..999999999999.",
+  "finite_boundary_examples": 22,
+  "primary_fresh_project_modules": 4,
+  "supplemental_newly_compiled_project_modules": 1,
+  "remote_library_count_adopted": false,
+  "recursive_kernel_context": "No axioms, type-in-type, unsafe (co)fixpoints, or assumed positivity.",
+  "remaining_correspondence_obligation": "Prove that actual RDNUM/text tokenizer input bytes and state transitions implement this Gallina decoder and decimal model; compiler and shipped executable correspondence remain separate."
+}

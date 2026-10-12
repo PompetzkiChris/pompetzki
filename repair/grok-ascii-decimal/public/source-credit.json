@@ -1,0 +1,37 @@
+{
+  "project": "Pompetzki / Abschluss",
+  "license": "MIT project scope",
+  "copyright": "2026 Christopher Pompetzki",
+  "archive_sha256": "23c359431aec35ef055a7f733742701092b66df85be894202d904ddf540ba2ba",
+  "sources": [
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "source_credit": "Codex numeric-v5 Gallina model",
+      "copied_unchanged": true,
+      "license": "MIT project scope"
+    },
+    {
+      "path": "GrokNumeric/GrokNumericGaps.v",
+      "sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "source_credit": "Grok Bot, previously received numeric gap source",
+      "copied_unchanged": true,
+      "license": "MIT project scope"
+    },
+    {
+      "path": "GrokNumeric/GrokAsciiDecimal.v",
+      "sha256": "a9133d76930260ca59fb2420a2bb406070ee23ea1b47c2a4a3e6ccb8fc811fd4",
+      "source_credit": "Grok Bot, received ASCII proof source",
+      "copied_unchanged": true,
+      "license": "MIT project scope"
+    },
+    {
+      "path": "GrokNumeric/GrokAsciiDecimalVerify.v",
+      "sha256": "cee401084afe11732b76fc843015eb4b3a18e79b7bfe38645246a3e2b911b93e",
+      "source_credit": "Grok Bot, received type and assumption receipt",
+      "copied_unchanged": true,
+      "license": "MIT project scope"
+    }
+  ],
+  "integration_credit": "Codex independent fresh build and kernel verification"
+}

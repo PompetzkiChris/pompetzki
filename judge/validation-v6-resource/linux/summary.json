@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "executions": 264,
+  "passed": 264,
+  "timeouts": 0,
+  "failures": [],
+  "native_filename": "judge-v6-linux",
+  "native_sha256": "6db4c7dfb25921f529a7716b6ebbcdee276bbf2f3881f0882c38869de7fb256d",
+  "new_fixtures": 10,
+  "reviewed_corpus_cases": 254,
+  "per_child_limit_kind": "RLIMIT_AS, set in the owned child before exec",
+  "per_child_address_space_limit_bytes": 2147483648,
+  "seconds": 10.17385
+}

@@ -1,0 +1,50 @@
+{
+  "revision": "f96a9db",
+  "files": [
+    {
+      "path": "inputs/cases.json",
+      "sha256": "8cc07382e6ea664e04dab7688a7531f4baa818bcfa9da119deb0e2514c43e5a6",
+      "bytes": 738543
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077
+    },
+    {
+      "path": "negative_control.py",
+      "sha256": "70b93718b4d83d0729659d88aebaa5ee7b46336bec7c5965e3f910b827d3df21",
+      "bytes": 809
+    },
+    {
+      "path": "oracle.py",
+      "sha256": "b07386de37b47d95a3b3648be9e6ad01eb8be0782c42978e16ec7dbdeaf3c947",
+      "bytes": 4468
+    },
+    {
+      "path": "README.md",
+      "sha256": "0796bef9bd7b63455eca5f6c189562e5b087392c03aff76395e45d1cd29fad5f",
+      "bytes": 1281
+    },
+    {
+      "path": "run_oracle.py",
+      "sha256": "77f49226daf994e8de36e128110fdac0656ec010b95384ed2cb498f2de144e81",
+      "bytes": 3449
+    },
+    {
+      "path": "SOURCE-CREDIT.json",
+      "sha256": "dd45febaff84d8ce3d08d3c2fd55560952a7d3477336bf8deb826856ef6e6bc9",
+      "bytes": 475
+    },
+    {
+      "path": "test_engine.py",
+      "sha256": "d0ec86c7621a3c0fc995ea531432bc33811344d2ceeaf9908fa3196b78226cba",
+      "bytes": 4489
+    },
+    {
+      "path": "verify.py",
+      "sha256": "629599e944b4f6ed5dd2d98489fbc01dd7c6fa8f3b47d8126d301863cc24c707",
+      "bytes": 2441
+    }
+  ]
+}

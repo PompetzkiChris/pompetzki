@@ -1,0 +1,97 @@
+{
+  "schema": "native-gate-source-inputs/v1",
+  "path_base": "source package root",
+  "builder": "judge/native/portable/build-native.py",
+  "frozen_source": "judge/judge-v4.pmp",
+  "files": [
+    {
+      "candidate_relative_path": "judge/judge-v4.pmp",
+      "package_relative_path": "judge/judge-v4.pmp",
+      "sha256": "c0698f6c00310e4cf95147d4ddfbfab0f8c06d00aa8f9ca1da8482123c073e33",
+      "bytes": 100528,
+      "role": "frozen program and registry gate"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/build-native.py",
+      "package_relative_path": "judge/native/portable/build-native.py",
+      "sha256": "18fc3cb6d94359ae1e62a574097a228aae5bb5e272d36c4dc8ecbf18b3d8dcc7",
+      "bytes": 7935,
+      "role": "portable build driver and assembly service adapter"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/pmpc-original.rkt",
+      "package_relative_path": "judge/native/portable/pmpc-original.rkt",
+      "sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+      "bytes": 13614,
+      "role": "actual direct pmp compiler with embedded Windows runtime"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/linux-runtime.asm",
+      "package_relative_path": "judge/native/portable/linux-runtime.asm",
+      "sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+      "bytes": 3666,
+      "role": "Linux syscall runtime"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/LICENSE",
+      "package_relative_path": "judge/native/portable/LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077,
+      "role": "applicable MIT license text"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/PROVENANCE.json",
+      "package_relative_path": "judge/native/portable/PROVENANCE.json",
+      "sha256": "386171f350accd88747aed6191a91b01268c616d051ec44266c218630404a0b8",
+      "bytes": 3575,
+      "role": "public provenance and tested scope"
+    },
+    {
+      "candidate_relative_path": "judge/native/portable/README.md",
+      "package_relative_path": "judge/native/portable/README.md",
+      "sha256": "50dffe227e258e9c46b5f70a4897f3f33955b64bde677b0556a626ee5b3ac4bb",
+      "bytes": 3459,
+      "role": "portable build and usage instructions"
+    }
+  ],
+  "manifest_package_path": "judge/native/portable/SOURCE-INPUTS.json",
+  "project_local_compiler_include_files": [],
+  "racket_library_dependencies": [
+    "racket/string",
+    "racket/list",
+    "racket/file",
+    "racket/port"
+  ],
+  "python_library_dependencies": [
+    "argparse",
+    "datetime",
+    "hashlib",
+    "json",
+    "os",
+    "pathlib",
+    "re",
+    "shutil",
+    "subprocess",
+    "time"
+  ],
+  "external_tools": {
+    "all_targets": [
+      "Python 3",
+      "Racket"
+    ],
+    "windows": [
+      "NASM",
+      "x64 MinGW GCC",
+      "kernel32 import library supplied by the Windows toolchain"
+    ],
+    "linux": [
+      "NASM",
+      "GNU ld"
+    ],
+    "linux_from_windows": [
+      "Optional configured WSL executable/distribution",
+      "wslpath in that distribution"
+    ]
+  },
+  "bundle_policy": "These files and this manifest form the complete native gate source layout. External language/tool runtimes are installed separately."
+}

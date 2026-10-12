@@ -1,0 +1,88 @@
+{
+  "schema": "gated-native-v5-provenance/v1",
+  "gate_source": {
+    "path": "judge-v5.pmp",
+    "sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+    "bytes": 100875
+  },
+  "compiler_source": {
+    "path": "native-v5/portable/pmpc-original.rkt",
+    "sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+    "bytes": 13614
+  },
+  "linux_runtime_source": {
+    "path": "native-v5/portable/linux-runtime.asm",
+    "sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+    "bytes": 3666
+  },
+  "builder_source": {
+    "path": "native-v5/portable/build-native.py",
+    "sha256": "acae71801723163d2b1b2c4bb8a39c722638d54c032e04cf1ae1261077993144",
+    "bytes": 7935
+  },
+  "artifacts": [
+    {
+      "path": "native-v5/judge-v5-windows.exe",
+      "sha256": "b9e2ed070340d6ec926caca0f3c71929137e3a9bf2650ba6bc78c94e880e7545",
+      "bytes": 107029
+    },
+    {
+      "path": "native-v5/judge-v5-linux",
+      "sha256": "1b890cedd973b2815bd4be436adb60737b08162ba48c4ef4196241ccb01affad",
+      "bytes": 113416
+    }
+  ],
+  "build_steps": [
+    {
+      "step": "lower-pmp",
+      "exit_code": 0,
+      "seconds": 0.23451539999223314
+    },
+    {
+      "step": "assemble-windows",
+      "exit_code": 0,
+      "seconds": 0.2925476999953389
+    },
+    {
+      "step": "link-windows",
+      "exit_code": 0,
+      "seconds": 0.06755079998401925
+    },
+    {
+      "step": "assemble-linux",
+      "exit_code": 0,
+      "seconds": 0.16997060002177022
+    },
+    {
+      "step": "link-linux",
+      "exit_code": 0,
+      "seconds": 0.06125369999790564
+    }
+  ],
+  "finite_results": {
+    "cases_per_platform": 254,
+    "total_runs": 508,
+    "accepted_per_platform": 126,
+    "rejected_per_platform": 128,
+    "bot_cases": 94,
+    "numeric_auth_cases": 42,
+    "math_cases": 117,
+    "full_replay_cases": 1,
+    "full_replay_theorems": 4551,
+    "full_replay_steps": 139194,
+    "windows_linux_identical_output_and_exit": 254,
+    "unexpected_verdicts": 0,
+    "timeouts": 0
+  },
+  "runtime_semantics": "direct pmp lowering; exact signed64 word cells/static literals; Linux syscall adapter; no r60 triple-copy integrity",
+  "relocated_builds": {
+    "source_inputs": 7,
+    "build_configs": 2,
+    "fixture_runs": 9,
+    "fixture_passed": 9,
+    "receipt": "native-v5/relocation verification/portable-result.json"
+  },
+  "source_native_correspondence": "open",
+  "license_source": "native-v5/portable/LICENSE",
+  "public_source_inputs": "native-v5/portable/SOURCE-INPUTS-v5.json"
+}

@@ -1,0 +1,70 @@
+{
+  "schema": "book-v5-public-source-manifest-v1",
+  "version": "5",
+  "status": "CURRENT FROZEN SOURCE",
+  "files": [
+    {
+      "path": "book-post-v4.rkt",
+      "sha256": "6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720"
+    },
+    {
+      "path": "verified-book-post.rkt",
+      "sha256": "c6779f520f1ce4438eda2cec01f36e0bc023c584f20233f1565d8c531040deb3"
+    },
+    {
+      "path": "verified-book-check.rkt",
+      "sha256": "c9237281fccc1d3c1194ef85bcb9bf776ddb5074156c089690440ea04eeaa944"
+    },
+    {
+      "path": "verified-book-check-v5-source.rkt",
+      "sha256": "c9237281fccc1d3c1194ef85bcb9bf776ddb5074156c089690440ea04eeaa944"
+    },
+    {
+      "path": "test-verified-book-v4.py",
+      "sha256": "7a135706973c805bc35280418148eda574d9a629d9d02d58db766ee654523c0f"
+    },
+    {
+      "path": "test-verified-check.py",
+      "sha256": "683c085b20469a3deb405c5458a8f55e1f075533f6d4723a4ecf3038375cf365"
+    },
+    {
+      "path": "test-adversarial.py",
+      "sha256": "0c5a29e18e7284540aa9477b1c627030fc3ced6595e32c3826eb09d2b0b1b655"
+    },
+    {
+      "path": "test-review-v5.py",
+      "sha256": "cf34a359b73d7609dbc2e9a7ebd009d26aa47dc94e59e70fe41bd072d366db99"
+    },
+    {
+      "path": "test-full-replay.py",
+      "sha256": "8f85117c015b6ffacde082ca5029390d5e5affae1d90bf922f8b2fd8e5312441"
+    },
+    {
+      "path": "README.md",
+      "sha256": "87ff2791b2e99e83db8527c9413dfb7fec936b95b453627c90738a2bdc8e1b64"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827"
+    },
+    {
+      "path": "PROVENANCE.json",
+      "sha256": "ebcc30650199cf592d86d90337bf68fa41249e4411f6e1f23b922b225c65b33d"
+    },
+    {
+      "path": "PUBLIC-RUN-RESULTS.json",
+      "sha256": "3cc861202365311016e8d074a877d9ed10aa4c6e9a25b20a2ac99941fb55e761"
+    }
+  ],
+  "tests": {
+    "posting": "tests/regression-20261011-222317/results.json",
+    "checker": "tests/check-regression-20261011-222321/results.json",
+    "adversarial": "tests/adversarial-20261011-222317/results.json",
+    "review": "tests/review-v5-20261011-222317/results.json",
+    "full_replay": "tests/full-replay-20261011-222317/results.json"
+  },
+  "excluded_historical_files": [
+    "test-verified-book.py"
+  ],
+  "note": "The files array is the authoritative public source whitelist. Prior book-v4 sources, outputs and manifests remain preserved separately."
+}

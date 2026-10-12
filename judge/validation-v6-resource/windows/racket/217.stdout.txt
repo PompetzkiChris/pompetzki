@@ -1,0 +1,1 @@
+REJECT theorem 0 step 4 (step M)

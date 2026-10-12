@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "version": "7",
+  "current_public_files": 14,
+  "manifest_sha256": "53548e04ec04da3c03c01fe7930118f8ea43d6584011d75584aab3946b5d9cde",
+  "poster_sha256": "33c5d540220df1ca52c430a392e9a050354f29bd05517f14bb00247c08a87e0d",
+  "checker_sha256": "8fa76a95058da7e41d06123536afef327283dd4f4c47dda167526686f43b2efb",
+  "lowlevel_writer_sha256": "6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720",
+  "source_and_compiled_suites": "Each passed 4 posting, 5 checker, 29 review, 2 pipe/verdict, 30 route/path cases, plus full4551 replay.",
+  "theorems_per_replay": 4551,
+  "proved": 4373,
+  "qualified": 178,
+  "steps": 139194,
+  "old_route_and_path_defects_reproduced": true,
+  "v6_originals_preserved": true,
+  "public_author_path_scan": "PASS"
+}

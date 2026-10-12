@@ -1,0 +1,14 @@
+{
+  "schema": "packaging-validation-utf8-correction/v1",
+  "old_stage": "repair/packaging/v7-judge-v6-1.3.1",
+  "new_stage": "repair/packaging/v8-judge-v6-1.3.1-utf8",
+  "preserved_old_candidate": "build/candidate-01",
+  "preserved_old_source_rebuild": "build/source-only-01",
+  "preserved_failed_test": "tests/candidate-package-01",
+  "observed_failure": "UnicodeDecodeError in test-package.py decoding UTF-8 launcher-controls.json through Windows cp1252; byte 0x9d at offset302",
+  "owned_launcher_callback_exit": 0,
+  "interpretation": "Receipt decoder failure. This did not verify a GUI arithmetic failure.",
+  "correction": "Explicit UTF-8 read_text for every JSON/text receipt read in the new test-package.py",
+  "receipt_read_sites": 9,
+  "program_input_policy": "Judge v6, Book v7, Matrix v2 and runtime v2 hashes remain selected unchanged."
+}

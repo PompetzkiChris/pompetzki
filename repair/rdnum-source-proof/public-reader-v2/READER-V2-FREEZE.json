@@ -1,0 +1,16 @@
+{
+  "status": "FROZEN",
+  "public_subdirectory": "repair/rdnum-source-proof/public-reader-v2",
+  "manifest_sha256": "e994d6b7910aecaaaab05bec627bd24967dd4aec9dbc925166bc17fa72f1edfa",
+  "checksums_sha256": "961991f35be30ddb481f123e1ce1850ba75a2ef6981a2a17135517cd67de21c1",
+  "files": 87,
+  "modules": 24,
+  "selected_statement_types": 33,
+  "raw_kernel_context": "receipt/fresh-20261012-042444/logs/kernel-check.stderr.txt",
+  "raw_kernel_context_sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+  "raw_statement_types_sha256": "1b4bddbd73586e774ce246da96127aee50abc7082730192ceec487cff867c400",
+  "kernel_exit": 0,
+  "kernel_axioms": [],
+  "retained_controller_sha256": "7a282dc71308a1796a0690bce400938a936dd60efcdc70257671660f842a3826",
+  "boundary": "Trusted text-to-AST translation; integer PmpCore operations with explicit signed64 bounds; full interpreter/compiler, permissions/OS I/O and whole-judge embedding are not proved."
+}

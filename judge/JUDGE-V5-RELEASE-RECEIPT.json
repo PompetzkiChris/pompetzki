@@ -1,0 +1,235 @@
+{
+  "schema": "judge-v5-repair-receipt/v1",
+  "issue": "V4 counted insignificant leading zeros against its12decimal-character limit, rejecting valid padded certificate integers.",
+  "reproduction_receipt": "numeric-tests-v5-reproduction/results.json",
+  "corrected_domain": "0..999999999999; arbitrary leading zeros",
+  "behavior": "V5 counts only significant digits and rejects the13th before multiplication/addition. All-zero tokens remain zero. The independent Racket entrypoint uses the same declared domain.",
+  "source_authentication": {
+    "normalized_pmp_text_unchanged_outside_rdnum": true,
+    "embedded_authref_unchanged": true,
+    "authref_sha256": "d3dbc73283b61a2ba72431552d33c1810e140e24bbfda85b1a30aef006dac047",
+    "racket_canonical_module_unchanged": true
+  },
+  "sources": [
+    {
+      "path": "judge-v5.pmp",
+      "sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+      "bytes": 100875
+    },
+    {
+      "path": "judge-v5.rkt",
+      "sha256": "c63bd449af3a7653c483b9bb42039b2942f658614bc2606eb7b40c5b95b6b2d0",
+      "bytes": 23661
+    },
+    {
+      "path": "registry-auth-v4.rkt",
+      "sha256": "7369c098521020283016dbe86845790e7456be6ef255d8204ab696b6e4723a26",
+      "bytes": 160758
+    },
+    {
+      "path": "native-v5/portable/pmpc-original.rkt",
+      "sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+      "bytes": 13614
+    },
+    {
+      "path": "native-v5/portable/linux-runtime.asm",
+      "sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+      "bytes": 3666
+    },
+    {
+      "path": "native-v5/portable/build-native.py",
+      "sha256": "acae71801723163d2b1b2c4bb8a39c722638d54c032e04cf1ae1261077993144",
+      "bytes": 7935
+    },
+    {
+      "path": "rocq/numeric-v5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "bytes": 4152
+    }
+  ],
+  "native_artifacts": [
+    {
+      "path": "native-v5/judge-v5-windows.exe",
+      "sha256": "b9e2ed070340d6ec926caca0f3c71929137e3a9bf2650ba6bc78c94e880e7545",
+      "bytes": 107029
+    },
+    {
+      "path": "native-v5/judge-v5-linux",
+      "sha256": "1b890cedd973b2815bd4be436adb60737b08162ba48c4ef4196241ccb01affad",
+      "bytes": 113416
+    }
+  ],
+  "native_build_steps": [
+    {
+      "step": "lower-pmp",
+      "exit_code": 0,
+      "seconds": 0.23451539999223314
+    },
+    {
+      "step": "assemble-windows",
+      "exit_code": 0,
+      "seconds": 0.2925476999953389
+    },
+    {
+      "step": "link-windows",
+      "exit_code": 0,
+      "seconds": 0.06755079998401925
+    },
+    {
+      "step": "assemble-linux",
+      "exit_code": 0,
+      "seconds": 0.16997060002177022
+    },
+    {
+      "step": "link-linux",
+      "exit_code": 0,
+      "seconds": 0.06125369999790564
+    }
+  ],
+  "tests": {
+    "summary": {
+      "phase": "all",
+      "cases": 254,
+      "runs": 898,
+      "passed": 898,
+      "failed": 0,
+      "timeouts": 0,
+      "seconds": 63.499415500002215,
+      "by_judge": {
+        "v5-windows-native": {
+          "total": 254,
+          "passed": 254
+        },
+        "v5-windows-interp": {
+          "total": 136,
+          "passed": 136
+        },
+        "v5-linux-native": {
+          "total": 254,
+          "passed": 254
+        },
+        "v5-racket": {
+          "total": 254,
+          "passed": 254
+        }
+      },
+      "failures": []
+    },
+    "counts": {
+      "v5-racket": {
+        "cases": 254,
+        "accepted": 126,
+        "rejected": 128,
+        "families": {
+          "bot-semantic": 78,
+          "bot-malformed": 16,
+          "numeric": 42,
+          "math": 117,
+          "replay": 1
+        }
+      },
+      "v5-linux-native": {
+        "cases": 254,
+        "accepted": 126,
+        "rejected": 128,
+        "families": {
+          "bot-semantic": 78,
+          "bot-malformed": 16,
+          "numeric": 42,
+          "math": 117,
+          "replay": 1
+        }
+      },
+      "v5-windows-interp": {
+        "cases": 136,
+        "accepted": 47,
+        "rejected": 89,
+        "families": {
+          "bot-semantic": 78,
+          "bot-malformed": 16,
+          "numeric": 42
+        }
+      },
+      "v5-windows-native": {
+        "cases": 254,
+        "accepted": 126,
+        "rejected": 128,
+        "families": {
+          "bot-semantic": 78,
+          "bot-malformed": 16,
+          "numeric": 42,
+          "math": 117,
+          "replay": 1
+        }
+      }
+    },
+    "output_pairs": [
+      {
+        "left": "v5-windows-native",
+        "right": "v5-linux-native",
+        "cases": 254,
+        "identical_stdout_and_exit": 254
+      },
+      {
+        "left": "v5-windows-native",
+        "right": "v5-windows-interp",
+        "cases": 136,
+        "identical_stdout_and_exit": 136
+      }
+    ],
+    "raw_receipt": "numeric-tests-v5b/results.json",
+    "full_replay": [
+      {
+        "judge": "v5-windows-native",
+        "exit_code": 0,
+        "verdict": "ACCEPT",
+        "seconds": 0.5488174999773037,
+        "stdout": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\numeric-tests-v5b\\v5-windows-native\\full-replay-4551.stdout.txt"
+      },
+      {
+        "judge": "v5-linux-native",
+        "exit_code": 0,
+        "verdict": "ACCEPT",
+        "seconds": 0.6834797999763396,
+        "stdout": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\numeric-tests-v5b\\v5-linux-native\\full-replay-4551.stdout.txt"
+      },
+      {
+        "judge": "v5-racket",
+        "exit_code": 0,
+        "verdict": "ACCEPT",
+        "seconds": 3.1258773999870755,
+        "stdout": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\numeric-tests-v5b\\v5-racket\\full-replay-4551.stdout.txt"
+      }
+    ]
+  },
+  "relocation": {
+    "source_inputs": 7,
+    "build_configs": 2,
+    "fixture_runs": 9,
+    "fixture_passed": 9,
+    "receipt": "native-v5/relocation verification/portable-result.json"
+  },
+  "proof": {
+    "module": "PMPDecimal.DecimalSignificantV4",
+    "source_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+    "passed": true,
+    "closed_assumption_receipts": 5,
+    "receipt": "rocq/numeric-v5/fresh portable proof build/build-result.json",
+    "kernel_assumptions": "none; no type-in-type, unsafe fixpoints or assumed positivity",
+    "scope": "Exact Gallina decimal policy model only"
+  },
+  "public_source": {
+    "whitelist": "PUBLIC-SOURCE-WHITELIST-v5.json",
+    "sha256": "029b50bf2c23f100a458fa33171341c69b98c6642416e92562297b38c6d3c3ab",
+    "files": 86,
+    "audit": "PUBLIC-SOURCE-AUDIT-v5.json"
+  },
+  "open_correspondence": [
+    "executable token parsing to Gallina",
+    "pmp interpreter preservation",
+    "direct compiler preservation",
+    "source-to-native byte correspondence"
+  ],
+  "interpreted_test_scope": "136bot+numeric fixtures;117math cases and full replay were checked by both native platforms and Racket",
+  "public_updates": 0
+}

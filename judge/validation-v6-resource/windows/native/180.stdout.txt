@@ -1,0 +1,6 @@
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+677
+280
+11582
+957

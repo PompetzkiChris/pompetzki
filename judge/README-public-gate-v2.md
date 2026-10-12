@@ -1,0 +1,15 @@
+The default v4 judge authenticates its initial registry against embedded canonical REG0 data before checking theorem derivations. Exact canonical prefixes of 0 through 706 entries are admitted. Altered formulas or hypothesis lists are rejected. Whitespace changes and decimal leading zeros preserve the parsed integers and are admitted.
+
+The actual pmp program is judge-v4.pmp. The independent Racket entrypoint is judge-v4.rkt with its code dependency registry-auth-v4.rkt. The pmp reference is embedded in the program; the Racket reference is embedded in its module. Neither requires an external reference JDG file at runtime.
+
+The portable native compiler sources and builder are in judge/native/portable. They include the original direct pmp compiler, its embedded Windows runtime, the Linux syscall adapter, a configurable build script, source whitelist, provenance and MIT license. The build script uses tools on PATH or explicit tool arguments. It can build Linux directly on Linux, or through an explicitly configured WSL distribution from Windows.
+
+The source package includes runtime/source/pompetzki.asm and its portable builder runtime/build-interpreter.py. That monolithic source contains both the Windows and Linux interpreter implementations and has no local assembly or binary includes. The Windows and Linux interpreter builds require NASM and the platform's linker; the Windows imports are kernel32 and shell32.
+
+The generated CanonicalRegistryData.v was checked in Rocq to equal the released REG0 exactly. PrefixSoundness.v proves that a prefix of a valid registry remains valid. CanonicalPrefixSoundness.v supplies the registry-validity premise of the existing Replay3 check_thm and check_batch theorems when the submitted registry equals a canonical prefix. The complete predicate and theorem equality premises are retained. Native parsing, token comparison, source-to-native compilation and executable-to-Gallina correspondence remain separate proof obligations.
+
+Recorded finite tests include 29 pmp/Racket source runs, 3,538 authentication API checks, and 132 compiled native cases on each platform. The native cases comprise 14 registry fixtures, the full 4,551-theorem replay, and all 117 selected public v1.2 math cases. Windows and Linux agreed on every output and exit. Relocated native builds repeated all 132 cases on three build configurations, with 396 matching runs; allocated PE/ELF sections and their addresses matched. Symbol filename metadata and PE timestamps can change whole-file hashes.
+
+The tested native compiler runtime uses single fixed 8-byte variable cells and static literal data. The r60 triple-copy/string-integrity implementation is not part of that runtime profile. The failed r60 build and its receipts are retained locally and excluded from the eligible native artifacts.
+
+Original Pompetzki source and these changes are distributed under the MIT license, copyright Christopher Pompetzki. External tool dependencies retain their own licenses. The build tools are installed separately; no compiler tool binaries are included in the source package.

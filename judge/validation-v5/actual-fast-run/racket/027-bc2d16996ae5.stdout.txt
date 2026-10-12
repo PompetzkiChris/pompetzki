@@ -1,0 +1,1 @@
+REJECT initial registry 0: entry differs from canonical REG0

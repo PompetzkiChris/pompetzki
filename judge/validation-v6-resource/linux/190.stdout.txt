@@ -1,0 +1,6 @@
+REJECT
+alli: the side conditions of universal introduction fail
+theorem and step (counted from 0):
+48
+52
+line 353: check zero failed: not the zero vector

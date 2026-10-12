@@ -1,0 +1,28 @@
+The Rocq Prover, version 9.1.0
+compiled with OCaml 4.14.2
+
+compiler-version exit 0 seconds 0.01265
+compile-Syn exit 0 seconds 0.410095
+compile-Prov exit 0 seconds 0.319616
+compile-Kal exit 0 seconds 0.382333
+compile-Val exit 0 seconds 0.323488
+compile-Inv exit 0 seconds 0.358901
+compile-Parse exit 0 seconds 0.302994
+compile-Data exit 0 seconds 1.778269
+compile-Checks exit 0 seconds 0.520913
+compile-Ax exit 0 seconds 0.714661
+compile-Sub exit 0 seconds 0.40421
+compile-Expand exit 0 seconds 0.360587
+compile-Replay exit 0 seconds 0.44663
+compile-ReplayT exit 0 seconds 0.32493
+compile-Replay2 exit 0 seconds 0.527364
+compile-Replay3 exit 0 seconds 0.460545
+compile-RpInit exit 0 seconds 0.831898
+compile-RpInitOk exit 0 seconds 0.66774
+compile-PrefixSoundness exit 0 seconds 0.300854
+compile-CanonicalRegistryData exit 0 seconds 0.934414
+compile-CanonicalPrefixSoundness exit 0 seconds 0.543896
+compile-GrokAuthGate exit 0 seconds 0.432854
+compile-GrokAuthGateReceipt exit 0 seconds 0.797873
+recursive-kernel-check exit 0 seconds 16.166221
+PASS freshly compiled core 17 proof 5 closed gate lemmas7

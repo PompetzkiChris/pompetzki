@@ -1,0 +1,33 @@
+{
+  "statements": [
+    "decode_ascii_ok_iff",
+    "decode_ascii_digits_true",
+    "decode_ascii_none",
+    "ascii_digit_decode",
+    "decode_ascii_digits",
+    "ascii_malformed_refused",
+    "ascii_empty_refused",
+    "decode_repeat48_app",
+    "ascii_all_zeros",
+    "ascii_padding",
+    "ascii_more_than_twelve_refused",
+    "ascii_bound",
+    "map_decode_repeat0",
+    "all_ascii_digits_dec",
+    "parse_ascii_decimal_none_iff",
+    "parse_digits_horner",
+    "digits_w_length",
+    "digits_w_valid",
+    "digits_w_value",
+    "decode_spelled",
+    "ascii_round_trip12",
+    "ascii_round_trip12_padded",
+    "strip48_split",
+    "strip48_head",
+    "ascii_spell_no_leading_zero",
+    "ascii_round_trip",
+    "ascii_round_trip_padded"
+  ],
+  "count": 27,
+  "received_receipt_has_each_exact_statement_once": true
+}

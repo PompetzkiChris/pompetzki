@@ -1,0 +1,30 @@
+The Rocq Prover, version 9.1.0
+compiled with OCaml 4.14.2
+
+compiler-version exit 0
+compile-Syn exit 0
+compile-Prov exit 0
+compile-Kal exit 0
+compile-Val exit 0
+compile-Inv exit 0
+compile-Parse exit 0
+compile-Data exit 0
+compile-Checks exit 0
+compile-Ax exit 0
+compile-Sub exit 0
+compile-Expand exit 0
+compile-Replay exit 0
+compile-ReplayT exit 0
+compile-Replay2 exit 0
+compile-Replay3 exit 0
+compile-RpInit exit 0
+compile-RpInitOk exit 0
+compile-DecimalSignificantV4 exit 0
+compile-PrefixSoundness exit 0
+compile-CanonicalRegistryData exit 0
+compile-CanonicalPrefixSoundness exit 0
+compile-GrokAuthGate exit 0
+compile-GrokCompose47 exit 0
+compile-GrokCompositionReceipt exit 0
+recursive-kernel-check exit 0
+PASS fresh modules24 main composition5 decoder2 helper1 closed8

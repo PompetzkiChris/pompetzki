@@ -1,0 +1,1 @@
+REJECT theorem 66 step 17 (final: last line is not the statement)

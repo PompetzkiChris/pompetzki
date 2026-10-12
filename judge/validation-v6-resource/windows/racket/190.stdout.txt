@@ -1,0 +1,1 @@
+REJECT theorem 48 step 52 (step H)

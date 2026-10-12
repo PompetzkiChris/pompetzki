@@ -1,0 +1,72 @@
+[
+  {
+    "case": "positive",
+    "file": "fixtures/positive.jdg",
+    "expected_verdict": "ACCEPT",
+    "expected_exit": 0,
+    "sha256": "a2be8ffb49b524eaf082fa47eaffc79a82a3b44134956e3e42e4fc83f71128b3"
+  },
+  {
+    "case": "empty-batch",
+    "file": "fixtures/empty-batch.jdg",
+    "expected_verdict": "ACCEPT",
+    "expected_exit": 0,
+    "sha256": "704e3edb66e3456e16090e546c3db791429256209f6476cfe6f4093da6aed5f9"
+  },
+  {
+    "case": "huge-theorem-count",
+    "file": "fixtures/huge-theorem-count.jdg",
+    "expected_verdict": "REJECT",
+    "expected_exit": 1,
+    "sha256": "2f81774a10671328fe36ec03c0556b458c32ffae0fb059832d39fa11e7fc9625"
+  },
+  {
+    "case": "huge-step-count",
+    "file": "fixtures/huge-step-count.jdg",
+    "expected_verdict": "REJECT",
+    "expected_exit": 1,
+    "sha256": "ef0972b8611bd87631d7be5d67eaad5d34ae8949a8aa6f035194ac57f882f02b"
+  },
+  {
+    "case": "huge-signature-count",
+    "file": "fixtures/huge-signature-count.jdg",
+    "expected_verdict": "REJECT",
+    "expected_exit": 1,
+    "sha256": "1379ca310357325d8a67d3a113ea77da6b3ff10193d183298c8df87c7b6a794c"
+  },
+  {
+    "case": "max-numeric-predicate",
+    "file": "fixtures/max-numeric-predicate.jdg",
+    "expected_verdict": "ACCEPT",
+    "expected_exit": 0,
+    "sha256": "c269464eb3bc2f83eb22afe60241cb664b834f1096e9fdf2abb86369a814b80d"
+  },
+  {
+    "case": "zero-count-padded-1024",
+    "file": "fixtures/zero-count-padded-1024.jdg",
+    "expected_verdict": "ACCEPT",
+    "expected_exit": 0,
+    "sha256": "437450a387e306e4f83e78ad4c0995de4c0db6aeaa80bd4d29512908d2515db0"
+  },
+  {
+    "case": "signature-zero-padded-1024",
+    "file": "fixtures/signature-zero-padded-1024.jdg",
+    "expected_verdict": "ACCEPT",
+    "expected_exit": 0,
+    "sha256": "64dc10fb174bd513803e32bbaf8fd924012fedbeaa67286cc89d9021dc7359ed"
+  },
+  {
+    "case": "missing-theorem-small-count",
+    "file": "fixtures/missing-theorem-small-count.jdg",
+    "expected_verdict": "REJECT",
+    "expected_exit": 1,
+    "sha256": "4f32d0d22eac1ae26faa3ab63cc610ca2364f6e83f98bc62c55a8352b661527e"
+  },
+  {
+    "case": "valid-two-theorems",
+    "file": "fixtures/valid-two-theorems.jdg",
+    "expected_verdict": "ACCEPT",
+    "expected_exit": 0,
+    "sha256": "5bb54c4211bf2fa5edc64c34cb1ca2202848a74f1782377644e29b5d6c1a2375"
+  }
+]

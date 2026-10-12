@@ -1,0 +1,64 @@
+{
+  "result": "PASS",
+  "executions": 674,
+  "passed": 674,
+  "timeouts": 0,
+  "failures": [],
+  "new_fixtures": 10,
+  "fixture_crossroute_runs": 30,
+  "existing_corpus_runs": 644,
+  "by_route": {
+    "native": {
+      "runs": 264,
+      "passed": 264,
+      "maximum_peak_process_memory_bytes": 645500928,
+      "process_memory_limit_bytes": 2147483648
+    },
+    "interpreted": {
+      "runs": 146,
+      "passed": 146,
+      "maximum_peak_process_memory_bytes": 1112141824,
+      "process_memory_limit_bytes": 2147483648
+    },
+    "racket": {
+      "runs": 264,
+      "passed": 264,
+      "maximum_peak_process_memory_bytes": 171450368,
+      "process_memory_limit_bytes": 268435456
+    }
+  },
+  "tool_and_source_inputs": [
+    {
+      "route": "native",
+      "role_index": 0,
+      "filename": "judge-v6-windows.exe",
+      "sha256": "9b84cb4b1dacde788f693682dba571bf9b75e5b78df71cd6be90164131ea1554"
+    },
+    {
+      "route": "interpreted",
+      "role_index": 0,
+      "filename": "pompetzki.exe",
+      "sha256": "957366e641219523dc10fb4316c9916ef072fd79d6084703cc9035e74c127daa"
+    },
+    {
+      "route": "interpreted",
+      "role_index": 1,
+      "filename": "judge-v6.pmp",
+      "sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7"
+    },
+    {
+      "route": "racket",
+      "role_index": 0,
+      "filename": "racket.exe",
+      "sha256": "767ee87d5fcfc7f5912699403c69fa713dd5dee134dc38a99ba9fdd48e808964"
+    },
+    {
+      "route": "racket",
+      "role_index": 1,
+      "filename": "judge-v6.rkt",
+      "sha256": "a16ffa34b4eb03d814c20079c96de82041329aa206cfdf37f6cee0c67cc5b04f"
+    }
+  ],
+  "expectations_sha256": "94425d972276fa7396d7bcdc542be4d2786f53f338aa83f6fe70a40a27a22bbd",
+  "seconds": 60.779936
+}

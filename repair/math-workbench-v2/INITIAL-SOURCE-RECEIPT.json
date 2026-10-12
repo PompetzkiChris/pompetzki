@@ -1,0 +1,25 @@
+{
+  "derived_from": "Local Grok Build first matrix draft",
+  "files": [
+    {
+      "source": "C:\\ClaudeOutput\\abschluss-repair-20261011\\repair\\math-workbench\\exact.rkt",
+      "copy": "exact.rkt",
+      "sha256": "e7d8ef812ae5611ed3b71209fbfb2d91aa1ab29f3d15ed28929158dac4d9a161"
+    },
+    {
+      "source": "C:\\ClaudeOutput\\abschluss-repair-20261011\\repair\\math-workbench\\engine.rkt",
+      "copy": "engine.rkt",
+      "sha256": "11c109489ae7cb35d0c94595c7c942f6564a01dc6bc7abbb6b3c5879ea07dd58"
+    },
+    {
+      "source": "C:\\ClaudeOutput\\abschluss-repair-20261011\\repair\\math-workbench\\gui.rkt",
+      "copy": "gui.rkt",
+      "sha256": "88bd39ab8cd795e7b882c0c1d9d95e1575aa5d6f755b146fb1f0fbe0022deffc"
+    },
+    {
+      "source": "C:\\ClaudeOutput\\abschluss-repair-20261011\\repair\\math-workbench\\build-gui.rkt",
+      "copy": "build-gui.rkt",
+      "sha256": "57847ebd136bc3b8947996d0220b6f83de339dae84225b0270ded5127352cb24"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+decN_bound : forall (ds : list Z) (v : N), decN ds = Some v -> (v <= policy_max)%N
+
+decN_bound is not universe polymorphic
+Arguments decN_bound ds%_list_scope v%_N_scope _ _
+decN_bound is opaque
+Expands to: Constant PMPRepair.GrokCompose47.decN_bound
+Declared in library PMPRepair.GrokCompose47, line 28, characters 8-18
+decN_padded : forall (k : nat) (d : Z) (tail : list Z), decN (repeat 0 k ++ d :: tail) = decN (d :: tail)
+
+decN_padded is not universe polymorphic
+Arguments decN_padded k%_nat_scope d%_Z_scope tail%_list_scope
+decN_padded is opaque
+Expands to: Constant PMPRepair.GrokCompose47.decN_padded
+Declared in library PMPRepair.GrokCompose47, line 34, characters 8-19
+REG0_policy_ok : reg_policy_ok REG0 = true
+
+REG0_policy_ok is not universe polymorphic
+REG0_policy_ok is opaque
+Expands to: Constant PMPRepair.GrokCompose47.REG0_policy_ok
+Declared in library PMPRepair.GrokCompose47, line 51, characters 8-22
+reg_nums_firstn : forall (n : nat) (reg : list entry) (x : N), In x (reg_nums (firstn n reg)) -> In x (reg_nums reg)
+
+reg_nums_firstn is not universe polymorphic
+Arguments reg_nums_firstn n%_nat_scope reg%_list_scope x%_N_scope _
+reg_nums_firstn is opaque
+Expands to: Constant PMPRepair.GrokCompose47.reg_nums_firstn
+Declared in library PMPRepair.GrokCompose47, line 54, characters 6-21
+auth_gate_nums_within_policy : forall (reg : list entry) (x : N), auth_gate reg = true -> In x (reg_nums reg) -> (x <= policy_max)%N /\ decN (spell x) = Some x
+
+auth_gate_nums_within_policy is not universe polymorphic
+Arguments auth_gate_nums_within_policy reg%_list_scope x%_N_scope _ _
+auth_gate_nums_within_policy is opaque
+Expands to: Constant PMPRepair.GrokCompose47.auth_gate_nums_within_policy
+Declared in library PMPRepair.GrokCompose47, line 61, characters 8-36
+auth_gate_padded_spelling : forall (reg : list entry) (x : N) (k : nat), auth_gate reg = true -> In x (reg_nums reg) -> decN (repeat 0 k ++ spell x) = Some x
+
+auth_gate_padded_spelling is not universe polymorphic
+Arguments auth_gate_padded_spelling reg%_list_scope x%_N_scope k%_nat_scope _ _
+auth_gate_padded_spelling is opaque
+Expands to: Constant PMPRepair.GrokCompose47.auth_gate_padded_spelling
+Declared in library PMPRepair.GrokCompose47, line 72, characters 8-33
+auth_gate_check_thm_ok_within_policy :
+forall (reg : list entry) (t : thm), auth_gate reg = true -> check_thm reg t = true -> prov (AH hypf (t_hyps t)) (tof (t_stmt t)) /\ (forall x : N, In x (reg_nums reg) -> (x <= policy_max)%N /\ decN (spell x) = Some x)
+
+auth_gate_check_thm_ok_within_policy is not universe polymorphic
+Arguments auth_gate_check_thm_ok_within_policy reg%_list_scope t _ _
+auth_gate_check_thm_ok_within_policy is opaque
+Expands to: Constant PMPRepair.GrokCompose47.auth_gate_check_thm_ok_within_policy
+Declared in library PMPRepair.GrokCompose47, line 80, characters 8-44
+auth_gate_check_batch_ok_within_policy :
+forall (reg : list entry) (ts : list thm), auth_gate reg = true -> check_batch reg ts = true -> reg_ok hypf (reg ++ map ent ts) /\ (forall x : N, In x (reg_nums reg) -> (x <= policy_max)%N /\ decN (spell x) = Some x)
+
+auth_gate_check_batch_ok_within_policy is not universe polymorphic
+Arguments auth_gate_check_batch_ok_within_policy (reg ts)%_list_scope _ _
+auth_gate_check_batch_ok_within_policy is opaque
+Expands to: Constant PMPRepair.GrokCompose47.auth_gate_check_batch_ok_within_policy
+Declared in library PMPRepair.GrokCompose47, line 89, characters 8-46
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context

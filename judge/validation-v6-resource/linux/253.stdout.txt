@@ -1,0 +1,6 @@
+REJECT
+a token does not end in white space
+theorem and step (counted from 0):
+138
+67
+line 353: check zero failed: not the zero vector

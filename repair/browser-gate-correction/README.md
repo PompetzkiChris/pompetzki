@@ -1,0 +1,9 @@
+This supplemental correction uses Grok's published embedded REG0 gate source at commit d70b551c6559a2c1cde0bc46f1b7e310a26bfe92. PROVENANCE.json records the upstream hashes and source credit. The upstream source and archives remain in their separate review directory. This appendix does not replace the candidate's pmp judge-v5 or its native build.
+
+The numeric domain is 0..999999999999. Leading zeros are insignificant and may have arbitrary length. The Python parser removes them before integer conversion, then refuses more than 12 significant digits. It does not change the process's global Python integer-string conversion limit. The pmp parser skips those zero digits and refuses a 13th significant digit before multiplication or addition. Both gates compare against the unchanged embedded canonical AUTHREF.
+
+The new judge-gated.ps1 and judge-gated.sh wrappers run the pmp registry gate, then default to ../../judge/judge-v5.pmp. POMPETZKI supplies the interpreter executable; otherwise it is looked up on PATH. JUDGE_V5 supplies an explicit judge-v5 source override. The PowerShell wrapper also accepts -Interpreter and -JudgeSource arguments. GATE_PROOF_LOG is an optional invocation receipt. A registry refusal exits before the proof source is invoked.
+
+Run gate.py FILE.jdg with Python for an independent registry comparison. Run test_api.py with Python for the credited 3,538-check API function. Run the portable test-correction.py driver with an explicitly supplied interpreter, a wrapper kind and a fresh output directory. The tests include six long-digit inputs, canonical and padded valid inputs, forged and false-proof inputs, wrapper default/override routing, and the API function.
+
+The inherited API and gate implementations are finite cross-checks. They do not establish executable-to-Gallina, interpreter or compiler correspondence. The original reg_ok premise and canonical-prefix proofs remain unchanged.

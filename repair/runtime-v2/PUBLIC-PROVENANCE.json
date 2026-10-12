@@ -1,0 +1,17 @@
+{
+  "schema": "pompetzki-runtime-provenance-v2",
+  "owner": "Christopher Pompetzki",
+  "license": "MIT",
+  "source": "source/pompetzki.asm",
+  "sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+  "base_source_sha256": "778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db",
+  "base_source_candidate_path": "repair/runtime/source/pompetzki.asm",
+  "discovery": "Grok Bot Linux runtime lane; repeated by Grok Bot accountability lane",
+  "windows_confirmation": "Codex reproduced division and remainder exceptions with status 3221225621, then verified the guards",
+  "changes": ["guard INT64_MIN divided by -1 before idiv", "guard INT64_MIN remainder -1 before idiv"],
+  "machine_word_domain": "signed representatives of 64-bit words; arithmetic results stored as words",
+  "rational_and_matrix_domain": "arbitrary integers and exact rationals",
+  "author_directory_dependencies": [],
+  "local_assembly_or_binary_includes": [],
+  "general_executable_correspondence": "Open"
+}

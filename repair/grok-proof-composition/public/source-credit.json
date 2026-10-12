@@ -1,0 +1,153 @@
+{
+  "project": "Pompetzki / Abschluss",
+  "project_license": "MIT",
+  "copyright": "2026 Christopher Pompetzki",
+  "received_reference_commit": "47ccf28",
+  "archive_sha256": "a758a348d3c48bf1916a11a9b2279101338aa93007235459021bb200dbdea45b",
+  "sources": [
+    {
+      "path": "Cohen/Syn.v",
+      "sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Prov.v",
+      "sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Kal.v",
+      "sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Val.v",
+      "sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Inv.v",
+      "sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Parse.v",
+      "sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Data.v",
+      "sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Checks.v",
+      "sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Ax.v",
+      "sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Sub.v",
+      "sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Expand.v",
+      "sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Replay.v",
+      "sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/ReplayT.v",
+      "sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Replay2.v",
+      "sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/Replay3.v",
+      "sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/RpInit.v",
+      "sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "Cohen/RpInitOk.v",
+      "sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "source_credit": "Christopher Pompetzki, released Rocq mathematical core",
+      "license": "MIT"
+    },
+    {
+      "path": "PMPRepair/PrefixSoundness.v",
+      "sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "source_credit": "Existing Codex prefix proof and canonical registry integration for the Pompetzki project",
+      "license": "MIT project scope"
+    },
+    {
+      "path": "PMPRepair/CanonicalRegistryData.v",
+      "sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "source_credit": "Existing Codex prefix proof and canonical registry integration for the Pompetzki project",
+      "license": "MIT project scope"
+    },
+    {
+      "path": "PMPRepair/CanonicalPrefixSoundness.v",
+      "sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "source_credit": "Existing Codex prefix proof and canonical registry integration for the Pompetzki project",
+      "license": "MIT project scope"
+    },
+    {
+      "path": "PMPRepair/GrokAuthGate.v",
+      "sha256": "0db4ba9e96dcff41d42d8b4b8e9d32ae5226920151945f0df1494d8c994c3da5",
+      "source_credit": "Grok Bot",
+      "license": "MIT project scope"
+    },
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "source_credit": "Codex numeric-v5 Gallina policy model for the Pompetzki project",
+      "license": "MIT"
+    },
+    {
+      "path": "PMPRepair/GrokCompose47.v",
+      "sha256": "91b68483253d427d1efe7d90418970fe0ddd862d648f7bad390fff46aa67c3d8",
+      "source_credit": "Grok Bot, GrokCompose47.v copied without source changes from received archive",
+      "license": "MIT project scope"
+    },
+    {
+      "path": "PMPRepair/GrokCompositionReceipt.v",
+      "sha256": "d7a4b8708117087ee4494c024ab1bd6f2bb31ebf5066f1067d373eb3c776b560",
+      "source_credit": "Codex targeted exact statement and assumption receipt for the unchanged Grok Bot composition",
+      "license": "MIT"
+    }
+  ]
+}

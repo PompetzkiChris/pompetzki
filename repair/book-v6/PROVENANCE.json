@@ -1,0 +1,14 @@
+{
+  "grok_bot_archive_sha256": "4a3b78665503aae95ab32bd365cc537bbb78baf921862adff310c299c9afed26",
+  "sources": {
+    "book-post-v4.rkt": "Grok Bot Book lane corrected low-level writer; root restores inspect-jdg export and project-relative registry path.",
+    "verified-book-post.rkt": "Grok Bot corrected poster, root adds v5 preference with v4 fallback.",
+    "verified-book-check.rkt": "Codex version 6 correcting evidence verifier, including exact declared snapshot/output artifact closure and supported posting directory contract, retaining all version 5 mathematical evidence reconstruction and fresh rejudgment."
+  },
+  "low_level_receipts": "Metadata backing is checked but is not a signature; verified-book-check reruns both judges and recomputes theorem hashes.",
+  "executable_Gallina_correspondence": "Open",
+  "version": "6",
+  "version_4_evidence": "Preserved in sibling book-v4 and book-v4-review directories.",
+  "mathematical_statement_changes": "None.",
+  "version_5_evidence": "Preserved in sibling book-v5; independently reproduced extra judge-runs file acceptance is preserved in book-v6/tests/pre-fix-extra-log."
+}

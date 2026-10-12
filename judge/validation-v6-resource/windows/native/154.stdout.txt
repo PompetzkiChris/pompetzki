@@ -1,0 +1,6 @@
+REJECT
+taut: not a tautology
+theorem and step (counted from 0):
+3
+1
+line 353: check zero failed: not the zero vector

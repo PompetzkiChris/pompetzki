@@ -1,0 +1,291 @@
+{
+  "status": "CURRENT FROZEN INSTRUCTION-STEP SOURCE",
+  "source_instructions": 77,
+  "fresh_compiled_modules": 14,
+  "selected_closed_statement_types": 12,
+  "kernel_exit": 0,
+  "kernel_axioms": [],
+  "files": [
+    {
+      "path": "build-proof.py",
+      "bytes": 2857,
+      "sha256": "8e32efa1e589025d9529eac6eea3ff2670ce350c0a431a537df8d23ac989e68f"
+    },
+    {
+      "path": "extract-source.py",
+      "bytes": 3913,
+      "sha256": "700b89ad60233abd9687ae91208d026f805e62a26181758b5817ff51295c05ff"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827"
+    },
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "bytes": 4152,
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6"
+    },
+    {
+      "path": "Proof/RDNUMCalls.v",
+      "bytes": 3643,
+      "sha256": "7b1cc99b77b3fa61a46b6d3325f72b0646ab1642b9b6355f78a1dbaa711e1a0f"
+    },
+    {
+      "path": "Proof/RDNUMNumber.v",
+      "bytes": 9216,
+      "sha256": "526511bc2b22a54ae7677298a8a54080e8bea10f39a0dd9b14be4477b44d5612"
+    },
+    {
+      "path": "Proof/RDNUMReaders.v",
+      "bytes": 13235,
+      "sha256": "4e7951e404a3d1114be6810cc774b9929cbe1fd1fa13de32f6d1a3e9774b392c"
+    },
+    {
+      "path": "Proof/RDNUMReceipt.v",
+      "bytes": 993,
+      "sha256": "02fee0ae70e863955b5b11fb5afdfab3435abc88c62e0e0590571358ae77f068"
+    },
+    {
+      "path": "Proof/RDNUMSource.v",
+      "bytes": 13882,
+      "sha256": "bc1e6895e01d5bfec62760a6f1e1c8d4c426629ea1558ea8704560c2f30dd6ee"
+    },
+    {
+      "path": "Proof/RDNUMTools.v",
+      "bytes": 2929,
+      "sha256": "edc343e60c53659a8472b30fe80e48244f2cf6b202530d97a93aba0d0148f624"
+    },
+    {
+      "path": "Proof/RDNUMWordBounds.v",
+      "bytes": 2390,
+      "sha256": "9d3df71c1cf78b4381f7811ebc6fa1f31f7a9a4874d8e98a9cf4b476635b80e1"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2890,
+      "sha256": "01d9f0fb185265cf6cb121f6e05ffbc4bab270f9b508b144810b48fe98150176"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/commands.json",
+      "bytes": 19045,
+      "sha256": "5a4a4f3b44387a6c9ca0e99e4f5e8c69994c1f28c5b3b018cdd20e4249ed137e"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/ByteText.stderr.txt",
+      "bytes": 4046,
+      "sha256": "bd9b55ddeaa439f0dfe24bb801f85e885e6a5888ea63d6f73d3c006b6b26e7b8"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/ByteText.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/DecimalSignificantV4.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/DecimalSignificantV4.stdout.txt",
+      "bytes": 165,
+      "sha256": "1bdd3742f8d7da5f287152ffc433a3e530c0b84154036807f3a415a263d76153"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/ExecMono.stderr.txt",
+      "bytes": 4275,
+      "sha256": "85d6d99482c86c254f3c9c446dba4be009b28c6627930bfcbe472dffa130a305"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/ExecMono.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/ExecSim.stderr.txt",
+      "bytes": 4275,
+      "sha256": "9e5c21e6ae227916f23f665791750d2c533d133983f1d0d8ba1bc61663fe2e80"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/ExecSim.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/ExecStep.stderr.txt",
+      "bytes": 4275,
+      "sha256": "7c906942df58b08e6586d7c52b404bd2051c857a307d7371a9f7f1ef2b72cf68"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/ExecStep.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/kernel-check.stderr.txt",
+      "bytes": 321,
+      "sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/kernel-check.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/PmpCore.stderr.txt",
+      "bytes": 4275,
+      "sha256": "40dba8222237926faeef92d03cdaa363955faecc9528fdbbcddefbd3ded2296d"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/PmpCore.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMCalls.stderr.txt",
+      "bytes": 4185,
+      "sha256": "2e67363a013ae83e2077bb11d654cf00e6b4bd871a1d39192b84374ca0d59a68"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMCalls.stdout.txt",
+      "bytes": 33,
+      "sha256": "57eba84838e07f8a4bcf2adf1d684aedf88d0237eddb4b5b63d9c95216a76894"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMNumber.stderr.txt",
+      "bytes": 4200,
+      "sha256": "c86c7b3e26a5e8c8b44e23fa9552d66f92ae96878e3bfd9f8a0c62748a774819"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMNumber.stdout.txt",
+      "bytes": 264,
+      "sha256": "5b6d719bf8a617feec2d30e891a232a3b1b0cb26112fb529740984ddaab378e4"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMReaders.stderr.txt",
+      "bytes": 4215,
+      "sha256": "35d88ebbc1b50bf2563b4f7c390204bd687f4c0b83078f9f369b31018ec4e07a"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMReaders.stdout.txt",
+      "bytes": 231,
+      "sha256": "8d8ab9d8c16625867dc444fb059afa72df6298d6464b386ff566bad4d02e4766"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMReceipt.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMReceipt.stdout.txt",
+      "bytes": 29530,
+      "sha256": "85e79c63dd3476480baf83b3dead39b0cab3546e6f9e5620aa1233437bc52b5b"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMSource.stderr.txt",
+      "bytes": 4200,
+      "sha256": "99fafa9b7e9991b0561a76eda3399ebb467bbed5e2bc29061456eec7a1cdd4ce"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMSource.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMTools.stderr.txt",
+      "bytes": 4185,
+      "sha256": "db6d5155b5dbd21290f7f5e1e3dfbc22d8c683f07a6c4dec32ab1961db133e91"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMTools.stdout.txt",
+      "bytes": 33,
+      "sha256": "57eba84838e07f8a4bcf2adf1d684aedf88d0237eddb4b5b63d9c95216a76894"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMWordBounds.stderr.txt",
+      "bytes": 4260,
+      "sha256": "c84d64281d3330c869345541f5a8a9dc881d31a38c5f7f43545eb7aca9916ca8"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RDNUMWordBounds.stdout.txt",
+      "bytes": 66,
+      "sha256": "f4429b85f8cc99d157133d0b0125237fd9b4cb969de8647fa1282dc9ca7f0d2a"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RunKit.stderr.txt",
+      "bytes": 4245,
+      "sha256": "4f07243d59c91dde48ca6e68a4cb8f4c192fd4f08f7dbe8d68d19069f8d85c28"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/logs/RunKit.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-040656/results.json",
+      "bytes": 21908,
+      "sha256": "53610b2a599638b92b2f7bd394fd84af4038c42677cd05c53df6b8304ee70573"
+    },
+    {
+      "path": "source/judge-v5.pmp",
+      "bytes": 100875,
+      "sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b"
+    },
+    {
+      "path": "source/judge-v6.pmp",
+      "bytes": 101261,
+      "sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7"
+    },
+    {
+      "path": "source/reader-fragment.pmp",
+      "bytes": 1724,
+      "sha256": "7a282dc71308a1796a0690bce400938a936dd60efcdc70257671660f842a3826"
+    },
+    {
+      "path": "source/source-extraction.json",
+      "bytes": 12633,
+      "sha256": "5d98476cf099554c0537b362f8671900cfb146ff0c746e8eccb15865fcf6433c"
+    },
+    {
+      "path": "SOURCE-CREDIT.json",
+      "bytes": 2342,
+      "sha256": "b5a07243ba9b0cc36e351591310432b2814c43b8af603ab07e03e23eb0cbdca0"
+    },
+    {
+      "path": "SOURCE-IDENTITY-v5-v6.json",
+      "bytes": 1182,
+      "sha256": "e61d3e64ceb498bbbc1e034a81943bcf17a398c9b353549510fc4615bba2afa1"
+    },
+    {
+      "path": "Vendor/C2Link/ExecMono.v",
+      "bytes": 2789,
+      "sha256": "4309ae95d944f4eda8979cd23af95ab47668a50c33b84ef2037ba32d9370b90d"
+    },
+    {
+      "path": "Vendor/C2Link/ExecSim.v",
+      "bytes": 4757,
+      "sha256": "ff8d1832e529925a5b6384d8cf8c4e2763a7192f252d49fedf194f28cf7c50ff"
+    },
+    {
+      "path": "Vendor/C2Link/ExecStep.v",
+      "bytes": 3016,
+      "sha256": "b5689cd748cf941358fdc4c1e23a21bddd4ba5156b325ebdf83ea9aaaf88d456"
+    },
+    {
+      "path": "Vendor/C2Link/PmpCore.v",
+      "bytes": 8412,
+      "sha256": "ba76fc2256e87bfab583f6a9f5a145cf351dfe86d13e295dfa24548e4475b8bc"
+    },
+    {
+      "path": "Vendor/C2Link/RunKit.v",
+      "bytes": 1715,
+      "sha256": "a37d0e83a139e10f0d6330f1b837c90a9269b3704b01b24f90578135135dc351"
+    },
+    {
+      "path": "Vendor/Groebner/ByteText.v",
+      "bytes": 13265,
+      "sha256": "73d782662def27f0c8de666a12c56001ec58bdb1ce16d14181c318c8ca484482"
+    }
+  ],
+  "excluded": "Generated .vo/.glob binaries, development iterations, private origin paths, and ongoing arbitrary-loop proof."
+}

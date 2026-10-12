@@ -1,0 +1,6 @@
+REJECT
+leib: the formula is not Leibniz's law for the given formula
+theorem and step (counted from 0):
+65
+21
+line 353: check zero failed: not the zero vector

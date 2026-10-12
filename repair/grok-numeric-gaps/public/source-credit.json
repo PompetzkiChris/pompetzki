@@ -1,0 +1,27 @@
+{
+  "project": "Pompetzki / Abschluss",
+  "project_license": "MIT",
+  "copyright": "2026 Christopher Pompetzki",
+  "received_reference_commit": "c886685",
+  "archive_sha256": "ccc85a3c3eb0de7af0d6f7bf4e4bf1f25cc71951f33b12d7e1600ee060a7af3d",
+  "sources": [
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "source_credit": "Codex numeric-v5 Gallina model",
+      "license": "MIT project scope"
+    },
+    {
+      "path": "GrokNumeric/GrokNumericGaps.v",
+      "sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "source_credit": "Grok Bot, received proof source copied unchanged",
+      "license": "MIT project scope"
+    },
+    {
+      "path": "GrokNumeric/GrokNumericGapsVerify.v",
+      "sha256": "86872933f57672680bbcf38737ccf56aeb867cb11e94ed7feb3c084cf74bae19",
+      "source_credit": "Grok Bot, received exact-type and assumption receipt copied unchanged",
+      "license": "MIT project scope"
+    }
+  ]
+}

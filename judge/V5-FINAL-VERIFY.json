@@ -1,0 +1,11 @@
+{
+  "freeze_manifest_entries": 6,
+  "v5_complete_manifest_entries": 2897,
+  "public_source_files": 86,
+  "public_source_hash_mismatches": 0,
+  "check": "Final source and hash manifests verified after native freeze receipts were written",
+  "v5_racket_sha256": "c63bd449af3a7653c483b9bb42039b2942f658614bc2606eb7b40c5b95b6b2d0",
+  "release_manifest_entries": 7,
+  "v5_pmp_sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+  "all_hash_mismatches": 0
+}

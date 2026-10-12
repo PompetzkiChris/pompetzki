@@ -1,0 +1,186 @@
+{
+  "schema": "grok-gallina-composition-public-v1",
+  "status": "CURRENT SOURCE-ONLY ADDENDUM",
+  "files": [
+    {
+      "path": "archive-manifest-verification.json",
+      "sha256": "a3e37e2ac50d30d743b55fc6e2642ac3d65f631306f852c8a28405dce4bb1e9c",
+      "bytes": 74910
+    },
+    {
+      "path": "build-composition-proof.py",
+      "sha256": "85ea586253fc02f5d79d56bacc9848ed71d942801bbd9470eaa6edb53fbdc35e",
+      "bytes": 4557
+    },
+    {
+      "path": "Cohen/Ax.v",
+      "sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "bytes": 6120
+    },
+    {
+      "path": "Cohen/Checks.v",
+      "sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "bytes": 7869
+    },
+    {
+      "path": "Cohen/Data.v",
+      "sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "bytes": 98999
+    },
+    {
+      "path": "Cohen/Expand.v",
+      "sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "bytes": 6261
+    },
+    {
+      "path": "Cohen/Inv.v",
+      "sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "bytes": 4709
+    },
+    {
+      "path": "Cohen/Kal.v",
+      "sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "bytes": 9692
+    },
+    {
+      "path": "Cohen/Parse.v",
+      "sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "bytes": 4282
+    },
+    {
+      "path": "Cohen/Prov.v",
+      "sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "bytes": 3580
+    },
+    {
+      "path": "Cohen/Replay.v",
+      "sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "bytes": 9747
+    },
+    {
+      "path": "Cohen/Replay2.v",
+      "sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "bytes": 10867
+    },
+    {
+      "path": "Cohen/Replay3.v",
+      "sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "bytes": 8528
+    },
+    {
+      "path": "Cohen/ReplayT.v",
+      "sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "bytes": 4197
+    },
+    {
+      "path": "Cohen/RpInit.v",
+      "sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "bytes": 84950
+    },
+    {
+      "path": "Cohen/RpInitOk.v",
+      "sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "bytes": 5398
+    },
+    {
+      "path": "Cohen/Sub.v",
+      "sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "bytes": 4841
+    },
+    {
+      "path": "Cohen/Syn.v",
+      "sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "bytes": 6962
+    },
+    {
+      "path": "Cohen/Val.v",
+      "sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "bytes": 3666
+    },
+    {
+      "path": "composition-types-and-assumptions.txt",
+      "sha256": "17699e891150e47cb0d92911756f9db143bb9b34f8c7a324e15516f5706ded38",
+      "bytes": 3766
+    },
+    {
+      "path": "fresh-composition-result.json",
+      "sha256": "704778064c73e147bd961cbf4f77a00ef03392e99e5fa6a772ef663ba9b332d9",
+      "bytes": 18382
+    },
+    {
+      "path": "kernel-check-context.txt",
+      "sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+      "bytes": 321
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077
+    },
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "bytes": 4152
+    },
+    {
+      "path": "PMPRepair/CanonicalPrefixSoundness.v",
+      "sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "bytes": 1565
+    },
+    {
+      "path": "PMPRepair/CanonicalRegistryData.v",
+      "sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "bytes": 87642
+    },
+    {
+      "path": "PMPRepair/GrokAuthGate.v",
+      "sha256": "0db4ba9e96dcff41d42d8b4b8e9d32ae5226920151945f0df1494d8c994c3da5",
+      "bytes": 3059
+    },
+    {
+      "path": "PMPRepair/GrokCompose47.v",
+      "sha256": "91b68483253d427d1efe7d90418970fe0ddd862d648f7bad390fff46aa67c3d8",
+      "bytes": 4540
+    },
+    {
+      "path": "PMPRepair/GrokCompositionReceipt.v",
+      "sha256": "d7a4b8708117087ee4494c024ab1bd6f2bb31ebf5066f1067d373eb3c776b560",
+      "bytes": 962
+    },
+    {
+      "path": "PMPRepair/PrefixSoundness.v",
+      "sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "bytes": 1809
+    },
+    {
+      "path": "README.md",
+      "sha256": "d8b755db51ba5697db98704aa7450dc540d7456a47d4b2571b0752755815834f",
+      "bytes": 3112
+    },
+    {
+      "path": "run-output.txt",
+      "sha256": "0fbce77b84d0e883288a8b23bfe51767e02da43093b1df5dc73eb27a2d26bb5f",
+      "bytes": 801
+    },
+    {
+      "path": "source-credit.json",
+      "sha256": "c47b0dd9d8943948240da9a7c4143b96ffe4870df6763acf836902e127a60656",
+      "bytes": 6296
+    }
+  ],
+  "source_module_count": 24,
+  "fresh_compile_count": 24,
+  "closed_statements": 8,
+  "main_composition_results": 5,
+  "decoder_lemmas": 2,
+  "prefix_helper_lemmas": 1,
+  "kernel_check": "PASS",
+  "privacy_scan": "PASS",
+  "excluded_categories": [
+    "account and delivery metadata",
+    "author machine paths",
+    "private orchestration",
+    "compiled objects"
+  ],
+  "source_credit": "Grok Bot composition and gate; Christopher Pompetzki mathematical core; Codex numeric model, prior prefix integration and targeted receipt/builder."
+}

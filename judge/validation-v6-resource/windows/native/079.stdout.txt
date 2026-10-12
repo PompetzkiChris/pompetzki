@@ -1,0 +1,6 @@
+REJECT
+ax: not an axiom shape
+theorem and step (counted from 0):
+47
+0
+line 353: check zero failed: not the zero vector

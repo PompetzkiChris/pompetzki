@@ -1,0 +1,19 @@
+{
+  "schema": "native-gate-v6-source-provenance/v1",
+  "program": "judge-v6.pmp",
+  "program_sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+  "compiler_source": "pmpc-original.rkt",
+  "compiler_sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+  "linux_runtime_source": "linux-runtime.asm",
+  "linux_runtime_sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+  "source_credit": [
+    "Christopher Pompetzki project source and canonical registry",
+    "Codex v6 necessary input-byte bounds, based on v5"
+  ],
+  "compiler_status": "Existing direct compiler source copied unchanged",
+  "runtime_status": "Windows runtime embedded in unchanged compiler; Linux syscall runtime copied unchanged",
+  "primary_judge": "pmp source and its native/interpreted executions",
+  "racket_role": "Independent cross-check",
+  "source_native_correspondence": "Open; compilation and finite execution checks do not establish a general compiler theorem.",
+  "decimal_fragment": "SKIPWS, ENDTOK, RDNUM, and RDTAG byte-identical between v5 and v6."
+}

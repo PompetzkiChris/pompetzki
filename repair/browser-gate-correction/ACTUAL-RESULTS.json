@@ -1,0 +1,47 @@
+{
+  "schema": "browser-gate-correction-freeze/v1",
+  "upstream_commit": "d70b551c6559a2c1cde0bc46f1b7e310a26bfe92",
+  "credited_source": "PROVENANCE.json",
+  "tests": [
+    {
+      "platform": "windows",
+      "process_checks": 18,
+      "passed": 18,
+      "api_checks": 3538,
+      "numeric_checks": 12,
+      "wrapper_checks": 5,
+      "global_python_integer_string_limit": 4300,
+      "unhandled_value_errors": 0,
+      "receipt": "actual-windows-run/results.json"
+    },
+    {
+      "platform": "linux",
+      "process_checks": 18,
+      "passed": 18,
+      "api_checks": 3538,
+      "numeric_checks": 12,
+      "wrapper_checks": 5,
+      "global_python_integer_string_limit": 4300,
+      "unhandled_value_errors": 0,
+      "receipt": "actual-linux-run/results.json"
+    }
+  ],
+  "exact_significant_boundary": {
+    "runs": 8,
+    "passed": 8,
+    "twelve_significant": "Parsed value then canonical formula mismatch",
+    "thirteen_significant": "Rejected as outside numeric domain before integer conversion/arithmetic"
+  },
+  "process_executions": 44,
+  "process_passed": 44,
+  "api_checks_per_platform": 3538,
+  "global_python_limit_unchanged": true,
+  "unhandled_value_errors": 0,
+  "embedded_authref_sha256": "d3dbc73283b61a2ba72431552d33c1810e140e24bbfda85b1a30aef006dac047",
+  "default_proof_source": "judge/judge-v5.pmp",
+  "default_proof_source_sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+  "root_core_map_sha256": "27d1827df6f70457805c7be584c3b441a729fba83c2cf3c1e5d276d01fdb3843",
+  "root_candidate_core_modified": false,
+  "public_path_log_policy": "Original absolute-path proof-invocation sentinels and their private per-run SHA files remain locally. Public results record proof-invoked booleans and use curated per-run/public component hashes.",
+  "scope": "Supplemental credited source correction; executable-to-Gallina and compiler correspondence remain open"
+}

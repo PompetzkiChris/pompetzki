@@ -1,0 +1,24 @@
+{
+  "files": [
+    {
+      "bytes": 4152,
+      "path": "judge/rocq/numeric-v5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6"
+    },
+    {
+      "bytes": 3216,
+      "path": "judge/rocq/numeric-v5/build-decimal-proof.py",
+      "sha256": "926dc252c4ff0bdc7e353cedc2b20b3b77be744db8da197eca60ba98499263e7"
+    },
+    {
+      "bytes": 1417,
+      "path": "judge/rocq/numeric-v5/README.md",
+      "sha256": "30a5a046210900c7df1c209270462feca58dd6eef658cb2cc6ca23308e17c17d"
+    }
+  ],
+  "executable_correspondence": "open",
+  "schema": "decimal-policy-source-inputs/v1",
+  "dependencies": [
+    "Rocq standard library ZArith,List,Lia,Bool"
+  ]
+}

@@ -1,0 +1,649 @@
+RDNUM_leading_zero
+     : forall (s : PmpCore.state) (ks : list nat) (f : nat),
+       BinInt.Z.lt
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false false false true true true false)
+               (String.String
+                  (Ascii.Ascii true true true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true true false false true true true false)
+                     String.EmptyString))))
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false false true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) ->
+       PmpCore.peek s
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false false false true true true false)
+               (String.String
+                  (Ascii.Ascii true true true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true true false false true true true false)
+                     String.EmptyString))))
+         1 =
+       BinNums.Zpos
+         (BinNums.xO
+            (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))) ->
+       PmpCore.vars s
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii false false true false false true true false)
+               String.EmptyString)) =
+       BinNums.Z0 ->
+       PmpCore.exec (ssrnat.addn 17 f) Preader reader_stops pc_RDNUM1 ks s =
+       PmpCore.exec f Preader reader_stops pc_RDNUM1 ks (number_lead_step s)
+RDNUM_significant_digit
+     : forall (s : PmpCore.state) (ks : list nat) (f : nat),
+       BinInt.Z.lt
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false false false true true true false)
+               (String.String
+                  (Ascii.Ascii true true true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true true false false true true true false)
+                     String.EmptyString))))
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false false true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) ->
+       BinInt.Z.le BinNums.Z0
+         (BinInt.Z.sub
+            (PmpCore.peek s
+               (PmpCore.vars s
+                  (String.String
+                     (Ascii.Ascii false false false false true true true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true false false true true true
+                              false)
+                           String.EmptyString))))
+               1)
+            (BinNums.Zpos
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))))) /\
+       BinInt.Z.lt
+         (BinInt.Z.sub
+            (PmpCore.peek s
+               (PmpCore.vars s
+                  (String.String
+                     (Ascii.Ascii false false false false true true true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true false false true true true
+                              false)
+                           String.EmptyString))))
+               1)
+            (BinNums.Zpos
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))))
+         (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xO BinNums.xH)))) ->
+       BinInt.Z.lt BinNums.Z0
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii false false true false false true true false)
+                  String.EmptyString))) /\
+       BinInt.Z.lt
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii false false true false false true true false)
+                  String.EmptyString)))
+         (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))) ->
+       PmpCore.exec (ssrnat.addn 23 f) Preader reader_stops pc_RDNUM1 ks s =
+       PmpCore.exec f Preader reader_stops pc_RDNUM1 ks (number_sig_step s)
+RDNUM_first_nonzero_digit
+     : forall (s : PmpCore.state) (ks : list nat) (f : nat),
+       BinInt.Z.lt
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false false false true true true false)
+               (String.String
+                  (Ascii.Ascii true true true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true true false false true true true false)
+                     String.EmptyString))))
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false false true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) ->
+       BinInt.Z.lt BinNums.Z0
+         (BinInt.Z.sub
+            (PmpCore.peek s
+               (PmpCore.vars s
+                  (String.String
+                     (Ascii.Ascii false false false false true true true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true false false true true true
+                              false)
+                           String.EmptyString))))
+               1)
+            (BinNums.Zpos
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))))) /\
+       BinInt.Z.lt
+         (BinInt.Z.sub
+            (PmpCore.peek s
+               (PmpCore.vars s
+                  (String.String
+                     (Ascii.Ascii false false false false true true true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true false false true true true
+                              false)
+                           String.EmptyString))))
+               1)
+            (BinNums.Zpos
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))))
+         (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xO BinNums.xH)))) ->
+       PmpCore.vars s
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii false false true false false true true false)
+               String.EmptyString)) =
+       BinNums.Z0 ->
+       PmpCore.exec (ssrnat.addn 24 f) Preader reader_stops pc_RDNUM1 ks s =
+       PmpCore.exec f Preader reader_stops pc_RDNUM1 ks (number_sig_step s)
+RDNUM_thirteenth_significant_refused
+     : forall (s : PmpCore.state) (ks : list nat),
+       BinInt.Z.lt
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false false false true true true false)
+               (String.String
+                  (Ascii.Ascii true true true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true true false false true true true false)
+                     String.EmptyString))))
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false false true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) ->
+       BinInt.Z.le BinNums.Z0
+         (BinInt.Z.sub
+            (PmpCore.peek s
+               (PmpCore.vars s
+                  (String.String
+                     (Ascii.Ascii false false false false true true true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true false false true true true
+                              false)
+                           String.EmptyString))))
+               1)
+            (BinNums.Zpos
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))))) /\
+       BinInt.Z.lt
+         (BinInt.Z.sub
+            (PmpCore.peek s
+               (PmpCore.vars s
+                  (String.String
+                     (Ascii.Ascii false false false false true true true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true false false true true true
+                              false)
+                           String.EmptyString))))
+               1)
+            (BinNums.Zpos
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))))
+         (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xO BinNums.xH)))) ->
+       PmpCore.vars s
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii false false true false false true true false)
+               String.EmptyString)) =
+       BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))) ->
+       PmpCore.exec 18 Preader reader_stops pc_RDNUM1 ks s =
+       PmpCore.OStop
+         (String.String
+            (Ascii.Ascii false true true false false false true false)
+            (String.String
+               (Ascii.Ascii true false false false false false true false)
+               (String.String
+                  (Ascii.Ascii true false false true false false true false)
+                  (String.String
+                     (Ascii.Ascii false false true true false false true
+                        false)
+                     String.EmptyString))))
+         (number_limit s)
+number_limit_no_accumulator_update
+     : forall s : PmpCore.state,
+       PmpCore.vars (number_limit s)
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii true false true false true true true false)
+               (String.String
+                  (Ascii.Ascii true false true true false true true false)
+                  String.EmptyString))) =
+       PmpCore.vars s
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii true false true false true true true false)
+               (String.String
+                  (Ascii.Ascii true false true true false true true false)
+                  String.EmptyString))) /\
+       PmpCore.vars (number_limit s)
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii false false true false false true true false)
+               String.EmptyString)) =
+       PmpCore.vars s
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii false false true false false true true false)
+               String.EmptyString)) /\
+       PmpCore.vars (number_limit s)
+         (String.String
+            (Ascii.Ascii false false false false true true true false)
+            (String.String
+               (Ascii.Ascii true true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true true false false true true true false)
+                  String.EmptyString))) =
+       PmpCore.vars s
+         (String.String
+            (Ascii.Ascii false false false false true true true false)
+            (String.String
+               (Ascii.Ascii true true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true true false false true true true false)
+                  String.EmptyString))) /\
+       (forall a : BinNums.Z,
+        BinInt.Z.lt a (PmpCore.hp s) ->
+        PmpCore.mem (number_limit s) a = PmpCore.mem s a)
+SKIPWS_success
+     : forall (s : PmpCore.state) (n : nat),
+       BinInt.Z.le (BinInt.Z.add (xpos s) (BinInt.Z.of_nat n)) (xlim s) ->
+       white_prefix s n ->
+       BinInt.Z.add (xpos s) (BinInt.Z.of_nat n) = xlim s \/
+       ~ whitespace (byte_at s (BinInt.Z.add (xpos s) (BinInt.Z.of_nat n))) ->
+       exists s' : PmpCore.state,
+         ExecMono.evals Preader reader_stops pc_SKIPWS nil s
+           (PmpCore.OReturn s') /\
+         xpos s' = BinInt.Z.add (xpos s) (BinInt.Z.of_nat n) /\
+         reader_frame
+           (String.String
+              (Ascii.Ascii false false false false true true true false)
+              (String.String
+                 (Ascii.Ascii true true true true false true true false)
+                 (String.String
+                    (Ascii.Ascii true true false false true true true false)
+                    String.EmptyString))
+            :: String.String
+                 (Ascii.Ascii false false true false true true true false)
+                 String.EmptyString
+               :: String.String
+                    (Ascii.Ascii true true false false false true true false)
+                    String.EmptyString
+                  :: nil)
+           s s'
+ENDTOK_success
+     : forall s : PmpCore.state,
+       BinInt.Z.le (xpos s) (xlim s) ->
+       xpos s = xlim s \/ whitespace (byte_at s (xpos s)) ->
+       exists s' : PmpCore.state,
+         ExecMono.evals Preader reader_stops pc_ENDTOK nil s
+           (PmpCore.OReturn s') /\
+         xpos s' = xpos s /\
+         reader_frame
+           (String.String
+              (Ascii.Ascii false false false false true true true false)
+              (String.String
+                 (Ascii.Ascii true true true true false true true false)
+                 (String.String
+                    (Ascii.Ascii true true false false true true true false)
+                    String.EmptyString))
+            :: String.String
+                 (Ascii.Ascii false false true false true true true false)
+                 String.EmptyString
+               :: String.String
+                    (Ascii.Ascii true true false false false true true false)
+                    String.EmptyString
+                  :: nil)
+           s s'
+ENDTOK_failure
+     : forall s : PmpCore.state,
+       BinInt.Z.lt (xpos s) (xlim s) ->
+       ~ whitespace (byte_at s (xpos s)) ->
+       ExecMono.evals Preader reader_stops pc_ENDTOK nil s
+         (PmpCore.OStop
+            (String.String
+               (Ascii.Ascii false true true false false false true false)
+               (String.String
+                  (Ascii.Ascii true false false false false false true false)
+                  (String.String
+                     (Ascii.Ascii true false false true false false true
+                        false)
+                     (String.String
+                        (Ascii.Ascii false false true true false false true
+                           false)
+                        String.EmptyString))))
+            (token_failure s))
+RDNUM_finish_success
+     : forall s : PmpCore.state,
+       BinInt.Z.le
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false false false true true true false)
+               (String.String
+                  (Ascii.Ascii true true true true false true true false)
+                  (String.String
+                     (Ascii.Ascii true true false false true true true false)
+                     String.EmptyString))))
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false false true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false false true false true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) ->
+       PmpCore.vars s
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii true true false false true true true false)
+               (String.String
+                  (Ascii.Ascii true false true false false true true false)
+                  (String.String
+                     (Ascii.Ascii true false true false false true true false)
+                     (String.String
+                        (Ascii.Ascii false true true true false true true
+                           false)
+                        String.EmptyString))))) <>
+       BinNums.Z0 ->
+       PmpCore.vars s
+         (String.String
+            (Ascii.Ascii false false false false true true true false)
+            (String.String
+               (Ascii.Ascii true true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true true false false true true true false)
+                  String.EmptyString))) =
+       PmpCore.vars s
+         (String.String
+            (Ascii.Ascii false false true true false true true false)
+            (String.String
+               (Ascii.Ascii true false false true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true true false true true false)
+                  String.EmptyString))) \/
+       whitespace
+         (PmpCore.peek s
+            (PmpCore.vars s
+               (String.String
+                  (Ascii.Ascii false false false false true true true false)
+                  (String.String
+                     (Ascii.Ascii true true true true false true true false)
+                     (String.String
+                        (Ascii.Ascii true true false false true true true
+                           false)
+                        String.EmptyString))))
+            1) ->
+       exists sf : PmpCore.state,
+         ExecMono.evals Preader reader_stops pc_RDNUM1 nil s
+           (PmpCore.OReturn sf) /\
+         reader_frame finish_locals s sf
+checked_source_accumulator_signed64
+     : forall (s : PmpCore.state) (n : nat),
+       n < 12 ->
+       M.in_range
+         (PmpCore.vars s
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString))))
+         n ->
+       BinInt.Z.le BinNums.Z0
+         (BinInt.Z.sub
+            (PmpCore.peek s
+               (PmpCore.vars s
+                  (String.String
+                     (Ascii.Ascii false false false false true true true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true false false true true true
+                              false)
+                           String.EmptyString))))
+               1)
+            (BinNums.Zpos
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))))) /\
+       BinInt.Z.lt
+         (BinInt.Z.sub
+            (PmpCore.peek s
+               (PmpCore.vars s
+                  (String.String
+                     (Ascii.Ascii false false false false true true true
+                        false)
+                     (String.String
+                        (Ascii.Ascii true true true true false true true
+                           false)
+                        (String.String
+                           (Ascii.Ascii true true false false true true true
+                              false)
+                           String.EmptyString))))
+               1)
+            (BinNums.Zpos
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))))
+         (BinNums.Zpos (BinNums.xO (BinNums.xI (BinNums.xO BinNums.xH)))) ->
+       (BinInt.Z.le BinNums.Z0
+          (PmpCore.vars (number_mul_state s)
+             (String.String
+                (Ascii.Ascii false true true true false true true false)
+                (String.String
+                   (Ascii.Ascii true false true false true true true false)
+                   (String.String
+                      (Ascii.Ascii true false true true false true true false)
+                      String.EmptyString)))) /\
+        BinInt.Z.le
+          (PmpCore.vars (number_mul_state s)
+             (String.String
+                (Ascii.Ascii false true true true false true true false)
+                (String.String
+                   (Ascii.Ascii true false true false true true true false)
+                   (String.String
+                      (Ascii.Ascii true false true true false true true false)
+                      String.EmptyString))))
+          (BinNums.Zpos
+             (BinNums.xO
+                (BinNums.xI
+                   (BinNums.xI
+                      (BinNums.xO
+                         (BinNums.xI
+                            (BinNums.xI
+                               (BinNums.xI
+                                  (BinNums.xI
+                                     (BinNums.xI
+                                        (BinNums.xI
+                                           (BinNums.xI
+                                              (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI
+                                                 (BinNums.xO (...))))))))))))))))))))) /\
+       (BinInt.Z.le BinNums.Z0
+          (PmpCore.vars (number_sig_step s)
+             (String.String
+                (Ascii.Ascii false true true true false true true false)
+                (String.String
+                   (Ascii.Ascii true false true false true true true false)
+                   (String.String
+                      (Ascii.Ascii true false true true false true true false)
+                      String.EmptyString)))) /\
+        BinInt.Z.le
+          (PmpCore.vars (number_sig_step s)
+             (String.String
+                (Ascii.Ascii false true true true false true true false)
+                (String.String
+                   (Ascii.Ascii true false true false true true true false)
+                   (String.String
+                      (Ascii.Ascii true false true true false true true false)
+                      String.EmptyString))))
+          (BinNums.Zpos
+             (BinNums.xI
+                (BinNums.xI
+                   (BinNums.xI
+                      (BinNums.xI
+                         (BinNums.xI
+                            (BinNums.xI
+                               (BinNums.xI
+                                  (BinNums.xI
+                                     (BinNums.xI
+                                        (BinNums.xI
+                                           (BinNums.xI
+                                              (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI (BinNums.xO ...)))))))))))))))))))) /\
+       signed64
+         (PmpCore.vars (number_mul_state s)
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) =
+       PmpCore.vars (number_mul_state s)
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii true false true false true true true false)
+               (String.String
+                  (Ascii.Ascii true false true true false true true false)
+                  String.EmptyString))) /\
+       signed64
+         (PmpCore.vars (number_sig_step s)
+            (String.String
+               (Ascii.Ascii false true true true false true true false)
+               (String.String
+                  (Ascii.Ascii true false true false true true true false)
+                  (String.String
+                     (Ascii.Ascii true false true true false true true false)
+                     String.EmptyString)))) =
+       PmpCore.vars (number_sig_step s)
+         (String.String
+            (Ascii.Ascii false true true true false true true false)
+            (String.String
+               (Ascii.Ascii true false true false true true true false)
+               (String.String
+                  (Ascii.Ascii true false true true false true true false)
+                  String.EmptyString)))
+source_cursor_subtraction_signed64
+     : forall pos lim : BinNums.Z,
+       BinInt.Z.le BinNums.Z0 pos /\ BinInt.Z.le pos lim ->
+       BinInt.Z.lt lim
+         (BinNums.Zpos
+            (BinNums.xO
+               (BinNums.xO
+                  (BinNums.xO
+                     (BinNums.xO
+                        (BinNums.xO
+                           (BinNums.xO
+                              (BinNums.xO
+                                 (BinNums.xO
+                                    (BinNums.xO
+                                       (BinNums.xO
+                                          (BinNums.xO
+                                             (BinNums.xO
+                                                (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xO (...)))))))))))))))))))))) ->
+       signed64 (BinInt.Z.sub pos lim) = BinInt.Z.sub pos lim /\
+       BinInt.Z.ltb (signed64 (BinInt.Z.sub pos lim)) BinNums.Z0 =
+       BinInt.Z.ltb pos lim
+evals_call
+     : forall (P : list PmpCore.stmt) (stops : list String.string) 
+         (pc : nat) (s s' : PmpCore.state) (k : nat) 
+         (K : list nat) (r : PmpCore.outcome),
+       ExecMono.evals P stops pc nil s (PmpCore.OReturn s') ->
+       ExecMono.evals P stops k K s' r ->
+       ExecMono.evals P stops pc (k :: K) s r
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context

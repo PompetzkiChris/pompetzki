@@ -1,0 +1,6 @@
+api checks 3538 failed 0
+ok 3538/3538 embedded API checks
+ok decimal 02 means integer 2
+ok decimal 00 means integer 0
+ok unpadded 0 and 2 unchanged
+ok 0.0 is not an integer spelling

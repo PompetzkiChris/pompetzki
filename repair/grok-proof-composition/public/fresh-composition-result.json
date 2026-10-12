@@ -1,0 +1,653 @@
+{
+  "result": "PASS",
+  "fresh_module_count": 24,
+  "compiled_core_modules": 17,
+  "compiled_numeric_modules": 1,
+  "compiled_proof_modules": 6,
+  "main_composition_results": 5,
+  "decoder_lemmas": 2,
+  "prefix_helper_lemmas": 1,
+  "closed_checked_statements": 8,
+  "source_bytes_unchanged": true,
+  "source_inputs": [
+    {
+      "path": "Cohen/Syn.v",
+      "sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "copy_sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51"
+    },
+    {
+      "path": "Cohen/Prov.v",
+      "sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "copy_sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c"
+    },
+    {
+      "path": "Cohen/Kal.v",
+      "sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "copy_sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4"
+    },
+    {
+      "path": "Cohen/Val.v",
+      "sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "copy_sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c"
+    },
+    {
+      "path": "Cohen/Inv.v",
+      "sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "copy_sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81"
+    },
+    {
+      "path": "Cohen/Parse.v",
+      "sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "copy_sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd"
+    },
+    {
+      "path": "Cohen/Data.v",
+      "sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "copy_sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2"
+    },
+    {
+      "path": "Cohen/Checks.v",
+      "sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "copy_sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb"
+    },
+    {
+      "path": "Cohen/Ax.v",
+      "sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "copy_sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829"
+    },
+    {
+      "path": "Cohen/Sub.v",
+      "sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "copy_sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929"
+    },
+    {
+      "path": "Cohen/Expand.v",
+      "sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "copy_sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c"
+    },
+    {
+      "path": "Cohen/Replay.v",
+      "sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "copy_sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9"
+    },
+    {
+      "path": "Cohen/ReplayT.v",
+      "sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "copy_sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2"
+    },
+    {
+      "path": "Cohen/Replay2.v",
+      "sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "copy_sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac"
+    },
+    {
+      "path": "Cohen/Replay3.v",
+      "sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "copy_sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0"
+    },
+    {
+      "path": "Cohen/RpInit.v",
+      "sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "copy_sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f"
+    },
+    {
+      "path": "Cohen/RpInitOk.v",
+      "sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "copy_sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3"
+    },
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "copy_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6"
+    },
+    {
+      "path": "PMPRepair/PrefixSoundness.v",
+      "sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "copy_sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd"
+    },
+    {
+      "path": "PMPRepair/CanonicalRegistryData.v",
+      "sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "copy_sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa"
+    },
+    {
+      "path": "PMPRepair/CanonicalPrefixSoundness.v",
+      "sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "copy_sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa"
+    },
+    {
+      "path": "PMPRepair/GrokAuthGate.v",
+      "sha256": "0db4ba9e96dcff41d42d8b4b8e9d32ae5226920151945f0df1494d8c994c3da5",
+      "copy_sha256": "0db4ba9e96dcff41d42d8b4b8e9d32ae5226920151945f0df1494d8c994c3da5"
+    },
+    {
+      "path": "PMPRepair/GrokCompose47.v",
+      "sha256": "91b68483253d427d1efe7d90418970fe0ddd862d648f7bad390fff46aa67c3d8",
+      "copy_sha256": "91b68483253d427d1efe7d90418970fe0ddd862d648f7bad390fff46aa67c3d8"
+    },
+    {
+      "path": "PMPRepair/GrokCompositionReceipt.v",
+      "sha256": "d7a4b8708117087ee4494c024ab1bd6f2bb31ebf5066f1067d373eb3c776b560",
+      "copy_sha256": "d7a4b8708117087ee4494c024ab1bd6f2bb31ebf5066f1067d373eb3c776b560"
+    }
+  ],
+  "commands": [
+    {
+      "label": "compiler-version",
+      "command": [
+        "coqc.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.012746,
+      "stdout": "logs/compiler-version.stdout.txt",
+      "stderr": "logs/compiler-version.stderr.txt"
+    },
+    {
+      "label": "compile-Syn",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Syn.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.40088,
+      "stdout": "logs/compile-Syn.stdout.txt",
+      "stderr": "logs/compile-Syn.stderr.txt"
+    },
+    {
+      "label": "compile-Prov",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Prov.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.313468,
+      "stdout": "logs/compile-Prov.stdout.txt",
+      "stderr": "logs/compile-Prov.stderr.txt"
+    },
+    {
+      "label": "compile-Kal",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Kal.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.357076,
+      "stdout": "logs/compile-Kal.stdout.txt",
+      "stderr": "logs/compile-Kal.stderr.txt"
+    },
+    {
+      "label": "compile-Val",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Val.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.307223,
+      "stdout": "logs/compile-Val.stdout.txt",
+      "stderr": "logs/compile-Val.stderr.txt"
+    },
+    {
+      "label": "compile-Inv",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Inv.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.335037,
+      "stdout": "logs/compile-Inv.stdout.txt",
+      "stderr": "logs/compile-Inv.stderr.txt"
+    },
+    {
+      "label": "compile-Parse",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Parse.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.292912,
+      "stdout": "logs/compile-Parse.stdout.txt",
+      "stderr": "logs/compile-Parse.stderr.txt"
+    },
+    {
+      "label": "compile-Data",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Data.v"
+      ],
+      "exit_code": 0,
+      "seconds": 1.815409,
+      "stdout": "logs/compile-Data.stdout.txt",
+      "stderr": "logs/compile-Data.stderr.txt"
+    },
+    {
+      "label": "compile-Checks",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Checks.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.558276,
+      "stdout": "logs/compile-Checks.stdout.txt",
+      "stderr": "logs/compile-Checks.stderr.txt"
+    },
+    {
+      "label": "compile-Ax",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Ax.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.729883,
+      "stdout": "logs/compile-Ax.stdout.txt",
+      "stderr": "logs/compile-Ax.stderr.txt"
+    },
+    {
+      "label": "compile-Sub",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Sub.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.403482,
+      "stdout": "logs/compile-Sub.stdout.txt",
+      "stderr": "logs/compile-Sub.stderr.txt"
+    },
+    {
+      "label": "compile-Expand",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Expand.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.391692,
+      "stdout": "logs/compile-Expand.stdout.txt",
+      "stderr": "logs/compile-Expand.stderr.txt"
+    },
+    {
+      "label": "compile-Replay",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Replay.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.491392,
+      "stdout": "logs/compile-Replay.stdout.txt",
+      "stderr": "logs/compile-Replay.stderr.txt"
+    },
+    {
+      "label": "compile-ReplayT",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/ReplayT.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.362659,
+      "stdout": "logs/compile-ReplayT.stdout.txt",
+      "stderr": "logs/compile-ReplayT.stderr.txt"
+    },
+    {
+      "label": "compile-Replay2",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Replay2.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.574345,
+      "stdout": "logs/compile-Replay2.stdout.txt",
+      "stderr": "logs/compile-Replay2.stderr.txt"
+    },
+    {
+      "label": "compile-Replay3",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/Replay3.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.506002,
+      "stdout": "logs/compile-Replay3.stdout.txt",
+      "stderr": "logs/compile-Replay3.stderr.txt"
+    },
+    {
+      "label": "compile-RpInit",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/RpInit.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.948081,
+      "stdout": "logs/compile-RpInit.stdout.txt",
+      "stderr": "logs/compile-RpInit.stderr.txt"
+    },
+    {
+      "label": "compile-RpInitOk",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "Cohen/RpInitOk.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.758263,
+      "stdout": "logs/compile-RpInitOk.stdout.txt",
+      "stderr": "logs/compile-RpInitOk.stderr.txt"
+    },
+    {
+      "label": "compile-DecimalSignificantV4",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "NumericV5/DecimalSignificantV4.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.664423,
+      "stdout": "logs/compile-DecimalSignificantV4.stdout.txt",
+      "stderr": "logs/compile-DecimalSignificantV4.stderr.txt"
+    },
+    {
+      "label": "compile-PrefixSoundness",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "PMPRepair/PrefixSoundness.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.322357,
+      "stdout": "logs/compile-PrefixSoundness.stdout.txt",
+      "stderr": "logs/compile-PrefixSoundness.stderr.txt"
+    },
+    {
+      "label": "compile-CanonicalRegistryData",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "PMPRepair/CanonicalRegistryData.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.973937,
+      "stdout": "logs/compile-CanonicalRegistryData.stdout.txt",
+      "stderr": "logs/compile-CanonicalRegistryData.stderr.txt"
+    },
+    {
+      "label": "compile-CanonicalPrefixSoundness",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "PMPRepair/CanonicalPrefixSoundness.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.615766,
+      "stdout": "logs/compile-CanonicalPrefixSoundness.stdout.txt",
+      "stderr": "logs/compile-CanonicalPrefixSoundness.stderr.txt"
+    },
+    {
+      "label": "compile-GrokAuthGate",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "PMPRepair/GrokAuthGate.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.484508,
+      "stdout": "logs/compile-GrokAuthGate.stdout.txt",
+      "stderr": "logs/compile-GrokAuthGate.stderr.txt"
+    },
+    {
+      "label": "compile-GrokCompose47",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "PMPRepair/GrokCompose47.v"
+      ],
+      "exit_code": 0,
+      "seconds": 1.280506,
+      "stdout": "logs/compile-GrokCompose47.stdout.txt",
+      "stderr": "logs/compile-GrokCompose47.stderr.txt"
+    },
+    {
+      "label": "compile-GrokCompositionReceipt",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "PMPRepair/GrokCompositionReceipt.v"
+      ],
+      "exit_code": 0,
+      "seconds": 1.002878,
+      "stdout": "logs/compile-GrokCompositionReceipt.stdout.txt",
+      "stderr": "logs/compile-GrokCompositionReceipt.stderr.txt"
+    },
+    {
+      "label": "recursive-kernel-check",
+      "command": [
+        "rocqchk.exe",
+        "-silent",
+        "-o",
+        "-Q",
+        "Cohen",
+        "Cohen",
+        "-Q",
+        "PMPRepair",
+        "PMPRepair",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "PMPRepair.GrokCompositionReceipt"
+      ],
+      "exit_code": 0,
+      "seconds": 17.947667,
+      "stdout": "logs/recursive-kernel-check.stdout.txt",
+      "stderr": "logs/recursive-kernel-check.stderr.txt"
+    }
+  ],
+  "tool_version_stdout": "The Rocq Prover, version 9.1.0\ncompiled with OCaml 4.14.2\n",
+  "kernel_context": "\nCONTEXT SUMMARY\n===============\n\n* Theory: Set is predicative\n  \n* Theory: Rewrite rules are not allowed\n  \n* Axioms: <none>\n  \n* Constants/Inductives relying on type-in-type: <none>\n  \n* Constants/Inductives relying on unsafe (co)fixpoints: <none>\n  \n* Inductives whose positivity is assumed: <none>\n  \n",
+  "whole_run_seconds": 32.859864,
+  "scope": "Gallina initial-registry number policy, zero padding and conditional source checker soundness. Text parsing, executable gate/checker correspondence, compiler preservation and executable byte correspondence remain separate obligations. Theorem bodies are outside this numeric-policy result."
+}

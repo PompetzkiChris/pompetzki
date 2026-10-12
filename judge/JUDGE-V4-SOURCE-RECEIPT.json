@@ -1,0 +1,27 @@
+{
+  "judge_pmp": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+  "judge_racket": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.rkt",
+  "registry_api": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-auth-v4.rkt",
+  "api_shape": "list of per-entry token lists; tags strings; exact nonnegative integer fields; numeric digit strings normalized",
+  "cases": 15,
+  "source_runs": 29,
+  "source_passed": 29,
+  "source_failed": 0,
+  "source_timeouts": 0,
+  "source_results": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-tests-v4b\\results.json",
+  "api_checks": 3538,
+  "api_failures": 0,
+  "api_results": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\registry-api-v4-results.json",
+  "full_racket_replay": {
+    "final_registry": 5257,
+    "seconds": 3.112,
+    "steps": 139194,
+    "theorems": 4551,
+    "registry": 706,
+    "exit": 0
+  },
+  "prefix_proof": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\rocq\\prefix-run-20261011-210906-291\\prefix-proof-result.json",
+  "canonical_proof": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\rocq\\canonical-prefix-run-20261011-211231-299\\canonical-prefix-proof-result.json",
+  "compiled_bytes_equivalence": "open",
+  "native_artifacts": "separate pending judge/native task"
+}

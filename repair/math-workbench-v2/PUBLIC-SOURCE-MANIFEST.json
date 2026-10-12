@@ -1,0 +1,57 @@
+{
+  "revision": "Matrix batch recovery v2",
+  "files": [
+    {
+      "path": "engine.rkt",
+      "candidate_relative_path": "repair/math-workbench-v2/engine.rkt",
+      "sha256": "99084a403cc0b38b149878e8cce74667caa62ea13b8f8de0a64e43e0a767b5b9"
+    },
+    {
+      "path": "exact.rkt",
+      "candidate_relative_path": "repair/math-workbench-v2/exact.rkt",
+      "sha256": "eaa5917f0ec3b6816689cd2371c2f6f64050f26b287b8531c6f9abb0096c3ef3"
+    },
+    {
+      "path": "gui.rkt",
+      "candidate_relative_path": "repair/math-workbench-v2/gui.rkt",
+      "sha256": "07fd6e0f9577b1174a447b5eb115d221d1d3ed31f4235d3ba3e406ad20f8e7ce"
+    },
+    {
+      "path": "build.py",
+      "candidate_relative_path": "repair/math-workbench-v2/build.py",
+      "sha256": "0197675e263aad26bdd9ed47ab2cc808d52593fed6fe28c48e99237bcd8f48f1"
+    },
+    {
+      "path": "README.md",
+      "candidate_relative_path": "repair/math-workbench-v2/README.md",
+      "sha256": "555b189d320cc8f088b2867ecdeefa1756ecde291e040bb2adb584595a89aee8"
+    },
+    {
+      "path": "INITIAL-SOURCE-RECEIPT.json",
+      "candidate_relative_path": "repair/math-workbench-v2/INITIAL-SOURCE-RECEIPT.json",
+      "sha256": "fe3148cdebab84c387812078227e6a96385d67156d4980ea46ebc7c25980dd3e"
+    },
+    {
+      "path": "test-gui.rkt",
+      "candidate_relative_path": "repair/math-workbench-v2/test-gui.rkt",
+      "sha256": "b56c9d09ecf7173477df1c6a26dc4757fb678048bf9f96b047646305828fe837"
+    },
+    {
+      "path": "test-batch.py",
+      "candidate_relative_path": "repair/math-workbench-v2/test-batch.py",
+      "sha256": "8407f4c6dec941fadf4e91bd291a6a976f500ac5ec549b193b8161155b56fe62"
+    },
+    {
+      "path": "freeze-source.py",
+      "candidate_relative_path": "repair/math-workbench-v2/freeze-source.py",
+      "sha256": "18f618f9140dd298e0b3cedcf087436822ccb8390239d0323c49e9f504ad7235"
+    }
+  ],
+  "unchanged_from_previous": {
+    "exact.rkt": true,
+    "gui.rkt": true,
+    "test-gui.rkt": true,
+    "build.py": true,
+    "INITIAL-SOURCE-RECEIPT.json": true
+  }
+}

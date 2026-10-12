@@ -1,0 +1,474 @@
+{
+  "source_path": "source/judge-v5.pmp",
+  "source_sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+  "first_line": 477,
+  "last_line": 561,
+  "fragment_sha256": "7a282dc71308a1796a0690bce400938a936dd60efcdc70257671660f842a3826",
+  "fragment_bytes": 1724,
+  "instructions": 77,
+  "rows": [
+    {
+      "source_line": 477,
+      "pc": 0,
+      "source": "label SKIPWS",
+      "PmpCore_constructor": "SLabel \"SKIPWS\""
+    },
+    {
+      "source_line": 478,
+      "pc": 1,
+      "source": "set t sub pos lim",
+      "PmpCore_constructor": "SSub \"t\" (OV \"pos\") (OV \"lim\")"
+    },
+    {
+      "source_line": 479,
+      "pc": 2,
+      "source": "when negative t goto SKIPWS2",
+      "PmpCore_constructor": "SWhen CNeg (OV \"t\") \"SKIPWS2\""
+    },
+    {
+      "source_line": 480,
+      "pc": 3,
+      "source": "return",
+      "PmpCore_constructor": "SReturn"
+    },
+    {
+      "source_line": 481,
+      "pc": 4,
+      "source": "label SKIPWS2",
+      "PmpCore_constructor": "SLabel \"SKIPWS2\""
+    },
+    {
+      "source_line": 482,
+      "pc": 5,
+      "source": "set c peek pos 1",
+      "PmpCore_constructor": "SPeek \"c\" (OV \"pos\") 1%N"
+    },
+    {
+      "source_line": 483,
+      "pc": 6,
+      "source": "set t sub c 32",
+      "PmpCore_constructor": "SSub \"t\" (OV \"c\") (OL 32)"
+    },
+    {
+      "source_line": 484,
+      "pc": 7,
+      "source": "when zero t goto SKIPWS3",
+      "PmpCore_constructor": "SWhen CZero (OV \"t\") \"SKIPWS3\""
+    },
+    {
+      "source_line": 485,
+      "pc": 8,
+      "source": "set t sub c 10",
+      "PmpCore_constructor": "SSub \"t\" (OV \"c\") (OL 10)"
+    },
+    {
+      "source_line": 486,
+      "pc": 9,
+      "source": "when zero t goto SKIPWS3",
+      "PmpCore_constructor": "SWhen CZero (OV \"t\") \"SKIPWS3\""
+    },
+    {
+      "source_line": 487,
+      "pc": 10,
+      "source": "set t sub c 13",
+      "PmpCore_constructor": "SSub \"t\" (OV \"c\") (OL 13)"
+    },
+    {
+      "source_line": 488,
+      "pc": 11,
+      "source": "when zero t goto SKIPWS3",
+      "PmpCore_constructor": "SWhen CZero (OV \"t\") \"SKIPWS3\""
+    },
+    {
+      "source_line": 489,
+      "pc": 12,
+      "source": "set t sub c 9",
+      "PmpCore_constructor": "SSub \"t\" (OV \"c\") (OL 9)"
+    },
+    {
+      "source_line": 490,
+      "pc": 13,
+      "source": "when zero t goto SKIPWS3",
+      "PmpCore_constructor": "SWhen CZero (OV \"t\") \"SKIPWS3\""
+    },
+    {
+      "source_line": 491,
+      "pc": 14,
+      "source": "return",
+      "PmpCore_constructor": "SReturn"
+    },
+    {
+      "source_line": 492,
+      "pc": 15,
+      "source": "label SKIPWS3",
+      "PmpCore_constructor": "SLabel \"SKIPWS3\""
+    },
+    {
+      "source_line": 493,
+      "pc": 16,
+      "source": "set pos add pos 1",
+      "PmpCore_constructor": "SAdd \"pos\" (OV \"pos\") (OL 1)"
+    },
+    {
+      "source_line": 494,
+      "pc": 17,
+      "source": "goto SKIPWS",
+      "PmpCore_constructor": "SGoto \"SKIPWS\""
+    },
+    {
+      "source_line": 497,
+      "pc": 18,
+      "source": "label ENDTOK",
+      "PmpCore_constructor": "SLabel \"ENDTOK\""
+    },
+    {
+      "source_line": 498,
+      "pc": 19,
+      "source": "set t sub pos lim",
+      "PmpCore_constructor": "SSub \"t\" (OV \"pos\") (OV \"lim\")"
+    },
+    {
+      "source_line": 499,
+      "pc": 20,
+      "source": "when negative t goto ENDTOK1",
+      "PmpCore_constructor": "SWhen CNeg (OV \"t\") \"ENDTOK1\""
+    },
+    {
+      "source_line": 500,
+      "pc": 21,
+      "source": "return",
+      "PmpCore_constructor": "SReturn"
+    },
+    {
+      "source_line": 501,
+      "pc": 22,
+      "source": "label ENDTOK1",
+      "PmpCore_constructor": "SLabel \"ENDTOK1\""
+    },
+    {
+      "source_line": 502,
+      "pc": 23,
+      "source": "set c peek pos 1",
+      "PmpCore_constructor": "SPeek \"c\" (OV \"pos\") 1%N"
+    },
+    {
+      "source_line": 503,
+      "pc": 24,
+      "source": "set t sub c 32",
+      "PmpCore_constructor": "SSub \"t\" (OV \"c\") (OL 32)"
+    },
+    {
+      "source_line": 504,
+      "pc": 25,
+      "source": "when zero t goto ENDTOK2",
+      "PmpCore_constructor": "SWhen CZero (OV \"t\") \"ENDTOK2\""
+    },
+    {
+      "source_line": 505,
+      "pc": 26,
+      "source": "set t sub c 10",
+      "PmpCore_constructor": "SSub \"t\" (OV \"c\") (OL 10)"
+    },
+    {
+      "source_line": 506,
+      "pc": 27,
+      "source": "when zero t goto ENDTOK2",
+      "PmpCore_constructor": "SWhen CZero (OV \"t\") \"ENDTOK2\""
+    },
+    {
+      "source_line": 507,
+      "pc": 28,
+      "source": "set t sub c 13",
+      "PmpCore_constructor": "SSub \"t\" (OV \"c\") (OL 13)"
+    },
+    {
+      "source_line": 508,
+      "pc": 29,
+      "source": "when zero t goto ENDTOK2",
+      "PmpCore_constructor": "SWhen CZero (OV \"t\") \"ENDTOK2\""
+    },
+    {
+      "source_line": 509,
+      "pc": 30,
+      "source": "set t sub c 9",
+      "PmpCore_constructor": "SSub \"t\" (OV \"c\") (OL 9)"
+    },
+    {
+      "source_line": 510,
+      "pc": 31,
+      "source": "when zero t goto ENDTOK2",
+      "PmpCore_constructor": "SWhen CZero (OV \"t\") \"ENDTOK2\""
+    },
+    {
+      "source_line": 511,
+      "pc": 32,
+      "source": "text WHY \"a token does not end in white space\"",
+      "PmpCore_constructor": "STextLit \"WHY\" (bytes_of_str \"a token does not end in white space\")"
+    },
+    {
+      "source_line": 512,
+      "pc": 33,
+      "source": "goto FAIL",
+      "PmpCore_constructor": "SGoto \"FAIL\""
+    },
+    {
+      "source_line": 513,
+      "pc": 34,
+      "source": "label ENDTOK2",
+      "PmpCore_constructor": "SLabel \"ENDTOK2\""
+    },
+    {
+      "source_line": 514,
+      "pc": 35,
+      "source": "return",
+      "PmpCore_constructor": "SReturn"
+    },
+    {
+      "source_line": 519,
+      "pc": 36,
+      "source": "label RDNUM",
+      "PmpCore_constructor": "SLabel \"RDNUM\""
+    },
+    {
+      "source_line": 520,
+      "pc": 37,
+      "source": "gosub SKIPWS",
+      "PmpCore_constructor": "SGosub \"SKIPWS\""
+    },
+    {
+      "source_line": 521,
+      "pc": 38,
+      "source": "set num const 0",
+      "PmpCore_constructor": "SConst \"num\" (OL 0)"
+    },
+    {
+      "source_line": 522,
+      "pc": 39,
+      "source": "set nd const 0",
+      "PmpCore_constructor": "SConst \"nd\" (OL 0)"
+    },
+    {
+      "source_line": 523,
+      "pc": 40,
+      "source": "set nseen const 0",
+      "PmpCore_constructor": "SConst \"nseen\" (OL 0)"
+    },
+    {
+      "source_line": 524,
+      "pc": 41,
+      "source": "label RDNUM1",
+      "PmpCore_constructor": "SLabel \"RDNUM1\""
+    },
+    {
+      "source_line": 525,
+      "pc": 42,
+      "source": "set t sub pos lim",
+      "PmpCore_constructor": "SSub \"t\" (OV \"pos\") (OV \"lim\")"
+    },
+    {
+      "source_line": 526,
+      "pc": 43,
+      "source": "when negative t goto RDNUM2",
+      "PmpCore_constructor": "SWhen CNeg (OV \"t\") \"RDNUM2\""
+    },
+    {
+      "source_line": 527,
+      "pc": 44,
+      "source": "goto RDNUM9",
+      "PmpCore_constructor": "SGoto \"RDNUM9\""
+    },
+    {
+      "source_line": 528,
+      "pc": 45,
+      "source": "label RDNUM2",
+      "PmpCore_constructor": "SLabel \"RDNUM2\""
+    },
+    {
+      "source_line": 529,
+      "pc": 46,
+      "source": "set c peek pos 1",
+      "PmpCore_constructor": "SPeek \"c\" (OV \"pos\") 1%N"
+    },
+    {
+      "source_line": 530,
+      "pc": 47,
+      "source": "set d sub c 48",
+      "PmpCore_constructor": "SSub \"d\" (OV \"c\") (OL 48)"
+    },
+    {
+      "source_line": 531,
+      "pc": 48,
+      "source": "when negative d goto RDNUM9",
+      "PmpCore_constructor": "SWhen CNeg (OV \"d\") \"RDNUM9\""
+    },
+    {
+      "source_line": 532,
+      "pc": 49,
+      "source": "set t sub d 10",
+      "PmpCore_constructor": "SSub \"t\" (OV \"d\") (OL 10)"
+    },
+    {
+      "source_line": 533,
+      "pc": 50,
+      "source": "when negative t goto RDNUM3",
+      "PmpCore_constructor": "SWhen CNeg (OV \"t\") \"RDNUM3\""
+    },
+    {
+      "source_line": 534,
+      "pc": 51,
+      "source": "goto RDNUM9",
+      "PmpCore_constructor": "SGoto \"RDNUM9\""
+    },
+    {
+      "source_line": 535,
+      "pc": 52,
+      "source": "label RDNUM3",
+      "PmpCore_constructor": "SLabel \"RDNUM3\""
+    },
+    {
+      "source_line": 536,
+      "pc": 53,
+      "source": "set nseen const 1",
+      "PmpCore_constructor": "SConst \"nseen\" (OL 1)"
+    },
+    {
+      "source_line": 537,
+      "pc": 54,
+      "source": "when zero nd goto RDNUMLEAD",
+      "PmpCore_constructor": "SWhen CZero (OV \"nd\") \"RDNUMLEAD\""
+    },
+    {
+      "source_line": 538,
+      "pc": 55,
+      "source": "goto RDNUMBOUND",
+      "PmpCore_constructor": "SGoto \"RDNUMBOUND\""
+    },
+    {
+      "source_line": 539,
+      "pc": 56,
+      "source": "label RDNUMLEAD",
+      "PmpCore_constructor": "SLabel \"RDNUMLEAD\""
+    },
+    {
+      "source_line": 540,
+      "pc": 57,
+      "source": "when zero d goto RDNUMADVANCE",
+      "PmpCore_constructor": "SWhen CZero (OV \"d\") \"RDNUMADVANCE\""
+    },
+    {
+      "source_line": 541,
+      "pc": 58,
+      "source": "label RDNUMBOUND",
+      "PmpCore_constructor": "SLabel \"RDNUMBOUND\""
+    },
+    {
+      "source_line": 542,
+      "pc": 59,
+      "source": "set t sub nd 12",
+      "PmpCore_constructor": "SSub \"t\" (OV \"nd\") (OL 12)"
+    },
+    {
+      "source_line": 543,
+      "pc": 60,
+      "source": "when negative t goto RDNUM4",
+      "PmpCore_constructor": "SWhen CNeg (OV \"t\") \"RDNUM4\""
+    },
+    {
+      "source_line": 544,
+      "pc": 61,
+      "source": "text WHY \"a number has more than 12 significant digits\"",
+      "PmpCore_constructor": "STextLit \"WHY\" (bytes_of_str \"a number has more than 12 significant digits\")"
+    },
+    {
+      "source_line": 545,
+      "pc": 62,
+      "source": "goto FAIL",
+      "PmpCore_constructor": "SGoto \"FAIL\""
+    },
+    {
+      "source_line": 546,
+      "pc": 63,
+      "source": "label RDNUM4",
+      "PmpCore_constructor": "SLabel \"RDNUM4\""
+    },
+    {
+      "source_line": 547,
+      "pc": 64,
+      "source": "set num mul num 10",
+      "PmpCore_constructor": "SMul \"num\" (OV \"num\") (OL 10)"
+    },
+    {
+      "source_line": 548,
+      "pc": 65,
+      "source": "set num add num d",
+      "PmpCore_constructor": "SAdd \"num\" (OV \"num\") (OV \"d\")"
+    },
+    {
+      "source_line": 549,
+      "pc": 66,
+      "source": "set nd add nd 1",
+      "PmpCore_constructor": "SAdd \"nd\" (OV \"nd\") (OL 1)"
+    },
+    {
+      "source_line": 550,
+      "pc": 67,
+      "source": "label RDNUMADVANCE",
+      "PmpCore_constructor": "SLabel \"RDNUMADVANCE\""
+    },
+    {
+      "source_line": 551,
+      "pc": 68,
+      "source": "set pos add pos 1",
+      "PmpCore_constructor": "SAdd \"pos\" (OV \"pos\") (OL 1)"
+    },
+    {
+      "source_line": 552,
+      "pc": 69,
+      "source": "goto RDNUM1",
+      "PmpCore_constructor": "SGoto \"RDNUM1\""
+    },
+    {
+      "source_line": 553,
+      "pc": 70,
+      "source": "label RDNUM9",
+      "PmpCore_constructor": "SLabel \"RDNUM9\""
+    },
+    {
+      "source_line": 554,
+      "pc": 71,
+      "source": "when zero nseen goto RDNUMBAD",
+      "PmpCore_constructor": "SWhen CZero (OV \"nseen\") \"RDNUMBAD\""
+    },
+    {
+      "source_line": 555,
+      "pc": 72,
+      "source": "gosub ENDTOK",
+      "PmpCore_constructor": "SGosub \"ENDTOK\""
+    },
+    {
+      "source_line": 556,
+      "pc": 73,
+      "source": "return",
+      "PmpCore_constructor": "SReturn"
+    },
+    {
+      "source_line": 557,
+      "pc": 74,
+      "source": "label RDNUMBAD",
+      "PmpCore_constructor": "SLabel \"RDNUMBAD\""
+    },
+    {
+      "source_line": 558,
+      "pc": 75,
+      "source": "text WHY \"a number was expected\"",
+      "PmpCore_constructor": "STextLit \"WHY\" (bytes_of_str \"a number was expected\")"
+    },
+    {
+      "source_line": 559,
+      "pc": 76,
+      "source": "goto FAIL",
+      "PmpCore_constructor": "SGoto \"FAIL\""
+    }
+  ],
+  "boundary": "This Python text-to-AST extraction is a retained mechanical translation, not a proved source parser or native/compiler correspondence. The operational theorems execute Preader in the unchanged existing C2Link.PmpCore semantics."
+}

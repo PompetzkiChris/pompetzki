@@ -1,0 +1,43 @@
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Library File mathcomp.ssreflect.all_ssreflect is deprecated
+since mathcomp 2.5.0. Use 'all_boot' and/or 'all_order' instead.
+[deprecated-library-file-since-mathcomp-2.5.0,deprecated-since-mathcomp-2.5.0,deprecated-library-file,deprecated,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ + _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ - _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ <= _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ < _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ >= _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ > _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ <= _ <= _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ < _ <= _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ <= _ < _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ < _ < _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "_ * _" was already used in scope nat_scope.
+[notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "\min^d_ ( _ < _ ) _" was already used in scope
+order_scope. [notation-overridden,parsing,default]
+File "C:\ClaudeOutput\abschluss-repair-20261011\repair\rdnum-source-proof\public-reader-v2\runs\20261012-042444\tree\Vendor\Groebner\ByteText.v", line 31, characters 0-43:
+Warning: Notation "\max^d_ ( _ < _ ) _" was already used in scope
+order_scope. [notation-overridden,parsing,default]

@@ -1,0 +1,6 @@
+REJECT
+a number was expected
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector

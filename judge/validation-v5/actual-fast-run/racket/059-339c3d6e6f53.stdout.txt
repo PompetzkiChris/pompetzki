@@ -1,0 +1,1 @@
+REJECT theorem 40 step 0 (step Y)

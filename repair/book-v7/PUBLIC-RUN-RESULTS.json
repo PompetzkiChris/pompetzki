@@ -1,0 +1,119 @@
+{
+  "schema": "book-v7-public-run-results/v1",
+  "result": "PASS",
+  "receipts": {
+    "source": {
+      "posting": {
+        "cases": 4,
+        "passed": 4,
+        "receipt_file": "tests/regression-20261011-235327/results.json",
+        "receipt_sha256": "94c390cad4f3dd64b4a16f7fadf487ec743523997a878fe891cf7a2b88646b3c"
+      },
+      "checker": {
+        "cases": 5,
+        "passed": 5,
+        "receipt_file": "tests/check-regression-20261011-235330/results.json",
+        "receipt_sha256": "3e890e01f00d37b4924aa713a51441629459ce14190f1276ab97c93791fc8b4d"
+      },
+      "review": {
+        "cases": 29,
+        "passed": 29,
+        "receipt_file": "tests/review-v7-20261011-235422/results.json",
+        "receipt_sha256": "16ab0dd33e1aa694fc5e3333c4d6b9941ee9bbf34fe0e396bc811d857ba79008"
+      },
+      "adversarial": {
+        "cases": 2,
+        "passed": 2,
+        "receipt_file": "tests/adversarial-20261011-235422/results.json",
+        "receipt_sha256": "ea2d495bc20d05da788ad24f6c4cd264b993bc1a91e5173bb28e351efeb9a220"
+      },
+      "full_replay": {
+        "passed": true,
+        "theorems": 4551,
+        "proved": 4373,
+        "qualified": 178,
+        "steps": 139194,
+        "input_sha256": "a202ed994929c8484f053219047d854729af4a3d97ad8f804bb3cdef3b4a52ae",
+        "receipt_file": "tests/full-replay-20261011-235434/results.json",
+        "receipt_sha256": "4d6052d60c5c43a5cc079bec0075b34bd96e8344fe3879ddac951e5f3a3b4737"
+      },
+      "route_path": {
+        "cases": 30,
+        "passed": 30,
+        "receipt_file": "tests/route-path-v7-20261011-235622/results.json",
+        "receipt_sha256": "ba6324f66b26d9feade2b7da01ee3fd8324c2e634bb4ee27061af1f014fa3407"
+      }
+    },
+    "compiled": {
+      "posting": {
+        "cases": 4,
+        "passed": 4,
+        "receipt_file": "tests/regression-20261011-235435/results.json",
+        "receipt_sha256": "81d5cff921705a0cead0a8d4c15de58f73cc69595efd2b675bf212730f4667a8"
+      },
+      "checker": {
+        "cases": 5,
+        "passed": 5,
+        "receipt_file": "tests/check-regression-20261011-235439/results.json",
+        "receipt_sha256": "3e890e01f00d37b4924aa713a51441629459ce14190f1276ab97c93791fc8b4d"
+      },
+      "review": {
+        "cases": 29,
+        "passed": 29,
+        "receipt_file": "tests/review-v7-20261011-235608/results.json",
+        "receipt_sha256": "1ee187ceb8ad5d011fbd7117d723a28de40c4f7e0ecf229bcf64fba0759f37e2"
+      },
+      "adversarial": {
+        "cases": 2,
+        "passed": 2,
+        "receipt_file": "tests/adversarial-20261011-235608/results.json",
+        "receipt_sha256": "13ee833bf53bb0f464df5f05e36591a2b0893c1bff805bf03255bcfcdf03b730"
+      },
+      "full_replay": {
+        "passed": true,
+        "theorems": 4551,
+        "proved": 4373,
+        "qualified": 178,
+        "steps": 139194,
+        "input_sha256": "a202ed994929c8484f053219047d854729af4a3d97ad8f804bb3cdef3b4a52ae",
+        "receipt_file": "tests/full-replay-20261011-235620/results.json",
+        "receipt_sha256": "14128cf69273b81399b5bb0fe619e8bb4a74a29251a6d1179ca194ae7a9648b4"
+      },
+      "route_path": {
+        "cases": 30,
+        "passed": 30,
+        "receipt_file": "tests/route-path-v7-20261011-235423/results.json",
+        "receipt_sha256": "319fd4f6ea1cc6ff1e1be77792430b83a957eae09a18353a88257c165fa5cff0"
+      }
+    }
+  },
+  "original_reproductions": {
+    "interpreted_route": {
+      "recorded_program": "pompetzki.exe",
+      "recorded_source": "judge-v5.pmp",
+      "v6_fresh_program": "judge-v5-windows.exe",
+      "v6_check_exit": 0,
+      "defect_confirmed": true
+    },
+    "trailing_slash_and_backslash": {
+      "v6_check_exit": 0,
+      "defect_confirmed": true
+    }
+  },
+  "corrected_routes": "Recorded and fresh commands equal for both native and interpreted postings, with actual v6/v5/v4 programs.",
+  "corrected_path_checks_per_mode": 24,
+  "historical_version_controls_per_mode": 4,
+  "current_version_controls_per_mode": 2,
+  "compiled_builds": {
+    "poster_sha256": "fd0c7cb3f8022cfb05955fa2411f9d1cb4adeab0a6fee73b4f0f81d7dc67c321",
+    "checker_sha256": "ebc25763165e842670e42d184fb568d47cd297c917bc8a7ef43592abb486d6e5"
+  },
+  "source_poster_sha256": "33c5d540220df1ca52c430a392e9a050354f29bd05517f14bb00247c08a87e0d",
+  "source_checker_sha256": "8fa76a95058da7e41d06123536afef327283dd4f4c47dda167526686f43b2efb",
+  "lowlevel_writer_sha256": "6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720",
+  "grok_archive_manifest": {
+    "verified_entries": 1163,
+    "manifest_sha256": "81dea0484cf9db6deba9804fb78769af304024b3558dbb7d64bb99b4f287a107"
+  },
+  "evidence_scope": "Finite source and compiled process checks. These ledgers are unsigned evidence; a compiler or historical producer theorem is not asserted."
+}

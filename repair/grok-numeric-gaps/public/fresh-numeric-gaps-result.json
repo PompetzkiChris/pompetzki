@@ -1,0 +1,110 @@
+{
+  "result": "PASS",
+  "fresh_project_module_count": 3,
+  "closed_checked_statements": 10,
+  "source_inputs": [
+    {
+      "path": "NumericV5/DecimalSignificantV4.v",
+      "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+      "copy_sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6"
+    },
+    {
+      "path": "GrokNumeric/GrokNumericGaps.v",
+      "sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5",
+      "copy_sha256": "1413c4b56dc5f34d838adf983694393c8414a2d91c7aabb3f4a741755854acf5"
+    },
+    {
+      "path": "GrokNumeric/GrokNumericGapsVerify.v",
+      "sha256": "86872933f57672680bbcf38737ccf56aeb867cb11e94ed7feb3c084cf74bae19",
+      "copy_sha256": "86872933f57672680bbcf38737ccf56aeb867cb11e94ed7feb3c084cf74bae19"
+    }
+  ],
+  "source_bytes_unchanged": true,
+  "commands": [
+    {
+      "label": "compiler-version",
+      "command": [
+        "coqc.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.014107,
+      "stdout": "logs/compiler-version.stdout.txt",
+      "stderr": "logs/compiler-version.stderr.txt"
+    },
+    {
+      "label": "compile-DecimalSignificantV4",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "NumericV5/DecimalSignificantV4.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.690033,
+      "stdout": "logs/compile-DecimalSignificantV4.stdout.txt",
+      "stderr": "logs/compile-DecimalSignificantV4.stderr.txt"
+    },
+    {
+      "label": "compile-GrokNumericGaps",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "GrokNumeric/GrokNumericGaps.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.375708,
+      "stdout": "logs/compile-GrokNumericGaps.stdout.txt",
+      "stderr": "logs/compile-GrokNumericGaps.stderr.txt"
+    },
+    {
+      "label": "compile-GrokNumericGapsVerify",
+      "command": [
+        "coqc.exe",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "GrokNumeric/GrokNumericGapsVerify.v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.850815,
+      "stdout": "logs/compile-GrokNumericGapsVerify.stdout.txt",
+      "stderr": "logs/compile-GrokNumericGapsVerify.stderr.txt"
+    },
+    {
+      "label": "recursive-kernel-check",
+      "command": [
+        "rocqchk.exe",
+        "-silent",
+        "-o",
+        "-Q",
+        "NumericV5",
+        "NumericV5",
+        "-Q",
+        "GrokNumeric",
+        "GrokNumeric",
+        "GrokNumeric.GrokNumericGapsVerify"
+      ],
+      "exit_code": 0,
+      "seconds": 8.687409,
+      "stdout": "logs/recursive-kernel-check.stdout.txt",
+      "stderr": "logs/recursive-kernel-check.stderr.txt"
+    }
+  ],
+  "tool_version_stdout": "The Rocq Prover, version 9.1.0\ncompiled with OCaml 4.14.2\n",
+  "kernel_context": "\nCONTEXT SUMMARY\n===============\n\n* Theory: Set is predicative\n  \n* Theory: Rewrite rules are not allowed\n  \n* Axioms: <none>\n  \n* Constants/Inductives relying on type-in-type: <none>\n  \n* Constants/Inductives relying on unsafe (co)fixpoints: <none>\n  \n* Inductives whose positivity is assumed: <none>\n  \n",
+  "whole_run_seconds": 10.619475,
+  "scope": "Gallina list-Z decimal model only; no text/byte parser, executable, compiler or shipped-byte correspondence theorem."
+}

@@ -1,0 +1,3 @@
+REJECT registry
+parse
+line 350: check zero failed: not the zero vector

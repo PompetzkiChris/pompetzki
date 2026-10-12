@@ -1,0 +1,259 @@
+{
+  "created_at": "2026-10-12T01:21:12.248738+00:00",
+  "host": {
+    "name": "THEBIGMAGILLA",
+    "model": "Alienware Area-51 AAT2265",
+    "filesystem_drives": [
+      "C:",
+      "G:",
+      "Temp"
+    ],
+    "candidate_parent": "C:\\ClaudeOutput\\abschluss-repair-20261011",
+    "candidate_parent_link_target": null
+  },
+  "gate_source": {
+    "path": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\judge-v4.pmp",
+    "sha256": "c0698f6c00310e4cf95147d4ddfbfab0f8c06d00aa8f9ca1da8482123c073e33"
+  },
+  "compiler_provenance": {
+    "original": "C:\\ClaudeOutput\\pompetzki\\pmpc\\pmpc.rkt",
+    "snapshot": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\compiler\\pmpc-original.rkt",
+    "sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+    "identity": "First-cut direct core pmp compiler, 2026-10-09; embedded Windows kernel32 runtime in the same file. Original compiler read only."
+  },
+  "linux_runtime": {
+    "source": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\linux-runtime.asm",
+    "sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+    "adapter": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\port-linux.py",
+    "adapter_sha256": "5475656a32cf2cb31c74d6f8bd02302ec1b230b2ad95a8b55ee3976f7dedaadb",
+    "identity": "New Linux x64 syscall runtime, retaining the original compiler statement lowering and literal/data layout. No L4 or Racket judge replacement."
+  },
+  "runtime_semantics": {
+    "arithmetic": "64-bit two-complement exact word operations; no floating-point operations",
+    "variables": "Fixed single 8-byte cells",
+    "literals": "One static literal copy per text statement. Gate source reads AUTHREF and WHY without writing into their bytes. This compiler difference from fresh interpreter literal allocation remains documented.",
+    "linux_io": "argv[1] pathname; open/lseek/read/close; anonymous zeroed mmap allocations; buffered stdout; syscall exit",
+    "security_scope": "The initial-registry canonical-prefix gate is in frozen judge-v4.pmp; these basic runtimes have no r60 triple-copy/string-integrity protection."
+  },
+  "finite_results": {
+    "cases_per_platform": 132,
+    "total_runs": 264,
+    "registry": {
+      "cases": 14,
+      "accepted": 5,
+      "rejected": 9
+    },
+    "replay": {
+      "cases": 1,
+      "accepted": 1,
+      "theorems": 4551,
+      "steps": 139194
+    },
+    "math": {
+      "cases": 117,
+      "accepted": 78,
+      "rejected": 39
+    },
+    "windows_linux_identical_output_and_exit": 132,
+    "unexpected_verdicts": 0,
+    "timeouts": 0
+  },
+  "build_reproduction": [
+    {
+      "tested": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\judge-v4-windows.exe",
+      "rebuilt": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\reproduce-build\\judge-v4-windows.exe",
+      "tested_sha256": "0ef8485292ff2398fad711b35303d8394a3188f68b20ddac7b7e8fd5bb9a3bad",
+      "rebuilt_sha256": "1db2423ff90c4bf3714d738009f7de41debf4e7c1d8b0c299b489dde35715de7",
+      "allocated_sections_equal": true,
+      "tested_sections": [
+        {
+          "name": ".text",
+          "address": 4096,
+          "virtual_size": 30960,
+          "size": 31232,
+          "sha256": "98b89002ac4d5bad50e8db8bbab3a42c45127c39fa655c08373fc1341c9248fd"
+        },
+        {
+          "name": ".data",
+          "address": 36864,
+          "virtual_size": 57264,
+          "size": 57344,
+          "sha256": "f0a3a05af20c5aeb7daa9b726da41306648e8ccb25120df22c5215c5f8ff09cf"
+        },
+        {
+          "name": ".rdata",
+          "address": 94208,
+          "virtual_size": 32,
+          "size": 512,
+          "sha256": "2761d3fe408e8a7ad7f4e0b67ba772163c62ec6be8f4ec6b2cf37efc7a38e451"
+        },
+        {
+          "name": ".bss",
+          "address": 98304,
+          "virtual_size": 1054848,
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": ".idata",
+          "address": 1155072,
+          "virtual_size": 384,
+          "size": 512,
+          "sha256": "4eff88e328fbed7f17a3c87bdc4fc723ef88eee2456d90d4f45fac034af4017d"
+        }
+      ],
+      "rebuilt_sections": [
+        {
+          "name": ".text",
+          "address": 4096,
+          "virtual_size": 30960,
+          "size": 31232,
+          "sha256": "98b89002ac4d5bad50e8db8bbab3a42c45127c39fa655c08373fc1341c9248fd"
+        },
+        {
+          "name": ".data",
+          "address": 36864,
+          "virtual_size": 57264,
+          "size": 57344,
+          "sha256": "f0a3a05af20c5aeb7daa9b726da41306648e8ccb25120df22c5215c5f8ff09cf"
+        },
+        {
+          "name": ".rdata",
+          "address": 94208,
+          "virtual_size": 32,
+          "size": 512,
+          "sha256": "2761d3fe408e8a7ad7f4e0b67ba772163c62ec6be8f4ec6b2cf37efc7a38e451"
+        },
+        {
+          "name": ".bss",
+          "address": 98304,
+          "virtual_size": 1054848,
+          "size": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "name": ".idata",
+          "address": 1155072,
+          "virtual_size": 384,
+          "size": 512,
+          "sha256": "4eff88e328fbed7f17a3c87bdc4fc723ef88eee2456d90d4f45fac034af4017d"
+        }
+      ]
+    },
+    {
+      "tested": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\judge-v4-linux",
+      "rebuilt": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\reproduce-build\\judge-v4-linux",
+      "tested_sha256": "182cd46bd9486e99b27e39f80b753f80413f8b88653991b087620e3ae3ff07c5",
+      "rebuilt_sha256": "269269c88e84abe4cdc826bc03d3bba45e0c86c5334de013254538a77ac8e544",
+      "allocated_sections_equal": true,
+      "tested_sections": [
+        {
+          "name": ".text",
+          "address": 4198400,
+          "virtual_size": 30674,
+          "type": 1,
+          "sha256": "5b89c59819446da411fb5c0794da8d4d5444330bc2ac19e1d8f5d25b8adee2a5"
+        },
+        {
+          "name": ".data",
+          "address": 4231168,
+          "virtual_size": 57254,
+          "type": 1,
+          "sha256": "622ebfc214a78f38a2c6a5236a55f3f3cd1a4f0c70c0f652e230ef5a6087c808"
+        },
+        {
+          "name": ".bss",
+          "address": 4288432,
+          "virtual_size": 1054864,
+          "type": 8,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "rebuilt_sections": [
+        {
+          "name": ".text",
+          "address": 4198400,
+          "virtual_size": 30674,
+          "type": 1,
+          "sha256": "5b89c59819446da411fb5c0794da8d4d5444330bc2ac19e1d8f5d25b8adee2a5"
+        },
+        {
+          "name": ".data",
+          "address": 4231168,
+          "virtual_size": 57254,
+          "type": 1,
+          "sha256": "622ebfc214a78f38a2c6a5236a55f3f3cd1a4f0c70c0f652e230ef5a6087c808"
+        },
+        {
+          "name": ".bss",
+          "address": 4288432,
+          "virtual_size": 1054864,
+          "type": 8,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  ],
+  "tool_versions": [
+    {
+      "command": [
+        "racket",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "Welcome to Racket v9.3 [cs].\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "nasm",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "NASM version 3.01 compiled on Jul 29 2026\r\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "gcc",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "gcc (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r4) 16.1.0\r\nCopyright (C) 2026 Free Software Foundation, Inc.\r\nThis is free software; see the source for copying conditions.  There is NO\r\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\r\n\r\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Windows\\System32\\wsl.exe",
+        "-d",
+        "Ubuntu-24.04",
+        "--exec",
+        "nasm",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "NASM version 2.16.01\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "C:\\Windows\\System32\\wsl.exe",
+        "-d",
+        "Ubuntu-24.04",
+        "--exec",
+        "ld",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "GNU ld (GNU Binutils for Ubuntu) 2.42\nCopyright (C) 2024 Free Software Foundation, Inc.\nThis program is free software; you may redistribute it under the terms of\nthe GNU General Public License version 3 or (at your option) a later version.\nThis program has absolutely no warranty.\n",
+      "stderr": ""
+    }
+  ],
+  "discarded_build_evidence": {
+    "executable": "C:\\ClaudeOutput\\abschluss-repair-20261011\\judge\\native\\judge-v4-r60.exe",
+    "source_compiler": "C:\\ClaudeOutput\\pompetzki\\pmpc\\codex-v7-20261009\\native-compiler-r60\\pmpc.rkt",
+    "source_compiler_sha256": "8174f75179d775e1a33ba18400fcb6600b2e920c2e26467b00afcf54a3c45f19",
+    "observed": "Smoke on forged-false-registry and valid prefix-1 returns exit1 FAULT locked string changed; all original build artifacts and logs retained. This is excluded from the release recommendation."
+  },
+  "source_native_correspondence": "Open. Successful finite runs, unchanged lowering and section-byte reproduction do not prove general whole-judge correspondence."
+}

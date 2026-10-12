@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "candidate_release": "v1.3.0",
+  "public_source_commit": "e8958a92d72c0b4cace72949510807b8a5b1320e",
+  "manifest_path": "judge/rocq/public-source-inputs.json",
+  "path_base": "extracted release root",
+  "source_whitelist": [
+    {
+      "path": "judge/rocq/PrefixSoundness.v",
+      "sha256": "87662f67a2dc0fec379ffdf1f7c1d8fb0df969670e277145a0854c2f633691cd",
+      "role": "proof",
+      "license": "MIT",
+      "provenance": "Added canonical-registry prefix proof source."
+    },
+    {
+      "path": "judge/rocq/PrefixSoundnessReceipt.v",
+      "sha256": "af45edca00420e420bbd2da25bbdff0fc7c0a84e895ec7bc8808fa5a0d60243f",
+      "role": "proof",
+      "license": "MIT",
+      "provenance": "Added canonical-registry prefix proof source."
+    },
+    {
+      "path": "judge/rocq/CanonicalRegistryData.v",
+      "sha256": "9b149f5100921e9f6228041d1350ed45bc873b2ee936772ee8952ae4d26167aa",
+      "role": "proof",
+      "license": "MIT",
+      "provenance": "Generated literal registry AST from released replay-all.jdg initial registry; equality to canonical REG0 is checked by CanonicalPrefixSoundness.v."
+    },
+    {
+      "path": "judge/rocq/CanonicalPrefixSoundness.v",
+      "sha256": "a72e621b6ad5a532ae2fb5b962a756ebd8dcc1d353354de223869e066af297fa",
+      "role": "proof",
+      "license": "MIT",
+      "provenance": "Added canonical-registry prefix proof source."
+    },
+    {
+      "path": "judge/rocq/CanonicalPrefixSoundnessReceipt.v",
+      "sha256": "36cb9d20f93273afb2f35a6b8991aab5e1e0831b93462ddece4713eb4f7f2686",
+      "role": "proof",
+      "license": "MIT",
+      "provenance": "Added canonical-registry prefix proof source."
+    },
+    {
+      "path": "judge/rocq/build-registry-proof.py",
+      "sha256": "853172d1def4286ddb84f1c3e9f13f47f67e50a8bc94160460203d56174ffed7",
+      "role": "builder",
+      "license": "MIT",
+      "provenance": "Added portable fresh-source proof build script."
+    },
+    {
+      "path": "judge/rocq/README-proof-source.md",
+      "sha256": "72d5d596a80500dc87d16874ee87d101f1989c17e7127ce3cd49ef67db001b44",
+      "role": "documentation",
+      "license": "MIT",
+      "provenance": "Added portable proof source documentation."
+    }
+  ],
+  "required_core_sources": [
+    {
+      "path": "rocq/Syn.v",
+      "sha256": "65a7e01796ea28462c3f5f5ed52befc3620227cfea8162f0fcf33ca2efee5a51",
+      "role": "core",
+      "logical_module": "Cohen.Syn",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Prov.v",
+      "sha256": "d794dafa01cf4e13c262fcc40ee775ed237d18642d36efd30fdb40ad0c7a859c",
+      "role": "core",
+      "logical_module": "Cohen.Prov",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Kal.v",
+      "sha256": "62388e9ee614ccf02ad908a535f2ec88773d86e8a0a0492e9e581ef3a4d2e8b4",
+      "role": "core",
+      "logical_module": "Cohen.Kal",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Val.v",
+      "sha256": "7f99444793144d7556660cb75f31f48497c79211a16a3af94045c61925586d9c",
+      "role": "core",
+      "logical_module": "Cohen.Val",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Inv.v",
+      "sha256": "13a30a34c53dc56b0e40f31859a1550d90ba66c99554a45db50138a553c90b81",
+      "role": "core",
+      "logical_module": "Cohen.Inv",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Parse.v",
+      "sha256": "e62d907f4921f4b7715255c5e0b8f81548151f565c3e3219bb8ae27293599ecd",
+      "role": "core",
+      "logical_module": "Cohen.Parse",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Data.v",
+      "sha256": "5bcea58dd0b3c4f95e7560369b352083d3af56088fe61459e7642f33a675c6b2",
+      "role": "core",
+      "logical_module": "Cohen.Data",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Checks.v",
+      "sha256": "6f34887dba42e7e5a245c278916b8a3e5da56013f35cb7d3acf4830ad7fd42fb",
+      "role": "core",
+      "logical_module": "Cohen.Checks",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Ax.v",
+      "sha256": "a452bc702bc8b33d4ee83aa7eec013bb8899c6019c3e02d01407a67cbc051829",
+      "role": "core",
+      "logical_module": "Cohen.Ax",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Sub.v",
+      "sha256": "f76b9ee8a30ba5756ed5f432ab65a6f00645522f28b8d611cf5c15b49426c929",
+      "role": "core",
+      "logical_module": "Cohen.Sub",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Expand.v",
+      "sha256": "93869ff7161f878c15a69b97c6d4a88803ad253bc50b4c02ab6f450cac34b16c",
+      "role": "core",
+      "logical_module": "Cohen.Expand",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Replay.v",
+      "sha256": "5985abd5a15379c25e6490c78796aefd31e681ea9d4d0e382af19a80b5f3a4e9",
+      "role": "core",
+      "logical_module": "Cohen.Replay",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/ReplayT.v",
+      "sha256": "91ca08d21a9f5cc73d542618ea361f83a94f0a5486016b2d110eba410063e5a2",
+      "role": "core",
+      "logical_module": "Cohen.ReplayT",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Replay2.v",
+      "sha256": "e4d94fa3b02c95441d3f86b45876a026b81c84c6af100a248fa32629b99867ac",
+      "role": "core",
+      "logical_module": "Cohen.Replay2",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/Replay3.v",
+      "sha256": "0994731ce522db9dc17f2947fb2b032fc92fc75aabfdfd02236b0a0e29339dc0",
+      "role": "core",
+      "logical_module": "Cohen.Replay3",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/RpInit.v",
+      "sha256": "9421b47eeeed5fa9f16dd599c33e7181991dee700638d5043d8fa55114add97f",
+      "role": "core",
+      "logical_module": "Cohen.RpInit",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    },
+    {
+      "path": "rocq/RpInitOk.v",
+      "sha256": "827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3",
+      "role": "core",
+      "logical_module": "Cohen.RpInitOk",
+      "license": "MIT",
+      "provenance": "Published source commit e8958a92d72c0b4cace72949510807b8a5b1320e; candidate copy matches SHA256."
+    }
+  ],
+  "metadata_whitelist": [
+    "judge/rocq/public-source-inputs.json"
+  ],
+  "license": {
+    "spdx_identifier": "MIT",
+    "path": "LICENSE",
+    "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+    "copyright": "Copyright (c) 2026 Christopher Pompetzki",
+    "provenance": "Candidate release LICENSE; SHA256 matches the published source commit LICENSE."
+  },
+  "public_provenance": {
+    "core_sources": {
+      "repository": "https://github.com/PompetzkiChris/pompetzki",
+      "commit": "e8958a92d72c0b4cace72949510807b8a5b1320e",
+      "license": "MIT"
+    },
+    "generated_registry": {
+      "released_input": "replay-all.jdg",
+      "released_input_sha256": "a202ed994929c8484f053219047d854729af4a3d97ad8f804bb3cdef3b4a52ae",
+      "generated_source": "judge/rocq/CanonicalRegistryData.v",
+      "entries": 706,
+      "validation": "Kernel-checked exact equality canonical_data = Cohen.RpInitOk.REG0",
+      "license": "MIT"
+    },
+    "new_proofs_and_builder": {
+      "paths": [
+        "judge/rocq/PrefixSoundness.v",
+        "judge/rocq/PrefixSoundnessReceipt.v",
+        "judge/rocq/CanonicalPrefixSoundness.v",
+        "judge/rocq/CanonicalPrefixSoundnessReceipt.v",
+        "judge/rocq/build-registry-proof.py",
+        "judge/rocq/README-proof-source.md"
+      ],
+      "origin": "Added for authenticated canonical-registry prefix proof and portable fresh-source verification",
+      "license": "MIT"
+    }
+  },
+  "build_order": {
+    "core": [
+      "rocq/Syn.v",
+      "rocq/Prov.v",
+      "rocq/Kal.v",
+      "rocq/Val.v",
+      "rocq/Inv.v",
+      "rocq/Parse.v",
+      "rocq/Data.v",
+      "rocq/Checks.v",
+      "rocq/Ax.v",
+      "rocq/Sub.v",
+      "rocq/Expand.v",
+      "rocq/Replay.v",
+      "rocq/ReplayT.v",
+      "rocq/Replay2.v",
+      "rocq/Replay3.v",
+      "rocq/RpInit.v",
+      "rocq/RpInitOk.v"
+    ],
+    "proof": [
+      "judge/rocq/PrefixSoundness.v",
+      "judge/rocq/PrefixSoundnessReceipt.v",
+      "judge/rocq/CanonicalRegistryData.v",
+      "judge/rocq/CanonicalPrefixSoundness.v",
+      "judge/rocq/CanonicalPrefixSoundnessReceipt.v"
+    ]
+  },
+  "excluded_build_outputs": [
+    "*.vo",
+    "*.vos",
+    "*.vok",
+    "*.glob",
+    "*.aux",
+    "__pycache__",
+    "*-run-*",
+    "*.stdout.txt",
+    "*.stderr.txt",
+    "Run-*.ps1",
+    "Verify-*.ps1",
+    "PREFIX-PROOF-RECEIPT.md",
+    "CANONICAL-PREFIX-PROOF-RECEIPT.md"
+  ],
+  "proof_boundary": "Registry AST equality and conditional Gallina checker soundness. General executable/parser correspondence remains open."
+}
