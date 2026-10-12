@@ -1,0 +1,16 @@
+{
+  "arithmetic_build_inputs": {
+    "GrokRecordCount.v": "16c51c1ba0869aedea59f0f04175f379c58449bcc5d8699c265452abace3bf61",
+    "GrokRecordCountVerify.v": "9d50414d0db71eb58b05b33435562e4958bae409986b78b4d7ac45b67abd940c"
+  },
+  "sender_context_inputs_not_needed_for_build": {
+    "judge/judge-v6.pmp": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+    "judge/judge-v6.rkt": "a16ffa34b4eb03d814c20079c96de82041329aa206cfdf37f6cee0c67cc5b04f"
+  },
+  "delivery_checksum_resolution": {
+    "component_file_rows": 13,
+    "pinned_project_input_rows": 2,
+    "absent_build_path_alias_rows": 4,
+    "explanation": "The four build/GrokRC paths are absent from the archive; their hashes match the received rocq component source/object copies. Fresh verification does not use received objects."
+  }
+}
