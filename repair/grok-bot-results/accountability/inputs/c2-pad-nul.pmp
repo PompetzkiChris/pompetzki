@@ -1,0 +1,23 @@
+use "strx.pmp"
+trace off
+blob IN_B [ 0 97 ]
+set IN_B_len const 2
+text SX_S pad IN_B 2
+set SX_S_len const 2
+blob P_B [ 46 ]
+set P_B_len const 1
+text SX_PAD pad P_B 1
+set SX_PAD_len const 1
+set SX_WIDTH const 4
+gosub SX_PAD_RIGHT
+show SX_T_len
+set I const 0
+label LOOP
+set D sub I SX_T_len
+when zero D goto DONE
+set A add SX_T I
+set V peek A 1
+show V
+set I add I 1
+goto LOOP
+label DONE
