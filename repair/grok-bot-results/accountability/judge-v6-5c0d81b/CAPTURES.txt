@@ -1,0 +1,270 @@
+=== raw/diff-pmp.txt
+--- judge-v5.pmp	2026-10-11 23:57:14.998364340 -0400
++++ judge-v6.pmp	2026-10-11 23:57:14.998364340 -0400
+@@ -150,6 +150,7 @@
+ label THMT
+ gosub RDNUM
+ set nthm const num
++gosub RECORDCOUNT
+ set regcap add nreg nthm
+ set an mul regcap 24
+ gosub ALLOC
+@@ -196,6 +197,7 @@
+ set sigln const ln
+ gosub RDNUM
+ set nsteps const num
++gosub RECORDCOUNT
+ set an mul nsteps 8
+ set t sub an 8
+ when negative t goto THMNL
+@@ -391,6 +393,17 @@
+ set curp const ppp
+ set cure const PE
+ return
++; RECORDCOUNT: num records each need at least one remaining input byte.
++; A necessary syntax bound before allocation; the RDNUM domain is unchanged.
++label RECORDCOUNT
++set t sub lim pos
++set t sub t num
++when negative t goto RECORDCOUNTBAD
++return
++label RECORDCOUNTBAD
++text WHY "a record count exceeds remaining input bytes"
++goto FAIL
++
+ ; MK: the node [mt, ma, mb, mc] -> mr
+ label MK
+ set an const 32
+@@ -575,6 +588,7 @@
+ label RDLIST
+ gosub RDNUM
+ set ln const num
++gosub RECORDCOUNT
+ set an mul ln 8
+ gosub ALLOC
+ set la const ar
+=== raw/diff-rkt.txt
+--- judge-v5.rkt	2026-10-11 23:57:14.998364340 -0400
++++ judge-v6.rkt	2026-10-11 23:57:14.998364340 -0400
+@@ -419,6 +419,14 @@
+         [(>= nd 12) (perr "a number has more than 12 significant digits")]
+         [else (values (+ (* v 10) d) (add1 nd))])))
+   v)
++;; A theorem or step consumes at least one remaining input byte. This necessary
++;; syntax bound prevents allocation from an impossible declared record count;
++;; it does not narrow the decimal numeric domain.
++(define (record-count! kind)
++  (define count (num!))
++  (when (> count (- (bytes-length src) pos))
++    (perr (format "~a count exceeds remaining input bytes" kind)))
++  count)
+ (define (tag!)
+   (define t (token!))
+   (unless (= (bytes-length t) 1) (perr (format "expected a tag, got ~a" t)))
+@@ -457,7 +465,7 @@
+     [else (perr (format "step: unexpected tag ~a" c))]))
+ 
+ (define (thm!)
+-  (let* ([st (form!)] [sig (list!)] [n (num!)]
++  (let* ([st (form!)] [sig (list!)] [n (record-count! "step")]
+          [steps (for/vector #:length n ([_ (in-range n)]) (step!))]
+          [hyps (list!)])
+     (vector st sig steps hyps)))
+@@ -482,7 +490,7 @@
+         (raise (list 'registry i "entry differs from canonical REG0")))
+       entry))
+     (expect! #"T")
+-    (define m (num!))
++    (define m (record-count! "theorem"))
+     (define reg (make-vector (+ n0 m) #f))
+     (for ([e entries] [i (in-naturals)]) (vector-set! reg i e))
+     (let loop ([j 0] [nreg n0] [nsteps 0])
+=== raw/res-summary.txt
+ctl-ok-hyp             v6=ACCEPT/0 agree=True | v6 msg: ACCEPT registry entries at the start, theorems accepted, ste | v5: ACCEPT/0, ACCEPT/0, ACCEPT/0
+ctl-canonical-reg0     v6=ACCEPT/0 agree=True | v6 msg: ACCEPT registry entries at the start, theorems accepted, ste | v5: ACCEPT/0, ACCEPT/0, ACCEPT/0
+ctl-false-registry     v6=REJECT/1 agree=True | v6 msg: initial registry entry (counted from 0): 0 REJECT initial re | v5: REJECT/1, REJECT/1, REJECT/1
+num-pad1024-T          v6=ACCEPT/0 agree=True | v6 msg: ACCEPT registry entries at the start, theorems accepted, ste | v5: ACCEPT/0, ACCEPT/0, ACCEPT/0
+num-12sig-T            v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: OTHER/1, OTHER/1, OTHER/-6
+num-13sig-T            v6=REJECT/1 agree=True | v6 msg: REJECT a number has more than 12 significant digits theorem  | v5: REJECT/1, REJECT/1, REJECT/1
+num-pad-then-12sig-T   v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: OTHER/1, OTHER/1, OTHER/-6
+huge-T                 v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: OTHER/1, OTHER/1, OTHER/-6
+huge-T-empty           v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: OTHER/1, OTHER/1, OTHER/-6
+huge-steps             v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: OTHER/1, OTHER/1, OTHER/-6
+huge-sig               v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: OTHER/1, OTHER/1, REJECT/1
+huge-hyps              v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: OTHER/1, OTHER/1, REJECT/1
+huge-step-list         v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: OTHER/1, OTHER/1, REJECT/1
+trunc-mid-theorem      v6=REJECT/1 agree=True | v6 msg: REJECT a number was expected theorem and step (counted from  | v5: REJECT/1, REJECT/1, REJECT/1
+trunc-after-T          v6=REJECT/1 agree=True | v6 msg: REJECT a number was expected theorem and step (counted from  | v5: REJECT/1, REJECT/1, REJECT/1
+trunc-mid-registry     v6=REJECT/1 agree=True | v6 msg: REJECT a number was expected theorem and step (counted from  | v5: REJECT/1, REJECT/1, REJECT/1
+T-eq-rem               v6=REJECT/1 agree=True | v6 msg: REJECT the input ends where a tag was expected theorem and s | v5: REJECT/1, REJECT/1, REJECT/1
+T-rem-minus1           v6=REJECT/1 agree=True | v6 msg: REJECT the input ends where a tag was expected theorem and s | v5: REJECT/1, REJECT/1, REJECT/1
+T-rem-plus1            v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: REJECT/1, REJECT/1, REJECT/1
+steps-eq-rem           v6=REJECT/1 agree=True | v6 msg: REJECT unknown step tag theorem and step (counted from 0): 0 | v5: REJECT/1, REJECT/1, REJECT/1
+steps-rem-plus1        v6=REJECT/1 agree=True | v6 msg: REJECT a record count exceeds remaining input bytes theorem  | v5: REJECT/1, REJECT/1, REJECT/1
+V6 DISAGREE/CRASH: []
+=== raw/book-manifest-check.txt
+## repo@5c0d81b manifest rows 13 physical files 16
+  MATCH book-post-v4.rkt
+  MATCH verified-book-post.rkt
+  MATCH verified-book-check.rkt
+  MATCH verified-book-check-v6-source.rkt
+  MATCH test-verified-book-v4.py
+  MATCH test-verified-check.py
+  MATCH test-adversarial.py
+  MATCH test-review-v6.py
+  MATCH test-full-replay.py
+  MATCH README.md
+  MATCH LICENSE
+  MATCH PROVENANCE.json
+  MATCH PUBLIC-RUN-RESULTS.json
+  unselected: ['BOOK-V6-FREEZE.json', 'BOOK-V6-FREEZE.sha256', 'PUBLIC-SOURCE-MANIFEST.json']
+  excluded_historical present? {'verified-book-check-v5-source.rkt': False, 'test-review-v5.py': False}
+## v1.3.0 source ZIP manifest rows 13 physical files 29
+  MATCH book-post-v4.rkt
+  MATCH verified-book-post.rkt
+  MATCH verified-book-check.rkt
+  MATCH verified-book-check-v6-source.rkt
+  MATCH test-verified-book-v4.py
+  MATCH test-verified-check.py
+  MATCH test-adversarial.py
+  MATCH test-review-v6.py
+  MATCH test-full-replay.py
+  MATCH README.md
+  MATCH LICENSE
+  MATCH PROVENANCE.json
+  MATCH PUBLIC-RUN-RESULTS.json
+  unselected: ['PUBLIC-SOURCE-MANIFEST.json', 'registry-tests/altered-first-formula.jdg', 'registry-tests/altered-last-pure-formula.jdg', 'registry-tests/altered-placeholder-hypothesis.jdg', 'registry-tests/altered-pure-hypotheses.jdg', 'registry-tests/false-proof-canonical-prefix.jdg', 'registry-tests/false-proof-empty-registry.jdg', 'registry-tests/forged-false-registry.jdg', 'registry-tests/leading-zero-and-tab-prefix.jdg', 'registry-tests/nonexistent-registry-use.jdg', 'registry-tests/prefix-0-truth.jdg', 'registry-tests/prefix-1-truth.jdg', 'registry-tests/prefix-677-truth.jdg', 'registry-tests/prefix-706-truth.jdg', 'registry-tests/registry-707-entries.jdg', 'tests/.keep']
+  excluded_historical present? {'verified-book-check-v5-source.rkt': False, 'test-review-v5.py': False}
+=== raw/lz/summary.txt
+lz-pad3-reg0 native exit=0 ACCEPT registry entries at the start, theorems accepted, steps checked
+lz-pad3-reg0 interp exit=0 ACCEPT registry entries at the start, theorems accepted, steps checked
+lz-pad3-reg0 racket exit=0 ACCEPT registry 706 theorems 0 steps 0 final-registry 706 
+lz-pad13-reg0 native exit=0 ACCEPT registry entries at the start, theorems accepted, steps checked
+lz-pad13-reg0 interp exit=0 ACCEPT registry entries at the start, theorems accepted, steps checked
+lz-pad13-reg0 racket exit=0 ACCEPT registry 706 theorems 0 steps 0 final-registry 706 
+lz-pad64-reg0 native exit=0 ACCEPT registry entries at the start, theorems accepted, steps checked
+lz-pad64-reg0 interp exit=0 ACCEPT registry entries at the start, theorems accepted, steps checked
+lz-pad64-reg0 racket exit=0 ACCEPT registry 706 theorems 0 steps 0 final-registry 706 
+sig12-R native exit=1 REJECT initial registry has more than 706 entries theorem and step (co
+sig12-R interp exit=1 REJECT initial registry has more than 706 entries theorem and step (co
+sig12-R racket exit=1 REJECT initial registry count: more than 706 entries 
+sig13-R native exit=1 REJECT a number has more than 12 significant digits theorem and step (
+sig13-R interp exit=1 REJECT a number has more than 12 significant digits theorem and step (
+sig13-R racket exit=1 REJECT parse error at byte 20: a number has more than 12 significant d
+sig12-pad-R native exit=0 ACCEPT registry entries at the start, theorems accepted, steps checked
+sig12-pad-R interp exit=0 ACCEPT registry entries at the start, theorems accepted, steps checked
+sig12-pad-R racket exit=0 ACCEPT registry 706 theorems 1 steps 1 final-registry 707 
+=== raw/fixtures/summary.txt
+positive                     native  exit=0 ACCEPT expected=ACCEPT/0 PASS
+positive                     interp  exit=0 ACCEPT expected=ACCEPT/0 PASS
+positive                     racket  exit=0 ACCEPT expected=ACCEPT/0 PASS
+empty-batch                  native  exit=0 ACCEPT expected=ACCEPT/0 PASS
+empty-batch                  interp  exit=0 ACCEPT expected=ACCEPT/0 PASS
+empty-batch                  racket  exit=0 ACCEPT expected=ACCEPT/0 PASS
+huge-theorem-count           native  exit=1 REJECT expected=REJECT/1 PASS
+huge-theorem-count           interp  exit=1 REJECT expected=REJECT/1 PASS
+huge-theorem-count           racket  exit=1 REJECT expected=REJECT/1 PASS
+huge-step-count              native  exit=1 REJECT expected=REJECT/1 PASS
+huge-step-count              interp  exit=1 REJECT expected=REJECT/1 PASS
+huge-step-count              racket  exit=1 REJECT expected=REJECT/1 PASS
+huge-signature-count         native  exit=1 REJECT expected=REJECT/1 PASS
+huge-signature-count         interp  exit=1 REJECT expected=REJECT/1 PASS
+huge-signature-count         racket  exit=1 REJECT expected=REJECT/1 PASS
+max-numeric-predicate        native  exit=0 ACCEPT expected=ACCEPT/0 PASS
+max-numeric-predicate        interp  exit=0 ACCEPT expected=ACCEPT/0 PASS
+max-numeric-predicate        racket  exit=0 ACCEPT expected=ACCEPT/0 PASS
+zero-count-padded-1024       native  exit=0 ACCEPT expected=ACCEPT/0 PASS
+zero-count-padded-1024       interp  exit=0 ACCEPT expected=ACCEPT/0 PASS
+zero-count-padded-1024       racket  exit=0 ACCEPT expected=ACCEPT/0 PASS
+signature-zero-padded-1024   native  exit=0 ACCEPT expected=ACCEPT/0 PASS
+signature-zero-padded-1024   interp  exit=0 ACCEPT expected=ACCEPT/0 PASS
+signature-zero-padded-1024   racket  exit=0 ACCEPT expected=ACCEPT/0 PASS
+missing-theorem-small-count  native  exit=1 REJECT expected=REJECT/1 PASS
+missing-theorem-small-count  interp  exit=1 REJECT expected=REJECT/1 PASS
+missing-theorem-small-count  racket  exit=1 REJECT expected=REJECT/1 PASS
+valid-two-theorems           native  exit=0 ACCEPT expected=ACCEPT/0 PASS
+valid-two-theorems           interp  exit=0 ACCEPT expected=ACCEPT/0 PASS
+valid-two-theorems           racket  exit=0 ACCEPT expected=ACCEPT/0 PASS
+FIXTURE FAILS 0 of 30
+=== raw/driver/table.txt
+label=v6-rtv2 interp=/workspace/acct-v130/build-rt/pompetzki judge=/workspace/acct-5c0d/judge/judge-v6.pmp strx=/workspace/acct-5c0d/repair/libraries/strx/strx.pmp
+def|case                        |actual(first line/bytes)                     |rc  |expected                                     |erc |result
+a  |a1-false-registry-only.jdg  |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |a2-false-registry-thm.jdg   |REJECT                                       |1   |REJECT                                       |1   |PASS
+a  |ctl-canonical-reg0.jdg      |ACCEPT                                       |0   |ACCEPT                                       |0   |PASS
+b  |b1-literal-min.pmp          |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b2-computed-min.pmp         |-9223372036854775808                         |0   |-9223372036854775808                         |0   |PASS
+b  |b3-literal-max.pmp          |9223372036854775807                          |0   |9223372036854775807                          |0   |PASS
+b  |b4-literal-overflow.pmp     |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+b  |b5-literal-underflow.pmp    |line 1: Menschenwerk: a value left the 64-bit|1   |line 1: Menschenwerk: a value left the 64-bit|1   |PASS
+c  |c1-trim-nul.pmp             |3 97 0 98 32 0 98                            |0   |3 97 0 98 32 0 98                            |0   |PASS
+c  |c2-pad-nul.pmp              |4 0 97 46 46                                 |0   |4 0 97 46 46                                 |0   |PASS
+FAILURES=0 of 10
+rc=0
+=== raw/built.sha256
+eb7788409d00f010c740615d50cd8930da40413f0ce3a4e505e5f5911905b38d  /workspace/acct-5c0d-build/judge-v6-linux
+a8b9179161f2685f89a54ce11f6e5b82633d539648e421bd01753636b21c79fa  /tmp/v6s
+=== raw/validation-v5-corpus-on-v6.log (tail)
+{
+  "schema": "portable-v5-validation-run/v1",
+  "lane": "full",
+  "interpreted_lane": "fast",
+  "families": null,
+  "selected_cases": 254,
+  "runs": 644,
+  "passed": 644,
+  "failed": 0,
+  "timeouts": 0,
+  "seconds": 130.6873025889945,
+  "expectations_sha256": "94425d972276fa7396d7bcdc542be4d2786f53f338aa83f6fe70a40a27a22bbd",
+  "driver_sha256": "f74eafd6f04f5373b6c4ebe9633b02cbf6a934b30f57ef7b6f95a85743ccb5f1",
+  "runtime_inputs": [
+    {
+      "route": "native",
+      "role": "NATIVE_CHECKER",
+      "filename": "judge-v6-linux",
+      "sha256": "eb7788409d00f010c740615d50cd8930da40413f0ce3a4e505e5f5911905b38d"
+    },
+    {
+      "route": "interpreted",
+      "role": "PMP_INTERPRETER",
+      "filename": "pompetzki",
+      "sha256": "aafc0b3670bf55ec1c888b743db0f9d2f9331db9d360f5245137f10c17593c97"
+    },
+    {
+      "route": "interpreted",
+      "role": "PMP_SOURCE",
+      "filename": "judge-v6.pmp",
+      "sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7"
+    },
+    {
+      "route": "racket",
+      "role": "RACKET_EXECUTABLE",
+      "filename": "racket",
+      "sha256": "25fa312bfb612fed51f0432283ec9cb2ccdafa91dc36fd02b8a97858d5ebda07"
+    },
+    {
+      "route": "racket",
+      "role": "RACKET_SOURCE",
+      "filename": "judge-v6.rkt",
+      "sha256": "a16ffa34b4eb03d814c20079c96de82041329aa206cfdf37f6cee0c67cc5b04f"
+    }
+  ],
+  "by_judge": {
+    "native": {
+      "runs": 254,
+      "passed": 254
+    },
+    "interpreted": {
+      "runs": 136,
+      "passed": 136
+    },
+    "racket": {
+      "runs": 254,
+      "passed": 254
+    }
+  },
+  "failures": [],
+  "command_path_policy": "Recorded commands use explicit role names and package-relative corpus paths; runtime input filenames and hashes identify the supplied artifacts."
+}
+exit=0

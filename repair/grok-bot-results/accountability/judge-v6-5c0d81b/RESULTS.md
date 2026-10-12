@@ -1,0 +1,26 @@
+# judge-v6 at 5c0d81b91a87f3e792b09f11a2065eb5f92b1154 (Grok Bot accountability)
+Anonymous clone; HEAD verified with ls-remote. Nothing primary was modified. Every child process ran under `prlimit --as=2147483648 --cpu=60 timeout 90`.
+**No test failures. One publication gap:** `judge/NATIVE-V6-FREEZE.sha256` lists `judge/native-v6/judge-v6-linux` (6db4c7df…), `judge-v6-windows.exe` (9b84cb4b…), `native-provenance.json` and `native-test-result.json`, but **none of these 4 files is in the git tree at 5c0d81b**, so `sha256sum -c` reports FAILED open for all 4. I could not compare the claimed Linux native bytes. My build from the pinned sources is eb778840… (stripped a8b91791…).
+
+## Finite tests (these establish only the recorded runs)
+| Claim | Command | Output | Outcome |
+|---|---|---|---|
+| judge-v6.pmp sha256 = 87562735… | sha256sum | 87562735cf20…0dc7 | MATCH |
+| judge-v6.rkt sha256 = a16ffa34… | sha256sum | a16ffa34b4eb…b04f | MATCH |
+| pmp diff = only count-vs-remaining-bytes guards | `diff -u judge-v5.pmp judge-v6.pmp` (raw/diff-pmp.txt) | 4 hunks: `gosub RECORDCOUNT` added after `RDNUM` for theorem count (`set nthm const num`), step count (`set nsteps const num`) and RDLIST length (`set ln const num`), each before ALLOC. New `RECORDCOUNT`: `set t sub lim pos / set t sub t num / when negative t goto RECORDCOUNTBAD` with text `"a record count exceeds remaining input bytes"`. RDNUM, SKIPWS and the registry (`R`, cap 706) are untouched. | CONFIRMED |
+| rkt diff = same | raw/diff-rkt.txt | new `record-count!` (`(when (> count (- (bytes-length src) pos)) (perr …))`), used for step count in `thm!` and theorem count `m`. `num!` (the 12-significant-digit rule) is unchanged. `list!` is **not** bounded, as the README states. | CONFIRMED |
+| driver.py defect controls on v6 (runtime-v2) | `driver.py --judge judge-v6.pmp` | FAILURES=0 of 10 (false registry REJECT, INT64_MIN literal, strx NUL) | PASS |
+| leading zeros 3/13/64 on REG0; R=999999999999; R=10^12; 21 zeros+706 | native/interp/racket (raw/lz) | ACCEPT×3; REJECT `more than 706`; REJECT `more than 12 significant digits`; ACCEPT, the same on all 3 routes | PASS (domain unchanged) |
+| canonical REG0 / false registry / ok-hyp | 3 routes v6 and v5 | ACCEPT / REJECT `entry differs from canonical REG0` / ACCEPT | PASS |
+| resource attacks (21 cases, raw/res, raw/res-summary.txt): T=999999999999 with a tiny body or empty body, 40 zeros + 12-digit T, huge step count, huge signature list, huge hyps list, huge step list, truncations (mid-registry, after T, mid-theorem), T and step counts at rem-1 / rem / rem+1 bytes | `resattack.py` | **v6: every case gives the same verdict and exit on native, interp and racket; no crash, OOM or timeout.** Oversized counts give `REJECT a record count exceeds remaining input bytes` (racket: `theorem/step count exceeds remaining input bytes`; for lists racket rejects later with `expected a number`/`unexpected end of input`). At or below the bound the guard passes and a later parse REJECT follows. | PASS |
+| same attacks on v5 (pre-fix) | same, v5 | native and interp: `LIMIT a memory block is full`, exit 1; racket: `out of memory`, **exit -6 (SIGABRT)** on the huge T/steps cases. Racket rejected the list cases normally. | pre-fix defect **REPRODUCED** under caps |
+| their 10 v6 resource fixtures | 3 Linux routes | 30/30 match the expected verdict and exit | PASS |
+| v5 254-case corpus incl. the 4,551-theorem replay, on v6 | `validation-v5/run-validation-v2.py --lane full --interpreted-lane fast` with v6 judges | 644 runs: native 254/254, racket 254/254, interp 136/136, 0 timeouts | PASS (my Linux rerun of the 264/264/146 portion: 254+10, 254+10, 136+10) |
+| receipt 938 = 264+264+146+264 | results.json | 938 rows: windows native 264, windows racket 264, windows interpreted 146, linux 264; 938 passed, 0 timeouts | MATCH |
+| raw files behind the receipt | stdout/stderr sha256 vs results.json | 1876 files checked, 0 mismatches, 0 missing; SHA256SUMS.txt (1933 lines) all OK | MATCH |
+| Book v6 13-row manifest | raw/book-manifest-check.txt | repo dir: all 13 hashes MATCH; the 3 unselected files are the FREEZE json/sha256 and the manifest itself. v1.3.0 source ZIP book-v6: the 13 MATCH; unselected are 14 `registry-tests/*.jdg` snapshots, `tests/.keep` and the manifest. `verified-book-check-v5-source.rkt` and `test-review-v5.py` are excluded and not present. | MATCH |
+
+**Correction to my earlier file-count concern:** the physical book-v6 directory has more files than 13 (16 in the repo, 29 in the ZIP). The authoritative selection is the 13-entry manifest. Every selected file hash-matches, and the extras (freeze receipts, registry/test snapshots) are unselected. The v5 alias is excluded and not shipped in v6. The count difference is therefore not a mismatch.
+
+## Not established (universal correspondence)
+These finite runs do not prove the bound for all inputs, executable-to-Gallina correspondence, compiler preservation, or source-to-native byte correspondence. The README's necessary-syntax argument (every record consumes at least 1 byte) is a source-level argument that I read, not a theorem I checked. The Racket list length remains unbounded up front; it is read item by item, which is consistent with the README.
