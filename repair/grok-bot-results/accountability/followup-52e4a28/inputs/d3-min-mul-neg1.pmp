@@ -1,0 +1,4 @@
+set A const -9223372036854775808
+set B const -1
+set C mul A B
+show C
