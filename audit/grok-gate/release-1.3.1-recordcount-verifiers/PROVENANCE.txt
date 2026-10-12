@@ -1,0 +1,8 @@
+These two stdout logs are byte copies of the host terminal logs.
+inspection-invocation-stdout.log copies /tmp/sessions/f249614d-b9e3-48e5-943b-e0b6e50daf6f/terminal/01a12e9c-e68b-7230-88be-26643c52016f.log
+byte-contract-invocation-stdout.log copies /tmp/sessions/f249614d-b9e3-48e5-943b-e0b6e50daf6f/terminal/01a12e9d-3847-7240-8f8b-2a4ee1e917d0.log
+The shell text in recovered-inspection-command.txt and recovered-byte-contract-command.txt was recovered from the invocation that produced each log.
+The terminal facility stored stdout only. It did not store the command.
+Those command files therefore have no execution-time file hash.
+The JSON results already committed under release-1.3.1-recordcount and release-1.3.1-recordcount-byte-contract were the redirected outputs of those invocations.
+Nothing here was rerun.

@@ -1,0 +1,10 @@
+396:; RECORDCOUNT: num records each need at least one remaining input byte.
+397:; A necessary syntax bound before allocation; the RDNUM domain is unchanged.
+398:label RECORDCOUNT
+399:set t sub lim pos
+400:set t sub t num
+401:when negative t goto RECORDCOUNTBAD
+402:return
+403:label RECORDCOUNTBAD
+404:text WHY "a record count exceeds remaining input bytes"
+405:goto FAIL

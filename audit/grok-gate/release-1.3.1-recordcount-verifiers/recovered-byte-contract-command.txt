@@ -1,0 +1,70 @@
+set -e
+DEST=/tmp/pompetzki-pub/audit/grok-gate/release-1.3.1-recordcount-byte-contract
+mkdir -p "$DEST"
+python3 > "$DEST/contract-check.json" << 'PY'
+import hashlib, json, re
+from pathlib import Path
+root=Path('/tmp/a131/rc')
+text=(root/'Proof/RecordCountSource.v').read_text()
+match=re.search(r'retained_recordcount_bytes : seq byte := \[:\:(.*?)\].', text, re.S)
+if not match:
+    raise SystemExit('byte list not found')
+hexes=re.findall(r'x([0-9a-fA-F]{2})', match.group(1))
+decoded=bytes(int(h,16) for h in hexes)
+frag=(root/'source/recordcount-fragment.pmp').read_bytes()
+src=(root/'source/judge-v6.pmp').read_bytes()
+span=b''.join(src.splitlines(keepends=True)[397:405])
+fragment_lines=frag.splitlines()
+ctors=re.search(r'Definition Precord : seq stmt := \[:\:(.*?)\].', text, re.S).group(1)
+ctor_lines=[line.strip().rstrip(';') for line in ctor_lines] if False else [line.strip() for line in ctors.strip().splitlines()]
+expected=[
+ 'SLabel "RECORDCOUNT"',
+ 'SSub "t" (OV "lim") (OV "pos")',
+ 'SSub "t" (OV "t") (OV "num")',
+ 'SWhen CNeg (OV "t") "RECORDCOUNTBAD"',
+ 'SReturn',
+ 'SLabel "RECORDCOUNTBAD"',
+ 'STextLit "WHY" (bytes_of_str "a record count exceeds remaining input bytes")',
+ 'SGoto "FAIL"',
+]
+normalized=[re.sub(r';\s*$','',line) for line in ctor_lines]
+bounds=(root/'Proof/RecordCountBounds.v').read_text()
+report={
+ 'decoded_bytes': len(decoded),
+ 'decoded_sha256': hashlib.sha256(decoded).hexdigest(),
+ 'equals_fragment': decoded==frag,
+ 'equals_judge_lines_398_through_405': decoded==span,
+ 'fragment_line_count': len(fragment_lines),
+ 'fragment_lines': [line.decode() for line in fragment_lines],
+ 'precord_constructors_equal_eight_source_lines': normalized==expected,
+ 'pinned_sha_equals_judge_file': '87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7' in text and hashlib.sha256(src).hexdigest()=='87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7',
+ 'address_contract_text': '0<=vars s "num"<=999999999999 /\\ 0<=vars s "pos"<=vars s "lim" /\\ vars s "lim"<=hp s /\\ hp s<4611686018427387904',
+ 'hp_bound_is_2_to_62': 4611686018427387904==2**62,
+ 'contract_does_not_state_os_permissions': 'permission' not in bounds.lower(),
+ 'boundary': 'This compares retained source bytes and the stated address contract. It does not run the kernel, and it does not prove the trusted text-to-AST translation, native/compiler/OS preservation, memory permissions, the whole judge, the caller contract, or the final FAIL handler.',
+}
+print(json.dumps(report, indent=2))
+assert report['equals_fragment'] and report['precord_constructors_equal_eight_source_lines']
+PY
+python3 << 'PY'
+import hashlib
+from pathlib import Path
+dest=Path('/tmp/pompetzki-pub/audit/grok-gate/release-1.3.1-recordcount-byte-contract')
+lines=[]
+for p in sorted(dest.rglob('*')):
+    if p.is_file() and p.name!='SHA256SUMS.txt':
+        lines.append(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name)
+(dest/'SHA256SUMS.txt').write_text('\n'.join(lines)+'\n')
+print((dest/'SHA256SUMS.txt').read_text())
+PY
+cd /tmp/pompetzki-pub
+git add audit/grok-gate/release-1.3.1-recordcount-byte-contract
+git -c user.email=cpompetzki@gmail.com -c user.name='Christopher Pompetzki' commit -m "$(cat <<'EOF'
+Compare the pinned RECORDCOUNT byte list with the eight-instruction fragment.
+
+The decoded bytes match the fragment and judge lines 398-405. The address contract remains separate from OS permissions.
+EOF
+)"
+git push origin HEAD:grok/embedded-reg0-gate
+echo PUSHED $(git rev-parse HEAD)
+git merge-base --is-ancestor f09b4339d915489899516eb55295704b0cb2c9d1 HEAD && echo ancestor-ok

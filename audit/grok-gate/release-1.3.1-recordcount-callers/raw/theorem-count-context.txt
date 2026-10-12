@@ -1,0 +1,13 @@
+144:; ---- the theorems: T m; the registry array gets room for all of them
+145:gosub RDTAG
+146:set t sub tg 84
+147:when zero t goto THMT
+148:text WHY "T expected"
+149:goto FAIL
+150:label THMT
+151:gosub RDNUM
+152:set nthm const num
+153:gosub RECORDCOUNT
+154:set regcap add nreg nthm
+155:set an mul regcap 24
+156:gosub ALLOC

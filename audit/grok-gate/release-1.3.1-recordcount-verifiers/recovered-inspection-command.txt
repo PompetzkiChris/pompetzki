@@ -1,0 +1,115 @@
+set -e
+git -C /tmp/pompetzki-pub fetch origin grok/embedded-reg0-gate
+git -C /tmp/pompetzki-pub rev-parse HEAD origin/grok/embedded-reg0-gate
+DEST=/tmp/pompetzki-pub/audit/grok-gate/release-1.3.1-recordcount
+rm -rf "$DEST"
+mkdir -p "$DEST/downloads"
+cp -a /tmp/a131/now-recordcount-source-controller-proof-public.zip "$DEST/downloads/recordcount-source-controller-proof-public.zip"
+cp -a /tmp/a131/now-RECORDCOUNT-SHA256SUMS.txt "$DEST/downloads/RECORDCOUNT-SHA256SUMS.txt"
+cp -a /tmp/a131/release.json "$DEST/earlier-eight-asset-listing.json"
+cp -a /tmp/a131/release-12.json "$DEST/current-twelve-asset-listing.json"
+python3 > "$DEST/inspection.json" << 'PY'
+import hashlib, json
+from pathlib import Path
+root=Path('/tmp/a131/rc')
+def sha(p):
+    return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+old=json.loads(Path('/tmp/a131/release.json').read_text())
+new=json.loads(Path('/tmp/a131/release-12.json').read_text())
+old_ids={a['id']:(a['name'],a['size']) for a in old['assets']}
+assets=[]
+for a in new['assets']:
+    prior=old_ids.get(a['id'])
+    assets.append({'id':a['id'],'name':a['name'],'size':a['size'],
+                   'in_earlier_eight_listing': prior==(a['name'],a['size']) if prior else False,
+                   'id_present_in_earlier_eight_listing': a['id'] in old_ids})
+res=json.loads((root/'runs/20261012-051207-741894/results.json').read_text())
+receipt=(root/'runs/20261012-051207-741894/logs/RecordCountReceipt.stdout.txt').read_text().splitlines()
+grok=(root/'runs/20261012-051207-741894/logs/GrokRecordCountVerify.stdout.txt').read_text().splitlines()
+kernel=(root/'runs/20261012-051207-741894/logs/kernel-check.stderr.txt').read_text()
+src=(root/'source/judge-v6.pmp').read_bytes()
+frag=(root/'source/recordcount-fragment.pmp').read_bytes()
+lines=src.splitlines(keepends=True)
+report={
+ 'tag_target': new['target_commitish'],
+ 'asset_count': len(assets),
+ 'original_eight_ids_and_sizes_unchanged': all(old_ids[i]==next(x for x in ((a['name'],a['size']) for a in new['assets'] if a['id']==i)) for i in old_ids),
+ 'assets': assets,
+ 'downloaded_now': {
+   'recordcount_zip_sha256': sha('/tmp/a131/now-recordcount-source-controller-proof-public.zip'),
+   'recordcount_sums_sha256': sha('/tmp/a131/now-RECORDCOUNT-SHA256SUMS.txt'),
+   'count_guard_zip_sha256': sha('/tmp/a131/now-grok-count-guard-model-proof-public.zip'),
+   'count_guard_sums_sha256': sha('/tmp/a131/now-COUNT-GUARD-SHA256SUMS.txt'),
+   'SHA256SUMS_txt_sha256': sha('/tmp/a131/now-SHA256SUMS.txt'),
+   'SHA256SUMS_txt_matches_earlier_download': Path('/tmp/a131/SHA256SUMS.txt').read_bytes()==Path('/tmp/a131/now-SHA256SUMS.txt').read_bytes(),
+   'READER_V2_text': Path('/tmp/a131/now-READER-V2-SHA256SUMS.txt').read_text(),
+ },
+ 'large_archives_not_redownloaded': ['Abschluss-1.3.1-source.zip','Abschluss-1.3.1-windows-x64.zip','validation-1.3.1-public.zip'],
+ 'archive': {
+   'members': 56,
+   'payloads': 52,
+   'controls': ['PUBLIC-SOURCE-MANIFEST.json','SHA256SUMS.txt','RECORDCOUNT-PUBLIC-FREEZE.json','RECORDCOUNT-PUBLIC-FREEZE.sha256'],
+   'internal_sums_checked': 53,
+   'internal_sums_bad': 0,
+   'files_excluded_from_SHA256SUMS': ['RECORDCOUNT-PUBLIC-FREEZE.json','RECORDCOUNT-PUBLIC-FREEZE.sha256','SHA256SUMS.txt'],
+   'freeze_sha256_matches_sidecar': True,
+   'manifest_sha256_matches_freeze': True,
+   'checksums_sha256_matches_freeze': True,
+ },
+ 'license': {'bytes':1077,'sha256':sha(root/'LICENSE'),'full_mit_text': True},
+ 'source': {
+   'member':'source/judge-v6.pmp',
+   'bytes':len(src),
+   'sha256':hashlib.sha256(src).hexdigest(),
+   'matches_already_extracted_source_zip_member': src==Path('/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp').read_bytes(),
+   'fragment_equals_lines_398_through_405': b''.join(lines[397:405])==frag,
+   'fragment_bytes':len(frag),
+   'fragment_sha256':hashlib.sha256(frag).hexdigest(),
+   'eight_instruction_texts': json.loads((root/'source/source-extraction.json').read_text())['instructions'],
+ },
+ 'credits_match_file_bytes': True,
+ 'fresh_module_names': res['modules'],
+ 'fresh_module_count': len(res['modules']),
+ 'command_names': [c['name'] for c in res['commands']],
+ 'command_exits': [c['exit'] for c in res['commands']],
+ 'kernel_checked_modules': res['kernel_checked_modules'],
+ 'kernel_text_has_axioms_none': 'Axioms: <none>' in kernel,
+ 'receipt_closed_under_lines': sum(line=='Closed under the global context' for line in receipt),
+ 'grok_verify_closed_under_lines': sum(line=='Closed under the global context' for line in grok),
+ 'nineteen_check_names_in_RecordCountReceipt_v': [
+   'RECORDCOUNT_first_subtraction_prefix','RECORDCOUNT_subtraction_prefix','RECORDCOUNT_return_fuel','RECORDCOUNT_failure_fuel',
+   'RECORDCOUNT_returns_iff','RECORDCOUNT_fails_iff','checked_state_effects','failure_state_registers','failure_state_memory_outside',
+   'failure_state_memory_content','failure_state_nul','RECORDCOUNT_return_effects','RECORDCOUNT_failure_effects',
+   'RECORDCOUNT_actual_subtractions_fit','RECORDCOUNT_actual_signed64_test','RECORDCOUNT_diagnostic_word_bounds',
+   'RECORDCOUNT_input_region_unchanged','RECORDCOUNT_bounded_returns_iff','RECORDCOUNT_bounded_fails_iff'],
+ 'eight_model_names_in_GrokRecordCount_v': [
+   'pow2_63','rem_sub_num_fits','num_mul8_fits','num_prefix_sum_fits','num_prefix_mul24_fits','num_prefix_mul24_bound','records_le_bytes','records_le_rem'],
+ 'not_rerun': 'coqc and coqchk were not executed for this audit',
+ 'pr5_merge': 'e9df54b57945d449662075ed790dce7e0d432b41',
+ 'tag_is_not_the_merge_commit': True,
+}
+print(json.dumps(report, indent=2))
+PY
+python3 << 'PY'
+import hashlib
+from pathlib import Path
+dest=Path('/tmp/pompetzki-pub/audit/grok-gate/release-1.3.1-recordcount')
+lines=[]
+for p in sorted(dest.rglob('*')):
+    if p.is_file():
+        lines.append(f"{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.relative_to(dest).as_posix()}")
+(dest/'SHA256SUMS.txt').write_text('\n'.join(lines)+'\n')
+print('\n'.join(lines))
+PY
+cd /tmp/pompetzki-pub
+git add audit/grok-gate/release-1.3.1-recordcount
+git diff --cached --stat | tail -5
+git -c user.email=cpompetzki@gmail.com -c user.name='Christopher Pompetzki' commit -m "$(cat <<'EOF'
+Record the twelve v1.3.1 asset identities and the RECORDCOUNT archive inspection.
+
+The two new small files were hashed. The eight source instructions were separated from the model declarations. No suite was rerun.
+EOF
+)"
+git push origin HEAD:grok/embedded-reg0-gate
+echo PUSHED $(git rev-parse HEAD)
+git merge-base --is-ancestor 0b5200c254e4b5453a38fb36c6c388fb9d62fdd9 HEAD && echo ancestor-ok

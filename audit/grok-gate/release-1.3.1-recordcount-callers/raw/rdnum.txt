@@ -1,0 +1,44 @@
+529:; RDNUM: exact decimal 0..999999999999; leading zeros do not count.
+530:; nd counts significant digits. nseen records a digit even in an all-zero token.
+531:; The 13th significant digit is refused before multiplication or addition.
+532:label RDNUM
+533:gosub SKIPWS
+534:set num const 0
+535:set nd const 0
+536:set nseen const 0
+537:label RDNUM1
+538:set t sub pos lim
+539:when negative t goto RDNUM2
+540:goto RDNUM9
+541:label RDNUM2
+542:set c peek pos 1
+543:set d sub c 48
+544:when negative d goto RDNUM9
+545:set t sub d 10
+546:when negative t goto RDNUM3
+547:goto RDNUM9
+548:label RDNUM3
+549:set nseen const 1
+550:when zero nd goto RDNUMLEAD
+551:goto RDNUMBOUND
+552:label RDNUMLEAD
+553:when zero d goto RDNUMADVANCE
+554:label RDNUMBOUND
+555:set t sub nd 12
+556:when negative t goto RDNUM4
+557:text WHY "a number has more than 12 significant digits"
+558:goto FAIL
+559:label RDNUM4
+560:set num mul num 10
+561:set num add num d
+562:set nd add nd 1
+563:label RDNUMADVANCE
+564:set pos add pos 1
+565:goto RDNUM1
+566:label RDNUM9
+567:when zero nseen goto RDNUMBAD
+568:gosub ENDTOK
+569:return
+570:label RDNUMBAD
+571:text WHY "a number was expected"
+572:goto FAIL

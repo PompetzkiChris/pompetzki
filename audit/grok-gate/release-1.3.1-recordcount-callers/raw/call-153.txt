@@ -1,0 +1,6 @@
+151:gosub RDNUM
+152:set nthm const num
+153:gosub RECORDCOUNT
+154:set regcap add nreg nthm
+155:set an mul regcap 24
+156:gosub ALLOC

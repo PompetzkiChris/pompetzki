@@ -1,0 +1,42 @@
+{
+  "sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+  "calls": [
+    153,
+    200,
+    591
+  ],
+  "rdlist": [
+    131,
+    195,
+    228,
+    663,
+    2021,
+    2062,
+    2136
+  ],
+  "instruction_mentions_999999999999": false,
+  "instruction_mentions_2_pow_62": false,
+  "between": [
+    {
+      "call": 153,
+      "rdnum": 151,
+      "alloc": 156,
+      "num_assignments_between": [],
+      "heap": "persistent PB"
+    },
+    {
+      "call": 200,
+      "rdnum": 198,
+      "alloc": 208,
+      "num_assignments_between": [],
+      "heap": "scratch SB"
+    },
+    {
+      "call": 591,
+      "rdnum": 589,
+      "alloc": 593,
+      "num_assignments_between": [],
+      "heap": "the block of the RDLIST caller"
+    }
+  ]
+}

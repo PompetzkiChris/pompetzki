@@ -1,0 +1,26 @@
+From https://github.com/PompetzkiChris/pompetzki
+ * branch            grok/embedded-reg0-gate -> FETCH_HEAD
+0b5200c254e4b5453a38fb36c6c388fb9d62fdd9
+0b5200c254e4b5453a38fb36c6c388fb9d62fdd9
+62df08464c67eb93521e3652f843d945d259caf6247dc37fa7e51b7f0fb10b42  current-twelve-asset-listing.json
+948c4c185d48764e939ee72916b4c53e7eb52ae68d511189e811863839c0da02  downloads/RECORDCOUNT-SHA256SUMS.txt
+261c4d15c50745ed3844569270459fe440bc913778563132748c04e1e0e8b638  downloads/recordcount-source-controller-proof-public.zip
+5258ee2b65a017d12581a86de52a20eec93e4f5503625125532808a1e68a9970  earlier-eight-asset-listing.json
+1e4aaacfdac06e88e8110f25bec0df7424c7186f231c77ab95d36e2df2fd3cf5  inspection.json
+ .../downloads/RECORDCOUNT-SHA256SUMS.txt           |   1 +
+ .../recordcount-source-controller-proof-public.zip | Bin 0 -> 72833 bytes
+ .../earlier-eight-asset-listing.json               |   1 +
+ .../release-1.3.1-recordcount/inspection.json      | 282 +++++++++++++++++++++
+ 6 files changed, 290 insertions(+)
+[grok/embedded-reg0-gate f09b433] Record the twelve v1.3.1 asset identities and the RECORDCOUNT archive inspection.
+ 6 files changed, 290 insertions(+)
+ create mode 100644 audit/grok-gate/release-1.3.1-recordcount/SHA256SUMS.txt
+ create mode 100644 audit/grok-gate/release-1.3.1-recordcount/current-twelve-asset-listing.json
+ create mode 100644 audit/grok-gate/release-1.3.1-recordcount/downloads/RECORDCOUNT-SHA256SUMS.txt
+ create mode 100644 audit/grok-gate/release-1.3.1-recordcount/downloads/recordcount-source-controller-proof-public.zip
+ create mode 100644 audit/grok-gate/release-1.3.1-recordcount/earlier-eight-asset-listing.json
+ create mode 100644 audit/grok-gate/release-1.3.1-recordcount/inspection.json
+To https://github.com/PompetzkiChris/pompetzki.git
+   0b5200c..f09b433  HEAD -> grok/embedded-reg0-gate
+PUSHED f09b4339d915489899516eb55295704b0cb2c9d1
+ancestor-ok

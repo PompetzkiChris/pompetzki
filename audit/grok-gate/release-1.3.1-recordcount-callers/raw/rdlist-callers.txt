@@ -1,0 +1,28 @@
+128:set authentrypos const pos
+129:gosub PARSEF
+130:set rgf const pf
+131:gosub RDLIST
+192:set thst const pf
+193:; the rest in scratch, reset
+194:gosub TOSCR0
+195:gosub RDLIST
+225:label STEPSDONE
+226:; the hypotheses of the theorem, persistent
+227:gosub TOPERS
+228:gosub RDLIST
+660:label PF_P
+661:gosub RDNUM
+662:set pfx const num
+663:gosub RDLIST
+2018:label ST_USE
+2019:gosub RDNUM
+2020:set ur const num
+2021:gosub RDLIST
+2059:label ST_SPEC
+2060:gosub RDNUM
+2061:set lnum const num
+2062:gosub RDLIST
+2133:
+2134:; taut ls g: the implication from the lines ls to g is a tautology
+2135:label ST_TAUT
+2136:gosub RDLIST

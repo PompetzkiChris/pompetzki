@@ -1,0 +1,11 @@
+198:gosub RDNUM
+199:set nsteps const num
+200:gosub RECORDCOUNT
+201:set an mul nsteps 8
+202:set t sub an 8
+203:when negative t goto THMNL
+204:goto THMNL1
+205:label THMNL
+206:set an const 8
+207:label THMNL1
+208:gosub ALLOC

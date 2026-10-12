@@ -1,0 +1,5 @@
+589:gosub RDNUM
+590:set ln const num
+591:gosub RECORDCOUNT
+592:set an mul ln 8
+593:gosub ALLOC

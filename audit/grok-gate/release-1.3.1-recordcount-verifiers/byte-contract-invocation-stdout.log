@@ -1,0 +1,10 @@
+0637f7894a4c9e26716dbdc4de9f2ea56be012c43798d3dabbfdc2c0b94c0ea1  contract-check.json
+
+[grok/embedded-reg0-gate 199034d] Compare the pinned RECORDCOUNT byte list with the eight-instruction fragment.
+ 2 files changed, 24 insertions(+)
+ create mode 100644 audit/grok-gate/release-1.3.1-recordcount-byte-contract/SHA256SUMS.txt
+ create mode 100644 audit/grok-gate/release-1.3.1-recordcount-byte-contract/contract-check.json
+To https://github.com/PompetzkiChris/pompetzki.git
+   f09b433..199034d  HEAD -> grok/embedded-reg0-gate
+PUSHED 199034dc17326ba230fd91f9de00347e3d13097a
+ancestor-ok

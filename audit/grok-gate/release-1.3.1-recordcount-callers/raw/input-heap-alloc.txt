@@ -1,0 +1,64 @@
+47:set authrefpos const AUTHREF
+48:set authreflim add AUTHREF AUTHREF_len
+49:text cfile arg
+50:read J0 cfile
+51:set pos const J0
+52:set lim add J0 J0_len
+53:
+54:set PSIZE const 201326592
+55:set SSIZE const 402653184
+56:set DSIZE const 16777216
+57:set PB alloc PSIZE
+58:set PE add PB PSIZE
+59:set SB alloc SSIZE
+60:set SE add SB SSIZE
+61:set DSB alloc DSIZE
+62:set DSE add DSB DSIZE
+63:set DSL sub DSE 4096
+64:set DSP const DSB
+65:set curp const PB
+66:set cure const PE
+67:set ppp const PB
+68:set spp const SB
+69:set atc const 65536
+70:set an mul atc 8
+71:gosub ALLOC
+72:set ATL const ar
+73:set ti const 0
+74:set si const 0
+75:set totsteps const 0
+76:text WHY "none"
+372:; ================================================================ memory
+373:; ALLOC: an bytes from the current block -> ar
+374:label ALLOC
+375:set ar const curp
+376:set curp add curp an
+377:set t sub cure curp
+378:when negative t goto LIMITMEM
+379:return
+380:; TOSCR0: allocate from the scratch block, emptied; TOSCR1: from the scratch block where it stood; TOPERS: persistent
+381:label TOSCR0
+382:set ppp const curp
+383:set curp const SB
+384:set cure const SE
+385:return
+386:label TOSCR1
+387:set ppp const curp
+388:set curp const spp
+389:set cure const SE
+390:return
+391:label TOPERS
+392:set spp const curp
+393:set curp const ppp
+394:set cure const PE
+395:return
+396:; RECORDCOUNT: num records each need at least one remaining input byte.
+397:; A necessary syntax bound before allocation; the RDNUM domain is unchanged.
+398:label RECORDCOUNT
+399:set t sub lim pos
+400:set t sub t num
+401:when negative t goto RECORDCOUNTBAD
+402:return
+403:label RECORDCOUNTBAD
+404:text WHY "a record count exceeds remaining input bytes"
+405:goto FAIL

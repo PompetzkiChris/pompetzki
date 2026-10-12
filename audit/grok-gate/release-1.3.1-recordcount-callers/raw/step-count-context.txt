@@ -1,0 +1,21 @@
+188:label THMONE
+189:set si const 0
+190:; the statement, persistent (it becomes a registry entry)
+191:gosub PARSEF
+192:set thst const pf
+193:; the rest in scratch, reset
+194:gosub TOSCR0
+195:gosub RDLIST
+196:set sigla const la
+197:set sigln const ln
+198:gosub RDNUM
+199:set nsteps const num
+200:gosub RECORDCOUNT
+201:set an mul nsteps 8
+202:set t sub an 8
+203:when negative t goto THMNL
+204:goto THMNL1
+205:label THMNL
+206:set an const 8
+207:label THMNL1
+208:gosub ALLOC

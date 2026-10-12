@@ -1,0 +1,514 @@
+{
+  "source": "Abschluss-1.3.1-source/judge/judge-v6.pmp",
+  "local_path": "/tmp/a131/src/Abschluss-1.3.1-source/judge/judge-v6.pmp",
+  "bytes": 101261,
+  "sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+  "source_analysis_only": true,
+  "kernel_proof": false,
+  "native_compiler_os_permissions": false,
+  "gosub_RECORDCOUNT_lines": [
+    153,
+    200,
+    591
+  ],
+  "gosub_RDLIST_lines": [
+    131,
+    195,
+    228,
+    663,
+    2021,
+    2062,
+    2136
+  ],
+  "recordcount_definition_lines": [
+    {
+      "line": 396,
+      "text": "; RECORDCOUNT: num records each need at least one remaining input byte."
+    },
+    {
+      "line": 397,
+      "text": "; A necessary syntax bound before allocation; the RDNUM domain is unchanged."
+    },
+    {
+      "line": 398,
+      "text": "label RECORDCOUNT"
+    },
+    {
+      "line": 399,
+      "text": "set t sub lim pos"
+    },
+    {
+      "line": 400,
+      "text": "set t sub t num"
+    },
+    {
+      "line": 401,
+      "text": "when negative t goto RECORDCOUNTBAD"
+    },
+    {
+      "line": 402,
+      "text": "return"
+    },
+    {
+      "line": 403,
+      "text": "label RECORDCOUNTBAD"
+    },
+    {
+      "line": 404,
+      "text": "text WHY \"a record count exceeds remaining input bytes\""
+    },
+    {
+      "line": 405,
+      "text": "goto FAIL"
+    }
+  ],
+  "sites": [
+    {
+      "gosub_RECORDCOUNT_line": 153,
+      "preceding_gosub_RDNUM_line": 151,
+      "lines_from_rdnum_through_call": [
+        {
+          "line": 151,
+          "text": "gosub RDNUM"
+        },
+        {
+          "line": 152,
+          "text": "set nthm const num"
+        },
+        {
+          "line": 153,
+          "text": "gosub RECORDCOUNT"
+        }
+      ],
+      "num_assigned_between_rdnum_and_call": [],
+      "next_gosub_ALLOC_line": 156,
+      "lines_from_call_through_alloc": [
+        {
+          "line": 153,
+          "text": "gosub RECORDCOUNT"
+        },
+        {
+          "line": 154,
+          "text": "set regcap add nreg nthm"
+        },
+        {
+          "line": 155,
+          "text": "set an mul regcap 24"
+        },
+        {
+          "line": 156,
+          "text": "gosub ALLOC"
+        }
+      ],
+      "executed_heap_path": {
+        "block": "persistent PB",
+        "evidence": [
+          {
+            "line": 65,
+            "text": "set curp const PB"
+          },
+          {
+            "line": 71,
+            "text": "gosub ALLOC"
+          },
+          {
+            "line": 120,
+            "text": "gosub ALLOC"
+          }
+        ],
+        "note": "No TOSCR0, TOSCR1, or TOPERS in lines 65-152. ALLOC at 71 and 120 advances curp inside the persistent block."
+      }
+    },
+    {
+      "gosub_RECORDCOUNT_line": 200,
+      "preceding_gosub_RDNUM_line": 198,
+      "lines_from_rdnum_through_call": [
+        {
+          "line": 198,
+          "text": "gosub RDNUM"
+        },
+        {
+          "line": 199,
+          "text": "set nsteps const num"
+        },
+        {
+          "line": 200,
+          "text": "gosub RECORDCOUNT"
+        }
+      ],
+      "num_assigned_between_rdnum_and_call": [],
+      "next_gosub_ALLOC_line": 208,
+      "lines_from_call_through_alloc": [
+        {
+          "line": 200,
+          "text": "gosub RECORDCOUNT"
+        },
+        {
+          "line": 201,
+          "text": "set an mul nsteps 8"
+        },
+        {
+          "line": 202,
+          "text": "set t sub an 8"
+        },
+        {
+          "line": 203,
+          "text": "when negative t goto THMNL"
+        },
+        {
+          "line": 204,
+          "text": "goto THMNL1"
+        },
+        {
+          "line": 205,
+          "text": "label THMNL"
+        },
+        {
+          "line": 206,
+          "text": "set an const 8"
+        },
+        {
+          "line": 207,
+          "text": "label THMNL1"
+        },
+        {
+          "line": 208,
+          "text": "gosub ALLOC"
+        }
+      ],
+      "executed_heap_path": {
+        "block": "scratch SB",
+        "evidence": [
+          {
+            "line": 194,
+            "text": "gosub TOSCR0"
+          }
+        ],
+        "note": "Line 194 is gosub TOSCR0. Its body, lines 381-385, sets curp to SB before this call."
+      }
+    },
+    {
+      "gosub_RECORDCOUNT_line": 591,
+      "preceding_gosub_RDNUM_line": 589,
+      "lines_from_rdnum_through_call": [
+        {
+          "line": 589,
+          "text": "gosub RDNUM"
+        },
+        {
+          "line": 590,
+          "text": "set ln const num"
+        },
+        {
+          "line": 591,
+          "text": "gosub RECORDCOUNT"
+        }
+      ],
+      "num_assigned_between_rdnum_and_call": [],
+      "next_gosub_ALLOC_line": 593,
+      "lines_from_call_through_alloc": [
+        {
+          "line": 591,
+          "text": "gosub RECORDCOUNT"
+        },
+        {
+          "line": 592,
+          "text": "set an mul ln 8"
+        },
+        {
+          "line": 593,
+          "text": "gosub ALLOC"
+        }
+      ],
+      "executed_heap_path": {
+        "block": "the block of the RDLIST caller",
+        "evidence": [],
+        "note": "RDLIST itself does not switch curp before RECORDCOUNT. The caller does."
+      }
+    }
+  ],
+  "rdlist_callers": [
+    {
+      "gosub_RDLIST_line": 131,
+      "window": [
+        {
+          "line": 128,
+          "text": "set authentrypos const pos"
+        },
+        {
+          "line": 129,
+          "text": "gosub PARSEF"
+        },
+        {
+          "line": 130,
+          "text": "set rgf const pf"
+        },
+        {
+          "line": 131,
+          "text": "gosub RDLIST"
+        }
+      ],
+      "caller_heap": "persistent PB; lines 65-130 contain ALLOC but no TOSCR0 or TOPERS",
+      "heap_switches_in_preceding_four_lines": []
+    },
+    {
+      "gosub_RDLIST_line": 195,
+      "window": [
+        {
+          "line": 192,
+          "text": "set thst const pf"
+        },
+        {
+          "line": 193,
+          "text": "; the rest in scratch, reset"
+        },
+        {
+          "line": 194,
+          "text": "gosub TOSCR0"
+        },
+        {
+          "line": 195,
+          "text": "gosub RDLIST"
+        }
+      ],
+      "caller_heap": "scratch SB; line 194 is gosub TOSCR0 immediately before this RDLIST",
+      "heap_switches_in_preceding_four_lines": [
+        {
+          "line": 194,
+          "text": "gosub TOSCR0"
+        }
+      ]
+    },
+    {
+      "gosub_RDLIST_line": 228,
+      "window": [
+        {
+          "line": 225,
+          "text": "label STEPSDONE"
+        },
+        {
+          "line": 226,
+          "text": "; the hypotheses of the theorem, persistent"
+        },
+        {
+          "line": 227,
+          "text": "gosub TOPERS"
+        },
+        {
+          "line": 228,
+          "text": "gosub RDLIST"
+        }
+      ],
+      "caller_heap": "persistent pointer saved by TOSCR0; line 227 is gosub TOPERS immediately before this RDLIST",
+      "heap_switches_in_preceding_four_lines": [
+        {
+          "line": 227,
+          "text": "gosub TOPERS"
+        }
+      ]
+    },
+    {
+      "gosub_RDLIST_line": 663,
+      "window": [
+        {
+          "line": 660,
+          "text": "label PF_P"
+        },
+        {
+          "line": 661,
+          "text": "gosub RDNUM"
+        },
+        {
+          "line": 662,
+          "text": "set pfx const num"
+        },
+        {
+          "line": 663,
+          "text": "gosub RDLIST"
+        }
+      ],
+      "caller_heap": "the block of whoever called PARSEF; PF_P does not switch curp",
+      "heap_switches_in_preceding_four_lines": []
+    },
+    {
+      "gosub_RDLIST_line": 2021,
+      "window": [
+        {
+          "line": 2018,
+          "text": "label ST_USE"
+        },
+        {
+          "line": 2019,
+          "text": "gosub RDNUM"
+        },
+        {
+          "line": 2020,
+          "text": "set ur const num"
+        },
+        {
+          "line": 2021,
+          "text": "gosub RDLIST"
+        }
+      ],
+      "caller_heap": "scratch SB; ST_USE is reached from gosub STEP at line 217, after TOSCR0 at 194 and before TOPERS at 227",
+      "heap_switches_in_preceding_four_lines": []
+    },
+    {
+      "gosub_RDLIST_line": 2062,
+      "window": [
+        {
+          "line": 2059,
+          "text": "label ST_SPEC"
+        },
+        {
+          "line": 2060,
+          "text": "gosub RDNUM"
+        },
+        {
+          "line": 2061,
+          "text": "set lnum const num"
+        },
+        {
+          "line": 2062,
+          "text": "gosub RDLIST"
+        }
+      ],
+      "caller_heap": "scratch SB; ST_SPEC is reached from the same STEP interval",
+      "heap_switches_in_preceding_four_lines": []
+    },
+    {
+      "gosub_RDLIST_line": 2136,
+      "window": [
+        {
+          "line": 2133,
+          "text": ""
+        },
+        {
+          "line": 2134,
+          "text": "; taut ls g: the implication from the lines ls to g is a tautology"
+        },
+        {
+          "line": 2135,
+          "text": "label ST_TAUT"
+        },
+        {
+          "line": 2136,
+          "text": "gosub RDLIST"
+        }
+      ],
+      "caller_heap": "scratch SB; ST_TAUT is reached from the same STEP interval",
+      "heap_switches_in_preceding_four_lines": []
+    }
+  ],
+  "position_limit_heap_num_writes": [
+    {
+      "line": 51,
+      "text": "set pos const J0"
+    },
+    {
+      "line": 52,
+      "text": "set lim add J0 J0_len"
+    },
+    {
+      "line": 65,
+      "text": "set curp const PB"
+    },
+    {
+      "line": 98,
+      "text": "set pos add pos 4"
+    },
+    {
+      "line": 376,
+      "text": "set curp add curp an"
+    },
+    {
+      "line": 383,
+      "text": "set curp const SB"
+    },
+    {
+      "line": 388,
+      "text": "set curp const spp"
+    },
+    {
+      "line": 393,
+      "text": "set curp const ppp"
+    },
+    {
+      "line": 437,
+      "text": "set pos const authrefpos"
+    },
+    {
+      "line": 438,
+      "text": "set lim const authreflim"
+    },
+    {
+      "line": 452,
+      "text": "set pos const authipos"
+    },
+    {
+      "line": 453,
+      "text": "set lim const authilim"
+    },
+    {
+      "line": 463,
+      "text": "set pos const authipos"
+    },
+    {
+      "line": 464,
+      "text": "set lim const authilim"
+    },
+    {
+      "line": 473,
+      "text": "set pos const authipos"
+    },
+    {
+      "line": 474,
+      "text": "set lim const authilim"
+    },
+    {
+      "line": 478,
+      "text": "set pos const authsavedpos"
+    },
+    {
+      "line": 479,
+      "text": "set lim const authsavedlim"
+    },
+    {
+      "line": 506,
+      "text": "set pos add pos 1"
+    },
+    {
+      "line": 534,
+      "text": "set num const 0"
+    },
+    {
+      "line": 560,
+      "text": "set num mul num 10"
+    },
+    {
+      "line": 561,
+      "text": "set num add num d"
+    },
+    {
+      "line": 564,
+      "text": "set pos add pos 1"
+    },
+    {
+      "line": 583,
+      "text": "set pos add pos 1"
+    }
+  ],
+  "comment_mentions_999999999999": true,
+  "instruction_mentions_999999999999": false,
+  "instruction_mentions_2_pow_62": false,
+  "instruction_compares_lim_and_curp": false,
+  "invariants": {
+    "num_upper_bound": "Each call is immediately after RDNUM. RDNUM's comment names 0..999999999999, but no instruction compares num with 999999999999. The source gate is the significant-digit test at lines 555-558, which refuses a 13th significant digit before mul or add. Nothing assigns num between that RDNUM and the call. The integer inequality is not a source comparison and is not a kernel proof.",
+    "num_lower_bound": "RDNUM sets num to 0 and returns only after nseen is 1. A returned value is built from digits. Nonnegativity is the shape of that routine, not a comparison with zero and not a kernel proof.",
+    "pos_le_lim": "No instruction tests pos <= lim at a RECORDCOUNT call. SKIPWS, RDNUM, and RDTAG advance pos by 1 only after pos < lim. The header adds 4 only after lim - pos >= 4. Those are scanning patterns. They establish pos <= lim only if the initial J0_len is nonnegative, and the source never tests J0_len.",
+    "zero_le_pos": "No instruction compares pos with 0. pos is set from the read buffer J0 and from text-buffer addresses. Nonnegativity is unproved.",
+    "lim_le_hp": "The source heap pointer is curp. No instruction compares lim with curp. lim <= hp is unproved.",
+    "hp_lt_2_pow_62": "Neither 4611686018427387904 nor 2^62 occurs in an instruction. The block sizes are constants 201326592, 402653184, and 16777216. They do not bound the address returned by alloc or the input pointer. hp < 2^62 is unproved.",
+    "subsequent_allocation": "ALLOC checks curp + an against the current block end and stops at LIMITMEM. That is a block-capacity check. It is not the address contract. The theorem call then allocates (nreg + nthm) * 24. The step call allocates max(nsteps * 8, 8). RDLIST allocates ln * 8."
+  }
+}
