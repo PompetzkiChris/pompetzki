@@ -1,0 +1,4 @@
+set A const -9223372036854775807
+set B const 1
+set A sub A B
+show A
