@@ -1,0 +1,9 @@
+GATE
+1
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+1
+1
+2
+2
