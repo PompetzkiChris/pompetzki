@@ -115,3 +115,11 @@ c6779f520f1ce4438eda2cec01f36e0bc023c584f20233f1565d8c531040deb3  /workspace/acc
 === inspect-m1.txt (185 bytes)
 auth=#t n0=706 thc=1 sc=5
 j=0 stmt=e032a16055c458105817c76061aaebf193794d12c47cbedaeba65389e652b7a7 drv=08368b179b152443846549862d845bbc28a32b1aad91ae287fc43bdb2e76f7a3 steps=5 hyps=()
+=== strip-compare.txt ===
+1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f  /tmp/strip-cmp/built-stripped
+1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f  /tmp/strip-cmp/committed-stripped
+
+built-stripped and committed-stripped sha256:
+1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f  /tmp/strip-cmp/built-stripped
+1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f  /tmp/strip-cmp/committed-stripped
+STRIPPED_IDENTICAL

@@ -53,3 +53,14 @@ Bundle: native ELF renamed to `judge/judge-v5-windows.exe`; `pompetzki.exe` = ru
 ## Limits
 
 Finite tests do not establish executable/Gallina correspondence. Extra files under `judge-runs/` that are not named in metadata remain unchecked. Snapshot directory extras are now rejected.
+
+## Addendum: stripped native judge-v5-linux
+
+Compared self-built `judge-v5-linux` (`47aad221…5e68`, 113368 bytes) to committed `judge/native-v5/judge-v5-linux` (`1b890ced…ffad`, 113416 bytes) after `objcopy --strip-all` on copies of both:
+
+| Artifact | sha256 after `--strip-all` | size |
+|---|---|---|
+| built-stripped | `1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f` | 94480 |
+| committed-stripped | `1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f` | 94480 |
+
+**Verified outcome: MATCH** (`cmp` identical; `strip --strip-all` same). Pre-strip hash difference is non-code metadata (e.g. build paths/symbols); code sections match when stripped. Both stripped copies still REJECT the false-registry control (exit 1).

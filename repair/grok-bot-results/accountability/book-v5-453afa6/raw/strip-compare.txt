@@ -1,0 +1,7 @@
+1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f  /tmp/strip-cmp/built-stripped
+1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f  /tmp/strip-cmp/committed-stripped
+
+built-stripped and committed-stripped sha256:
+1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f  /tmp/strip-cmp/built-stripped
+1cf6cea0d711d68768c332fb67e18d28271c04a17bceb2746f78b1403a1daf4f  /tmp/strip-cmp/committed-stripped
+STRIPPED_IDENTICAL
