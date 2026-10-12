@@ -1,0 +1,342 @@
+=== ./MANIFEST.sha256
+ed7680abfa3ce2c2bc04c99764f13f6630789285349154f0d015d55aebbc31e0  ./RESULTS.md
+4c75a51340a62d2d35f2acf172d1f7e0e889bba056a8784a5c15b43b589adb38  ./raw/build-native-v6.log
+3655170424adfc1d3c882e0d6c373c6fca6396a3d22dced87cba39c5e39896dc  ./raw/build-runtime-v2.log
+c025a5e7927f3ca60cb6593ae1256f2bfd53d941bdae9c8c12dae1b67ad3261c  ./raw/built.sha256
+ff476a5a82283b0c51649c6d17756e469e6189a9030988771e39b0ac5fb04b72  ./raw/closure-sourcezip.txt
+ae49f77d986c8edae13197ee4a59c2180af74b9851b20d9c9d06c77ad4d22247  ./raw/closure.txt
+a6afbc6a8bdfa863958cc8a21b9f9c30c54c9c19429326be0774fe2d23765d80  ./raw/embedded.txt
+193d3e0b5042ea4843fc374906aa5c8eebf61951a1b39e37f3c9e0167a1a25f3  ./raw/manifest-diff-normalized.txt
+673f7fc2d59bbbccc0653e7b3e04d83a6bfde4d709cd220843b658695f0703cd  ./raw/quoted-lines.txt
+cd5e0771956bd863f7f41b688090886ff1ba3fc09e5c01d5eaef3b650371d524  ./raw/selection-check.txt
+0dda8d8f80a70b770e452803f4e321754d196756c506f81f4b23e39bc4ce8fec  ./release-v1.3.1/RESULTS.md
+816586babddfaf0ac49f41d84abb5239cef0ec9fd4be57b6bc115670af0fb44c  ./release-v1.3.1/raw/READER-V2-SHA256SUMS.txt
+aa3f502bafa0ae669623772f9a3ba76f24c561261ca5b8abba877889fc8172e2  ./release-v1.3.1/raw/SHA256SUMS.txt
+26b2771556f409bbb5487f152fefd327f0e8f8e9661a99d4a932c92c8db39a71  ./release-v1.3.1/raw/SOURCE-CLOSURE-1.3.1.json
+462512a776745a7a0c71e680ab2192ca80ec50efa88604eacc4099693a30a610  ./release-v1.3.1/raw/asset-list.tsv
+98fa24e5390220601dd7b283ed206a752689c869d1437131d94d7366f8a42778  ./release-v1.3.1/raw/native-search.txt
+b11d9fcd69564bfa38124c2bf7b7e813d08e516ceaf58232e5a2e1b855b147c9  ./release-v1.3.1/raw/pins.txt
+ee44af4c9e05deb5eb1894733ad37eed8e7779167a145534ae66aacb4f817270  ./release-v1.3.1/raw/report.txt
+00f20b09dc49b12dd9d24cbb296c559987694d1a602884860fdd300bb3cb1e52  ./verify-release-1.3.1.sh
+
+=== ./raw/build-native-v6.log
+{
+  "created_at": "2026-10-12T04:45:33.394362+00:00",
+  "source": "/workspace/acct-c525/judge/judge-v6.pmp",
+  "source_sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+  "compiler_sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+  "linux_runtime_sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+  "target": "linux",
+  "steps": [
+    {
+      "step": "lower-pmp",
+      "command": [
+        "/workspace/tools/racket/bin/racket",
+        "/workspace/acct-c525/judge/native-v6/portable/pmpc-original.rkt",
+        "/workspace/acct-c525/judge/judge-v6.pmp",
+        "/workspace/p9/build/jn/judge-v6-base-windows.asm"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5682192179956473,
+      "stdout": "lower-pmp.stdout.txt",
+      "stderr": "lower-pmp.stderr.txt",
+      "stdout_sha256": "2f39c876b4dfc22695bebb87a28bda51f12500610b554ac34ac7bb57823acd9e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "assemble-linux",
+      "command": [
+        "/workspace/nasm-local/root/usr/bin/nasm",
+        "-O0",
+        "-f",
+        "elf64",
+        "/workspace/p9/build/jn/judge-v6-linux.asm",
+        "-o",
+        "/workspace/p9/build/jn/judge-v6-linux.o"
+      ],
+      "exit_code": 0,
+      "seconds": 0.21484344999771565,
+      "stdout": "assemble-linux.stdout.txt",
+      "stderr": "assemble-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "link-linux",
+      "command": [
+        "/usr/bin/ld",
+        "-o",
+        "/workspace/p9/build/jn/judge-v6-linux",
+        "/workspace/p9/build/jn/judge-v6-linux.o",
+        "-e",
+        "start"
+      ],
+      "exit_code": 0,
+      "seconds": 0.007635215995833278,
+      "stdout": "link-linux.stdout.txt",
+      "stderr": "link-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "judge-v6-base-windows.asm",
+      "sha256": "91f1067d1dba28d6f88d315b7e84aa8e254c12ab4f4d99938a864df78bbaeb82",
+      "bytes": 337748
+    },
+    {
+      "file": "judge-v6-linux.asm",
+      "sha256": "aa89718410b18f7c080b5ccc736f7ad72f1eec83116c18ee31e4ef74d57c788b",
+      "bytes": 336643
+    },
+    {
+      "file": "judge-v6-linux.o",
+      "sha256": "5258cec40f33943cd21207b76093f2f73a8894a3039268d3c3a7871163ea9b65",
+      "bytes": 172896
+    },
+    {
+      "file": "judge-v6-linux",
+      "sha256": "a9616446b4c702496357f7d795f3dea8eb821f2da1eb1ae7969f50c31c057fb7",
+      "bytes": 113520
+    }
+  ],
+  "source_native_correspondence": "Open; a build receipt is finite evidence only."
+}
+
+=== ./raw/build-runtime-v2.log
+{
+  "target": "linux",
+  "source": "pompetzki.asm",
+  "source_sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+  "source_matches_verified_revision": true,
+  "steps": [
+    {
+      "step": "assemble",
+      "argv": [
+        "/workspace/nasm-local/root/usr/bin/nasm",
+        "-DLINUX",
+        "-f",
+        "elf64",
+        "/workspace/acct-c525/repair/runtime-v2/source/pompetzki.asm",
+        "-o",
+        "/workspace/p9/build/rt/pompetzki.o"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.21477453999978025,
+      "stdout": "assemble.stdout.txt",
+      "stderr": "assemble.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "link-linux",
+      "argv": [
+        "/usr/bin/ld",
+        "-o",
+        "/workspace/p9/build/rt/pompetzki",
+        "/workspace/p9/build/rt/pompetzki.o",
+        "-e",
+        "_start"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.008067087997915223,
+      "stdout": "link-linux.stdout.txt",
+      "stderr": "link-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "pompetzki",
+      "sha256": "013c551eb3a769b0843dd723fffc87ff26bc9bab247f237701b852b5093cfc8d",
+      "bytes": 128304
+    }
+  ],
+  "source_to_executable_correspondence": "Open"
+}
+
+=== ./raw/built.sha256
+a9616446b4c702496357f7d795f3dea8eb821f2da1eb1ae7969f50c31c057fb7  jn/judge-v6-linux
+a8b9179161f2685f89a54ce11f6e5b82633d539648e421bd01753636b21c79fa  jn/judge-v6-linux.stripped
+013c551eb3a769b0843dd723fffc87ff26bc9bab247f237701b852b5093cfc8d  rt/pompetzki
+d493bc5e26305fb517890e052ab79a753d06da96f918a996952ee311a885dfa4  rt/pompetzki.stripped
+
+=== ./raw/closure-sourcezip.txt
+PACKAGING-22: rows=22 bad=0 []
+SUPPORT.libraries: rows=11 bad=0 []
+SUPPORT.oracles: rows=1 bad=0 []
+SUPPORT.certificates: rows=100 bad=0 []
+SUPPORT.judge_fixtures: rows=1 bad=0 []
+SUPPORT.registry_fixtures: rows=14 bad=0 []
+SUPPORT.v6_resource_controls: rows=4 bad=0 []
+MATRIX-oracle: rows=9 bad=0 []
+COCKPIT: rows=94 bad=0 []
+BOOK-v7: rows=14 bad=0 []
+MATH-v2: rows=9 bad=0 []
+judge/native-v6/portable/build-native.py db1b3bce4b0d9e4a
+judge/native-v6/portable/linux-runtime.asm 89a9c945fc402375
+judge/native-v6/portable/pmpc-original.rkt 660399e1aaa9f695
+runtime/build-interpreter.py cfab7e257e6055b7
+
+=== ./raw/closure.txt
+SUPPORT.libraries: rows=11 mismatches/missing=6 ['repair/libraries/baseline-strx/strx-byte-build.rkt', 'repair/libraries/baseline-strx/strx-cases.rktd', 'repair/libraries/baseline-strx/strx-oracle.rkt', 'repair/libraries/baseline-strx/strx-test.pmp', 'repair/libraries/baseline-strx/strx.pmp']
+SUPPORT.oracles: rows=1 mismatches/missing=0 []
+SUPPORT.certificates: rows=100 mismatches/missing=0 []
+SUPPORT.judge_fixtures: rows=1 mismatches/missing=0 []
+SUPPORT.registry_fixtures: rows=14 mismatches/missing=0 []
+SUPPORT.v6_resource_controls: rows=4 mismatches/missing=0 []
+MATRIX (bot-matrix-validation): rows=9 mismatches/missing=0 []
+COCKPIT: rows=94 mismatches/missing=94 ['abschluss.pmp', 'lean-job.pmp', 'lib/abschluss.manifest', 'lib/app3.pmp', 'lib/close.pmp']
+BOOK-v7 manifest: rows=14 mismatches/missing=0 []
+MATRIX-v2 engine manifest: rows=9 mismatches/missing=9 ['repair/math-workbench-v2/engine.rkt', 'repair/math-workbench-v2/exact.rkt', 'repair/math-workbench-v2/gui.rkt', 'repair/math-workbench-v2/build.py', 'repair/math-workbench-v2/README.md']
+{'schema': 'explicit-public-support-source/v1'}
+
+=== ./raw/embedded.txt
+Abschluss-1.3.1-source.zip Abschluss-1.3.1-source/repair/packaging/v9-judge-v6-1.3.1/PUBLIC-SOURCE-MANIFEST.json rows 22 version 1.3.1 rows_identical True bytes_identical False identical_after_CRLF_norm False
+   metadata diff: {'status': ('Frozen public 1.3.1 packaging source with UTF-8 receipts and current uninstall/version context', 'Frozen public packaging source')}
+validation-1.3.1-public.zip validation-1.3.1/repair/packaging/v9-judge-v6-1.3.1/PUBLIC-SOURCE-MANIFEST.json rows 22 version 1.3.1 rows_identical True bytes_identical True identical_after_CRLF_norm True
+validation-1.3.1-public.zip validation-1.3.1/repair/packaging/v9-judge-v6-1.3.1/build/candidate-01/PUBLIC-PACKAGING-SOURCE-MANIFEST.json rows 22 version 1.3.1 rows_identical True bytes_identical False identical_after_CRLF_norm False
+   metadata diff: {'status': ('Frozen public 1.3.1 packaging source with UTF-8 receipts and current uninstall/version context', 'Frozen public packaging source')}
+validation-1.3.1-public.zip validation-1.3.1/repair/packaging/v9-judge-v6-1.3.1/build/source-only-01/PUBLIC-PACKAGING-SOURCE-MANIFEST.json rows 22 version 1.3.1 rows_identical True bytes_identical False identical_after_CRLF_norm False
+   metadata diff: {'status': ('Frozen public 1.3.1 packaging source with UTF-8 receipts and current uninstall/version context', 'Frozen public packaging source')}
+
+=== ./raw/manifest-diff-normalized.txt
+3c3
+<     "status": "Frozen public 1.3.1 packaging source with UTF-8 receipts and current uninstall/version context",
+---
+>     "status": "Frozen public packaging source",
+
+=== ./raw/quoted-lines.txt
+  (build-path (if (and (directory-exists? programs) (not (reparse? programs))) programs local) "Abschluss-1.3.1"))
+(define (shortcut! target)
+  (define folder (build-path (or (getenv "APPDATA") (find-system-path 'pref-dir)) "Microsoft" "Windows" "Start Menu" "Programs"))
+  (define link (build-path folder "Abschluss 1.3.1.lnk"))
+(unless (and (equal? (hash-ref record 'version) version)
+             (equal? (sha256-file (build-path root "MANIFEST.sha256")) (hash-ref record 'manifest_sha256)))
+(define version "1.3.1")
+if ((Get-Content -LiteralPath (Join-Path $taskRoot 'VERSION') -Raw).Trim() -ne '1.3.1') { throw 'VERSION 1.3.1 is required.' }
+if ($taskReceipt.version -ne '1.3.1' -or $taskReceipt.manifest_sha256 -ne $taskManifestHash) { throw 'Installation receipt and manifest differ.' }
+if ($taskReceipt.shortcut -and (Test-Path -LiteralPath $taskReceipt.shortcut -PathType Leaf)) {
+    $taskExpectedShortcut = Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs\Abschluss 1.3.1.lnk'
+    $taskShell = New-Object -ComObject WScript.Shell
+    $taskLink = $taskShell.CreateShortcut($taskReceipt.shortcut)
+    if ([IO.Path]::GetFullPath($taskReceipt.shortcut) -eq $taskExpectedShortcut -and
+        (Get-TaskSHA256 $taskReceipt.shortcut) -eq $taskReceipt.shortcut_sha256 -and
+        [IO.Path]::GetFullPath($taskLink.TargetPath) -eq (Join-Path $taskRoot 'Abschluss Start.exe')) { Remove-Item -LiteralPath $taskReceipt.shortcut -Force }
+native=options.native_dir/'judge-v6-windows.exe'
+native_receipt=options.native_receipt or options.native_dir/'JUDGE-V6-FREEZE-RECEIPT.json'
+if not native_receipt.exists():native_receipt=REPO/'judge'/'JUDGE-V6-FREEZE-RECEIPT.json'
+native_release=json.loads(native_receipt.read_text())
+native_provenance_path=options.native_dir/'PROVENANCE.json'
+if not native_provenance_path.exists():native_provenance_path=options.native_dir/'portable'/'PROVENANCE.json'
+native_provenance=json.loads(native_provenance_path.read_text())
+if native_provenance['program_sha256']!=sha(REPO/'judge'/'judge-v6.pmp'):
+    raise RuntimeError('Gated native source/test receipt does not match current judge')
+if native_release['result']!='PASS' or native_release['timeouts'] or native_release['corrected_crossroute_passed']!=938:
+    raise RuntimeError('Gated native finite test totals do not all pass')
+if native_release['primary_source_sha256']!=native_provenance['program_sha256']:
+    raise RuntimeError('Native freeze receipt and source provenance differ')
+if sha(native)!=native_release['windows_native_sha256']:raise RuntimeError('Gated native binary hash differs from its receipt')
+
+=== ./raw/selection-check.txt
+version 1.3.1 rows 22 keys ['version', 'status']
+MATCH repair/packaging/v9-judge-v6-1.3.1/build-bundle.py 71f5324ff3a52bf3
+MATCH repair/packaging/v9-judge-v6-1.3.1/installer.rkt ebebc52840c686d1
+MATCH repair/packaging/v9-judge-v6-1.3.1/launcher.rkt 11053c779693989e
+MATCH repair/packaging/v9-judge-v6-1.3.1/MATRIX-SOURCE-MANIFEST.json 809136d6a2d439f3
+MATCH repair/packaging/v9-judge-v6-1.3.1/package-utils.rkt d7a574f6ae7fd40e
+MATCH repair/packaging/v9-judge-v6-1.3.1/README.md 5c3e42112985234d
+MATCH repair/packaging/v9-judge-v6-1.3.1/run-compiled-book.py 1e824671f95ff52b
+MATCH repair/packaging/v9-judge-v6-1.3.1/test-package.py 58f2fceb31cfc889
+MATCH repair/packaging/v9-judge-v6-1.3.1/test-padded-judge.py 30a4dd358cb846a8
+MATCH repair/packaging/v9-judge-v6-1.3.1/test-runtime-modules.rkt 44e8fe4e7f5a2b36
+MATCH repair/packaging/v9-judge-v6-1.3.1/test-word-boundaries.py 47d05b91ed7d0da8
+MATCH repair/packaging/v9-judge-v6-1.3.1/Uninstall-Abschluss.ps1 7e6e0907b0536f40
+MATCH repair/packaging/v9-judge-v6-1.3.1/uninstaller.rkt 66de81c707ad2b1f
+MATCH repair/packaging/v9-judge-v6-1.3.1/verify-source-closure.py 4a3d63105468b56f
+MATCH repair/packaging/v9-judge-v6-1.3.1/workbench-entry.rkt fc2960b0450dc917
+MATCH repair/packaging/v9-judge-v6-1.3.1/COCKPIT-SOURCE-MANIFEST.json b185f97fb84253dd
+MATCH repair/packaging/v9-judge-v6-1.3.1/SUPPORT-SOURCE-MANIFEST.json 84e7d0fe87765b00
+MATCH repair/packaging/v9-judge-v6-1.3.1/RELEASE-1.3.1.md 247f064ab3b3c3c5
+MATCH repair/packaging/v9-judge-v6-1.3.1/test-count-bounds.py de03240f51ccad5b
+MATCH repair/packaging/v9-judge-v6-1.3.1/verify-archive-inputs.py a9cda41dfa568d58
+MATCH repair/packaging/v9-judge-v6-1.3.1/UTF8-VALIDATION-CORRECTION.json df429b4f5696d10a
+MATCH repair/packaging/v9-judge-v6-1.3.1/VERSION-CONTEXT-CORRECTION.json 58033ba3c96d6382
+mismatches 0
+physical 23
+NOT SELECTED (preserved, not failures): ['repair/packaging/v9-judge-v6-1.3.1/PUBLIC-SOURCE-MANIFEST.json']
+selected outside dir: []
+{'version': '1.3.1', 'status': 'Frozen public 1.3.1 packaging source with UTF-8 receipts and current uninstall/version context'}
+
+=== ./release-v1.3.1/raw/READER-V2-SHA256SUMS.txt
+9766d3b5ce274b2ac74567efb5b60cf0327591ce546ee358483277389dce99f0  rdnum-finite-reader-proof-public.zip
+
+=== ./release-v1.3.1/raw/SHA256SUMS.txt
+8db56c0cd336d84f3c4b6f867324683c28f33e8c390f773926a4c21ac225282a  Abschluss-1.3.1-source.zip
+db3d46690b1aae086539f25dabee0d1133fee6d8ac70d24f2eb9216550183c38  Abschluss-1.3.1-windows-x64.zip
+bfcae55fa26e0a5482c657f9835bdd453aee7ed6eed0bcc06c68762732c72c28  rdnum-instruction-steps-proof-public.zip
+26b2771556f409bbb5487f152fefd327f0e8f8e9661a99d4a932c92c8db39a71  SOURCE-CLOSURE-1.3.1.json
+3490564f01e75a9b2f47c8b0ee90ca6be7dd075b0ae0954f184ac06375cae186  validation-1.3.1-public.zip
+
+=== ./release-v1.3.1/raw/asset-list.tsv
+Abschluss-1.3.1-source.zip	180990181	8db56c0cd336d84f3c4b6f867324683c28f33e8c390f773926a4c21ac225282a	https://github.com/PompetzkiChris/pompetzki/releases/download/v1.3.1/Abschluss-1.3.1-source.zip
+Abschluss-1.3.1-windows-x64.zip	200606657	db3d46690b1aae086539f25dabee0d1133fee6d8ac70d24f2eb9216550183c38	https://github.com/PompetzkiChris/pompetzki/releases/download/v1.3.1/Abschluss-1.3.1-windows-x64.zip
+rdnum-finite-reader-proof-public.zip	131636	9766d3b5ce274b2ac74567efb5b60cf0327591ce546ee358483277389dce99f0	https://github.com/PompetzkiChris/pompetzki/releases/download/v1.3.1/rdnum-finite-reader-proof-public.zip
+rdnum-instruction-steps-proof-public.zip	100204	bfcae55fa26e0a5482c657f9835bdd453aee7ed6eed0bcc06c68762732c72c28	https://github.com/PompetzkiChris/pompetzki/releases/download/v1.3.1/rdnum-instruction-steps-proof-public.zip
+READER-V2-SHA256SUMS.txt	104	816586babddfaf0ac49f41d84abb5239cef0ec9fd4be57b6bc115670af0fb44c	https://github.com/PompetzkiChris/pompetzki/releases/download/v1.3.1/READER-V2-SHA256SUMS.txt
+SHA256SUMS.txt	489	aa3f502bafa0ae669623772f9a3ba76f24c561261ca5b8abba877889fc8172e2	https://github.com/PompetzkiChris/pompetzki/releases/download/v1.3.1/SHA256SUMS.txt
+SOURCE-CLOSURE-1.3.1.json	16532	26b2771556f409bbb5487f152fefd327f0e8f8e9661a99d4a932c92c8db39a71	https://github.com/PompetzkiChris/pompetzki/releases/download/v1.3.1/SOURCE-CLOSURE-1.3.1.json
+validation-1.3.1-public.zip	1424927	3490564f01e75a9b2f47c8b0ee90ca6be7dd075b0ae0954f184ac06375cae186	https://github.com/PompetzkiChris/pompetzki/releases/download/v1.3.1/validation-1.3.1-public.zip
+
+=== ./release-v1.3.1/raw/native-search.txt
+HIT judge-v6-windows.exe Abschluss-1.3.1-source.zip!Abschluss-1.3.1-source/vendor/gated-native/judge-v6-windows.exe
+HIT judge-v6-windows.exe Abschluss-1.3.1-windows-x64.zip!Abschluss-1.3.1/judge/judge-v6-windows.exe
+files scanned (incl. nested) 6395
+linux freeze found: False
+windows freeze found: True
+
+=== ./release-v1.3.1/raw/pins.txt
+## Abschluss-1.3.1-source.zip 3863 entries
+  MATCH Abschluss-1.3.1-source/judge/judge-v6.pmp 87562735cf20dfd1
+  MATCH Abschluss-1.3.1-source/judge/judge-v6.rkt a16ffa34b4eb03d8
+  MATCH Abschluss-1.3.1-source/runtime/source/pompetzki.asm 2329d3c993abfc5a
+  MATCH Abschluss-1.3.1-source/repair/book-v7/verified-book-check.rkt 8fa76a95058da7e4
+  MATCH Abschluss-1.3.1-source/repair/math-workbench-v2/engine.rkt 99084a403cc0b38b
+  MATCH Abschluss-1.3.1-source/vendor/gated-native/judge-v6-windows.exe 9b84cb4b1dacde78
+  judge-v6-linux: ABSENT
+## Abschluss-1.3.1-windows-x64.zip 442 entries
+  MATCH Abschluss-1.3.1/judge/judge-v6.pmp 87562735cf20dfd1
+  MATCH Abschluss-1.3.1/judge/judge-v6.rkt a16ffa34b4eb03d8
+  pompetzki.asm: ABSENT
+  verified-book-check.rkt: ABSENT
+  engine.rkt: ABSENT
+  MATCH Abschluss-1.3.1/judge/judge-v6-windows.exe 9b84cb4b1dacde78
+  judge-v6-linux: ABSENT
+  info Abschluss-1.3.1/pompetzki-w.exe d6c6e22a672be461 b''
+  info Abschluss-1.3.1/pompetzki.exe 957366e641219523 b''
+  info Abschluss-1.3.1/provenance/native-rebuild-comparison.json b2eeb5e2c10f389d b'{\r\n  "tested_sha256": "9b84cb4b1dacde788f693682dba571bf9b75e5b78df71cd6be90164131ea1554",\r\n  "rebuilt_sha256": null,\r\n  "allocated_sections_equal": true,\r\n  "rebuild_performed": false,\r\n  "selected_po'
+  info Abschluss-1.3.1/VERSION 3950ee30d230ec9e b'1.3.1\r\n'
+
+=== ./release-v1.3.1/raw/report.txt
+tag v1.3.1 target_commitish c5253c0922f553b1ac8ef18240c1c372ff39657f assets 8 draft False
+TAG MATCH v1.3.1 -> c5253c0922f553b1ac8ef18240c1c372ff39657f
+ASSET Abschluss-1.3.1-source.zip size=180990181 sha256=8db56c0cd336d84f3c4b6f867324683c28f33e8c390f773926a4c21ac225282a size_api=OK digest_api=OK sums=OK
+ASSET Abschluss-1.3.1-windows-x64.zip size=200606657 sha256=db3d46690b1aae086539f25dabee0d1133fee6d8ac70d24f2eb9216550183c38 size_api=OK digest_api=OK sums=OK
+ASSET rdnum-finite-reader-proof-public.zip size=131636 sha256=9766d3b5ce274b2ac74567efb5b60cf0327591ce546ee358483277389dce99f0 size_api=OK digest_api=OK sums=OK
+ASSET rdnum-instruction-steps-proof-public.zip size=100204 sha256=bfcae55fa26e0a5482c657f9835bdd453aee7ed6eed0bcc06c68762732c72c28 size_api=OK digest_api=OK sums=OK
+ASSET READER-V2-SHA256SUMS.txt size=104 sha256=816586babddfaf0ac49f41d84abb5239cef0ec9fd4be57b6bc115670af0fb44c size_api=OK digest_api=OK sums=self
+ASSET SHA256SUMS.txt size=489 sha256=aa3f502bafa0ae669623772f9a3ba76f24c561261ca5b8abba877889fc8172e2 size_api=OK digest_api=OK sums=self
+ASSET SOURCE-CLOSURE-1.3.1.json size=16532 sha256=26b2771556f409bbb5487f152fefd327f0e8f8e9661a99d4a932c92c8db39a71 size_api=OK digest_api=OK sums=OK
+ASSET validation-1.3.1-public.zip size=1424927 sha256=3490564f01e75a9b2f47c8b0ee90ca6be7dd075b0ae0954f184ac06375cae186 size_api=OK digest_api=OK sums=OK
+CLAIM Abschluss-1.3.1-windows-x64.zip expected=db3d46690b1aae086539f25dabee0d1133fee6d8ac70d24f2eb9216550183c38/200606657 actual=db3d46690b1aae086539f25dabee0d1133fee6d8ac70d24f2eb9216550183c38/200606657 MATCH
+CLAIM Abschluss-1.3.1-source.zip expected=8db56c0cd336d84f3c4b6f867324683c28f33e8c390f773926a4c21ac225282a/180990181 actual=8db56c0cd336d84f3c4b6f867324683c28f33e8c390f773926a4c21ac225282a/180990181 MATCH
+CLAIM rdnum-finite-reader-proof-public.zip expected=9766d3b5ce274b2ac74567efb5b60cf0327591ce546ee358483277389dce99f0/131636 actual=9766d3b5ce274b2ac74567efb5b60cf0327591ce546ee358483277389dce99f0/131636 MATCH
+SELECTION Abschluss-1.3.1-source.zip: rows=22 present=22 copies_checked=22 mismatches=0
+SELECTION Abschluss-1.3.1-windows-x64.zip: rows=22 present=0 copies_checked=0 mismatches=0
+SELECTION rdnum-finite-reader-proof-public.zip: rows=22 present=0 copies_checked=0 mismatches=0
+SELECTION rdnum-instruction-steps-proof-public.zip: rows=22 present=0 copies_checked=0 mismatches=0
+SELECTION validation-1.3.1-public.zip: rows=22 present=22 copies_checked=22 mismatches=0
+RESULT PASS
+
