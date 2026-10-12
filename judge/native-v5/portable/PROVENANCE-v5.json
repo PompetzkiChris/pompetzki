@@ -1,0 +1,86 @@
+{
+  "schema": "native-gate-portable-provenance/v1",
+  "license": {
+    "identifier": "MIT",
+    "text_file": "LICENSE",
+    "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+    "project_copyright": "2026 Christopher Pompetzki",
+    "copied_from_package_root": "LICENSE"
+  },
+  "program": {
+    "package_path": "judge/judge-v5.pmp",
+    "sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+    "identity": "Frozen canonical initial-registry prefix gate"
+  },
+  "compiler": {
+    "package_path": "judge/native-v5/portable/pmpc-original.rkt",
+    "sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+    "identity": "Pompetzki project first-cut direct core pmp compiler; source header date 2026-10-09",
+    "windows_runtime": "Embedded in the same compiler source",
+    "racket_modules": [
+      "racket/string",
+      "racket/list",
+      "racket/file",
+      "racket/port"
+    ],
+    "project_local_includes": []
+  },
+  "linux_adapter": {
+    "package_path": "judge/native-v5/portable/linux-runtime.asm",
+    "sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+    "identity": "Linux x64 syscall runtime retaining the compiler rcx/rdx interface and direct statement lowering",
+    "services": [
+      "mmap",
+      "open",
+      "lseek",
+      "read",
+      "close",
+      "write",
+      "exit"
+    ]
+  },
+  "builder": {
+    "package_path": "judge/native-v5/portable/build-native.py",
+    "sha256": "18fc3cb6d94359ae1e62a574097a228aae5bb5e272d36c4dc8ecbf18b3d8dcc7",
+    "python_modules": [
+      "argparse",
+      "datetime",
+      "hashlib",
+      "json",
+      "os",
+      "pathlib",
+      "re",
+      "shutil",
+      "subprocess",
+      "time"
+    ],
+    "configuration": "Tool executables from PATH or explicit arguments; direct Linux support; optional configurable WSL with wslpath conversion on Windows"
+  },
+  "semantics": {
+    "variables": "Fixed single 8-byte cells",
+    "literal_statements": "Static literal copies; the frozen gate reads AUTHREF and WHY without writing into their bytes",
+    "arithmetic": "Exact 64-bit word operations; no floating point",
+    "integrity_protection": "Basic runtimes; no triple-copy/string-integrity protection"
+  },
+  "proof_boundary": "General source-to-native and executable-to-Gallina check_batch correspondence remain open. These build and run receipts are finite evidence.",
+  "v5_parser_correction": {
+    "domain": "0..999999999999",
+    "leading_zeros": "ignored before counting significant digits",
+    "bound": "reject the 13th significant digit before multiplication/addition",
+    "prior_v4_finite_results": "The inherited finite v4 results do not substitute for the separate v5 receipt."
+  },
+  "finite_v5_results": {
+    "cases_per_native_platform": 254,
+    "bot_cases": 94,
+    "numeric_authentication_cases": 42,
+    "math_cases": 117,
+    "full_replay_theorems": 4551,
+    "full_replay_steps": 139194,
+    "native_runs": 508,
+    "windows_interpreted_runs": 136,
+    "racket_runs": 254,
+    "total_runs": 898,
+    "failures": 0,
+    "timeouts": 0
+  }
+}

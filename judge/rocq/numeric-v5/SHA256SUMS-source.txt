@@ -1,0 +1,4 @@
+35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6 *judge/rocq/numeric-v5/DecimalSignificantV4.v
+926dc252c4ff0bdc7e353cedc2b20b3b77be744db8da197eca60ba98499263e7 *judge/rocq/numeric-v5/build-decimal-proof.py
+30a5a046210900c7df1c209270462feca58dd6eef658cb2cc6ca23308e17c17d *judge/rocq/numeric-v5/README.md
+dc2597dc8390f1fff97edbb4ec2fde295712bbda81571966a879b9a62297529f *judge/rocq/numeric-v5/SOURCE-INPUTS.json
