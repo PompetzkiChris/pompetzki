@@ -1,0 +1,5 @@
+00f3e9a680987dd68e230409498284d0318080f8400bfb5e915b32216fe11baf  /workspace/b52/interp/pompetzki
+b8725cbdc19b189b092268cdfbc1187e2e70bbb88ffd24792f77887af4ff7fcc  /workspace/b52/pompetzki-repaired-linux
+ece313c902ab3a610c5b76b5cc080157f39d99e79515102930a11cb677d5c48a  /workspace/b52/native/judge-v4-linux
+778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db  judge/portable-interpreter/source/pompetzki.asm
+778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db  repair/runtime/source/pompetzki.asm
