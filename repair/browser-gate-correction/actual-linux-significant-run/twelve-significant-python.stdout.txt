@@ -1,0 +1,3 @@
+REJECT registry
+0
+formula

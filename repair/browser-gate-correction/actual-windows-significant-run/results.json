@@ -1,0 +1,43 @@
+{
+  "runs": 4,
+  "passed": 4,
+  "failures": 0,
+  "rows": [
+    {
+      "case": "twelve-significant",
+      "implementation": "pmp",
+      "expected_reason": "formula",
+      "exit_code": 1,
+      "passed": true,
+      "stdout_sha256": "8be09165b205dd50b4ffa145e63088141c5a0ede7127cedc32952adf9e505581",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "twelve-significant",
+      "implementation": "python",
+      "expected_reason": "formula",
+      "exit_code": 1,
+      "passed": true,
+      "stdout_sha256": "d373c23899cc03887dbe49e462f6bffd55b814dc6a4c5fde0a888dee3c788f52",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "thirteen-significant",
+      "implementation": "pmp",
+      "expected_reason": "parse",
+      "exit_code": 1,
+      "passed": true,
+      "stdout_sha256": "dbb88aebdbba573f339c513431c1592165d220a2edd3271fd22df85ac91fd163",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "thirteen-significant",
+      "implementation": "python",
+      "expected_reason": "parse",
+      "exit_code": 1,
+      "passed": true,
+      "stdout_sha256": "fba5dd1c984475ffd23e686ad5b9cd5740bd32a25954cc731fb6ecae4bbb135e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

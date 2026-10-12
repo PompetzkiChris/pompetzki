@@ -1,0 +1,5 @@
+REJECT registry
+0
+formula
+line 350: check zero failed: not the zero vector
+

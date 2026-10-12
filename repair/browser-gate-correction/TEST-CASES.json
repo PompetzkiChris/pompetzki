@@ -1,0 +1,94 @@
+[
+  {
+    "name": "padding4300-then-2",
+    "path": "cases/padding4300-then-2.jdg",
+    "kind": "numeric-boundary",
+    "gate": "GATE",
+    "sha256": "dd84fd937516efb4be9e891a52d518cd8c9a283123910ba2c53ee9599e97e123"
+  },
+  {
+    "name": "padding5000-then-2",
+    "path": "cases/padding5000-then-2.jdg",
+    "kind": "numeric-boundary",
+    "gate": "GATE",
+    "sha256": "d5c1aa4a8d791c581f624772aba01eab2487f69c7daefe300c44e562c465dca0"
+  },
+  {
+    "name": "zeros5000-formula",
+    "path": "cases/zeros5000-formula.jdg",
+    "kind": "numeric-boundary",
+    "gate": "GATE",
+    "sha256": "cafc5293b1b7cb3f47af2f95d001be19791228b307589e131b7608002885cd3c"
+  },
+  {
+    "name": "zeros5000-hypcount",
+    "path": "cases/zeros5000-hypcount.jdg",
+    "kind": "numeric-boundary",
+    "gate": "GATE",
+    "sha256": "344df5fbaa6caf1bc18b05296df54d61db03a7a22deb297179f7d7b1d9fd72f1"
+  },
+  {
+    "name": "nines5000-formula",
+    "path": "cases/nines5000-formula.jdg",
+    "kind": "numeric-boundary",
+    "gate": "REJECT",
+    "sha256": "399790b914fb0a5b3417363cc0c00a76450256f3b2cdeb10f59b37e79c22dcf4"
+  },
+  {
+    "name": "zeros5000-registry-count",
+    "path": "cases/zeros5000-registry-count.jdg",
+    "kind": "numeric-boundary",
+    "gate": "GATE",
+    "sha256": "6037b8bed12db46b4ad29547dddb2f895af6a2c6289fae4137c519e7a7e7a32d"
+  },
+  {
+    "name": "canonical-truth",
+    "path": "cases/canonical-truth.jdg",
+    "kind": "wrapper",
+    "exit": 0,
+    "gate": "GATE",
+    "accept": true,
+    "proof_invoked": true,
+    "sha256": "7293fecc54f1fdbba0eb663fba507f9467d8102bb2c09b4a43fbbb8abb88eea8"
+  },
+  {
+    "name": "valid-13digit-padding",
+    "path": "cases/valid-13digit-padding.jdg",
+    "kind": "wrapper",
+    "exit": 0,
+    "gate": "GATE",
+    "accept": true,
+    "proof_invoked": true,
+    "sha256": "453dfc5250934c74a028d46bfcaf21fa36a7d684cf8f73c072bf2779aed1c512"
+  },
+  {
+    "name": "forged-false-registry",
+    "path": "cases/forged-false-registry.jdg",
+    "kind": "wrapper",
+    "exit": 1,
+    "gate": "REJECT",
+    "accept": false,
+    "proof_invoked": false,
+    "sha256": "2b585b1f140d06b8cd8135c549fdc30bbc04dc3c87f4d7f0e622186c742751ce"
+  },
+  {
+    "name": "canonical-false-axiom",
+    "path": "cases/canonical-false-axiom.jdg",
+    "kind": "wrapper",
+    "exit": 1,
+    "gate": "GATE",
+    "accept": false,
+    "proof_invoked": true,
+    "sha256": "c946e351e52890aae7cf94e27b90dfd4227aa2646c36650e8fea6878df0a7de2"
+  },
+  {
+    "name": "explicit-source-route",
+    "path": "cases/explicit-source-route.jdg",
+    "kind": "wrapper",
+    "exit": 0,
+    "gate": "GATE",
+    "accept": true,
+    "proof_invoked": true,
+    "sha256": "7293fecc54f1fdbba0eb663fba507f9467d8102bb2c09b4a43fbbb8abb88eea8"
+  }
+]
