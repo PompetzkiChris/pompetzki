@@ -1,0 +1,66 @@
+ok default digit limit is 4300, got 4300
+ok v6 source does not call set_int_max_str_digits
+ok 4301 zeros -> 0
+ok 5000 zeros -> 0
+ok 4301 zeros then 2 -> 2
+ok 5000 zeros then 2 -> 2
+ok 12 nines in domain
+ok 13 nines out of domain
+ok 10^12 out of domain
+ok 4301 nines refused before int()
+ok 5000 nines refused before int()
+ok limit unchanged after parse_decimal
+ok v5 Scan.num ValueError on 4301 zeros
+ok v6 Scan.num 4301 zeros is 0
+ok v5 Scan.num ValueError on 5000 zeros
+ok v6 Scan.num 5000 zeros is 0
+name	v5-py	v5-pmp	v6-py	v6-pmp	spec
+zeros4301-value0	ValueError	GATE	GATE	GATE	GATE
+ok v5 py zeros4301-value0 ValueError
+ok v5 pmp zeros4301-value0 GATE
+ok v6 py zeros4301-value0
+ok v6 pmp zeros4301-value0
+zeros4301-hypcount	ValueError	GATE	GATE	GATE	GATE
+ok v5 py zeros4301-hypcount ValueError
+ok v5 pmp zeros4301-hypcount GATE
+ok v6 py zeros4301-hypcount
+ok v6 pmp zeros4301-hypcount
+zeros4301-then-2	ValueError	GATE	GATE	GATE	GATE
+ok v5 py zeros4301-then-2 ValueError
+ok v5 pmp zeros4301-then-2 GATE
+ok v6 py zeros4301-then-2
+ok v6 pmp zeros4301-then-2
+zeros5000-value0	ValueError	GATE	GATE	GATE	GATE
+ok v5 py zeros5000-value0 ValueError
+ok v5 pmp zeros5000-value0 GATE
+ok v6 py zeros5000-value0
+ok v6 pmp zeros5000-value0
+zeros5000-hypcount	ValueError	GATE	GATE	GATE	GATE
+ok v5 py zeros5000-hypcount ValueError
+ok v5 pmp zeros5000-hypcount GATE
+ok v6 py zeros5000-hypcount
+ok v6 pmp zeros5000-hypcount
+zeros5000-then-2	ValueError	GATE	GATE	GATE	GATE
+ok v5 py zeros5000-then-2 ValueError
+ok v5 pmp zeros5000-then-2 GATE
+ok v6 py zeros5000-then-2
+ok v6 pmp zeros5000-then-2
+sig13	REJECT:formula	REJECT:formula	REJECT:parse	REJECT:parse	REJECT:parse
+ok v6 py sig13
+ok v6 pmp sig13
+nines13	REJECT:formula	REJECT:formula	REJECT:parse	REJECT:parse	REJECT:parse
+ok v6 py nines13
+ok v6 pmp nines13
+nines4301	ValueError	REJECT:formula	REJECT:parse	REJECT:parse	REJECT:parse
+ok v6 py nines4301
+ok v6 pmp nines4301
+nines5000	ValueError	REJECT:formula	REJECT:parse	REJECT:parse	REJECT:parse
+ok v6 py nines5000
+ok v6 pmp nines5000
+domain-max-not-2	REJECT:formula	REJECT:formula	REJECT:formula	REJECT:formula	REJECT:formula
+ok v6 py domain-max-not-2
+ok v6 pmp domain-max-not-2
+ok limit unchanged after the suite
+
+failures 0
+ALL LONG PADDING CHECKS PASSED

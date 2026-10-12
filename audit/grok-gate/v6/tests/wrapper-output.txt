@@ -1,0 +1,43 @@
+--- v6+judge-v5 digits13 exit 0
+GATE
+1
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+1
+1
+2
+ok full v5-judge route digits13
+--- v5 wrapper + judge-v3 digits13 exit 1
+GATE
+1
+706
+REJECT
+a number has more than 12 digits
+theorem and step (counted from 0):
+0
+0
+ok judge-v3 route rejects after GATE digits13
+--- v6+judge-v5 zeros4301 exit 0
+GATE
+1
+706
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+1
+1
+2
+ok full v5-judge route zeros4301
+--- v5 wrapper + judge-v3 zeros4301 exit 1
+GATE
+1
+706
+REJECT
+a number has more than 12 digits
+theorem and step (counted from 0):
+0
+0
+ok judge-v3 route rejects after GATE zeros4301
+
+failures 0
+ALL WRAPPER CHECKS PASSED
