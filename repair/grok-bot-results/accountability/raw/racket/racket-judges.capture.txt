@@ -1,0 +1,48 @@
+=== v120-racket-judge.rkt a1-false-registry-only.jdg
+--- cmd
+racket /workspace/v120/w/Abschluss-1.2/judge/racket/judge.rkt inputs/a1-false-registry-only.jdg
+--- exit
+0
+--- stdout
+ACCEPT registry 1 theorems 0 steps 0 final-registry 1
+--- stderr
+=== v120-racket-judge.rkt a2-false-registry-thm.jdg
+--- cmd
+racket /workspace/v120/w/Abschluss-1.2/judge/racket/judge.rkt inputs/a2-false-registry-thm.jdg
+--- exit
+0
+--- stdout
+ACCEPT registry 1 theorems 1 steps 1 final-registry 2
+--- stderr
+=== v120-racket-judge.rkt ctl-canonical-reg0.jdg
+--- cmd
+racket /workspace/v120/w/Abschluss-1.2/judge/racket/judge.rkt inputs/ctl-canonical-reg0.jdg
+--- exit
+0
+--- stdout
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+--- stderr
+=== branch-judge-v4.rkt a1-false-registry-only.jdg
+--- cmd
+racket /workspace/acct/judge/judge-v4.rkt inputs/a1-false-registry-only.jdg
+--- exit
+1
+--- stdout
+REJECT initial registry 0: entry differs from canonical REG0
+--- stderr
+=== branch-judge-v4.rkt a2-false-registry-thm.jdg
+--- cmd
+racket /workspace/acct/judge/judge-v4.rkt inputs/a2-false-registry-thm.jdg
+--- exit
+1
+--- stdout
+REJECT initial registry 0: entry differs from canonical REG0
+--- stderr
+=== branch-judge-v4.rkt ctl-canonical-reg0.jdg
+--- cmd
+racket /workspace/acct/judge/judge-v4.rkt inputs/ctl-canonical-reg0.jdg
+--- exit
+0
+--- stdout
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+--- stderr
