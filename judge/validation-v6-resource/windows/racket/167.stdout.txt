@@ -1,0 +1,1 @@
+ACCEPT registry 677 theorems 111 steps 3507 final-registry 788

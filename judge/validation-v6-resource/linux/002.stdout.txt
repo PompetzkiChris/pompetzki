@@ -1,0 +1,6 @@
+REJECT
+a record count exceeds remaining input bytes
+theorem and step (counted from 0):
+0
+0
+line 353: check zero failed: not the zero vector

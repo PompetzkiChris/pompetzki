@@ -1,0 +1,7 @@
+The allocation correction is executed on 938 cases: Windows native 264, Windows interpreted pmp 146, Racket 264, and Linux native 264. All verdicts and exits pass; no timeout occurs. Each native/Racket route includes the unchanged reviewed 254-case v5 corpus and ten new controls. Interpreted pmp includes its unchanged 136-case lane and ten controls. The original reviewed inputs and expectations remain in judge/validation-v5; only the ten new resource controls are copied here.
+
+Each raw output file is copied byte for byte and checked against its execution receipt. Windows children were assigned to a memory-limited owned Job before resume; Linux used a pre-execution address-space limit. Resource limits contain these tests and do not change the mathematics. The retained v5 results show out-of-memory or LIMIT for impossible preallocation counts. The v6 result is parse REJECT, while empty batches, valid proofs, maximum predicate IDs and zero padding remain accepted.
+
+The summary hashes identify the actual executed binaries and sources. Compiler-preservation and executable-to-Gallina correspondence remain separate proof obligations. Existing cases may have route-specific refusal classifications; the new guards target structurally impossible allocation counts.
+
+The copied Windows owned-job-runner.py is reusable with explicit checker commands and new output names. It refuses to resume a child unless memory-limited Job assignment succeeded. The corresponding public numeric/control driver is supplied separately. No global resource settings are changed.

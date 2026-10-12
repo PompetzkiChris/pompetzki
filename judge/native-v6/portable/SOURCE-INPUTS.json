@@ -1,0 +1,50 @@
+{
+  "schema": "native-gate-v6-source-inputs/v1",
+  "builder": "judge/native-v6/portable/build-native.py",
+  "frozen_source": "judge/judge-v6.pmp",
+  "files": [
+    {
+      "candidate_relative_path": "judge/judge-v6.pmp",
+      "package_relative_path": "judge/judge-v6.pmp",
+      "sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+      "bytes": 101261
+    },
+    {
+      "candidate_relative_path": "judge/native-v6/portable/build-native.py",
+      "package_relative_path": "judge/native-v6/portable/build-native.py",
+      "sha256": "db1b3bce4b0d9e4a0d4709856f2bdf323ca795d788d62665edf31e0b58ac2d69",
+      "bytes": 7935
+    },
+    {
+      "candidate_relative_path": "judge/native-v6/portable/pmpc-original.rkt",
+      "package_relative_path": "judge/native-v6/portable/pmpc-original.rkt",
+      "sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+      "bytes": 13614
+    },
+    {
+      "candidate_relative_path": "judge/native-v6/portable/linux-runtime.asm",
+      "package_relative_path": "judge/native-v6/portable/linux-runtime.asm",
+      "sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+      "bytes": 3666
+    },
+    {
+      "candidate_relative_path": "judge/native-v6/portable/LICENSE",
+      "package_relative_path": "judge/native-v6/portable/LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077
+    },
+    {
+      "candidate_relative_path": "judge/native-v6/portable/PROVENANCE.json",
+      "package_relative_path": "judge/native-v6/portable/PROVENANCE.json",
+      "sha256": "a81ef737f23018d3deda24c5e03c626847d69d155666ac398b26780ab783c926",
+      "bytes": 1129
+    },
+    {
+      "candidate_relative_path": "judge/native-v6/portable/README.md",
+      "package_relative_path": "judge/native-v6/portable/README.md",
+      "sha256": "8f4407595ac4c38f24efc699c21762c9d9074464dbf30cfcf92ec69714de80fd",
+      "bytes": 1548
+    }
+  ],
+  "manifest_package_path": "judge/native-v6/portable/SOURCE-INPUTS.json"
+}

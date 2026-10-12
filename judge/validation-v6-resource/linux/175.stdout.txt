@@ -1,0 +1,6 @@
+REJECT
+unknown formula tag
+theorem and step (counted from 0):
+111
+0
+line 353: check zero failed: not the zero vector

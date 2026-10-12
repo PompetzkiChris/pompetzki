@@ -1,0 +1,1 @@
+REJECT theorem 65 step 21 (step Z)

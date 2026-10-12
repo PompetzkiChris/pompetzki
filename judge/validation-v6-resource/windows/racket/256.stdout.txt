@@ -1,0 +1,1 @@
+REJECT theorem 1 step 0 (final: no lines)

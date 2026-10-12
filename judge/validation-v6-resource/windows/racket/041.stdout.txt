@@ -1,0 +1,1 @@
+REJECT initial registry count: more than 706 entries

@@ -1,0 +1,1 @@
+REJECT theorem 39 step 7 (final: last line is not the statement)

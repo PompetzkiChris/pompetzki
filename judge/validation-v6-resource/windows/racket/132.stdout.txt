@@ -1,0 +1,1 @@
+REJECT parse error at byte 52: a number has more than 12 significant digits

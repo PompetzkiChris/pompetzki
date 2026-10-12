@@ -1,0 +1,1 @@
+REJECT theorem 0 step 1 (final: a hypothesis used is not claimed)

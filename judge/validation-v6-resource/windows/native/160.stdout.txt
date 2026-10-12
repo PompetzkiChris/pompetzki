@@ -1,0 +1,6 @@
+REJECT
+the last line is not the statement renamed by sig
+theorem and step (counted from 0):
+66
+17
+line 353: check zero failed: not the zero vector

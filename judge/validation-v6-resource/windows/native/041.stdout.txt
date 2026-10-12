@@ -1,0 +1,6 @@
+REJECT
+initial registry has more than 706 entries
+theorem and step (counted from 0):
+0
+0
+line 353: check zero failed: not the zero vector

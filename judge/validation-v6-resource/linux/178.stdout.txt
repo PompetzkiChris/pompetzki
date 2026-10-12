@@ -1,0 +1,6 @@
+REJECT
+exel: the side conditions of existential elimination fail
+theorem and step (counted from 0):
+96
+4
+line 353: check zero failed: not the zero vector

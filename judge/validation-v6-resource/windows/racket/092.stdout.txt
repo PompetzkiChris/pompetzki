@@ -1,0 +1,1 @@
+REJECT parse error at byte 76: trailing input after the last theorem

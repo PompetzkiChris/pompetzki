@@ -1,0 +1,6 @@
+REJECT
+the input does not begin with JDG1
+theorem and step (counted from 0):
+0
+0
+line 353: check zero failed: not the zero vector
