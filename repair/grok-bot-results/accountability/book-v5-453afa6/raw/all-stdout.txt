@@ -1,0 +1,86 @@
+===== 01-post-default.stdout =====
+/workspace/bw5/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct statements 1 records 4 chain head cecaa7aeaeca9ecc7a0ad1a3e2f613e384a20ead48149686585079b79a7a98e2
+NEGATIVE-1.0.ledger: N 0 records 2 chain head f3b1332acbe0f7f439f133d6c30f6cd24fc4c035e100bc68d674d7e87dc90db7
+SUSPENSE 0
+===== 02-post-interpreted.stdout =====
+/workspace/bw5/ok-hyp.jdg pmp ACCEPT racket ACCEPT unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 1 B 1 (Proved 0, Qualified 1) steps 1 distinct statements 1 records 4 chain head b495d794ad8e2448da4a55fc34211620b8142350c42fd416f02f59b15fa7e7ce
+NEGATIVE-1.0.ledger: N 0 records 2 chain head 7408fb32e5ca2205ef2d07dee9c42293c923cbdbbd4f79fd8a098c9e6760c251
+SUSPENSE 0
+===== 03-check-default.stdout =====
+{"evidence_schema":"verified-book-v5","files":1,"metadata_sha256":"055536d424cacdc4526aba1ebbfb6410608993c8fbf8fca1eeb213a8e64687fe","negative_files":0,"positive_files":1,"reruns":[{"input":"/workspace/bw5/post-default/judge-inputs/1-ok-hyp.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw5/post-default/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT\nregistry entries at the start, theorems accepted, steps checked, registry entries at the end:\n706\n1\n1\n707\n","verdict":"ACCEPT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw5/post-default/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT registry 706 theorems 1 steps 1 final-registry 707\n","verdict":"ACCEPT"},"sha256":"248dd93c8ee72d7b1f8db8bbbf4d4c150aef4fe8a39ba40cb2bd73a6c9e5b34d","verdict":"ACCEPT"}],"status":"CHECK OK","theorems":1}
+===== 04-check-interpreted.stdout =====
+{"evidence_schema":"verified-book-v5","files":1,"metadata_sha256":"830eebc69deb39dee0d6d4621e05b8f8a56975dbb38064a799836f529e65dacc","negative_files":0,"positive_files":1,"reruns":[{"input":"/workspace/bw5/post-interp/judge-inputs/1-ok-hyp.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw5/post-interp/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT\nregistry entries at the start, theorems accepted, steps checked, registry entries at the end:\n706\n1\n1\n707\n","verdict":"ACCEPT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw5/post-interp/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT registry 706 theorems 1 steps 1 final-registry 707\n","verdict":"ACCEPT"},"sha256":"248dd93c8ee72d7b1f8db8bbbf4d4c150aef4fe8a39ba40cb2bd73a6c9e5b34d","verdict":"ACCEPT"}],"status":"CHECK OK","theorems":1}
+===== 05-post-m1.stdout =====
+/workspace/bw5/m1-refl.jdg pmp REJECT racket REJECT unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 0 B 0 (Proved 0, Qualified 0) steps 0 distinct statements 0 records 2 chain head ff23a5d37809f50457ec5626941ec6cef83f422256ec73041a372efc49f165f1
+NEGATIVE-1.0.ledger: N 1 records 3 chain head 7feaa45983844e6477f1c5a265341e49b1e7c8f18bfc266f396edcb0109e8be2
+SUSPENSE 0
+===== 06-check-m1.stdout =====
+{"evidence_schema":"verified-book-v5","files":1,"metadata_sha256":"a697fd51f2346e873a2aef9b2517cf93d94bb2451db44e8da944d51531f209f0","negative_files":1,"positive_files":0,"reruns":[{"input":"/workspace/bw5/post-m1/judge-inputs/1-m1-refl.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw5/post-m1/judge-inputs/1-m1-refl.jdg"],"exit":1,"stdout":"REJECT\nax: not an axiom shape\ntheorem and step (counted from 0):\n0\n1\nline 351: check zero failed: not the zero vector\n","verdict":"REJECT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw5/post-m1/judge-inputs/1-m1-refl.jdg"],"exit":1,"stdout":"REJECT theorem 0 step 1 (step Y)\n","verdict":"REJECT"},"sha256":"2b29ecb7f47ca5585eeb8ca66b0eee90467aa6a570c14063ce69a2b172aa3cb0","verdict":"REJECT"}],"status":"CHECK OK","theorems":0}
+===== 07-forge-consistent-false.stdout =====
+===== 07b-forge-consistent-false.stdout =====
+===== 08-rehashed-thm.stdout =====
+===== 09-post-ambiguous.stdout =====
+/workspace/bw5/ok-hyp.jdg pmp UNKNOWN racket UNKNOWN unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 0 B 0 (Proved 0, Qualified 0) steps 0 distinct statements 0 records 2 chain head f7dd621bc0f9b7ff4000254a7f7e26170c773d0c0de682c730f5d89a19963612
+NEGATIVE-1.0.ledger: N 0 records 2 chain head bae5a7e88ff67d7137f4626c1bf06ec681d7503e6238a10dfec935f50bbff2e5
+SUSPENSE 1
+  SUSPENSE /workspace/bw5/post-amb/judge-inputs/1-ok-hyp.jdg: verdicts pmp UNKNOWN exit 0, racket UNKNOWN exit 0
+===== 10-check-ambiguous.stdout =====
+===== 10b-check-ambiguous-ambundle.stdout =====
+===== 11-orphan-ledger-N.stdout =====
+===== 12-orphan-judge-runs-file.stdout =====
+{"evidence_schema":"verified-book-v5","files":1,"metadata_sha256":"055536d424cacdc4526aba1ebbfb6410608993c8fbf8fca1eeb213a8e64687fe","negative_files":0,"positive_files":1,"reruns":[{"input":"/workspace/bw5/forge-orphan-file/judge-inputs/1-ok-hyp.jdg","pmp":{"command":["/workspace/bundle-453/judge/judge-v5-windows.exe","/workspace/bw5/forge-orphan-file/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT\nregistry entries at the start, theorems accepted, steps checked, registry entries at the end:\n706\n1\n1\n707\n","verdict":"ACCEPT"},"racket":{"command":["/workspace/tools/racket/bin/racket","/workspace/bundle-453/judge/judge-v5.rkt","/workspace/bw5/forge-orphan-file/judge-inputs/1-ok-hyp.jdg"],"exit":0,"stdout":"ACCEPT registry 706 theorems 1 steps 1 final-registry 707\n","verdict":"ACCEPT"},"sha256":"248dd93c8ee72d7b1f8db8bbbf4d4c150aef4fe8a39ba40cb2bd73a6c9e5b34d","verdict":"ACCEPT"}],"status":"CHECK OK","theorems":1}
+===== 12b-orphan-snapshot.stdout =====
+===== 13-changed-input.stdout =====
+===== 14-bad-f-sha.stdout =====
+===== 15-duplicate-receipt.stdout =====
+===== 16-reordered-B-id.stdout =====
+===== 17-wrong-byte-count.stdout =====
+===== 18-tampered-timestamp.stdout =====
+===== 19-refuse-existing.stdout =====
+===== D-rt-b1.stdout =====
+-9223372036854775808
+===== D-rt-c1.stdout =====
+3
+97
+0
+98
+32
+0
+98
+===== D-rt-d1.stdout =====
+-9223372036854775808
+===== D-rt-d2.stdout =====
+0
+===== D-v5n-a1.stdout =====
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== D-v5n-ctl.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== D-v5p-a1.stdout =====
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector

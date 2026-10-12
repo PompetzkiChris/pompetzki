@@ -1,0 +1,117 @@
+=== 01-post-default.exit (2 bytes)
+0
+=== 01-post-default.stderr (0 bytes)
+=== 02-post-interpreted.exit (2 bytes)
+0
+=== 02-post-interpreted.stderr (0 bytes)
+=== 03-check-default.exit (2 bytes)
+0
+=== 03-check-default.stderr (0 bytes)
+=== 04-check-interpreted.exit (2 bytes)
+0
+=== 04-check-interpreted.stderr (0 bytes)
+=== 05-post-m1.exit (2 bytes)
+0
+=== 05-post-m1.stderr (0 bytes)
+=== 06-check-m1.exit (2 bytes)
+0
+=== 06-check-m1.stderr (0 bytes)
+=== 07-forge-consistent-false.exit (2 bytes)
+1
+=== 07-forge-consistent-false.stderr (81 bytes)
+CHECK FAILED: verified-book-check: RECEIPTS row differs from exact metadata/logs
+=== 07b-forge-consistent-false.exit (2 bytes)
+1
+=== 07b-forge-consistent-false.stderr (69 bytes)
+CHECK FAILED: verified-book-check: rerun differs from stored verdict
+=== 08-rehashed-thm.exit (2 bytes)
+1
+=== 08-rehashed-thm.stderr (95 bytes)
+CHECK FAILED: verified-book-check: B record differs from the complete checked theorem evidence
+=== 09-post-ambiguous.exit (2 bytes)
+3
+=== 09-post-ambiguous.stderr (0 bytes)
+=== 10-check-ambiguous.exit (2 bytes)
+1
+=== 10-check-ambiguous.stderr (96 bytes)
+CHECK FAILED: verified-book-check: metadata artifact hash differs from the selected bundle tool
+=== 10b-check-ambiguous-ambundle.exit (2 bytes)
+1
+=== 10b-check-ambiguous-ambundle.stderr (68 bytes)
+CHECK FAILED: verified-book-check: stored verdict/exit code differs
+=== 11-orphan-ledger-N.exit (2 bytes)
+1
+=== 11-orphan-ledger-N.stderr (70 bytes)
+CHECK FAILED: verified-book-check: input/receipt/ledger counts differ
+=== 12-orphan-judge-runs-file.exit (2 bytes)
+0
+=== 12-orphan-judge-runs-file.stderr (0 bytes)
+=== 12b-orphan-snapshot.exit (2 bytes)
+1
+=== 12b-orphan-snapshot.stderr (94 bytes)
+CHECK FAILED: verified-book-check: snapshot directory contains unrecorded or duplicate inputs
+=== 13-changed-input.exit (2 bytes)
+1
+=== 13-changed-input.stderr (77 bytes)
+CHECK FAILED: verified-book-check: snapshot hashes or unchanged state differ
+=== 14-bad-f-sha.exit (2 bytes)
+1
+=== 14-bad-f-sha.stderr (85 bytes)
+CHECK FAILED: verified-book-check: F/N input identity, bytes, source or date differs
+=== 15-duplicate-receipt.exit (2 bytes)
+1
+=== 15-duplicate-receipt.stderr (69 bytes)
+CHECK FAILED: verified-book-check: duplicate RECEIPTS input identity
+=== 16-reordered-B-id.exit (2 bytes)
+1
+=== 16-reordered-B-id.stderr (76 bytes)
+CHECK FAILED: verified-book-check: B record shape/ordered ID/F link differs
+=== 17-wrong-byte-count.exit (2 bytes)
+1
+=== 17-wrong-byte-count.stderr (85 bytes)
+CHECK FAILED: verified-book-check: F/N input identity, bytes, source or date differs
+=== 18-tampered-timestamp.exit (2 bytes)
+1
+=== 18-tampered-timestamp.stderr (90 bytes)
+CHECK FAILED: verified-book-check: metadata timestamps are inexact, negative or unordered
+=== 19-refuse-existing.exit (2 bytes)
+3
+=== 19-refuse-existing.stderr (62 bytes)
+book-post: output already exists: /workspace/bw5/post-default
+=== D-rt-b1.exit (2 bytes)
+0
+=== D-rt-b1.stderr (0 bytes)
+=== D-rt-c1.exit (2 bytes)
+0
+=== D-rt-c1.stderr (0 bytes)
+=== D-rt-d1.exit (2 bytes)
+0
+=== D-rt-d1.stderr (0 bytes)
+=== D-rt-d2.exit (2 bytes)
+0
+=== D-rt-d2.stderr (0 bytes)
+=== D-v5n-a1.exit (2 bytes)
+1
+=== D-v5n-a1.stderr (0 bytes)
+=== D-v5n-ctl.exit (2 bytes)
+0
+=== D-v5n-ctl.stderr (0 bytes)
+=== D-v5p-a1.exit (2 bytes)
+1
+=== D-v5p-a1.stderr (0 bytes)
+=== SKIP-full-replay.txt (61 bytes)
+SKIP full 4551 replay (would exceed ~10 min budget; not run)
+=== hashes.txt (1160 bytes)
+4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b  /workspace/acct-453a/judge/judge-v5.pmp
+c63bd449af3a7653c483b9bb42039b2942f658614bc2606eb7b40c5b95b6b2d0  /workspace/acct-453a/judge/judge-v5.rkt
+2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e  /workspace/acct-453a/repair/runtime-v2/source/pompetzki.asm
+05b773ce83c0c7da3dab6833ee7c9de720de773274c4e2ea16c7b6f59536702f  /workspace/acct-453a/repair/libraries/strx/strx.pmp
+3658455cbc09d42836e18b5e0aea4600dd17bef644f78f46557ded8928e47ce8  /workspace/b453/rtv2/pompetzki
+47aad2214515c74ae60bb18b9168df82ecbec4cf7901b60bf18e7b5a1eaa5e68  /workspace/b453/v5n/judge-v5-linux
+6a9f70c6e0f4c314b72ba3805decd409505c37865d824a6a11168d55cdaf7720  /workspace/acct-453a/repair/book-v5/book-post-v4.rkt
+c9237281fccc1d3c1194ef85bcb9bf776ddb5074156c089690440ea04eeaa944  /workspace/acct-453a/repair/book-v5/verified-book-check-v5-source.rkt
+c9237281fccc1d3c1194ef85bcb9bf776ddb5074156c089690440ea04eeaa944  /workspace/acct-453a/repair/book-v5/verified-book-check.rkt
+c6779f520f1ce4438eda2cec01f36e0bc023c584f20233f1565d8c531040deb3  /workspace/acct-453a/repair/book-v5/verified-book-post.rkt
+=== inspect-m1.txt (185 bytes)
+auth=#t n0=706 thc=1 sc=5
+j=0 stmt=e032a16055c458105817c76061aaebf193794d12c47cbedaeba65389e652b7a7 drv=08368b179b152443846549862d845bbc28a32b1aad91ae287fc43bdb2e76f7a3 steps=5 hyps=()
