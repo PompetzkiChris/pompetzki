@@ -1,0 +1,85 @@
+significant_split = fun (ds : list Z) (k : nat) (d : Z) (tail : list Z) => ds = repeat 0 k ++ d :: tail /\ d <> 0
+     : list Z -> nat -> Z -> list Z -> Prop
+
+Arguments significant_split ds%_list_scope k%_nat_scope d%_Z_scope tail%_list_scope
+parse_digits_zeros_count0 : forall (n : nat) (a : Z), parse_digits (repeat 0 n) a 0 = Some a
+
+parse_digits_zeros_count0 is not universe polymorphic
+Arguments parse_digits_zeros_count0 n%_nat_scope a%_Z_scope
+parse_digits_zeros_count0 is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.parse_digits_zeros_count0
+Declared in library GrokNumeric.GrokNumericGaps, line 10, characters 6-31
+parse_decimal_all_zeros : forall n : nat, (1 <= n)%nat -> parse_decimal (repeat 0 n) = Some 0
+
+parse_decimal_all_zeros is not universe polymorphic
+Arguments parse_decimal_all_zeros n%_nat_scope _
+parse_decimal_all_zeros is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.parse_decimal_all_zeros
+Declared in library GrokNumeric.GrokNumericGaps, line 14, characters 8-31
+parse_decimal_empty : parse_decimal nil = None
+
+parse_decimal_empty is not universe polymorphic
+parse_decimal_empty is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.parse_decimal_empty
+Declared in library GrokNumeric.GrokNumericGaps, line 21, characters 8-27
+parse_digits_overflow : forall (ds : list Z) (a : Z) (n : nat), (1 <= n)%nat -> (n <= 12)%nat -> (12 < n + length ds)%nat -> parse_digits ds a n = None
+
+parse_digits_overflow is not universe polymorphic
+Arguments parse_digits_overflow ds%_list_scope a%_Z_scope n%_nat_scope _ _ _
+parse_digits_overflow is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.parse_digits_overflow
+Declared in library GrokNumeric.GrokNumericGaps, line 29, characters 6-27
+parse_digits_first_significant : forall (d : Z) (tail : list Z), d <> 0 -> parse_digits (d :: tail) 0 0 = (if digit d then parse_digits tail d 1 else None)
+
+parse_digits_first_significant is not universe polymorphic
+Arguments parse_digits_first_significant d%_Z_scope tail%_list_scope _
+parse_digits_first_significant is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.parse_digits_first_significant
+Declared in library GrokNumeric.GrokNumericGaps, line 40, characters 6-36
+more_than_twelve_significant_refused : forall (ds : list Z) (k : nat) (d : Z) (tail : list Z), significant_split ds k d tail -> (12 < length (d :: tail))%nat -> parse_decimal ds = None
+
+more_than_twelve_significant_refused is not universe polymorphic
+Arguments more_than_twelve_significant_refused ds%_list_scope k%_nat_scope d%_Z_scope tail%_list_scope _ _
+more_than_twelve_significant_refused is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.more_than_twelve_significant_refused
+Declared in library GrokNumeric.GrokNumericGaps, line 49, characters 8-44
+zeros_or_split : forall ds : list Z, (exists k : nat, ds = repeat 0 k) \/ (exists (k : nat) (d : Z) (tail : list Z), significant_split ds k d tail)
+
+zeros_or_split is not universe polymorphic
+Arguments zeros_or_split ds%_list_scope
+zeros_or_split is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.zeros_or_split
+Declared in library GrokNumeric.GrokNumericGaps, line 60, characters 6-20
+parse_digits_fits : forall (ds : list Z) (a : Z) (n : nat), Forall (fun d : Z => digit d = true) ds -> (1 <= n)%nat -> (n + length ds <= 12)%nat -> exists v : Z, parse_digits ds a n = Some v
+
+parse_digits_fits is not universe polymorphic
+Arguments parse_digits_fits ds%_list_scope a%_Z_scope n%_nat_scope _ _ _
+parse_digits_fits is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.parse_digits_fits
+Declared in library GrokNumeric.GrokNumericGaps, line 71, characters 6-23
+parse_decimal_none_iff :
+forall ds : list Z,
+Forall (fun d : Z => digit d = true) ds -> parse_decimal ds = None <-> ds = nil \/ (exists (k : nat) (d : Z) (tail : list Z), significant_split ds k d tail /\ (12 < length (d :: tail))%nat)
+
+parse_decimal_none_iff is not universe polymorphic
+Arguments parse_decimal_none_iff ds%_list_scope _
+parse_decimal_none_iff is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.parse_decimal_none_iff
+Declared in library GrokNumeric.GrokNumericGaps, line 82, characters 8-30
+invalid_digit_refused : forall ds : list Z, ~ Forall (fun d : Z => digit d = true) ds -> parse_decimal ds = None
+
+invalid_digit_refused is not universe polymorphic
+Arguments invalid_digit_refused ds%_list_scope _
+invalid_digit_refused is opaque
+Expands to: Constant GrokNumeric.GrokNumericGaps.invalid_digit_refused
+Declared in library GrokNumeric.GrokNumericGaps, line 105, characters 8-29
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context
+Closed under the global context

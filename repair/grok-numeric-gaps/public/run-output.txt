@@ -1,0 +1,9 @@
+The Rocq Prover, version 9.1.0
+compiled with OCaml 4.14.2
+
+compiler-version exit 0
+compile-DecimalSignificantV4 exit 0
+compile-GrokNumericGaps exit 0
+compile-GrokNumericGapsVerify exit 0
+recursive-kernel-check exit 0
+PASS fresh project modules3 closed statements10
