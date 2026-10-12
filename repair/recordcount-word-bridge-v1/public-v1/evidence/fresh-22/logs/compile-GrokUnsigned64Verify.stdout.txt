@@ -1,0 +1,443 @@
+decode_encode64 :
+forall z : BinNums.Z, decode64 (encode64 z) = GrokSigned64.signed64 z
+
+decode_encode64 is not universe polymorphic
+Arguments decode_encode64 z%_Z_scope
+decode_encode64 is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.decode_encode64
+Declared in library GrokRC.GrokUnsigned64, line 15, characters 8-23
+Closed under the global context
+encode64_range :
+forall z : BinNums.Z,
+BinInt.Z.le BinNums.Z0 (encode64 z) /\
+BinInt.Z.lt (encode64 z)
+  (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH))
+     (BinNums.Zpos
+        (BinNums.xO
+           (BinNums.xO
+              (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))))))
+
+encode64_range is not universe polymorphic
+Arguments encode64_range z%_Z_scope
+encode64_range is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.encode64_range
+Declared in library GrokRC.GrokUnsigned64, line 18, characters 8-22
+Closed under the global context
+encode_decode64 :
+forall u : BinNums.Z,
+BinInt.Z.le BinNums.Z0 u /\
+BinInt.Z.lt u
+  (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH))
+     (BinNums.Zpos
+        (BinNums.xO
+           (BinNums.xO
+              (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))) ->
+encode64 (decode64 u) = u
+
+encode_decode64 is not universe polymorphic
+Arguments encode_decode64 u%_Z_scope _
+encode_decode64 is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.encode_decode64
+Declared in library GrokRC.GrokUnsigned64, line 21, characters 8-23
+Closed under the global context
+decode_encode64_fits :
+forall z : BinNums.Z, GrokRecordCount.fits64 z -> decode64 (encode64 z) = z
+
+decode_encode64_fits is not universe polymorphic
+Arguments decode_encode64_fits z%_Z_scope _
+decode_encode64_fits is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.decode_encode64_fits
+Declared in library GrokRC.GrokUnsigned64, line 29, characters 8-28
+Closed under the global context
+topbit64_neg_bool :
+forall u : BinNums.Z,
+BinInt.Z.le BinNums.Z0 u /\
+BinInt.Z.lt u
+  (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH))
+     (BinNums.Zpos
+        (BinNums.xO
+           (BinNums.xO
+              (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))) ->
+topbit64 u = BinInt.Z.ltb (decode64 u) BinNums.Z0
+
+topbit64_neg_bool is not universe polymorphic
+Arguments topbit64_neg_bool u%_Z_scope _
+topbit64_neg_bool is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.topbit64_neg_bool
+Declared in library GrokRC.GrokUnsigned64, line 32, characters 8-25
+Closed under the global context
+topbit64_neg_iff :
+forall u : BinNums.Z,
+BinInt.Z.le BinNums.Z0 u /\
+BinInt.Z.lt u
+  (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH))
+     (BinNums.Zpos
+        (BinNums.xO
+           (BinNums.xO
+              (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))))) ->
+topbit64 u = true <-> BinInt.Z.lt (decode64 u) BinNums.Z0
+
+topbit64_neg_iff is not universe polymorphic
+Arguments topbit64_neg_iff u%_Z_scope _
+topbit64_neg_iff is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.topbit64_neg_iff
+Declared in library GrokRC.GrokUnsigned64, line 41, characters 8-24
+Closed under the global context
+wsub64_encode :
+forall a b : BinNums.Z,
+wsub64 (encode64 a) (encode64 b) = encode64 (BinInt.Z.sub a b)
+
+wsub64_encode is not universe polymorphic
+Arguments wsub64_encode (a b)%_Z_scope
+wsub64_encode is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.wsub64_encode
+Declared in library GrokRC.GrokUnsigned64, line 44, characters 6-19
+Closed under the global context
+wadd64_encode :
+forall a b : BinNums.Z,
+wadd64 (encode64 a) (encode64 b) = encode64 (BinInt.Z.add a b)
+
+wadd64_encode is not universe polymorphic
+Arguments wadd64_encode (a b)%_Z_scope
+wadd64_encode is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.wadd64_encode
+Declared in library GrokRC.GrokUnsigned64, line 46, characters 6-19
+Closed under the global context
+wmul64_encode_l :
+forall a k : BinNums.Z, wmul64 (encode64 a) k = encode64 (BinInt.Z.mul a k)
+
+wmul64_encode_l is not universe polymorphic
+Arguments wmul64_encode_l (a k)%_Z_scope
+wmul64_encode_l is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.wmul64_encode_l
+Declared in library GrokRC.GrokUnsigned64, line 48, characters 6-21
+Closed under the global context
+bridge_rem_sub :
+forall num rem : BinNums.Z,
+decode64 (wsub64 (encode64 rem) (encode64 num)) =
+GrokSigned64.signed64 (BinInt.Z.sub rem num)
+
+bridge_rem_sub is not universe polymorphic
+Arguments bridge_rem_sub (num rem)%_Z_scope
+bridge_rem_sub is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.bridge_rem_sub
+Declared in library GrokRC.GrokUnsigned64, line 58, characters 8-22
+Closed under the global context
+bridge_mul8 :
+forall num : BinNums.Z,
+decode64
+  (wmul64 (encode64 num)
+     (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) =
+GrokSigned64.signed64
+  (BinInt.Z.mul num
+     (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH)))))
+
+bridge_mul8 is not universe polymorphic
+Arguments bridge_mul8 num%_Z_scope
+bridge_mul8 is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.bridge_mul8
+Declared in library GrokRC.GrokUnsigned64, line 60, characters 8-19
+Closed under the global context
+bridge_mul24 :
+forall num prefix : BinNums.Z,
+decode64
+  (wmul64 (wadd64 (encode64 num) (encode64 prefix))
+     (BinNums.Zpos
+        (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) =
+GrokSigned64.signed64
+  (BinInt.Z.mul (BinInt.Z.add num prefix)
+     (BinNums.Zpos
+        (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH))))))
+
+bridge_mul24 is not universe polymorphic
+Arguments bridge_mul24 (num prefix)%_Z_scope
+bridge_mul24 is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.bridge_mul24
+Declared in library GrokRC.GrokUnsigned64, line 62, characters 8-20
+Closed under the global context
+u64_rem_sub :
+forall num rem : BinNums.Z,
+BinInt.Z.le BinNums.Z0 num /\
+BinInt.Z.le num
+  (BinNums.Zpos
+     (BinNums.xI
+        (BinNums.xI
+           (BinNums.xI
+              (BinNums.xI
+                 (BinNums.xI
+                    (BinNums.xI
+                       (BinNums.xI
+                          (BinNums.xI
+                             (BinNums.xI
+                                (BinNums.xI
+                                   (BinNums.xI
+                                      (BinNums.xI
+                                         (BinNums.xO
+                                            (BinNums.xO
+                                               (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xI (...))))))))))))))))))))) ->
+BinInt.Z.le BinNums.Z0 rem /\
+BinInt.Z.le rem
+  (BinInt.Z.sub
+     (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH))
+        (BinNums.Zpos
+           (BinNums.xI
+              (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH)))))))
+     (BinNums.Zpos BinNums.xH)) ->
+decode64 (wsub64 (encode64 rem) (encode64 num)) = BinInt.Z.sub rem num
+
+u64_rem_sub is not universe polymorphic
+Arguments u64_rem_sub (num rem)%_Z_scope Hnum Hrem
+u64_rem_sub is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.u64_rem_sub
+Declared in library GrokRC.GrokUnsigned64, line 66, characters 8-19
+Closed under the global context
+u64_rem_sub_topbit_iff :
+forall num rem : BinNums.Z,
+BinInt.Z.le BinNums.Z0 num /\
+BinInt.Z.le num
+  (BinNums.Zpos
+     (BinNums.xI
+        (BinNums.xI
+           (BinNums.xI
+              (BinNums.xI
+                 (BinNums.xI
+                    (BinNums.xI
+                       (BinNums.xI
+                          (BinNums.xI
+                             (BinNums.xI
+                                (BinNums.xI
+                                   (BinNums.xI
+                                      (BinNums.xI
+                                         (BinNums.xO
+                                            (BinNums.xO
+                                               (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xI (...))))))))))))))))))))) ->
+BinInt.Z.le BinNums.Z0 rem /\
+BinInt.Z.le rem
+  (BinInt.Z.sub
+     (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH))
+        (BinNums.Zpos
+           (BinNums.xI
+              (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH)))))))
+     (BinNums.Zpos BinNums.xH)) ->
+topbit64 (wsub64 (encode64 rem) (encode64 num)) = true <->
+BinInt.Z.gt num rem
+
+u64_rem_sub_topbit_iff is not universe polymorphic
+Arguments u64_rem_sub_topbit_iff (num rem)%_Z_scope Hnum Hrem
+u64_rem_sub_topbit_iff is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.u64_rem_sub_topbit_iff
+Declared in library GrokRC.GrokUnsigned64, line 69, characters 8-30
+Closed under the global context
+u64_rem_sub_topbit_bool :
+forall num rem : BinNums.Z,
+BinInt.Z.le BinNums.Z0 num /\
+BinInt.Z.le num
+  (BinNums.Zpos
+     (BinNums.xI
+        (BinNums.xI
+           (BinNums.xI
+              (BinNums.xI
+                 (BinNums.xI
+                    (BinNums.xI
+                       (BinNums.xI
+                          (BinNums.xI
+                             (BinNums.xI
+                                (BinNums.xI
+                                   (BinNums.xI
+                                      (BinNums.xI
+                                         (BinNums.xO
+                                            (BinNums.xO
+                                               (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xI (...))))))))))))))))))))) ->
+BinInt.Z.le BinNums.Z0 rem /\
+BinInt.Z.le rem
+  (BinInt.Z.sub
+     (BinInt.Z.pow (BinNums.Zpos (BinNums.xO BinNums.xH))
+        (BinNums.Zpos
+           (BinNums.xI
+              (BinNums.xI (BinNums.xI (BinNums.xI (BinNums.xI BinNums.xH)))))))
+     (BinNums.Zpos BinNums.xH)) ->
+topbit64 (wsub64 (encode64 rem) (encode64 num)) = BinInt.Z.ltb rem num
+
+u64_rem_sub_topbit_bool is not universe polymorphic
+Arguments u64_rem_sub_topbit_bool (num rem)%_Z_scope Hnum Hrem
+u64_rem_sub_topbit_bool is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.u64_rem_sub_topbit_bool
+Declared in library GrokRC.GrokUnsigned64, line 75, characters 8-31
+Closed under the global context
+u64_mul8 :
+forall num : BinNums.Z,
+BinInt.Z.le BinNums.Z0 num /\
+BinInt.Z.le num
+  (BinNums.Zpos
+     (BinNums.xI
+        (BinNums.xI
+           (BinNums.xI
+              (BinNums.xI
+                 (BinNums.xI
+                    (BinNums.xI
+                       (BinNums.xI
+                          (BinNums.xI
+                             (BinNums.xI
+                                (BinNums.xI
+                                   (BinNums.xI
+                                      (BinNums.xI
+                                         (BinNums.xO
+                                            (BinNums.xO
+                                               (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xI (...))))))))))))))))))))) ->
+decode64
+  (wmul64 (encode64 num)
+     (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) =
+BinInt.Z.mul num
+  (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))
+
+u64_mul8 is not universe polymorphic
+Arguments u64_mul8 num%_Z_scope Hnum
+u64_mul8 is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.u64_mul8
+Declared in library GrokRC.GrokUnsigned64, line 82, characters 8-16
+Closed under the global context
+u64_mul8_topbit :
+forall num : BinNums.Z,
+BinInt.Z.le BinNums.Z0 num /\
+BinInt.Z.le num
+  (BinNums.Zpos
+     (BinNums.xI
+        (BinNums.xI
+           (BinNums.xI
+              (BinNums.xI
+                 (BinNums.xI
+                    (BinNums.xI
+                       (BinNums.xI
+                          (BinNums.xI
+                             (BinNums.xI
+                                (BinNums.xI
+                                   (BinNums.xI
+                                      (BinNums.xI
+                                         (BinNums.xO
+                                            (BinNums.xO
+                                               (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xI (...))))))))))))))))))))) ->
+topbit64
+  (wmul64 (encode64 num)
+     (BinNums.Zpos (BinNums.xO (BinNums.xO (BinNums.xO BinNums.xH))))) =
+false
+
+u64_mul8_topbit is not universe polymorphic
+Arguments u64_mul8_topbit num%_Z_scope Hnum
+u64_mul8_topbit is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.u64_mul8_topbit
+Declared in library GrokRC.GrokUnsigned64, line 85, characters 8-23
+Closed under the global context
+u64_mul24 :
+forall num prefix : BinNums.Z,
+BinInt.Z.le BinNums.Z0 num /\
+BinInt.Z.le num
+  (BinNums.Zpos
+     (BinNums.xI
+        (BinNums.xI
+           (BinNums.xI
+              (BinNums.xI
+                 (BinNums.xI
+                    (BinNums.xI
+                       (BinNums.xI
+                          (BinNums.xI
+                             (BinNums.xI
+                                (BinNums.xI
+                                   (BinNums.xI
+                                      (BinNums.xI
+                                         (BinNums.xO
+                                            (BinNums.xO
+                                               (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xI (...))))))))))))))))))))) ->
+BinInt.Z.le BinNums.Z0 prefix /\
+BinInt.Z.le prefix
+  (BinNums.Zpos
+     (BinNums.xO
+        (BinNums.xI
+           (BinNums.xO
+              (BinNums.xO
+                 (BinNums.xO
+                    (BinNums.xO
+                       (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH)))))))))) ->
+decode64
+  (wmul64 (wadd64 (encode64 num) (encode64 prefix))
+     (BinNums.Zpos
+        (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) =
+BinInt.Z.mul (BinInt.Z.add num prefix)
+  (BinNums.Zpos
+     (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))
+
+u64_mul24 is not universe polymorphic
+Arguments u64_mul24 (num prefix)%_Z_scope Hnum Hprefix
+u64_mul24 is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.u64_mul24
+Declared in library GrokRC.GrokUnsigned64, line 91, characters 8-17
+Closed under the global context
+u64_mul24_topbit :
+forall num prefix : BinNums.Z,
+BinInt.Z.le BinNums.Z0 num /\
+BinInt.Z.le num
+  (BinNums.Zpos
+     (BinNums.xI
+        (BinNums.xI
+           (BinNums.xI
+              (BinNums.xI
+                 (BinNums.xI
+                    (BinNums.xI
+                       (BinNums.xI
+                          (BinNums.xI
+                             (BinNums.xI
+                                (BinNums.xI
+                                   (BinNums.xI
+                                      (BinNums.xI
+                                         (BinNums.xO
+                                            (BinNums.xO
+                                               (BinNums.xO
+                                                 (BinNums.xO
+                                                 (BinNums.xI
+                                                 (BinNums.xO
+                                                 (BinNums.xI (...))))))))))))))))))))) ->
+BinInt.Z.le BinNums.Z0 prefix /\
+BinInt.Z.le prefix
+  (BinNums.Zpos
+     (BinNums.xO
+        (BinNums.xI
+           (BinNums.xO
+              (BinNums.xO
+                 (BinNums.xO
+                    (BinNums.xO
+                       (BinNums.xI (BinNums.xI (BinNums.xO BinNums.xH)))))))))) ->
+topbit64
+  (wmul64 (wadd64 (encode64 num) (encode64 prefix))
+     (BinNums.Zpos
+        (BinNums.xO (BinNums.xO (BinNums.xO (BinNums.xI BinNums.xH)))))) =
+false
+
+u64_mul24_topbit is not universe polymorphic
+Arguments u64_mul24_topbit (num prefix)%_Z_scope Hnum Hprefix
+u64_mul24_topbit is opaque
+Expands to: Constant GrokRC.GrokUnsigned64.u64_mul24_topbit
+Declared in library GrokRC.GrokUnsigned64, line 94, characters 8-24
+Closed under the global context

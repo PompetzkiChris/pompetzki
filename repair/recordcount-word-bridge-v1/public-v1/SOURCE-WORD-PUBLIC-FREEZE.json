@@ -1,0 +1,33 @@
+{
+  "status": "FROZEN",
+  "manifest_sha256": "e91a8cf082736effe40488e5424bd247794d9417473c19aa19354946b59ffa7c",
+  "checksums_sha256": "67a6e47170153e9222d5f2ca19da774594b3e138ed23e9a85740b7dcae373d33",
+  "payload_rows": 87,
+  "control_files": [
+    "PUBLIC-SOURCE-MANIFEST.json",
+    "SHA256SUMS.txt",
+    "SOURCE-WORD-PUBLIC-FREEZE.json",
+    "SOURCE-WORD-PUBLIC-FREEZE.sha256"
+  ],
+  "new_selected_closed_declarations": 36,
+  "fresh_modules": 22,
+  "additional_type_only_modules": 1,
+  "explicit_kernel_targets": 23,
+  "kernel_exit": 0,
+  "kernel_axioms": [],
+  "raw_complete_types_sha256": "df8dde72c09181d15e4af17cedb34ca2e54122a640f7a7d55a597f47fe2a9916",
+  "raw_all_module_kernel_sha256": "ebb547b95eb6b78521b61161934660c24a905431f6174d36bdbeab317e57a97b",
+  "full_MIT_license_bytes": 1077,
+  "source_and_receipt_bytes_unchanged": true,
+  "original_hypotheses_unchanged": true,
+  "source_credit": "Original Pompetzki/C2Link/Groebner/CX4/Grok Bot sources and credits unchanged; new Codex bridge declarations",
+  "counterexample_scope": "2^47 is a checked counterexample to deriving canonicality from the numeric contract; not a reported runtime defect",
+  "remaining_boundaries": [
+    "Trusted text-to-AST extraction",
+    "Native variable layout, operand loads/stores and initial representation",
+    "Actual compiler template/image/fetch/step correspondence",
+    "JS condition/decoder missing from preserved native model",
+    "Readable/writable/executable physical regions, allocation capacity, stack and final FAIL handler",
+    "Native OS process, complete judge and caller contracts"
+  ]
+}

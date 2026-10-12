@@ -1,0 +1,111 @@
+{
+  "inputs": [
+    {
+      "path": "GrokRC/GrokRecordCount.v",
+      "sha256": "16c51c1ba0869aedea59f0f04175f379c58449bcc5d8699c265452abace3bf61",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "GrokRC/GrokRecordCountVerify.v",
+      "sha256": "9d50414d0db71eb58b05b33435562e4958bae409986b78b4d7ac45b67abd940c",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "BorrowedRecordCount/RecordCountBounds.v",
+      "sha256": "6753f871dd552f934c3f7db934285ddacdd1a68a2bedeb6b44cfe9147e951859",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "BorrowedRecordCount/RecordCountMemory.v",
+      "sha256": "77fba3c36d121e3b8362da27baadfa69fe0007076d62dbd09c62b3c49eaa5293",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "BorrowedRecordCount/RecordCountReceipt.v",
+      "sha256": "137df6f0e026412ffc6c82515ef2b2853542b34e0b227378487e49a6c429dace",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "BorrowedRecordCount/RecordCountSource.v",
+      "sha256": "2ff283f1774aa4aba51dfa30004bc47a9d151bc36ebb0430c1cc2fc52fd9a324",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "BorrowedRecordCount/RecordCountStep.v",
+      "sha256": "4513d76e558c5d4607f518be2d06086886508fc36c388a515502586403f85248",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "source/judge-v6.pmp",
+      "sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "source/recordcount-fragment.pmp",
+      "sha256": "33a8406f4545f199f8772b839c9058f62543f3fe2a9f0af3a208df97f41dbca8",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "source/source-extraction.json",
+      "sha256": "8f93236b5c83d7a5f31f6875b95cd1f26230d51ab7702197fbf4468f14b1ed2e",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "Vendor/C2Link/ExecMono.v",
+      "sha256": "4309ae95d944f4eda8979cd23af95ab47668a50c33b84ef2037ba32d9370b90d",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "Vendor/C2Link/ExecSim.v",
+      "sha256": "ff8d1832e529925a5b6384d8cf8c4e2763a7192f252d49fedf194f28cf7c50ff",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "Vendor/C2Link/ExecStep.v",
+      "sha256": "b5689cd748cf941358fdc4c1e23a21bddd4ba5156b325ebdf83ea9aaaf88d456",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "Vendor/C2Link/PmpCore.v",
+      "sha256": "ba76fc2256e87bfab583f6a9f5a145cf351dfe86d13e295dfa24548e4475b8bc",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "Vendor/C2Link/RunKit.v",
+      "sha256": "a37d0e83a139e10f0d6330f1b837c90a9269b3704b01b24f90578135135dc351",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "Vendor/Groebner/ByteText.v",
+      "sha256": "73d782662def27f0c8de666a12c56001ec58bdb1ce16d14181c318c8ca484482",
+      "origin": "Checked RECORDCOUNT source-controller subset, unchanged"
+    },
+    {
+      "path": "GrokRC/GrokSigned64.v",
+      "sha256": "3c9c568fb2deeeccdc18d75f77602cbefa3694a06d18989a676dc7510741556e",
+      "origin": "Grok Bot original, independently reviewed signed/unsigned arithmetic model, unchanged"
+    },
+    {
+      "path": "GrokRC/GrokSigned64Verify.v",
+      "sha256": "e214222a5bfba5b0cada301ba96e92f3c536a271da587083b4f556d428c4d2fd",
+      "origin": "Grok Bot original, independently reviewed signed/unsigned arithmetic model, unchanged"
+    },
+    {
+      "path": "GrokRC/GrokUnsigned64.v",
+      "sha256": "8eca737d541adb39992b9e4e8bdbaabcb8282c02b019ffeac06d4844f0cde8ac",
+      "origin": "Grok Bot original, independently reviewed signed/unsigned arithmetic model, unchanged"
+    },
+    {
+      "path": "GrokRC/GrokUnsigned64Verify.v",
+      "sha256": "e25d1a2168cea38c1053221b762bf929e5c51e6e5196452a01695fd711279347",
+      "origin": "Grok Bot original, independently reviewed signed/unsigned arithmetic model, unchanged"
+    },
+    {
+      "path": "Native/X86Native3.v",
+      "sha256": "75288125e6dff09480491a490663a39ea474135dd6648000fa41b2975a4c3442",
+      "origin": "Preserved CX4 native operational semantics, unchanged"
+    }
+  ],
+  "old_sealed_subset_edited": false,
+  "boundary": "Representation and primitive-operation bridge; no emitted-image or OS/native execution assumption."
+}

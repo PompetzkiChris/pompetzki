@@ -1,0 +1,59 @@
+{
+  "source": "source/judge-v6.pmp",
+  "source_sha256": "87562735cf20dfd18eb5f26348878b2ac6306bc78714d6953565df9c833d0dc7",
+  "first_line": 398,
+  "last_line": 405,
+  "fragment_bytes": 182,
+  "fragment_sha256": "33a8406f4545f199f8772b839c9058f62543f3fe2a9f0af3a208df97f41dbca8",
+  "instructions": [
+    {
+      "pc": 0,
+      "source_line": 398,
+      "source_text": "label RECORDCOUNT",
+      "PmpCore_constructor": "SLabel \"RECORDCOUNT\""
+    },
+    {
+      "pc": 1,
+      "source_line": 399,
+      "source_text": "set t sub lim pos",
+      "PmpCore_constructor": "SSub \"t\" (OV \"lim\") (OV \"pos\")"
+    },
+    {
+      "pc": 2,
+      "source_line": 400,
+      "source_text": "set t sub t num",
+      "PmpCore_constructor": "SSub \"t\" (OV \"t\") (OV \"num\")"
+    },
+    {
+      "pc": 3,
+      "source_line": 401,
+      "source_text": "when negative t goto RECORDCOUNTBAD",
+      "PmpCore_constructor": "SWhen CNeg (OV \"t\") \"RECORDCOUNTBAD\""
+    },
+    {
+      "pc": 4,
+      "source_line": 402,
+      "source_text": "return",
+      "PmpCore_constructor": "SReturn"
+    },
+    {
+      "pc": 5,
+      "source_line": 403,
+      "source_text": "label RECORDCOUNTBAD",
+      "PmpCore_constructor": "SLabel \"RECORDCOUNTBAD\""
+    },
+    {
+      "pc": 6,
+      "source_line": 404,
+      "source_text": "text WHY \"a record count exceeds remaining input bytes\"",
+      "PmpCore_constructor": "STextLit \"WHY\" (bytes_of_str \"a record count exceeds remaining input bytes\")"
+    },
+    {
+      "pc": 7,
+      "source_line": 405,
+      "source_text": "goto FAIL",
+      "PmpCore_constructor": "SGoto \"FAIL\""
+    }
+  ],
+  "boundary": "Trusted mechanical text-to-AST translation; kernel checks semantics of Precord, not the translation or native compiler."
+}

@@ -1,0 +1,391 @@
+RecordCountBounds.count_address_contract =
+fun s : PmpCore.state =>
+0 <= PmpCore.vars s "num" <= 999999999999 /\ 0 <= PmpCore.vars s "pos" <= PmpCore.vars s "lim" /\ PmpCore.vars s "lim" <= PmpCore.hp s < 4611686018427387904
+     : PmpCore.state -> Prop
+
+Arguments RecordCountBounds.count_address_contract s
+byte_memory_agrees =
+fun (s : PmpCore.state) (nm : N.memory) => forall a : Z, N.allowed N.readable nm a = true -> native_cell nm a = PmpCore.bz (PmpCore.mem s a)
+     : PmpCore.state -> N.memory -> Prop
+
+Arguments byte_memory_agrees s nm
+PMP_sub_instruction :
+forall (s : PmpCore.state) (x : string) (a b : PmpCore.opd),
+PmpCore.exec 2 (PmpCore.SSub x a b :: PmpCore.SReturn :: nil) nil 0 nil s = PmpCore.OReturn (PmpCore.setv s x (PmpCore.ev s a - PmpCore.ev s b))
+
+PMP_sub_instruction is not universe polymorphic
+Arguments PMP_sub_instruction s x%_string_scope a b
+PMP_sub_instruction is opaque
+Expands to: Constant WordBridge.PmpWordSub.PMP_sub_instruction
+Declared in library WordBridge.PmpWordSub, line 17, characters 8-27
+Closed under the global context
+PMP_sub_word_commutes :
+forall (s : PmpCore.state) (x : string) (a b : PmpCore.opd),
+U.wsub64 (U.encode64 (PmpCore.ev s a)) (U.encode64 (PmpCore.ev s b)) = U.encode64 (PmpCore.vars (PmpCore.setv s x (PmpCore.ev s a - PmpCore.ev s b)) x)
+
+PMP_sub_word_commutes is not universe polymorphic
+Arguments PMP_sub_word_commutes s x%_string_scope a b
+PMP_sub_word_commutes is opaque
+Expands to: Constant WordBridge.PmpWordSub.PMP_sub_word_commutes
+Declared in library WordBridge.PmpWordSub, line 22, characters 8-29
+Closed under the global context
+PMP_sub_word_decode :
+forall (s : PmpCore.state) (x : string) (a b : PmpCore.opd),
+G.fits64 (PmpCore.ev s a - PmpCore.ev s b) ->
+U.decode64 (U.wsub64 (U.encode64 (PmpCore.ev s a)) (U.encode64 (PmpCore.ev s b))) = PmpCore.vars (PmpCore.setv s x (PmpCore.ev s a - PmpCore.ev s b)) x
+
+PMP_sub_word_decode is not universe polymorphic
+Arguments PMP_sub_word_decode s x%_string_scope a b _
+PMP_sub_word_decode is opaque
+Expands to: Constant WordBridge.PmpWordSub.PMP_sub_word_decode
+Declared in library WordBridge.PmpWordSub, line 27, characters 8-27
+Closed under the global context
+PMP_negative_word_commutes : forall [z : Z], G.fits64 z -> U.topbit64 (U.encode64 z) = PmpCore.test PmpCore.CNeg z
+
+PMP_negative_word_commutes is not universe polymorphic
+Arguments PMP_negative_word_commutes [z]%_Z_scope _
+PMP_negative_word_commutes is opaque
+Expands to: Constant WordBridge.PmpWordSub.PMP_negative_word_commutes
+Declared in library WordBridge.PmpWordSub, line 35, characters 8-34
+Closed under the global context
+RECORDCOUNT_words_exact :
+forall s : PmpCore.state,
+first_word s = U.encode64 (PmpCore.vars (RecordCountStep.first_sub_state s) "t") /\
+checked_word s = U.encode64 (PmpCore.vars (RecordCountStep.checked_state s) "t")
+
+RECORDCOUNT_words_exact is not universe polymorphic
+Arguments RECORDCOUNT_words_exact s
+RECORDCOUNT_words_exact is opaque
+Expands to: Constant WordBridge.PmpWordSub.RECORDCOUNT_words_exact
+Declared in library WordBridge.PmpWordSub, line 45, characters 8-31
+Closed under the global context
+RECORDCOUNT_word_decode :
+forall [s : PmpCore.state],
+RecordCountBounds.count_address_contract s ->
+U.decode64 (first_word s) = PmpCore.vars (RecordCountStep.first_sub_state s) "t" /\
+U.decode64 (checked_word s) = PmpCore.vars (RecordCountStep.checked_state s) "t"
+
+RECORDCOUNT_word_decode is not universe polymorphic
+Arguments RECORDCOUNT_word_decode [s] _
+RECORDCOUNT_word_decode is opaque
+Expands to: Constant WordBridge.PmpWordSub.RECORDCOUNT_word_decode
+Declared in library WordBridge.PmpWordSub, line 54, characters 8-31
+Closed under the global context
+RECORDCOUNT_word_test :
+forall [s : PmpCore.state],
+RecordCountBounds.count_address_contract s ->
+U.topbit64 (checked_word s) = PmpCore.test PmpCore.CNeg (PmpCore.vars (RecordCountStep.checked_state s) "t") /\
+U.topbit64 (checked_word s) = (RecordCountStep.remaining s <? PmpCore.vars s "num")%Z
+
+RECORDCOUNT_word_test is not universe polymorphic
+Arguments RECORDCOUNT_word_test [s] _
+RECORDCOUNT_word_test is opaque
+Expands to: Constant WordBridge.PmpWordSub.RECORDCOUNT_word_test
+Declared in library WordBridge.PmpWordSub, line 63, characters 8-29
+Closed under the global context
+RECORDCOUNT_word_control :
+forall [s : PmpCore.state],
+RecordCountBounds.count_address_contract s ->
+((exists sf : PmpCore.state,
+    ExecMono.evals RecordCountSource.Precord RecordCountSource.record_stops RecordCountSource.pc_RECORDCOUNT nil s (PmpCore.OReturn sf)) <->
+ U.topbit64 (checked_word s) = false) /\
+((exists sf : PmpCore.state,
+    ExecMono.evals RecordCountSource.Precord RecordCountSource.record_stops RecordCountSource.pc_RECORDCOUNT nil s (PmpCore.OStop "FAIL" sf)) <->
+ U.topbit64 (checked_word s) = true)
+
+RECORDCOUNT_word_control is not universe polymorphic
+Arguments RECORDCOUNT_word_control [s] _
+RECORDCOUNT_word_control is opaque
+Expands to: Constant WordBridge.PmpWordSub.RECORDCOUNT_word_control
+Declared in library WordBridge.PmpWordSub, line 76, characters 8-32
+Closed under the global context
+RECORDCOUNT_signed_models_agree :
+forall [s : PmpCore.state],
+RecordCountBounds.count_address_contract s ->
+RecordCountBounds.signed64 (PmpCore.vars (RecordCountStep.first_sub_state s) "t") = S.signed64 (PmpCore.vars (RecordCountStep.first_sub_state s) "t") /\
+RecordCountBounds.signed64 (PmpCore.vars (RecordCountStep.checked_state s) "t") = S.signed64 (PmpCore.vars (RecordCountStep.checked_state s) "t")
+
+RECORDCOUNT_signed_models_agree is not universe polymorphic
+Arguments RECORDCOUNT_signed_models_agree [s] _
+RECORDCOUNT_signed_models_agree is opaque
+Expands to: Constant WordBridge.PmpWordSub.RECORDCOUNT_signed_models_agree
+Declared in library WordBridge.PmpWordSub, line 89, characters 8-39
+Closed under the global context
+RECORDCOUNT_word_execution_prefix :
+forall (s : PmpCore.state) (ks : list nat) (f : nat),
+PmpCore.exec (ssrnat.addn 2 f) RecordCountSource.Precord RecordCountSource.record_stops RecordCountSource.pc_RECORDCOUNT ks s =
+PmpCore.exec f RecordCountSource.Precord RecordCountSource.record_stops 2 ks (RecordCountStep.first_sub_state s) /\
+PmpCore.exec (ssrnat.addn 3 f) RecordCountSource.Precord RecordCountSource.record_stops RecordCountSource.pc_RECORDCOUNT ks s =
+PmpCore.exec f RecordCountSource.Precord RecordCountSource.record_stops 3 ks (RecordCountStep.checked_state s) /\
+first_word s = U.encode64 (PmpCore.vars (RecordCountStep.first_sub_state s) "t") /\
+checked_word s = U.encode64 (PmpCore.vars (RecordCountStep.checked_state s) "t")
+
+RECORDCOUNT_word_execution_prefix is not universe polymorphic
+Arguments RECORDCOUNT_word_execution_prefix s ks%_list_scope%_seq_scope f%_nat_scope
+RECORDCOUNT_word_execution_prefix is opaque
+Expands to: Constant WordBridge.PmpWordSub.RECORDCOUNT_word_execution_prefix
+Declared in library WordBridge.PmpWordSub, line 100, characters 8-41
+Closed under the global context
+RECORDCOUNT_return_word_result :
+forall [s sf : PmpCore.state],
+RecordCountBounds.count_address_contract s ->
+ExecMono.evals RecordCountSource.Precord RecordCountSource.record_stops RecordCountSource.pc_RECORDCOUNT nil s (PmpCore.OReturn sf) ->
+U.decode64 (checked_word s) = PmpCore.vars sf "t" /\ U.topbit64 (checked_word s) = false
+
+RECORDCOUNT_return_word_result is not universe polymorphic
+Arguments RECORDCOUNT_return_word_result [s sf] _ _
+RECORDCOUNT_return_word_result is opaque
+Expands to: Constant WordBridge.PmpWordSub.RECORDCOUNT_return_word_result
+Declared in library WordBridge.PmpWordSub, line 112, characters 8-38
+Closed under the global context
+RECORDCOUNT_failure_word_result :
+forall [s sf : PmpCore.state],
+RecordCountBounds.count_address_contract s ->
+ExecMono.evals RecordCountSource.Precord RecordCountSource.record_stops RecordCountSource.pc_RECORDCOUNT nil s (PmpCore.OStop "FAIL" sf) ->
+U.decode64 (checked_word s) = PmpCore.vars sf "t" /\ U.topbit64 (checked_word s) = true
+
+RECORDCOUNT_failure_word_result is not universe polymorphic
+Arguments RECORDCOUNT_failure_word_result [s sf] _ _
+RECORDCOUNT_failure_word_result is opaque
+Expands to: Constant WordBridge.PmpWordSub.RECORDCOUNT_failure_word_result
+Declared in library WordBridge.PmpWordSub, line 123, characters 8-39
+Closed under the global context
+native_w64_encode : forall z : Z, N.w64 z = U.encode64 z
+
+native_w64_encode is not universe polymorphic
+Arguments native_w64_encode z%_Z_scope
+native_w64_encode is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_w64_encode
+Declared in library WordBridge.NativeWordSub, line 16, characters 6-23
+Closed under the global context
+native_w64_idempotent : forall z : Z, N.w64 (N.w64 z) = N.w64 z
+
+native_w64_idempotent is not universe polymorphic
+Arguments native_w64_idempotent z%_Z_scope
+native_w64_idempotent is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_w64_idempotent
+Declared in library WordBridge.NativeWordSub, line 18, characters 6-27
+Closed under the global context
+native_sub_word : forall a b : Z, N.aluvalue N.Sub a b = U.wsub64 a b
+
+native_sub_word is not universe polymorphic
+Arguments native_sub_word (a b)%_Z_scope
+native_sub_word is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_sub_word
+Declared in library WordBridge.NativeWordSub, line 20, characters 6-21
+Closed under the global context
+native_msb_topbit : forall z : Z, N.msb z = U.topbit64 (U.encode64 z)
+
+native_msb_topbit is not universe polymorphic
+Arguments native_msb_topbit z%_Z_scope
+native_msb_topbit is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_msb_topbit
+Declared in library WordBridge.NativeWordSub, line 22, characters 6-23
+Closed under the global context
+native_reg_self : forall d : N.reg, N.reg_eqb d d = true
+
+native_reg_self is not universe polymorphic
+Arguments native_reg_self d
+native_reg_self is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_reg_self
+Declared in library WordBridge.NativeWordSub, line 26, characters 6-21
+Closed under the global context
+native_reg_different : forall [q d : N.reg], q <> d -> N.reg_eqb q d = false
+
+native_reg_different is not universe polymorphic
+Arguments native_reg_different [q d] _
+native_reg_different is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_reg_different
+Declared in library WordBridge.NativeWordSub, line 28, characters 6-26
+Closed under the global context
+native_getreg_updated : forall (m : N.machine) (d : N.reg) (v : Z), N.getreg (N.updreg m d v) d = N.w64 v
+
+native_getreg_updated is not universe polymorphic
+Arguments native_getreg_updated m d v%_Z_scope
+native_getreg_updated is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_getreg_updated
+Declared in library WordBridge.NativeWordSub, line 30, characters 6-27
+Closed under the global context
+native_sub_exec :
+forall (m : N.machine) (dst : N.reg) (src : N.operand) (len : nat), N.execute (N.ALU N.Sub dst src) len m = Some (N.Continue (native_sub_state m dst src len))
+
+native_sub_exec is not universe polymorphic
+Arguments native_sub_exec m dst src len%_nat_scope
+native_sub_exec is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_sub_exec
+Declared in library WordBridge.NativeWordSub, line 42, characters 8-23
+Closed under the global context
+native_sub_effects :
+forall (m : N.machine) (dst : N.reg) (src : N.operand) (len : nat),
+N.getreg (native_sub_state m dst src len) dst = U.wsub64 (N.getreg m dst) (N.val m src) /\
+N.sf (N.status (native_sub_state m dst src len)) = Some (U.topbit64 (U.wsub64 (N.getreg m dst) (N.val m src))) /\
+N.mem (native_sub_state m dst src len) = N.mem m /\
+N.rflags_other (native_sub_state m dst src len) = N.rflags_other m /\
+N.rip (native_sub_state m dst src len) = U.encode64 (N.rip m + Z.of_nat len) /\
+(forall q : N.reg, q <> dst -> N.registers (native_sub_state m dst src len) q = N.registers m q)
+
+native_sub_effects is not universe polymorphic
+Arguments native_sub_effects m dst src len%_nat_scope
+native_sub_effects is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_sub_effects
+Declared in library WordBridge.NativeWordSub, line 46, characters 8-26
+Closed under the global context
+native_sub_PMP_value :
+forall (s : PmpCore.state) (m : N.machine) (x : string) (a b : PmpCore.opd) (dst : N.reg) (src : N.operand) (len : nat),
+N.getreg m dst = U.encode64 (PmpCore.ev s a) ->
+N.val m src = U.encode64 (PmpCore.ev s b) ->
+G.fits64 (PmpCore.ev s a - PmpCore.ev s b) ->
+U.decode64 (N.getreg (native_sub_state m dst src len) dst) = PmpCore.vars (PmpCore.setv s x (PmpCore.ev s a - PmpCore.ev s b)) x /\
+N.sf (N.status (native_sub_state m dst src len)) = Some (PmpCore.test PmpCore.CNeg (PmpCore.vars (PmpCore.setv s x (PmpCore.ev s a - PmpCore.ev s b)) x))
+
+native_sub_PMP_value is not universe polymorphic
+Arguments native_sub_PMP_value s m x%_string_scope a b dst src len%_nat_scope _ _ _
+native_sub_PMP_value is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_sub_PMP_value
+Declared in library WordBridge.NativeWordSub, line 74, characters 8-28
+Closed under the global context
+native_test_self_exec : forall (m : N.machine) (r : N.reg) (len : nat), N.execute (N.Test r r) len m = Some (N.Continue (native_test_self_state m r len))
+
+native_test_self_exec is not universe polymorphic
+Arguments native_test_self_exec m r len%_nat_scope
+native_test_self_exec is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_test_self_exec
+Declared in library WordBridge.NativeWordSub, line 95, characters 8-29
+Closed under the global context
+native_test_self_effects :
+forall (m : N.machine) (r : N.reg) (len : nat),
+N.sf (N.status (native_test_self_state m r len)) = Some (U.topbit64 (N.getreg m r)) /\
+N.registers (native_test_self_state m r len) = N.registers m /\
+N.mem (native_test_self_state m r len) = N.mem m /\ N.rflags_other (native_test_self_state m r len) = N.rflags_other m
+
+native_test_self_effects is not universe polymorphic
+Arguments native_test_self_effects m r len%_nat_scope
+native_test_self_effects is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_test_self_effects
+Declared in library WordBridge.NativeWordSub, line 99, characters 8-32
+Closed under the global context
+RECORDCOUNT_native_negative_flag :
+forall [s : PmpCore.state] (m : N.machine) (len : nat),
+RecordCountBounds.count_address_contract s ->
+N.getreg m N.RAX = U.encode64 (PmpCore.vars (RecordCountStep.checked_state s) "t") ->
+N.execute (N.Test N.RAX N.RAX) len m = Some (N.Continue (native_test_self_state m N.RAX len)) /\
+N.sf (N.status (native_test_self_state m N.RAX len)) = Some (PmpCore.test PmpCore.CNeg (PmpCore.vars (RecordCountStep.checked_state s) "t")) /\
+N.sf (N.status (native_test_self_state m N.RAX len)) = Some (RecordCountStep.remaining s <? PmpCore.vars s "num")%Z
+
+RECORDCOUNT_native_negative_flag is not universe polymorphic
+Arguments RECORDCOUNT_native_negative_flag [s] m len%_nat_scope _ _
+RECORDCOUNT_native_negative_flag is opaque
+Expands to: Constant WordBridge.NativeWordSub.RECORDCOUNT_native_negative_flag
+Declared in library WordBridge.NativeWordSub, line 113, characters 8-40
+Closed under the global context
+native_sub_opcode_decodes : N.decode (72 :: 41 :: 200 :: nil) = Some (N.ALU N.Sub N.RAX (N.RegVal N.RCX), 3%nat, nil)
+
+native_sub_opcode_decodes is not universe polymorphic
+native_sub_opcode_decodes is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_sub_opcode_decodes
+Declared in library WordBridge.NativeWordSub, line 127, characters 8-33
+Closed under the global context
+native_test_opcode_decodes : N.decode (72 :: 133 :: 192 :: nil) = Some (N.Test N.RAX N.RAX, 3%nat, nil)
+
+native_test_opcode_decodes is not universe polymorphic
+native_test_opcode_decodes is opaque
+Expands to: Constant WordBridge.NativeWordSub.native_test_opcode_decodes
+Declared in library WordBridge.NativeWordSub, line 130, characters 8-34
+Closed under the global context
+source_nonnegative_word_identity : forall [z : Z], 0 <= z < 4611686018427387904 -> U.encode64 z = z /\ U.decode64 (U.encode64 z) = z
+
+source_nonnegative_word_identity is not universe polymorphic
+Arguments source_nonnegative_word_identity [z]%_Z_scope _
+source_nonnegative_word_identity is opaque
+Expands to: Constant WordBridge.AddressBridge.source_nonnegative_word_identity
+Declared in library WordBridge.AddressBridge, line 13, characters 6-38
+Closed under the global context
+RECORDCOUNT_addresses_word_identity :
+forall [s : PmpCore.state],
+RecordCountBounds.count_address_contract s ->
+U.encode64 (PmpCore.vars s "pos") = PmpCore.vars s "pos" /\
+U.decode64 (U.encode64 (PmpCore.vars s "pos")) = PmpCore.vars s "pos" /\
+U.encode64 (PmpCore.vars s "lim") = PmpCore.vars s "lim" /\
+U.decode64 (U.encode64 (PmpCore.vars s "lim")) = PmpCore.vars s "lim" /\
+U.encode64 (PmpCore.hp s) = PmpCore.hp s /\ U.decode64 (U.encode64 (PmpCore.hp s)) = PmpCore.hp s
+
+RECORDCOUNT_addresses_word_identity is not universe polymorphic
+Arguments RECORDCOUNT_addresses_word_identity [s] _
+RECORDCOUNT_addresses_word_identity is opaque
+Expands to: Constant WordBridge.AddressBridge.RECORDCOUNT_addresses_word_identity
+Declared in library WordBridge.AddressBridge, line 21, characters 8-43
+Closed under the global context
+native_low_address_canonical : forall [a : Z], 0 <= a < 140737488355328 -> N.canonical a = true
+
+native_low_address_canonical is not universe polymorphic
+Arguments native_low_address_canonical [a]%_Z_scope _
+native_low_address_canonical is opaque
+Expands to: Constant WordBridge.AddressBridge.native_low_address_canonical
+Declared in library WordBridge.AddressBridge, line 37, characters 6-34
+Closed under the global context
+RECORDCOUNT_numeric_contract_not_canonical :
+RecordCountBounds.count_address_contract noncanonical_source_state /\ N.canonical (PmpCore.hp noncanonical_source_state) = false
+
+RECORDCOUNT_numeric_contract_not_canonical is not universe polymorphic
+RECORDCOUNT_numeric_contract_not_canonical is opaque
+Expands to: Constant WordBridge.AddressBridge.RECORDCOUNT_numeric_contract_not_canonical
+Declared in library WordBridge.AddressBridge, line 50, characters 8-50
+Closed under the global context
+RECORDCOUNT_low_input_canonical :
+forall [s : PmpCore.state] [a : Z],
+RecordCountBounds.count_address_contract s ->
+PmpCore.hp s < 140737488355328 -> PmpCore.vars s "pos" <= a < PmpCore.vars s "lim" -> N.canonical (U.encode64 a) = true
+
+RECORDCOUNT_low_input_canonical is not universe polymorphic
+Arguments RECORDCOUNT_low_input_canonical [s] [a]%_Z_scope _ _ _
+RECORDCOUNT_low_input_canonical is opaque
+Expands to: Constant WordBridge.AddressBridge.RECORDCOUNT_low_input_canonical
+Declared in library WordBridge.AddressBridge, line 62, characters 8-39
+Closed under the global context
+RECORDCOUNT_low_diagnostic_canonical :
+forall [s : PmpCore.state],
+RecordCountBounds.count_address_contract s ->
+PmpCore.hp s + 45 < 140737488355328 ->
+N.canonical (PmpCore.vars (RecordCountStep.failure_state s) "WHY") = true /\
+N.canonical (PmpCore.hp (RecordCountStep.failure_state s)) = true /\ (forall i : Z, 0 <= i < 45 -> N.canonical (PmpCore.hp s + i) = true)
+
+RECORDCOUNT_low_diagnostic_canonical is not universe polymorphic
+Arguments RECORDCOUNT_low_diagnostic_canonical [s] _ _
+RECORDCOUNT_low_diagnostic_canonical is opaque
+Expands to: Constant WordBridge.AddressBridge.RECORDCOUNT_low_diagnostic_canonical
+Declared in library WordBridge.AddressBridge, line 72, characters 8-44
+Closed under the global context
+native_readable_region_allowed :
+forall (nm : N.memory) [a : Z],
+N.canonical a = true -> (exists r : N.region, In r (N.regions nm) /\ N.readable r = true /\ N.lo r <= a < N.hi r) -> N.allowed N.readable nm a = true
+
+native_readable_region_allowed is not universe polymorphic
+Arguments native_readable_region_allowed nm [a]%_Z_scope _ _
+native_readable_region_allowed is opaque
+Expands to: Constant WordBridge.AddressBridge.native_readable_region_allowed
+Declared in library WordBridge.AddressBridge, line 87, characters 6-36
+Closed under the global context
+native_readbyte_agrees :
+forall [s : PmpCore.state] [nm : N.memory] (a : Z),
+byte_memory_agrees s nm -> N.allowed N.readable nm a = true -> N.readbyte nm a = Some (PmpCore.bz (PmpCore.mem s a))
+
+native_readbyte_agrees is not universe polymorphic
+Arguments native_readbyte_agrees [s nm] a%_Z_scope _ _
+native_readbyte_agrees is opaque
+Expands to: Constant WordBridge.AddressBridge.native_readbyte_agrees
+Declared in library WordBridge.AddressBridge, line 103, characters 8-30
+Closed under the global context
+RECORDCOUNT_native_input_byte :
+forall [s : PmpCore.state] [nm : N.memory] [a : Z],
+RecordCountBounds.count_address_contract s ->
+PmpCore.hp s < 140737488355328 ->
+PmpCore.vars s "pos" <= a < PmpCore.vars s "lim" ->
+byte_memory_agrees s nm ->
+(exists r : N.region, In r (N.regions nm) /\ N.readable r = true /\ N.lo r <= a < N.hi r) -> N.readbyte nm (U.encode64 a) = Some (PmpCore.bz (PmpCore.mem s a))
+
+RECORDCOUNT_native_input_byte is not universe polymorphic
+Arguments RECORDCOUNT_native_input_byte [s nm] [a]%_Z_scope _ _ _ _ _
+RECORDCOUNT_native_input_byte is opaque
+Expands to: Constant WordBridge.AddressBridge.RECORDCOUNT_native_input_byte
+Declared in library WordBridge.AddressBridge, line 110, characters 8-37
+Closed under the global context

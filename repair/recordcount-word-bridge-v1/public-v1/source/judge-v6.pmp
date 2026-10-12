@@ -1,0 +1,2391 @@
+; judge-v3.pmp - third cut (2026-10-09, same day; judge.pmp and judge-v2.pmp are unchanged). Change: judge-v2.pmp
+; kept the line set ATL const ar at the top of TAUTCHK, which would have pointed the atom table at the last allocation;
+; the line is removed. The rest is judge-v2.pmp.
+;
+; judge-v2.pmp - second cut of judge.pmp (2026-10-09, same day; judge.pmp is unchanged). Changes: the registry copy
+; looped to its body (goto REGCOPY1) instead of its test, copied without end and crashed the interpreter; it now
+; returns to REGCOPY. The atom table of the tautology check is allocated once at the start instead of 512 KB per
+; taut step. The rest is judge.pmp.
+;
+; judge.pmp - the posting checker of the Book: check_batch of forcing-src/general/Replay2.v, in PmpCore forms only
+; (set const/add/sub/mul, set peek, poke, set alloc, text literal, when zero/nonzero/negative, goto, gosub, return,
+; label, trace) plus read, text arg, say, show, print and check zero, so that its meaning is the operational semantics
+; of PmpCore.v / PmpFull.v. Written 2026-10-09 (first cut).
+;
+; Run: pompetzki.exe judge.pmp FILE.jdg
+; Exit 0 and ACCEPT, or REJECT (a step or a theorem fails) / LIMIT (a resource bound) with a nonzero exit.
+;
+; What it decides, function for function as in Replay2.v:
+;   the registry: a list of (formula, hypothesis numbers); theorems are checked in order and each accepted theorem is
+;   appended (check_batch);
+;   check_thm: the steps run in order (run / sstep), the last line equals the statement renamed by sig, sig has no
+;   repeated number, the statement is closed in length(sig) variables, the hypotheses the steps used are among the
+;   theorem's, and there is at least one line;
+;   sstep: use spec gen mp taut exi exel alli inst leib ax, with tof (the abbreviations K D Q X expanded), ren under
+;   binders (scons, absk, sigf, S, skip1, ins2, unskip), form_eqb, free, closedk, specn, prems, axshape (k s c dist vac
+;   refl, Separation and Collection in the shapes isSepN / isCollN), tautchk2 (atoms, then Shannon expansion with the
+;   simplifications mkN / mkI).
+; Replay3.v proves check_batch sound for prov (Gam with the hypotheses); this program is meant to compute it.
+;
+; Input format JDG1 (rocq2jdg.rkt writes it from Rocq data; the converter is not trusted):
+;   JDG1  R n ENTRY^n  T m THEOREM^m
+;   ENTRY   = FORM LIST           THEOREM = FORM LIST(sig) n STEP^n LIST(hyps)          LIST = count then numbers
+;   FORM    = e x y | q x y | p P LIST | n F | i F G | a F | k F G | d F G | b F G | x F
+;   STEP    = U r LIST | S l LIST | G l k | M i j | T LIST FORM | E t FORM | L l k FORM | H k l FORM | V t FORM
+;             | Z FORM FORM | Y FORM
+;
+; Data: a formula is a node of four words [tag, a, b, c]: 1 Mem x y, 2 Eqv x y, 3 Pr p args n, 4 Neg a, 5 Imp a b,
+; 6 All a. A Boolean term of the tautology check is a node 11 BT, 12 BF, 13 BV n, 14 BN a, 15 BI a c.
+; Memory: one persistent block (registry statements and hypotheses) and one scratch block reset for every theorem,
+; both handed out by ALLOC; a data stack (DSB .. DSE) keeps the locals of the recursive routines across gosub.
+; Temporaries t and q are never relied on across a gosub.
+
+; judge-v4.pmp authenticates initial registries against embedded proved REG0.
+; Original judge-v3 computation follows authentication; source-v3 is preserved.
+trace off
+text AUTHREF "a a i a b e 0 2 e 0 1 q 1 0 0 ! a a x k e 2 0 e 1 0 0 ! a x a a i k e 0 1 e 1 3 e 0 2 0 ! a x a i a i e 0 1 e 0 3 e 0 1 0 ! x k x k a n e 0 1 e 0 1 a i e 0 1 x k a b e 0 1 d e 0 2 q 0 2 e 0 2 0 ! a i x e 0 1 x k e 0 1 n x k e 0 2 e 0 1 0 ! a i k a i e 0 1 x e 0 1 a a i k e 1 2 k e 0 2 n q 1 0 n x k e 0 2 e 0 1 x a i e 0 2 x k k e 0 1 e 0 2 a i k e 0 2 e 0 3 q 0 1 0 ! a a b p 5 2 1 0 a i e 0 2 e 0 1 0 ! a a b p 6 2 1 0 a b e 0 2 q 0 1 0 ! a a a b p 7 3 2 1 0 a b e 0 3 d q 0 2 q 0 1 0 ! a a a b p 8 3 2 1 0 a b e 0 3 d p 6 2 0 2 p 7 3 0 2 1 0 ! a a a b p 9 3 2 1 0 x k e 0 3 p 8 3 0 2 1 0 ! a b p 10 1 0 a a a i k p 9 3 3 2 1 p 9 3 3 2 0 q 1 0 0 ! a b p 11 1 0 a a a i k p 9 3 3 2 0 p 9 3 3 1 0 q 2 1 0 ! a a b p 12 2 1 0 a i e 0 1 x p 9 3 3 1 0 0 ! a a b p 13 2 1 0 a a i p 9 3 3 1 0 e 0 2 0 ! a a b p 14 2 1 0 x k k p 10 1 0 p 11 1 0 k p 12 2 0 2 p 13 2 0 1 0 ! a b p 15 1 0 a a i k e 1 0 e 0 2 e 1 2 0 ! a b p 16 1 0 k p 15 1 0 a a i k e 1 2 e 0 2 d d e 1 0 q 1 0 e 0 1 0 ! a b p 17 1 0 a n e 0 1 0 ! a a b p 18 2 1 0 a b e 0 2 d e 0 1 q 0 1 0 ! a b p 19 1 0 k x k p 17 1 0 e 0 1 a i e 0 1 x k p 18 2 0 1 e 0 2 0 ! a b p 20 1 0 k p 19 1 0 a i p 19 1 0 p 5 2 1 0 0 ! a b p 21 1 0 x k p 20 1 0 p 14 2 1 0 0 ! a b p 22 1 0 k p 16 1 0 a i e 0 1 n p 14 2 1 0 0 ! a b p 23 1 0 x k p 20 1 0 p 5 2 0 1 0 ! a a a b p 24 3 2 1 0 a b e 0 3 p 9 3 2 1 0 0 ! a a b p 25 2 1 0 a i e 0 1 x k p 24 3 0 3 1 p 21 1 0 0 ! a a a b p 26 3 2 1 0 a i e 0 3 x k e 0 2 p 9 3 3 0 1 0 ! a a a b p 27 3 2 1 0 a b e 0 3 x k e 0 2 p 9 3 3 0 1 0 ! a a a b p 28 3 2 1 0 a b e 0 3 x x k k e 1 4 e 0 3 p 8 3 2 1 0 0 ! a a a a b p 29 4 3 2 1 0 k k p 5 2 3 2 a i p 17 1 0 p 9 3 4 0 1 a a a a i k k p 9 3 7 3 2 p 18 2 1 3 p 9 3 5 2 0 p 9 3 7 1 0 0 ! a a a a a b p 30 5 4 3 2 1 0 k k k p 10 1 4 p 12 2 4 3 k p 13 2 4 1 a i p 17 1 0 p 9 3 5 0 1 a a a a i k k p 9 3 8 3 2 p 18 2 1 3 p 9 3 6 2 0 p 9 3 8 1 0 0 ! a a a a a b p 31 5 4 3 2 1 0 d d d k k e 3 4 e 2 4 k q 1 4 q 0 2 k k e 3 4 q 2 4 k p 17 1 1 q 0 4 k e 4 3 k p 18 2 1 4 q 0 3 k q 4 3 k p 18 2 1 4 p 17 1 0 0 ! a a a a b p 32 4 3 2 1 0 x k p 18 2 0 3 p 31 5 4 3 0 2 1 0 ! a a a b p 33 3 2 1 0 a b e 0 3 k e 0 2 x x x x x x k k p 8 3 6 1 0 p 8 3 1 5 4 k p 8 3 0 3 2 k k e 5 7 e 4 7 p 32 4 5 4 3 2 0 ! a a a b p 34 3 2 1 0 k k k p 10 1 2 p 12 2 2 1 p 13 2 2 1 a a a a a a i k k k p 8 3 1 5 4 p 8 3 0 3 2 k e 5 6 e 4 6 p 32 4 5 4 3 2 p 9 3 8 1 0 0 ! a a a a b p 35 4 3 2 1 0 x x k k e 1 4 p 8 3 0 3 2 p 9 3 5 1 0 0 ! a a a a a b p 36 5 4 3 2 1 0 k k k k k p 20 1 0 p 16 1 0 p 28 3 2 0 0 p 34 3 3 2 0 p 30 5 4 0 3 2 1 a i p 17 1 0 p 8 3 2 0 0 0 ! a a a b p 37 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 k p 9 3 3 0 1 a i e 0 1 n p 9 3 4 0 2 0 ! a a a b p 38 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 d p 18 2 0 1 k q 0 1 n x k e 0 4 p 18 2 0 2 0 ! a b p 39 1 0 a i e 0 1 x k e 0 2 e 1 0 0 ! a a a b p 40 3 2 1 0 a a i k e 1 3 p 9 3 4 1 0 x k e 0 3 p 18 2 0 1 0 ! a a a b p 41 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 39 1 1 0 ! a a a a a a a a b p 42 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 6 5 e 6 1 p 39 1 6 k p 30 5 4 0 2 1 6 k k e 5 0 p 9 3 4 5 3 a i e 0 6 n p 9 3 5 0 4 0 ! a a a a a b p 43 5 4 3 2 1 0 x x x p 42 8 6 2 1 0 7 5 4 3 0 ! a a a a a b p 44 5 4 3 2 1 0 a b e 0 5 k e 0 4 x x k p 8 3 2 1 0 p 43 5 1 0 5 4 3 0 ! a a a a a a b p 45 6 5 4 3 2 1 0 k k p 8 3 5 2 0 p 9 3 3 2 1 p 8 3 4 1 0 0 ! a a a b p 46 3 2 1 0 x x x p 45 6 5 4 3 2 1 0 0 ! a a a b p 47 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 46 3 1 0 3 0 ! a a a a b p 48 4 3 2 1 0 x k p 8 3 0 3 2 p 9 3 4 0 1 0 ! a a a a a a a a b p 49 8 7 6 5 4 3 2 1 0 k k k p 8 3 7 4 1 p 8 3 4 3 2 p 48 4 5 2 1 0 p 8 3 6 3 0 0 ! a a a b p 50 3 2 1 0 x x x x x p 49 8 7 6 5 4 3 2 1 0 0 ! a a a b p 51 3 2 1 0 a b e 0 3 k e 0 2 x x k p 8 3 2 1 0 p 50 3 1 0 3 0 ! a a a a b p 52 4 3 2 1 0 x k p 30 5 0 1 3 2 4 p 40 3 0 1 2 0 ! a a a a b p 53 4 3 2 1 0 x k p 30 5 0 1 3 2 4 n p 40 3 0 1 2 0 ! a a a a a a a a b p 54 8 7 6 5 4 3 2 1 0 d k k p 52 4 7 4 3 2 q 5 7 q 6 1 k k p 53 4 7 4 3 2 q 5 1 q 6 0 0 ! a a a a a a a a b p 55 8 7 6 5 4 3 2 1 0 k k k k k k k k k k k p 16 1 7 p 20 1 6 p 5 2 6 7 p 28 3 5 7 7 p 38 3 4 5 7 p 17 1 3 p 18 2 2 3 p 10 1 1 p 11 1 1 p 12 2 1 0 p 13 2 1 6 p 28 3 0 6 6 0 ! a a a a a a a a a b p 56 9 8 7 6 5 4 3 2 1 0 x x x x k k k p 54 8 11 2 3 8 7 6 5 4 p 30 5 1 6 8 7 3 p 48 4 9 10 2 0 p 9 3 1 0 12 0 ! a a a a a a a a b p 57 8 7 6 5 4 3 2 1 0 x x k k k k p 8 3 9 1 0 e 1 5 p 39 1 1 e 0 4 p 56 9 8 1 0 7 6 5 4 3 2 0 ! a a a a a a a a b p 58 8 7 6 5 4 3 2 1 0 a b e 0 8 k e 0 7 x x k p 8 3 2 1 0 p 57 8 1 0 8 7 6 5 4 3 0 ! a a a a b p 59 4 3 2 1 0 k k k p 10 1 3 p 11 1 3 p 13 2 3 0 a i p 9 3 3 2 0 x p 9 3 5 1 0 0 ! a a b p 60 2 1 0 a i p 5 2 0 1 e 0 2 0 ! a a a a a b p 61 5 4 3 2 1 0 a b e 0 5 k e 0 4 x k p 8 3 1 4 0 p 59 4 0 3 4 2 0 ! a a a a a a b p 62 6 5 4 3 2 1 0 a b e 0 6 k e 0 5 x k e 0 5 p 61 5 1 4 0 3 2 0 ! a a b p 63 2 1 0 a i e 0 1 x k k e 0 1 e 0 3 a i k e 0 2 e 0 4 q 0 1 0 ! a a a a a a b p 64 6 5 4 3 2 1 0 x k k k p 8 3 0 4 3 e 0 6 e 0 5 p 59 4 3 2 4 1 0 ! a a a a a b p 65 5 4 3 2 1 0 a a a i k k e 2 3 p 64 6 7 6 2 1 5 4 p 64 6 7 6 2 0 5 4 q 1 0 0 ! a a a a a b p 66 5 4 3 2 1 0 a i e 0 1 x p 64 6 6 5 1 0 4 3 0 ! a a a a b p 67 4 3 2 1 0 k k e 3 0 p 9 3 1 3 2 a i e 0 4 n p 9 3 2 0 3 0 ! a a a a b p 68 4 3 2 1 0 x k p 9 3 2 4 0 p 8 3 3 1 0 0 ! a a a a a a a b p 69 7 6 5 4 3 2 1 0 x x k k p 67 4 1 8 6 5 p 64 6 4 3 1 0 6 2 p 68 4 8 7 0 1 0 ! a a a a a a a b p 70 7 6 5 4 3 2 1 0 a b e 0 7 k e 0 6 x x k p 8 3 2 1 0 p 69 7 1 0 7 6 5 4 3 0 ! a a a b p 71 3 2 1 0 k k k p 10 1 2 p 11 1 2 k p 12 2 2 1 p 13 2 2 0 k a i e 0 1 x k e 0 3 p 9 3 4 0 1 a a i k e 1 3 p 9 3 4 1 0 a b e 0 1 x k k e 0 5 e 0 3 p 9 3 6 0 1 0 ! a b p 72 1 0 x k p 20 1 0 e 1 0 0 ! a a b p 73 2 1 0 a i e 0 2 x x k e 1 3 p 8 3 2 1 0 0 ! a a b p 74 2 1 0 k k p 72 1 0 p 10 1 1 k p 12 2 1 0 p 73 2 1 0 0 ! a a a b p 75 3 2 1 0 k p 74 2 2 1 p 13 2 2 0 0 ! a a b p 76 2 1 0 x p 75 3 2 0 1 0 ! a a a a b p 77 4 3 2 1 0 a b e 0 4 d e 0 3 p 8 3 0 1 2 0 ! a a a a b p 78 4 3 2 1 0 a b e 0 4 k p 76 2 0 3 x x k k p 9 3 2 4 1 p 9 3 2 3 0 e 1 0 0 ! a a a a b p 79 4 3 2 1 0 a b e 0 4 k p 76 2 0 3 x x k k p 9 3 2 4 1 p 9 3 2 3 0 q 1 0 0 ! a a a b p 80 3 2 1 0 a b e 0 3 k p 76 2 0 1 n e 0 2 0 ! a a a b p 81 3 2 1 0 a b e 0 3 k e 0 2 e 0 1 0 ! a a a b p 82 3 2 1 0 a b e 0 3 x k p 75 3 1 0 2 x x k k e 1 4 p 77 4 0 3 1 2 e 0 5 0 ! a a b p 83 2 1 0 k k k k a a a i k k p 72 1 2 p 72 1 1 p 78 4 0 3 2 1 e 0 4 a a a i k k p 72 1 2 p 72 1 1 p 79 4 0 3 2 1 e 0 4 a a i k e 1 3 p 80 3 0 1 2 e 0 3 a a a i k k e 2 4 e 1 4 p 81 3 0 2 1 e 0 4 a a i k e 1 3 p 82 3 0 1 2 e 0 3 0 ! a a b p 84 2 1 0 a i p 83 2 0 1 e 2 0 0 ! a a a a a b p 85 5 4 3 2 1 0 a b e 0 5 k e 0 4 x k p 77 4 0 3 1 2 e 0 4 0 ! a a b p 86 2 1 0 x x x k k p 84 2 2 3 p 75 3 1 0 3 p 85 5 4 3 2 1 0 0 ! a a b p 87 2 1 0 a b e 0 2 p 5 2 0 1 0 ! a a a b p 88 3 2 1 0 a b e 0 3 x x k k e 1 3 p 9 3 4 1 0 p 86 2 2 0 0 ! a b p 89 1 0 k p 10 1 0 a a i p 9 3 2 1 0 k k p 16 1 1 a i e 0 2 x p 9 3 4 1 0 p 88 3 0 2 1 0 ! a a b p 90 2 1 0 k p 16 1 1 x k p 89 1 0 p 9 3 0 2 1 0 ! a a a b p 91 3 2 1 0 a a i e 1 2 b p 9 3 4 1 0 p 9 3 3 1 0 0 ! a a a a a a a b p 92 7 6 5 4 3 2 1 0 k k a a a a i k k p 75 3 3 2 7 p 9 3 3 4 1 p 9 3 3 6 0 b e 3 10 e 1 0 a a i k p 75 3 1 2 5 p 9 3 1 3 0 b e 1 7 a i e 0 1 a i p 77 4 0 3 1 4 e 0 10 a a i k p 75 3 1 3 5 p 9 3 1 4 0 b e 1 6 a i e 0 1 a i p 77 4 0 3 1 5 e 0 9 0 ! a a a a a a a a b p 93 8 7 6 5 4 3 2 1 0 k k k k a a a a i k k p 75 3 3 2 6 p 9 3 3 5 1 p 9 3 3 4 0 b e 3 11 e 1 0 a a a a i k k p 75 3 3 2 6 p 9 3 3 5 1 p 9 3 3 4 0 b e 3 10 q 1 0 a a a a i k k p 75 3 3 2 6 p 9 3 3 4 1 p 9 3 3 5 0 b e 3 9 e 1 0 a i p 76 2 0 3 b e 0 5 d e 0 8 e 0 7 a i p 76 2 0 3 b e 0 4 d e 0 5 e 0 6 0 ! a a a a a a a b p 94 7 6 5 4 3 2 1 0 k a a i k p 75 3 1 2 5 p 9 3 1 4 0 b e 1 7 a i e 0 1 a i p 77 4 0 3 1 4 e 0 10 a a i k p 75 3 1 3 5 p 9 3 1 4 0 b e 1 6 a i e 0 1 a i p 77 4 0 3 1 5 e 0 9 0 ! a b p 95 1 0 x x k p 90 2 1 0 e 2 0 0 ! a a a a b p 96 4 3 2 1 0 a b e 0 4 x k k e 0 3 e 0 2 p 9 3 4 0 1 0 ! a a b p 97 2 1 0 k p 10 1 1 a a i p 9 3 3 1 0 k k e 1 2 a i k e 0 2 e 0 3 x p 9 3 5 1 0 p 96 4 0 3 1 2 0 ! a a a a b p 98 4 3 2 1 0 a a i k e 1 3 e 1 2 b p 9 3 5 1 0 p 9 3 4 1 0 0 ! a b p 99 1 0 a a i k k e 1 2 e 0 2 a i e 0 3 b e 0 2 e 0 1 q 1 0 0 ! a a a b p 100 3 2 1 0 a b e 0 3 x x x k k p 9 3 4 2 1 p 9 3 5 1 0 p 8 3 3 2 0 0 ! a a a b p 101 3 2 1 0 k k k k k k p 10 1 2 p 11 1 2 p 12 2 2 1 p 13 2 2 0 a i e 0 1 x k e 0 3 p 9 3 4 0 1 a a i p 9 3 4 1 0 e 1 3 a a a a i k p 9 3 6 3 1 p 9 3 6 2 0 b e 3 2 e 1 0 0 ! a a b p 102 2 1 0 a a b p 9 3 3 1 0 p 9 3 2 0 1 0 ! a a a a b p 103 4 3 2 1 0 a b e 0 4 k p 76 2 0 1 x k e 0 3 p 100 3 1 4 0 0 ! a a a b p 104 3 2 1 0 a b e 0 3 k e 0 2 p 76 2 0 1 0 ! a a b p 105 2 1 0 a a a a a i k k k k p 84 2 4 5 p 75 3 3 2 6 e 1 5 p 77 4 0 3 1 2 e 0 4 x x k k e 1 8 p 77 4 0 5 1 4 e 0 6 0 ! a a a b p 106 3 2 1 0 a b e 0 3 k e 0 2 e 0 1 0 ! a a a b p 107 3 2 1 0 a b e 0 3 k e 0 2 x x k e 1 3 p 8 3 2 1 0 0 ! a a b p 108 2 1 0 x x x x x x k k k k k k k e 5 6 p 16 1 5 p 90 2 5 4 p 106 3 3 4 6 p 84 2 2 4 p 75 3 1 0 3 p 85 5 7 4 2 1 0 a i e 0 6 a i p 90 2 1 0 n p 86 2 9 0 0 ! a b p 109 1 0 k k k a i e 0 1 p 108 2 0 1 a a a a a a a i k k k k k k e 6 7 p 16 1 6 p 90 2 6 5 p 106 3 4 5 7 p 84 2 3 5 p 75 3 2 1 4 p 85 5 0 5 3 2 1 e 0 7 a a a i k k k e 2 3 p 16 1 2 p 90 2 2 1 p 106 3 0 1 3 p 105 2 0 1 p 99 1 0 0 ! a a a a a a a a b p 110 8 7 6 5 4 3 2 1 0 k k k k k k k e 5 6 p 16 1 5 p 90 2 5 4 p 106 3 3 4 6 p 84 2 2 4 p 75 3 1 0 3 p 85 5 7 4 2 1 0 a i e 0 6 a i p 90 2 1 0 n p 86 2 9 0 0 ! a a a a b p 111 4 3 2 1 0 a b e 0 4 k e 0 2 d d d e 0 3 x k e 0 4 p 80 3 1 0 2 x x k k e 1 5 e 0 5 p 81 3 2 1 0 x k e 0 4 p 82 3 1 0 2 0 ! a a a b p 112 3 2 1 0 a b e 0 3 k e 0 1 x k e 0 3 p 8 3 1 3 0 0 ! a a b p 113 2 1 0 k k p 16 1 1 x k p 90 2 2 0 p 86 2 1 0 a i e 0 2 a i p 90 2 1 0 n p 86 2 2 0 0 ! a a a b p 114 3 2 1 0 x x k k p 84 2 1 2 p 75 3 4 0 2 p 85 5 3 2 1 4 0 0 ! a a a a b p 115 4 3 2 1 0 x x x k k k p 113 2 2 5 p 90 2 2 1 a b e 0 1 k e 0 5 p 114 3 0 6 2 p 9 3 3 0 6 0 ! a a a a b p 116 4 3 2 1 0 x x k p 115 4 1 4 3 2 p 9 3 1 0 5 0 ! a a b p 117 2 1 0 x x x x x k k k k k k e 4 5 p 16 1 4 p 90 2 4 3 p 84 2 2 3 p 75 3 1 0 3 p 13 2 1 5 p 85 5 6 3 2 1 0 0 ! a a a b p 118 3 2 1 0 a b e 0 3 d k e 0 2 n e 0 1 k e 0 1 n e 0 2 0 ! a a a a a a b p 119 6 5 4 3 2 1 0 a b e 0 6 k e 0 4 d d d d e 0 5 x k e 0 6 p 113 2 1 0 x k e 0 6 p 116 4 1 0 4 2 p 117 2 0 5 x x x k k k e 2 8 e 1 8 p 118 3 0 2 1 p 9 3 5 0 3 0 ! a a a a a a a b p 120 7 6 5 4 3 2 1 0 k k k k p 20 1 6 p 30 5 5 6 4 3 2 p 12 2 4 3 p 87 2 3 1 a b e 0 1 k e 0 2 x x k k e 1 9 p 9 3 8 1 0 e 2 0 0 ! a a b p 121 2 1 0 k k p 10 1 1 a i k p 5 2 0 1 x e 0 1 x k p 9 3 3 1 0 e 0 1 a a i p 9 3 3 1 0 e 0 1 0 ! a a a b p 122 3 2 1 0 a i e 0 3 x x k k p 8 3 2 1 0 e 1 4 e 0 3 0 ! a a a a b p 123 4 3 2 1 0 a b e 0 4 x x k k e 1 4 p 9 3 5 1 0 p 122 3 2 0 3 0 ! a a b p 124 2 1 0 k p 10 1 1 a a i p 9 3 3 1 0 k k p 16 1 1 a i e 0 2 x p 9 3 5 1 0 p 123 4 0 3 1 2 0 ! a a a b p 125 3 2 1 0 k p 16 1 2 x k p 124 2 0 1 p 9 3 0 3 2 0 ! a a a a b p 126 4 3 2 1 0 x k p 8 3 4 3 0 p 8 3 0 2 1 0 ! a a a a b p 127 4 3 2 1 0 x k e 0 4 p 126 4 0 3 2 1 0 ! a a a a a b p 128 5 4 3 2 1 0 a a i p 9 3 5 1 0 a i k k e 0 3 p 5 2 7 0 p 5 2 1 0 x k k e 0 4 p 5 2 1 0 x x k k p 9 3 8 1 0 p 5 2 0 2 p 127 4 7 2 5 1 0 ! a a a a a b p 129 5 4 3 2 1 0 a a i p 9 3 4 1 0 a i k k e 0 3 p 5 2 7 0 p 5 2 1 0 x k k e 0 4 p 5 2 1 0 x x k k p 9 3 9 1 0 p 5 2 0 2 p 127 4 7 2 1 5 0 ! a a b p 130 2 1 0 a i e 0 2 x x x k k p 126 4 3 2 1 0 e 2 4 k p 128 5 2 1 0 5 4 p 129 5 2 1 0 5 4 0 ! a a a a b p 131 4 3 2 1 0 x k p 130 2 0 4 p 127 4 0 3 2 1 0 ! a a a a b p 132 4 3 2 1 0 a a i p 9 3 3 1 0 a i k k e 0 6 p 5 2 5 0 p 5 2 1 0 x k k e 0 7 p 5 2 1 0 x x k k p 9 3 6 1 0 p 5 2 0 2 p 131 4 9 2 5 1 0 ! a a a a b p 133 4 3 2 1 0 a a i p 9 3 2 1 0 a i k k e 0 6 p 5 2 5 0 p 5 2 1 0 x k k e 0 7 p 5 2 1 0 x x k k p 9 3 7 1 0 p 5 2 0 2 p 131 4 9 2 1 5 0 ! a a a a b p 134 4 3 2 1 0 a i k e 0 4 p 5 2 3 0 x k k e 0 5 p 5 2 1 0 x x k k p 9 3 4 1 0 p 5 2 0 2 p 131 4 7 2 5 1 0 ! a a b p 135 2 1 0 a i e 0 2 p 122 3 0 2 1 0 ! a a b p 136 2 1 0 x k p 135 2 0 1 e 2 0 0 ! a a b p 4 2 1 0 k k p 5 2 1 0 a a i k k e 1 3 e 0 2 p 5 2 1 0 e 0 3 a i k e 0 1 a i k e 0 2 p 5 2 1 0 x k k e 0 3 p 5 2 1 0 e 0 4 e 0 2 0 ! a a a b p 137 3 2 1 0 d e 2 1 a i k e 0 1 p 5 2 3 0 n e 0 2 0 ! a a a b p 2 3 2 1 0 a b e 0 2 k e 0 1 a i k e 0 2 p 5 2 1 0 n e 0 4 0 ! a a a a b p 3 4 3 2 1 0 a b e 0 2 k e 0 1 a i k k e 0 2 p 5 2 1 0 e 0 5 x k k e 0 3 p 5 2 1 0 e 0 5 0 ! a a a a b p 0 4 3 2 1 0 a b e 0 4 k e 0 3 p 134 4 3 0 2 1 0 ! a a a a b p 1 4 3 2 1 0 a b e 0 4 k e 0 3 p 131 4 3 0 2 1 0 ! a a a a b p 138 4 3 2 1 0 a b e 0 4 d q 0 1 x x x k k k e 2 5 p 9 3 6 2 1 e 0 1 e 3 0 0 ! a a b p 139 2 1 0 k p 10 1 1 a a i p 9 3 3 1 0 k k p 16 1 1 a i e 0 2 x p 9 3 5 1 0 p 138 4 0 3 1 2 0 ! a a a b p 140 3 2 1 0 k p 16 1 2 x k p 139 2 0 1 p 9 3 0 3 2 0 ! a a a a a b p 141 5 4 3 2 1 0 x k a b e 0 1 k e 0 2 n x k e 0 5 p 9 3 6 0 1 k i x k p 9 3 3 1 0 a i p 9 3 4 2 0 q 0 1 p 9 3 2 0 5 i n x k p 9 3 3 1 0 a i p 9 3 4 2 0 q 0 1 q 5 1 0 ! a a a b p 142 3 2 1 0 k p 10 1 2 a a i p 9 3 4 1 0 k k p 16 1 1 a i e 0 2 x p 9 3 6 1 0 p 141 5 0 4 1 3 2 0 ! a a a a b p 143 4 3 2 1 0 k p 16 1 3 x k p 142 3 0 2 1 p 9 3 0 4 3 0 ! a a a a a a a b p 144 7 6 5 4 3 2 1 0 k k p 134 4 1 6 4 3 p 134 4 1 6 5 4 a a a i k k k e 2 3 p 9 3 5 2 1 p 9 3 5 8 0 e 1 0 a i k e 0 5 p 5 2 10 0 n p 134 4 5 0 3 8 0 ! a a a b p 145 3 2 1 0 k k k p 10 1 2 p 11 1 2 p 12 2 2 1 p 13 2 2 0 0 ! a a a b p 146 3 2 1 0 x k p 75 3 0 2 1 a i e 0 4 x p 9 3 2 0 1 0 ! a a a b p 147 3 2 1 0 k k p 5 2 2 1 p 10 1 2 x k e 0 1 p 146 3 3 0 2 0 ! a a a a b p 148 4 3 2 1 0 x k k p 147 3 0 2 1 p 5 2 4 0 p 5 2 3 0 0 ! a a b p 149 2 1 0 x x x x k k k p 8 3 5 3 2 p 8 3 1 3 0 e 1 4 n q 2 0 0 ! a a a b p 150 3 2 1 0 k k p 17 1 1 p 6 2 0 1 a b e 0 3 d q 0 2 q 0 1 0 ! a a a a b p 151 4 3 2 1 0 k a i e 0 4 k p 147 3 0 2 1 p 146 3 0 3 2 a a i k k e 1 5 e 0 5 p 148 4 1 0 3 2 q 1 0 0 ! a a a a a a a b p 152 7 6 5 4 3 2 1 0 k k k k k p 8 3 6 5 4 e 4 1 p 8 3 3 5 2 e 2 1 n q 2 4 e 3 0 0 ! a a a b p 153 3 2 1 0 a b e 0 3 k e 0 2 n q 0 1 0 ! a a a b p 154 3 2 1 0 a b e 0 3 k e 0 2 p 149 2 1 0 0 ! a a a a b p 155 4 3 2 1 0 a b e 0 4 k e 0 3 k n e 2 0 x k e 0 2 p 153 3 1 0 3 0 ! a a a b p 156 3 2 1 0 a b e 0 3 d e 0 2 x k p 8 3 1 3 0 e 0 2 0 ! a a a a a a b p 157 6 5 4 3 2 1 0 k k k p 20 1 4 p 17 1 1 p 30 5 5 4 2 3 1 a a b p 9 3 4 1 0 k e 1 5 p 156 3 0 1 2 0 ! a a a a a a a a b p 158 8 7 6 5 4 3 2 1 0 k k k k p 20 1 0 p 28 3 6 5 3 p 28 3 5 4 0 p 150 3 3 2 1 a b e 0 8 p 147 3 0 7 1 0 ! a a a a a a a b p 159 7 6 5 4 3 2 1 0 x x k k k k e 1 4 p 9 3 5 1 8 e 7 3 p 8 3 0 6 1 p 9 3 7 0 2 0 ! a a a a a a b p 160 6 5 4 3 2 1 0 a b e 0 6 x x k p 8 3 2 1 0 p 159 7 1 0 7 6 5 4 3 0 ! a a a a a b p 161 5 4 3 2 1 0 k p 28 3 4 3 0 a b e 0 4 x k e 0 3 p 9 3 4 0 1 0 ! a a a a a a b p 162 6 5 4 3 2 1 0 a b e 0 6 x x x k k k e 1 8 p 160 6 2 1 7 6 5 4 e 0 5 p 8 3 3 2 0 0 ! a a a a a a a a b p 163 8 7 6 5 4 3 2 1 0 k k k k a i e 0 8 x x k k e 1 9 e 0 7 x k p 8 3 0 3 2 p 9 3 9 0 1 a a a a a i k k x k p 8 3 0 5 3 p 9 3 11 0 2 x k p 8 3 0 4 3 p 9 3 11 0 1 n q 4 3 n p 148 4 1 0 8 7 p 28 3 1 6 4 p 10 1 0 a i k p 5 2 0 2 x e 0 1 x k p 9 3 2 1 0 e 0 1 0 ! a a a a b p 164 4 3 2 1 0 a b e 0 4 k e 0 2 x x k p 8 3 2 1 0 x k p 8 3 0 6 2 p 9 3 4 0 1 0 ! a a a a a a b p 165 6 5 4 3 2 1 0 x x k k p 164 4 1 7 3 2 p 9 3 4 1 0 p 8 3 0 6 5 0 ! a b p 166 1 0 x x x x x x x x x x x k k k k k k p 158 8 11 10 9 8 7 6 5 4 a i e 0 4 e 0 9 a i e 0 3 e 0 9 p 28 3 1 4 4 p 60 2 3 1 p 28 3 0 3 4 p 60 2 2 0 0 ! a a a a b p 167 4 3 2 1 0 x k p 0 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a b p 168 3 2 1 0 a b e 0 3 k e 0 2 a x k p 167 4 0 4 1 3 e 2 0 0 ! a a a b p 169 3 2 1 0 p 168 3 2 1 0 0 ! a a a a b p 170 4 3 2 1 0 x x k k p 169 3 1 4 3 p 167 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 171 4 3 2 1 0 x k p 170 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 172 4 3 2 1 0 x k p 171 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a b p 173 3 2 1 0 a b e 0 3 k e 0 2 a x k p 172 4 0 4 1 3 e 2 0 0 ! a a a b p 174 3 2 1 0 x k p 173 3 0 2 1 p 2 3 0 3 2 0 ! a a a a b p 175 4 3 2 1 0 x x k k p 167 4 1 4 3 2 p 1 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 176 5 4 3 2 1 0 x x k k p 0 4 1 5 4 3 p 175 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 177 5 4 3 2 1 0 x x k k p 175 4 1 5 4 3 p 0 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 178 5 4 3 2 1 0 x k p 177 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 179 5 4 3 2 1 0 x x k k p 176 5 1 5 4 3 2 p 178 5 0 5 4 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 180 5 4 3 2 1 0 x k p 179 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a b p 181 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 180 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 182 4 3 2 1 0 p 181 4 3 2 1 0 0 ! a a a a a b p 183 5 4 3 2 1 0 x x k k p 182 4 1 5 4 3 p 167 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 184 5 4 3 2 1 0 x k p 183 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 185 5 4 3 2 1 0 x k p 184 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a b p 186 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 185 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 187 4 3 2 1 0 x k p 186 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 188 4 3 2 1 0 x x k k p 0 4 1 4 3 2 p 187 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a b p 189 3 2 1 0 a b e 0 3 k e 0 2 a x k p 188 4 0 4 1 3 e 2 0 0 ! a a a b p 190 3 2 1 0 x k p 189 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 191 3 2 1 0 x x k k p 174 3 1 3 2 p 190 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 192 3 2 1 0 x k p 191 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 193 3 2 1 0 p 192 3 2 1 0 0 ! a a a b p 194 3 2 1 0 x x k k p 193 3 1 3 2 p 192 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 195 3 2 1 0 x x k k p 192 3 1 3 2 p 193 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 196 3 2 1 0 x k p 195 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 197 3 2 1 0 x x k k p 194 3 1 3 2 p 196 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 198 3 2 1 0 x k p 197 3 0 2 1 p 2 3 0 3 2 0 ! a a b p 199 2 1 0 a b e 0 2 k e 0 1 a x k p 198 3 0 3 1 e 2 0 0 ! a a a b p 200 3 2 1 0 x x k k p 199 2 1 3 p 198 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 201 3 2 1 0 x x k k p 169 3 1 3 2 p 168 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 202 3 2 1 0 x x k k p 168 3 1 3 2 p 169 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 203 3 2 1 0 x k p 202 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 204 3 2 1 0 x x k k p 201 3 1 3 2 p 203 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 205 3 2 1 0 x k p 204 3 0 2 1 p 2 3 0 3 2 0 ! a a b p 206 2 1 0 a b e 0 2 k e 0 1 a x k p 205 3 0 3 1 e 2 0 0 ! a a a b p 207 3 2 1 0 x x k k p 206 2 1 3 p 205 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 208 4 3 2 1 0 x x k k p 168 3 1 4 3 p 167 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a b p 209 3 2 1 0 x k p 169 3 0 2 1 p 2 3 0 3 2 0 ! a a a a b p 210 4 3 2 1 0 x x k k p 169 3 1 4 3 p 209 3 0 4 2 p 3 4 1 0 5 4 0 ! a a a a b p 211 4 3 2 1 0 x k p 210 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 212 5 4 3 2 1 0 x x k k p 0 4 1 5 4 3 p 0 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 213 5 4 3 2 1 0 x k p 212 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 214 5 4 3 2 1 0 x x k k p 212 5 1 5 4 3 2 p 213 5 0 5 4 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 215 5 4 3 2 1 0 x k p 214 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 216 5 4 3 2 1 0 x x k k p 211 4 1 5 4 3 p 215 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a b p 217 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 216 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 218 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 211 4 0 5 4 3 e 2 0 0 ! a a a a b p 219 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 215 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 220 4 3 2 1 0 x x k k p 218 4 1 4 3 2 p 219 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 221 4 3 2 1 0 x x k k p 217 4 1 4 3 2 p 220 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 222 4 3 2 1 0 x x k k p 211 4 1 4 3 2 p 218 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 223 4 3 2 1 0 x x k k p 211 4 1 4 3 2 p 219 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 224 5 4 3 2 1 0 x x k k p 219 4 1 5 4 3 p 215 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a b p 225 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 216 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 226 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 211 4 0 5 4 3 e 2 0 0 ! a a a a b p 227 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 215 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 228 4 3 2 1 0 x x k k p 226 4 1 4 3 2 p 227 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 229 4 3 2 1 0 x x k k p 225 4 1 4 3 2 p 228 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 230 4 3 2 1 0 x x k k p 211 4 1 4 3 2 p 226 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 231 4 3 2 1 0 x x k k p 211 4 1 4 3 2 p 227 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 232 4 3 2 1 0 x x k k p 227 4 1 4 3 2 p 1 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a b p 233 3 2 1 0 a b e 0 3 k e 0 2 a x k p 232 4 0 4 3 1 e 2 0 0 ! a a b p 234 2 1 0 a b e 0 2 k e 0 1 a x k p 233 3 0 3 1 e 2 0 0 ! a a a a a b p 235 5 4 3 2 1 0 x x k k p 227 4 1 5 4 3 p 215 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 236 5 4 3 2 1 0 x x k k p 227 4 1 5 4 3 p 212 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 237 5 4 3 2 1 0 x x k k p 227 4 1 5 4 3 p 212 5 0 5 2 3 4 p 3 4 1 0 6 5 0 ! a a a b p 238 3 2 1 0 x x k k p 234 2 1 3 p 233 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 239 4 3 2 1 0 x x k k p 233 3 1 4 3 p 232 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 240 5 4 3 2 1 0 x x k k p 0 4 1 5 4 3 p 0 4 0 5 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 241 5 4 3 2 1 0 x x k k p 1 4 1 5 4 3 p 240 5 0 5 4 2 3 p 3 4 1 0 6 5 0 ! a a a a b p 242 4 3 2 1 0 x x k k p 169 3 1 4 3 p 0 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 243 5 4 3 2 1 0 x x k k p 171 4 1 5 4 3 p 242 4 0 5 2 3 p 3 4 1 0 6 5 0 ! a a a a b p 244 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 243 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 245 4 3 2 1 0 x k p 242 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 246 5 4 3 2 1 0 x x k k p 245 4 1 5 4 3 p 172 4 0 5 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 247 5 4 3 2 1 0 x x k k p 243 5 1 5 4 3 2 p 246 5 0 5 2 3 4 p 3 4 1 0 6 5 0 ! a a a a b p 248 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 247 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 249 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 246 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 250 4 3 2 1 0 x x k k p 244 4 1 4 3 2 p 249 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 251 4 3 2 1 0 x x k k p 248 4 1 4 3 2 p 250 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 252 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 245 4 0 5 4 3 e 2 0 0 ! a a a a b p 253 4 3 2 1 0 x x k k p 252 4 1 4 3 2 p 173 3 0 4 2 p 3 4 1 0 5 4 0 ! a a a a b p 254 4 3 2 1 0 x x k k p 249 4 1 4 3 2 p 253 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 255 4 3 2 1 0 x x k k p 245 4 1 4 3 2 p 252 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 256 4 3 2 1 0 x x k k p 245 4 1 4 3 2 p 173 3 0 4 2 p 3 4 1 0 5 4 0 ! a a a a b p 257 4 3 2 1 0 x x k k p 174 3 1 4 3 p 242 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 258 4 3 2 1 0 x x k k p 193 3 1 4 3 p 209 3 0 4 2 p 3 4 1 0 5 4 0 ! a a a a b p 259 4 3 2 1 0 x k p 258 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 260 4 3 2 1 0 x x k k p 259 4 1 4 3 2 p 0 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 261 4 3 2 1 0 x x k k p 189 3 1 4 3 p 188 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 262 4 3 2 1 0 x x k k p 182 4 1 4 3 2 p 181 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 263 4 3 2 1 0 x x k k p 181 4 1 4 3 2 p 182 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 264 4 3 2 1 0 x k p 263 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 265 4 3 2 1 0 x x k k p 262 4 1 4 3 2 p 264 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 266 4 3 2 1 0 x k p 265 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a b p 267 3 2 1 0 a b e 0 3 k e 0 2 a x k p 266 4 0 4 3 1 e 2 0 0 ! a a b p 268 2 1 0 a b e 0 2 k e 0 1 a x k p 267 3 0 3 1 e 2 0 0 ! a a a b p 269 3 2 1 0 x x k k p 268 2 1 3 p 267 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 270 4 3 2 1 0 x x k k p 267 3 1 4 3 p 266 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 271 5 4 3 2 1 0 x x k k p 181 4 1 5 4 3 p 180 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a b p 272 4 3 2 1 0 x k p 182 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 273 5 4 3 2 1 0 x x k k p 182 4 1 5 4 3 p 272 4 0 5 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 274 5 4 3 2 1 0 x k p 273 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a a b p 275 6 5 4 3 2 1 0 x x k k p 274 5 1 6 5 4 3 p 215 5 0 6 2 5 3 p 3 4 1 0 7 6 0 ! a a a a a b p 276 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 275 6 0 6 5 4 3 1 e 2 0 0 ! a a a a a b p 277 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 274 5 0 6 5 4 3 e 2 0 0 ! a a a a a b p 278 5 4 3 2 1 0 x x k k p 277 5 1 5 4 3 2 p 219 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 279 5 4 3 2 1 0 x x k k p 276 5 1 5 4 3 2 p 278 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 280 5 4 3 2 1 0 x x k k p 274 5 1 5 4 3 2 p 277 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 281 5 4 3 2 1 0 x x k k p 274 5 1 5 4 3 2 p 219 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 282 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 275 6 0 6 5 4 3 1 e 2 0 0 ! a a a a a b p 283 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 274 5 0 6 5 4 3 e 2 0 0 ! a a a a a b p 284 5 4 3 2 1 0 x x k k p 283 5 1 5 4 3 2 p 227 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 285 5 4 3 2 1 0 x x k k p 282 5 1 5 4 3 2 p 284 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 286 5 4 3 2 1 0 x x k k p 274 5 1 5 4 3 2 p 283 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 287 5 4 3 2 1 0 x x k k p 274 5 1 5 4 3 2 p 227 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 288 5 4 3 2 1 0 x x k k p 182 4 1 5 4 3 p 0 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a a b p 289 6 5 4 3 2 1 0 x x k k p 184 5 1 6 5 4 3 p 288 5 0 6 2 4 3 p 3 4 1 0 7 6 0 ! a a a a a b p 290 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 289 6 0 6 1 5 4 3 e 2 0 0 ! a a a a a b p 291 5 4 3 2 1 0 x k p 288 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a a b p 292 6 5 4 3 2 1 0 x x k k p 291 5 1 6 5 4 3 p 185 5 0 6 2 4 3 p 3 4 1 0 7 6 0 ! a a a a a a b p 293 6 5 4 3 2 1 0 x x k k p 289 6 1 6 5 4 3 2 p 292 6 0 6 2 4 3 5 p 3 4 1 0 7 6 0 ! a a a a a b p 294 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 293 6 0 6 1 5 4 3 e 2 0 0 ! a a a a a b p 295 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 292 6 0 6 5 4 3 1 e 2 0 0 ! a a a a a b p 296 5 4 3 2 1 0 x x k k p 290 5 1 5 4 3 2 p 295 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 297 5 4 3 2 1 0 x x k k p 294 5 1 5 4 3 2 p 296 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 298 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 291 5 0 6 5 4 3 e 2 0 0 ! a a a a a b p 299 5 4 3 2 1 0 x x k k p 298 5 1 5 4 3 2 p 186 4 0 5 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 300 5 4 3 2 1 0 x x k k p 295 5 1 5 4 3 2 p 299 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 301 5 4 3 2 1 0 x x k k p 291 5 1 5 4 3 2 p 298 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 302 5 4 3 2 1 0 x x k k p 291 5 1 5 4 3 2 p 186 4 0 5 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 303 5 4 3 2 1 0 x x k k p 187 4 1 5 4 3 p 288 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a b p 304 4 3 2 1 0 x x k k p 193 3 1 4 3 p 167 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 305 4 3 2 1 0 x k p 304 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 306 5 4 3 2 1 0 x x k k p 305 4 1 5 4 3 p 272 4 0 5 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 307 5 4 3 2 1 0 x k p 306 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 308 5 4 3 2 1 0 x x k k p 307 5 1 5 4 3 2 p 0 4 0 5 2 4 p 3 4 1 0 6 5 0 ! a a a a b p 309 4 3 2 1 0 x x k k p 173 3 1 4 3 p 172 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 310 4 3 2 1 0 x x k k p 171 4 1 4 3 2 p 174 3 0 4 2 p 3 4 1 0 5 4 0 ! a a a a b p 311 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 185 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 312 4 3 2 1 0 x k p 311 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 313 4 3 2 1 0 x x k k p 0 4 1 4 3 2 p 312 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a b p 314 3 2 1 0 a b e 0 3 k e 0 2 a x k p 313 4 0 4 1 3 e 2 0 0 ! a a a a b p 315 4 3 2 1 0 x x k k p 314 3 1 4 3 p 313 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a a b p 316 5 4 3 2 1 0 x x k k p 186 4 1 5 4 3 p 185 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 317 5 4 3 2 1 0 x x k k p 184 5 1 5 4 3 2 p 187 4 0 5 3 2 p 3 4 1 0 6 5 0 ! a a a a b p 318 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 317 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 319 4 3 2 1 0 x k p 187 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 320 5 4 3 2 1 0 x x k k p 319 4 1 5 4 3 p 185 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 321 5 4 3 2 1 0 x x k k p 317 5 1 5 4 3 2 p 320 5 0 5 3 2 4 p 3 4 1 0 6 5 0 ! a a a a b p 322 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 321 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 323 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 320 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 324 4 3 2 1 0 x x k k p 318 4 1 4 3 2 p 323 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 325 4 3 2 1 0 x x k k p 322 4 1 4 3 2 p 324 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 326 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 319 4 0 5 4 3 e 2 0 0 ! a a a a b p 327 4 3 2 1 0 x x k k p 326 4 1 4 3 2 p 311 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 328 4 3 2 1 0 x x k k p 323 4 1 4 3 2 p 327 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 329 4 3 2 1 0 x x k k p 319 4 1 4 3 2 p 326 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 330 4 3 2 1 0 x x k k p 319 4 1 4 3 2 p 311 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 331 4 3 2 1 0 x x k k p 312 4 1 4 3 2 p 187 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 332 4 3 2 1 0 x x k k p 314 3 1 4 3 p 188 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a b p 333 3 2 1 0 a b e 0 3 k e 0 2 a x k p 332 4 0 4 3 1 e 2 0 0 ! a a a b p 334 3 2 1 0 a b e 0 3 k e 0 2 a x k p 314 3 0 4 3 e 2 0 0 ! a a a b p 335 3 2 1 0 x x k k p 334 3 1 3 2 p 189 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 336 3 2 1 0 x x k k p 333 3 1 3 2 p 335 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 337 3 2 1 0 x x k k p 314 3 1 3 2 p 334 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 338 3 2 1 0 x x k k p 314 3 1 3 2 p 189 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 339 3 2 1 0 x k p 314 3 0 2 1 p 2 3 0 3 2 0 ! a a a a b p 340 4 3 2 1 0 x x k k p 171 4 1 4 3 2 p 339 3 0 4 2 p 3 4 1 0 5 4 0 ! a a a a b p 341 4 3 2 1 0 x k p 340 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 342 4 3 2 1 0 x x k k p 341 4 1 4 3 2 p 193 3 0 4 2 p 3 4 1 0 5 4 0 ! a a a a b p 343 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 212 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 344 4 3 2 1 0 p 343 4 3 2 1 0 0 ! a a a a b p 345 4 3 2 1 0 x x k k p 193 3 1 4 3 p 344 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a b p 346 3 2 1 0 a b e 0 3 k e 0 2 a x k p 345 4 0 4 1 3 e 2 0 0 ! a a a b p 347 3 2 1 0 x k p 346 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 348 3 2 1 0 x x k k p 193 3 1 3 2 p 347 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 349 3 2 1 0 x k p 348 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 350 3 2 1 0 p 349 3 2 1 0 0 ! a a a b p 351 3 2 1 0 x x k k p 350 3 1 3 2 p 349 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 352 3 2 1 0 x x k k p 349 3 1 3 2 p 350 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 353 3 2 1 0 x k p 352 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 354 3 2 1 0 x x k k p 351 3 1 3 2 p 353 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 355 3 2 1 0 x k p 354 3 0 2 1 p 2 3 0 3 2 0 ! a a b p 356 2 1 0 a b e 0 2 k e 0 1 a x k p 355 3 0 3 1 e 2 0 0 ! a a a b p 357 3 2 1 0 x x k k p 356 2 1 3 p 355 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 358 3 2 1 0 a b e 0 3 k e 0 2 a x k p 345 4 0 4 1 3 e 2 0 0 ! a a a a b p 359 4 3 2 1 0 x x k k p 358 3 1 4 3 p 345 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a b p 360 3 2 1 0 a b e 0 3 k e 0 2 a x k p 359 4 0 4 3 1 e 2 0 0 ! a a a b p 361 3 2 1 0 a b e 0 3 k e 0 2 a x k p 358 3 0 4 3 e 2 0 0 ! a a a b p 362 3 2 1 0 x x k k p 361 3 1 3 2 p 346 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 363 3 2 1 0 x x k k p 360 3 1 3 2 p 362 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 364 3 2 1 0 x x k k p 358 3 1 3 2 p 361 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 365 3 2 1 0 x x k k p 358 3 1 3 2 p 346 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 366 3 2 1 0 x k p 358 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 367 3 2 1 0 x x k k p 193 3 1 3 2 p 366 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 368 3 2 1 0 x k p 367 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 369 3 2 1 0 x x k k p 368 3 1 3 2 p 350 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 370 4 3 2 1 0 x x k k p 344 4 1 4 3 2 p 343 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 371 4 3 2 1 0 x x k k p 343 4 1 4 3 2 p 344 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 372 4 3 2 1 0 x k p 371 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 373 4 3 2 1 0 x x k k p 370 4 1 4 3 2 p 372 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 374 4 3 2 1 0 x k p 373 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a b p 375 3 2 1 0 a b e 0 3 k e 0 2 a x k p 374 4 0 4 3 1 e 2 0 0 ! a a b p 376 2 1 0 a b e 0 2 k e 0 1 a x k p 375 3 0 3 1 e 2 0 0 ! a a a b p 377 3 2 1 0 x x k k p 376 2 1 3 p 375 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 378 4 3 2 1 0 x x k k p 375 3 1 4 3 p 374 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 379 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 212 5 0 5 1 4 3 e 2 0 0 ! a a a a a b p 380 5 4 3 2 1 0 x x k k p 379 4 1 5 4 3 p 212 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a b p 381 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 380 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 382 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 379 4 0 5 4 3 e 2 0 0 ! a a a a b p 383 4 3 2 1 0 x x k k p 382 4 1 4 3 2 p 343 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 384 4 3 2 1 0 x x k k p 381 4 1 4 3 2 p 383 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 385 4 3 2 1 0 x x k k p 379 4 1 4 3 2 p 382 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 386 4 3 2 1 0 x x k k p 379 4 1 4 3 2 p 343 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 387 4 3 2 1 0 x x k k p 379 4 1 4 3 2 p 344 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 388 5 4 3 2 1 0 x x k k p 0 4 1 5 4 3 p 1 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 389 5 4 3 2 1 0 x x k k p 1 4 1 5 4 3 p 0 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 390 5 4 3 2 1 0 x k p 389 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 391 5 4 3 2 1 0 x x k k p 388 5 1 5 4 3 2 p 390 5 0 5 4 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 392 5 4 3 2 1 0 x k p 391 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a b p 393 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 392 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 394 4 3 2 1 0 p 393 4 3 2 1 0 0 ! a a a a b p 395 4 3 2 1 0 x k p 394 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 396 4 3 2 1 0 x k p 1 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 397 5 4 3 2 1 0 x x k k p 396 4 1 5 4 3 p 1 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a a b p 398 6 5 4 3 2 1 0 x x k k p 0 4 1 6 5 4 p 397 5 0 6 5 3 2 p 3 4 1 0 7 6 0 ! a a a a a a b p 399 6 5 4 3 2 1 0 x x k k p 397 5 1 6 5 4 3 p 0 4 0 6 5 2 p 3 4 1 0 7 6 0 ! a a a a a a b p 400 6 5 4 3 2 1 0 x k p 399 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a a b p 401 6 5 4 3 2 1 0 x x k k p 398 6 1 6 5 4 3 2 p 400 6 0 6 5 3 2 4 p 3 4 1 0 7 6 0 ! a a a a a a b p 402 6 5 4 3 2 1 0 x k p 401 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a b p 403 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 402 6 0 6 1 5 4 3 e 2 0 0 ! a a a a a b p 404 5 4 3 2 1 0 p 403 5 4 3 2 1 0 0 ! a a a a a b p 405 5 4 3 2 1 0 x x k k p 395 4 1 5 4 3 p 404 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a a b p 406 6 5 4 3 2 1 0 x x k k p 0 4 1 6 5 4 p 405 5 0 6 5 3 2 p 3 4 1 0 7 6 0 ! a a a a a a b p 407 6 5 4 3 2 1 0 x x k k p 405 5 1 6 5 4 3 p 0 4 0 6 5 2 p 3 4 1 0 7 6 0 ! a a a a a a b p 408 6 5 4 3 2 1 0 x k p 407 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a a b p 409 6 5 4 3 2 1 0 x x k k p 406 6 1 6 5 4 3 2 p 408 6 0 6 5 3 2 4 p 3 4 1 0 7 6 0 ! a a a a a a b p 410 6 5 4 3 2 1 0 x k p 409 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a b p 411 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 410 6 0 6 1 5 4 3 e 2 0 0 ! a a a a a b p 412 5 4 3 2 1 0 p 411 5 4 3 2 1 0 0 ! a a a a a b p 413 5 4 3 2 1 0 x k p 412 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a a b p 414 6 5 4 3 2 1 0 x x k k p 0 4 1 6 5 4 p 413 5 0 6 5 3 2 p 3 4 1 0 7 6 0 ! a a a a a a b p 415 6 5 4 3 2 1 0 x k p 414 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a a b p 416 6 5 4 3 2 1 0 x k p 415 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a b p 417 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 416 6 0 6 1 5 4 3 e 2 0 0 ! a a a a a b p 418 5 4 3 2 1 0 x k p 417 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 419 5 4 3 2 1 0 p 418 5 4 3 2 1 0 0 ! a a a a a b p 420 5 4 3 2 1 0 x k p 419 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a a b p 421 6 5 4 3 2 1 0 x x k k p 419 5 1 6 5 4 3 p 420 5 0 6 5 4 2 p 3 4 1 0 7 6 0 ! a a a a a a b p 422 6 5 4 3 2 1 0 x k p 421 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a a b p 423 6 5 4 3 2 1 0 x x k k p 422 6 1 6 5 4 3 2 p 1 4 0 6 3 2 p 3 4 1 0 7 6 0 ! a a a a a b p 424 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 423 6 0 6 5 4 3 1 e 2 0 0 ! a a a a b p 425 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 424 5 0 5 4 3 1 e 2 0 0 ! a a a b p 426 3 2 1 0 a b e 0 3 k e 0 2 a x k p 425 4 0 4 3 1 e 2 0 0 ! a a a b p 427 3 2 1 0 p 426 3 2 1 0 0 ! a a a a a a b p 428 6 5 4 3 2 1 0 x x k k p 419 5 1 6 5 4 3 p 420 5 0 6 5 2 3 p 3 4 1 0 7 6 0 ! a a a a a a b p 429 6 5 4 3 2 1 0 x k p 428 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a a b p 430 6 5 4 3 2 1 0 x x k k p 429 6 1 6 5 4 3 2 p 1 4 0 6 4 2 p 3 4 1 0 7 6 0 ! a a a a a b p 431 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 430 6 0 6 5 4 1 3 e 2 0 0 ! a a a a b p 432 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 431 5 0 5 4 3 1 e 2 0 0 ! a a a b p 433 3 2 1 0 a b e 0 3 k e 0 2 a x k p 432 4 0 4 3 1 e 2 0 0 ! a a a b p 434 3 2 1 0 p 433 3 2 1 0 0 ! a a a b p 435 3 2 1 0 x k p 434 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 436 3 2 1 0 x x k k p 427 3 1 3 2 p 435 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 437 3 2 1 0 x k p 436 3 0 2 1 p 2 3 0 3 2 0 ! a a a a b p 438 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 420 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 439 4 3 2 1 0 x k p 438 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 440 5 4 3 2 1 0 x x k k p 0 4 1 5 4 3 p 439 4 0 5 2 4 p 3 4 1 0 6 5 0 ! a a a a b p 441 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 440 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 442 4 3 2 1 0 p 441 4 3 2 0 1 0 ! a a a a a a b p 443 6 5 4 3 2 1 0 x x k k p 419 5 1 6 5 4 3 p 0 4 0 6 3 2 p 3 4 1 0 7 6 0 ! a a a a a b p 444 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 443 6 0 6 5 4 1 3 e 2 0 0 ! a a a a b p 445 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 444 5 0 5 4 1 3 e 2 0 0 ! a a a a b p 446 4 3 2 1 0 p 445 4 3 2 1 0 0 ! a a a a b p 447 4 3 2 1 0 x k p 446 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 448 5 4 3 2 1 0 x x k k p 442 4 1 5 4 3 p 447 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 449 5 4 3 2 1 0 x k p 448 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 450 5 4 3 2 1 0 x k p 449 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 451 5 4 3 2 1 0 x x k k p 437 3 1 5 4 p 450 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 452 5 4 3 2 1 0 x k p 451 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 453 5 4 3 2 1 0 x k p 452 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a b p 454 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 453 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 455 4 3 2 1 0 x k p 454 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 456 4 3 2 1 0 p 455 4 3 2 1 0 0 ! a a a a b p 457 4 3 2 1 0 x x k k p 456 4 1 4 3 2 p 455 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 458 4 3 2 1 0 x x k k p 455 4 1 4 3 2 p 456 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 459 4 3 2 1 0 x k p 458 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 460 4 3 2 1 0 x x k k p 457 4 1 4 3 2 p 459 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 461 4 3 2 1 0 x k p 460 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a b p 462 3 2 1 0 a b e 0 3 k e 0 2 a x k p 461 4 0 4 3 1 e 2 0 0 ! a a b p 463 2 1 0 a b e 0 2 k e 0 1 a x k p 462 3 0 3 1 e 2 0 0 ! a a a b p 464 3 2 1 0 x x k k p 463 2 1 3 p 462 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 465 4 3 2 1 0 x x k k p 462 3 1 4 3 p 461 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 466 4 3 2 1 0 x x k k p 442 4 1 4 3 2 p 441 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 467 4 3 2 1 0 x x k k p 441 4 1 4 3 2 p 442 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 468 4 3 2 1 0 x k p 467 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 469 4 3 2 1 0 x x k k p 466 4 1 4 3 2 p 468 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 470 4 3 2 1 0 x k p 469 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a b p 471 3 2 1 0 a b e 0 3 k e 0 2 a x k p 470 4 0 4 3 1 e 2 0 0 ! a a b p 472 2 1 0 a b e 0 2 k e 0 1 a x k p 471 3 0 3 1 e 2 0 0 ! a a a b p 473 3 2 1 0 x x k k p 472 2 1 3 p 471 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 474 4 3 2 1 0 x x k k p 471 3 1 4 3 p 470 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 475 5 4 3 2 1 0 x x k k p 441 4 1 5 4 3 p 440 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a b p 476 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 420 5 0 5 4 3 1 e 2 0 0 ! a a a a a b p 477 5 4 3 2 1 0 x x k k p 476 4 1 5 4 3 p 420 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a b p 478 4 3 2 1 0 x k p 476 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 479 5 4 3 2 1 0 x x k k p 419 5 1 5 4 3 2 p 478 4 0 5 4 3 p 3 4 1 0 6 5 0 ! a a a a b p 480 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 479 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 481 4 3 2 1 0 x k p 478 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 482 5 4 3 2 1 0 x x k k p 481 4 1 5 4 3 p 420 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 483 5 4 3 2 1 0 x x k k p 479 5 1 5 4 3 2 p 482 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a b p 484 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 483 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 485 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 482 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 486 4 3 2 1 0 x x k k p 480 4 1 4 3 2 p 485 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 487 4 3 2 1 0 x x k k p 484 4 1 4 3 2 p 486 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 488 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 481 4 0 5 4 3 e 2 0 0 ! a a a a b p 489 4 3 2 1 0 x x k k p 488 4 1 4 3 2 p 438 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 490 4 3 2 1 0 x x k k p 485 4 1 4 3 2 p 489 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 491 4 3 2 1 0 x x k k p 481 4 1 4 3 2 p 488 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 492 4 3 2 1 0 x x k k p 481 4 1 4 3 2 p 438 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 493 4 3 2 1 0 x x k k p 439 4 1 4 3 2 p 478 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 494 4 3 2 1 0 x x k k p 446 4 1 4 3 2 p 445 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 495 4 3 2 1 0 x x k k p 445 4 1 4 3 2 p 446 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 496 4 3 2 1 0 x k p 495 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 497 4 3 2 1 0 x x k k p 494 4 1 4 3 2 p 496 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 498 4 3 2 1 0 x k p 497 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a b p 499 3 2 1 0 a b e 0 3 k e 0 2 a x k p 498 4 0 4 3 1 e 2 0 0 ! a a b p 500 2 1 0 a b e 0 2 k e 0 1 a x k p 499 3 0 3 1 e 2 0 0 ! a a a b p 501 3 2 1 0 x x k k p 500 2 1 3 p 499 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 502 4 3 2 1 0 x x k k p 499 3 1 4 3 p 498 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 503 5 4 3 2 1 0 x x k k p 445 4 1 5 4 3 p 444 5 0 5 4 2 3 p 3 4 1 0 6 5 0 ! a a a a a a b p 504 6 5 4 3 2 1 0 x x k k p 444 5 1 6 5 4 3 p 443 6 0 6 5 4 2 3 p 3 4 1 0 7 6 0 ! a a a a a a b p 505 6 5 4 3 2 1 0 x x k k p 0 4 1 6 5 4 p 420 5 0 6 3 2 5 p 3 4 1 0 7 6 0 ! a a a a a a b p 506 6 5 4 3 2 1 0 x k p 505 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a a b p 507 6 5 4 3 2 1 0 x k p 506 6 0 5 4 3 2 1 p 2 3 0 6 5 0 ! a a a a a b p 508 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 507 6 0 6 1 5 4 3 e 2 0 0 ! a a a a a a b p 509 6 5 4 3 2 1 0 x x k k p 508 5 1 6 5 4 3 p 507 6 0 6 2 5 4 3 p 3 4 1 0 7 6 0 ! a a a a a b p 510 5 4 3 2 1 0 x k p 508 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a a b p 511 6 5 4 3 2 1 0 x x k k p 506 6 1 6 5 4 3 2 p 510 5 0 6 4 3 2 p 3 4 1 0 7 6 0 ! a a a a a b p 512 5 4 3 2 1 0 x x k k p 446 4 1 5 4 3 p 510 5 0 5 3 4 2 p 3 4 1 0 6 5 0 ! a a a a a a b p 513 6 5 4 3 2 1 0 x x k k p 419 5 1 6 5 4 3 p 512 5 0 6 5 2 4 p 3 4 1 0 7 6 0 ! a a a a a b p 514 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 513 6 0 6 5 4 1 3 e 2 0 0 ! a a a a a b p 515 5 4 3 2 1 0 x k p 512 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a a b p 516 6 5 4 3 2 1 0 x x k k p 515 5 1 6 5 4 3 p 420 5 0 6 5 3 2 p 3 4 1 0 7 6 0 ! a a a a a a b p 517 6 5 4 3 2 1 0 x x k k p 513 6 1 6 5 4 3 2 p 516 6 0 6 5 2 4 3 p 3 4 1 0 7 6 0 ! a a a a a b p 518 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 517 6 0 6 5 4 1 3 e 2 0 0 ! a a a a a b p 519 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 516 6 0 6 5 4 3 1 e 2 0 0 ! a a a a a b p 520 5 4 3 2 1 0 x x k k p 514 5 1 5 4 3 2 p 519 5 0 5 4 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 521 5 4 3 2 1 0 x x k k p 518 5 1 5 4 3 2 p 520 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 522 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 515 5 0 6 5 4 3 e 2 0 0 ! a a a a a b p 523 5 4 3 2 1 0 x x k k p 522 5 1 5 4 3 2 p 476 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 524 5 4 3 2 1 0 x x k k p 519 5 1 5 4 3 2 p 523 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 525 5 4 3 2 1 0 x x k k p 515 5 1 5 4 3 2 p 522 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 526 5 4 3 2 1 0 x x k k p 515 5 1 5 4 3 2 p 476 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 527 5 4 3 2 1 0 x x k k p 478 4 1 5 4 3 p 512 5 0 5 4 2 3 p 3 4 1 0 6 5 0 ! a a a a a a b p 528 6 5 4 3 2 1 0 x x k k p 0 4 1 6 5 4 p 510 5 0 6 3 2 5 p 3 4 1 0 7 6 0 ! a a a a a a b p 529 6 5 4 3 2 1 0 x x k k p 449 5 1 6 5 4 3 p 528 6 0 6 2 4 3 5 p 3 4 1 0 7 6 0 ! a a a a a b p 530 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 529 6 0 6 5 4 3 1 e 2 0 0 ! a a a a a b p 531 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 449 5 0 6 5 4 3 e 2 0 0 ! a a a a a b p 532 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 528 6 0 6 1 5 4 3 e 2 0 0 ! a a a a a b p 533 5 4 3 2 1 0 x x k k p 531 5 1 5 4 3 2 p 532 5 0 5 3 2 4 p 3 4 1 0 6 5 0 ! a a a a a b p 534 5 4 3 2 1 0 x x k k p 530 5 1 5 4 3 2 p 533 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 535 5 4 3 2 1 0 x x k k p 449 5 1 5 4 3 2 p 531 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 536 5 4 3 2 1 0 x x k k p 449 5 1 5 4 3 2 p 532 5 0 5 3 2 4 p 3 4 1 0 6 5 0 ! a a a b p 537 3 2 1 0 x x k k p 434 3 1 3 2 p 433 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 538 3 2 1 0 x x k k p 433 3 1 3 2 p 434 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 539 3 2 1 0 x k p 538 3 0 2 1 p 2 3 0 3 2 0 ! a a a b p 540 3 2 1 0 x x k k p 537 3 1 3 2 p 539 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 541 3 2 1 0 x k p 540 3 0 2 1 p 2 3 0 3 2 0 ! a a b p 542 2 1 0 a b e 0 2 k e 0 1 a x k p 541 3 0 3 1 e 2 0 0 ! a a a b p 543 3 2 1 0 x x k k p 542 2 1 3 p 541 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 544 4 3 2 1 0 x x k k p 433 3 1 4 3 p 432 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 545 5 4 3 2 1 0 x x k k p 432 4 1 5 4 3 p 431 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a a b p 546 6 5 4 3 2 1 0 x x k k p 431 5 1 6 5 4 3 p 430 6 0 6 5 4 2 3 p 3 4 1 0 7 6 0 ! a a a a a a b p 547 6 5 4 3 2 1 0 x x k k p 434 3 1 6 5 p 430 6 0 6 5 4 3 2 p 3 4 1 0 7 6 0 ! a a a a a b p 548 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 547 6 0 6 5 4 1 3 e 2 0 0 ! a a a b p 549 3 2 1 0 a b e 0 3 k e 0 2 a x k p 434 3 0 4 3 e 2 0 0 ! a a a a a b p 550 5 4 3 2 1 0 a b e 0 5 k e 0 4 a x k p 430 6 0 6 5 4 1 3 e 2 0 0 ! a a a a a b p 551 5 4 3 2 1 0 x x k k p 549 3 1 5 4 p 550 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 552 5 4 3 2 1 0 x x k k p 548 5 1 5 4 3 2 p 551 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a b p 553 3 2 1 0 x x k k p 434 3 1 3 2 p 549 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a a b p 554 5 4 3 2 1 0 x x k k p 434 3 1 5 4 p 550 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a b p 555 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 554 5 0 5 4 3 1 e 2 0 0 ! a a a b p 556 3 2 1 0 a b e 0 3 k e 0 2 a x k p 434 3 0 4 3 e 2 0 0 ! a a a a b p 557 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 550 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 558 4 3 2 1 0 x x k k p 556 3 1 4 3 p 557 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 559 4 3 2 1 0 x x k k p 555 4 1 4 3 2 p 558 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a b p 560 3 2 1 0 x x k k p 434 3 1 3 2 p 556 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 561 4 3 2 1 0 x x k k p 434 3 1 4 3 p 557 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a b p 562 3 2 1 0 a b e 0 3 k e 0 2 a x k p 561 4 0 4 3 1 e 2 0 0 ! a a a b p 563 3 2 1 0 a b e 0 3 k e 0 2 a x k p 434 3 0 4 3 e 2 0 0 ! a a a b p 564 3 2 1 0 a b e 0 3 k e 0 2 a x k p 557 4 0 4 3 1 e 2 0 0 ! a a a b p 565 3 2 1 0 x x k k p 563 3 1 3 2 p 564 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 566 3 2 1 0 x x k k p 562 3 1 3 2 p 565 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 567 3 2 1 0 x x k k p 434 3 1 3 2 p 563 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 568 3 2 1 0 x x k k p 434 3 1 3 2 p 564 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 569 3 2 1 0 x k p 564 3 0 2 1 p 2 3 0 3 2 0 ! a a a a a b p 570 5 4 3 2 1 0 x x k k p 532 5 1 5 4 3 2 p 569 3 0 5 2 p 3 4 1 0 6 5 0 ! a a a a a b p 571 5 4 3 2 1 0 x k p 570 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 572 5 4 3 2 1 0 x k p 571 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a b p 573 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 572 5 0 5 4 3 1 e 2 0 0 ! a a a a a b p 574 5 4 3 2 1 0 x x k k p 573 4 1 5 4 3 p 572 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a b p 575 4 3 2 1 0 x k p 573 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 576 5 4 3 2 1 0 x x k k p 571 5 1 5 4 3 2 p 575 4 0 5 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 577 5 4 3 2 1 0 x x k k p 452 5 1 5 4 3 2 p 575 4 0 5 3 2 p 3 4 1 0 6 5 0 ! a a a a b p 578 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 577 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 579 4 3 2 1 0 x k p 575 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 580 5 4 3 2 1 0 x x k k p 579 4 1 5 4 3 p 453 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 581 5 4 3 2 1 0 x x k k p 577 5 1 5 4 3 2 p 580 5 0 5 3 2 4 p 3 4 1 0 6 5 0 ! a a a a b p 582 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 581 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 583 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 580 5 0 5 4 3 1 e 2 0 0 ! a a a a b p 584 4 3 2 1 0 x x k k p 578 4 1 4 3 2 p 583 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 585 4 3 2 1 0 x x k k p 582 4 1 4 3 2 p 584 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 586 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 579 4 0 5 4 3 e 2 0 0 ! a a a a b p 587 4 3 2 1 0 x x k k p 586 4 1 4 3 2 p 454 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 588 4 3 2 1 0 x x k k p 583 4 1 4 3 2 p 587 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 589 4 3 2 1 0 x x k k p 579 4 1 4 3 2 p 586 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 590 4 3 2 1 0 x x k k p 579 4 1 4 3 2 p 454 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 591 4 3 2 1 0 x x k k p 455 4 1 4 3 2 p 575 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 592 4 3 2 1 0 x x k k p 456 4 1 4 3 2 p 575 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a a b p 593 5 4 3 2 1 0 x x k k p 0 4 1 5 4 3 p 344 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a b p 594 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 593 5 0 5 1 4 3 e 2 0 0 ! a a a a b p 595 4 3 2 1 0 x k p 594 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 596 4 3 2 1 0 x x k k p 350 3 1 4 3 p 595 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a b p 597 4 3 2 1 0 x k p 596 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 598 5 4 3 2 1 0 x x k k p 597 4 1 5 4 3 p 595 4 0 5 2 4 p 3 4 1 0 6 5 0 ! a a a a a b p 599 5 4 3 2 1 0 x k p 598 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a b p 600 4 3 2 1 0 x k p 456 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a b p 601 4 3 2 1 0 x k p 600 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 602 5 4 3 2 1 0 x x k k p 599 5 1 5 4 3 2 p 601 4 0 5 3 4 p 3 4 1 0 6 5 0 ! a a a a a b p 603 5 4 3 2 1 0 x k p 602 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 604 5 4 3 2 1 0 x x k k p 603 5 1 5 4 3 2 p 601 4 0 5 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 605 5 4 3 2 1 0 x k p 604 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a a b p 606 5 4 3 2 1 0 x k p 605 5 0 4 3 2 1 p 2 3 0 5 4 0 ! a a a a b p 607 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 606 5 0 5 4 3 1 e 2 0 0 ! a a a a a b p 608 5 4 3 2 1 0 x x k k p 607 4 1 5 4 3 p 606 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a b p 609 4 3 2 1 0 x k p 607 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a a a b p 610 5 4 3 2 1 0 x x k k p 605 5 1 5 4 3 2 p 609 4 0 5 4 3 p 3 4 1 0 6 5 0 ! a a a a b p 611 4 3 2 1 0 x k p 609 4 0 3 2 1 p 2 3 0 4 3 0 ! a a a b p 612 3 2 1 0 a b e 0 3 k e 0 2 a x k p 611 4 0 4 3 1 e 2 0 0 ! a a a a b p 613 4 3 2 1 0 x x k k p 612 3 1 4 3 p 611 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a b p 614 3 2 1 0 x k p 612 3 0 2 1 p 2 3 0 3 2 0 ! a a a a b p 615 4 3 2 1 0 x x k k p 609 4 1 4 3 2 p 614 3 0 4 3 p 3 4 1 0 5 4 0 ! a a a b p 616 3 2 1 0 x k p 614 3 0 2 1 p 2 3 0 3 2 0 ! a a b p 617 2 1 0 a b e 0 2 k e 0 1 a x k p 616 3 0 3 1 e 2 0 0 ! a a a b p 618 3 2 1 0 x x k k p 617 2 1 3 p 616 3 0 3 2 p 3 4 1 0 4 3 0 ! a a b p 619 2 1 0 x k p 617 2 0 1 p 2 3 0 2 1 0 ! a a a b p 620 3 2 1 0 x x k k p 614 3 1 3 2 p 619 2 0 3 p 3 4 1 0 4 3 0 ! a a a a a b p 621 5 4 3 2 1 0 x x k k p 605 5 1 5 4 3 2 p 619 2 0 5 p 3 4 1 0 6 5 0 ! a a a a a b p 622 5 4 3 2 1 0 x x k k p 182 4 1 5 4 3 p 182 4 0 5 4 2 p 3 4 1 0 6 5 0 ! a a a a a b p 623 5 4 3 2 1 0 x x k k p 1 4 1 5 4 3 p 622 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 624 5 4 3 2 1 0 x x k k p 0 4 1 5 4 3 p 184 5 0 5 4 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 625 5 4 3 2 1 0 x x k k p 182 4 1 5 4 3 p 624 5 0 5 4 2 3 p 3 4 1 0 6 5 0 ! a a a a a b p 626 5 4 3 2 1 0 x x k k p 311 4 1 5 4 3 p 185 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 627 5 4 3 2 1 0 x x k k p 184 5 1 5 4 3 2 p 312 4 0 5 3 2 p 3 4 1 0 6 5 0 ! a a a a b p 628 4 3 2 1 0 x x k k p 193 3 1 4 3 p 242 4 0 4 2 3 p 3 4 1 0 5 4 0 ! a a a a a b p 629 5 4 3 2 1 0 x x k k p 0 4 1 5 4 3 p 288 5 0 5 2 4 3 p 3 4 1 0 6 5 0 ! a a a a a b p 630 5 4 3 2 1 0 x x k k p 193 3 1 5 4 p 629 5 0 5 3 4 2 p 3 4 1 0 6 5 0 ! a a a a a a b p 631 6 5 4 3 2 1 0 x x k k p 419 5 1 6 5 4 3 p 419 5 0 6 5 4 2 p 3 4 1 0 7 6 0 ! a a a a a a b p 632 6 5 4 3 2 1 0 x x k k p 1 4 1 6 5 4 p 631 6 0 6 3 2 5 4 p 3 4 1 0 7 6 0 ! a a a a a a b p 633 6 5 4 3 2 1 0 x x k k p 506 6 1 6 5 4 3 2 p 0 4 0 6 5 4 p 3 4 1 0 7 6 0 ! a a a a a a b p 634 6 5 4 3 2 1 0 x x k k p 506 6 1 6 5 4 3 2 p 419 5 0 6 3 2 5 p 3 4 1 0 7 6 0 ! a a a a a a b p 635 6 5 4 3 2 1 0 x x k k p 419 5 1 6 5 4 3 p 429 6 0 6 5 2 3 4 p 3 4 1 0 7 6 0 ! a a a a a a b p 636 6 5 4 3 2 1 0 x x k k p 419 5 1 6 5 4 3 p 635 6 0 6 5 2 3 4 p 3 4 1 0 7 6 0 ! a a a a a b p 637 5 4 3 2 1 0 x x k k p 571 5 1 5 4 3 2 p 532 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a a b p 638 5 4 3 2 1 0 x x k k p 571 5 1 5 4 3 2 p 564 3 0 5 2 p 3 4 1 0 6 5 0 ! a a b p 639 2 1 0 a b e 0 2 k e 0 1 a x k p 1 4 0 3 1 1 e 2 0 0 ! a a b p 640 2 1 0 x k p 639 2 0 1 p 2 3 0 2 1 0 ! a a b p 641 2 1 0 x x k k p 619 2 1 2 p 640 2 0 2 p 3 4 1 0 3 2 0 ! a a b p 642 2 1 0 x k p 641 2 0 1 p 2 3 0 2 1 0 ! a a b p 643 2 1 0 a b e 0 2 k e 0 1 a x k p 1 4 0 3 1 1 e 2 0 0 ! a a b p 644 2 1 0 x k p 643 2 0 1 p 2 3 0 2 1 0 ! a a a a a b p 645 5 4 3 2 1 0 x x k k p 605 5 1 5 4 3 2 p 350 3 0 5 4 p 3 4 1 0 6 5 0 ! a a a b p 646 3 2 1 0 x k p 350 3 0 2 1 p 2 3 0 3 2 0 ! a a a a a b p 647 5 4 3 2 1 0 x x k k p 646 3 1 5 4 p 606 5 0 5 4 3 2 p 3 4 1 0 6 5 0 ! a a a a b p 648 4 3 2 1 0 a b e 0 4 k e 0 3 a x k p 647 5 0 5 4 3 1 e 2 0 0 ! a a a b p 649 3 2 1 0 a b e 0 3 k e 0 2 a x k p 646 3 0 4 3 e 2 0 0 ! a a a a b p 650 4 3 2 1 0 x x k k p 649 3 1 4 3 p 607 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a a b p 651 4 3 2 1 0 x x k k p 648 4 1 4 3 2 p 650 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a b p 652 3 2 1 0 x x k k p 646 3 1 3 2 p 649 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a a b p 653 4 3 2 1 0 x x k k p 609 4 1 4 3 2 p 350 3 0 4 3 p 3 4 1 0 5 4 0 ! a a a a b p 654 4 3 2 1 0 x x k k p 646 3 1 4 3 p 611 4 0 4 3 2 p 3 4 1 0 5 4 0 ! a a a b p 655 3 2 1 0 a b e 0 3 k e 0 2 a x k p 654 4 0 4 3 1 e 2 0 0 ! a a a b p 656 3 2 1 0 a b e 0 3 k e 0 2 a x k p 646 3 0 4 3 e 2 0 0 ! a a a b p 657 3 2 1 0 x x k k p 656 3 1 3 2 p 612 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 658 3 2 1 0 x x k k p 655 3 1 3 2 p 657 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 659 3 2 1 0 x x k k p 646 3 1 3 2 p 656 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 660 3 2 1 0 x x k k p 614 3 1 3 2 p 350 3 0 3 2 p 3 4 1 0 4 3 0 ! a a a b p 661 3 2 1 0 x x k k p 646 3 1 3 2 p 616 3 0 3 2 p 3 4 1 0 4 3 0 ! a a b p 662 2 1 0 a b e 0 2 k e 0 1 a x k p 661 3 0 3 1 e 2 0 0 ! a a b p 663 2 1 0 a b e 0 2 k e 0 1 a x k p 646 3 0 3 1 e 2 0 0 ! a a b p 664 2 1 0 x x k k p 663 2 1 2 p 617 2 0 2 p 3 4 1 0 3 2 0 ! a a b p 665 2 1 0 x x k k p 662 2 1 2 p 664 2 0 2 p 3 4 1 0 3 2 0 ! a a b p 666 2 1 0 x k p 663 2 0 1 p 2 3 0 2 1 0 ! a a b p 667 2 1 0 x k p 234 2 0 1 p 2 3 0 2 1 0 ! a a b p 668 2 1 0 x x k k p 666 2 1 2 p 667 2 0 2 p 3 4 1 0 3 2 0 ! a a b p 669 2 1 0 x k p 668 2 0 1 p 2 3 0 2 1 0 ! x p 671 2 0 1 1 0 ! x p 672 2 0 1 1 1 ! x p 670 3 0 1 2 1 2 ! x p 676 4 0 1 2 3 1 3 ! x p 675 2 0 1 1 4 ! x p 674 3 0 1 2 1 5 ! x p 677 4 0 1 2 3 1 6 ! x p 673 5 0 1 2 3 4 1 7 ! a i p 671 2 0 1 p 4 2 0 1 1 8 ! a i p 672 2 0 1 p 4 2 0 1 1 9 ! a i p 670 3 0 1 2 p 4 2 0 1 1 10 ! a i p 675 2 0 1 p 4 2 0 1 1 11 ! a i p 674 3 0 1 2 p 4 2 0 1 1 12 ! a i p 677 4 0 1 2 3 p 4 2 0 1 1 13 ! a i p 673 5 0 1 2 3 4 p 4 2 0 1 1 14 ! a a a i k k p 1 4 2 3 4 5 p 677 4 1 3 4 6 p 677 4 0 3 5 6 a i k e 0 3 e 0 2 e 0 1 1 15 ! a a a i k k p 1 4 2 3 4 5 p 673 5 1 3 4 6 7 p 673 5 0 3 5 6 7 a i k e 0 3 e 0 2 e 0 1 1 16 ! a a a i k k p 1 4 2 3 4 5 p 670 3 1 3 4 p 670 3 0 3 5 a i k e 0 3 e 0 2 e 0 1 1 17 ! a a a i k k p 1 4 2 3 4 5 p 674 3 1 3 4 p 674 3 0 3 5 a i k e 0 3 e 0 2 e 0 1 1 18 ! a a a i k k p 1 4 2 3 4 5 p 676 4 1 3 6 4 p 676 4 0 3 6 5 a i k e 0 3 e 0 2 e 0 1 1 19 ! a a a i k k p 1 4 2 3 4 5 p 670 3 1 3 4 p 670 3 0 3 5 a i k e 0 3 e 0 2 e 0 1 1 20 ! a a a i k k p 1 4 2 3 4 5 p 677 4 1 3 4 6 p 677 4 0 3 5 6 a i k e 0 3 e 0 2 e 0 1 1 21 ! a a i k p 671 2 1 2 p 671 2 0 2 q 1 0 1 22 ! a a i k p 672 2 1 2 p 672 2 0 2 q 1 0 1 23 ! a a i k p 670 3 1 2 3 p 670 3 0 2 3 q 1 0 1 24 ! a a i k p 675 2 1 2 p 675 2 0 2 q 1 0 1 25 ! a a i k p 674 3 1 2 3 p 674 3 0 2 3 q 1 0 1 26 ! a a i k p 677 4 1 2 3 4 p 677 4 0 2 3 4 q 1 0 1 27 ! a a i k p 673 5 1 2 3 4 5 p 673 5 0 2 3 4 5 q 1 0 1 28 !"
+set authrefpos const AUTHREF
+set authreflim add AUTHREF AUTHREF_len
+text cfile arg
+read J0 cfile
+set pos const J0
+set lim add J0 J0_len
+
+set PSIZE const 201326592
+set SSIZE const 402653184
+set DSIZE const 16777216
+set PB alloc PSIZE
+set PE add PB PSIZE
+set SB alloc SSIZE
+set SE add SB SSIZE
+set DSB alloc DSIZE
+set DSE add DSB DSIZE
+set DSL sub DSE 4096
+set DSP const DSB
+set curp const PB
+set cure const PE
+set ppp const PB
+set spp const SB
+set atc const 65536
+set an mul atc 8
+gosub ALLOC
+set ATL const ar
+set ti const 0
+set si const 0
+set totsteps const 0
+text WHY "none"
+
+; ---- header
+gosub SKIPWS
+set t sub lim pos
+set t sub t 4
+when negative t goto BADHDR
+set c peek pos 1
+set t sub c 74
+when nonzero t goto BADHDR
+set q add pos 1
+set c peek q 1
+set t sub c 68
+when nonzero t goto BADHDR
+set q add pos 2
+set c peek q 1
+set t sub c 71
+when nonzero t goto BADHDR
+set q add pos 3
+set c peek q 1
+set t sub c 49
+when nonzero t goto BADHDR
+set pos add pos 4
+gosub ENDTOK
+goto HDROK
+label BADHDR
+text WHY "the input does not begin with JDG1"
+goto FAIL
+label HDROK
+
+; ---- the registry: R n, then n entries (persistent)
+gosub RDTAG
+set t sub tg 82
+when zero t goto REGR
+text WHY "R expected"
+goto FAIL
+label REGR
+gosub RDNUM
+set nreg const num
+set t sub nreg 707
+when negative t goto AUTHCOUNTOK
+goto AUTHCOUNTFAIL
+label AUTHCOUNTOK
+set an mul nreg 24
+gosub ALLOC
+set REGT const ar
+set ri const 0
+label REGLOOP
+set t sub ri nreg
+when negative t goto REGONE
+goto REGDONE
+label REGONE
+set authentrypos const pos
+gosub PARSEF
+set rgf const pf
+gosub RDLIST
+gosub AUTHREG
+set q mul ri 24
+set q add REGT q
+poke q 8 rgf
+set q add q 8
+poke q 8 la
+set q add q 8
+poke q 8 ln
+set ri add ri 1
+goto REGLOOP
+label REGDONE
+
+; ---- the theorems: T m; the registry array gets room for all of them
+gosub RDTAG
+set t sub tg 84
+when zero t goto THMT
+text WHY "T expected"
+goto FAIL
+label THMT
+gosub RDNUM
+set nthm const num
+gosub RECORDCOUNT
+set regcap add nreg nthm
+set an mul regcap 24
+gosub ALLOC
+set REG const ar
+set ri const 0
+label REGCOPY
+set t sub ri nreg
+when negative t goto REGCOPY1
+goto REGCOPY2
+label REGCOPY1
+set q mul ri 24
+set rgs add REGT q
+set rgd add REG q
+set rgv peek rgs 8
+poke rgd 8 rgv
+set rgs add rgs 8
+set rgd add rgd 8
+set rgv peek rgs 8
+poke rgd 8 rgv
+set rgs add rgs 8
+set rgd add rgd 8
+set rgv peek rgs 8
+poke rgd 8 rgv
+set ri add ri 1
+goto REGCOPY
+label REGCOPY2
+set reglen const nreg
+
+; ---- every theorem
+set ti const 0
+label THMLOOP
+set t sub ti nthm
+when negative t goto THMONE
+goto ALLDONE
+label THMONE
+set si const 0
+; the statement, persistent (it becomes a registry entry)
+gosub PARSEF
+set thst const pf
+; the rest in scratch, reset
+gosub TOSCR0
+gosub RDLIST
+set sigla const la
+set sigln const ln
+gosub RDNUM
+set nsteps const num
+gosub RECORDCOUNT
+set an mul nsteps 8
+set t sub an 8
+when negative t goto THMNL
+goto THMNL1
+label THMNL
+set an const 8
+label THMNL1
+gosub ALLOC
+set LINES const ar
+set nl const 0
+set HSL const 0
+label STEPLOOP
+set t sub si nsteps
+when negative t goto STEPONE
+goto STEPSDONE
+label STEPONE
+gosub STEP
+set q mul nl 8
+set q add LINES q
+poke q 8 line
+set nl add nl 1
+set si add si 1
+set totsteps add totsteps 1
+goto STEPLOOP
+label STEPSDONE
+; the hypotheses of the theorem, persistent
+gosub TOPERS
+gosub RDLIST
+set thla const la
+set thln const ln
+gosub TOSCR1
+; check_thm
+when zero nl goto THMNOLINES
+set q sub nl 1
+set q mul q 8
+set q add LINES q
+set lastl peek q 8
+set mk const 3
+set mla const sigla
+set mln const sigln
+set rf const thst
+set rd const 0
+gosub REN
+set ea const lastl
+set eb const rr
+gosub EQB
+when zero er goto THMLAST
+; nodupb sig
+set di const 0
+label DUPI
+set t sub di sigln
+when negative t goto DUPI1
+goto DUPOK
+label DUPI1
+set q mul di 8
+set q add sigla q
+set dv peek q 8
+set dj add di 1
+label DUPJ
+set t sub dj sigln
+when negative t goto DUPJ1
+set di add di 1
+goto DUPI
+label DUPJ1
+set q mul dj 8
+set q add sigla q
+set dw peek q 8
+set t sub dv dw
+when zero t goto THMDUP
+set dj add dj 1
+goto DUPJ
+label DUPOK
+; closedk (length sig) statement
+set ck const sigln
+set cf const thst
+gosub CLOSEDK
+when zero cr goto THMOPEN
+; subsetb hs hyps
+set hc const HSL
+label SUBL
+when zero hc goto SUBOK
+set hv peek hc 8
+set hk const 0
+label SUBK
+set t sub hk thln
+when negative t goto SUBK1
+goto THMHYP
+label SUBK1
+set q mul hk 8
+set q add thla q
+set hw peek q 8
+set t sub hv hw
+when zero t goto SUBNEXT
+set hk add hk 1
+goto SUBK
+label SUBNEXT
+set q add hc 8
+set hc peek q 8
+goto SUBL
+label SUBOK
+; accepted: the registry grows by (statement, hypotheses)
+set q mul reglen 24
+set q add REG q
+poke q 8 thst
+set q add q 8
+poke q 8 thla
+set q add q 8
+poke q 8 thln
+set reglen add reglen 1
+gosub TOPERS
+set ti add ti 1
+goto THMLOOP
+
+label THMNOLINES
+text WHY "the theorem has no lines"
+goto FAIL
+label THMLAST
+text WHY "the last line is not the statement renamed by sig"
+goto FAIL
+label THMDUP
+text WHY "sig repeats a variable"
+goto FAIL
+label THMOPEN
+text WHY "the statement is not closed in length(sig) variables"
+goto FAIL
+label THMHYP
+text WHY "a hypothesis used by the steps is not among the theorem's"
+goto FAIL
+
+label ALLDONE
+gosub SKIPWS
+set t sub pos lim
+when negative t goto TRAIL
+say "ACCEPT"
+say "registry entries at the start, theorems accepted, steps checked, registry entries at the end:"
+show nreg
+show nthm
+show totsteps
+show reglen
+goto END
+label TRAIL
+text WHY "text after the last theorem"
+goto FAIL
+
+; ================================================================ failure
+label FAIL
+say "REJECT"
+print WHY
+say "theorem and step (counted from 0):"
+show ti
+show si
+set bad const 1
+check zero bad
+goto END
+label LIMITMEM
+say "LIMIT"
+say "a memory block is full"
+show ti
+show si
+set bad const 1
+check zero bad
+goto END
+label LIMITSTK
+say "LIMIT"
+say "the data stack is full"
+show ti
+show si
+set bad const 1
+check zero bad
+goto END
+
+; ================================================================ memory
+; ALLOC: an bytes from the current block -> ar
+label ALLOC
+set ar const curp
+set curp add curp an
+set t sub cure curp
+when negative t goto LIMITMEM
+return
+; TOSCR0: allocate from the scratch block, emptied; TOSCR1: from the scratch block where it stood; TOPERS: persistent
+label TOSCR0
+set ppp const curp
+set curp const SB
+set cure const SE
+return
+label TOSCR1
+set ppp const curp
+set curp const spp
+set cure const SE
+return
+label TOPERS
+set spp const curp
+set curp const ppp
+set cure const PE
+return
+; RECORDCOUNT: num records each need at least one remaining input byte.
+; A necessary syntax bound before allocation; the RDNUM domain is unchanged.
+label RECORDCOUNT
+set t sub lim pos
+set t sub t num
+when negative t goto RECORDCOUNTBAD
+return
+label RECORDCOUNTBAD
+text WHY "a record count exceeds remaining input bytes"
+goto FAIL
+
+; MK: the node [mt, ma, mb, mc] -> mr
+label MK
+set an const 32
+gosub ALLOC
+set mr const ar
+poke mr 8 mt
+set q add mr 8
+poke q 8 ma
+set q add mr 16
+poke q 8 mb
+set q add mr 24
+poke q 8 mc
+return
+; CH: cn -> its tag cg and its first two fields c1 c2
+label CH
+set cg peek cn 8
+set q add cn 8
+set c1 peek q 8
+set q add cn 16
+set c2 peek q 8
+return
+
+; Authentication compares tags and exact decimal integers in the parsed entry span.
+; AUTHREF contains every proved REG0 entry followed by the delimiter !.
+label AUTHREG
+set authsavedpos const pos
+set authsavedlim const lim
+set authipos const authentrypos
+set authilim const pos
+label AUTHNEXT
+set pos const authrefpos
+set lim const authreflim
+gosub SKIPWS
+set c peek pos 1
+set t sub c 33
+when zero t goto AUTHENDENTRY
+set d sub c 48
+when negative d goto AUTHTAG
+set t sub d 10
+when negative t goto AUTHNUM
+goto AUTHTAG
+label AUTHTAG
+gosub RDTAG
+set authwant const tg
+set authrefpos const pos
+set pos const authipos
+set lim const authilim
+gosub RDTAG
+set authipos const pos
+set t sub tg authwant
+when nonzero t goto AUTHREGFAIL
+goto AUTHNEXT
+label AUTHNUM
+gosub RDNUM
+set authwant const num
+set authrefpos const pos
+set pos const authipos
+set lim const authilim
+gosub RDNUM
+set authipos const pos
+set t sub num authwant
+when nonzero t goto AUTHREGFAIL
+goto AUTHNEXT
+label AUTHENDENTRY
+gosub RDTAG
+set authrefpos const pos
+set pos const authipos
+set lim const authilim
+gosub SKIPWS
+set t sub pos lim
+when nonzero t goto AUTHREGFAIL
+set pos const authsavedpos
+set lim const authsavedlim
+return
+label AUTHREGFAIL
+text WHY "initial registry entry differs from canonical REG0"
+say "initial registry entry (counted from 0):"
+show ri
+goto FAIL
+label AUTHCOUNTFAIL
+text WHY "initial registry has more than 706 entries"
+goto FAIL
+; ================================================================ reading
+label SKIPWS
+set t sub pos lim
+when negative t goto SKIPWS2
+return
+label SKIPWS2
+set c peek pos 1
+set t sub c 32
+when zero t goto SKIPWS3
+set t sub c 10
+when zero t goto SKIPWS3
+set t sub c 13
+when zero t goto SKIPWS3
+set t sub c 9
+when zero t goto SKIPWS3
+return
+label SKIPWS3
+set pos add pos 1
+goto SKIPWS
+
+; ENDTOK: the token ends here (the end of the input or white space)
+label ENDTOK
+set t sub pos lim
+when negative t goto ENDTOK1
+return
+label ENDTOK1
+set c peek pos 1
+set t sub c 32
+when zero t goto ENDTOK2
+set t sub c 10
+when zero t goto ENDTOK2
+set t sub c 13
+when zero t goto ENDTOK2
+set t sub c 9
+when zero t goto ENDTOK2
+text WHY "a token does not end in white space"
+goto FAIL
+label ENDTOK2
+return
+
+; RDNUM: exact decimal 0..999999999999; leading zeros do not count.
+; nd counts significant digits. nseen records a digit even in an all-zero token.
+; The 13th significant digit is refused before multiplication or addition.
+label RDNUM
+gosub SKIPWS
+set num const 0
+set nd const 0
+set nseen const 0
+label RDNUM1
+set t sub pos lim
+when negative t goto RDNUM2
+goto RDNUM9
+label RDNUM2
+set c peek pos 1
+set d sub c 48
+when negative d goto RDNUM9
+set t sub d 10
+when negative t goto RDNUM3
+goto RDNUM9
+label RDNUM3
+set nseen const 1
+when zero nd goto RDNUMLEAD
+goto RDNUMBOUND
+label RDNUMLEAD
+when zero d goto RDNUMADVANCE
+label RDNUMBOUND
+set t sub nd 12
+when negative t goto RDNUM4
+text WHY "a number has more than 12 significant digits"
+goto FAIL
+label RDNUM4
+set num mul num 10
+set num add num d
+set nd add nd 1
+label RDNUMADVANCE
+set pos add pos 1
+goto RDNUM1
+label RDNUM9
+when zero nseen goto RDNUMBAD
+gosub ENDTOK
+return
+label RDNUMBAD
+text WHY "a number was expected"
+goto FAIL
+
+; RDTAG: one character -> tg
+label RDTAG
+gosub SKIPWS
+set t sub pos lim
+when negative t goto RDTAG1
+text WHY "the input ends where a tag was expected"
+goto FAIL
+label RDTAG1
+set tg peek pos 1
+set pos add pos 1
+gosub ENDTOK
+return
+
+; RDLIST: a count, then that many numbers, into the current block -> la (address of words), ln
+label RDLIST
+gosub RDNUM
+set ln const num
+gosub RECORDCOUNT
+set an mul ln 8
+gosub ALLOC
+set la const ar
+set li const 0
+label RDLIST1
+set t sub li ln
+when negative t goto RDLIST2
+return
+label RDLIST2
+gosub RDNUM
+set q mul li 8
+set q add la q
+poke q 8 num
+set li add li 1
+goto RDLIST1
+
+; ================================================================ formulas
+; PARSEF: the formula at pos, its abbreviations expanded (tof) -> pf
+label PARSEF
+set t sub DSP DSL
+when negative t goto PARSEF0
+goto LIMITSTK
+label PARSEF0
+gosub RDTAG
+set t sub tg 101
+when zero t goto PF_E
+set t sub tg 113
+when zero t goto PF_Q
+set t sub tg 112
+when zero t goto PF_P
+set t sub tg 110
+when zero t goto PF_N
+set t sub tg 97
+when zero t goto PF_A
+set t sub tg 120
+when zero t goto PF_X
+set t sub tg 105
+when zero t goto PF_2
+set t sub tg 107
+when zero t goto PF_2
+set t sub tg 100
+when zero t goto PF_2
+set t sub tg 98
+when zero t goto PF_2
+text WHY "unknown formula tag"
+goto FAIL
+label PF_E
+gosub RDNUM
+set pfx const num
+gosub RDNUM
+set mt const 1
+set ma const pfx
+set mb const num
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_Q
+gosub RDNUM
+set pfx const num
+gosub RDNUM
+set mt const 2
+set ma const pfx
+set mb const num
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_P
+gosub RDNUM
+set pfx const num
+gosub RDLIST
+set mt const 3
+set ma const pfx
+set mb const la
+set mc const ln
+gosub MK
+set pf const mr
+return
+label PF_N
+gosub PARSEF
+set mt const 4
+set ma const pf
+set mb const 0
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_A
+gosub PARSEF
+set mt const 6
+set ma const pf
+set mb const 0
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_X
+gosub PARSEF
+set xfa const pf
+gosub XF
+set pf const xfr
+return
+label PF_2
+poke DSP 8 tg
+set DSP add DSP 8
+gosub PARSEF
+poke DSP 8 pf
+set DSP add DSP 8
+gosub PARSEF
+set pfb const pf
+set DSP sub DSP 8
+set pfa peek DSP 8
+set DSP sub DSP 8
+set pft peek DSP 8
+set t sub pft 105
+when zero t goto PF_I
+set t sub pft 107
+when zero t goto PF_K
+set t sub pft 100
+when zero t goto PF_D
+; b: Qf
+set qfa const pfa
+set qfb const pfb
+gosub QF
+set pf const qfr
+return
+label PF_I
+set mt const 5
+set ma const pfa
+set mb const pfb
+set mc const 0
+gosub MK
+set pf const mr
+return
+label PF_K
+set kfa const pfa
+set kfb const pfb
+gosub KF
+set pf const kfr
+return
+label PF_D
+set mt const 4
+set ma const pfa
+set mb const 0
+set mc const 0
+gosub MK
+set mt const 5
+set ma const mr
+set mb const pfb
+set mc const 0
+gosub MK
+set pf const mr
+return
+
+; the abbreviations as constructors: KF kfa kfb -> kfr = Neg (Imp a (Neg b)); XF xfa -> xfr = Neg (All (Neg a));
+; QF qfa qfb -> qfr = Kf (Imp a b) (Imp b a); IMP ima imb -> imr; NEG nga -> ngr; ALL ala -> alr
+label KF
+set mt const 4
+set ma const kfb
+set mb const 0
+set mc const 0
+gosub MK
+set mt const 5
+set ma const kfa
+set mb const mr
+gosub MK
+set mt const 4
+set ma const mr
+set mb const 0
+gosub MK
+set kfr const mr
+return
+label XF
+set mt const 4
+set ma const xfa
+set mb const 0
+set mc const 0
+gosub MK
+set mt const 6
+set ma const mr
+gosub MK
+set mt const 4
+set ma const mr
+gosub MK
+set xfr const mr
+return
+label QF
+set mt const 5
+set ma const qfa
+set mb const qfb
+set mc const 0
+gosub MK
+set qfi const mr
+set mt const 5
+set ma const qfb
+set mb const qfa
+gosub MK
+set kfa const qfi
+set kfb const mr
+gosub KF
+set qfr const kfr
+return
+label IMP
+set mt const 5
+set ma const ima
+set mb const imb
+set mc const 0
+gosub MK
+set imr const mr
+return
+label NEG
+set mt const 4
+set ma const nga
+set mb const 0
+set mc const 0
+gosub MK
+set ngr const mr
+return
+label ALL
+set mt const 6
+set ma const ala
+set mb const 0
+set mc const 0
+gosub MK
+set alr const mr
+return
+label MEM
+set mt const 1
+set ma const mmx
+set mb const mmy
+set mc const 0
+gosub MK
+set mmr const mr
+return
+
+; EQB: ea eb -> er (1 when the formulas are equal: form_eqb); a node equals itself
+label EQB
+set t sub DSP DSL
+when negative t goto EQB0
+goto LIMITSTK
+label EQB0
+set t sub ea eb
+when zero t goto EQB_T
+set eqt peek ea 8
+set equ peek eb 8
+set t sub eqt equ
+when nonzero t goto EQB_F
+set t sub eqt 3
+when negative t goto EQB_XY
+when zero t goto EQB_P
+set t sub eqt 5
+when zero t goto EQB_I
+; Neg or All: the child
+set q add ea 8
+set ea peek q 8
+set q add eb 8
+set eb peek q 8
+goto EQB
+label EQB_XY
+set q add ea 8
+set eqx peek q 8
+set q add eb 8
+set eqy peek q 8
+set t sub eqx eqy
+when nonzero t goto EQB_F
+set q add ea 16
+set eqx peek q 8
+set q add eb 16
+set eqy peek q 8
+set t sub eqx eqy
+when nonzero t goto EQB_F
+goto EQB_T
+label EQB_P
+set q add ea 8
+set eqx peek q 8
+set q add eb 8
+set eqy peek q 8
+set t sub eqx eqy
+when nonzero t goto EQB_F
+set q add ea 24
+set eqn peek q 8
+set q add eb 24
+set eqy peek q 8
+set t sub eqn eqy
+when nonzero t goto EQB_F
+set q add ea 16
+set eqa peek q 8
+set q add eb 16
+set eqb peek q 8
+set eqi const 0
+label EQB_P1
+set t sub eqi eqn
+when negative t goto EQB_P2
+goto EQB_T
+label EQB_P2
+set q mul eqi 8
+set q add eqa q
+set eqx peek q 8
+set q mul eqi 8
+set q add eqb q
+set eqy peek q 8
+set t sub eqx eqy
+when nonzero t goto EQB_F
+set eqi add eqi 1
+goto EQB_P1
+label EQB_I
+poke DSP 8 ea
+set DSP add DSP 8
+poke DSP 8 eb
+set DSP add DSP 8
+set q add ea 8
+set ea peek q 8
+set q add eb 8
+set eb peek q 8
+gosub EQB
+set DSP sub DSP 8
+set eb peek DSP 8
+set DSP sub DSP 8
+set ea peek DSP 8
+when zero er goto EQB_F
+set q add ea 16
+set ea peek q 8
+set q add eb 16
+set eb peek q 8
+goto EQB
+label EQB_T
+set er const 1
+return
+label EQB_F
+set er const 0
+return
+
+; VMAP: the variable vn under rd binders through the map (mk; mp; mla mln) -> vo
+;   ren (up^rd s): vn < rd stays; otherwise rd + s(vn - rd), where s is
+;   1 scons mp sid   2 absk mp   3 sigf (mla, mln)   4 S   5 skip1   6 ins2   7 unskip
+label VMAP
+set t sub vn rd
+when negative t goto VMAP_B
+set vm const t
+set t sub mk 1
+when zero t goto VM_SC
+set t sub mk 2
+when zero t goto VM_AB
+set t sub mk 3
+when zero t goto VM_SG
+set t sub mk 4
+when zero t goto VM_S
+set t sub mk 5
+when zero t goto VM_K1
+set t sub mk 6
+when zero t goto VM_I2
+; 7 unskip: 0 -> 0, 1 -> 0, m+2 -> m+1
+set t sub vm 2
+when negative t goto VM_ZERO
+set vs sub vm 1
+goto VMAP_F
+label VM_SC
+when zero vm goto VM_SC0
+set vs sub vm 1
+goto VMAP_F
+label VM_SC0
+set vs const mp
+goto VMAP_F
+label VM_AB
+set t sub vm mp
+when zero t goto VM_ZERO
+set vs add vm 1
+goto VMAP_F
+label VM_SG
+set t sub vm mln
+when negative t goto VM_SG1
+goto VM_ZERO
+label VM_SG1
+set q mul vm 8
+set q add mla q
+set vs peek q 8
+goto VMAP_F
+label VM_S
+set vs add vm 1
+goto VMAP_F
+label VM_K1
+when zero vm goto VM_ZERO
+set vs add vm 1
+goto VMAP_F
+label VM_I2
+set t sub vm 2
+when negative t goto VM_I2A
+set vs add vm 1
+goto VMAP_F
+label VM_I2A
+set vs const vm
+goto VMAP_F
+label VM_ZERO
+set vs const 0
+label VMAP_F
+set vo add rd vs
+return
+label VMAP_B
+set vo const vn
+return
+
+; REN: rf under rd binders, through the map of VMAP -> rr (a new formula; rd is the same afterwards)
+label REN
+set t sub DSP DSL
+when negative t goto REN0
+goto LIMITSTK
+label REN0
+set rnt peek rf 8
+set t sub rnt 3
+when negative t goto REN_XY
+when zero t goto REN_P
+set t sub rnt 5
+when zero t goto REN_I
+set t sub rnt 4
+when zero t goto REN_N
+; All
+set q add rf 8
+set rf peek q 8
+set rd add rd 1
+gosub REN
+set rd sub rd 1
+set mt const 6
+set ma const rr
+set mb const 0
+set mc const 0
+gosub MK
+set rr const mr
+return
+label REN_N
+set q add rf 8
+set rf peek q 8
+gosub REN
+set mt const 4
+set ma const rr
+set mb const 0
+set mc const 0
+gosub MK
+set rr const mr
+return
+label REN_XY
+set q add rf 8
+set vn peek q 8
+gosub VMAP
+set rnx const vo
+set q add rf 16
+set vn peek q 8
+gosub VMAP
+set mt const rnt
+set ma const rnx
+set mb const vo
+set mc const 0
+gosub MK
+set rr const mr
+return
+label REN_P
+set q add rf 8
+set rnp peek q 8
+set q add rf 16
+set rna peek q 8
+set q add rf 24
+set rnn peek q 8
+set an mul rnn 8
+gosub ALLOC
+set rnb const ar
+set rni const 0
+label REN_P1
+set t sub rni rnn
+when negative t goto REN_P2
+set mt const 3
+set ma const rnp
+set mb const rnb
+set mc const rnn
+gosub MK
+set rr const mr
+return
+label REN_P2
+set q mul rni 8
+set q add rna q
+set vn peek q 8
+gosub VMAP
+set q mul rni 8
+set q add rnb q
+poke q 8 vo
+set rni add rni 1
+goto REN_P1
+label REN_I
+poke DSP 8 rf
+set DSP add DSP 8
+set q add rf 8
+set rf peek q 8
+gosub REN
+set DSP sub DSP 8
+set rf peek DSP 8
+poke DSP 8 rr
+set DSP add DSP 8
+set q add rf 16
+set rf peek q 8
+gosub REN
+set DSP sub DSP 8
+set rna2 peek DSP 8
+set mt const 5
+set ma const rna2
+set mb const rr
+set mc const 0
+gosub MK
+set rr const mr
+return
+
+; RENW: rf through the map at depth 0 -> rr (the caller sets mk mp / mla mln)
+label RENW
+set rd const 0
+gosub REN
+return
+
+; FREE: fn ff -> fr (1 when the variable fn is free in ff); fn and ff are spent
+label FREE
+set t sub DSP DSL
+when negative t goto FREE0
+goto LIMITSTK
+label FREE0
+set frt peek ff 8
+set t sub frt 3
+when negative t goto FREE_XY
+when zero t goto FREE_P
+set t sub frt 5
+when zero t goto FREE_I
+set t sub frt 4
+when zero t goto FREE_N
+; All
+set fn add fn 1
+set q add ff 8
+set ff peek q 8
+goto FREE
+label FREE_N
+set q add ff 8
+set ff peek q 8
+goto FREE
+label FREE_XY
+set q add ff 8
+set frx peek q 8
+set t sub frx fn
+when zero t goto FREE_T
+set q add ff 16
+set frx peek q 8
+set t sub frx fn
+when zero t goto FREE_T
+goto FREE_F
+label FREE_P
+set q add ff 16
+set fra peek q 8
+set q add ff 24
+set frn peek q 8
+set fri const 0
+label FREE_P1
+set t sub fri frn
+when negative t goto FREE_P2
+goto FREE_F
+label FREE_P2
+set q mul fri 8
+set q add fra q
+set frx peek q 8
+set t sub frx fn
+when zero t goto FREE_T
+set fri add fri 1
+goto FREE_P1
+label FREE_I
+poke DSP 8 ff
+set DSP add DSP 8
+poke DSP 8 fn
+set DSP add DSP 8
+set q add ff 8
+set ff peek q 8
+gosub FREE
+set DSP sub DSP 8
+set fn peek DSP 8
+set DSP sub DSP 8
+set ff peek DSP 8
+when nonzero fr goto FREE_T
+set q add ff 16
+set ff peek q 8
+goto FREE
+label FREE_T
+set fr const 1
+return
+label FREE_F
+set fr const 0
+return
+
+; CLOSEDK: ck cf -> cr (1 when every variable of cf is below ck, counted from the binders: closedk); ck, cf spent
+label CLOSEDK
+set t sub DSP DSL
+when negative t goto CLK0
+goto LIMITSTK
+label CLK0
+set clt peek cf 8
+set t sub clt 3
+when negative t goto CLK_XY
+when zero t goto CLK_P
+set t sub clt 5
+when zero t goto CLK_I
+set t sub clt 4
+when zero t goto CLK_N
+set ck add ck 1
+set q add cf 8
+set cf peek q 8
+goto CLOSEDK
+label CLK_N
+set q add cf 8
+set cf peek q 8
+goto CLOSEDK
+label CLK_XY
+set q add cf 8
+set clx peek q 8
+set t sub clx ck
+when negative t goto CLK_XY1
+goto CLK_F
+label CLK_XY1
+set q add cf 16
+set clx peek q 8
+set t sub clx ck
+when negative t goto CLK_T
+goto CLK_F
+label CLK_P
+set q add cf 16
+set cla peek q 8
+set q add cf 24
+set cln peek q 8
+set cli const 0
+label CLK_P1
+set t sub cli cln
+when negative t goto CLK_P2
+goto CLK_T
+label CLK_P2
+set q mul cli 8
+set q add cla q
+set clx peek q 8
+set t sub clx ck
+when negative t goto CLK_P3
+goto CLK_F
+label CLK_P3
+set cli add cli 1
+goto CLK_P1
+label CLK_I
+poke DSP 8 cf
+set DSP add DSP 8
+poke DSP 8 ck
+set DSP add DSP 8
+set q add cf 8
+set cf peek q 8
+gosub CLOSEDK
+set DSP sub DSP 8
+set ck peek DSP 8
+set DSP sub DSP 8
+set cf peek DSP 8
+when zero cr goto CLK_F
+set q add cf 16
+set cf peek q 8
+goto CLOSEDK
+label CLK_T
+set cr const 1
+return
+label CLK_F
+set cr const 0
+return
+
+; ================================================================ the tautology check (tautchk2 of ReplayT.v)
+; ADDAT: af -> the atoms of af appended to ATL (count atn, room atc), equal ones once (addat)
+label ADDAT
+set t sub DSP DSL
+when negative t goto ADDAT0
+goto LIMITSTK
+label ADDAT0
+set adt peek af 8
+set t sub adt 4
+when zero t goto ADDAT_N
+set t sub adt 5
+when zero t goto ADDAT_I
+set adi const 0
+label ADDAT1
+set t sub adi atn
+when negative t goto ADDAT2
+set t sub atn atc
+when negative t goto ADDAT3
+goto LIMITMEM
+label ADDAT3
+set q mul atn 8
+set q add ATL q
+poke q 8 af
+set atn add atn 1
+return
+label ADDAT2
+set q mul adi 8
+set q add ATL q
+set ea peek q 8
+set eb const af
+gosub EQB
+when nonzero er goto ADDAT9
+set adi add adi 1
+goto ADDAT1
+label ADDAT9
+return
+label ADDAT_N
+set q add af 8
+set af peek q 8
+goto ADDAT
+label ADDAT_I
+poke DSP 8 af
+set DSP add DSP 8
+set q add af 8
+set af peek q 8
+gosub ADDAT
+set DSP sub DSP 8
+set af peek DSP 8
+set q add af 16
+set af peek q 8
+goto ADDAT
+
+; MKN: bnx -> bnr (mkN); MKI: bia bic -> bir (mkI)
+label MKN
+set bnt peek bnx 8
+set t sub bnt 11
+when zero t goto MKN_F
+set t sub bnt 12
+when zero t goto MKN_T
+set t sub bnt 14
+when zero t goto MKN_X
+set mt const 14
+set ma const bnx
+set mb const 0
+set mc const 0
+gosub MK
+set bnr const mr
+return
+label MKN_F
+set mt const 12
+set ma const 0
+set mb const 0
+set mc const 0
+gosub MK
+set bnr const mr
+return
+label MKN_T
+set mt const 11
+set ma const 0
+set mb const 0
+set mc const 0
+gosub MK
+set bnr const mr
+return
+label MKN_X
+set q add bnx 8
+set bnr peek q 8
+return
+label MKI
+set bat peek bia 8
+set bct peek bic 8
+set t sub bat 12
+when zero t goto MKI_T
+set t sub bct 11
+when zero t goto MKI_T
+set t sub bat 11
+when zero t goto MKI_C
+set t sub bct 12
+when zero t goto MKI_NA
+set mt const 15
+set ma const bia
+set mb const bic
+set mc const 0
+gosub MK
+set bir const mr
+return
+label MKI_T
+set mt const 11
+set ma const 0
+set mb const 0
+set mc const 0
+gosub MK
+set bir const mr
+return
+label MKI_C
+set bir const bic
+return
+label MKI_NA
+set bnx const bia
+gosub MKN
+set bir const bnr
+return
+
+; TOBF: tf -> tb (tobf (topf ATL tf)): Neg and Imp become mkN and mkI, any other formula the variable of its first
+; equal atom (findf)
+label TOBF
+set t sub DSP DSL
+when negative t goto TOBF0
+goto LIMITSTK
+label TOBF0
+set tbt peek tf 8
+set t sub tbt 4
+when zero t goto TOBF_N
+set t sub tbt 5
+when zero t goto TOBF_I
+set tbi const 0
+label TOBF1
+set t sub tbi atn
+when negative t goto TOBF2
+; not found: findf gives the length of the list
+goto TOBF3
+label TOBF2
+set q mul tbi 8
+set q add ATL q
+set ea peek q 8
+set eb const tf
+gosub EQB
+when nonzero er goto TOBF3
+set tbi add tbi 1
+goto TOBF1
+label TOBF3
+set mt const 13
+set ma const tbi
+set mb const 0
+set mc const 0
+gosub MK
+set tb const mr
+return
+label TOBF_N
+set q add tf 8
+set tf peek q 8
+gosub TOBF
+set bnx const tb
+gosub MKN
+set tb const bnr
+return
+label TOBF_I
+poke DSP 8 tf
+set DSP add DSP 8
+set q add tf 8
+set tf peek q 8
+gosub TOBF
+set DSP sub DSP 8
+set tf peek DSP 8
+poke DSP 8 tb
+set DSP add DSP 8
+set q add tf 16
+set tf peek q 8
+gosub TOBF
+set DSP sub DSP 8
+set bia peek DSP 8
+set bic const tb
+gosub MKI
+set tb const bir
+return
+
+; SUBST: sv sc sb -> sr (the variable sv replaced by the constant sc, simplified: subst)
+label SUBST
+set t sub DSP DSL
+when negative t goto SUBST0
+goto LIMITSTK
+label SUBST0
+set sbt peek sb 8
+set t sub sbt 13
+when zero t goto SUBST_V
+set t sub sbt 14
+when zero t goto SUBST_N
+set t sub sbt 15
+when zero t goto SUBST_I
+set sr const sb
+return
+label SUBST_V
+set q add sb 8
+set sbn peek q 8
+set t sub sbn sv
+when zero t goto SUBST_V1
+set sr const sb
+return
+label SUBST_V1
+set mt const 12
+when zero sc goto SUBST_V2
+set mt const 11
+label SUBST_V2
+set ma const 0
+set mb const 0
+set mc const 0
+gosub MK
+set sr const mr
+return
+label SUBST_N
+set q add sb 8
+set sb peek q 8
+gosub SUBST
+set bnx const sr
+gosub MKN
+set sr const bnr
+return
+label SUBST_I
+poke DSP 8 sb
+set DSP add DSP 8
+set q add sb 8
+set sb peek q 8
+gosub SUBST
+set DSP sub DSP 8
+set sb peek DSP 8
+poke DSP 8 sr
+set DSP add DSP 8
+set q add sb 16
+set sb peek q 8
+gosub SUBST
+set DSP sub DSP 8
+set bia peek DSP 8
+set bic const sr
+gosub MKI
+set sr const bir
+return
+
+; SOMEVAR: vb -> vf (1 when a variable occurs), vv (the first in the order of somevar)
+label SOMEVAR
+set t sub DSP DSL
+when negative t goto SOMEV0
+goto LIMITSTK
+label SOMEV0
+set svt peek vb 8
+set t sub svt 13
+when zero t goto SOMEV_V
+set t sub svt 14
+when zero t goto SOMEV_N
+set t sub svt 15
+when zero t goto SOMEV_I
+set vf const 0
+return
+label SOMEV_V
+set q add vb 8
+set vv peek q 8
+set vf const 1
+return
+label SOMEV_N
+set q add vb 8
+set vb peek q 8
+goto SOMEVAR
+label SOMEV_I
+poke DSP 8 vb
+set DSP add DSP 8
+set q add vb 8
+set vb peek q 8
+gosub SOMEVAR
+set DSP sub DSP 8
+set vb peek DSP 8
+when nonzero vf goto SOMEV_R
+set q add vb 16
+set vb peek q 8
+goto SOMEVAR
+label SOMEV_R
+return
+
+; TAUT: tk tkb -> tr (taut_bf tk tkb); tk and tkb are spent
+label TAUT
+set t sub DSP DSL
+when negative t goto TAUT0
+goto LIMITSTK
+label TAUT0
+set tat peek tkb 8
+set t sub tat 11
+when zero t goto TAUT_T
+set t sub tat 12
+when zero t goto TAUT_F
+when zero tk goto TAUT_F
+set vb const tkb
+gosub SOMEVAR
+when zero vf goto TAUT_F
+poke DSP 8 tk
+set DSP add DSP 8
+poke DSP 8 tkb
+set DSP add DSP 8
+poke DSP 8 vv
+set DSP add DSP 8
+set sv const vv
+set sc const 1
+set sb const tkb
+gosub SUBST
+set tk sub tk 1
+set tkb const sr
+gosub TAUT
+set DSP sub DSP 8
+set vv peek DSP 8
+set DSP sub DSP 8
+set tkb peek DSP 8
+set DSP sub DSP 8
+set tk peek DSP 8
+when zero tr goto TAUT_F
+set sv const vv
+set sc const 0
+set sb const tkb
+gosub SUBST
+set tk sub tk 1
+set tkb const sr
+goto TAUT
+label TAUT_T
+set tr const 1
+return
+label TAUT_F
+set tr const 0
+return
+
+; TAUTCHK: tcf -> tcr (tautchk2)
+label TAUTCHK
+set atn const 0
+set af const tcf
+gosub ADDAT
+set tf const tcf
+gosub TOBF
+set tk const atn
+set tkb const tb
+gosub TAUT
+set tcr const tr
+return
+
+; ================================================================ the axiom shapes (axshape of Replay2.v)
+; AXSHAPE: axg -> axok
+label AXSHAPE
+; k: Imp a (Imp b a')
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_S
+set axa const c1
+set cn const c2
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_S
+set ea const axa
+set eb const c2
+gosub EQB
+when nonzero er goto AX_YES
+; s: Imp (Imp a (Imp b c)) (Imp (Imp a' b') (Imp a'' c'))
+label AX_S
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axl const c1
+set axr const c2
+set cn const axl
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axa const c1
+set cn const c2
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axb const c1
+set axc const c2
+set cn const axr
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axr1 const c1
+set axr2 const c2
+set cn const axr1
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axa1 const c1
+set axb1 const c2
+set cn const axr2
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_C
+set axa2 const c1
+set axc1 const c2
+set ea const axa
+set eb const axa1
+gosub EQB
+when zero er goto AX_C
+set ea const axa
+set eb const axa2
+gosub EQB
+when zero er goto AX_C
+set ea const axb
+set eb const axb1
+gosub EQB
+when zero er goto AX_C
+set ea const axc
+set eb const axc1
+gosub EQB
+when nonzero er goto AX_YES
+; c: Imp (Imp (Neg a) (Neg b)) (Imp b' a')
+label AX_C
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_D
+set axl const c1
+set axr const c2
+set cn const axl
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_D
+set axna const c1
+set axnb const c2
+set cn const axna
+gosub CH
+set t sub cg 4
+when nonzero t goto AX_D
+set axa const c1
+set cn const axnb
+gosub CH
+set t sub cg 4
+when nonzero t goto AX_D
+set axb const c1
+set cn const axr
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_D
+set axb1 const c1
+set axa1 const c2
+set ea const axa
+set eb const axa1
+gosub EQB
+when zero er goto AX_D
+set ea const axb
+set eb const axb1
+gosub EQB
+when nonzero er goto AX_YES
+; dist: Imp (All (Imp a b)) (Imp (All a') (All b'))
+label AX_D
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_V
+set axl const c1
+set axr const c2
+set cn const axl
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_V
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_V
+set axa const c1
+set axb const c2
+set cn const axr
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_V
+set axr1 const c1
+set axr2 const c2
+set cn const axr1
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_V
+set axa1 const c1
+set cn const axr2
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_V
+set axb1 const c1
+set ea const axa
+set eb const axa1
+gosub EQB
+when zero er goto AX_V
+set ea const axb
+set eb const axb1
+gosub EQB
+when nonzero er goto AX_YES
+; vac: Imp a (All b) with b = ren S a
+label AX_V
+set cn const axg
+gosub CH
+set t sub cg 5
+when nonzero t goto AX_R
+set axa const c1
+set cn const c2
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_R
+set axb const c1
+set mk const 4
+set rf const axa
+gosub RENW
+set ea const axb
+set eb const rr
+gosub EQB
+when nonzero er goto AX_YES
+; refl: Eqv x x
+label AX_R
+set cn const axg
+gosub CH
+set t sub cg 2
+when nonzero t goto AX_SEP
+set t sub c1 c2
+when zero t goto AX_YES
+; Separation, under any number of All
+label AX_SEP
+set sepg const axg
+label AX_SEP1
+gosub ISSEP
+when nonzero isr goto AX_YES
+set cn const sepg
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_COL
+set sepg const c1
+goto AX_SEP1
+; Collection, under any number of All
+label AX_COL
+set sepg const axg
+label AX_COL1
+gosub ISCOLL
+when nonzero isr goto AX_YES
+set cn const sepg
+gosub CH
+set t sub cg 6
+when nonzero t goto AX_NO
+set sepg const c1
+goto AX_COL1
+label AX_YES
+set axok const 1
+return
+label AX_NO
+set axok const 0
+return
+
+; ISSEP: sepg -> isr (isSep): the shape All (Neg (All (Neg (All (Neg (Imp (Imp _ (Neg (Imp _ (Neg F)))) _))))))
+; with 1 not free in F and sepg = SepF (ren unskip F)
+label ISSEP
+set isr const 0
+set cn const sepg
+gosub CH
+set t sub cg 6
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISSEP_R
+set cn const c2
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISSEP_R
+set cn const c2
+gosub CH
+set t sub cg 4
+when nonzero t goto ISSEP_R
+set sepF const c1
+set fn const 1
+set ff const sepF
+gosub FREE
+when nonzero fr goto ISSEP_R
+; SepF (ren unskip F) = All (Xf (All (Qf (Mem 0 1) (Kf (Mem 0 2) (ren skip1 (ren unskip F))))))
+set mk const 7
+set rf const sepF
+gosub RENW
+set mk const 5
+set rf const rr
+gosub RENW
+set sepG const rr
+set mmx const 0
+set mmy const 2
+gosub MEM
+set kfa const mmr
+set kfb const sepG
+gosub KF
+set sepK const kfr
+set mmx const 0
+set mmy const 1
+gosub MEM
+set qfa const mmr
+set qfb const sepK
+gosub QF
+set ala const qfr
+gosub ALL
+set xfa const alr
+gosub XF
+set ala const xfr
+gosub ALL
+set ea const sepg
+set eb const alr
+gosub EQB
+set isr const er
+label ISSEP_R
+return
+
+; ISCOLL: sepg -> isr (isColl): the shape All (Imp (All (Imp _ (Neg (All (Neg F))))) _) with sepg = CollF F
+label ISCOLL
+set isr const 0
+set cn const sepg
+gosub CH
+set t sub cg 6
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 5
+when nonzero t goto ISCOLL_R
+set cn const c2
+gosub CH
+set t sub cg 4
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ISCOLL_R
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ISCOLL_R
+set colF const c1
+; CollF g = All (Imp (All (Imp (Mem 0 1) (Xf g))) (Xf (All (Imp (Mem 0 2) (Xf (Kf (Mem 0 2) (ren ins2 g)))))))
+set mk const 6
+set rf const colF
+gosub RENW
+set colG const rr
+set mmx const 0
+set mmy const 2
+gosub MEM
+set colM2 const mmr
+set kfa const colM2
+set kfb const colG
+gosub KF
+set xfa const kfr
+gosub XF
+set ima const colM2
+set imb const xfr
+gosub IMP
+set ala const imr
+gosub ALL
+set xfa const alr
+gosub XF
+set colR const xfr
+set xfa const colF
+gosub XF
+set colXg const xfr
+set mmx const 0
+set mmy const 1
+gosub MEM
+set ima const mmr
+set imb const colXg
+gosub IMP
+set ala const imr
+gosub ALL
+set ima const alr
+set imb const colR
+gosub IMP
+set ala const imr
+gosub ALL
+set ea const sepg
+set eb const alr
+gosub EQB
+set isr const er
+label ISCOLL_R
+return
+
+; ================================================================ one step (sstep of Replay2.v) -> line
+; LINE: the line number lnum must be below nl -> lf
+label LINE
+set t sub lnum nl
+when negative t goto LINE1
+text WHY "a step names a line that is not yet there"
+goto FAIL
+label LINE1
+set q mul lnum 8
+set q add LINES q
+set lf peek q 8
+return
+label STEP
+gosub RDTAG
+set t sub tg 85
+when zero t goto ST_USE
+set t sub tg 83
+when zero t goto ST_SPEC
+set t sub tg 71
+when zero t goto ST_GEN
+set t sub tg 77
+when zero t goto ST_MP
+set t sub tg 84
+when zero t goto ST_TAUT
+set t sub tg 69
+when zero t goto ST_EXI
+set t sub tg 76
+when zero t goto ST_EXEL
+set t sub tg 72
+when zero t goto ST_ALLI
+set t sub tg 86
+when zero t goto ST_INST
+set t sub tg 90
+when zero t goto ST_LEIB
+set t sub tg 89
+when zero t goto ST_AX
+text WHY "unknown step tag"
+goto FAIL
+
+; use r sig: registry entry r renamed by sigf sig; its hypotheses join hs
+label ST_USE
+gosub RDNUM
+set ur const num
+gosub RDLIST
+set t sub ur reglen
+when negative t goto ST_USE1
+text WHY "use: no such registry entry"
+goto FAIL
+label ST_USE1
+set q mul ur 24
+set q add REG q
+set urf peek q 8
+set q add q 8
+set urha peek q 8
+set q add q 8
+set urhn peek q 8
+set mk const 3
+set mla const la
+set mln const ln
+set rf const urf
+gosub RENW
+set line const rr
+set uhi const 0
+label ST_USE2
+set t sub uhi urhn
+when negative t goto ST_USE3
+return
+label ST_USE3
+set an const 16
+gosub ALLOC
+set q mul uhi 8
+set q add urha q
+set uhv peek q 8
+poke ar 8 uhv
+set q add ar 8
+poke q 8 HSL
+set HSL const ar
+set uhi add uhi 1
+goto ST_USE2
+
+; spec l ts: line l with its leading All instantiated by ts (specn)
+label ST_SPEC
+gosub RDNUM
+set lnum const num
+gosub RDLIST
+gosub LINE
+set spF const lf
+set spi const 0
+label ST_SPEC1
+set t sub spi ln
+when negative t goto ST_SPEC2
+set line const spF
+return
+label ST_SPEC2
+set cn const spF
+gosub CH
+set t sub cg 6
+when zero t goto ST_SPEC3
+text WHY "spec: the line has no leading All to instantiate"
+goto FAIL
+label ST_SPEC3
+set q mul spi 8
+set q add la q
+set mp peek q 8
+set mk const 1
+set rf const c1
+gosub RENW
+set spF const rr
+set spi add spi 1
+goto ST_SPEC1
+
+; gen l k: All (ren (absk k) line l)
+label ST_GEN
+gosub RDNUM
+set lnum const num
+gosub RDNUM
+set gk const num
+gosub LINE
+set mk const 2
+set mp const gk
+set rf const lf
+gosub RENW
+set ala const rr
+gosub ALL
+set line const alr
+return
+
+; mp i j: line i is a, line j is Imp a' b with a = a' -> b
+label ST_MP
+gosub RDNUM
+set mpi const num
+gosub RDNUM
+set mpj const num
+set lnum const mpi
+gosub LINE
+set mpa const lf
+set lnum const mpj
+gosub LINE
+set cn const lf
+gosub CH
+set t sub cg 5
+when zero t goto ST_MP1
+text WHY "mp: the second line is not an implication"
+goto FAIL
+label ST_MP1
+set mpb const c2
+set ea const mpa
+set eb const c1
+gosub EQB
+when nonzero er goto ST_MP2
+text WHY "mp: the antecedent differs from the first line"
+goto FAIL
+label ST_MP2
+set line const mpb
+return
+
+; taut ls g: the implication from the lines ls to g is a tautology
+label ST_TAUT
+gosub RDLIST
+set tla const la
+set tln const ln
+gosub PARSEF
+set tG const pf
+set tacc const tG
+set tii const tln
+label ST_TAUT1
+when zero tii goto ST_TAUT2
+set tii sub tii 1
+set q mul tii 8
+set q add tla q
+set lnum peek q 8
+gosub LINE
+set ima const lf
+set imb const tacc
+gosub IMP
+set tacc const imr
+goto ST_TAUT1
+label ST_TAUT2
+set tcf const tacc
+gosub TAUTCHK
+when nonzero tcr goto ST_TAUT3
+text WHY "taut: not a tautology"
+goto FAIL
+label ST_TAUT3
+set line const tG
+return
+
+; exi t g: g = Imp F (Neg (All (Neg f))) with F = ren (scons t sid) f
+label ST_EXI
+gosub RDNUM
+set ext const num
+gosub PARSEF
+set exG const pf
+set cn const exG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_EXI_BAD
+set exF const c1
+set cn const c2
+gosub CH
+set t sub cg 4
+when nonzero t goto ST_EXI_BAD
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ST_EXI_BAD
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ST_EXI_BAD
+set mk const 1
+set mp const ext
+set rf const c1
+gosub RENW
+set ea const exF
+set eb const rr
+gosub EQB
+when zero er goto ST_EXI_BAD
+set line const exG
+return
+label ST_EXI_BAD
+text WHY "exi: the formula is not an existential introduction"
+goto FAIL
+
+; exel l k g: g = Imp (Neg (All (Neg P'))) G2, line l = Imp P G3, G2 = G3, P' = ren (absk k) P, k not free in G2
+label ST_EXEL
+gosub RDNUM
+set lnum const num
+gosub RDNUM
+set elk const num
+gosub PARSEF
+set elG const pf
+gosub LINE
+set cn const elG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_EXEL_BAD
+set elG2 const c2
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ST_EXEL_BAD
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ST_EXEL_BAD
+set cn const c1
+gosub CH
+set t sub cg 4
+when nonzero t goto ST_EXEL_BAD
+set elP1 const c1
+set cn const lf
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_EXEL_BAD
+set elP const c1
+set elG3 const c2
+set ea const elG2
+set eb const elG3
+gosub EQB
+when zero er goto ST_EXEL_BAD
+set mk const 2
+set mp const elk
+set rf const elP
+gosub RENW
+set ea const elP1
+set eb const rr
+gosub EQB
+when zero er goto ST_EXEL_BAD
+set fn const elk
+set ff const elG2
+gosub FREE
+when nonzero fr goto ST_EXEL_BAD
+set line const elG
+return
+label ST_EXEL_BAD
+text WHY "exel: the side conditions of existential elimination fail"
+goto FAIL
+
+; alli k l g: g = Imp H (All f'), line l = Imp H2 f, H = H2, f' = ren (absk k) f, k not free in H
+label ST_ALLI
+gosub RDNUM
+set alk const num
+gosub RDNUM
+set lnum const num
+gosub PARSEF
+set alG const pf
+gosub LINE
+set cn const alG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_ALLI_BAD
+set alH const c1
+set cn const c2
+gosub CH
+set t sub cg 6
+when nonzero t goto ST_ALLI_BAD
+set alf1 const c1
+set cn const lf
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_ALLI_BAD
+set alH2 const c1
+set alf const c2
+set ea const alH
+set eb const alH2
+gosub EQB
+when zero er goto ST_ALLI_BAD
+set mk const 2
+set mp const alk
+set rf const alf
+gosub RENW
+set ea const alf1
+set eb const rr
+gosub EQB
+when zero er goto ST_ALLI_BAD
+set fn const alk
+set ff const alH
+gosub FREE
+when nonzero fr goto ST_ALLI_BAD
+set line const alG
+return
+label ST_ALLI_BAD
+text WHY "alli: the side conditions of universal introduction fail"
+goto FAIL
+
+; inst t g: g = Imp (All f) G2 with G2 = ren (scons t sid) f
+label ST_INST
+gosub RDNUM
+set int const num
+gosub PARSEF
+set inG const pf
+set cn const inG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_INST_BAD
+set inG2 const c2
+set cn const c1
+gosub CH
+set t sub cg 6
+when nonzero t goto ST_INST_BAD
+set mk const 1
+set mp const int
+set rf const c1
+gosub RENW
+set ea const inG2
+set eb const rr
+gosub EQB
+when zero er goto ST_INST_BAD
+set line const inG
+return
+label ST_INST_BAD
+text WHY "inst: the formula is not an instance"
+goto FAIL
+
+; leib a g: g = Imp (Eqv s t) (Imp X Y) with X = ren (scons s sid) a and Y = ren (scons t sid) a
+label ST_LEIB
+gosub PARSEF
+set lbA const pf
+gosub PARSEF
+set lbG const pf
+set cn const lbG
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_LEIB_BAD
+set lbR const c2
+set cn const c1
+gosub CH
+set t sub cg 2
+when nonzero t goto ST_LEIB_BAD
+set lbs const c1
+set lbt const c2
+set cn const lbR
+gosub CH
+set t sub cg 5
+when nonzero t goto ST_LEIB_BAD
+set lbX const c1
+set lbY const c2
+set mk const 1
+set mp const lbs
+set rf const lbA
+gosub RENW
+set ea const lbX
+set eb const rr
+gosub EQB
+when zero er goto ST_LEIB_BAD
+set mk const 1
+set mp const lbt
+set rf const lbA
+gosub RENW
+set ea const lbY
+set eb const rr
+gosub EQB
+when zero er goto ST_LEIB_BAD
+set line const lbG
+return
+label ST_LEIB_BAD
+text WHY "leib: the formula is not Leibniz's law for the given formula"
+goto FAIL
+
+; ax g: one of the axiom shapes
+label ST_AX
+gosub PARSEF
+set axg const pf
+gosub AXSHAPE
+when nonzero axok goto ST_AX1
+text WHY "ax: not an axiom shape"
+goto FAIL
+label ST_AX1
+set line const axg
+return
+
+label END
+
