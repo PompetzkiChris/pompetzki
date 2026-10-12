@@ -1,0 +1,195 @@
+{
+  "judge_sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+  "interpreter_sha256": "414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7",
+  "rlimit_as": 1342177280,
+  "rlimit_data": 1342177280,
+  "rlimit_cpu_seconds": 20,
+  "startup_note": "1024 MiB AS exited 3 with empty output before a judgment; 1280 MiB lets the fixed 192+384+16 MiB blocks start",
+  "primary_judge_source_modified": false,
+  "racket_executed": false,
+  "passed": 9,
+  "failed": 0,
+  "rows": [
+    {
+      "name": "control-T0",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "exit": 0,
+      "seconds": 0.0024,
+      "input_bytes": 13,
+      "input_sha256": "588845ea1657dee0130912e4b99a23b1941cad338562e0b17412455a3bb8b67c",
+      "stdout_sha256": "524fba9c528f83bf0143a1ab744aa32894850a2017802ebe5c4259ecd1b2405a",
+      "stderr": "",
+      "passed": true,
+      "stdout_head": [
+        "ACCEPT",
+        "registry entries at the start, theorems accepted, steps checked, registry entries at the end:",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "control-canonical-truth",
+      "expected": "ACCEPT",
+      "observed": "ACCEPT",
+      "exit": 0,
+      "seconds": 0.0045,
+      "input_bytes": 71,
+      "input_sha256": "0c63775e7ca862dab9d9ad0655c25f46ed24f0a154b4ff43e014fdb74ce33faf",
+      "stdout_sha256": "6817d1a67a3c76495e24b2332918a1ba2f26863c02a69ea4965f0aa7ba3749c5",
+      "stderr": "",
+      "passed": true,
+      "stdout_head": [
+        "ACCEPT",
+        "registry entries at the start, theorems accepted, steps checked, registry entries at the end:",
+        "1",
+        "1",
+        "2",
+        "2"
+      ]
+    },
+    {
+      "name": "control-max-predicate-id",
+      "expected": "REJECT",
+      "observed": "REJECT:the theorem has no lines",
+      "exit": 1,
+      "seconds": 0.0026,
+      "input_bytes": 36,
+      "input_sha256": "0ae8983b0e1101e98fadfb7444e3b6cc9ff36bd16a5203e2064c7cc41bb5acc0",
+      "stdout_sha256": "4f7e212727cf5cfc04c2e68915693b71b6ce035470396bc62fe13665b89fdba4",
+      "stderr": "",
+      "passed": true,
+      "stdout_head": [
+        "REJECT",
+        "the theorem has no lines",
+        "theorem and step (counted from 0):",
+        "0",
+        "0",
+        "line 351: check zero failed: not the zero vector"
+      ]
+    },
+    {
+      "name": "control-no-lines",
+      "expected": "REJECT",
+      "observed": "REJECT:the theorem has no lines",
+      "exit": 1,
+      "seconds": 0.0025,
+      "input_bytes": 25,
+      "input_sha256": "ded0dce20a526f1489dad4943b84027a3389462b9a9a0799860773463bbad588",
+      "stdout_sha256": "4f7e212727cf5cfc04c2e68915693b71b6ce035470396bc62fe13665b89fdba4",
+      "stderr": "",
+      "passed": true,
+      "stdout_head": [
+        "REJECT",
+        "the theorem has no lines",
+        "theorem and step (counted from 0):",
+        "0",
+        "0",
+        "line 351: check zero failed: not the zero vector"
+      ]
+    },
+    {
+      "name": "rdlist-arity",
+      "expected": "LIMIT",
+      "observed": "LIMIT",
+      "exit": 1,
+      "seconds": 0.0023,
+      "input_bytes": 30,
+      "input_sha256": "cba2af4c7a7fc730da06359c3535441252f4c462f831e4041fba436bdbe4320a",
+      "stdout_sha256": "6523971b4bc370fe6d8ef4608fc9a18d20408f7bf980c635aabc25ea85b09daa",
+      "stderr": "",
+      "passed": true,
+      "stdout_head": [
+        "LIMIT",
+        "a memory block is full",
+        "0",
+        "0",
+        "line 359: check zero failed: not the zero vector"
+      ]
+    },
+    {
+      "name": "rdlist-hypotheses",
+      "expected": "LIMIT",
+      "observed": "LIMIT",
+      "exit": 1,
+      "seconds": 0.0025,
+      "input_bytes": 36,
+      "input_sha256": "19bee545d7b612a2b2f52865acd9ab31be9e19919200dd89d9f02267f8d038ec",
+      "stdout_sha256": "6523971b4bc370fe6d8ef4608fc9a18d20408f7bf980c635aabc25ea85b09daa",
+      "stderr": "",
+      "passed": true,
+      "stdout_head": [
+        "LIMIT",
+        "a memory block is full",
+        "0",
+        "0",
+        "line 359: check zero failed: not the zero vector"
+      ]
+    },
+    {
+      "name": "rdlist-signature",
+      "expected": "LIMIT",
+      "observed": "LIMIT",
+      "exit": 1,
+      "seconds": 0.0024,
+      "input_bytes": 32,
+      "input_sha256": "49fb84ec60e3c96520a638705339d7d3d38d9d4bbd77234bfe2e59d6ebbc164c",
+      "stdout_sha256": "6523971b4bc370fe6d8ef4608fc9a18d20408f7bf980c635aabc25ea85b09daa",
+      "stderr": "",
+      "passed": true,
+      "stdout_head": [
+        "LIMIT",
+        "a memory block is full",
+        "0",
+        "0",
+        "line 359: check zero failed: not the zero vector"
+      ]
+    },
+    {
+      "name": "step-count",
+      "expected": "LIMIT",
+      "observed": "LIMIT",
+      "exit": 1,
+      "seconds": 0.0024,
+      "input_bytes": 34,
+      "input_sha256": "7aeaa1149a4849935cdabe802bc29e8c74b21c803e491fc6fc4acc737d62234d",
+      "stdout_sha256": "6523971b4bc370fe6d8ef4608fc9a18d20408f7bf980c635aabc25ea85b09daa",
+      "stderr": "",
+      "passed": true,
+      "stdout_head": [
+        "LIMIT",
+        "a memory block is full",
+        "0",
+        "0",
+        "line 359: check zero failed: not the zero vector"
+      ]
+    },
+    {
+      "name": "theorem-count",
+      "expected": "LIMIT",
+      "observed": "LIMIT",
+      "exit": 1,
+      "seconds": 0.0021,
+      "input_bytes": 24,
+      "input_sha256": "897a18d8e5c5caa2e97e1c2e05ab452ab0ea015004ec4ea9cbed677fb6e0bd57",
+      "stdout_sha256": "6523971b4bc370fe6d8ef4608fc9a18d20408f7bf980c635aabc25ea85b09daa",
+      "stderr": "",
+      "passed": true,
+      "stdout_head": [
+        "LIMIT",
+        "a memory block is full",
+        "0",
+        "0",
+        "line 359: check zero failed: not the zero vector"
+      ]
+    }
+  ],
+  "vmhwm_kb_sampled": {
+    "theorem-count": 1083352,
+    "control-T0": 1083352,
+    "control-canonical-truth": 1083352
+  },
+  "vmhwm_note": "Same peak for LIMIT and ACCEPT. 1083352 KiB is the fixed persistent, scratch and stack blocks, not a 999999999999-record allocation."
+}

@@ -1,0 +1,26 @@
+Reproduced on the published judge-v5.pmp. That file was not edited.
+sha256 4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b
+
+Interpreter: released Linux pompetzki
+sha256 414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7
+
+Each child set, before exec:
+  RLIMIT_AS  = 1342177280
+  RLIMIT_DATA= 1342177280
+  RLIMIT_CPU = 20
+1024 MiB AS exited 3 with empty output, before a judgment. 1280 MiB is enough for the fixed blocks in judge-v5.pmp (201326592 + 402653184 + 16777216) and still far below a 999999999999-record allocation.
+
+Racket was not executed. No racket executable is on PATH.
+
+Observed, 9/9:
+  T 999999999999                         LIMIT / a memory block is full
+  T 1 p 0 0 0 999999999999               LIMIT / a memory block is full   (step vector)
+  T 1 q 0 0 999999999999                 LIMIT / a memory block is full   (RDLIST signature)
+  T 1 p 0 999999999999                   LIMIT / a memory block is full   (RDLIST arity)
+  T 1 q 0 0 0 0 999999999999             LIMIT / a memory block is full   (RDLIST hypotheses)
+  T 0                                    ACCEPT
+  T 1 q 0 0 0 0 0                        REJECT / the theorem has no lines
+  T 1 p 999999999999 0 0 0 0             REJECT / the theorem has no lines
+  cases/canonical-truth.jdg              ACCEPT
+
+VmHWM sampled 1083352 KiB for the theorem-count LIMIT and for both ACCEPT controls.

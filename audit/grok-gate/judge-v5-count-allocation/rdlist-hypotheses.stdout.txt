@@ -1,0 +1,5 @@
+LIMIT
+a memory block is full
+0
+0
+line 359: check zero failed: not the zero vector
