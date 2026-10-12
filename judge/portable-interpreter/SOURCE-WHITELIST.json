@@ -1,0 +1,53 @@
+{
+  "component": "interpreter",
+  "public_source_files": [
+    {
+      "source": "judge/portable-interpreter/source/pompetzki.asm",
+      "destination": "runtime/source/pompetzki.asm",
+      "sha256": "778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db",
+      "bytes": 291548,
+      "required_for_build": true
+    },
+    {
+      "source": "judge/portable-interpreter/build-interpreter.py",
+      "destination": "runtime/build-interpreter.py",
+      "sha256": "cb5702f2e2a073b85fec2f944b5c9af64403a02cc61ea5dba05d7a830b5f2115",
+      "bytes": 4034,
+      "required_for_build": true
+    },
+    {
+      "source": "judge/portable-interpreter/README-source.md",
+      "destination": "runtime/README-source.md",
+      "sha256": "b826b58f1f1692c66348c6a36cd6f191b130dbbb8104a7f9d32c5e274f5acd0f",
+      "bytes": 1948,
+      "required_for_build": false
+    },
+    {
+      "source": "judge/portable-interpreter/PUBLIC-PROVENANCE.json",
+      "destination": "runtime/PUBLIC-PROVENANCE.json",
+      "sha256": "b56150e12db3c76657d6bd2bd9ee5f7049de7e4b4c093145dce110ed7ec434f5",
+      "bytes": 1019,
+      "required_for_build": false
+    },
+    {
+      "source": "judge/portable-interpreter/LICENSE",
+      "destination": "runtime/LICENSE",
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+      "bytes": 1077,
+      "required_for_build": false
+    }
+  ],
+  "external_build_dependencies": [
+    "Python 3 standard library",
+    "NASM",
+    "MinGW-w64 GCC for Windows",
+    "GNU ld for Linux"
+  ],
+  "author_specific_runtime_path_dependencies": [],
+  "evidence_not_whitelisted": [
+    "relocated build output",
+    "linux build output",
+    "local stdout/stderr and build receipts"
+  ],
+  "general_source_executable_correspondence": "open"
+}

@@ -1,0 +1,23 @@
+{
+  "component": "Pompetzki exact interpreter NASM source",
+  "source": "source/pompetzki.asm",
+  "source_sha256": "778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db",
+  "source_size_bytes": 291548,
+  "local_assembly_includes": [],
+  "local_binary_includes": [],
+  "windows_system_import_libraries": ["kernel32", "shell32"],
+  "linux_runtime": "included under the LINUX conditional in the same monolithic source",
+  "builder": "build-interpreter.py",
+  "license": "LICENSE",
+  "license_identifier": "MIT",
+  "copyright": "2026 Christopher Pompetzki",
+  "build_targets_tested": ["Windows x64 console", "Windows x64 window subsystem", "Linux x64 ELF"],
+  "assembler_and_linker_exits": "all zero",
+  "runtime_smoke_results": {
+    "Windows console forged registry": "REJECT exit 1",
+    "Windows console canonical prefix 706 truth": "ACCEPT exit 0",
+    "Linux forged registry": "REJECT exit 1",
+    "Linux canonical prefix 706 truth": "ACCEPT exit 0"
+  },
+  "source_to_executable_correspondence": "open"
+}

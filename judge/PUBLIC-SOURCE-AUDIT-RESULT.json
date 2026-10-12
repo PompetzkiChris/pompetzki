@@ -1,0 +1,10 @@
+{
+  "files_scanned": 81,
+  "author_specific_path_hits": 0,
+  "hit_paths": [],
+  "private_historical_builds_excluded": true,
+  "whitelist_sha256": "94cae4d5845577a1dfd305d0fc442ab93b6b8adde19045e7f6ff554c0bd9d168",
+  "interpreter_source_sha256": "778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db",
+  "native_compiler_source_sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+  "compiled_source_and_executable_Gallina_correspondence": "open"
+}
