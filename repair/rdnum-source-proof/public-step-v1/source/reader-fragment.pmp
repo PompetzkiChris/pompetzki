@@ -1,0 +1,85 @@
+label SKIPWS
+set t sub pos lim
+when negative t goto SKIPWS2
+return
+label SKIPWS2
+set c peek pos 1
+set t sub c 32
+when zero t goto SKIPWS3
+set t sub c 10
+when zero t goto SKIPWS3
+set t sub c 13
+when zero t goto SKIPWS3
+set t sub c 9
+when zero t goto SKIPWS3
+return
+label SKIPWS3
+set pos add pos 1
+goto SKIPWS
+
+; ENDTOK: the token ends here (the end of the input or white space)
+label ENDTOK
+set t sub pos lim
+when negative t goto ENDTOK1
+return
+label ENDTOK1
+set c peek pos 1
+set t sub c 32
+when zero t goto ENDTOK2
+set t sub c 10
+when zero t goto ENDTOK2
+set t sub c 13
+when zero t goto ENDTOK2
+set t sub c 9
+when zero t goto ENDTOK2
+text WHY "a token does not end in white space"
+goto FAIL
+label ENDTOK2
+return
+
+; RDNUM: exact decimal 0..999999999999; leading zeros do not count.
+; nd counts significant digits. nseen records a digit even in an all-zero token.
+; The 13th significant digit is refused before multiplication or addition.
+label RDNUM
+gosub SKIPWS
+set num const 0
+set nd const 0
+set nseen const 0
+label RDNUM1
+set t sub pos lim
+when negative t goto RDNUM2
+goto RDNUM9
+label RDNUM2
+set c peek pos 1
+set d sub c 48
+when negative d goto RDNUM9
+set t sub d 10
+when negative t goto RDNUM3
+goto RDNUM9
+label RDNUM3
+set nseen const 1
+when zero nd goto RDNUMLEAD
+goto RDNUMBOUND
+label RDNUMLEAD
+when zero d goto RDNUMADVANCE
+label RDNUMBOUND
+set t sub nd 12
+when negative t goto RDNUM4
+text WHY "a number has more than 12 significant digits"
+goto FAIL
+label RDNUM4
+set num mul num 10
+set num add num d
+set nd add nd 1
+label RDNUMADVANCE
+set pos add pos 1
+goto RDNUM1
+label RDNUM9
+when zero nseen goto RDNUMBAD
+gosub ENDTOK
+return
+label RDNUMBAD
+text WHY "a number was expected"
+goto FAIL
+
+; RDTAG: one character -> tg

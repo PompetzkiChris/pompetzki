@@ -1,0 +1,48 @@
+{
+  "license": "MIT, accompanying project LICENSE",
+  "project": "Pompetzki / Abschluss, Christopher Pomp and project contributors",
+  "unchanged_semantics": [
+    {
+      "file": "Vendor/C2Link/ExecMono.v",
+      "sha256": "4309ae95d944f4eda8979cd23af95ab47668a50c33b84ef2037ba32d9370b90d",
+      "origin": "C2Link preserved compiled-interface development 2026-10-10"
+    },
+    {
+      "file": "Vendor/C2Link/ExecSim.v",
+      "sha256": "ff8d1832e529925a5b6384d8cf8c4e2763a7192f252d49fedf194f28cf7c50ff",
+      "origin": "C2Link preserved compiled-interface development 2026-10-10"
+    },
+    {
+      "file": "Vendor/C2Link/ExecStep.v",
+      "sha256": "b5689cd748cf941358fdc4c1e23a21bddd4ba5156b325ebdf83ea9aaaf88d456",
+      "origin": "C2Link preserved compiled-interface development 2026-10-10"
+    },
+    {
+      "file": "Vendor/C2Link/PmpCore.v",
+      "sha256": "ba76fc2256e87bfab583f6a9f5a145cf351dfe86d13e295dfa24548e4475b8bc",
+      "origin": "C2Link preserved compiled-interface development 2026-10-10"
+    },
+    {
+      "file": "Vendor/C2Link/RunKit.v",
+      "sha256": "a37d0e83a139e10f0d6330f1b837c90a9269b3704b01b24f90578135135dc351",
+      "origin": "C2Link preserved compiled-interface development 2026-10-10"
+    },
+    {
+      "file": "Vendor/Groebner/ByteText.v",
+      "sha256": "73d782662def27f0c8de666a12c56001ec58bdb1ce16d14181c318c8ca484482",
+      "origin": "Groebner.ByteText exact-execution development 2026-09-24"
+    }
+  ],
+  "unchanged_arithmetic_model": {
+    "file": "NumericV5/DecimalSignificantV4.v",
+    "sha256": "35ae5b7dd63879148b5e82787f4d2f721c6e71c56380436f60a7a1ad3f998aa6",
+    "origin": "Reviewed project NumericV5 decimal-significant proof"
+  },
+  "reader_proof_derivation": {
+    "original_module": "JudgeReaders, original v3 full-program reader development 2026-10-09",
+    "original_sha256": "201ff76b4fd931e3b78e617ccd0a577e0ac16b49ece64afe4b26912f1d862c21",
+    "adaptation": "New RDNUM namespace, current reader controller, unchanged PmpCore state and exec; original theorem statements retained separately"
+  },
+  "new_proofs": "Codex source instruction, call, memory frame and word-bound developments 2026-10-12",
+  "boundary": "Python text-to-AST extraction is trusted. No native-compiler/interpreter/OS refinement theorem is claimed."
+}
