@@ -1,0 +1,51 @@
+[
+  {
+    "judge": "native",
+    "case": "math-Q203-77",
+    "family": "math",
+    "input_file": "corpus/math-Q203-77.jdg",
+    "input_sha256": "8d229d7d98cd2d8c430da16968715aa66ea82d50c554d507dd71ca4e5ea2bbac",
+    "command_roles": [
+      "NATIVE_CHECKER",
+      "corpus/math-Q203-77.jdg"
+    ],
+    "expected_verdict": "REJECT",
+    "expected_exit": 1,
+    "expected_class": "proof-step",
+    "verdict": "REJECT",
+    "cls": "proof-step",
+    "exit_code": 1,
+    "timeout": false,
+    "seconds": 0.0068688000028487295,
+    "stdout_file": "native/213-8d229d7d98cd.stdout.txt",
+    "stderr_file": "native/213-8d229d7d98cd.stderr.txt",
+    "stdout_sha256": "33bd8406abd1536485be78e45b1c29aa0f33d5abfdf0f89454086f9d69e8f890",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "passed": true
+  },
+  {
+    "judge": "racket",
+    "case": "math-Q203-77",
+    "family": "math",
+    "input_file": "corpus/math-Q203-77.jdg",
+    "input_sha256": "8d229d7d98cd2d8c430da16968715aa66ea82d50c554d507dd71ca4e5ea2bbac",
+    "command_roles": [
+      "RACKET_EXECUTABLE",
+      "RACKET_SOURCE",
+      "corpus/math-Q203-77.jdg"
+    ],
+    "expected_verdict": "REJECT",
+    "expected_exit": 1,
+    "expected_class": "parser",
+    "verdict": "REJECT",
+    "cls": "parser",
+    "exit_code": 1,
+    "timeout": false,
+    "seconds": 0.23047809998388402,
+    "stdout_file": "racket/213-8d229d7d98cd.stdout.txt",
+    "stderr_file": "racket/213-8d229d7d98cd.stderr.txt",
+    "stdout_sha256": "470fdd366b3c28cbd7c3c2d57bccd67d44b454320d1e50bc75e2c16d92eaf539",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "passed": true
+  }
+]

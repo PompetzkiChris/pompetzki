@@ -1,0 +1,17 @@
+{
+  "public_payload_files": 1499,
+  "public_metadata_files": 3,
+  "corpus_cases": 254,
+  "unique_corpus_hashes": 254,
+  "input_hash_mismatches": 0,
+  "author_account_path_matches": [],
+  "fresh_fast_runs": 408,
+  "fresh_route_specific_runs": 2,
+  "fresh_passes": 410,
+  "fresh_failures": 0,
+  "fresh_timeouts": 0,
+  "driver_sha256": "f74eafd6f04f5373b6c4ebe9633b02cbf6a934b30f57ef7b6f95a85743ccb5f1",
+  "expectations_sha256": "94425d972276fa7396d7bcdc542be4d2786f53f338aa83f6fe70a40a27a22bbd",
+  "source_map_sha256": "d5d0fc1c82c89ef84eeb7c36654ff508fe6f8ea15b3d19e095d0bead4cb9cd6b",
+  "frozen_core_map_sha256": "029b50bf2c23f100a458fa33171341c69b98c6642416e92562297b38c6d3c3ab"
+}

@@ -1,0 +1,35 @@
+{
+  "case_count": 254,
+  "unique_input_hashes": 254,
+  "corpus_bytes": 88406542,
+  "families": {
+    "bot-semantic": 78,
+    "bot-malformed": 16,
+    "numeric": 42,
+    "math": 117,
+    "replay": 1
+  },
+  "native_math_classes": {
+    "accept": 78,
+    "final-statement": 4,
+    "parser": 23,
+    "proof-step": 12
+  },
+  "racket_math_classes": {
+    "accept": 78,
+    "final-statement": 4,
+    "parser": 24,
+    "proof-step": 11
+  },
+  "route_class_differences": [
+    {
+      "case": "math-Q203-77",
+      "expected_class_native": "proof-step",
+      "expected_class_racket": "parser"
+    }
+  ],
+  "preceding_executions": 898,
+  "preceding_passed": 898,
+  "preceding_timeouts": 0,
+  "class_review": "Math classes were previously unspecified; route-specific observed classes are retained with original verdict/exit expectations. Interpreted full-lane expectations use native classes and are marked as not previously run."
+}

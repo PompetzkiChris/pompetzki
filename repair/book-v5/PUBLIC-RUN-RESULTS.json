@@ -1,0 +1,251 @@
+{
+  "version": "5",
+  "source_math_statements_changed": false,
+  "run_platform": "Windows x86-64",
+  "tests": {
+    "posting": {
+      "cases": 4,
+      "passed": 4,
+      "results": [
+        {
+          "case": "mixed",
+          "exit": 0,
+          "expected": null,
+          "passed": true
+        },
+        {
+          "case": "existing-output-refused",
+          "exit": 3,
+          "expected": null,
+          "passed": true
+        },
+        {
+          "case": "timeout",
+          "exit": 3,
+          "expected": null,
+          "passed": true
+        },
+        {
+          "case": "direct-receipt-import-refused",
+          "exit": 2,
+          "expected": null,
+          "passed": true
+        }
+      ]
+    },
+    "checker": {
+      "cases": 5,
+      "passed": 5,
+      "results": [
+        {
+          "case": "relocated-valid",
+          "exit": 0,
+          "expected": 0,
+          "passed": true
+        },
+        {
+          "case": "input-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "output-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "metadata-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "theorem-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        }
+      ]
+    },
+    "adversarial": {
+      "cases": 2,
+      "passed": 2,
+      "results": [
+        {
+          "case": "ambiguous",
+          "exit": 3,
+          "expected": null,
+          "passed": true
+        },
+        {
+          "case": "orphan",
+          "exit": 3,
+          "expected": null,
+          "passed": true
+        }
+      ]
+    },
+    "review": {
+      "cases": 24,
+      "passed": 24,
+      "results": [
+        {
+          "case": "relocated-control",
+          "exit": 0,
+          "expected": 0,
+          "passed": true
+        },
+        {
+          "case": "fully-consistent-false-proof",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "metadata-false-artifact-hash",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "metadata-inexact-backwards-times",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "metadata-ambiguous-output",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "duplicate-receipt-row",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "contradictory-receipts",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "duplicate-theorem-id",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "fabricated-theorem-hypotheses",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "bad-file-byte-count",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "bad-file-theorem-count",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "bad-file-step-count",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "posix-recorded-paths",
+          "exit": 0,
+          "expected": 0,
+          "passed": true
+        },
+        {
+          "case": "duplicate-input-copy",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "complete-library-forgery-rejudged",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "B-thm-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "B-entry-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "B-first-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "B-cites-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "B-ax-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "B-def-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "B-hypent-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "B-file-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        },
+        {
+          "case": "B-registry-tamper",
+          "exit": 1,
+          "expected": 1,
+          "passed": true
+        }
+      ]
+    }
+  },
+  "full_replay": {
+    "passed": true,
+    "files": 1,
+    "theorems": 4551,
+    "proved": 4373,
+    "qualified": 178,
+    "steps": 139194,
+    "input_sha256": "a202ed994929c8484f053219047d854729af4a3d97ad8f804bb3cdef3b4a52ae"
+  },
+  "scope": "Finite evidence checks and fresh executable rejudgment; no Gallina/parser/compiler/executable correspondence theorem is claimed."
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "portable-v5-validation-provenance/v1",
+  "corpus": {
+    "cases": 254,
+    "unique_hashes": 254,
+    "bytes": 88406542,
+    "source": "Byte-identical copies of the existing v5 bot, added numeric, released math and complete replay inputs",
+    "expectations": "expectations.tsv",
+    "prior_results": "previous-results.tsv",
+    "prior_results_kind": "Sanitized compact table of the preceding actual898executions; not a new run",
+    "review": "Math classes were previously unspecified; route-specific observed classes are retained with original verdict/exit expectations. Interpreted full-lane expectations use native classes and are marked as not previously run.",
+    "route_specific_classes": [
+      {
+        "case": "math-Q203-77",
+        "expected_class_native": "proof-step",
+        "expected_class_racket": "parser"
+      }
+    ]
+  },
+  "fresh_runs": {
+    "platform": "Windows x64",
+    "fast": {
+      "cases": 136,
+      "runs": 408,
+      "passed": 408,
+      "timeouts": 0,
+      "receipt": "actual-fast-run/summary.json"
+    },
+    "route_specific": {
+      "cases": 1,
+      "runs": 2,
+      "passed": 2,
+      "interpreted_filtered_out": true,
+      "receipt": "actual-route-specific-run/summary.json"
+    },
+    "path_check": "Supplied checker, interpreter and judge-source paths contained spaces; processes received argument lists directly",
+    "standalone_racket_route": "Supported by the driver CLI; these fresh executions used the Racket source route"
+  },
+  "core_source_map": {
+    "path": "judge/PUBLIC-SOURCE-WHITELIST-v5.json",
+    "sha256": "029b50bf2c23f100a458fa33171341c69b98c6642416e92562297b38c6d3c3ab",
+    "files": 86,
+    "changed_by_this_component": false
+  },
+  "license": "LICENSE",
+  "proof_boundary": "Finite validation; executable-to-Gallina and compiler correspondence remain open"
+}

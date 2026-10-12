@@ -1,0 +1,62 @@
+{
+  "schema": "portable-v5-validation-run/v1",
+  "lane": "fast",
+  "interpreted_lane": "fast",
+  "families": null,
+  "selected_cases": 136,
+  "runs": 408,
+  "passed": 408,
+  "failed": 0,
+  "timeouts": 0,
+  "seconds": 45.404236500005936,
+  "expectations_sha256": "94425d972276fa7396d7bcdc542be4d2786f53f338aa83f6fe70a40a27a22bbd",
+  "driver_sha256": "f74eafd6f04f5373b6c4ebe9633b02cbf6a934b30f57ef7b6f95a85743ccb5f1",
+  "runtime_inputs": [
+    {
+      "route": "native",
+      "role": "NATIVE_CHECKER",
+      "filename": "native checker v5.exe",
+      "sha256": "b9e2ed070340d6ec926caca0f3c71929137e3a9bf2650ba6bc78c94e880e7545"
+    },
+    {
+      "route": "interpreted",
+      "role": "PMP_INTERPRETER",
+      "filename": "interpreter v5.exe",
+      "sha256": "9efb0b37ea94b3b7e7eeb875e2a26b3028effed5367459878e0170fbc045c8b1"
+    },
+    {
+      "route": "interpreted",
+      "role": "PMP_SOURCE",
+      "filename": "judge source v5.pmp",
+      "sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b"
+    },
+    {
+      "route": "racket",
+      "role": "RACKET_EXECUTABLE",
+      "filename": "Racket.exe",
+      "sha256": "767ee87d5fcfc7f5912699403c69fa713dd5dee134dc38a99ba9fdd48e808964"
+    },
+    {
+      "route": "racket",
+      "role": "RACKET_SOURCE",
+      "filename": "judge source v5.rkt",
+      "sha256": "c63bd449af3a7653c483b9bb42039b2942f658614bc2606eb7b40c5b95b6b2d0"
+    }
+  ],
+  "by_judge": {
+    "native": {
+      "runs": 136,
+      "passed": 136
+    },
+    "interpreted": {
+      "runs": 136,
+      "passed": 136
+    },
+    "racket": {
+      "runs": 136,
+      "passed": 136
+    }
+  },
+  "failures": [],
+  "command_path_policy": "Recorded commands use explicit role names and package-relative corpus paths; runtime input filenames and hashes identify the supplied artifacts."
+}
