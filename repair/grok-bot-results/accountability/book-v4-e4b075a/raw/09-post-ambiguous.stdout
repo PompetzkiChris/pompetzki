@@ -1,0 +1,6 @@
+/workspace/bw/ok-hyp.jdg pmp UNKNOWN racket UNKNOWN unchanged #t
+files found 1, receipt rows 1
+BOOK-1.0.ledger: F 0 B 0 (Proved 0, Qualified 0) steps 0 distinct statements 0 records 2 chain head 510a74e39b61390a0a177f6ec9fa04449f399eb24c3db4ce7d2522e3bb0d5748
+NEGATIVE-1.0.ledger: N 0 records 2 chain head a0f27e5c047ef991210f9690e6f13bef44b789b3b8debb4493ccdbe9c72b1b42
+SUSPENSE 1
+  SUSPENSE /workspace/bw/post-amb/judge-inputs/1-ok-hyp.jdg: verdicts pmp UNKNOWN exit 0, racket UNKNOWN exit 0
