@@ -1,0 +1,6 @@
+{
+  "archive_sha256": "99a7085923b8b6cc0e90080e6bbd49e826777efb6752719efa089dc44d8cd668",
+  "oracle_and_corpus": "Grok Bot exact linear-algebra lane, project contribution for Christopher Pompetzki",
+  "adaptation": "Codex changes only the engine command to a supplied JSON argument list and adds fresh-directory orchestration; mathematical predicates and generated cases preserved.",
+  "mathematics": "fractions.Fraction and exact zero; no floating-point expectations"
+}
