@@ -1,0 +1,247 @@
+=== ./inputs/corrected-allbad.json (302 bytes, sha256 4e0bdb820b98052e719c8b5ed956eff2eea066206ec5a512cb5af7f8a52f0e49)
+[null, 7, "bad", [], {}, {"id": "missing-op", "a": "[1]"}, {"id": "missing-a", "op": "det"}, {"id": "unknown-op", "op": "frobnicate", "a": "[1]"}, {"id": "wrong-dims", "op": "mul", "a": "[1,2]", "b": "[1,2]"}, {"id": "non-rational", "op": "det", "a": "[1.5]"}, {"id": "numeric-a", "op": "det", "a": 3}]
+=== ./inputs/corrected-empty.json (2 bytes, sha256 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945)
+[]
+=== ./inputs/corrected-mixed.json (701 bytes, sha256 0d1835db8e6ea20c69e3be50ec215f5bf5dfcb9e686286325f983907ccddf496)
+[{"id": "det", "op": "det", "a": "[1,2;3,4]"}, null, {"id": "det3", "op": "det", "a": "[2,1/3,0;1,1,1;0,5/7,3]"}, 7, {"id": "transpose", "op": "transpose", "a": "[1,2,3;4,5,6]"}, "bad", {"id": "mul", "op": "mul", "a": "[1,2;3,4]", "b": "[1/2,0;0,1/3]"}, [], {"id": "rref", "op": "rref", "a": "[1,2,3;2,4,7]"}, {}, {"id": "inv", "op": "inv", "a": "[2,1;1,1]"}, {"id": "missing-op", "a": "[1]"}, {"id": "solve", "op": "solve", "a": "[2,1;1,3]", "b": "[3;5]"}, {"id": "missing-a", "op": "det"}, {"id": "unknown-op", "op": "frobnicate", "a": "[1]"}, {"id": "wrong-dims", "op": "mul", "a": "[1,2]", "b": "[1,2]"}, {"id": "non-rational", "op": "det", "a": "[1.5]"}, {"id": "numeric-a", "op": "det", "a": 3}]
+=== ./inputs/v2-racket-allbad.json (302 bytes, sha256 4e0bdb820b98052e719c8b5ed956eff2eea066206ec5a512cb5af7f8a52f0e49)
+[null, 7, "bad", [], {}, {"id": "missing-op", "a": "[1]"}, {"id": "missing-a", "op": "det"}, {"id": "unknown-op", "op": "frobnicate", "a": "[1]"}, {"id": "wrong-dims", "op": "mul", "a": "[1,2]", "b": "[1,2]"}, {"id": "non-rational", "op": "det", "a": "[1.5]"}, {"id": "numeric-a", "op": "det", "a": 3}]
+=== ./inputs/v2-racket-empty.json (2 bytes, sha256 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945)
+[]
+=== ./inputs/v2-racket-mixed.json (701 bytes, sha256 0d1835db8e6ea20c69e3be50ec215f5bf5dfcb9e686286325f983907ccddf496)
+[{"id": "det", "op": "det", "a": "[1,2;3,4]"}, null, {"id": "det3", "op": "det", "a": "[2,1/3,0;1,1,1;0,5/7,3]"}, 7, {"id": "transpose", "op": "transpose", "a": "[1,2,3;4,5,6]"}, "bad", {"id": "mul", "op": "mul", "a": "[1,2;3,4]", "b": "[1/2,0;0,1/3]"}, [], {"id": "rref", "op": "rref", "a": "[1,2,3;2,4,7]"}, {}, {"id": "inv", "op": "inv", "a": "[2,1;1,1]"}, {"id": "missing-op", "a": "[1]"}, {"id": "solve", "op": "solve", "a": "[2,1;1,3]", "b": "[3;5]"}, {"id": "missing-a", "op": "det"}, {"id": "unknown-op", "op": "frobnicate", "a": "[1]"}, {"id": "wrong-dims", "op": "mul", "a": "[1,2]", "b": "[1,2]"}, {"id": "non-rational", "op": "det", "a": "[1.5]"}, {"id": "numeric-a", "op": "det", "a": 3}]
+=== ./matrix.py (5903 bytes, sha256 df53ec55865fec7fc6a01b5cb256977fcb776241e85c1f6ebd8c4794f46b8e9d)
+#!/usr/bin/env python3
+"""Independent matrix batch harness. Exact Fraction oracle; no floats."""
+import json, subprocess, sys
+from pathlib import Path
+from fractions import Fraction
+from itertools import permutations
+OUT=Path(sys.argv[1]); RAW=OUT/'raw'; IN=OUT/'inputs'; RAW.mkdir(parents=True,exist_ok=True); IN.mkdir(parents=True,exist_ok=True)
+SRC=Path(sys.argv[2])
+ENG={'corrected':['racket',str(SRC/'math-workbench-corrected/engine.rkt')],'v2-racket':['racket',str(SRC/'math-workbench-v2/engine.rkt')]}
+if len(sys.argv)>3 and Path(sys.argv[3]).exists(): ENG['v2-compiled']=[sys.argv[3]]
+def P(t): return [[Fraction(x.strip()) for x in r.split(',')] for r in t.strip()[1:-1].split(';')]
+def S(M): return [[str(x) for x in r] for r in M]
+def det(A):
+    n=len(A); s=Fraction(0)
+    for p in permutations(range(n)):
+        inv=sum(1 for i in range(n) for j in range(i+1,n) if p[i]>p[j]); pr=Fraction(1)
+        for i in range(n): pr*=A[i][p[i]]
+        s+=pr if inv%2==0 else -pr
+    return s
+def rref(A):
+    M=[r[:] for r in A]; R,C=len(M),len(M[0]); r=0
+    for c in range(C):
+        pv=next((i for i in range(r,R) if M[i][c]!=0),None)
+        if pv is None: continue
+        M[r],M[pv]=M[pv],M[r]; v=M[r][c]; M[r]=[x/v for x in M[r]]
+        for i in range(R):
+            if i!=r: f=M[i][c]; M[i]=[M[i][j]-f*M[r][j] for j in range(C)]
+        r+=1
+        if r==R: break
+    return M
+def oracle(op,a,b):
+    A=P(a)
+    if op=='det': return str(det(A))
+    if op=='transpose': return S([list(c) for c in zip(*A)])
+    if op=='mul': B=P(b); return S([[sum(A[i][k]*B[k][j] for k in range(len(B))) for j in range(len(B[0]))] for i in range(len(A))])
+    if op=='rref': return S(rref(A))
+    if op=='inv':
+        n=len(A); R=rref([A[i]+[Fraction(int(i==j)) for j in range(n)] for i in range(n)]); return S([r[n:] for r in R])
+    if op=='solve':
+        B=P(b); n=len(A[0]); R=rref([A[i]+B[i] for i in range(len(A))]); x=[Fraction(0)]*n
+        for r in R:
+            nz=[j for j in range(n) if r[j]!=0]
+            if nz: x[nz[0]]=r[n]
+        return [str(v) for v in x]
+def flat(v):
+    # collect all rational strings in machine output for order-insensitive structural comparison
+    out=[]
+    if isinstance(v,dict):
+        for k in sorted(v): out+=flat(v[k])
+    elif isinstance(v,list):
+        for x in v: out+=flat(x)
+    elif isinstance(v,str): out.append(v)
+    return out
+def run(eng,name,content):
+    p=IN/(name+'.json'); p.write_text(content if isinstance(content,str) else json.dumps(content))
+    r=subprocess.run([*eng,'--batch',str(p)],capture_output=True,timeout=120)
+    for s,b in (('stdout',r.stdout),('stderr',r.stderr)): (RAW/f'{name}.{s}').write_bytes(b)
+    (RAW/f'{name}.exit').write_text(f'{r.returncode}\n'); return r
+rows=[]
+def rec(c,cmd,o,v): rows.append(dict(claim=c,command=cmd,output=o,outcome=v)); print(v,'|',c,'|',o[:200])
+bad=[None,7,'bad',[],{},{'id':'missing-op','a':'[1]'},{'id':'missing-a','op':'det'},{'id':'unknown-op','op':'frobnicate','a':'[1]'},
+     {'id':'wrong-dims','op':'mul','a':'[1,2]','b':'[1,2]'},{'id':'non-rational','op':'det','a':'[1.5]'},{'id':'numeric-a','op':'det','a':3}]
+valid=[{'id':'det','op':'det','a':'[1,2;3,4]'},{'id':'det3','op':'det','a':'[2,1/3,0;1,1,1;0,5/7,3]'},
+       {'id':'transpose','op':'transpose','a':'[1,2,3;4,5,6]'},{'id':'mul','op':'mul','a':'[1,2;3,4]','b':'[1/2,0;0,1/3]'},
+       {'id':'rref','op':'rref','a':'[1,2,3;2,4,7]'},{'id':'inv','op':'inv','a':'[2,1;1,1]'},{'id':'solve','op':'solve','a':'[2,1;1,3]','b':'[3;5]'}]
+mixed=[]
+for i,v in enumerate(valid): mixed.append(v); mixed.append(bad[i%len(bad)])
+mixed+=bad[len(valid):]
+for label,eng in ENG.items():
+    cmd=' '.join(eng)+' --batch'
+    r=run(eng,f'{label}-mixed',mixed)
+    if r.returncode!=0:
+        rec(f'{label}: mixed valid+malformed batch','%s mixed.json'%cmd,f'exit={r.returncode} stdout={len(r.stdout)}B stderr={r.stderr.decode(errors="replace").strip()[:150]}',
+            'WHOLE-BATCH FAILURE (defect)' if label=='corrected' else 'FAIL'); 
+    else:
+        data=json.loads(r.stdout); fails=[]
+        if len(data)!=len(mixed): fails.append(f'len {len(data)}!={len(mixed)}')
+        for job,d in zip(mixed,data):
+            if job in valid:
+                exp=oracle(job['op'],job['a'],job.get('b')); got=flat(d.get('machine',{}))
+                expf=exp if isinstance(exp,str) else flat(exp)
+                expl=[expf] if isinstance(expf,str) else expf
+                if d.get('exit')!=0 or not all(x in got for x in expl): fails.append(f"{job['id']}: exp {expl} got {d.get('machine')}")
+            else:
+                eid=job.get('id') if isinstance(job,dict) else None
+                if not(d.get('exit')==1 and d.get('id')==eid and d['machine'].get('status')=='rejected' and d['machine'].get('reason')): fails.append(f'bad {eid}: {d}')
+        rec(f'{label}: mixed batch ({len(valid)} valid / {len(mixed)-len(valid)} malformed) per-item records + Fraction oracle',f'{cmd} mixed.json',
+            f'exit=0 n={len(data)} '+('all exact/rejected as expected' if not fails else '; '.join(fails)[:400]),'PASS' if not fails else 'FAIL')
+    r=run(eng,f'{label}-empty',[])
+    rec(f'{label}: empty batch',f'{cmd} []',f'exit={r.returncode} out={r.stdout.strip()[:40]!r}','PASS' if r.returncode==0 and json.loads(r.stdout or b'null')==[] else 'FAIL')
+    r=run(eng,f'{label}-allbad',bad)
+    if r.returncode==0:
+        d=json.loads(r.stdout); ok=len(d)==len(bad) and all(x['exit']==1 and x['machine']['status']=='rejected' for x in d)
+        rec(f'{label}: all-malformed batch',f'{cmd} allbad.json',f'exit=0 n={len(d)} all rejected={ok}','PASS' if ok else 'FAIL')
+    else: rec(f'{label}: all-malformed batch',f'{cmd} allbad.json',f'exit={r.returncode} {r.stderr.decode(errors="replace").strip()[:150]}','WHOLE-BATCH FAILURE (defect)' if label=='corrected' else 'FAIL')
+(RAW/'rows.json').write_text(json.dumps(rows,indent=1))
+
+=== ./raw/MathWorkbench.build.stderr.txt (215 bytes, sha256 bc496c756ab3131299cf9929632e5560c2ca618465efb34be2ad768add135175)
+/workspace/tools/racket/bin/raco: Unrecognized command: exe
+
+Usage: raco <command> <option> ... <arg> ...
+
+Frequently used commands:
+  setup   install and build libraries and documentation
+  pkg     manage packages
+
+=== ./raw/MathWorkbench.build.stdout.txt (152 bytes, sha256 a1d7f9773c1b79ef0b0908511e274f3d436be2bceb7381f871cd9d2c624b72ae)
+
+A command can be specified by an unambiguous prefix.
+See `raco help' for a complete list of commands.
+See `raco help <command>' for help on a command.
+
+=== ./raw/corrected-allbad.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/corrected-allbad.stderr (116 bytes, sha256 8179486700067f0b1fce3a75851b855f7fb7f1073cc94a43dcc2d06b4f16cce3)
+hash-ref: contract violation
+  expected: hash?
+  given: 'null
+  argument position: 1st
+  other arguments...:
+   'op
+
+=== ./raw/corrected-allbad.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/corrected-empty.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/corrected-empty.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/corrected-empty.stdout (3 bytes, sha256 37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570)
+[]
+
+=== ./raw/corrected-mixed.exit (2 bytes, sha256 4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865)
+1
+
+=== ./raw/corrected-mixed.stderr (116 bytes, sha256 8179486700067f0b1fce3a75851b855f7fb7f1073cc94a43dcc2d06b4f16cce3)
+hash-ref: contract violation
+  expected: hash?
+  given: 'null
+  argument position: 1st
+  other arguments...:
+   'op
+
+=== ./raw/corrected-mixed.stdout (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/raco-exe-attempt.txt (367 bytes, sha256 12a69ac7eced49ac3a995fa2c165b6fe5b4b6506b4133e728c0c2e688a1e398f)
+/workspace/tools/racket/bin/raco: Unrecognized command: exe
+
+Usage: raco <command> <option> ... <arg> ...
+
+Frequently used commands:
+  setup   install and build libraries and documentation
+  pkg     manage packages
+
+A command can be specified by an unambiguous prefix.
+See `raco help' for a complete list of commands.
+See `raco help <command>' for help on a command.
+
+=== ./raw/rows.json (1597 bytes, sha256 6634aa203eb980e4c37eb759b18f8adcfd2d0476e123c570b5efa546c80c32d2)
+[
+ {
+  "claim": "corrected: mixed valid+malformed batch",
+  "command": "racket /workspace/acct-2f78/repair/math-workbench-corrected/engine.rkt --batch mixed.json",
+  "output": "exit=1 stdout=0B stderr=hash-ref: contract violation\n  expected: hash?\n  given: 'null\n  argument position: 1st\n  other arguments...:\n   'op",
+  "outcome": "WHOLE-BATCH FAILURE (defect)"
+ },
+ {
+  "claim": "corrected: empty batch",
+  "command": "racket /workspace/acct-2f78/repair/math-workbench-corrected/engine.rkt --batch []",
+  "output": "exit=0 out=b'[]'",
+  "outcome": "PASS"
+ },
+ {
+  "claim": "corrected: all-malformed batch",
+  "command": "racket /workspace/acct-2f78/repair/math-workbench-corrected/engine.rkt --batch allbad.json",
+  "output": "exit=1 hash-ref: contract violation\n  expected: hash?\n  given: 'null\n  argument position: 1st\n  other arguments...:\n   'op",
+  "outcome": "WHOLE-BATCH FAILURE (defect)"
+ },
+ {
+  "claim": "v2-racket: mixed batch (7 valid / 11 malformed) per-item records + Fraction oracle",
+  "command": "racket /workspace/acct-2f78/repair/math-workbench-v2/engine.rkt --batch mixed.json",
+  "output": "exit=0 n=18 all exact/rejected as expected",
+  "outcome": "PASS"
+ },
+ {
+  "claim": "v2-racket: empty batch",
+  "command": "racket /workspace/acct-2f78/repair/math-workbench-v2/engine.rkt --batch []",
+  "output": "exit=0 out=b'[]'",
+  "outcome": "PASS"
+ },
+ {
+  "claim": "v2-racket: all-malformed batch",
+  "command": "racket /workspace/acct-2f78/repair/math-workbench-v2/engine.rkt --batch allbad.json",
+  "output": "exit=0 n=11 all rejected=True",
+  "outcome": "PASS"
+ }
+]
+=== ./raw/source-compare.txt (1661 bytes, sha256 e3dc837ad4d64906c7865046c2fc234a5c4f608d5cf45676d5afafc01df743a7)
+IDENTICAL corrected=fe3148cdebab84c387812078227e6a96385d67156d4980ea46ebc7c25980dd3e v2=fe3148cdebab84c387812078227e6a96385d67156d4980ea46ebc7c25980dd3e INITIAL-SOURCE-RECEIPT.json
+DIFFER corrected=absent v2=32e3b89960ffe8173eb0817b94bd5e48e3af2cb9df41d904e20bd576e6a006ff PUBLIC-SOURCE-MANIFEST.json
+DIFFER corrected=e26cf9916d66dd13f4ed72d8f0a26a25f223e7b6ff37db13c55a529a6716cbed v2=555b189d320cc8f088b2867ecdeefa1756ecde291e040bb2adb584595a89aee8 README.md
+DIFFER corrected=896cdcb47933172b89e269087d355a2bca49ad975b4af45874b8cb4a613b75f5 v2=1f060211b5e43fc720bd5cb2357d082543494b6bea6d89196cbd9ca59844e943 SHA256SUMS-source.txt
+IDENTICAL corrected=0197675e263aad26bdd9ed47ab2cc808d52593fed6fe28c48e99237bcd8f48f1 v2=0197675e263aad26bdd9ed47ab2cc808d52593fed6fe28c48e99237bcd8f48f1 build.py
+DIFFER corrected=2cf5af81a606e5e8c3158fe9550855258c47b3841c368e9706092dc44a69e928 v2=99084a403cc0b38b149878e8cce74667caa62ea13b8f8de0a64e43e0a767b5b9 engine.rkt
+IDENTICAL corrected=eaa5917f0ec3b6816689cd2371c2f6f64050f26b287b8531c6f9abb0096c3ef3 v2=eaa5917f0ec3b6816689cd2371c2f6f64050f26b287b8531c6f9abb0096c3ef3 exact.rkt
+DIFFER corrected=absent v2=18f618f9140dd298e0b3cedcf087436822ccb8390239d0323c49e9f504ad7235 freeze-source.py
+IDENTICAL corrected=07fd6e0f9577b1174a447b5eb115d221d1d3ed31f4235d3ba3e406ad20f8e7ce v2=07fd6e0f9577b1174a447b5eb115d221d1d3ed31f4235d3ba3e406ad20f8e7ce gui.rkt
+DIFFER corrected=absent v2=8407f4c6dec941fadf4e91bd291a6a976f500ac5ec549b193b8161155b56fe62 test-batch.py
+IDENTICAL corrected=b56c9d09ecf7173477df1c6a26dc4757fb678048bf9f96b047646305828fe837 v2=b56c9d09ecf7173477df1c6a26dc4757fb678048bf9f96b047646305828fe837 test-gui.rkt
+
+=== ./raw/v2-racket-allbad.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/v2-racket-allbad.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/v2-racket-allbad.stdout (3115 bytes, sha256 92287fb9639134edd7aac08a764a538a9b87eed40826fe98cdec6c5a29daf8e2)
+[{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item requires a text op field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text op field."},{"exit":1,"id":"missing-op","machine":{"op":null,"reason":"batch: Each batch item requires a text op field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text op field."},{"exit":1,"id":"missing-a","machine":{"op":"det","reason":"batch: Each batch item requires a text a field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text a field."},{"exit":1,"id":"unknown-op","machine":{"a_cols":null,"a_rows":null,"b_cols":null,"b_rows":null,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":null,"nullity":null,"op":"frobnicate","particular":null,"pivots":null,"rank":null,"reason":"Unknown operation \"frobnicate\".","rows":null,"status":"rejected"},"text":"Rejected. Unknown operation \"frobnicate\"."},{"exit":1,"id":"wrong-dims","machine":{"a_cols":null,"a_rows":null,"b_cols":null,"b_rows":null,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":null,"nullity":null,"op":"mul","particular":null,"pivots":null,"rank":null,"reason":"parse: The product A B is defined when the number of columns of A equals the number of rows of B. A is 1 by 2 and B is 1 by 2.","rows":null,"status":"rejected"},"text":"Rejected. parse: The product A B is defined when the number of columns of A equals the number of rows of B. A is 1 by 2 and B is 1 by 2."},{"exit":1,"id":"non-rational","machine":{"a_cols":null,"a_rows":null,"b_cols":null,"b_rows":null,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":null,"nullity":null,"op":"det","particular":null,"pivots":null,"rank":null,"reason":"parse: The entry \"1.5\" in matrix A row 1 is not an integer or a rational fraction. Decimal points and exponent letters are rejected, and this workspace does not approximate.","rows":null,"status":"rejected"},"text":"Rejected. parse: The entry \"1.5\" in matrix A row 1 is not an integer or a rational fraction. Decimal points and exponent letters are rejected, and this workspace does not approximate."},{"exit":1,"id":"numeric-a","machine":{"op":"det","reason":"batch: Each batch item requires a text a field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text a field."}]
+
+=== ./raw/v2-racket-empty.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/v2-racket-empty.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/v2-racket-empty.stdout (3 bytes, sha256 37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570)
+[]
+
+=== ./raw/v2-racket-mixed.exit (2 bytes, sha256 9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa)
+0
+
+=== ./raw/v2-racket-mixed.stderr (0 bytes, sha256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855)
+
+=== ./raw/v2-racket-mixed.stdout (6203 bytes, sha256 d3c3e1707805f1f6233758b3b9e6b20744a5e69ed776fc2fe2b78d44637df141)
+[{"exit":0,"id":"det","machine":{"a_cols":2,"a_rows":2,"b_cols":null,"b_rows":null,"cols":2,"determinant":"-2","entries":null,"image":null,"kernel":null,"nullity":null,"op":"det","particular":null,"pivots":null,"rank":null,"reason":null,"rows":2,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 2.\nThe determinant of A is -2."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":0,"id":"det3","machine":{"a_cols":3,"a_rows":3,"b_cols":null,"b_rows":null,"cols":3,"determinant":"25/7","entries":null,"image":null,"kernel":null,"nullity":null,"op":"det","particular":null,"pivots":null,"rank":null,"reason":null,"rows":3,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 3 by 3.\nThe determinant of A is 25/7."},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":0,"id":"transpose","machine":{"a_cols":3,"a_rows":2,"b_cols":null,"b_rows":null,"cols":2,"determinant":null,"entries":["1","4","2","5","3","6"],"image":null,"kernel":null,"nullity":null,"op":"transpose","particular":null,"pivots":null,"rank":null,"reason":null,"rows":3,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 3.\nThe transpose of A is 3 by 2 and is shown below.\n[ 1 4 ]\n[ 2 5 ]\n[ 3 6 ]"},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":0,"id":"mul","machine":{"a_cols":2,"a_rows":2,"b_cols":2,"b_rows":2,"cols":2,"determinant":null,"entries":["1/2","2/3","3/2","4/3"],"image":null,"kernel":null,"nullity":null,"op":"mul","particular":null,"pivots":null,"rank":null,"reason":null,"rows":2,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 2.\nB is 2 by 2.\nThe product A B is 2 by 2 and is shown below.\n[ 1/2 2/3 ]\n[ 3/2 4/3 ]"},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item must be a JSON object.","status":"rejected"},"text":"Rejected. batch: Each batch item must be a JSON object."},{"exit":0,"id":"rref","machine":{"a_cols":3,"a_rows":2,"b_cols":null,"b_rows":null,"cols":3,"determinant":null,"entries":["1","2","0","0","0","1"],"image":null,"kernel":null,"nullity":1,"op":"rref","particular":null,"pivots":[0,2],"rank":2,"reason":null,"rows":2,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 3.\nThe reduced row echelon form of A is shown below. The rank is 2 and the nullity is 1.\nThe pivot columns, counting from 0, are 0, 2.\n[ 1 2 0 ]\n[ 0 0 1 ]"},{"exit":1,"id":null,"machine":{"op":null,"reason":"batch: Each batch item requires a text op field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text op field."},{"exit":0,"id":"inv","machine":{"a_cols":2,"a_rows":2,"b_cols":null,"b_rows":null,"cols":2,"determinant":"1","entries":["1","-1","-1","2"],"image":null,"kernel":null,"nullity":0,"op":"inv","particular":null,"pivots":null,"rank":2,"reason":null,"rows":2,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 2.\nThe inverse of A is shown below. The determinant of A is 1.\n[ 1 -1 ]\n[ -1 2 ]"},{"exit":1,"id":"missing-op","machine":{"op":null,"reason":"batch: Each batch item requires a text op field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text op field."},{"exit":0,"id":"solve","machine":{"a_cols":2,"a_rows":2,"b_cols":1,"b_rows":2,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":[],"nullity":0,"op":"solve","particular":["4/5","7/5"],"pivots":[0,1],"rank":2,"reason":null,"rows":null,"status":"ok"},"text":"Exact result over the rational numbers.\nA is 2 by 2.\nMatrix B is 2 by 1.\nThe system A x = b has a unique solution. The particular solution is shown below. The homogeneous system A x = 0 has only the zero solution, so a basis of that solution space is empty.\nParticular solution: [ 4/5 7/5 ]\nHomogeneous basis:\n(empty basis)"},{"exit":1,"id":"missing-a","machine":{"op":"det","reason":"batch: Each batch item requires a text a field.","status":"rejected"},"text":"Rejected. batch: Each batch item requires a text a field."},{"exit":1,"id":"unknown-op","machine":{"a_cols":null,"a_rows":null,"b_cols":null,"b_rows":null,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":null,"nullity":null,"op":"frobnicate","particular":null,"pivots":null,"rank":null,"reason":"Unknown operation \"frobnicate\".","rows":null,"status":"rejected"},"text":"Rejected. Unknown operation \"frobnicate\"."},{"exit":1,"id":"wrong-dims","machine":{"a_cols":null,"a_rows":null,"b_cols":null,"b_rows":null,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":null,"nullity":null,"op":"mul","particular":null,"pivots":null,"rank":null,"reason":"parse: The product A B is defined when the number of columns of A equals the number of rows of B. A is 1 by 2 and B is 1 by 2.","rows":null,"status":"rejected"},"text":"Rejected. parse: The product A B is defined when the number of columns of A equals the number of rows of B. A is 1 by 2 and B is 1 by 2."},{"exit":1,"id":"non-rational","machine":{"a_cols":null,"a_rows":null,"b_cols":null,"b_rows":null,"cols":null,"determinant":null,"entries":null,"image":null,"kernel":null,"nullity":null,"op":"det","particular":null,"pivots":null,"rank":null,"reason":"parse: The entry \"1.5\" in matrix A row 1 is not an integer or a rational fraction. Decimal points and exponent letters are rejected, and this workspace does not approximate.","rows":null,"status":"rejected"},"text":"Rejected. parse: The entry \"1.5\" in matrix A row 1 is not an integer or a rational fraction. Decimal points and exponent letters are rejected, and this workspace does not approximat
