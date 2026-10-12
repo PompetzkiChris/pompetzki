@@ -1,0 +1,138 @@
+{
+  "version": "1.3.1",
+  "status": "Frozen public 1.3.1 packaging source with UTF-8 receipts and current uninstall/version context",
+  "files": [
+    {
+      "path": "build-bundle.py",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/build-bundle.py",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/build-bundle.py",
+      "sha256": "71f5324ff3a52bf389a384dad4fa710d75fa991d907511a5fb40abcb9ab88048"
+    },
+    {
+      "path": "installer.rkt",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/installer.rkt",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/installer.rkt",
+      "sha256": "ebebc52840c686d1aca8ce8d2602450bda0f410c2804f85d4f1b849b0ad7d026"
+    },
+    {
+      "path": "launcher.rkt",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/launcher.rkt",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/launcher.rkt",
+      "sha256": "11053c779693989e200ef9d0235462251bc52be999fbec412b93934d7e270920"
+    },
+    {
+      "path": "MATRIX-SOURCE-MANIFEST.json",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/MATRIX-SOURCE-MANIFEST.json",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/MATRIX-SOURCE-MANIFEST.json",
+      "sha256": "809136d6a2d439f31912fe7d8f1e74b2b8328020b7bd24909fa00ed24e05ffad"
+    },
+    {
+      "path": "package-utils.rkt",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/package-utils.rkt",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/package-utils.rkt",
+      "sha256": "d7a574f6ae7fd40edb41e04610d6e374eaa2cd71efdeb23f475e8d9e8cf87527"
+    },
+    {
+      "path": "README.md",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/README.md",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/README.md",
+      "sha256": "5c3e42112985234d52cf9135ee042088415770dc2a7b43882b197ac7425dd8c1"
+    },
+    {
+      "path": "run-compiled-book.py",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/run-compiled-book.py",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/run-compiled-book.py",
+      "sha256": "1e824671f95ff52b2b84fdb4bb06e3348a106114411e05091895500d378eeb8c"
+    },
+    {
+      "path": "test-package.py",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-package.py",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-package.py",
+      "sha256": "58f2fceb31cfc88943a433f311896a125fe6daee8155d764fb55ebb055c6798a"
+    },
+    {
+      "path": "test-padded-judge.py",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-padded-judge.py",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-padded-judge.py",
+      "sha256": "30a4dd358cb846a82a3d32c29a3c74d8f315df0f8901b3d9e360def100f472d7"
+    },
+    {
+      "path": "test-runtime-modules.rkt",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-runtime-modules.rkt",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-runtime-modules.rkt",
+      "sha256": "44e8fe4e7f5a2b36db3c4f6edc78649bf7ddc90440299343b71179fbe1fabaaf"
+    },
+    {
+      "path": "test-word-boundaries.py",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-word-boundaries.py",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-word-boundaries.py",
+      "sha256": "47d05b91ed7d0da8a5e65a090404c803dafb14e61e61a32207fca0ec42d57899"
+    },
+    {
+      "path": "Uninstall-Abschluss.ps1",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/Uninstall-Abschluss.ps1",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/Uninstall-Abschluss.ps1",
+      "sha256": "7e6e0907b0536f407d97d7837fe1d71553808d82618255563154833da2e26528"
+    },
+    {
+      "path": "uninstaller.rkt",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/uninstaller.rkt",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/uninstaller.rkt",
+      "sha256": "66de81c707ad2b1f1c96d029037d9018271888a5ff127b253869d763dc591615"
+    },
+    {
+      "path": "verify-source-closure.py",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/verify-source-closure.py",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/verify-source-closure.py",
+      "sha256": "4a3d63105468b56f40e3af6a662b3466c4b08bd83c3c40e17b28cd1d21c9b29f"
+    },
+    {
+      "path": "workbench-entry.rkt",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/workbench-entry.rkt",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/workbench-entry.rkt",
+      "sha256": "fc2960b0450dc9170bf6b559d53f31f14ff6bdd457ef4e1a3aecd7e97299473c"
+    },
+    {
+      "path": "COCKPIT-SOURCE-MANIFEST.json",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/COCKPIT-SOURCE-MANIFEST.json",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/COCKPIT-SOURCE-MANIFEST.json",
+      "sha256": "b185f97fb84253dd325834ea6afe3e16284ce96373f27682b27be2eb89dc7e33"
+    },
+    {
+      "path": "SUPPORT-SOURCE-MANIFEST.json",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/SUPPORT-SOURCE-MANIFEST.json",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/SUPPORT-SOURCE-MANIFEST.json",
+      "sha256": "84e7d0fe87765b002aa985d23c9fdd4ec9ae35c5d3dad238d33af66b7cc52686"
+    },
+    {
+      "path": "RELEASE-1.3.1.md",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/RELEASE-1.3.1.md",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/RELEASE-1.3.1.md",
+      "sha256": "247f064ab3b3c3c573fcef97daf9f3fc788a0478d146952560d9bc742fdff55e"
+    },
+    {
+      "path": "test-count-bounds.py",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-count-bounds.py",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/test-count-bounds.py",
+      "sha256": "de03240f51ccad5b40b9ec6716fca5284d114ef9b162a64439605fe0375a375e"
+    },
+    {
+      "path": "verify-archive-inputs.py",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/verify-archive-inputs.py",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/verify-archive-inputs.py",
+      "sha256": "a9cda41dfa568d58ddb9cbe59474cd42cf337031bd74a509da9f919c8bce1632"
+    },
+    {
+      "path": "UTF8-VALIDATION-CORRECTION.json",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/UTF8-VALIDATION-CORRECTION.json",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/UTF8-VALIDATION-CORRECTION.json",
+      "sha256": "df429b4f5696d10a038ad530ad2773c5e6e1629f7e4c4957103f65d9e81cadd9"
+    },
+    {
+      "path": "VERSION-CONTEXT-CORRECTION.json",
+      "candidate_relative_path": "repair/packaging/v9-judge-v6-1.3.1/VERSION-CONTEXT-CORRECTION.json",
+      "package_relative_path": "repair/packaging/v9-judge-v6-1.3.1/VERSION-CONTEXT-CORRECTION.json",
+      "sha256": "58033ba3c96d63827faa100697b276c5f530b7d6475f50b2c3a5d4a41c7af549"
+    }
+  ]
+}
