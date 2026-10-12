@@ -1,0 +1,21 @@
+true-native	ACCEPT	exit 0	OK
+true-interpreted	ACCEPT	exit 0	OK
+false-proof-native	REJECT	exit 1	OK
+false-proof-interpreted	REJECT	exit 1	OK
+forged-registry-native	REJECT	exit 1	OK
+forged-registry-interpreted	REJECT	exit 1	OK
+huge-registry-native	REJECT	exit 1	OK
+huge-registry-interpreted	REJECT	exit 1	OK
+huge-theorems-native	REJECT	exit 1	OK
+huge-theorems-interpreted	REJECT	exit 1	OK
+huge-steps-native	REJECT	exit 1	OK
+huge-steps-interpreted	REJECT	exit 1	OK
+huge-hypotheses-native	REJECT	exit 1	OK
+huge-hypotheses-interpreted	REJECT	exit 1	OK
+padded-true-native	ACCEPT	exit 0	OK
+padded-true-interpreted	ACCEPT	exit 0	OK
+thirteenth-significant-digit-native	REJECT	exit 1	OK
+thirteenth-significant-digit-interpreted	REJECT	exit 1	OK
+trailing-nul-native	REJECT	exit 1	OK
+trailing-nul-interpreted	REJECT	exit 1	OK
+passed 20 failed 0

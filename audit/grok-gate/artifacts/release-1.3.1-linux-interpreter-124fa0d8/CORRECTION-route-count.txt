@@ -1,0 +1,5 @@
+Correction beside PROVENANCE.txt. That file is unchanged.
+PROVENANCE.txt says "the twenty interpreted controls." The recorded results are 10 native rows plus 10 interpreted rows, 20 rows in all. The interpreter was used for the 10 interpreted rows, not for 20 interpreted controls.
+The native PROVENANCE.txt sentence "used by the twenty controls" means the same 20 rows. Ten of those rows used the native image.
+124fa0 was freshly built from published source member runtime/source/pompetzki.asm; it is not an assumed copy of 414e976.
+Count source, already committed and not rerun: audit/grok-gate/release-1.3.1-linux/controls/results.json has 10 rows with route native and 10 rows with route interpreted.

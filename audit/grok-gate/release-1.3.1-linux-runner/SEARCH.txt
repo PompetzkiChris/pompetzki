@@ -1,0 +1,9 @@
+The successful invocation's host log stores stdout only. It does not store the submitted command.
+Successful stdout: /tmp/sessions/f249614d-b9e3-48e5-943b-e0b6e50daf6f/terminal/01a12e6e-fde3-7ca0-90e6-bc9a5e46e7c8.log
+An earlier invocation failed before any child: /tmp/sessions/f249614d-b9e3-48e5-943b-e0b6e50daf6f/terminal/01a12e6e-9e65-7040-8872-0a2620b1f19a.log
+Its output is SyntaxError: '[' was never closed. That invocation is not the twenty runs.
+Searches that found no saved command text:
+  grep -R -l -F preexec_fn=limits /tmp /workspace /opt /home
+  grep -l -F setrlimit /tmp/sessions/f249614d-b9e3-48e5-943b-e0b6e50daf6f/terminal/*.log
+  bash history
+submitted-inline-command.sh is the command submitted for the successful invocation. It was not read back from a file created at execution time. Its hash is not an execution-time host artifact.
