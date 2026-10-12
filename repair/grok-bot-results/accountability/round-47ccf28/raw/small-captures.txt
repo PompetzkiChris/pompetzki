@@ -1,0 +1,602 @@
+=== J-v5n-a1-false-registry.exit (2 bytes)
+1
+=== J-v5n-a1-false-registry.stderr (0 bytes)
+=== J-v5n-a2-false-registry-thm.exit (2 bytes)
+1
+=== J-v5n-a2-false-registry-thm.stderr (0 bytes)
+=== J-v5n-committed-a1-false-registry.exit (2 bytes)
+1
+=== J-v5n-committed-a1-false-registry.stderr (0 bytes)
+=== J-v5n-committed-a2-false-registry-thm.exit (4 bytes)
+126
+=== J-v5n-committed-a2-false-registry-thm.stderr (93 bytes)
+environment: line 12: /workspace/acct-47cc/judge/native-v5/judge-v5-linux: Permission denied
+=== J-v5n-committed-ctl-canonical-reg0.exit (2 bytes)
+0
+=== J-v5n-committed-ctl-canonical-reg0.stderr (0 bytes)
+=== J-v5n-ctl-canonical-reg0.exit (2 bytes)
+0
+=== J-v5n-ctl-canonical-reg0.stderr (0 bytes)
+=== J-v5p-a1-false-registry.exit (2 bytes)
+1
+=== J-v5p-a1-false-registry.stderr (0 bytes)
+=== J-v5p-a2-false-registry-thm.exit (2 bytes)
+1
+=== J-v5p-a2-false-registry-thm.stderr (0 bytes)
+=== J-v5p-ctl-canonical-reg0.exit (2 bytes)
+0
+=== J-v5p-ctl-canonical-reg0.stderr (0 bytes)
+=== J-v5r-a1-false-registry.exit (2 bytes)
+1
+=== J-v5r-a1-false-registry.stderr (0 bytes)
+=== J-v5r-a2-false-registry-thm.exit (2 bytes)
+1
+=== J-v5r-a2-false-registry-thm.stderr (0 bytes)
+=== J-v5r-ctl-canonical-reg0.exit (2 bytes)
+0
+=== J-v5r-ctl-canonical-reg0.stderr (0 bytes)
+=== L-v4p-L1-R-pad13.exit (2 bytes)
+1
+=== L-v4p-L1-R-pad13.stderr (0 bytes)
+=== L-v4p-L2-R-pad12.exit (2 bytes)
+0
+=== L-v4p-L2-R-pad12.stderr (0 bytes)
+=== L-v4p-L3-entry-pad12.exit (2 bytes)
+0
+=== L-v4p-L3-entry-pad12.stderr (0 bytes)
+=== L-v4p-L4-13sig-digits.exit (2 bytes)
+1
+=== L-v4p-L4-13sig-digits.stderr (0 bytes)
+=== L-v4p-L5-12zeros-then-2.exit (2 bytes)
+1
+=== L-v4p-L5-12zeros-then-2.stderr (0 bytes)
+=== L-v4p-L5b-13zeros-and-12z2.exit (2 bytes)
+1
+=== L-v4p-L5b-13zeros-and-12z2.stderr (0 bytes)
+=== L-v4p-L6-R0-13zeros.exit (2 bytes)
+1
+=== L-v4p-L6-R0-13zeros.stderr (0 bytes)
+=== L-v4p-L7-R0-12zeros.exit (2 bytes)
+0
+=== L-v4p-L7-R0-12zeros.stderr (0 bytes)
+=== L-v4p-fixture-leading-zero.exit (2 bytes)
+0
+=== L-v4p-fixture-leading-zero.stderr (0 bytes)
+=== L-v5n-L1-R-pad13.exit (2 bytes)
+0
+=== L-v5n-L1-R-pad13.stderr (0 bytes)
+=== L-v5n-L2-R-pad12.exit (2 bytes)
+0
+=== L-v5n-L2-R-pad12.stderr (0 bytes)
+=== L-v5n-L3-entry-pad12.exit (2 bytes)
+0
+=== L-v5n-L3-entry-pad12.stderr (0 bytes)
+=== L-v5n-L4-13sig-digits.exit (2 bytes)
+1
+=== L-v5n-L4-13sig-digits.stderr (0 bytes)
+=== L-v5n-L5-12zeros-then-2.exit (2 bytes)
+0
+=== L-v5n-L5-12zeros-then-2.stderr (0 bytes)
+=== L-v5n-L5b-13zeros-and-12z2.exit (2 bytes)
+0
+=== L-v5n-L5b-13zeros-and-12z2.stderr (0 bytes)
+=== L-v5n-L6-R0-13zeros.exit (2 bytes)
+0
+=== L-v5n-L6-R0-13zeros.stderr (0 bytes)
+=== L-v5n-L7-R0-12zeros.exit (2 bytes)
+0
+=== L-v5n-L7-R0-12zeros.stderr (0 bytes)
+=== L-v5n-committed-L1-R-pad13.exit (2 bytes)
+0
+=== L-v5n-committed-L1-R-pad13.stderr (0 bytes)
+=== L-v5n-committed-L4-13sig-digits.exit (2 bytes)
+1
+=== L-v5n-committed-L4-13sig-digits.stderr (0 bytes)
+=== L-v5n-fixture-leading-zero.exit (2 bytes)
+0
+=== L-v5n-fixture-leading-zero.stderr (0 bytes)
+=== L-v5p-L1-R-pad13.exit (2 bytes)
+0
+=== L-v5p-L1-R-pad13.stderr (0 bytes)
+=== L-v5p-L2-R-pad12.exit (2 bytes)
+0
+=== L-v5p-L2-R-pad12.stderr (0 bytes)
+=== L-v5p-L3-entry-pad12.exit (2 bytes)
+0
+=== L-v5p-L3-entry-pad12.stderr (0 bytes)
+=== L-v5p-L4-13sig-digits.exit (2 bytes)
+1
+=== L-v5p-L4-13sig-digits.stderr (0 bytes)
+=== L-v5p-L5-12zeros-then-2.exit (2 bytes)
+0
+=== L-v5p-L5-12zeros-then-2.stderr (0 bytes)
+=== L-v5p-L5b-13zeros-and-12z2.exit (2 bytes)
+0
+=== L-v5p-L5b-13zeros-and-12z2.stderr (0 bytes)
+=== L-v5p-L6-R0-13zeros.exit (2 bytes)
+0
+=== L-v5p-L6-R0-13zeros.stderr (0 bytes)
+=== L-v5p-L7-R0-12zeros.exit (2 bytes)
+0
+=== L-v5p-L7-R0-12zeros.stderr (0 bytes)
+=== L-v5r-L1-R-pad13.exit (2 bytes)
+0
+=== L-v5r-L1-R-pad13.stderr (0 bytes)
+=== L-v5r-L2-R-pad12.exit (2 bytes)
+0
+=== L-v5r-L2-R-pad12.stderr (0 bytes)
+=== L-v5r-L3-entry-pad12.exit (2 bytes)
+0
+=== L-v5r-L3-entry-pad12.stderr (0 bytes)
+=== L-v5r-L4-13sig-digits.exit (2 bytes)
+1
+=== L-v5r-L4-13sig-digits.stderr (0 bytes)
+=== L-v5r-L5-12zeros-then-2.exit (2 bytes)
+0
+=== L-v5r-L5-12zeros-then-2.stderr (0 bytes)
+=== L-v5r-L5b-13zeros-and-12z2.exit (2 bytes)
+0
+=== L-v5r-L5b-13zeros-and-12z2.stderr (0 bytes)
+=== L-v5r-L6-R0-13zeros.exit (2 bytes)
+0
+=== L-v5r-L6-R0-13zeros.stderr (0 bytes)
+=== L-v5r-L7-R0-12zeros.exit (2 bytes)
+0
+=== L-v5r-L7-R0-12zeros.stderr (0 bytes)
+=== L-v5r-fixture-leading-zero.exit (2 bytes)
+0
+=== L-v5r-fixture-leading-zero.stderr (0 bytes)
+=== RT-b1-literal-min.exit (2 bytes)
+0
+=== RT-b1-literal-min.stderr (0 bytes)
+=== RT-b2-computed-min.exit (2 bytes)
+0
+=== RT-b2-computed-min.stderr (0 bytes)
+=== RT-c1-trim-nul.exit (2 bytes)
+0
+=== RT-c1-trim-nul.stderr (0 bytes)
+=== RT-d1-min-div-neg1.exit (2 bytes)
+0
+=== RT-d1-min-div-neg1.stderr (0 bytes)
+=== RT-d2-min-mod-neg1.exit (2 bytes)
+0
+=== RT-d2-min-mod-neg1.stderr (0 bytes)
+=== hash-inventory.txt (7113 bytes)
+=== HEAD 47ccf28cb37f2f5846a68cfefddb07e4a433406f ===
+=== sources ===
+613a08760ce342257de77901fe1247a996fb882b1ec1ea1b2f8bd2518aa1f978  judge/README-public-gate-v2.md
+23e1ff3b89d86d08aa72e1f78cb8d9acea6b1c80e19115ce8f6596628b62d8dd  judge/README-public-gate-v5.md
+a647f04a63bacac86884d49cfc6881e2bde94986bfc147b9557d1c6c42a4f68f  judge/README.md
+5cbbd182475b50f866a6d2b3bb56c4912e3af318e5651fecaefeccf8107ede57  judge/generate-v4.rkt
+bf147194d415d0ab6991b5912c718c772f4bcb285ea027326fc5a108a81e6ce7  judge/judge-v3.pmp
+c0698f6c00310e4cf95147d4ddfbfab0f8c06d00aa8f9ca1da8482123c073e33  judge/judge-v4.pmp
+13bffe0ca241b5c4b179e6be25a52a164178b71fc03f913e3b92cc5c2576acc0  judge/judge-v4.rkt
+4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b  judge/judge-v5.pmp
+c63bd449af3a7653c483b9bb42039b2942f658614bc2606eb7b40c5b95b6b2d0  judge/judge-v5.rkt
+1b890cedd973b2815bd4be436adb60737b08162ba48c4ef4196241ccb01affad  judge/native-v5/judge-v5-linux
+1b890cedd973b2815bd4be436adb60737b08162ba48c4ef4196241ccb01affad  judge/native-v5/judge-v5-linux
+b9e2ed070340d6ec926caca0f3c71929137e3a9bf2650ba6bc78c94e880e7545  judge/native-v5/judge-v5-windows.exe
+b9e2ed070340d6ec926caca0f3c71929137e3a9bf2650ba6bc78c94e880e7545  judge/native-v5/judge-v5-windows.exe
+d8c822e76b3971420474aba83c725c5edd4a438c858ab87fba91ce66a0b86b1c  judge/native-v5/portable/PROVENANCE-v5.json
+d8c822e76b3971420474aba83c725c5edd4a438c858ab87fba91ce66a0b86b1c  judge/native-v5/portable/PROVENANCE-v5.json
+fc4254f27c0f0acf111f78d375550d2c5fb194554d2b618c80adc0e07f0c2e37  judge/native-v5/portable/README-v5.md
+fc4254f27c0f0acf111f78d375550d2c5fb194554d2b618c80adc0e07f0c2e37  judge/native-v5/portable/README-v5.md
+f2aee2b96ed8603f858954728d4007cdd6e87a12898e12137d85c7e25316835b  judge/native-v5/portable/SHA256SUMS-source-v5.txt
+f2aee2b96ed8603f858954728d4007cdd6e87a12898e12137d85c7e25316835b  judge/native-v5/portable/SHA256SUMS-source-v5.txt
+acae71801723163d2b1b2c4bb8a39c722638d54c032e04cf1ae1261077993144  judge/native-v5/portable/build-native.py
+acae71801723163d2b1b2c4bb8a39c722638d54c032e04cf1ae1261077993144  judge/native-v5/portable/build-native.py
+89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c  judge/native-v5/portable/linux-runtime.asm
+89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c  judge/native-v5/portable/linux-runtime.asm
+660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96  judge/native-v5/portable/pmpc-original.rkt
+660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96  judge/native-v5/portable/pmpc-original.rkt
+9f3fee53b133d68d033fb883b15283dfccf9141ae00d722e43089f5621ed6c1a  judge/native/README-native.md
+386171f350accd88747aed6191a91b01268c616d051ec44266c218630404a0b8  judge/native/portable/PROVENANCE.json
+50dffe227e258e9c46b5f70a4897f3f33955b64bde677b0556a626ee5b3ac4bb  judge/native/portable/README.md
+0fcb7fab913e1f7c67c7b5eae4bedbb3bccefe567090a03272dec546b73349ba  judge/native/portable/SHA256SUMS-source.txt
+18fc3cb6d94359ae1e62a574097a228aae5bb5e272d36c4dc8ecbf18b3d8dcc7  judge/native/portable/build-native.py
+89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c  judge/native/portable/linux-runtime.asm
+660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96  judge/native/portable/pmpc-original.rkt
+b826b58f1f1692c66348c6a36cd6f191b130dbbb8104a7f9d32c5e274f5acd0f  judge/portable-interpreter/README-source.md
+b826b58f1f1692c66348c6a36cd6f191b130dbbb8104a7f9d32c5e274f5acd0f  judge/portable-interpreter/README-source.md
+cb5702f2e2a073b85fec2f944b5c9af64403a02cc61ea5dba05d7a830b5f2115  judge/portable-interpreter/build-interpreter.py
+cb5702f2e2a073b85fec2f944b5c9af64403a02cc61ea5dba05d7a830b5f2115  judge/portable-interpreter/build-interpreter.py
+778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db  judge/portable-interpreter/source/pompetzki.asm
+778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db  judge/portable-interpreter/source/pompetzki.asm
+1eaae8095218544b2ec97081764499389744d86771d3f73ba024cc0840a57328  judge/racket/README.md
+d6cf694c294a829172976ebd6741d15e39d91f5cb2feb09951421e5212c079ca  judge/racket/judge.rkt
+7369c098521020283016dbe86845790e7456be6ef255d8204ab696b6e4723a26  judge/registry-auth-v4.rkt
+5f998dadf4ac3e50922dad37b0ea15aadd1715947842bac37f20308c681822bb  judge/rocq2jdg.rkt
+08fb411c52a1ae4dc4587f174097459e96d5cada2b1eb4f227704914f4fac8fd  judge/test-registry-api-v4.rkt
+4c10eae15d7752b522f4ef6786243f9417d3861c5d1cbf8b9c669e27ccc352ee  repair/libraries/strx/strx-byte-build.rkt
+50933c97b7deda92a01ebe481c98948b0e91bc4e5cb967b8cabb9131d3807be5  repair/libraries/strx/strx-oracle.rkt
+88a97d6ed9e810d3510854f057215b4de6fdd118401b0d2548a90b43f4bd4d99  repair/libraries/strx/strx-test.pmp
+05b773ce83c0c7da3dab6833ee7c9de720de773274c4e2ea16c7b6f59536702f  repair/libraries/strx/strx.pmp
+a82458c87ee4e8e220e73f44bb050ff1baaf6aa783082a28968f1cc102b40a5c  repair/runtime-v2/README.md
+a0ac71b0d680f1f012e493aa82832afb281578fcb16078c7da4eb2e5a521b94e  repair/runtime-v2/SHA256SUMS-source.txt
+cfab7e257e6055b7680b02f94153b44fc7b8a9b5794c53c2d24d5d9233fa1fc4  repair/runtime-v2/build-interpreter.py
+2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e  repair/runtime-v2/source/pompetzki.asm
+581b2272967ca5f6d8bb6e3f7b97c2f3b42b5641dbc4f8e3ed7690476ec70b91  repair/runtime/README.md
+778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db  repair/runtime/source/pompetzki.asm
+=== committed binaries under native-v5 and bin ===
+4d153bea472d8a540cdef00cf9513e47d5f86ff382b428f81058f949113365d9  bin/linux/jdgchk
+414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7  bin/linux/pompetzki
+2b43990f31c99800463f6cabeb1b3fa6ee2f452589e7d91020b5fd53fb2dffba  bin/linux/run-elf.sh
+ccf835920e566b8a45468654798fb9577a261cfec171a707e0438696515a3bec  bin/windows/pompetzki.exe
+1b890cedd973b2815bd4be436adb60737b08162ba48c4ef4196241ccb01affad  judge/native-v5/judge-v5-linux
+b9e2ed070340d6ec926caca0f3c71929137e3a9bf2650ba6bc78c94e880e7545  judge/native-v5/judge-v5-windows.exe
+4259da3f96c237d75aa94dc5fc5f9637e9d9c2b4e449c3fa1b79b3179c55781d  judge/native-v5/native-provenance.json
+0bd13515bfba4d9f4c3d84ea129b0af7d531546fd4bfe135b00052035a977eea  judge/native-v5/native-test-result.json
+65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827  judge/native-v5/portable/LICENSE
+d8c822e76b3971420474aba83c725c5edd4a438c858ab87fba91ce66a0b86b1c  judge/native-v5/portable/PROVENANCE-v5.json
+fc4254f27c0f0acf111f78d375550d2c5fb194554d2b618c80adc0e07f0c2e37  judge/native-v5/portable/README-v5.md
+f2aee2b96ed8603f858954728d4007cdd6e87a12898e12137d85c7e25316835b  judge/native-v5/portable/SHA256SUMS-source-v5.txt
+5c664cacf7f04300a59580c54064b1f1602b1557b64a069fc3efcbed0de24e39  judge/native-v5/portable/SOURCE-INPUTS-v5.json
+acae71801723163d2b1b2c4bb8a39c722638d54c032e04cf1ae1261077993144  judge/native-v5/portable/build-native.py
+89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c  judge/native-v5/portable/linux-runtime.asm
+660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96  judge/native-v5/portable/pmpc-original.rkt
+=== hash-compare.txt (5351 bytes)
+=== repair/runtime-v2/SHA256SUMS-source.txt ===
+MATCH source/pompetzki.asm claimed 2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e actual 2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e
+MATCH build-interpreter.py claimed cfab7e257e6055b7680b02f94153b44fc7b8a9b5794c53c2d24d5d9233fa1fc4 actual cfab7e257e6055b7680b02f94153b44fc7b8a9b5794c53c2d24d5d9233fa1fc4
+MATCH README.md claimed a82458c87ee4e8e220e73f44bb050ff1baaf6aa783082a28968f1cc102b40a5c actual a82458c87ee4e8e220e73f44bb050ff1baaf6aa783082a28968f1cc102b40a5c
+MATCH PUBLIC-PROVENANCE.json claimed 617c03c9ff9009bde4badc734668db2e51b31e60f6e12f888f4482cf61d70edc actual 617c03c9ff9009bde4badc734668db2e51b31e60f6e12f888f4482cf61d70edc
+MATCH LICENSE claimed 65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827 actual 65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827
+MATCH test-word-division.py claimed 6df208c8e835e28a03ce9938f7dc10905624475e2ff5244d5a407a70874a9083 actual 6df208c8e835e28a03ce9938f7dc10905624475e2ff5244d5a407a70874a9083
+=== judge/native-v5/portable/SHA256SUMS-source-v5.txt ===
+MATCH judge/judge-v5.pmp -> judge/judge-v5.pmp claimed 4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b actual 4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b
+MATCH judge/native-v5/portable/build-native.py -> judge/native-v5/portable/build-native.py claimed acae71801723163d2b1b2c4bb8a39c722638d54c032e04cf1ae1261077993144 actual acae71801723163d2b1b2c4bb8a39c722638d54c032e04cf1ae1261077993144
+MATCH judge/native-v5/portable/pmpc-original.rkt -> judge/native-v5/portable/pmpc-original.rkt claimed 660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96 actual 660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96
+MATCH judge/native-v5/portable/linux-runtime.asm -> judge/native-v5/portable/linux-runtime.asm claimed 89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c actual 89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c
+MATCH judge/native-v5/portable/LICENSE -> judge/native-v5/portable/LICENSE claimed 65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827 actual 65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827
+MATCH judge/native-v5/portable/PROVENANCE.json -> judge/native-v5/portable/PROVENANCE-v5.json claimed d8c822e76b3971420474aba83c725c5edd4a438c858ab87fba91ce66a0b86b1c actual d8c822e76b3971420474aba83c725c5edd4a438c858ab87fba91ce66a0b86b1c
+MATCH judge/native-v5/portable/README.md -> judge/native-v5/portable/README-v5.md claimed fc4254f27c0f0acf111f78d375550d2c5fb194554d2b618c80adc0e07f0c2e37 actual fc4254f27c0f0acf111f78d375550d2c5fb194554d2b618c80adc0e07f0c2e37
+MATCH judge/native-v5/portable/SOURCE-INPUTS.json -> judge/native-v5/portable/SOURCE-INPUTS-v5.json claimed 5c664cacf7f04300a59580c54064b1f1602b1557b64a069fc3efcbed0de24e39 actual 5c664cacf7f04300a59580c54064b1f1602b1557b64a069fc3efcbed0de24e39
+=== README claimed source hashes ===
+runtime-v2 README claims asm 2329d3c9... actual 2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e
+portable-interp README claims 778a2710... actual 778a2710b4151bad5a71c1bbdf5b5243d86d01f2a654fd727f341d589f2289db
+v5 pmp claimed 4d936cb8... actual 4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b
+=== native-provenance.json ===
+{
+  "schema": "gated-native-v5-provenance/v1",
+  "gate_source": {
+    "path": "judge-v5.pmp",
+    "sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+    "bytes": 100875
+  },
+  "compiler_source": {
+    "path": "native-v5/portable/pmpc-original.rkt",
+    "sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+    "bytes": 13614
+  },
+  "linux_runtime_source": {
+    "path": "native-v5/portable/linux-runtime.asm",
+    "sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+    "bytes": 3666
+  },
+  "builder_source": {
+    "path": "native-v5/portable/build-native.py",
+    "sha256": "acae71801723163d2b1b2c4bb8a39c722638d54c032e04cf1ae1261077993144",
+    "bytes": 7935
+  },
+  "artifacts": [
+    {
+      "path": "native-v5/judge-v5-windows.exe",
+      "sha256": "b9e2ed070340d6ec926caca0f3c71929137e3a9bf2650ba6bc78c94e880e7545",
+      "bytes": 107029
+    },
+    {
+      "path": "native-v5/judge-v5-linux",
+      "sha256": "1b890cedd973b2815bd4be436adb60737b08162ba48c4ef4196241ccb01affad",
+      "bytes": 113416
+    }
+  ],
+  "build_steps": [
+    {
+      "step": "lower-pmp",
+      "exit_code": 0,
+      "seconds": 0.23451539999223314
+    },
+    {
+      "step": "assemble-windows",
+      "exit_code": 0,
+      "seconds": 0.2925476999953389
+    },
+    {
+      "step": "link-windows",
+      "exit_code": 0,
+      "seconds": 0.06755079998401925
+    },
+    {
+      "step": "assemble-linux",
+      "exit_code": 0,
+      "seconds": 0.16997060002177022
+    },
+    {
+      "step": "link-linux",
+      "exit_code": 0,
+      "seconds": 0.06125369999790564
+    }
+  ],
+  "finite_results": {
+    "cases_per_platform": 254,
+    "total_runs": 508,
+    "accepted_per_platform": 126,
+    "rejected_per_platform": 128,
+    "bot_cases": 94,
+    "numeric_auth_cases": 42,
+    "math_cases": 117,
+    "full_replay_cases": 1,
+    "full_replay_theorems": 4551,
+    "full_replay_steps": 139194,
+    "windows_linux_identical_output_and_exit": 254,
+    "unex
+=== built-hashes.txt (293 bytes)
+6589662d0d3197d296974b3ba1c4785aa1cc56a0217b917047023baac4097ba9  /workspace/b47/rtv2/pompetzki
+4c1c90b9d171ca7ddecc6d0d1851712f4dde970ef5fd752f134ee5b4cabbed22  /workspace/b47/v5n/judge-v5-linux
+1b890cedd973b2815bd4be436adb60737b08162ba48c4ef4196241ccb01affad  judge/native-v5/judge-v5-linux
+=== build-rtv2.log (1586 bytes)
+{
+  "target": "linux",
+  "source": "pompetzki.asm",
+  "source_sha256": "2329d3c993abfc5a89b979e6caae0b47aabdc12ec1858d752134a71a4e014f2e",
+  "source_matches_verified_revision": true,
+  "steps": [
+    {
+      "step": "assemble",
+      "argv": [
+        "/workspace/nasm-local/root/usr/bin/nasm",
+        "-DLINUX",
+        "-f",
+        "elf64",
+        "/workspace/acct-47cc/repair/runtime-v2/source/pompetzki.asm",
+        "-o",
+        "/workspace/b47/rtv2/pompetzki.o"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.2147220679980819,
+      "stdout": "assemble.stdout.txt",
+      "stderr": "assemble.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "link-linux",
+      "argv": [
+        "/usr/bin/ld",
+        "-o",
+        "/workspace/b47/rtv2/pompetzki",
+        "/workspace/b47/rtv2/pompetzki.o",
+        "-e",
+        "_start"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.0038151379994815215,
+      "stdout": "link-linux.stdout.txt",
+      "stderr": "link-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "pompetzki",
+      "sha256": "6589662d0d3197d296974b3ba1c4785aa1cc56a0217b917047023baac4097ba9",
+      "bytes": 128304
+    }
+  ],
+  "source_to_executable_correspondence": "Open"
+}
+=== build-v5n.log (2919 bytes)
+{
+  "created_at": "2026-10-12T02:21:35.698027+00:00",
+  "source": "/workspace/acct-47cc/judge/judge-v5.pmp",
+  "source_sha256": "4d936cb8103c6aa97fb6ec290f88b3ee636c69f94f0cdb089a4621d9ba251d1b",
+  "compiler_sha256": "660399e1aaa9f6954401b089d7656c74ca379090f35c89a022251915fc900e96",
+  "linux_runtime_sha256": "89a9c945fc402375e93f91492aaf47fad158d83c577de702a746d6f4c0ede91c",
+  "target": "linux",
+  "steps": [
+    {
+      "step": "lower-pmp",
+      "command": [
+        "/workspace/tools/racket/bin/racket",
+        "/workspace/acct-47cc/judge/native-v5/portable/pmpc-original.rkt",
+        "/workspace/acct-47cc/judge/judge-v5.pmp",
+        "/workspace/b47/v5n/judge-v5-base-windows.asm"
+      ],
+      "exit_code": 0,
+      "seconds": 0.4164207549983985,
+      "stdout": "lower-pmp.stdout.txt",
+      "stderr": "lower-pmp.stderr.txt",
+      "stdout_sha256": "04debd42dc92ff6678f365e2bc99e54cd25444f7d3eb2da6514ded79ac3e5c92",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "assemble-linux",
+      "command": [
+        "/workspace/nasm-local/root/usr/bin/nasm",
+        "-O0",
+        "-f",
+        "elf64",
+        "/workspace/b47/v5n/judge-v5-linux.asm",
+        "-o",
+        "/workspace/b47/v5n/judge-v5-linux.o"
+      ],
+      "exit_code": 0,
+      "seconds": 0.1650502510019578,
+      "stdout": "assemble-linux.stdout.txt",
+      "stderr": "assemble-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "step": "link-linux",
+      "command": [
+        "/usr/bin/ld",
+        "-o",
+        "/workspace/b47/v5n/judge-v5-linux",
+        "/workspace/b47/v5n/judge-v5-linux.o",
+        "-e",
+        "start"
+      ],
+      "exit_code": 0,
+      "seconds": 0.0035358819950488396,
+      "stdout": "link-linux.stdout.txt",
+      "stderr": "link-linux.stderr.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "judge-v5-base-windows.asm",
+      "sha256": "437db7c164062b0c236a84f78840f91a4eed58bea7ac4f8fc49d751cf174f353",
+      "bytes": 337103
+    },
+    {
+      "file": "judge-v5-linux.asm",
+      "sha256": "9f926801897604358450094bbcba3c26423008519ecaaa490a4c23f677fe827c",
+      "bytes": 335998
+    },
+    {
+      "file": "judge-v5-linux.o",
+      "sha256": "efa1b045f28e15095adf86d004646cb13624609592b823ae8f3bbe72c08877e6",
+      "bytes": 172416
+    },
+    {
+      "file": "judge-v5-linux",
+      "sha256": "4c1c90b9d171ca7ddecc6d0d1851712f4dde970ef5fd752f134ee5b4cabbed22",
+      "bytes": 113368
+    }
+  ],
+  "source_native_correspondence": "Open; a build receipt is finite evidence only."
+}
+=== reg0-files.txt (88 bytes)
+A	audit/reg0-embedded-gate/AUDIT-RECEIPT.md
+A	audit/reg0-gate-v5/PADDING-AND-RUNTIME.md
+=== reg0-hashes.txt (432 bytes)
+8fa19df8baa34b7f149d7062030516b4fcd9fe814471671061befe89ad93c5d3  audit/reg0-embedded-gate/AUDIT-RECEIPT.md
+9ce895c839cfe28d10a6ce692b253007d363e1d6cdfbed63d70fd572127f1f66  audit/reg0-gate-v5/PADDING-AND-RUNTIME.md
+8fa19df8baa34b7f149d7062030516b4fcd9fe814471671061befe89ad93c5d3  audit/reg0-embedded-gate/AUDIT-RECEIPT.md
+9ce895c839cfe28d10a6ce692b253007d363e1d6cdfbed63d70fd572127f1f66  audit/reg0-gate-v5/PADDING-AND-RUNTIME.md
+=== reg0-content-preview.txt (3787 bytes)
+==== audit/reg0-gate-v5/PADDING-AND-RUNTIME.md ====
+# v5 registry gate and Linux runtime-v2
+
+Additive archive, beside the two earlier packages. Their bytes were rechecked after this zip was written:
+
+```text
+26ada0641eecb84b9fde9181ad41407aa31cd167f09b4767a926376cabfc13bc  reg0-gate-v5-runtime-v2-2026-10-12.zip
+254011 bytes
+
+917b30b3aec0d5fc84afdd0733861fae7229d21114e6b0ac87f238bb2bade841  reg0-initial-registry-gate-2026-10-11.zip
+74542 bytes
+
+d773b4e529eaf70713baad0c15618bbe5d8f355906904a1c9b72faaf1fd73402  reg0-embedded-gate-2026-10-12.zip
+85105 bytes
+```
+
+The 2026-10-12 archive is the 12-digit gate. v5 treats a digit token of any length as that integer. Leading zeros do not change the value. Thirteen or more digits are not a parse error. The embedded AUTHREF literal is still public judge-v4.pmp at 63f45bbcaa88e370827d2dd2e95a6d422fb8c589, sha256 d3dbc73283b61a2ba72431552d33c1810e140e24bbfda85b1a30aef006dac047. No external REG0.canon is read. Theorem REG0_ok stays the proved theorem. Executable correspondence with Gallina check_batch remains open.
+
+## Padding, executed
+
+Command, from reg0-gate-v5, using released Linux pompetzki sha256 414e976b9ef34b3cf971d947bd0060347eb1bf77564333caf5944ff4067382a7:
+
+```text
+python3 test_padding.py
+```
+
+Log: reg0-gate-v5/tests/padding-output.txt. Last line: ALL PADDING CHECKS PASSED. failures 0. pmp and Python agreed. Re-run after deleting an unused MAX_DIGITS constant; the verdicts did not change.
+
+| input | spec | v4-cap | v5 |
+|---|---|---|---|
+| 12 zeros then 2 (13 digits) | GATE | REJECT parse | GATE |
+| exactly 12 zeros | GATE | GATE | GATE |
+| 13, 64, 1024 zeros then 2 | GATE | REJECT parse | GATE |
+| 13, 64, 1024 zeros | GATE | REJECT parse | GATE |
+| 11 zeros then 2 | GATE | GATE | GATE |
+| hyp count of 12 zeros | GATE | GATE | GATE |
+| hyp count of 13 or 1024 zeros | GATE | REJECT parse | GATE |
+| 64 nines, 1024 nines, 2 then 100 zeros, 9223372036854775807 | REJECT formula | REJECT parse | REJECT formula |
+| hyp count 1 then 64 zeros | REJECT hypotheses | REJECT parse | REJECT hypotheses |
+| 0.0 +2 -1 2a 0x2 . 2. | REJECT parse | REJECT parse | REJECT parse |
+
+==== audit/reg0-embedded-gate/AUDIT-RECEIPT.md ====
+# Embedded REG0 gate
+
+This branch was opened from `codex/exact-release-repair` at `52e4a28ecf47c9e06b230d975c04a174272a3cdf`.
+The v4 judges under test are commit `63f45bbcaa88e370827d2dd2e95a6d422fb8c589`.
+
+The corrected gate embeds that commit's `judge-v4.pmp` AUTHREF literal. It does not read `REG0.canon`. Decimal spellings compare as integers: `02` is 2 and `00` is 0. An altered external canon plus a forged matching input is rejected before the proof judge. `Theorem REG0_ok` in `rocq/RpInitOk.v` at `e8958a92` is `Proof`/`Qed`, not an extra axiom. Executable correspondence with Gallina `check_batch` remains an open obligation.
+
+Executed here: 3538/3538 API checks, 16 preserved mutants, 14 public v4 fixtures against `judge-v4.pmp`, the altered-canon attack, and the three spelling files through released `judge-v3.pmp`. Python and `reggate.pmp` agreed. The run log is inside the archive.
+
+## Archives
+
+Previous archive, bytes unchanged:
+
+```text
+917b30b3aec0d5fc84afdd0733861fae7229d21114e6b0ac87f238bb2bade841  reg0-initial-registry-gate-2026-10-11.zip
+74542 bytes
+```
+
+Corrected archive:
+
+```text
+d773b4e529eaf70713baad0c15618bbe5d8f355906904a1c9b72faaf1fd73402  reg0-embedded-gate-2026-10-12.zip
+85105 bytes
+```
+
+AUTHREF sha256 `d3dbc73283b61a2ba72431552d33c1810e140e24bbfda85b1a30aef006dac047`.
+Public `judge-v4.pmp` sha256 `c0698f6c00310e4cf95147d4ddfbfab0f8c06d00aa8f9ca1da8482123c073e33`.
+Released `judge-v3.pmp` sha256 `bf147194d415d0ab6991b5912c718c772f4bcb285ea027326fc5a108a81e6ce7`.
+RpInitOk.v sha256 `827498d05d92fd334a093273b1bdf13ef5fa11e643b84b2fa8ac83dff07d8bf3`.
+=== summary-table.txt (8532 bytes)
+case                                                    rc   verdict              output
+J-v5n-a1-false-registry                                 1    REJECT               initial registry entry (counted from 0): / 0 / REJECT / initial registry entry differs from canonical REG0 / theorem and
+J-v5n-a2-false-registry-thm                             1    REJECT               initial registry entry (counted from 0): / 0 / REJECT / initial registry entry differs from canonical REG0 / theorem and
+J-v5n-committed-a1-false-registry                       126  ?                    environment: line 12: /workspace/acct-47cc/judge/native-v5/judge-v5-linux: Permi
+J-v5n-committed-a2-false-registry-thm                   126  ?                    environment: line 12: /workspace/acct-47cc/judge/native-v5/judge-v5-linux: Permi
+J-v5n-committed-ctl-canonical-reg0                      126  ?                    environment: line 12: /workspace/acct-47cc/judge/native-v5/judge-v5-linux: Permi
+J-v5n-ctl-canonical-reg0                                0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+J-v5p-a1-false-registry                                 1    REJECT               initial registry entry (counted from 0): / 0 / REJECT / initial registry entry differs from canonical REG0 / theorem and
+J-v5p-a2-false-registry-thm                             1    REJECT               initial registry entry (counted from 0): / 0 / REJECT / initial registry entry differs from canonical REG0 / theorem and
+J-v5p-ctl-canonical-reg0                                0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+J-v5r-a1-false-registry                                 1    REJECT               REJECT initial registry 0: entry differs from canonical REG0
+J-v5r-a2-false-registry-thm                             1    REJECT               REJECT initial registry 0: entry differs from canonical REG0
+J-v5r-ctl-canonical-reg0                                0    ACCEPT               ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+L-v4p-L1-R-pad13                                        1    REJECT               REJECT / a number has more than 12 digits / theorem and step (counted from 0): / 0 / 0 / line 351: check zero failed: no
+L-v4p-L2-R-pad12                                        0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+L-v4p-L3-entry-pad12                                    0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+L-v4p-L4-13sig-digits                                   1    REJECT               REJECT / a number has more than 12 digits / theorem and step (counted from 0): / 0 / 0 / line 351: check zero failed: no
+L-v4p-L5-12zeros-then-2                                 1    REJECT               REJECT / a number has more than 12 digits / theorem and step (counted from 0): / 0 / 0 / line 351: check zero failed: no
+L-v4p-L6-R0-13zeros                                     1    REJECT               REJECT / a number has more than 12 digits / theorem and step (counted from 0): / 0 / 0 / line 351: check zero failed: no
+L-v4p-L7-R0-12zeros                                     0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 0 / 0 / 0 / 0
+L-v4p-fixture-leading-zero                              0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 1 / 1 / 2 / 2
+L-v5n-L1-R-pad13                                        0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+L-v5n-L2-R-pad12                                        0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+L-v5n-L3-entry-pad12                                    0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+L-v5n-L4-13sig-digits                                   1    REJECT               REJECT / a number has more than 12 significant digits / theorem and step (counted from 0): / 0 / 0 / line 351: check zer
+L-v5n-L5-12zeros-then-2                                 1    REJECT               initial registry entry (counted from 0): / 0 / REJECT / initial registry entry differs from canonical REG0 / theorem and
+L-v5n-L6-R0-13zeros                                     0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 0 / 0 / 0 / 0
+L-v5n-L7-R0-12zeros                                     0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 0 / 0 / 0 / 0
+L-v5n-fixture-leading-zero                              0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 1 / 1 / 2 / 2
+L-v5p-L1-R-pad13                                        0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+L-v5p-L2-R-pad12                                        0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+L-v5p-L3-entry-pad12                                    0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 706 / 0 / 0 / 7
+L-v5p-L4-13sig-digits                                   1    REJECT               REJECT / a number has more than 12 significant digits / theorem and step (counted from 0): / 0 / 0 / line 351: check zer
+L-v5p-L5-12zeros-then-2                                 1    REJECT               initial registry entry (counted from 0): / 0 / REJECT / initial registry entry differs from canonical REG0 / theorem and
+L-v5p-L6-R0-13zeros                                     0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 0 / 0 / 0 / 0
+L-v5p-L7-R0-12zeros                                     0    ACCEPT               ACCEPT / registry entries at the start, theorems accepted, steps checked, registry entries at the end: / 0 / 0 / 0 / 0
+L-v5r-L1-R-pad13                                        0    ACCEPT               ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+L-v5r-L2-R-pad12                                        0    ACCEPT               ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+L-v5r-L3-entry-pad12                                    0    ACCEPT               ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+L-v5r-L4-13sig-digits                                   1    REJECT               REJECT parse error at byte 36: a number has more than 12 significant digits
+L-v5r-L5-12zeros-then-2                                 1    REJECT               REJECT initial registry 0: entry differs from canonical REG0
+L-v5r-L6-R0-13zeros                                     0    ACCEPT               ACCEPT registry 0 theorems 0 steps 0 final-registry 0
+L-v5r-L7-R0-12zeros                                     0    ACCEPT               ACCEPT registry 0 theorems 0 steps 0 final-registry 0
+L-v5r-fixture-leading-zero                              0    ACCEPT               ACCEPT registry 1 theorems 1 steps 2 final-registry 2
+RT-b1-literal-min                                       0    OK:-9223372036854775808 -9223372036854775808
+RT-b2-computed-min                                      0    OK:-9223372036854775808 -9223372036854775808
+RT-c1-trim-nul                                          0    OK:3 / 97 / 0 / 98 / 32 / 0 / 98 3 / 97 / 0 / 98 / 32 / 0 / 98
+RT-d1-min-div-neg1                                      0    OK:-9223372036854775808 -9223372036854775808
+RT-d2-min-mod-neg1                                      0    OK:0                 0

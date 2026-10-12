@@ -1,0 +1,303 @@
+===== J-v5n-a1-false-registry.stdout =====
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== J-v5n-a2-false-registry-thm.stdout =====
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== J-v5n-committed-a1-false-registry.stdout =====
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== J-v5n-committed-a2-false-registry-thm.stdout =====
+===== J-v5n-committed-ctl-canonical-reg0.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== J-v5n-ctl-canonical-reg0.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== J-v5p-a1-false-registry.stdout =====
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== J-v5p-a2-false-registry-thm.stdout =====
+initial registry entry (counted from 0):
+0
+REJECT
+initial registry entry differs from canonical REG0
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== J-v5p-ctl-canonical-reg0.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== J-v5r-a1-false-registry.stdout =====
+REJECT initial registry 0: entry differs from canonical REG0
+===== J-v5r-a2-false-registry-thm.stdout =====
+REJECT initial registry 0: entry differs from canonical REG0
+===== J-v5r-ctl-canonical-reg0.stdout =====
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+===== L-v4p-L1-R-pad13.stdout =====
+REJECT
+a number has more than 12 digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== L-v4p-L2-R-pad12.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v4p-L3-entry-pad12.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v4p-L4-13sig-digits.stdout =====
+REJECT
+a number has more than 12 digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== L-v4p-L5-12zeros-then-2.stdout =====
+REJECT
+a number has more than 12 digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== L-v4p-L5b-13zeros-and-12z2.stdout =====
+REJECT
+a number has more than 12 digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== L-v4p-L6-R0-13zeros.stdout =====
+REJECT
+a number has more than 12 digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== L-v4p-L7-R0-12zeros.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+0
+0
+0
+0
+===== L-v4p-fixture-leading-zero.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+1
+1
+2
+2
+===== L-v5n-L1-R-pad13.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5n-L2-R-pad12.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5n-L3-entry-pad12.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5n-L4-13sig-digits.stdout =====
+REJECT
+a number has more than 12 significant digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== L-v5n-L5-12zeros-then-2.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5n-L5b-13zeros-and-12z2.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5n-L6-R0-13zeros.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+0
+0
+0
+0
+===== L-v5n-L7-R0-12zeros.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+0
+0
+0
+0
+===== L-v5n-committed-L1-R-pad13.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5n-committed-L4-13sig-digits.stdout =====
+REJECT
+a number has more than 12 significant digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== L-v5n-fixture-leading-zero.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+1
+1
+2
+2
+===== L-v5p-L1-R-pad13.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5p-L2-R-pad12.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5p-L3-entry-pad12.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5p-L4-13sig-digits.stdout =====
+REJECT
+a number has more than 12 significant digits
+theorem and step (counted from 0):
+0
+0
+line 351: check zero failed: not the zero vector
+===== L-v5p-L5-12zeros-then-2.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5p-L5b-13zeros-and-12z2.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+706
+0
+0
+706
+===== L-v5p-L6-R0-13zeros.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+0
+0
+0
+0
+===== L-v5p-L7-R0-12zeros.stdout =====
+ACCEPT
+registry entries at the start, theorems accepted, steps checked, registry entries at the end:
+0
+0
+0
+0
+===== L-v5r-L1-R-pad13.stdout =====
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+===== L-v5r-L2-R-pad12.stdout =====
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+===== L-v5r-L3-entry-pad12.stdout =====
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+===== L-v5r-L4-13sig-digits.stdout =====
+REJECT parse error at byte 36: a number has more than 12 significant digits
+===== L-v5r-L5-12zeros-then-2.stdout =====
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+===== L-v5r-L5b-13zeros-and-12z2.stdout =====
+ACCEPT registry 706 theorems 0 steps 0 final-registry 706
+===== L-v5r-L6-R0-13zeros.stdout =====
+ACCEPT registry 0 theorems 0 steps 0 final-registry 0
+===== L-v5r-L7-R0-12zeros.stdout =====
+ACCEPT registry 0 theorems 0 steps 0 final-registry 0
+===== L-v5r-fixture-leading-zero.stdout =====
+ACCEPT registry 1 theorems 1 steps 2 final-registry 2
+===== RT-b1-literal-min.stdout =====
+-9223372036854775808
+===== RT-b2-computed-min.stdout =====
+-9223372036854775808
+===== RT-c1-trim-nul.stdout =====
+3
+97
+0
+98
+32
+0
+98
+===== RT-d1-min-div-neg1.stdout =====
+-9223372036854775808
+===== RT-d2-min-mod-neg1.stdout =====
+0
