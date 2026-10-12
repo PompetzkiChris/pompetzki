@@ -1,0 +1,27 @@
+{
+  "status": "FROZEN",
+  "source_author": "Grok Bot",
+  "received_archive_sha256": "f36491d5461065bcec9435e4f9dab9ff0af0b31b627edd4bc1dae7d43930964f",
+  "manifest_sha256": "4d67d04958d3d819a90bcf2143861998c059604c61b9547d0ec76b84a2cfab6b",
+  "checksums_sha256": "b6417e6fb6b2157415d366d18bd2f677f74d5f3733ebe4c4406286100d4ca025",
+  "payload_files": 17,
+  "controls": [
+    "PUBLIC-SOURCE-MANIFEST.json",
+    "SHA256SUMS.txt",
+    "COUNT-GUARD-FREEZE.json",
+    "COUNT-GUARD-FREEZE.sha256"
+  ],
+  "compiled_modules": 2,
+  "closed_proof_declarations": 8,
+  "kernel_exit": 0,
+  "kernel_axioms": [],
+  "private_pattern_hits": 0,
+  "exact_types": "receipt/fresh-20261012-044242-178485/logs/GrokRecordCountVerify.stdout.txt",
+  "exact_types_sha256": "2c9af2569f103737e7b4e66c7a9f4e1798399bc4b5e211e4fbf7f59cfe94a34a",
+  "kernel_context_sha256": "b1041885d66eb8f88a1d7a5bdd8ea37e0c84705cab0f25e1825f9afc2b7558b6",
+  "scope": "Arithmetic/list-model proof, not actual source-guard or executable preservation",
+  "previous_v1_freeze_sha256": "8b815f4e32a630752545cc89dfe8bf19b3e156539eac97b1453d59123f078fd4",
+  "license_sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+  "proof_recompiled": false,
+  "source_and_receipt_bytes_unchanged": true
+}

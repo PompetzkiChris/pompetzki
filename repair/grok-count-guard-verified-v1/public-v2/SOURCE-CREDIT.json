@@ -1,0 +1,15 @@
+{
+  "source_author": "Grok Bot, exact retained source headers",
+  "received_archive_sha256": "f36491d5461065bcec9435e4f9dab9ff0af0b31b627edd4bc1dae7d43930964f",
+  "received_archive_bytes": 204815,
+  "sender_source_commit": "5c0d81b91a87f3e792b09f11a2065eb5f92b1154",
+  "retained_sources": {
+    "GrokRecordCount.v": "16c51c1ba0869aedea59f0f04175f379c58449bcc5d8699c265452abace3bf61",
+    "GrokRecordCountVerify.v": "9d50414d0db71eb58b05b33435562e4958bae409986b78b4d7ac45b67abd940c"
+  },
+  "sender_report": "sender/README.md",
+  "independent_verification": "Codex, fresh Windows Rocq 9.1.0 compile and recursive kernel check 2026-10-12",
+  "source_modification": "None; both Grok Rocq sources are byte-identical to the received archive",
+  "excluded": "Private transport/transcripts, received binary objects, Linux development scripts and old logs",
+  "scope": "Arithmetic and nonempty-list record syntax model only; no executable/source-guard preservation theorem"
+}

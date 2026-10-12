@@ -1,0 +1,111 @@
+{
+  "status": "CURRENT FROZEN ARITHMETIC AND LIST-MODEL SOURCE",
+  "source_author": "Grok Bot",
+  "fresh_compiled_modules": 2,
+  "closed_proof_declarations": 8,
+  "kernel_exit": 0,
+  "kernel_axioms": [],
+  "source_edits": false,
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1077,
+      "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2571,
+      "sha256": "9d06145a4dddde2dc672d705b34692066bd9a2c1a79fc295b185e7e13e9bd9cb"
+    },
+    {
+      "path": "SOURCE-CREDIT.json",
+      "bytes": 982,
+      "sha256": "523f098197964d002bd509ec1992f966885232a9e6f3c709d972130f37515e5b"
+    },
+    {
+      "path": "SOURCE-INPUTS.json",
+      "bytes": 832,
+      "sha256": "dea66d6babc49e4edf9aa78049a5850afcee58a019153b0961020546735715a7"
+    },
+    {
+      "path": "build-proof.py",
+      "bytes": 3041,
+      "sha256": "ca142bd892ff7ea01b69e49610f40c31abfaddce670a2b2acd2976aac8cd6fac"
+    },
+    {
+      "path": "receipt/fresh-20261012-044242-178485/logs/GrokRecordCount.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-044242-178485/logs/GrokRecordCount.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-044242-178485/logs/GrokRecordCountVerify.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-044242-178485/logs/GrokRecordCountVerify.stdout.txt",
+      "bytes": 3398,
+      "sha256": "2c9af2569f103737e7b4e66c7a9f4e1798399bc4b5e211e4fbf7f59cfe94a34a"
+    },
+    {
+      "path": "receipt/fresh-20261012-044242-178485/logs/kernel-check.stderr.txt",
+      "bytes": 3008687,
+      "sha256": "b1041885d66eb8f88a1d7a5bdd8ea37e0c84705cab0f25e1825f9afc2b7558b6"
+    },
+    {
+      "path": "receipt/fresh-20261012-044242-178485/logs/kernel-check.stdout.txt",
+      "bytes": 26,
+      "sha256": "86ef38bf8bc2a0b755aa5282ecc167d522ec968d0e9087cc2b91358ffeb61e7e"
+    },
+    {
+      "path": "receipt/fresh-20261012-044242-178485/logs/tool-version.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "receipt/fresh-20261012-044242-178485/logs/tool-version.stdout.txt",
+      "bytes": 60,
+      "sha256": "749c308cfe9f2d4bc4b3c9b33c374a78697e5588da9a8e20c7063386846ec8ad"
+    },
+    {
+      "path": "receipt/fresh-20261012-044242-178485/results.json",
+      "bytes": 3290,
+      "sha256": "8e4fb8d923c5bb255557867d85a2c84115fe323ca48c3ab275eb9d123b5133a5"
+    },
+    {
+      "path": "sender/README.md",
+      "bytes": 2433,
+      "sha256": "dc9eafa077f866669fba9904d71e6d41305bd77b421b7993c2222e109835e921"
+    },
+    {
+      "path": "source/GrokRecordCount.v",
+      "bytes": 2126,
+      "sha256": "16c51c1ba0869aedea59f0f04175f379c58449bcc5d8699c265452abace3bf61"
+    },
+    {
+      "path": "source/GrokRecordCountVerify.v",
+      "bytes": 602,
+      "sha256": "9d50414d0db71eb58b05b33435562e4958bae409986b78b4d7ac45b67abd940c"
+    }
+  ],
+  "control_files": [
+    "PUBLIC-SOURCE-MANIFEST.json",
+    "SHA256SUMS.txt",
+    "COUNT-GUARD-FREEZE.json",
+    "COUNT-GUARD-FREEZE.sha256"
+  ],
+  "scope": "Universal arithmetic/nonempty-list model only; actual executable/allocator correspondence remains open",
+  "previous_v1_manifest_sha256": "2a7ac1def57c93bcced4653ceb7958e081e9c51780c8e2845fa4e696d2ab8cf4",
+  "license": {
+    "path": "LICENSE",
+    "bytes": 1077,
+    "sha256": "65084df2bd72a7c943559f2c6984868804e01d102231ddcd6cc848de54258827",
+    "kind": "Full existing project MIT LICENSE"
+  },
+  "change": "License inclusion only; all16 preceding payload bytes and proof receipts unchanged"
+}
