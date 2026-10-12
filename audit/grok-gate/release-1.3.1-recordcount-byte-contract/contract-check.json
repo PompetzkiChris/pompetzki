@@ -1,0 +1,23 @@
+{
+  "decoded_bytes": 182,
+  "decoded_sha256": "33a8406f4545f199f8772b839c9058f62543f3fe2a9f0af3a208df97f41dbca8",
+  "equals_fragment": true,
+  "equals_judge_lines_398_through_405": true,
+  "fragment_line_count": 8,
+  "fragment_lines": [
+    "label RECORDCOUNT",
+    "set t sub lim pos",
+    "set t sub t num",
+    "when negative t goto RECORDCOUNTBAD",
+    "return",
+    "label RECORDCOUNTBAD",
+    "text WHY \"a record count exceeds remaining input bytes\"",
+    "goto FAIL"
+  ],
+  "precord_constructors_equal_eight_source_lines": true,
+  "pinned_sha_equals_judge_file": true,
+  "address_contract_text": "0<=vars s \"num\"<=999999999999 /\\ 0<=vars s \"pos\"<=vars s \"lim\" /\\ vars s \"lim\"<=hp s /\\ hp s<4611686018427387904",
+  "hp_bound_is_2_to_62": true,
+  "contract_does_not_state_os_permissions": true,
+  "boundary": "This compares retained source bytes and the stated address contract. It does not run the kernel, and it does not prove the trusted text-to-AST translation, native/compiler/OS preservation, memory permissions, the whole judge, the caller contract, or the final FAIL handler."
+}
